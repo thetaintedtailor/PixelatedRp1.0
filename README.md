@@ -29,16 +29,6 @@ This is the 2nd repository created for this project in ~3 days utilizing zap-hos
 - - deleted files = files added during first server attempt changes
 - - added files = files removed during first server attempt changes
 - - file changes = inverted file changes during first server attempt changes
-- copy of git commit description:
-"*** reverting back to original/default install *** :- denotes changes by envy & lous since original install (~3 days)
-- envy had reset the entire zap-hosting server (too many current bugs)
-- - then reinstalled all dependancies (ESX, etc.) from scratch
-- this commit is that original FTP download from zap-hosting (after the reset & reinstall)
-
-:- in this commit (there are many many files deleted, added, and changed)
-- these changes represent what had been updated in 3 days since zap-hosting started was launched
-- this changes were performed by both envy & lous (from germany)
-- NOTE: these changes also include anything that was rendered after running the new server (i.e. server after reset) once for about 15 minutes, and 2 people joining/playing"
 
 
 # NEXT:
