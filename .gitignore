@@ -1,0 +1,15 @@
+# misc
+*~
+.#.*
+
+# xcode
+*.xcworkspace
+
+# ignore large file types
+stream/
+
+
+
+
+
+
