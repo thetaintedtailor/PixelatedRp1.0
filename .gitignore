@@ -1,6 +1,7 @@
-# misc
+# misc OSx
 *~
 .#.*
+*/.DS_Store
 
 # xcode
 *.xcworkspace
