@@ -1,0 +1,9 @@
+Server Reset Warning (15):
+1) Server will be reset in 30 minutes
+2) Please exit the game before this time so your character status auto saves to the database
+3) Server is expected to come back up within 5 minutes after being reset (unless otherwise noted)
+
+From time to time the server will be required to be reset. This means that all users will be disconnected automatically. In order to ensure that you do not lose any saved data, please manually exit the game before the server is reset.  This requirement will occur less and less often as the code integration progresses and becomes more stable.
+
+The server will never be intended to reset 'suddenly'. You will receive periodic time based warnings both in-game as well as on discord. Please PM @envy#0917 for further inquiries.
+
