@@ -1,7 +1,7 @@
 # misc OSx
 *~
 .#.*
-*/.DS_Store
+*.DS_Store
 
 # xcode
 *.xcworkspace
