@@ -1,5 +1,5 @@
 Server Reset Warning (15):
-1) Server will be reset in 30 minutes
+1) Server will be reset in 15 minutes
 2) Please exit the game before this time so your character status auto saves to the database
 3) Server is expected to come back up within 5 minutes after being reset (unless otherwise noted)
 

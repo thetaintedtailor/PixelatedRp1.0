@@ -1,15 +1,20 @@
 # Known Bugs:
 
 ## High-Priority
-1) EMS can't see victims sometimes (high priority)
-2) EMS boss can't use menu (high priority)
-3) Police vehicle menu scrolling freezes (high priority; for now please request admin to get you out using 'Bring To')
-4) EMS vehicle prices not set to $1 (high priority)
-5) Jail integration (high priority)
+1) integrate whitelisting
+2) EMS & POLICE vehicle prices still not set to $1
+3) make WEAPON_APPISTOL not available to purchase for all users 
+4) Jail integration (high priority)
+
 
 ## Low-Priority
-1) Garage added vehicles get lost
-2) *BankerJobs 'may' have some misc issues
+1) EMS can't see victims sometimes
+    - no yet reported again as of 04.11.19
+2) EMS boss can't use menu
+3) Police vehicle menu scrolling freezes 
+    - current work around: request admin to get you out using 'Bring To'
+4) Garage added vehicles get lost
+5) *BankerJobs 'may' have some misc issues
     - notified QA to PM dev on discord anything that they may come across
 
 ## Backlog
