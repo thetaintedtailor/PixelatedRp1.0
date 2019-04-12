@@ -15,4 +15,5 @@
 ### > restart <resourceName>
     - ex: /restart esx_whitelistEnhanced
 
-
+### > jail <playerId> <jailTimeMin>
+    - ex: /jail 21 60
