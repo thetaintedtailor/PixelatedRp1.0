@@ -1,4 +1,10 @@
 # TODO
+
+## mods
+1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
+2) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+
+## misc
 1) create automated python script to perform ftp push
 2) planning to port server hosting (from zap-hosting to AWS)
     - want to try to get us off of it as soon as possible, but in order for me to do so, i need to be able to gradually test on dev server (my aws server) with 2 people, then 5 people, then 10 people, then 20 people, then 32 people (or at least up to 15 or 20 people).... these tests will probably consist of about 10 or 15 minutes of them just running around and driving.... and then me asking them questions in a group audio chat afterwards.... the testing would probably begin in a week or two
