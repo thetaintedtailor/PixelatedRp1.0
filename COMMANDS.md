@@ -3,17 +3,17 @@
 ### > addwl [ hex | dec ] [<streamId>]
     - ex:  /addwl dec 12345678901234567
     
-### > setjob [<playerId>] [<jobName>] [<jobGrade>]
+### > setjob [playerId] [jobName] [jobGrade]
     - ex: /setjob 21 mechanic 3
     
-### > start [<resourceName>]
+### > start [resourceName]
     - ex: /start esx_whitelistEnhanced
     
-### > stop [<resourceName>]
+### > stop [resourceName]
     - ex: /stop esx_whitelistEnhanced
     
-### > restart [<resourceName>]
+### > restart [resourceName]
     - ex: /restart esx_whitelistEnhanced
 
-### > jail [<playerId>] [<jailTimeMin>]
+### > jail [playerId] [jailTimeMin]
     - ex: /jail 21 60
