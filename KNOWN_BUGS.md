@@ -1,7 +1,8 @@
 # Known Bugs:
 
 ## High-Priority
-- none
+1) garage is losing cars
+    - https://forum.fivem.net/t/re-release-esx-eden-garage/150511
 
 ## Low-Priority
 1) EMS boss can't hire people

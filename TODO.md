@@ -1,9 +1,13 @@
 # TODO
 
-## mods
+## mods (in priority order)
 1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
 2) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
 3) https://github.com/Krizfrost/-ESX--Money-Laundering
+4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
+5) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+6) https://github.com/BTNGaming/btn_gcphone
+7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
 
 ## misc
 1) create automated python script to perform ftp push
