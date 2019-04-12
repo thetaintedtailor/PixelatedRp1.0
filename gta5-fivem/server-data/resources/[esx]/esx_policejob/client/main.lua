@@ -695,7 +695,6 @@ function OpenPoliceActionsMenu()
 				{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
 				{label = _U('fine'),			value = 'fine'},
 				{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
-                {label = _U('fine'),            value = 'fine'},
                 {label = _U('jail'),            value = 'jail'}
 			}
 		
