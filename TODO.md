@@ -2,11 +2,11 @@
 
 ## mods (in priority order)
 1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
-2) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
-3) https://github.com/Krizfrost/-ESX--Money-Laundering
-4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
-5) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
-6) https://github.com/BTNGaming/btn_gcphone
+2) https://github.com/Krizfrost/-ESX--Money-Laundering
+3) https://github.com/BTNGaming/btn_gcphone
+4) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+5) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+6) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
 7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
 
 ## misc
