@@ -1,10 +1,10 @@
 # Known Bugs:
 
 ## High-Priority
-1) integrate whitelisting
-2) EMS & POLICE vehicle prices still not set to $1
-3) make WEAPON_APPISTOL not available to purchase for all users 
-4) Jail integration (high priority)
+1) integrate whitelisting - DONE
+2) EMS & POLICE vehicle prices still not set to $1 - DONE
+3) make WEAPON_APPISTOL not available to purchase for all users - DONE 
+4) Jail integration (high priority) - DONE
 
 
 ## Low-Priority
