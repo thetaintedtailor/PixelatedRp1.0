@@ -3,6 +3,7 @@
 ## mods
 1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
 2) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+3) https://github.com/Krizfrost/-ESX--Money-Laundering
 
 ## misc
 1) create automated python script to perform ftp push
