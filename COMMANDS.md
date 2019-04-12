@@ -1,6 +1,6 @@
 # Commands
 
-### > addwl [ hex | dec ] [<streamId>]
+### > addwl [ hex | dec ] [streamId]
     - ex:  /addwl dec 12345678901234567
     
 ### > setjob [playerId] [jobName] [jobGrade]
