@@ -2,6 +2,7 @@
 
 ## mods (in priority order)
 1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
+    - testing current garage bug fix first (from: https://github.com/aprilkae/esx_garage/commit/108aeeddb43c36b10049b8f910e14ce6055844d6)
 2) https://github.com/Krizfrost/-ESX--Money-Laundering
 3) https://github.com/BTNGaming/btn_gcphone
 4) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767

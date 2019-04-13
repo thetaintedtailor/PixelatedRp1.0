@@ -1,8 +1,10 @@
 # Known Bugs:
 
 ## High-Priority
-1) garage is losing cars
-    - https://forum.fivem.net/t/re-release-esx-eden-garage/150511
+1) garage is losing cars - TESTING
+    - inregrated fix from: https://github.com/aprilkae/esx_garage/commit/108aeeddb43c36b10049b8f910e14ce6055844d6
+    - @envy is currently testing
+    - alt garage solution: https://forum.fivem.net/t/re-release-esx-eden-garage/150511
 
 ## Low-Priority
 1) EMS boss can't hire people
