@@ -50,11 +50,11 @@ function refreshBlips()
 		local blip = AddBlipForCoord(zoneValues.Pos.x, zoneValues.Pos.y, zoneValues.Pos.z)
 		SetBlipSprite (blip, Config.BlipInfos.Sprite)
 		SetBlipDisplay(blip, 4)
-		SetBlipScale  (blip, 1.2)
+		SetBlipScale  (blip, 1.0)
 		SetBlipColour (blip, Config.BlipInfos.Color)
 		SetBlipAsShortRange(blip, true)
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(zoneKey)
+		AddTextComponentString("Garage")
 		EndTextCommandSetBlipName(blip)
 	end
 end
