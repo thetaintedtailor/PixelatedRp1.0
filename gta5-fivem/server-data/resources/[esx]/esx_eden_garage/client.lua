@@ -68,9 +68,9 @@ function OpenMenuGarage()
 	ESX.UI.Menu.CloseAll()
 
 	local elements = {
-		{label = "Liste des véhicules", value = 'list_vehicles'},
-		{label = "Rentrer vehicules", value = 'stock_vehicle'},
-		{label = "Retour vehicule ("..Config.Price.."$)", value = 'return_vehicle'},
+		{label = "List vehicles", value = 'list_vehicles'},
+		{label = "Return vehicle", value = 'stock_vehicle'},
+		{label = "Respawn vehicle ("..Config.Price.."$)", value = 'return_vehicle'},
 	}
 
 
@@ -118,10 +118,10 @@ function ListVehiclesMenu()
     		local labelvehicle
 
     		if(v.state)then
-    		labelvehicle = vehicleName..': Rentré'
+    		labelvehicle = vehicleName..': Take out'
     		
     		else
-    		labelvehicle = vehicleName..': Sortie'
+    		labelvehicle = vehicleName..': Exit'
     		end	
 			table.insert(elements, {label =labelvehicle , value = v})
 			
@@ -139,7 +139,7 @@ function ListVehiclesMenu()
 				menu.close()
 				SpawnVehicle(data.current.value.vehicle)
 			else
-				TriggerEvent('esx:showNotification', 'Votre véhicule est déjà sorti')
+				TriggerEvent('esx:showNotification', 'Your vehicle is already out')
 			end
 		end,
 		function(data, menu)
@@ -165,13 +165,13 @@ function StockVehicleMenu()
 				TriggerServerEvent('eden_garage:debug', vehicle)
 				DeleteVehicle(vehicle)
 				TriggerServerEvent('eden_garage:modifystate', vehicleProps, true)
-				TriggerEvent('esx:showNotification', 'Votre véhicule est dans le garage')
+				TriggerEvent('esx:showNotification', 'Your vehicle has been stored in the garage')
 			else
-				TriggerEvent('esx:showNotification', 'Vous ne pouvez pas stocker ce véhicule')
+				TriggerEvent('esx:showNotification', 'You can not store this vehicle')
 			end
 		end,vehicleProps)
 	else
-		TriggerEvent('esx:showNotification', 'Il n\' y a pas de vehicule à rentrer')
+		TriggerEvent('esx:showNotification', 'There is no vehicle in the return circle')
 	end
 
 end
@@ -198,7 +198,7 @@ end
 AddEventHandler('eden_garage:hasEnteredMarker', function(zone)
 	if zone == 'garage' then
 		CurrentAction     = 'garage_action_menu'
-		CurrentActionMsg  = "Appuyer sur ~INPUT_PICKUP~ pour ouvrir le garage"
+		CurrentActionMsg  = 'Press ~INPUT_PICKUP~ to open the garage'
 		CurrentActionData = {}
 	end
 end)
@@ -221,7 +221,7 @@ function ReturnVehicleMenu()
     		local vehicleName = GetDisplayNameFromVehicleModel(hashVehicule)
     		local labelvehicle
 
-    		labelvehicle = vehicleName..': Sortie'
+    		labelvehicle = vehicleName..': Exit'
     	
 			table.insert(elements, {label =labelvehicle , value = v})
 			
@@ -242,7 +242,7 @@ function ReturnVehicleMenu()
 					TriggerServerEvent('eden_garage:pay')
 					SpawnVehicle(data.current.value)
 				else
-					ESX.ShowNotification('Vous n\'avez pas assez d\'argent')						
+					ESX.ShowNotification('You do not have enough money')						
 				end
 			end)
 		end,
