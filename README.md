@@ -5,7 +5,13 @@ Pixelated1.0 fivem RP
 # Description
 The most realistic economic RP on the internet (pegged to the USD)
 
-
+# 3 party mods (post-install integration)
+    - https://github.com/ESX-Org/esx_whitelistEnhanced
+    - https://github.com/ESX-PUBLIC/esx_jail
+    - https://github.com/snyx95/esx_eden_garage
+    - https://github.com/Krizfrost/-ESX--Money-Laundering
+    
+    
 # Previous Versioning note: 
 This is the 2nd repository created for this project in ~3 days utilizing zap-hosting as the server side hosting
 - the zap-hosting server side was initial created with initial dependencies (i.e. ESX, etc) by @envy (PM) & @lous (dev from germany)
