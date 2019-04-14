@@ -7,7 +7,7 @@
     - no potential duplicates to consider in lou's server.cfg
     - house activity: still needs database integration (but having errors)
     - - currently testing without it
-2) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+2) https://github.com/Stadus/Stadus_Scoreboard
     - new: not on lou's server.cfg
 3) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
     - lous: start esx_legacyfuel
