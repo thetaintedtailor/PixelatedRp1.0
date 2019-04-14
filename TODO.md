@@ -17,6 +17,14 @@
     - no potential duplicates to consider in lou's server.cfg
 7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
     - kat activey working
+8) https://github.com/condolent/esx_repairkit - WORKING
+    - kat 
+    - house to update production database - DONE
+9) https://github.com/ESX-PUBLIC/esx_vehiclelock
+    - envy new request
+10) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - WORKING
+    - kat
+    
 
 ## misc
 1) create automated python script to perform ftp push
