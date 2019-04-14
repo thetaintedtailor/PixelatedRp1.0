@@ -10,9 +10,10 @@
 2) https://github.com/Stadus/Stadus_Scoreboard - WORKING
     - new: not on lou's server.cfg
     - house activity: integrated as directions stated (currently testing launch on dev server)
-3) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+3) https://github.com/InZidiuZ/LegacyFuel - WORKING
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
+    - house activity: integrated and testing on dev server (with branch 'fuel')
 4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
