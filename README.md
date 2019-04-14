@@ -10,7 +10,10 @@ The most realistic economic RP on the internet (pegged to the USD)
     - https://github.com/ESX-PUBLIC/esx_jail
     - https://github.com/snyx95/esx_eden_garage
     - https://github.com/Krizfrost/-ESX--Money-Laundering
-    
+	- https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
+	- https://github.com/Nowimps8/nw_bahamaMama
+	- https://github.com/Bob74/bob74_ipl/tree/2.0.7c
+    - https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722
     
 # Previous Versioning note: 
 This is the 2nd repository created for this project in ~3 days utilizing zap-hosting as the server side hosting
