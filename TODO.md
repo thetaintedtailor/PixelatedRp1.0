@@ -1,14 +1,32 @@
 # TODO
 
 ## mods (in priority order)
-1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511
-    - testing current garage bug fix first (from: https://github.com/aprilkae/esx_garage/commit/108aeeddb43c36b10049b8f910e14ce6055844d6)
-2) https://github.com/Krizfrost/-ESX--Money-Laundering
-3) https://github.com/BTNGaming/btn_gcphone
-4) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+1) https://github.com/BTNGaming/btn_gcphone
+    - lous: start esx_addons_gcphone
+    - no potential duplicates to consider in lou's server.cfg
+2) https://github.com/N3MTV/gcphone
+    - lous: start start gcphone
+    - no potential duplicates to consider in lou's server.cfg
+3) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+    - new: not on lou's server.cfg
 5) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+    - lous: start esx_legacyfuel
+    - no potential duplicates to consider in lou's server.cfg
 6) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
-7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
+    - louis: start esx_kashacters
+    - no potential duplicates to consider in lou's server.cfg
+7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
+    - kat actively working: "Radiant_Animations" is the complete, working animation mod. "Pixelated_Animations" is the non-working refactor attempt. 
+	- Switching between the two via server config (you can comment out Pixelated_Animations, then commment in Radiant_Animations to see all of the working animations)
+8) https://github.com/condolent/esx_repairkit - DONE
+    - kat - DONE
+    - house to update production database - DONE
+9) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
+    - kat to add custom code mod - DONE
+10) https://github.com/ESX-PUBLIC/esx_vehiclelock
+    - envy new request
+
+    
 
 ## misc
 1) create automated python script to perform ftp push
