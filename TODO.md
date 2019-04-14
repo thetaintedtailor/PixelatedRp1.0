@@ -16,14 +16,15 @@
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
 7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
-    - kat activey working
-8) https://github.com/condolent/esx_repairkit - WORKING
-    - kat 
+    - kat actively working: "Radiant_Animations" is the complete, working animation mod. "Pixelated_Animations" is the non-working refactor attempt. 
+	- Switching between the two via server config (you can comment out Pixelated_Animations, then commment in Radiant_Animations to see all of the working animations)
+8) https://github.com/condolent/esx_repairkit - DONE
+    - kat - DONE
     - house to update production database - DONE
 9) https://github.com/ESX-PUBLIC/esx_vehiclelock
     - envy new request
-10) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - WORKING
-    - kat
+10) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
+    - kat - DONE
     
 
 ## misc
