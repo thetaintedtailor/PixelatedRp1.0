@@ -1,17 +1,22 @@
 # TODO
 
 ## mods (in priority order)
-1) https://forum.fivem.net/t/re-release-esx-eden-garage/150511 - DONE
-    - testing current garage bug fix first (from: https://github.com/aprilkae/esx_garage/commit/108aeeddb43c36b10049b8f910e14ce6055844d6)
-    - integrated esx_eden_garage instead, intiial testing looks good
-2) https://github.com/Krizfrost/-ESX--Money-Laundering - DONE
-    - integrated and then decided against it (currently disaled)
-    - disabled black money as alternate solution, intiial testing looks good
-3) https://github.com/BTNGaming/btn_gcphone
-4) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+1) https://github.com/BTNGaming/btn_gcphone
+    - lous: start esx_addons_gcphone
+    - no potential duplicates to consider in lou's server.cfg
+2) https://github.com/N3MTV/gcphone
+    - lous: start start gcphone
+    - no potential duplicates to consider in lou's server.cfg
+3) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+    - new: not on lou's server.cfg
 5) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+    - lous: start esx_legacyfuel
+    - no potential duplicates to consider in lou's server.cfg
 6) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
-7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
+    - louis: start esx_kashacters
+    - no potential duplicates to consider in lou's server.cfg
+7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
+    - kat activey working
 
 ## misc
 1) create automated python script to perform ftp push
