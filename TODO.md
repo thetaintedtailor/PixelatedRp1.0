@@ -9,9 +9,10 @@
     - - currently testing without it
 2) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
     - new: not on lou's server.cfg
-3) https://github.com/InZidiuZ/LegacyFuel
+3) https://github.com/InZidiuZ/LegacyFuel - WORKING
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
+    - house activity: integrated and testing on dev server (with branch 'fuel')
 4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
