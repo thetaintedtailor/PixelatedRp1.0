@@ -18,12 +18,12 @@
 7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
     - kat activey working
 8) https://github.com/condolent/esx_repairkit - WORKING
-    - kat 
+    - kat to add mod
     - house to update production database - DONE
-9) https://github.com/ESX-PUBLIC/esx_vehiclelock
+9) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - WORKING
+    - kat to add custom code mod (?)
+10) https://github.com/ESX-PUBLIC/esx_vehiclelock
     - envy new request
-10) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - WORKING
-    - kat
     
 
 ## misc
