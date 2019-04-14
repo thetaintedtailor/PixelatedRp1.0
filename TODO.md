@@ -9,7 +9,7 @@
     - - currently testing without it
 2) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
     - new: not on lou's server.cfg
-3) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+3) https://github.com/InZidiuZ/LegacyFuel
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
 4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
