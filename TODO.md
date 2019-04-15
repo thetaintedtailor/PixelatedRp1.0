@@ -1,29 +1,31 @@
 # TODO
 
 ## mods (in priority order)
-1) https://github.com/BTNGaming/btn_gcphone
+1) https://github.com/N3MTV/gcphone - WORKING
     - lous: start esx_addons_gcphone
-    - no potential duplicates to consider in lou's server.cfg
-2) https://github.com/N3MTV/gcphone
     - lous: start start gcphone
     - no potential duplicates to consider in lou's server.cfg
-3) https://forum.fivem.net/t/release-esx-custom-scoreboard-with-jobs-online/84767
+    - house activity: still needs database integration (but having errors)
+    - - currently testing without it
+2) https://github.com/Stadus/Stadus_Scoreboard - WORKING
     - new: not on lou's server.cfg
-5) https://forum.fivem.net/t/release-esx-non-esx-legacyfuel-system/148442
+    - house activity: integrated as directions stated (currently testing launch on dev server)
+3) https://github.com/InZidiuZ/LegacyFuel - WORKING
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
-6) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
+    - house activity: integrated and testing on dev server (with branch 'fuel')
+4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
-7) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
+5) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
     - kat actively working: "Radiant_Animations" is the complete, working animation mod. "Pixelated_Animations" is the non-working refactor attempt. 
 	- Switching between the two via server config (you can comment out Pixelated_Animations, then commment in Radiant_Animations to see all of the working animations)
-8) https://github.com/condolent/esx_repairkit - DONE
+6) https://github.com/condolent/esx_repairkit - DONE
     - kat - DONE
     - house to update production database - DONE
-9) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
+7) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
     - kat to add custom code mod - DONE
-10) https://github.com/ESX-PUBLIC/esx_vehiclelock
+8) https://github.com/ESX-PUBLIC/esx_vehiclelock
     - envy new request
 
     

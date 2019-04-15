@@ -33,4 +33,6 @@
 ## other
     - https://www.cfd-online.com/Forums/cfx/171576-working-cfx-command-line.html
     - https://pastebin.com/QuDYpGHz
+    - https://sourceforge.net/projects/gtavnonsteamlauncher/
+    - https://www.gta5-mods.com/tools/verify-game-files-without-steam
 
