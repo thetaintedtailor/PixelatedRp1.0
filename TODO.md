@@ -14,9 +14,11 @@
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
     - house activity: integrated and testing on dev server (with branch 'fuel')
-4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
+4) https://github.com/KASHZIN/kashacters - WAITING
+    - https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
+    - waiting to test on kat's server (isolated database)
 5) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
     - kat actively working: "Radiant_Animations" is the complete, working animation mod. "Pixelated_Animations" is the non-working refactor attempt. 
 	- Switching between the two via server config (you can comment out Pixelated_Animations, then commment in Radiant_Animations to see all of the working animations)
