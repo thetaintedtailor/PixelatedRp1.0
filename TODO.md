@@ -25,8 +25,9 @@
     - house to update production database - DONE
 7) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
     - kat to add custom code mod - DONE
-8) https://github.com/ESX-PUBLIC/esx_vehiclelock
+8) https://github.com/ESX-PUBLIC/esx_vehiclelock - DONE
     - envy new request
+    - house activity: pushed to zap ftp, ready for testing
 
     
 
