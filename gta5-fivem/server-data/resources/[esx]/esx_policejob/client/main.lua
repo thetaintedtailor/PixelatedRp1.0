@@ -972,11 +972,11 @@ function OpenBodySearchMenu(player)
 
 		for i=1, #data.accounts, 1 do
 
-			if data.accounts[i].name == 'black_money' and data.accounts[i].money > 0 then
+			if data.accounts[i].name == 'cash' and data.accounts[i].money > 0 then
 
 				table.insert(elements, {
 					label    = _U('confiscate_dirty', ESX.Math.Round(data.accounts[i].money)),
-					value    = 'black_money',
+					value    = 'cash',
 					itemType = 'item_account',
 					amount   = data.accounts[i].money
 				})
