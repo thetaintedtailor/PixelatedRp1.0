@@ -970,21 +970,21 @@ function OpenBodySearchMenu(player)
 
 		local elements = {}
 
-		for i=1, #data.accounts, 1 do
+		-- for i=1, #data.accounts, 1 do
+        local playerCash = data.getMoney()
+        if playerCash >= 0 then
 
-			if data.accounts[i].name == 'cash' and data.accounts[i].money > 0 then
+            table.insert(elements, {
+                label    = _U('confiscate_cash', ESX.Math.Round(playerCash)),
+                value    = playerCash,
+                itemType = 'item_money',
+                amount   = playerCash
+            })
 
-				table.insert(elements, {
-					label    = _U('confiscate_dirty', ESX.Math.Round(data.accounts[i].money)),
-					value    = 'cash',
-					itemType = 'item_account',
-					amount   = data.accounts[i].money
-				})
+            -- break
+        end
 
-				break
-			end
-
-		end
+		-- end
 
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 

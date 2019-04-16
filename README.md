@@ -5,6 +5,14 @@ Pixelated1.0 fivem RP
 # Description
 The most realistic economic RP on the internet (pegged to the USD)
 
+# ES/ESX framework notes
+    ## object models
+    - .../server-data/resources/essentialmode/server/classes/player.lua
+    - .../server-data/resources/[esx]/es_extended/server/classes/player.lua
+    ## good usage examples
+    - .../server-data/resources/[esx]/es_extended/server/main.lua
+
+
 # 3 party mods (post-install integration)
     - https://github.com/ESX-Org/esx_whitelistEnhanced
     - https://github.com/ESX-PUBLIC/esx_jail
