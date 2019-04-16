@@ -16,6 +16,7 @@ The most realistic economic RP on the internet (pegged to the USD)
     - https://github.com/SaltyGrandpa/model-menu
     - https://github.com/Stadus/esx_scoreboard
     - https://github.com/condolent/esx_repairkit
+    - https://github.com/ESX-PUBLIC/esx_vehiclelock
     
     
 # Previous Versioning note: 
