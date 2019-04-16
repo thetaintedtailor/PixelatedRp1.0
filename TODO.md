@@ -7,10 +7,10 @@
     - no potential duplicates to consider in lou's server.cfg
     - house activity: still needs database integration (but having errors)
     - - currently testing without it
-2) https://github.com/Stadus/Stadus_Scoreboard - WORKING
+2) https://github.com/Stadus/esx_scoreboard - DONE
     - new: not on lou's server.cfg
     - house activity: integrated as directions stated (currently testing launch on dev server)
-3) https://github.com/InZidiuZ/LegacyFuel - WORKING
+3) https://github.com/InZidiuZ/LegacyFuel - DONE
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
     - house activity: integrated and testing on dev server (with branch 'fuel')

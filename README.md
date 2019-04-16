@@ -12,6 +12,10 @@ The most realistic economic RP on the internet (pegged to the USD)
     - https://github.com/Krizfrost/-ESX--Money-Laundering
     - https://github.com/InZidiuZ/LegacyFuel
     - https://github.com/N3MTV/gcphone
+    - https://github.com/iEns/RealisticVehicleFailure
+    - https://github.com/SaltyGrandpa/model-menu
+    - https://github.com/Stadus/esx_scoreboard
+    - https://github.com/condolent/esx_repairkit
     
     
 # Previous Versioning note: 
