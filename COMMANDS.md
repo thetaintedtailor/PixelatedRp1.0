@@ -35,4 +35,6 @@
     - https://pastebin.com/QuDYpGHz
     - https://sourceforge.net/projects/gtavnonsteamlauncher/
     - https://www.gta5-mods.com/tools/verify-game-files-without-steam
+    - https://github.com/SaltyGrandpa/esx_nocarjack
+    - https://github.com/SaltyGrandpa/FiveM-PlayerTrust
 

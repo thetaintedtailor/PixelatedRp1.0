@@ -5,11 +5,26 @@ Pixelated1.0 fivem RP
 # Description
 The most realistic economic RP on the internet (pegged to the USD)
 
+# ES/ESX framework notes
+    ## object models
+    - .../server-data/resources/essentialmode/server/classes/player.lua
+    - .../server-data/resources/[esx]/es_extended/server/classes/player.lua
+    ## good usage examples
+    - .../server-data/resources/[esx]/es_extended/server/main.lua
+
+
 # 3 party mods (post-install integration)
     - https://github.com/ESX-Org/esx_whitelistEnhanced
     - https://github.com/ESX-PUBLIC/esx_jail
     - https://github.com/snyx95/esx_eden_garage
     - https://github.com/Krizfrost/-ESX--Money-Laundering
+    - https://github.com/InZidiuZ/LegacyFuel
+    - https://github.com/N3MTV/gcphone
+    - https://github.com/iEns/RealisticVehicleFailure
+    - https://github.com/SaltyGrandpa/model-menu
+    - https://github.com/Stadus/esx_scoreboard
+    - https://github.com/condolent/esx_repairkit
+    - https://github.com/ESX-PUBLIC/esx_vehiclelock
     
     
 # Previous Versioning note: 
