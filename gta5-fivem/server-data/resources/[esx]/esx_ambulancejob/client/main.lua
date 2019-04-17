@@ -122,6 +122,7 @@ function StartDistressSignal()
 			AddTextComponentSubstringPlayerName(_U('distress_send'))
 			EndTextCommandDisplayText(0.175, 0.805)
 
+
 			if IsControlPressed(0, Keys['G']) then
 				SendDistressSignal()
 
@@ -134,19 +135,22 @@ function StartDistressSignal()
 
 				break
 			end
+
 		end
 	end)
 end
 
 function SendDistressSignal()
 	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
+	PedPosition		= GetEntityCoords(playerPed)
+
+	local PlayerCoords = { x = PedPosition.x, y = PedPosition.y, z = PedPosition.z }
 
 	ESX.ShowNotification(_U('distress_sent'))
-	TriggerServerEvent('esx_phone:send', 'ambulance', _U('distress_message'), false, {
-		x = coords.x,
-		y = coords.y,
-		z = coords.z
+
+    TriggerServerEvent('esx_addons_gcphone:startCall', 'ambulance', _U('distress_message'), PlayerCoords, {
+
+		PlayerCoords = { x = PedPosition.x, y = PedPosition.y, z = PedPosition.z },
 	})
 end
 
@@ -257,7 +261,7 @@ function StartDeathTimer()
 			AddTextComponentString(text)
 			DrawText(0.5, 0.8)
 		end
-			
+
 		if bleedoutTimer < 1 and IsDead then
 			RemoveItemsAfterRPDeath()
 		end
@@ -297,8 +301,9 @@ function RespawnPed(ped, coords, heading)
 	ESX.UI.Menu.CloseAll()
 end
 
-RegisterNetEvent('esx_phone:loaded')
-AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
+
+RegisterNetEvent('esx_addons_gcphone:call')
+AddEventHandler('esx_addons_gcphone:call', function(phoneNumber, contacts)
 	local specialContact = {
 		name		= 'Ambulance',
 		number		= 'ambulance',
@@ -306,7 +311,9 @@ AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 	}
 
 	TriggerEvent('esx_phone:addSpecialContact', specialContact.name, specialContact.number, specialContact.base64Icon)
+
 end)
+
 
 AddEventHandler('esx:onPlayerDeath', function(reason)
 	OnPlayerDeath()
