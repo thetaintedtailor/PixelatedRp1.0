@@ -7,16 +7,18 @@
     - no potential duplicates to consider in lou's server.cfg
     - house activity: still needs database integration (but having errors)
     - - currently testing without it
-2) https://github.com/Stadus/Stadus_Scoreboard - WORKING
+2) https://github.com/Stadus/esx_scoreboard - DONE
     - new: not on lou's server.cfg
     - house activity: integrated as directions stated (currently testing launch on dev server)
-3) https://github.com/InZidiuZ/LegacyFuel - WORKING
+3) https://github.com/InZidiuZ/LegacyFuel - DONE
     - lous: start esx_legacyfuel
     - no potential duplicates to consider in lou's server.cfg
     - house activity: integrated and testing on dev server (with branch 'fuel')
-4) https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
+4) https://github.com/KASHZIN/kashacters - WAITING
+    - https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613
     - louis: start esx_kashacters
     - no potential duplicates to consider in lou's server.cfg
+    - waiting to test on kat's server (isolated database)
 5) https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735 - WORKING
     - kat actively working: "Radiant_Animations" is the complete, working animation mod. "Pixelated_Animations" is the non-working refactor attempt. 
 	- Switching between the two via server config (you can comment out Pixelated_Animations, then commment in Radiant_Animations to see all of the working animations)
@@ -25,8 +27,9 @@
     - house to update production database - DONE
 7) https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722 - DONE
     - kat to add custom code mod - DONE
-8) https://github.com/ESX-PUBLIC/esx_vehiclelock
+8) https://github.com/ESX-PUBLIC/esx_vehiclelock - DONE
     - envy new request
+    - house activity: pushed to zap ftp, ready for testing
 
     
 

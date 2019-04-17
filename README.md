@@ -5,7 +5,15 @@ Pixelated1.0 fivem RP
 # Description
 The most realistic economic RP on the internet (pegged to the USD)
 
-# 3 party mods (post-install integration)
+# ES/ESX framework notes
+    ## object models
+    - .../server-data/resources/essentialmode/server/classes/player.lua
+    - .../server-data/resources/[esx]/es_extended/server/classes/player.lua
+    ## good usage examples
+    - .../server-data/resources/[esx]/es_extended/server/main.lua
+
+
+# Party mods (post-install integration)
     - https://github.com/ESX-Org/esx_whitelistEnhanced
     - https://github.com/ESX-PUBLIC/esx_jail
     - https://github.com/snyx95/esx_eden_garage
@@ -16,12 +24,17 @@ The most realistic economic RP on the internet (pegged to the USD)
 	- https://github.com/Nowimps8/nw_bahamaMama
 	- https://github.com/Bob74/bob74_ipl/tree/2.0.7c
     - https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722
+    - https://github.com/iEns/RealisticVehicleFailure
+    - https://github.com/SaltyGrandpa/model-menu
+    - https://github.com/Stadus/esx_scoreboard
+    - https://github.com/condolent/esx_repairkit
+    - https://github.com/ESX-PUBLIC/esx_vehiclelock
 
-    
-# Previous Versioning note: 
+
+# Previous Versioning note:
 This is the 2nd repository created for this project in ~3 days utilizing zap-hosting as the server side hosting
 - the zap-hosting server side was initial created with initial dependencies (i.e. ESX, etc) by @envy (PM) & @lous (dev from germany)
-- changes to this integration would made manually via FTP 
+- changes to this integration would made manually via FTP
 - changes include attempts to remove features and add features (mods)
 - changes had include initial db & config value updates
 - - i.e. payroll, salary, weapon defaults/disables, vehicle prices, etc.
@@ -33,7 +46,7 @@ This is the 2nd repository created for this project in ~3 days utilizing zap-hos
 - - alpha testing scheduled for today @ 2pm ET
 - - beta launch scheduled for today @ 4pm ET
 
-**NOTE**: 
+**NOTE**:
 - the last commit in the following repos contain the details of changes made during first server attempt (may need to stil ref some changes)
 - - https://github.com/greenhouse/pixelatedrp
 - - https://github.com/thetaintedtailor/Pixelated-RP-code
@@ -56,7 +69,7 @@ This is the 2nd repository created for this project in ~3 days utilizing zap-hos
 Initial known BUG fixes required (priority order?):
 - esx_ambulancejob: EMS can’t see victim
 - - needs more testing by @envy
-- - ‘seems’ to only occur when a dead victim makes distress call on themselves 
+- - ‘seems’ to only occur when a dead victim makes distress call on themselves
 - - @envy will test more
 
 - esx_ambulancejob: config.lua (cannot update field ‘price’)
@@ -101,8 +114,3 @@ Initial known BUG fixes required (priority order?):
 ./resources/[packs]/ELBP/stream:
 ./resources/[packs]/ELCP/stream:
 ./resources/assets/stream:
-
-
-
-
-
