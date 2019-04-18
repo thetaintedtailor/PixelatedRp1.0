@@ -9,7 +9,7 @@ Config.MaxInService               = -1
 Config.EnablePlayerManagement     = false
 Config.EnableSocietyOwnedVehicles = false
 
-Config.Locale                     = 'fr'
+Config.Locale = 'en'
 
 Config.AuthorizedVehicles = {
 

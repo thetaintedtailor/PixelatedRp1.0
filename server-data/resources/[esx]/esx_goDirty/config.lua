@@ -2,7 +2,7 @@ Config              = {}
 Config.DrawDistance = 100.0
 Config.MaxDelivery	= 5
 Config.TruckPrice	= 500
-Config.Locale       = 'en'
+Config.Locale = 'en'
 
 Config.Trucks = {
 	"burrito3",
