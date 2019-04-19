@@ -971,35 +971,26 @@ function OpenBodySearchMenu(player)
 		local elements = {}
         if data.money >= 0 then
             table.insert(elements, {
-                -- label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
-                -- value    = 'black_money',
-                -- itemType = 'item_account',
-                -- amount   = data.accounts[i].money
                 label    = _U('confiscate_cash', ESX.Math.Round(data.money)),
                 value    = 'money',
                 itemType = 'item_money',
                 amount   = data.money
             })
         end
-		-- for i=1, #data.accounts, 1 do
+		for i=1, #data.accounts, 1 do
 
-           -- if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
-                -- print("hello action world")
-                -- print("data.money: " .. data.money)
-             --   table.insert(elements, {
-                    -- label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
-               --     label    = _U('confiscate_cash', ESX.Math.Round(data.money)),
-                 --   value    = 'black_money',
-                    -- itemType = 'item_account',
-                    -- amount   = data.accounts[i].money
-                   -- itemType = 'item_money',
-                    --amount   = data.money
-               -- })
+            if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
+                table.insert(elements, {
+                    label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
+                    value    = 'black_money',
+                    itemType = 'item_account',
+                    amount   = data.accounts[i].money
+                })
 
-                -- break
-            -- end
+                break
+            end
 
-		-- end
+		end
 
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 
