@@ -73,16 +73,7 @@ end)
 AddEventHandler('esx_drugs:hasEnteredMarker', function(zone)
   if myJob == 'police'
     or myJob == 'ambulance'
-    or myJob == 'slaughterer'
-    or myJob == 'rally'
-    or myJob == 'mecano'
-    or myJob == 'realestateagent'
-    or myJob == 'banker'
-    or myJob == 'fisherman'
-    or myJob == 'miner'
-    or myJob == 'lumberjack'
-    or myJob == 'fueler'
-    or myJob == 'reporter'
+	
   then
     TriggerEvent('esx_drugs:notiUser', 'You have a ~g~job~w~ think about it')
     return
