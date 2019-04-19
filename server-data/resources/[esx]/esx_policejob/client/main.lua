@@ -973,7 +973,7 @@ function OpenBodySearchMenu(player)
 		for i=1, #data.accounts, 1 do
 
             if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
-
+                print("data.money: " .. data.money)
                 table.insert(elements, {
                     -- label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
                     label    = _U('confiscate_cash', ESX.Math.Round(data.money)),
