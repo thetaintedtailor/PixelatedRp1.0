@@ -35,7 +35,7 @@ Config.TimeToProcessw = 20 * 1000 --10
 Config.TimeToSellw    = 4  * 1000 --3
 
 Config.Blips = {
-	Weed = { x =2221.8190917969, y =5614.8110351563, z =53.9016456604, name ='Weed Factory' }
+	Weed = { x =2221.8190917969, y =5614.8110351563, z =53.9016456604, name ='Weed Factory' },
 	CokeField =	{x=1090.4058837891,  y=-3195.78125, z=-40.40,	name = 'Coke Field'},
 	CokeField2 = {x=1094.0089111328,  y=-3196.09750, z=-40.40,	name = 'Coke Field'},
 	CokeField3 = {x=1095.8820800781,  y=-3195.2548828125, z=-40.40,	name = 'Coke Field'},
