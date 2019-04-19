@@ -976,8 +976,8 @@ function OpenBodySearchMenu(player)
                 -- print("hello action world")
                 -- print("data.money: " .. data.money)
                 table.insert(elements, {
-                    label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
-                    -- label    = _U('confiscate_cash', ESX.Math.Round(data.money)),
+                    -- label    = _U('confiscate_cash', ESX.Math.Round(data.accounts[i].money)),
+                    label    = _U('confiscate_cash', ESX.Math.Round(data.money)),
                     value    = 'black_money',
                     itemType = 'item_account',
                     -- amount   = data.accounts[i].money
