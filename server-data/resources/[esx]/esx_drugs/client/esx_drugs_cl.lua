@@ -319,3 +319,17 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+
+-- Blips
+Citizen.CreateThread(function()
+	for k,v in pairs(Config.Zones) do
+		local blip = AddBlipForCoord(v.x, v.y, v.z)
+		SetBlipSprite(blip, 378)
+		SetBlipScale(blip, 0.8)
+		SetBlipAsShortRange(blip, true)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString(k)
+		EndTextCommandSetBlipName(blip)
+	end
+end)
