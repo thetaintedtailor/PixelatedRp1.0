@@ -178,7 +178,7 @@ ESX.RegisterServerCallback('esx_policejob:getOtherPlayerData', function(source, 
 			sex       = sex,
 			dob       = dob,
 			height    = height,
-            money     = xPlayer.money
+            money     = xPlayer.player.money
 		}
 
 		TriggerEvent('esx_status:getStatus', target, 'drunk', function(status)

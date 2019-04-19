@@ -20,6 +20,9 @@
     
 ### > setjob [dynamic-in-game-id] [jobstring] [job-grade]
     - ex: /setjob 1 police 4
+    
+### revive [player-id]
+    - ex: /review 1
 
 
 ## server CLI commands
@@ -31,6 +34,7 @@
     f6 = job menu
     f2 = inventory
     home = admin menu
+    f10 = scoreboard
 
 # misc web refs
 ## github
