@@ -59,12 +59,12 @@ end)
 
 Citizen.CreateThread(function()
 	for k,v in pairs(Config.Blips) do
-		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
+		local blip = AddBlipForCoord(v.x, v.y, v.z)
 		SetBlipSprite(blip, 72)
 		SetBlipScale(blip, 0.8)
 		SetBlipAsShortRange(blip, true)
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v.Name)
+		AddTextComponentString(v.name)
 		EndTextCommandSetBlipName(blip)
 	end
 end)
