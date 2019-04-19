@@ -13,188 +13,169 @@ local Keys = {
 local PID           			= 0
 local GUI           			= {}
 local cokeQTE       			= 0
-ESX 			    			      = nil
+ESX 			    			= nil
 GUI.Time            			= 0
 local coke_poochQTE 			= 0
-local weedQTE					    = 0
+local weedQTE					= 0
 local weed_poochQTE 			= 0
-local methQTE					    = 0
+local methQTE					= 0
 local meth_poochQTE 			= 0
 local opiumQTE					= 0
 local opium_poochQTE 			= 0
-local myJob 					           = nil
-local PlayerData 				         = {}
-local GUI 					           	= {}
+local myJob 					= nil
+local PlayerData 				= {}
+local GUI 						= {}
 local HasAlreadyEnteredMarker   = false
 local LastZone                  = nil
 local CurrentAction             = nil
 local CurrentActionMsg          = ''
 local CurrentActionData         = {}
-local pickupCoke = false
-local packCoke = false
-local sellingCoke = false
-local pickupMeth = false
-local packMeth = false
-local sellingMeth = false
-local pickupWeed = false
-local packWeed = false
-local sellingWeed = false
-local pickupOpium = false
-local packOpium = false
-local sellingOpium = false
-local PlayerIsLoaded = false
-local xPlayer = nil
 
 Citizen.CreateThread(function()
-  while ESX == nil do
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    Citizen.Wait(0)
-  end
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
 end)
-
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-  xPlayerData = ESX.GetPlayerData()
-end)
-
-Citizen.CreateThread(function()
-	for k,v in pairs(Config.Blips) do
-		local blip = AddBlipForCoord(v.x, v.y, v.z)
-		SetBlipSprite(blip, 72)
-		SetBlipScale(blip, 0.8)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v.name)
-		EndTextCommandSetBlipName(blip)
-	end
-end)
-
 
 AddEventHandler('esx_drugs:hasEnteredMarker', function(zone)
-  if myJob == 'police'
-    or myJob == 'ambulance'
-	
-  then
-    TriggerEvent('esx_drugs:notiUser', 'You have a ~g~job~w~ think about it')
-    return
-  end
 
-  ESX.UI.Menu.CloseAll()
+        ESX.UI.Menu.CloseAll()
 
-  if zone == 'exitMarker' then
-		CurrentAction     = zone
-		CurrentActionMsg  = _U('exit_marker')
-		CurrentActionData = {}
-	end
-  --coke
-  if zone == 'CokeField' then
-      CurrentAction     = 'CokeField'
-      CurrentActionMsg  = _U('press_collect_coke')
-      CurrentActionData = {}
-  end
+        --coke
+        if zone == 'CokeFarm' then
+            if myJob ~= "police" then
+                CurrentAction     = 'coke_harvest'
+                CurrentActionMsg  = _U('press_collect_coke')
+                CurrentActionData = {}
+            end
+        end
 
-  if zone == 'CokeProcessing' then
-    if cokeQTE >= 2 then
-      CurrentAction     = 'CokeProcessing'
-      CurrentActionMsg  = _U('press_process_coke')
-      CurrentActionData = {}
-    end
-  end
+        if zone == 'CokeTreatment' then
+            if myJob ~= "police" then
+                if cokeQTE >= 5 then
+                    CurrentAction     = 'coke_treatment'
+                    CurrentActionMsg  = _U('press_process_coke')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  if zone == 'CokeDealer' then
-    if coke_poochQTE >= 1 then
-        CurrentAction     = 'CokeDealer'
-        CurrentActionMsg  = _U('press_sell_coke')
-        CurrentActionData = {}
-    end
-  end
+        if zone == 'CokeResell' then
+            if myJob ~= "police" then
+                if coke_poochQTE >= 1 then
+                    CurrentAction     = 'coke_resell'
+                    CurrentActionMsg  = _U('press_sell_coke')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  --meth
-  if zone == 'MethField' then
-    CurrentAction     = 'MethField'
-    CurrentActionMsg  = _U('press_collect_meth')
-    CurrentActionData = {}
-  end
+        --meth
+        if zone == 'MethFarm' then
+            if myJob ~= "police" then
+                CurrentAction     = 'meth_harvest'
+                CurrentActionMsg  = _U('press_collect_meth')
+                CurrentActionData = {}
+            end
+        end
 
-  if zone == 'MethProcessing' then
-    if methQTE >= 2 then
-      CurrentAction     = 'MethProcessing'
-      CurrentActionMsg  = _U('press_process_meth')
-      CurrentActionData = {}
-    end
-  end
+        if zone == 'MethTreatment' then
+            if myJob ~= "police" then
+                if methQTE >= 5 then
+                    CurrentAction     = 'meth_treatment'
+                    CurrentActionMsg  = _U('press_process_meth')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  if zone == 'MethDealer' then
-    if meth_poochQTE >= 1 then
-      CurrentAction     = 'MethDealer'
-      CurrentActionMsg  = _U('press_sell_meth')
-      CurrentActionData = {}
-    end
-  end
+        if zone == 'MethResell' then
+            if myJob ~= "police" then
+                if meth_poochQTE >= 1 then
+                    CurrentAction     = 'meth_resell'
+                    CurrentActionMsg  = _U('press_sell_meth')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  --weed
-  if zone == 'WeedField' then
-    CurrentAction     = 'WeedField'
-    CurrentActionMsg  = _U('press_collect_weed')
-    CurrentActionData = {}
-  end
+        --weed
+        if zone == 'WeedFarm' then
+            if myJob ~= "police" then
+                CurrentAction     = 'weed_harvest'
+                CurrentActionMsg  = _U('press_collect_weed')
+                CurrentActionData = {}
+            end
+        end
 
-  if zone == 'WeedProcessing' then
-    if weedQTE >= 2 then
-        CurrentAction     = 'WeedProcessing'
-        CurrentActionMsg  = _U('press_process_weed')
-        CurrentActionData = {}
-    end
-  end
+        if zone == 'WeedTreatment' then
+            if myJob ~= "police" then
+                if weedQTE >= 5 then
+                    CurrentAction     = 'weed_treatment'
+                    CurrentActionMsg  = _U('press_process_weed')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  if zone == 'WeedDealer' then
-    if weed_poochQTE >= 1 then
-      CurrentAction     = 'WeedDealer'
-      CurrentActionMsg  = _U('press_sell_weed')
-      CurrentActionData = {}
-    end
-  end
+        if zone == 'WeedResell' then
+            if myJob ~= "police" then
+                if weed_poochQTE >= 1 then
+                    CurrentAction     = 'weed_resell'
+                    CurrentActionMsg  = _U('press_sell_weed')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  --opium
-  if zone == 'OpiumField' then
-    CurrentAction     = 'OpiumField'
-    CurrentActionMsg  = _U('press_collect_opium')
-    CurrentActionData = {}
-  end
+        --opium
+        if zone == 'OpiumFarm' then
+            if myJob ~= "police" then
+                CurrentAction     = 'opium_harvest'
+                CurrentActionMsg  = _U('press_collect_opium')
+                CurrentActionData = {}
+            end
+        end
 
-  if zone == 'OpiumProcessing' then
-    if opiumQTE >= 2 then
-        CurrentAction     = 'OpiumProcessing'
-        CurrentActionMsg  = _U('press_process_opium')
-        CurrentActionData = {}
-    end
-  end
+        if zone == 'OpiumTreatment' then
+            if myJob ~= "police" then
+                if opiumQTE >= 5 then
+                    CurrentAction     = 'opium_treatment'
+                    CurrentActionMsg  = _U('press_process_opium')
+                    CurrentActionData = {}
+                end
+            end
+        end
 
-  if zone == 'OpiumDealer' then
-    if opium_poochQTE >= 1 then
-      CurrentAction     = 'OpiumDealer'
-      CurrentActionMsg  = _U('press_sell_opium')
-      CurrentActionData = {}
-    end
-  end
+        if zone == 'OpiumResell' then
+            if myJob ~= "police" then
+                if opium_poochQTE >= 1 then
+                    CurrentAction     = 'opium_resell'
+                    CurrentActionMsg  = _U('press_sell_opium')
+                    CurrentActionData = {}
+                end
+            end
+        end
 end)
 
 AddEventHandler('esx_drugs:hasExitedMarker', function(zone)
-    CurrentAction = nil
-    ESX.UI.Menu.CloseAll()
-    TriggerServerEvent('esx_drugs:stopHarvestCoke')
-    TriggerServerEvent('esx_drugs:stopTransformCoke')
-    TriggerServerEvent('esx_drugs:stopSellCoke')
-    TriggerServerEvent('esx_drugs:stopHarvestMeth')
-    TriggerServerEvent('esx_drugs:stopTransformMeth')
-    TriggerServerEvent('esx_drugs:stopSellMeth')
-    TriggerServerEvent('esx_drugs:stopHarvestWeed')
-    TriggerServerEvent('esx_drugs:stopTransformWeed')
-    TriggerServerEvent('esx_drugs:stopSellWeed')
-    TriggerServerEvent('esx_drugs:stopHarvestOpium')
-    TriggerServerEvent('esx_drugs:stopTransformOpium')
-    TriggerServerEvent('esx_drugs:stopSellOpium')
-    busy = false
+
+        CurrentAction = nil
+        ESX.UI.Menu.CloseAll()
+
+        TriggerServerEvent('esx_drugs:stopHarvestCoke')
+        TriggerServerEvent('esx_drugs:stopTransformCoke')
+        TriggerServerEvent('esx_drugs:stopSellCoke')
+        TriggerServerEvent('esx_drugs:stopHarvestMeth')
+        TriggerServerEvent('esx_drugs:stopTransformMeth')
+        TriggerServerEvent('esx_drugs:stopSellMeth')
+        TriggerServerEvent('esx_drugs:stopHarvestWeed')
+        TriggerServerEvent('esx_drugs:stopTransformWeed')
+        TriggerServerEvent('esx_drugs:stopSellWeed')
+        TriggerServerEvent('esx_drugs:stopHarvestOpium')
+        TriggerServerEvent('esx_drugs:stopTransformOpium')
+        TriggerServerEvent('esx_drugs:stopSellOpium')
 end)
 
 -- Weed Effect
@@ -244,7 +225,7 @@ end)
 
 -- RETURN NUMBER OF ITEMS FROM SERVER
 RegisterNetEvent('esx_drugs:ReturnInventory')
-AddEventHandler('esx_drugs:ReturnInventory', function(cokeNbr, cokepNbr, methNbr, methpNbr, weedNbr, weedpNbr, opiumNbr, opiumpNbr, jobName, jobGrade, currentZone)
+AddEventHandler('esx_drugs:ReturnInventory', function(cokeNbr, cokepNbr, methNbr, methpNbr, weedNbr, weedpNbr, opiumNbr, opiumpNbr, jobName, currentZone)
     cokeQTE       = cokeNbr
     coke_poochQTE = cokepNbr
     methQTE 	  = methNbr
@@ -254,234 +235,87 @@ AddEventHandler('esx_drugs:ReturnInventory', function(cokeNbr, cokepNbr, methNbr
     opiumQTE       = opiumNbr
     opium_poochQTE = opiumpNbr
     myJob         = jobName
-    myJobGrade    = jobGrade
     TriggerEvent('esx_drugs:hasEnteredMarker', currentZone)
-end)
-
-RegisterNetEvent('esx_drugs:inventoryFullReset')
-AddEventHandler('esx_drugs:inventoryFullReset', function(source)
-  hasAlreadyEnteredMarker = false
-  isInZone = false
-  CurrentAction = nil
-  TriggerEvent('esx_drugs:freezePlayer', false)
-  TriggerEvent('esx_drugs:hasExitedMarker', lastZone)
-  resetPickups()
-end)
-
-
-RegisterNetEvent('esx_drugs:notiUser')
-AddEventHandler('esx_drugs:notiUser', function(message)
-    local mugshot, mugshotStr = ESX.Game.GetPedMugshot(GetPlayerPed(-1))
-    ESX.ShowAdvancedNotification('Drug labs', 'Exclusive Life', message , mugshotStr, 1)
-    UnregisterPedheadshot(mugshot)
 end)
 
 -- Activate menu when player is inside marker
 Citizen.CreateThread(function()
-	while true do
+    while true do
 
-		Citizen.Wait(0)
+        Wait(0)
 
-		local coords      = GetEntityCoords(GetPlayerPed(-1))
-		local isInMarker  = false
-		local currentZone = nil
+        local coords      = GetEntityCoords(GetPlayerPed(-1))
+        local isInMarker  = false
+        local currentZone = nil
 
-		for k,v in pairs(Config.Zones) do
-			if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) < Config.ZoneSize.x / 2) then
-				isInMarker  = true
-				currentZone = k
-			end
-		end
+        for k,v in pairs(Config.Zones) do
+            if(GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) < Config.ZoneSize.x / 2) then
+                isInMarker  = true
+                currentZone = k
+            end
+        end
 
-		if isInMarker and not hasAlreadyEnteredMarker then
-			hasAlreadyEnteredMarker = true
-			lastZone				= currentZone
-			TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-		end
+        if isInMarker and not hasAlreadyEnteredMarker then
+            hasAlreadyEnteredMarker = true
+            lastZone                = currentZone
+            TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
+        end
 
-		if not isInMarker and hasAlreadyEnteredMarker then
-			hasAlreadyEnteredMarker = false
-			TriggerEvent('esx_drugs:hasExitedMarker', lastZone)
-		end
+        if not isInMarker and hasAlreadyEnteredMarker then
+            hasAlreadyEnteredMarker = false
+            TriggerEvent('esx_drugs:hasExitedMarker', lastZone)
+        end
 
-		if isInMarker and isInZone then
-			TriggerEvent('esx_drugs:hasEnteredMarker', 'exitMarker')
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-    Citizen.Wait(10)
-      --coke
-      if pickupCoke then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..cokeQTE .."~w~/~b~".. Config.cokeLimit .." ~w~coke collected", 255, 255, 255, 255)
-      end
-      if packCoke then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.92, 1.36, 1.0,1.0,0.4, "You have ~g~"..cokeQTE .."~w~/~b~".. Config.cokeLimit .." ~w~coke", 255, 255, 255, 255)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~".. coke_poochQTE .."~w~/~b~".. Config.cokeBagLimit .." ~w~coke bagged", 255, 255, 255, 255)
-      end
-      if sellingCoke then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..cokeQTE .."~w~/~b~".. Config.cokeBagLimit .." ~w~coke", 255, 255, 255, 255)
-      end
-      --meth
-      if pickupMeth then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..countedMeth .."~w~/~b~".. Config.methLimit .." ~w~meth collected", 255, 255, 255, 255)
-      end
-      if packMeth then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.92, 1.36, 1.0,1.0,0.4, "You have ~g~"..methQTE .."~w~/~b~".. Config.methLimit .." ~w~meth", 255, 255, 255, 255)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~".. meth_poochQTE .."~w~/~b~".. Config.methBagLimit .." ~w~meth bagged", 255, 255, 255, 255)
-      end
-      if sellingMeth then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..meth_poochQTE .."~w~/~b~".. Config.methBagLimit .." ~w~meth", 255, 255, 255, 255)
-      end
-      --weed
-      if pickupWeed then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..weedQTE .."~w~/~b~".. Config.weedLimit .." ~w~weed collected", 255, 255, 255, 255)
-      end
-      if packWeed then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.92, 1.36, 1.0,1.0,0.4, "You have ~g~"..weedQTE .."~w~/~b~".. Config.weedLimit .." ~w~weed", 255, 255, 255, 255)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~".. weed_poochQTE .."~w~/~b~".. Config.weedBagLimit .." ~w~weed bagged", 255, 255, 255, 255)
-      end
-      if sellingWeed then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..weed_poochQTE .."~w~/~b~".. Config.weedBagLimit .." ~w~weed", 255, 255, 255, 255)
-      end
-      --opium
-      if pickupOpium then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..opiumQTE .."~w~/~b~".. Config.opiumLimit .." ~w~opium collected", 255, 255, 255, 255)
-      end
-      if packOpium then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.92, 1.36, 1.0,1.0,0.4, "You have ~g~"..opiumQTE .."~w~/~b~".. Config.opiumLimit .." ~w~opium", 255, 255, 255, 255)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~".. opium_poochQTE .."~w~/~b~".. Config.opiumBagLimit .." ~w~opium bagged", 255, 255, 255, 255)
-      end
-      if sellingOpium then
-        TriggerServerEvent('esx_drugs:GetUserInventory', currentZone)
-        drawTxt(0.90, 1.40, 1.0,1.0,0.4, "You have ~g~"..opium_poochQTE .."~w~/~b~".. Config.opiumBagLimit .." ~w~opium", 255, 255, 255, 255)
-      end
     end
 end)
-
-function resetPickups()
-  pickupCoke = false
-  packCoke = false
-  sellingCoke = false
-  pickupMeth = false
-  packMeth = false
-  sellingMeth = false
-  pickupWeed = false
-  packWeed = false
-  sellingWeed = false
-  pickupOpium = false
-  packOpium = false
-  sellingOpium = false
-  ClearPedTasksImmediately(GetPlayerPed(-1))
-end
 
 -- Key Controls
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(10)
-		if CurrentAction ~= nil then
-			SetTextComponentFormat('STRING')
-			AddTextComponentString(CurrentActionMsg)
-			DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-			if IsControlJustReleased(0, Keys['E']) then
-				isInZone = true -- unless we set this boolean to false, we will always freeze the user
-				if CurrentAction == 'exitMarker' then
-					isInZone = false -- do not freeze user
-					TriggerEvent('esx_drugs:freezePlayer', false)
-					TriggerEvent('esx_drugs:hasExitedMarker', lastZone)
-          resetPickups()
-				elseif CurrentAction == 'CokeField' then
-          pickupCoke = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startHarvestCoke')
-				elseif CurrentAction == 'CokeProcessing' then
-          packCoke = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startTransformCoke')
-				elseif CurrentAction == 'CokeDealer' then
-          sellingCoke = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startSellCoke')
-				elseif CurrentAction == 'MethField' then
-          pickupMeth = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startHarvestMeth')
-				elseif CurrentAction == 'MethProcessing' then
-          packMeth = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startTransformMeth')
-				elseif CurrentAction == 'MethDealer' then
-          sellingMeth = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startSellMeth')
-				elseif CurrentAction == 'WeedField' then
-          pickupWeed = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startHarvestWeed')
-				elseif CurrentAction == 'WeedProcessing' then
-          packWeed = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startTransformWeed')
-				elseif CurrentAction == 'WeedDealer' then
-          sellingWeed = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startSellWeed')
-				elseif CurrentAction == 'OpiumField' then
-          pickupOpium = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startHarvestOpium')
-				elseif CurrentAction == 'OpiumProcessing' then
-          packOpium = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startTransformOpium')
-				elseif CurrentAction == 'OpiumDealer' then
-          sellingOpium = true
-          TaskStartScenarioInPlace(GetPlayerPed(-1), "PROP_HUMAN_BUM_BIN", 0, true)
-					TriggerServerEvent('esx_drugs:startSellOpium')
-				else
-					isInZone = false -- not a esx_drugs zone
-				end
-				if isInZone then
-					TriggerEvent('esx_drugs:freezePlayer', true)
-          DisableControlAction(0 , Keys['F1'],true);
-          DisableControlAction(0, Keys['Y'],true);
-				end
-				CurrentAction = nil
-			end
-		end
-	end
-end)
-
-RegisterNetEvent('esx_drugs:freezePlayer')
-AddEventHandler('esx_drugs:freezePlayer', function(freeze)
-	FreezeEntityPosition(GetPlayerPed(-1), freeze)
-end)
-
-function drawTxt(x,y ,width,height,scale, text, r,g,b,a, outline)
-    SetTextFont(0)
-    SetTextProportional(0)
-    SetTextScale(scale, scale)
-    SetTextColour(r, g, b, a)
-    SetTextDropShadow(0, 0, 0, 0,255)
-    SetTextEdge(1, 0, 0, 0, 255)
-    SetTextDropShadow()
-    if(outline)then
-      SetTextOutline()
+    while true do
+        Citizen.Wait(0)
+        if CurrentAction ~= nil then
+            SetTextComponentFormat('STRING')
+            AddTextComponentString(CurrentActionMsg)
+            DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+            if IsControlJustReleased(0, 38) then
+                if CurrentAction == 'coke_harvest' then
+                    TriggerServerEvent('esx_drugs:startHarvestCoke')
+                end
+                if CurrentAction == 'coke_treatment' then
+                    TriggerServerEvent('esx_drugs:startTransformCoke')
+                end
+                if CurrentAction == 'coke_resell' then
+                    TriggerServerEvent('esx_drugs:startSellCoke')
+                end
+                if CurrentAction == 'meth_harvest' then
+                    TriggerServerEvent('esx_drugs:startHarvestMeth')
+                end
+                if CurrentAction == 'meth_treatment' then
+                    TriggerServerEvent('esx_drugs:startTransformMeth')
+                end
+                if CurrentAction == 'meth_resell' then
+                    TriggerServerEvent('esx_drugs:startSellMeth')
+                end
+                if CurrentAction == 'weed_harvest' then
+                    TriggerServerEvent('esx_drugs:startHarvestWeed')
+                end
+                if CurrentAction == 'weed_treatment' then
+                    TriggerServerEvent('esx_drugs:startTransformWeed')
+                end
+                if CurrentAction == 'weed_resell' then
+                    TriggerServerEvent('esx_drugs:startSellWeed')
+                end
+                if CurrentAction == 'opium_harvest' then
+                    TriggerServerEvent('esx_drugs:startHarvestOpium')
+                end
+                if CurrentAction == 'opium_treatment' then
+                    TriggerServerEvent('esx_drugs:startTransformOpium')
+                end
+                if CurrentAction == 'opium_resell' then
+                    TriggerServerEvent('esx_drugs:startSellOpium')
+                end
+                CurrentAction = nil
+            end
+        end
     end
-    SetTextEntry("STRING")
-    AddTextComponentString(text)
-    DrawText(x - width/2, y - height/2 + 0.005)
-end
+end)
