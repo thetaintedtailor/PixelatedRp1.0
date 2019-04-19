@@ -1,7 +1,7 @@
 # Commands
-
+## in-game commands
 ### > addwl [ hex | dec ] [streamId]
-    - ex:  /addwl dec 12345678901234567
+    - ex: /addwl dec 12345678901234567
     
 ### > setjob [playerId] [jobName] [jobGrade]
     - ex: /setjob 21 mechanic 3
@@ -17,7 +17,20 @@
 
 ### > jail [playerId] [jailTimeMin]
     - ex: /jail 21 60
+    
+### > setjob [dynamic-in-game-id] [jobstring] [job-grade]
+    - ex: /setjob 1 police 4
 
+
+## server CLI commands
+### > add_principal indentifier.steam:[hex] group.[superadmin|admin]
+    - ex: > add_principal indentifier.steam:<hex> group.superadmin
+
+
+## in-game hot keys
+    f6 = job menu
+    f2 = inventory
+    home = admin menu
 
 # misc web refs
 ## github
