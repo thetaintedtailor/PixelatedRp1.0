@@ -123,6 +123,8 @@ Locales['br'] = {
   ['confiscate_dirty'] = 'Confiscar dinheiro sujo: <span style="color:red;">$%s</span>',
   ['you_confiscated'] = 'you confiscated ~y~%sx~s~ ~b~%s~s~ from ~b~%s~s~',
   ['got_confiscated'] = '~y~%sx~s~ ~b~%s~s~ were confiscated by ~y~%s~s~',
+  ['you_confiscated_cash'] = 'you confiscated ~g~$%s~s~ (%s) from ~b~%s~s~',
+  ['got_confiscated_cash'] = '~g~$%s~s~ (%s) was confiscated by ~y~%s~s~',
   ['you_confiscated_account'] = 'you confiscated ~g~$%s~s~ (%s) from ~b~%s~s~',
   ['got_confiscated_account'] = '~g~$%s~s~ (%s) was confiscated by ~y~%s~s~',
   ['you_confiscated_weapon'] = 'you confiscated ~b~%s~s~ from ~b~%s~s~ with ~o~%s~s~ bullets',
