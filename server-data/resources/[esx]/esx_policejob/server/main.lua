@@ -41,8 +41,8 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 		end
 
     elseif itemType == 'item_money' then
-        targetXPlayer.removeMoney(itemName, amount)
-        sourceXPlayer.addMoney   (itemName, amount)
+        targetXPlayer.removeMoney(amount)
+        sourceXPlayer.addMoney   (amount)
 
         TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_cash', amount, itemName, targetXPlayer.name))
         TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_cash', amount, itemName, sourceXPlayer.name))
