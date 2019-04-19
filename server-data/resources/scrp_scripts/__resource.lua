@@ -37,7 +37,7 @@ client_scripts {
 	'client/commands-client.lua',
 	'client/no_vehicle_rewards-client.lua',
 	'client/disable_dispatch-client.lua',
-	'client/street_display-client.lua',
+	--'client/street_display-client.lua',
 	'client/no_crosshair-client.lua',
 	'client/drift_mode-client.lua',
 	'client/friendly_npc-client.lua',

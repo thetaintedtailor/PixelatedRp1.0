@@ -18,7 +18,7 @@ local Keys = {
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
-		if IsControlJustPressed(1, Keys['N9']) and GetLastInputMethod(2) then
+		if IsControlJustPressed(1, Keys["DELETE"]) and GetLastInputMethod(2) then
 
 			driftmode = not driftmode -- toggle
 
