@@ -40,7 +40,7 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 			TriggerClientEvent('esx:showNotification', _source, _U('quantity_invalid'))
 		end
 
-	elseif itemType == 'item_account' then
+	elseif itemType == 'item_account' or itemType == 'item_money' then
 		targetXPlayer.removeAccountMoney(itemName, amount)
 		sourceXPlayer.addAccountMoney   (itemName, amount)
 
