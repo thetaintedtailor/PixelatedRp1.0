@@ -58,16 +58,15 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 end)
 
 Citizen.CreateThread(function()
-  local blip = AddBlipForCoord(Config.Blips.Weed.x, Config.Blips.Weed.y, Config.Blips.Weed.z)
-  SetBlipSprite(blip, 496)
-  SetBlipDisplay(blip, 4)
-  SetBlipScale(blip, 0.8)
-  SetBlipColour(blip, 25)
-  SetBlipAsShortRange(blip, true)
-
-  BeginTextCommandSetBlipName("STRING")
-  AddTextComponentString(Config.Blips.Weed.name)
-  EndTextCommandSetBlipName(blip)
+	for k,v in pairs(Config.Blips) do
+		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
+		SetBlipSprite(blip, 72)
+		SetBlipScale(blip, 0.8)
+		SetBlipAsShortRange(blip, true)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString(v.Name)
+		EndTextCommandSetBlipName(blip)
+	end
 end)
 
 
