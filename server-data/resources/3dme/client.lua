@@ -97,7 +97,7 @@ function DrawText3D(x,y,z, text)
         EndTextCommandDisplayText(_x, _y)
 
         if background.enable then
-            DrawRect(_x, _y+scale/35, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
+            DrawRect(_x, _y+scale/55, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
         end
     end
 end
