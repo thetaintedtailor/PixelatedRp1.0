@@ -59,7 +59,7 @@ if (VK.music.submitedBy != "NONE") {
 }
 
 if (VK.info.logo != "NONE") {
-    document.querySelector(".logo").innerHTML = "<img src=\"" + VK.info.logo + "\">";
+    document.querySelector(".logo").innerHTML = '<img src="' + VK.info.logo + '">';
 } else {
     document.querySelector(".logo").style.display = "none";
 }
