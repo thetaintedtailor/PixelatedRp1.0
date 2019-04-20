@@ -12,6 +12,20 @@ AddEventHandler('chatMessage', function(source, name, message)
 	end
 end)
 
+RegisterCommand('twt', function(source, args, rawCommand)
+	if source == 0 then
+		print('esx_rpchat: you can\'t use this command from rcon!')
+		return
+	end
+
+	args = table.concat(args, ' ')
+	local name = GetPlayerName(source)
+	if Config.EnableESXIdentity then name = GetCharacterName(source) end
+
+	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), args }, color = { 0, 153, 204 } })
+	--print(('%s: %s'):format(name, args))
+end, false)
+
 RegisterCommand('do', function(source, args, rawCommand)
 	if source == 0 then
 		print('esx_rpchat: you can\'t use this command from rcon!')
@@ -23,7 +37,7 @@ RegisterCommand('do', function(source, args, rawCommand)
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
 	TriggerClientEvent('esx_rpchat:sendProximityMessage', -1, source, _U('do_prefix', name), args, { 0, 0, 255 })
-	print(('%s: %s'):format(name, args))
+	--print(('%s: %s'):format(name, args))
 end, false)
 
 function GetCharacterName(source)
@@ -41,8 +55,3 @@ function GetCharacterName(source)
 		return GetPlayerName(source)
 	end
 end
-
-TriggerEvent('es:addCommand', 'twt', function(source, args, user)
-	local name = getIdentity(source)
-TriggerClientEvent('chatMessage', -1, "^0[^4Twitter^0] (^5@" .. name.firstname .. "^0)", {30, 144, 255}, table.concat(args, " "))
-end, {help = 'Send a tweet. [IC]'})
