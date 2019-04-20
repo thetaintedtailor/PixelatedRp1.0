@@ -6,31 +6,31 @@
 $("body").fadeOut(0);
 
 VK.social.container = document.querySelector(".social");
-if (VK.social.discord != "NONE") {
+if (VK.social.discord != false) {
     let discord = document.createElement("div");
     discord.classList.add("item");
     discord.innerHTML = "<div class=\"content\"><img src=\"icon/discord.png\">" + VK.social.discord + "</div>";
     VK.social.container.appendChild(discord);
 }
-if (VK.social.twitter != "NONE") {
+if (VK.social.twitter != false) {
     let twitter = document.createElement("div")
     twitter.classList.add("item");
     twitter.innerHTML = "<div class=\"content\"><img src=\"icon/twitter.png\">" + VK.social.twitter + "</div>";
     VK.social.container.appendChild(twitter);
 }
-if (VK.social.facebook != "NONE") {
+if (VK.social.facebook != false) {
     let facebook = document.createElement("div");
     facebook.classList.add("item");
     facebook.innerHTML = "<div class=\"content\"><img src=\"icon/facebook.png\">" + VK.social.facebook + "</div>";
     VK.social.container.appendChild(facebook);
 }
-if (VK.social.youtube != "NONE") {
+if (VK.social.youtube != false) {
     let youtube = document.createElement("div");
     youtube.classList.add("item");
     youtube.innerHTML = "<div class=\"content\"><img src=\"icon/youtube.png\">" + VK.social.youtube + "</div>";
     VK.social.container.appendChild(youtube);
 }
-if (VK.social.twitch != "NONE") {
+if (VK.social.twitch != false) {
     let twitch = document.createElement("div");
     twitch.classList.add("item");
     twitch.innerHTML = "<div class=\"content\"><img src=\"icon/twitch.png\">" + VK.social.twitch + "</div>";

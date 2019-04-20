@@ -49,10 +49,10 @@ VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to d
 VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
 
 VK.social.discord = "https://discord.gg/X2xq3w3"; // Discord url ("NONE" to desactive)
-VK.social.twitter = "NONE"; // Twitter url ("NONE" to desactive)
-VK.social.facebook = "NONE"; // Facebook url ("NONE" to desactive)
-VK.social.youtube = "NONE"; // Youtube url ("NONE" to desactive)
-VK.social.twitch = "NONE"; // Twitch url ("NONE" to desactive)
+VK.social.twitter = false; // Twitter url ("NONE" to desactive)
+VK.social.facebook = false; // Facebook url ("NONE" to desactive)
+VK.social.youtube = false; // Youtube url ("NONE" to desactive)
+VK.social.twitch = false; // Twitch url ("NONE" to desactive)
 
 VK.players.enable = true; // Enable the players count of the server (true : enable, false : prevent)
 VK.players.multiplePlayersOnline = "@players online"; // @players equals the players count
