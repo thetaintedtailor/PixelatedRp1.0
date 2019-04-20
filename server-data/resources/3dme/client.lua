@@ -1,6 +1,6 @@
 -- Settings
 local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text
-local font = 0 -- Font of the text
+local font = 2 -- Font of the text
 local time = 7000 -- Duration of the display of the text : 1000ms = 1sec
 local background = {
     enable = true,
@@ -58,7 +58,7 @@ function Display(mePlayer, text, offset)
             local dist = Vdist2(coordsMe, coords)
             if dist < 2500 then
                 if HasEntityClearLosToEntity(PlayerPedId(), GetPlayerPed(mePlayer), 17 ) then
-                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z'], text)
+                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+offset, text)
                 end
             end
         end
@@ -88,7 +88,7 @@ function DrawText3D(x,y,z, text)
         -- Calculate width and height
         BeginTextCommandWidth("STRING")
         AddTextComponentString(text)
-        local height = GetTextScaleHeight(0.55*scale, font)
+        local height = GetTextScaleHeight(0.35*scale, font)
         local width = EndTextCommandGetWidth(font)
 
         -- Diplay the text
