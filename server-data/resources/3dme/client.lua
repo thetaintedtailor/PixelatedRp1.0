@@ -77,7 +77,7 @@ function DrawText3D(x,y,z, text)
 
         -- Formalize the text
         SetTextColour(color.r, color.g, color.b, color.alpha)
-        SetTextScale(0.0*scale, 0.55*scale)
+        SetTextScale(0.0*scale, 0.35*scale)
         SetTextFont(font)
         SetTextProportional(1)
         SetTextCentre(true)
