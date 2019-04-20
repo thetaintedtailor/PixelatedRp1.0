@@ -3,7 +3,7 @@ local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text
 local font = 0 -- Font of the text
 local time = 7000 -- Duration of the display of the text : 1000ms = 1sec
 local background = {
-    enable = false,
+    enable = true,
     color = { r = 35, g = 35, b = 35, alpha = 200 },
 }
 local chatMessage = true
@@ -13,9 +13,9 @@ local dropShadow = false
 local nbrDisplaying = 1
 
 RegisterCommand('me', function(source, args)
-    local text = '* the person' -- edit here if you want to change the language : EN: the person / FR: la personne
+    local text = ''-- edit here if you want to change the language : EN: the person / FR: la personne
     for i = 1,#args do
-        text = args[i]
+        text = text .. ' ' .. args[i]
     end
     ---text = text .. ' *'
     TriggerServerEvent('3dme:shareDisplay', text)
