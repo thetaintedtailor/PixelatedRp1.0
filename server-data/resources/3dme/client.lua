@@ -23,7 +23,7 @@ end)
 
 RegisterNetEvent('3dme:triggerDisplay')
 AddEventHandler('3dme:triggerDisplay', function(text, source)
-    local offset = 1 - (nbrDisplaying*0.14)
+    local offset = 1 + (nbrDisplaying*0.04)
     Display(GetPlayerFromServerId(source), text, offset)
 end)
 
@@ -58,7 +58,7 @@ function Display(mePlayer, text, offset)
             local dist = Vdist2(coordsMe, coords)
             if dist < 2500 then
                 if HasEntityClearLosToEntity(PlayerPedId(), GetPlayerPed(mePlayer), 17 ) then
-                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+offset, text)
+                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+3, text)
                 end
             end
         end
