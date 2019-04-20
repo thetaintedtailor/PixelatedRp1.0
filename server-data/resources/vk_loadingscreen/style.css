@@ -7,6 +7,9 @@
 
 body {
     background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center; 
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -55,6 +58,8 @@ body {
     background: url("img/1.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center; 
     overflow: hidden;
 
     -webkit-animation: backgroundZoomInOut 10s ease-in-out infinite;
