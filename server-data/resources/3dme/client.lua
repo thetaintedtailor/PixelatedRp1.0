@@ -1,12 +1,12 @@
 -- Settings
-local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text 
+local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text
 local font = 0 -- Font of the text
 local time = 7000 -- Duration of the display of the text : 1000ms = 1sec
 local background = {
     enable = true,
     color = { r = 35, g = 35, b = 35, alpha = 200 },
 }
-local chatMessage = true
+local chatMessage = false
 local dropShadow = false
 
 -- Don't touch
@@ -70,7 +70,7 @@ function DrawText3D(x,y,z, text)
     local onScreen,_x,_y = World3dToScreen2d(x,y,z)
     local px,py,pz = table.unpack(GetGameplayCamCoord())
     local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
- 
+
     local scale = ((1/dist)*2)*(1/GetGameplayCamFov())*100
 
     if onScreen then
