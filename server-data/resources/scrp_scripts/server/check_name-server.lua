@@ -77,6 +77,6 @@ AddEventHandler('playerConnecting', function(name, setCallback, deferrals)
 	if allowed then
 		deferrals.done()
 	else
-		deferrals.done('You cannot connect with your current player name. Reason: ' .. reason .. ' If you belive that something is wrong, please contact the SCRP staff')
+		deferrals.done('You cannot connect with your current player name. Reason: ' .. reason .. ' If you belive that something is wrong, please contact staff')
 	end
 end)
