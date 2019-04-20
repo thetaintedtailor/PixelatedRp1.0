@@ -58,7 +58,7 @@ function Display(mePlayer, text, offset)
             local dist = Vdist2(coordsMe, coords)
             if dist < 2500 then
                 if HasEntityClearLosToEntity(PlayerPedId(), GetPlayerPed(mePlayer), 17 ) then
-                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+3, text)
+                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+1, text)
                 end
             end
         end
@@ -97,7 +97,7 @@ function DrawText3D(x,y,z, text)
         EndTextCommandDisplayText(_x, _y)
 
         if background.enable then
-            DrawRect(_x, _y+scale/45, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
+            DrawRect(_x, _y+scale/35, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
         end
     end
 end
