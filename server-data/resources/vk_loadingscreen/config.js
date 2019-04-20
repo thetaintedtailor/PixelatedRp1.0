@@ -45,7 +45,7 @@ VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to des
 
 VK.info.logo = "https://i.postimg.cc/tCWn8Scx/pixelated.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
-VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to desactive)
+VK.info.website = false; // Website url ("NONE" to desactive)
 VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
 
 VK.social.discord = "https://discord.gg/X2xq3w3"; // Discord url ("NONE" to desactive)

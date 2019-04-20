@@ -70,7 +70,7 @@ if (VK.info.text != "NONE") {
     document.querySelector(".info").style.display = "none";
 }
 
-if (VK.info.website != "NONE") {
+if (VK.info.website != false) {
     document.querySelector(".website .label").innerHTML = VK.info.website;
 } else {
     document.querySelector(".website").style.display = "none";
