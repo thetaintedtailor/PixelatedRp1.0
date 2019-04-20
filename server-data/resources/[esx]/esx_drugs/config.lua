@@ -1,26 +1,23 @@
-Config = {}
-
+Config              = {}
+Config.MarkerType   = 1
+Config.DrawDistance = 100.0
+Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0}
+--Config.MarkerColor  = {r = 100, g = 204, b = 100}
+Config.RequiredCopsCoke = 0
+Config.RequiredCopsMeth = 0
+Config.RequiredCopsWeed = 0
+Config.RequiredCopsOpium = 0
 Config.Locale = 'en'
 
-Config.Delays = {
-	WeedProcessing = 1000 * 10
-}
+Config.Zones = {
+	--CokeFarm = 		 {x=2448.9228515625,  y=-1836.8076171875, z=51.953701019287},
+	--CokeTreatment =  {x=-458.13967895508, y=-2278.6174316406, z=7.5158290863037},
+	--CokeResell = 	 {x=-1756.1984863281, y=427.31674194336,  z=126.68292999268},
+	MethFarm = 		 {x=1389.8795166016, y=3608.7497558594,  z=37.941890716553},
+	MethTreatment =  {x=1391.9261474609, y=3605.9206542969,  z=37.941932678223},
+	MethResell = 	 {x=139.07336425781, y=-3111.8425292969, z=5.8963074684143},
+	WeedFarm = 		 {x=2224.5124511719, y=5577.970703125, z=53.713554382324},
+	WeedTreatment =  {x=2194.6235117188,  y=5595.4482421875,  z=53.761093139648},
+	WeedResell = 	 {x=-1172.0609130859, y=-1571.9993896484, z=4.6636281013389},
 
-Config.DrugDealerItems = {
-	marijuana = 91
-}
-
-Config.LicenseEnable = false -- enable processing licenses? The player will be required to buy a license in order to process drugs. Requires esx_license
-
-Config.LicensePrices = {
-	weed_processing = {label = _U('license_weed'), price = 15000}
-}
-
-Config.GiveBlack = false -- give black money? if disabled it'll give regular cash.
-
-Config.CircleZones = {
-	WeedField = {coords = vector3(310.91, 4290.87, 45.15), name = _U('blip_weedfield'), color = 25, sprite = 496, radius = 100.0},
-	WeedProcessing = {coords = vector3(2329.02, 2571.29, 46.68), name = _U('blip_weedprocessing'), color = 25, sprite = 496, radius = 100.0},
-
-	DrugDealer = {coords = vector3(-1172.02, -1571.98, 4.66), name = _U('blip_drugdealer'), color = 6, sprite = 378, radius = 25.0},
 }
