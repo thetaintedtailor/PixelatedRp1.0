@@ -12,7 +12,7 @@ files {
     'icon/tip.png',
     'icon/twitch.png',
     'icon/twitter.png',
-    'icon/vulkanoa.png',
+    'icon/pixelated.png',
     'icon/youtube.png',
     'img/1.jpg',
     'img/2.jpg',

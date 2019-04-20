@@ -44,7 +44,7 @@ VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "icon/pixelated.png"; // Logo ("NONE" to desactive)
-VK.info.text = NONE; // Bottom right corner text ("NONE" to desactive)
+VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
 VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to desactive)
 VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
 
