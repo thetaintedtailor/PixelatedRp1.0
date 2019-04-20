@@ -42,43 +42,7 @@ function GetCharacterName(source)
 	end
 end
 
-AddEventHandler('chatMessage', function(source, color, msg)
-	cm = stringsplit(msg, " ")
-
-	if cm[1] == "/twt" then
-		CancelEvent()
-		if tablelength(cm) > 1 then
-			local name = getIdentity(source)
-			local textmsg = ""
-			for i=1, #cm do
-				if i ~= 1 then
-					textmsg = (textmsg .. " " .. tostring(cm[i]))
-				end
-			end
-		    TriggerClientEvent('chatMessage', -1, "^0[^4Twitter^0] (^5@" .. name.firstname .. "^0)", {30, 144, 255}, textmsg)
-		end
-	end
-
-end)
-
-
-
-function stringsplit(inputstr, sep)
-    if sep == nil then
-        sep = "%s"
-    end
-    local t={} ; i=1
-    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-        t[i] = str
-        i = i + 1
-    end
-    return t
-end
-
-
-
-function tablelength(T)
-	local count = 0
-	for _ in pairs(T) do count = count + 1 end
-	return count
-end
+TriggerEvent('es:addCommand', 'twt', function(source, args, user)
+	local name = getIdentity(source)
+TriggerClientEvent('chatMessage', -1, "^0[^4Twitter^0] (^5@" .. name.firstname .. "^0)", {30, 144, 255}, table.concat(args, " "))
+end, {help = 'Send a tweet. [IC]'})
