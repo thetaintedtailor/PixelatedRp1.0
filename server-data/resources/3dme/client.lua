@@ -23,7 +23,7 @@ end)
 
 RegisterNetEvent('3dme:triggerDisplay')
 AddEventHandler('3dme:triggerDisplay', function(text, source)
-    local offset = 1 + (nbrDisplaying*0.14)
+    local offset = 1 + (nbrDisplaying*0.12)
     Display(GetPlayerFromServerId(source), text, offset)
 end)
 
@@ -88,7 +88,7 @@ function DrawText3D(x,y,z, text)
         -- Calculate width and height
         BeginTextCommandWidth("STRING")
         AddTextComponentString(text)
-        local height = GetTextScaleHeight(0.25*scale, font)
+        local height = GetTextScaleHeight(0.35*scale, font)
         local width = EndTextCommandGetWidth(font)
 
         -- Diplay the text
