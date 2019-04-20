@@ -88,7 +88,7 @@ function DrawText3D(x,y,z, text)
         -- Calculate width and height
         BeginTextCommandWidth("STRING")
         AddTextComponentString(text)
-        local height = GetTextScaleHeight(0.65*scale, font)
+        local height = GetTextScaleHeight(0.25*scale, font)
         local width = EndTextCommandGetWidth(font)
 
         -- Diplay the text
