@@ -3,43 +3,43 @@
     Do not re-upload this script without my authorization.
 */
 
-VK.config.loadingSessionText = "Loading the session..."; // Loading session text
+VK.config.loadingSessionText = "Chargement de la session..."; // Loading session text
 VK.config.firstColor = [255, 150, 0];
 VK.config.secondColor = [0, 191, 255];
 VK.config.thirdColor = [52, 152, 219];
 
 VK.backgrounds.list = [ // Backgrounds list, can be on local or distant (http://....)
-    "img/pixelated.jpg",
-    "img/joe.jpg",
-    "img/rori.jpg",
+    "img/1.jpg",
+    "img/2.jpg",
+    "img/3.jpg"
 ];
 VK.backgrounds.duration = 3000; // Background duration (in ms) before transition (the transition lasts 2000 ms)
 
 VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
-    "Press F1 to pull up your phone. Emergency services can be found in the 'favorites' menu.",
-    "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "A full list of our emotes can be found on the Discord.",
-    "Around here we call Kat the Fastest Dev in the West",
+    "Appuyez sur \"Y\" pour accèder à votre iPhone, attention il faut d'abord le récupérer aux bureaux de Life Invader !",
+    "Appuyez sur \"T\" pour accèder à votre menu personnel !",
+    "Appuyez sur \"U\" pour vérouiller ou déverouiller votre véhicule !",
+    "Maintenez \"X\" pour mettre vos mains en l'air !",
 ];
 
-VK.music.url = "music/nodoubt.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "music.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.volume = 0.2; // Music volume (0-1)
-VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
+VK.music.title = "Post Malone - Go Flex"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggérée par Piter Van Rujpen"; // Music submited by... ("NONE" to desactive)
 
-VK.info.logo = "icon/pixelated.png"; // Logo ("NONE" to desactive)
-VK.info.text = NONE; // Bottom right corner text ("NONE" to desactive)
-VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to desactive)
+VK.info.logo = "icon/vulkanoa.png"; // Logo ("NONE" to desactive)
+VK.info.text = "fondé et développé par Piter Van Rujpen"; // Bottom right corner text ("NONE" to desactive) 
+VK.info.website = "vulkanoa.com"; // Website url ("NONE" to desactive) 
 VK.info.ip = "145.239.74.177:2302"; // Your server ip and port ("ip:port")
 
 VK.social.discord = ".me/vulkanoa"; // Discord url ("NONE" to desactive)
-VK.social.twitter = NONE; // Twitter url ("NONE" to desactive)
-VK.social.facebook = NONE; // Facebook url ("NONE" to desactive)
-VK.social.youtube = NONE; // Youtube url ("NONE" to desactive)
-VK.social.twitch = NONE; // Twitch url ("NONE" to desactive)
+VK.social.twitter = "/vulkanoa"; // Twitter url ("NONE" to desactive)
+VK.social.facebook = "/vulkanoa"; // Facebook url ("NONE" to desactive)
+VK.social.youtube = "/thegamerrespow"; // Youtube url ("NONE" to desactive)
+VK.social.twitch = "/thegamerrespow"; // Twitch url ("NONE" to desactive)
 
 VK.players.enable = true; // Enable the players count of the server (true : enable, false : prevent)
-VK.players.multiplePlayersOnline = "@players online"; // @players equals the players count
-VK.players.onePlayerOnline = "1 player online"; // Text when only one player is on the server
-VK.players.noPlayerOnline = "No players online"; // Text when the server is empty
+VK.players.multiplePlayersOnline = "@players joueurs en ligne"; // @players equals the players count
+VK.players.onePlayerOnline = "1 joueur en ligne"; // Text when only one player is on the server
+VK.players.noPlayerOnline = "Aucun joueur en ligne"; // Text when the server is empty
