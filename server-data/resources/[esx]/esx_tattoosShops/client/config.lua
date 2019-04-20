@@ -15,7 +15,7 @@ local Keys = {
 Config = {}
 
 
-Config.TextToOpenMenu = "Press ~g~E~w~ to get tattoo."
+Config.TextToOpenMenu = "Press ~g~E~w~ to get tattoo'd."
 Config.TextGoBackIntoMenu = "< Go back"
 Config.KeyToOpenMenu = Keys["E"]
 Config.MoneySymbol = "$"
