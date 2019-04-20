@@ -115,11 +115,11 @@ VK.tips.change = function () {
         if (document.querySelector(".tip .label").innerHTML == VK.config.loadingSessionText) return;
 
         document.querySelector(".tip .label").innerHTML = VK.tips.list[VK.tips.actual];
-        $(".tip .label").fadeIn(500);
+        $(".tip .label").fadeIn(800);
         setTimeout(function () {
-            $(".tip .label").fadeOut(500);
+            $(".tip .label").fadeOut(800);
             VK.tips.change();
-        }, VK.backgrounds.duration-500)
+        }, VK.backgrounds.duration-800)
     }, 500)
     
 }

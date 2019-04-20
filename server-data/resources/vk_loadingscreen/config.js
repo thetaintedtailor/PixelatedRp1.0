@@ -39,7 +39,7 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.url = "music.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.volume = 0.2; // Music volume (0-1)
+VK.music.volume = 0.1; // Music volume (0-1)
 VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
 
@@ -48,7 +48,7 @@ VK.info.text = NONE; // Bottom right corner text ("NONE" to desactive)
 VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to desactive)
 VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
 
-VK.social.discord = ".me/vulkanoa"; // Discord url ("NONE" to desactive)
+VK.social.discord = "https://discord.gg/X2xq3w3"; // Discord url ("NONE" to desactive)
 VK.social.twitter = "NONE"; // Twitter url ("NONE" to desactive)
 VK.social.facebook = "NONE"; // Facebook url ("NONE" to desactive)
 VK.social.youtube = "NONE"; // Youtube url ("NONE" to desactive)
