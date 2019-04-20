@@ -19,16 +19,16 @@ VK.players = new Object(); // DO NOT CHANGE
 //////////////////////////////// CONFIG
 
 VK.config.loadingSessionText = "Loading the session..."; // Loading session text
-VK.config.firstColor = [255, 150, 0];
-VK.config.secondColor = [0, 191, 255];
-VK.config.thirdColor = [52, 152, 219];
+VK.config.firstColor = [255, 1, 61];
+VK.config.secondColor = [88, 35, 158];
+VK.config.thirdColor = [172, 11, 67];
 
 VK.backgrounds.list = [ // Backgrounds list, can be on local or distant (http://....)
     "img/1.jpg",
     "img/2.jpg",
     "img/3.jpg",
 ];
-VK.backgrounds.duration = 5000; // Background duration (in ms) before transition (the transition lasts 2000 ms)
+VK.backgrounds.duration = 8000; // Background duration (in ms) before transition (the transition lasts 2000 ms)
 
 VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
@@ -43,7 +43,7 @@ VK.music.volume = 0.1; // Music volume (0-1)
 VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
 
-VK.info.logo = "icon/pixelated.png"; // Logo ("NONE" to desactive)
+VK.info.logo = "https://i.postimg.cc/tCWn8Scx/pixelated.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
 VK.info.website = "https://pixelatedrp.weebly.com/"; // Website url ("NONE" to desactive)
 VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
