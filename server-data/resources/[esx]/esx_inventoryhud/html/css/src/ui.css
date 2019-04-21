@@ -47,7 +47,7 @@ body {
 #inventoryElement::-webkit-scrollbar-track
 {
     border-radius: 10px;
-    background-color: rgba(31, 30, 43, 0.4);
+    background-color: rgba(105, 105, 105, 0.4);
     border-radius: 5px;
 }
 
@@ -91,7 +91,7 @@ button#close {
 }
 
 button {
-    background: rgba(105, 105, 105, 0.8);
+    background: rgba(31, 30, 43, 0.8);
     border: none;
     float: left;
     height: 30px;
@@ -106,7 +106,7 @@ button:hover {
 }
 
 input#search {
-    background: rgba(105, 105, 105, 0.8);
+    background: rgba(31, 30, 43, 0.8);
     border: none;
     float: left;
     height: 30px;
@@ -143,19 +143,19 @@ input#search:-ms-input-placeholder {
     margin: 5px;
     width: 160px;
     height: 160px;
-    border-color: rgba(105, 105, 105, 0.9);
+    border-color: rgba(31, 30, 43, 0.9);
     border-radius: 5px;
     text-align: right;
     border-width: 3px;
     border-style: solid;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: rgba(105, 105, 105, 0.5);
+    background-color: rgba(31, 30, 43, 0.5);
 }
 
 .item:hover, .item.active {
-    border-color: rgba(105, 105, 105, 0.9);
-    background-color: rgba(105, 105, 105, 0.8);
+    border-color: rgba(31, 30, 43, 0.9);
+    background-color: rgba(31, 30, 43, 0.8);
 }
 
 .item .count {
