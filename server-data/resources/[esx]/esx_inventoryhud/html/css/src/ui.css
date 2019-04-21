@@ -37,7 +37,7 @@ body {
     left: 0;
     width: 900px;
     height: 600px;
-    background-color: rgba(105, 105, 105, 0.3);
+    background-color: rgba(31, 30, 43, 0.3);
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -47,7 +47,7 @@ body {
 #inventoryElement::-webkit-scrollbar-track
 {
     border-radius: 10px;
-    background-color: rgba(105, 105, 105, 0.4);
+    background-color: rgba(31, 30, 43, 0.4);
     border-radius: 5px;
 }
 
