@@ -1,6 +1,6 @@
 @font-face {
     font-family: osifont;
-    src: url('../fonts/osifont.ttf') format('truetype');  
+    src: url('../fonts/osifont.ttf') format('truetype');
 }
 
 body {
@@ -8,8 +8,8 @@ body {
     height: 100%;
     overflow: hidden;
     margin: 0;
-	font-size: 15px;
-	color: white;
+	  font-size: 15px;
+	  color: white;
     font-family: osifont, comic-sans;
     -moz-font-feature-settings: "liga", "dlig";
     -ms-font-feature-settings: "liga", "dlig";
@@ -25,7 +25,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    background: rgba(19, 29, 39, 0.5); 
+    background: rgba(31, 30, 43, 0.5);
 }
 
 #inventoryElement {
@@ -37,7 +37,7 @@ body {
     left: 0;
     width: 900px;
     height: 600px;
-    background-color: rgba(105, 105, 105, 0.3); 
+    background-color: rgba(105, 105, 105, 0.3);
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -47,14 +47,14 @@ body {
 #inventoryElement::-webkit-scrollbar-track
 {
     border-radius: 10px;
-    background-color: rgba(105, 105, 105, 0.4); 
+    background-color: rgba(105, 105, 105, 0.4);
     border-radius: 5px;
 }
 
 #inventoryElement::-webkit-scrollbar
 {
     width: 12px;
-    background-color: rgba(105, 105, 105, 0.4); 
+    background-color: rgba(105, 105, 105, 0.4);
     border-radius: 5px;
 }
 
@@ -86,27 +86,27 @@ body {
     width: 15%;
 }
 
-button#close { 
+button#close {
     float: left;
 }
 
-button { 
-    background: rgba(105, 105, 105, 0.8); 
+button {
+    background: rgba(105, 105, 105, 0.8);
     border: none;
     float: left;
     height: 30px;
     color: white;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
-button:hover { 
-    background: rgb(70, 70, 70); 
+button:hover {
+    background: rgb(70, 70, 70);
 }
 
-input#search { 
-    background: rgba(105, 105, 105, 0.8); 
+input#search {
+    background: rgba(105, 105, 105, 0.8);
     border: none;
     float: left;
     height: 30px;
@@ -120,17 +120,17 @@ input#search {
 input#search::-webkit-input-placeholder {
     color: #898f94;
  }
-  
+
 input#search:-moz-placeholder { /* Firefox 18- */
-    color: #898f94;  
+    color: #898f94;
  }
-  
+
 input#search::-moz-placeholder {  /* Firefox 19+ */
-    color: #898f94;  
+    color: #898f94;
  }
-  
-input#search:-ms-input-placeholder {  
-    color: #898f94;  
+
+input#search:-ms-input-placeholder {
+    color: #898f94;
  }
 
  *:focus {
@@ -143,19 +143,19 @@ input#search:-ms-input-placeholder {
     margin: 5px;
     width: 160px;
     height: 160px;
-    border-color: rgba(105, 105, 105, 0.9); 
+    border-color: rgba(105, 105, 105, 0.9);
     border-radius: 5px;
     text-align: right;
     border-width: 3px;
     border-style: solid;
-    background-position: center center; 
+    background-position: center center;
     background-repeat: no-repeat;
-    background-color: rgba(105, 105, 105, 0.5); 
+    background-color: rgba(105, 105, 105, 0.5);
 }
 
 .item:hover, .item.active {
-    border-color: rgba(105, 105, 105, 0.9); 
-    background-color: rgba(105, 105, 105, 0.8); 
+    border-color: rgba(105, 105, 105, 0.9);
+    background-color: rgba(105, 105, 105, 0.8);
 }
 
 .item .count {
@@ -168,7 +168,7 @@ input#search:-ms-input-placeholder {
     font-weight: bold;
     bottom: 1px;
     width: 100%;
-    background-color: rgba(105, 105, 105, 0.9); 
+    background-color: rgba(105, 105, 105, 0.9);
     text-align: center;
 }
 
@@ -176,8 +176,8 @@ img.emojione {
     margin: 0px !important;
     display: inline !important;
 }
-  
-  
+
+
 span.emoji {
     font-size: 15px;
     line-height: 2;
