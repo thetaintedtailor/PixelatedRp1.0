@@ -37,8 +37,7 @@ body {
     left: 0;
     width: 900px;
     height: 600px;
-    background-color: rgb(31, 30, 43);
-    opacity: 0;
+    background-color: rgba(31, 30, 43, 0.3);
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -151,7 +150,7 @@ input#search:-ms-input-placeholder {
     border-style: solid;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: rgba(31, 30, 43, 0.3);
+    background-color: rgba(31, 30, 43, 0.0);
 }
 
 .item:hover, .item.active {
