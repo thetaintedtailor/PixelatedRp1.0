@@ -9,7 +9,7 @@ body {
     overflow: hidden;
     margin: 0;
 	  font-size: 15px;
-	  color: #ff0066;
+	  color: white;
     font-family: osifont, comic-sans;
     -moz-font-feature-settings: "liga", "dlig";
     -ms-font-feature-settings: "liga", "dlig";
@@ -25,7 +25,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    background: rgba(31, 30, 98, 0.1);
+    background: rgba(31, 30, 43, 0.1);
 }
 
 #inventoryElement {
@@ -37,7 +37,7 @@ body {
     left: 0;
     width: 900px;
     height: 600px;
-    background-color: rgba(31, 30, 98, 0.3);
+    background-color: rgba(31, 30, 43, 0.3);
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -150,12 +150,12 @@ input#search:-ms-input-placeholder {
     border-style: solid;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: rgba(31, 30, 98, 0.3);
+    background-color: rgba(31, 30, 43, 0.3);
 }
 
 .item:hover, .item.active {
     border-color: rgba(31, 30, 43, 0.9);
-    background-color: rgba(31, 30, 98, 0.8);
+    background-color: rgba(31, 30, 43, 0.8);
 }
 
 .item .count {
@@ -168,7 +168,7 @@ input#search:-ms-input-placeholder {
     font-weight: bold;
     bottom: 1px;
     width: 100%;
-    background-color: rgba(105, 105, 105, 0.9);
+    background-color: rgba(30,31,43, 0.9);
     text-align: center;
 }
 
