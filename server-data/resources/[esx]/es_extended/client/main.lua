@@ -482,9 +482,9 @@ Citizen.CreateThread(function()
 
 		Citizen.Wait(0)
 
-		if IsControlJustReleased(0, Keys['F2']) and GetLastInputMethod(2) and not isDead and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') then
-			ESX.ShowInventory()
-		end
+		--if IsControlJustReleased(0, Keys['F2']) and GetLastInputMethod(2) and not isDead and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') then
+		--	ESX.ShowInventory()
+		--end
 
 	end
 end)
@@ -535,7 +535,7 @@ Citizen.CreateThread(function()
 
 		local playerPed = PlayerPedId()
 		local coords    = GetEntityCoords(playerPed)
-		
+
 		-- if there's no nearby pickups we can wait a bit to save performance
 		if next(Pickups) == nil then
 			Citizen.Wait(500)
