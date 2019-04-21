@@ -99,7 +99,7 @@ local function TransformCoke(source)
 			local cokeQuantity = xPlayer.getInventoryItem('coke').count
 			local poochQuantity = xPlayer.getInventoryItem('coke_pooch').count
 
-			if poochQuantity > 35 then
+			if poochQuantity >= 10 then
 				TriggerClientEvent('esx:showNotification', source, _U('too_many_pouches'))
 			elseif cokeQuantity < 5 then
 				TriggerClientEvent('esx:showNotification', source, _U('not_enough_coke'))
@@ -269,7 +269,7 @@ local function TransformMeth(source)
 			local methQuantity = xPlayer.getInventoryItem('meth').count
 			local poochQuantity = xPlayer.getInventoryItem('meth_pooch').count
 
-			if poochQuantity > 35 then
+			if poochQuantity >= 10 then
 				TriggerClientEvent('esx:showNotification', source, _U('too_many_pouches'))
 			elseif methQuantity < 5 then
 				TriggerClientEvent('esx:showNotification', source, _U('not_enough_meth'))
@@ -442,7 +442,7 @@ local function TransformWeed(source)
 			local weedQuantity = xPlayer.getInventoryItem('weed').count
 			local poochQuantity = xPlayer.getInventoryItem('weed_pooch').count
 
-			if poochQuantity > 35 then
+			if poochQuantity >= 16 then
 				TriggerClientEvent('esx:showNotification', source, _U('too_many_pouches'))
 			elseif weedQuantity < 5 then
 				TriggerClientEvent('esx:showNotification', source, _U('not_enough_weed'))
