@@ -9,8 +9,8 @@ controlsave_bool = false
 
 -- E N G I N E --
 IsEngineOn = true
-RegisterNetEvent('engine')
-AddEventHandler('engine',function() 
+--RegisterNetEvent('engine')
+RegisterCommand('engine',function(source, args) 
 	local player = GetPlayerPed(-1)
 	
 	if (IsPedSittingInAnyVehicle(player)) then 
@@ -32,36 +32,10 @@ AddEventHandler('engine',function()
 	end
 end)
 
-RegisterNetEvent('engineoff')
-AddEventHandler('engineoff',function() 
-		local player = GetPlayerPed(-1)
 
-        if (IsPedSittingInAnyVehicle(player)) then 
-            local vehicle = GetVehiclePedIsIn(player,false)
-			engineoff = true
-			ShowNotification("Engine ~r~off~s~.")
-			while (engineoff) do
-			SetVehicleEngineOn(vehicle,false,false,false)
-			SetVehicleUndriveable(vehicle,true)
-			Citizen.Wait(0)
-			end
-		end
-end)
-RegisterNetEvent('engineon')
-AddEventHandler('engineon',function() 
-    local player = GetPlayerPed(-1)
-
-        if (IsPedSittingInAnyVehicle(player)) then 
-            local vehicle = GetVehiclePedIsIn(player,false)
-			engineoff = false
-			SetVehicleUndriveable(vehicle,false)
-			SetVehicleEngineOn(vehicle,true,false,false)
-			ShowNotification("Engine ~g~on~s~.")
-	end
-end)
 -- T R U N K --
-RegisterNetEvent('trunk')
-AddEventHandler('trunk',function() 
+--RegisterNetEvent('trunk')
+RegisterCommand('trunk',function(source, args) 
 	local player = GetPlayerPed(-1)
 			if controlsave_bool == true then
 				vehicle = saveVehicle
@@ -83,8 +57,8 @@ AddEventHandler('trunk',function()
 			end
 end)
 -- R E A R  D O O R S --
-RegisterNetEvent('rdoors')
-AddEventHandler('rdoors',function() 
+--RegisterNetEvent('rdoors')
+RegisterCommand('rdoors',function() 
 	local player = GetPlayerPed(-1)
     		if controlsave_bool == true then
 				vehicle = saveVehicle
@@ -108,8 +82,8 @@ AddEventHandler('rdoors',function()
 end)		
 
 -- H O O D --
-RegisterNetEvent('hood')
-AddEventHandler('hood',function() 
+--RegisterNetEvent('hood')
+RegisterCommand('hood',function() 
 	local player = GetPlayerPed(-1)
     	if controlsave_bool == true then
 			vehicle = saveVehicle
@@ -130,3 +104,5 @@ AddEventHandler('hood',function()
 				ShowNotification("~r~You must be near your vehicle to do that.")
 			end
 end)
+
+
