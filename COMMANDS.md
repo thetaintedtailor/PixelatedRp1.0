@@ -26,6 +26,16 @@
     
 ### get current gps position
     - ex: /getpos
+    
+### car [car model] | cardel 
+    - ex: /car police | police2 | police3 | policet | policeb
+    - ex: /car fbi | fbi2
+    - ex: /car ambulance | ambulance van
+    - ex: /car buzzard | buzzard2 | seasparrow | polmav
+    - ex: /cardel
+    - models listed:
+        .../server-data/resources/[esx]/esx_policejob/config.lua
+        .../server-data/resources/[esx]/esx_policejob/config.lua
 
 
 ## server CLI commands

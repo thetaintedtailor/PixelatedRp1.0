@@ -6,11 +6,13 @@ Pixelated1.0 fivem RP
 The most realistic economic RP on the internet (pegged to the USD)
 
 # ES/ESX framework notes
+    ## comand list reference
+        .../server-data/resources/[esx]/es_extended/server/commands.lua
     ## object models
         .../server-data/resources/essentialmode/server/classes/player.lua
         .../server-data/resources/[esx]/es_extended/server/classes/player.lua
-    ## good usage examples
-        .../server-data/resources/[esx]/es_extended/server/main.lua
+        # good usage examples
+            .../server-data/resources/[esx]/es_extended/server/main.lua
     ## spawn, respawn, auto-spawn relation
         .../server-data/resources/[esx]/esx_ambulancejob/config.lua
         .../server-data/resources/[esx]/esx_ambulancejob/locales/en.lua

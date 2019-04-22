@@ -37,10 +37,13 @@ VK.tips.list = [ // Tips list
     "Around here we call Kat the Fastest Dev in the West",
 ];
 
-VK.music.url = "music.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.volume = 0.1; // Music volume (0-1)
-VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
+//VK.music.url = "music/nodoubt.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "music/mia.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.volume = 0.3; // Music volume (0-1)
+VK.music.title = "Paper Planes - M.I.A"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by h0u53"; // Music submited by... ("NONE" to desactive)
+//VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
+//VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/tCWn8Scx/pixelated.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
