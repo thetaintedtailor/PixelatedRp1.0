@@ -52,6 +52,7 @@
     f = vehicle enter/steal/exit
     e = action menu (inside colored action sphere)
     v = change view
+    #pad = air vehicle pitch/yaw 
     
 ## in-game common emotes (hit 't' + [type])
     - sit down: /e groundsit
