@@ -23,6 +23,9 @@
     
 ### revive [player-id]
     - ex: /review 1
+    
+### get current gps position
+    - ex: /getpos
 
 
 ## server CLI commands
@@ -35,6 +38,7 @@
     f2 = inventory
     home = admin menu
     f10 = scoreboard
+    f = vehicle enter/steal/exit
 
 # misc web refs
 ## github
