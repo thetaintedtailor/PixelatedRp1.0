@@ -20,18 +20,22 @@ The most realistic economic RP on the internet (pegged to the USD)
         .../server-data/resources/[system]/baseevents/deathevents.lua
     ## vehicle speed relation
         .../server-data/resources/scrp_scripts/client/speed_limit-client.lua
+        
+# Platform & Library Notes
+    ## physics & velocity engine reference:
+        - https://gtamods.com/wiki/Handling.meta#fInitialDriveMaxFlatVel
 
 
-# Party mods (post-install integration)
+# 3rd Party mods (post-install integration)
     - https://github.com/ESX-Org/esx_whitelistEnhanced
     - https://github.com/ESX-PUBLIC/esx_jail
     - https://github.com/snyx95/esx_eden_garage
     - https://github.com/Krizfrost/-ESX--Money-Laundering
     - https://github.com/InZidiuZ/LegacyFuel
     - https://github.com/N3MTV/gcphone
-	- https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
-	- https://github.com/Nowimps8/nw_bahamaMama
-	- https://github.com/Bob74/bob74_ipl/tree/2.0.7c
+    - https://forum.fivem.net/t/trundles-roleplay-animations-updated-10-26/171735
+    - https://github.com/Nowimps8/nw_bahamaMama
+    - https://github.com/Bob74/bob74_ipl/tree/2.0.7c
     - https://forum.fivem.net/t/release-finger-pointing-by-geekness/103722
     - https://github.com/iEns/RealisticVehicleFailure
     - https://github.com/SaltyGrandpa/model-menu

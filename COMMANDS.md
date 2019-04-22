@@ -35,7 +35,7 @@
     - ex: /cardel
     - models listed:
         .../server-data/resources/[esx]/esx_policejob/config.lua
-        .../server-data/resources/[esx]/esx_policejob/config.lua
+        .../server-data/resources/[esx]/esx_ambulancejob/config.lua
 
 
 ## server CLI commands
