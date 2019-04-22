@@ -37,6 +37,7 @@
     f6 = job menu
     f2 = inventory
     home = admin menu
+        - bringto, goto
     f10 = scoreboard
     f = vehicle enter/steal/exit
     e = action menu (inside colored action sphere)

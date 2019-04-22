@@ -1,4 +1,4 @@
-local afkTimeout = 1200 -- AFK kick time limit in seconds
+local afkTimeout = 1800 -- AFK kick time limit in seconds
 local timer = 0
 
 local currentPosition  = nil
