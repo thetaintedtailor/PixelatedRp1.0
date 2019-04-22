@@ -39,7 +39,23 @@
     home = admin menu
     f10 = scoreboard
     f = vehicle enter/steal/exit
-    e = action menu (inside colored action sphere) 
+    e = action menu (inside colored action sphere)
+    
+## in-game common emotes (hit 't' + [type])
+    - sit down: /e groundsit
+    - lay down: /e bum
+    - kneel: /e kneel
+    - shrug shoulders: /e shrug
+    - wall spy: /e wallspy
+    - dance: /e ohsnap | ohsnap2 | disco | disco2
+    - play dead: /e dead
+    - do situps: /e situps
+    - do pushup: /e pushups
+    - do yoga: /e yoga
+    - do cheer: /e cheer
+    - shake head no: /e no
+    - strip tease: /e st1 | st2
+    - wall lean: /e leanwall | lean
 
 # misc web refs
 ## github
