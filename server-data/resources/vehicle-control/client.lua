@@ -1,6 +1,5 @@
 -- C O N F I G --
 interactionDistance = 3.5 --The radius you have to be in to interact with the vehicle.
-lockDistance = 25 --The radius you have to be in to lock your vehicle.
 
 --  V A R I A B L E S --
 engineoff = false
@@ -9,7 +8,7 @@ controlsave_bool = false
 
 -- E N G I N E --
 IsEngineOn = true
---RegisterNetEvent('engine')
+
 RegisterCommand('engine',function(source, args) 
 	local player = GetPlayerPed(-1)
 	
@@ -34,7 +33,7 @@ end)
 
 
 -- T R U N K --
---RegisterNetEvent('trunk')
+
 RegisterCommand('trunk',function(source, args) 
 	local player = GetPlayerPed(-1)
 			if controlsave_bool == true then
@@ -57,7 +56,7 @@ RegisterCommand('trunk',function(source, args)
 			end
 end)
 -- R E A R  D O O R S --
---RegisterNetEvent('rdoors')
+
 RegisterCommand('rdoors',function() 
 	local player = GetPlayerPed(-1)
     		if controlsave_bool == true then
@@ -82,7 +81,7 @@ RegisterCommand('rdoors',function()
 end)		
 
 -- H O O D --
---RegisterNetEvent('hood')
+
 RegisterCommand('hood',function() 
 	local player = GetPlayerPed(-1)
     	if controlsave_bool == true then
@@ -106,3 +105,27 @@ RegisterCommand('hood',function()
 end)
 
 
+-- OPEN ALL DOORS --
+
+RegisterCommand('carshow', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+		if GetVehicleDoorAngleRatio(vehicle, 0) > 0.0 then 
+			SetVehicleDoorShut(vehicle, 0, false)
+			SetVehicleDoorShut(vehicle, 1, false)
+			SetVehicleDoorShut(vehicle, 2, false)	
+			SetVehicleDoorShut(vehicle, 3, false)	
+			SetVehicleDoorShut(vehicle, 4, false)	
+			SetVehicleDoorShut(vehicle, 5, false)				
+		else
+			SetVehicleDoorOpen(vehicle, 0, false) 
+			SetVehicleDoorOpen(vehicle, 1, false)   
+			SetVehicleDoorOpen(vehicle, 2, false)   
+			SetVehicleDoorOpen(vehicle, 3, false)   
+			SetVehicleDoorOpen(vehicle, 4, false)   
+			SetVehicleDoorOpen(vehicle, 5, false)               
+		end
+	else
+		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
+    end
+end)
