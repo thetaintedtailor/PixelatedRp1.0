@@ -9,13 +9,15 @@ The most realistic economic RP on the internet (pegged to the USD)
     ## object models
         .../server-data/resources/essentialmode/server/classes/player.lua
         .../server-data/resources/[esx]/es_extended/server/classes/player.lua
+    ## good usage examples
+        .../server-data/resources/[esx]/es_extended/server/main.lua
     ## spawn, respawn, auto-spawn relation
         .../server-data/resources/[esx]/esx_ambulancejob/config.lua
         .../server-data/resources/[esx]/esx_ambulancejob/locales/en.lua
         .../server-data/resources/[system]/spawnmanager/spawnmanager.lua
         .../server-data/resources/[system]/baseevents/deathevents.lua
-    ## good usage examples
-        .../server-data/resources/[esx]/es_extended/server/main.lua
+    ## vehicle speed relation
+        .../server-data/resources/scrp_scripts/client/speed_limit-client.lua
 
 
 # Party mods (post-install integration)
