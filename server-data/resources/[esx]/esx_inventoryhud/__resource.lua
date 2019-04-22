@@ -37,6 +37,7 @@ files {
     'html/locales/fr.js',
     'html/fonts/osifont.ttf',
     -- ICONS
+    'html/img/items/bandage.png',
     'html/img/items/beer.png',
     'html/img/items/binoculars.png',
     'html/img/items/bread.png',
@@ -99,7 +100,6 @@ files {
     'html/img/items/WEAPON_DBSHOTGUN.png',
     'html/img/items/WEAPON_SWITCHBLADE.png',
     'html/img/items/WEAPON_POOLCUE.png',
-    'html/img/items/bandage.png',
     'html/img/items/blowpipe.png',
     'html/img/items/clothe.png',
     'html/img/items/coke.png',
