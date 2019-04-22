@@ -148,7 +148,7 @@ input#search:-ms-input-placeholder {
     text-align: right;
     border-width: 3px;
     border-style: solid;
-    /* background-position: center center; */
+    background-position: center center;
     background-repeat: no-repeat;
     background-color: rgba(31, 30, 43, 0.0);
     background-size: contain;
