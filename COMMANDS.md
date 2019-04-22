@@ -39,6 +39,7 @@
     home = admin menu
     f10 = scoreboard
     f = vehicle enter/steal/exit
+    e = action menu (inside colored action sphere) 
 
 # misc web refs
 ## github
