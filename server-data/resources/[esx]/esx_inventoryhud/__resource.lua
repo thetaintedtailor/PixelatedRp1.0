@@ -12,7 +12,7 @@ client_scripts {
   'locales/cs.lua',
   'locales/en.lua',
   'locales/fr.lua',
-  'config.lua'	
+  'config.lua'
 }
 
 server_scripts {
@@ -21,7 +21,7 @@ server_scripts {
   'locales/cs.lua',
   'locales/en.lua',
   'locales/fr.lua',
-  'config.lua'	
+  'config.lua'
 }
 
 files {
@@ -98,5 +98,31 @@ files {
     'html/img/items/WEAPON_PISTOL50.png',
     'html/img/items/WEAPON_DBSHOTGUN.png',
     'html/img/items/WEAPON_SWITCHBLADE.png',
-    'html/img/items/WEAPON_POOLCUE.png'
+    'html/img/items/WEAPON_POOLCUE.png',
+    'html/img/items/bandage.png',
+    'html/img/items/blowpipe.png',
+    'html/img/items/clothe.png',
+    'html/img/items/coke.png',
+    'html/img/items/coke_pooch.png',
+    'html/img/items/contract.png',
+    'html/img/items/copper.png',
+    'html/img/items/cutted_wood.png',
+    'html/img/items/diamond.png',
+    'html/img/items/essence.png',
+    'html/img/items/fabric.png',
+    'html/img/items/fish.png',
+    'html/img/items/lockpick.png',
+    'html/img/items/meth.png',
+    'html/img/items/meth_pooch.png',
+    'html/img/items/packaged_chicken.png',
+    'html/img/items/petrol.png',
+    'html/img/items/petrol_raffin.png',
+    'html/img/items/repairkit.png',
+    'html/img/items/slaughtered_chicken.png',
+    'html/img/items/stone.png',
+    'html/img/items/washed_stone.png',
+    'html/img/items/weed.png',
+    'html/img/items/weed_pooch.png',
+    'html/img/items/wood.png',
+    'html/img/items/wool.png',
 }
