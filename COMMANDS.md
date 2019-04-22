@@ -35,7 +35,7 @@
     - ex: /cardel
     - models listed:
         .../server-data/resources/[esx]/esx_policejob/config.lua
-        .../server-data/resources/[esx]/esx_ambulancejob/config.lua
+        .../serverstsst-data/resources/[esx]/esx_ambulancejob/config.lua
 
 
 ## server CLI commands
@@ -51,6 +51,7 @@
     f10 = scoreboard
     f = vehicle enter/steal/exit
     e = action menu (inside colored action sphere)
+    v = change view
     
 ## in-game common emotes (hit 't' + [type])
     - sit down: /e groundsit
