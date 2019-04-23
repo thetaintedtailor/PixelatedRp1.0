@@ -208,41 +208,7 @@ end)
 
 -- ALL WINDOWS --
 
-RegisterCommand('windows', function()
-    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
-		local frontLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lf')
-		local frontRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rf')
-		local rearLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lr')
-		local rearRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rr')
-		local frontMiddleWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lm')
-		local rearMiddleWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rm')
-		
-		if frontLeftWindow ~= -1 or frontRightWindow ~= -1 or rearLeftWindow ~= -1 or rearRightWindow ~= -1 or frontMiddleWindow ~= -1 or rearMiddleWindow ~= -1 then
-			if windowsUp == true then
-				RollDownWindow(vehicle, 0)
-				RollDownWindow(vehicle, 1)
-				RollDownWindow(vehicle, 2)
-				RollDownWindow(vehicle, 3)
-				RollDownWindow(vehicle, 4)
-				RollDownWindow(vehicle, 5)
-				windowsUp = false
-			else if windowsUp == false then
-				RollUpWindow(vehicle, 0)
-				RollUpWindow(vehicle, 1)
-				RollUpWindow(vehicle, 2)
-				RollUpWindow(vehicle, 3)
-				RollUpWindow(vehicle, 4)
-				RollUpWindow(vehicle, 5)
-				windowsUp = true
-			end
-		else
-			ESX.ShowNotification('This vehicle has no windows.')
-		end
-	else
-		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
-	end
-end)
+
 
 
 
