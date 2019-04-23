@@ -63,6 +63,7 @@
     v = change view
     #pad = air vehicle pitch/yaw 
     x = put your hands up (for arrest)
+    q = get down (under fire)
     
 ## in-game common emotes (hit 't' + [type])
     - sit down: /e groundsit
