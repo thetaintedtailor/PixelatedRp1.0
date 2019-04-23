@@ -310,4 +310,24 @@ end)
 
 -- INDIVIDUAL WINDOWS --
 
+RegisterCommand('window1', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+		local frontLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lf')
+		
+		if frontLeftWindow ~= -1 then
+			if window1Up == true
+				window1Up = false
+				RollDownWindow(vehicle, 0)
+			else
+				window1Up = true
+				RollUpWindow(vehicle, 0)
+			end
+		else
+			ESX.ShowNotification('This vehicle has no front left window.')
+		end
+	else
+		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
+	end
+end)
