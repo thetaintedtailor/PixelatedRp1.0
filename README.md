@@ -21,9 +21,22 @@ The most realistic economic RP on the internet (pegged to the USD)
     ## vehicle speed relation
         .../server-data/resources/scrp_scripts/client/speed_limit-client.lua
         
+
 # Platform & Library Notes
     ## physics & velocity engine reference:
         - https://gtamods.com/wiki/Handling.meta#fInitialDriveMaxFlatVel
+
+
+
+# [cars-police] mapping notes
+    ## view dir .../.server-data/resources/[esx]/esx_policejob/config.lua 
+        - the Config.AuthorizedVehicles -> 'model' and 'label' fields are mapped to 
+          the data (design) file names in 'model' and 'label' in
+           .../server-data/resources/[cars-police]/.../stream/ 
+        
+        example: .../server-data/resources/[cars-police]/pc2/stream/2015polstang.yft
+           - search for '2015polstang' in
+             .../server-data/resources/[esx]/esx_policejob/config.lua
 
 
 # 3rd Party mods (post-install integration)
