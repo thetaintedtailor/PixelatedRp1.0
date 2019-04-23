@@ -28,8 +28,9 @@ Citizen.CreateThread(function()
 	end
 
 	-- load tattoo
---	Citizen.Wait(10000) -- wait for player skin to load, there's probably a trigger you could use instead
-	while not ESX.PlayerLoaded do
+	--Citizen.Wait(10000) -- wait for player skin to load, there's probably a trigger you could use instead
+
+	while not ESX.IsPlayerLoaded do
 		Citizen.Wait(5)
 	end
 
