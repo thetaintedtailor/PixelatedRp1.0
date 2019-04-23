@@ -46,7 +46,7 @@ usage = (":- USAGE examples... \n\n"
          "          - uses custom 'sv_licenseKey' \n"
          "          - uses current IP allocation (0.0.0.0) \n"
          "          - uses default listening port (0.0.0.0:30120) \n"
-         "          - NOTE: '-prod' flag currently disabled \n\n"
+         "          - NOTE: '-prod' flag enabled 042319 \n\n"
          "3) ‘$ python3 runpix.py -zap \n"
          "      - runs server.cfg \n"
          "          - uses no 'sv_licenseKey' var set \n"
@@ -56,7 +56,7 @@ usage = (":- USAGE examples... \n\n"
          "      - '$ python runpix.py -dev' \n"
          "      - '$ python runpix.py -prod' \n"
          "      - '$ python runpix.py -zap' \n"
-         "      - NOTE: '-prod' flag currently disabled \n"
+         "      - NOTE: '-prod' flag currently enabled as of 042319 \n"
          "      - WARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey' \n\n"
          "      - . . . \n\n"
          " exiting... \n"
@@ -81,9 +81,9 @@ if argCnt > 1:
         
         if argv == '-prod':
             print("\n '-prod' flag detected ... setting %s... (%s)" % (strCfgProd,filename))
-            print("\n NOTE: '-prod' flag currently disabled; please use '-dev'")
-            print("\n ... sys.exit()\n\n")
-            sys.exit()
+            #print("\n NOTE: '-prod' flag currently disabled; please use '-dev'")
+            #print("\n ... sys.exit()\n\n")
+            #sys.exit()
             stringConfig = strCfgProd
 
         if argv == '-zap':

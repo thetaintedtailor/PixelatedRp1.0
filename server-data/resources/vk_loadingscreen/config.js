@@ -38,10 +38,13 @@ VK.tips.list = [ // Tips list
 ];
 
 //VK.music.url = "music/nodoubt.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.url = "music/mia.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+//VK.music.url = "music/mia.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "music/imagdrag.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.volume = 0.1; // Music volume (0-1)
-VK.music.title = "Paper Planes - M.I.A"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by h0u53"; // Music submited by... ("NONE" to desactive)
+VK.music.title = "I'm So Sorry - Imagine Dragons"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by DeludedWench(Rori)"; // Music submited by... ("NONE" to desactive)
+//VK.music.title = "Paper Planes - M.I.A"; // Music title ("NONE" to desactive)
+//VK.music.submitedBy = "suggested by h0u53"; // Music submited by... ("NONE" to desactive)
 //VK.music.title = "Hella Good - No Doubt"; // Music title ("NONE" to desactive)
 //VK.music.submitedBy = "suggested by Kat"; // Music submited by... ("NONE" to desactive)
 
