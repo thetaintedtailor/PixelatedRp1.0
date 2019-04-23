@@ -5,6 +5,7 @@ interactionDistance = 3.5 --The radius you have to be in to interact with the ve
 engineoff = false
 saved = false
 controlsave_bool = false
+windowsUp = true
 
 -- E N G I N E --
 IsEngineOn = true
@@ -206,7 +207,7 @@ RegisterNUICallback('door4', function()
 end)
 
 -- ALL WINDOWS --
-local windowsUp = true
+
 RegisterCommand('windows', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
