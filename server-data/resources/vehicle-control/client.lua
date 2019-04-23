@@ -246,19 +246,16 @@ end)
 
 
 -- FRONT WINDOWS --
-
+frontWindowsUp = true
 RegisterCommand('windowsf', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-	local frontWindowsUp = true
+	--local frontWindowsUp = true
     if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
 		local frontLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lf')
 		local frontRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rf')
-		local rearLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lr')
-		local rearRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rr')
-		local frontMiddleWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lm')
-		local rearMiddleWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rm')
+
 		
-		if frontLeftWindow ~= -1 or frontRightWindow ~= -1 or rearLeftWindow ~= -1 or rearRightWindow ~= -1 or frontMiddleWindow ~= -1 or rearMiddleWindow ~= -1 then
+		if frontLeftWindow ~= -1 or frontRightWindow ~= -1 then
 			if frontWindowsUp == true then
 				frontWindowsUp = false
 				RollDownWindow(vehicle, 0)
