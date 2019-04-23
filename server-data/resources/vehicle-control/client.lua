@@ -6,6 +6,7 @@ engineoff = false
 saved = false
 controlsave_bool = false
 windowsUp = true
+frontWindowsUp = true
 
 -- E N G I N E --
 IsEngineOn = true
@@ -106,7 +107,7 @@ RegisterCommand('hood',function()
 end)
 
 
--- OPEN ALL DOORS --
+-- ALL DOORS --
 
 RegisterCommand('carshow', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -246,7 +247,7 @@ end)
 
 
 -- FRONT WINDOWS --
-frontWindowsUp = true
+
 RegisterCommand('windowsf', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 	--local frontWindowsUp = true
