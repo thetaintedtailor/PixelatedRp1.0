@@ -4,10 +4,11 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('esx_tattooshop:requestPlayerTattoos', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	
-	while xPlayer.identifier == nil do
+
+
+	repeat
 		SetTimeout(3500, function()end)
-	end
+	until xPlayer ~= nil
 
 	MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
