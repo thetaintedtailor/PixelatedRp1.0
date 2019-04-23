@@ -44,85 +44,85 @@ Citizen.CreateThread(function()
 		if(GetStreetNameFromHashKey(var1) and GetNameOfZone(pos.x, pos.y, pos.z))then
 			if(zones[GetNameOfZone(pos.x, pos.y, pos.z)] and tostring(GetStreetNameFromHashKey(var1)))then
 				if direction == 'N' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.Config.border_r, Config.Config.border_g, Config.Config.border_b, Config.Config.border_a)
-						drawTxt(x-0.306, y+0.66, 1.0,1.5,1.4, " | ", Config.Config.border_r, Config.Config.border_g, Config.Config.border_b, Config.Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.config.border_r, config.config.border_g, config.config.border_b, config.config.border_a)
+						drawTxt(x-0.306, y+0.66, 1.0,1.5,1.4, " | ", config.config.border_r, config.config.border_g, config.config.border_b, config.config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.285, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.285, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'NE' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.298, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.298, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.277, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.277, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.277, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.277, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-					drawTxt2(x-0.277, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)),Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+					drawTxt2(x-0.277, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)),config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'E' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.309, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.309, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.288, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.288, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.288, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.288, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-					drawTxt2(x-0.288, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+					drawTxt2(x-0.288, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'SE' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.298, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.298, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.275, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.275, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.275, x+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.275, x+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.275, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.275, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'S' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.307, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.307, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.285, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.285, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.285, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'SW' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.292, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.292, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.270, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.270, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.270, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.270, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.270, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.270, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'W' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.303, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.303, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.280, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.280, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.280, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.280, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.280, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.280, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				elseif direction == 'NW' then
-						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.290, y+0.66, 1.0,1.5,1.4, " | ", Config.border_r, Config.border_g, Config.border_b, Config.border_a)
-						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, Config.dir_r, Config.dir_g, Config.dir_b, Config.dir_a)
+						drawTxt(x-0.335, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.290, y+0.66, 1.0,1.5,1.4, " | ", config.border_r, config.border_g, config.border_b, config.border_a)
+						drawTxt(x-0.315, y+0.42, 1.0,1.0,1.0, direction, config.dir_r, config.dir_g, config.dir_b, config.dir_a)
 					if tostring(GetStreetNameFromHashKey(var2)) == "" then
-						drawTxt2(x-0.266, y+0.45, 1.0,1.0,0.45, current_zone, Config.town_r, Config.town_g, Config.town_b, Config.town_a)
+						drawTxt2(x-0.266, y+0.45, 1.0,1.0,0.45, current_zone, config.town_r, config.town_g, config.town_b, config.town_a)
 					else
-						drawTxt2(x-0.266, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], Config.str_around_r, Config.str_around_g, Config.str_around_b, Config.str_around_a)
+						drawTxt2(x-0.266, y+0.45, 1.0,1.0,0.45, tostring(GetStreetNameFromHashKey(var2)) .. ", " .. zones[GetNameOfZone(pos.x, pos.y, pos.z)], config.str_around_r, config.str_around_g, config.str_around_b, config.str_around_a)
 					end
-						drawTxt2(x-0.266, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), Config.curr_street_r, Config.curr_street_g, Config.curr_street_b, Config.curr_street_a)
+						drawTxt2(x-0.266, y+0.42, 1.0,1.0,0.55, tostring(GetStreetNameFromHashKey(var1)), config.curr_street_r, config.curr_street_g, config.curr_street_b, config.curr_street_a)
 				end
 			end
 		end
