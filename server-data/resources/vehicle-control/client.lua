@@ -9,9 +9,9 @@ windowsUp = true
 frontWindowsUp = true
 backWindowsUp = true
 window1Up = true
-window2Up = true
-window3Up = true
-window4Up = true
+--window2Up = true
+--window3Up = true
+--window4Up = true
 
 -- E N G I N E --
 IsEngineOn = true
@@ -317,7 +317,7 @@ RegisterCommand('window1', function()
 		local frontLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lf')
 		
 		if frontLeftWindow ~= -1 then
-			if window1Up == true
+			if window1Up == true then
 				window1Up = false
 				RollDownWindow(vehicle, 0)
 			else
