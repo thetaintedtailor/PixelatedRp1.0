@@ -26,7 +26,9 @@
     
 ### car [car model] | cardel 
     - ex: /car police | police2 | police3 | policet | policeb
-    - ex: /car fbi | fbi2
+    - ex: /car police cruiser | polstang |  srt8police
+    - ex: /car sfbc1 | sfbc2 | sfbc3 | sfbc4 |sfum1 | sfum2
+    - ex: /car fbi | fbi2 | 
     - ex: /car ambulance | ambulance van
     - ex: /car buzzard | buzzard2 | seasparrow | polmav
     - ex: /cardel
