@@ -20,6 +20,7 @@ local CurrentActionMsg			= ''
 local CurrentActionData			= {}
 
 Citizen.CreateThread(function()
+	local model = nil
 	addBlips()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -27,7 +28,11 @@ Citizen.CreateThread(function()
 	end
 
 	-- load tattoo
-	Citizen.Wait(10000) -- wait for player skin to load, there's probably a trigger you could use instead
+--	Citizen.Wait(10000) -- wait for player skin to load, there's probably a trigger you could use instead
+	while not ESX.PlayerLoaded do
+		Citizen.Wait(5)
+	end
+
 	ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
 		for _,k in pairs(tattooList) do
 			ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
@@ -186,7 +191,7 @@ function setPedSkin()
 	ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
 		TriggerEvent('skinchanger:loadSkin', skin)
 	end)
-	
+
 	Citizen.Wait(1000)
 
 	for _,k in pairs(currentTattoos) do
@@ -232,7 +237,7 @@ function drawTattoo(current, collection)
 
 	if(not DoesCamExist(cam)) then
 		cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
-		
+
 		SetCamCoord(cam, GetEntityCoords(GetPlayerPed(-1)))
 		SetCamRot(cam, 0.0, 0.0, 0.0)
 		SetCamActive(cam, true)

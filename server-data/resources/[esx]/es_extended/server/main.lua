@@ -279,7 +279,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 			else
 				sourceXPlayer.removeInventoryItem(itemName, itemCount)
 				targetXPlayer.addInventoryItem   (itemName, itemCount)
-				
+
 				TriggerClientEvent('esx:showNotification', _source, _U('gave_item', itemCount, ESX.Items[itemName].label, targetXPlayer.name))
 				TriggerClientEvent('esx:showNotification', target,  _U('received_item', itemCount, ESX.Items[itemName].label, sourceXPlayer.name))
 			end
