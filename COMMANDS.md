@@ -1,5 +1,5 @@
 # Commands
-## in-game commands
+## in-game commands (parameterized)
 ### > addwl [ hex | dec ] [streamId]
     - ex: /addwl dec 12345678901234567
     
@@ -22,10 +22,7 @@
     - ex: /setjob 1 police 4
     
 ### revive [player-id]
-    - ex: /review 1
-    
-### get current gps position
-    - ex: /getpos
+    - ex: /revive 1
     
 ### car [car model] | cardel 
     - ex: /car police | police2 | police3 | policet | policeb
@@ -36,7 +33,19 @@
     - models listed:
         .../server-data/resources/[esx]/esx_policejob/config.lua
         .../serverstsst-data/resources/[esx]/esx_ambulancejob/config.lua
+        
+## in-game commands (non-parameterized)
+### revive yourself
+    > /revive
 
+### get current gps position
+    > /getpos
+    
+### remove car
+    > /cardel
+
+### show car details
+    > /carshow
 
 ## server CLI commands
 ### > add_principal indentifier.steam:[hex] group.[superadmin|admin]
