@@ -53,6 +53,7 @@
 
 
 ## in-game hot keys
+    f8 = opens running/live CLI output
     f6 = job menu
     f2 = inventory
     home = admin menu
