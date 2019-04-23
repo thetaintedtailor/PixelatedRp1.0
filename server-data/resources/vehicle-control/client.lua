@@ -6,7 +6,8 @@ engineoff = false
 saved = false
 controlsave_bool = false
 windowsUp = true
---frontWindowsUp = true
+frontWindowsUp = true
+backWindowsUp = true
 
 -- E N G I N E --
 IsEngineOn = true
@@ -252,7 +253,7 @@ end)
 
 RegisterCommand('fwindows', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-	local frontWindowsUp = true
+
     if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
 		local frontLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lf')
 		local frontRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rf')
@@ -281,7 +282,7 @@ end)
 
 RegisterCommand('bwindows', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-	local backWindowsUp = true
+	
     if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
 		local rearLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lr')
 		local rearRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rr')
