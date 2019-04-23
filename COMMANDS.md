@@ -53,9 +53,17 @@
 
 
 ## in-game hot keys
+    f12 = screenshot
+    f10 = scoreboard
+    f9 = <unknown>
     f8 = opens running/live CLI output
+    f7 = alternate job menu? ('invoices/fines' for police)
     f6 = job menu
+    f5 = <unknown>
+    f4 = <unknown>
+    f3 = walking style menu
     f2 = inventory
+    f1 = phone
     home = admin menu
         - bringto, goto
     f10 = scoreboard
