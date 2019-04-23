@@ -16,7 +16,7 @@ Disclaimer: we have not developed all of the scripts in this project.
 - Speed limiter with `B`
 - Discord bot (dumpes chat), set the convar `chat_webhook` in server cfg
 - Server restart alert
-- Drift mode! `Numpad 9` to toggle the script and press `Left Shift` to drift
+- Drift mode! `DELETE` to toggle the script and press `Left Shift` to drift
 - Firendly NPCs!
 - Player name validator before letting players in the server
 	- checks if the first and surname starts with a capital letter
