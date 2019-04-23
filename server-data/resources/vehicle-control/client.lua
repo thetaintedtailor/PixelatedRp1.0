@@ -9,9 +9,9 @@ windowsUp = true
 frontWindowsUp = true
 backWindowsUp = true
 window1Up = true
---window2Up = true
---window3Up = true
---window4Up = true
+window2Up = true
+window3Up = true
+window4Up = true
 
 -- E N G I N E --
 IsEngineOn = true
