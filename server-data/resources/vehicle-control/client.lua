@@ -331,3 +331,72 @@ RegisterCommand('window1', function()
 		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
 	end
 end)
+
+
+RegisterCommand('window2', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+		local frontRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rf')
+		
+		if frontRightWindow ~= -1 then
+			if window2Up == true then
+				window2Up = false
+				RollDownWindow(vehicle, 0)
+			else
+				window2Up = true
+				RollUpWindow(vehicle, 0)
+			end
+		else
+			ESX.ShowNotification('This vehicle has no front left window.')
+		end
+	else
+		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
+	end
+end)
+
+
+RegisterCommand('window3', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+		local rearLeftWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_lr')
+		
+		if rearLeftWindow ~= -1 then
+			if window3Up == true then
+				window3Up = false
+				RollDownWindow(vehicle, 0)
+			else
+				window3Up = true
+				RollUpWindow(vehicle, 0)
+			end
+		else
+			ESX.ShowNotification('This vehicle has no front left window.')
+		end
+	else
+		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
+	end
+end)
+
+
+RegisterCommand('window4', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+		local rearRightWindow = GetEntityBoneIndexByName(GetVehiclePedIsIn(GetPlayerPed(-1), false), 'window_rr')
+		
+		if rearRightWindow ~= -1 then
+			if window4Up == true then
+				window4Up = false
+				RollDownWindow(vehicle, 0)
+			else
+				window4Up = true
+				RollUpWindow(vehicle, 0)
+			end
+		else
+			ESX.ShowNotification('This vehicle has no front left window.')
+		end
+	else
+		ESX.ShowNotification('You must be the driver of a vehicle to use this.')
+	end
+end)
