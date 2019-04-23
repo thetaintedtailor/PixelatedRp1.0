@@ -1,5 +1,5 @@
 # Commands
-## in-game commands
+## in-game commands (parameterized)
 ### > addwl [ hex | dec ] [streamId]
     - ex: /addwl dec 12345678901234567
     
@@ -22,21 +22,32 @@
     - ex: /setjob 1 police 4
     
 ### revive [player-id]
-    - ex: /review 1
+    - ex: /revive 1
     
-### get current gps position
-    - ex: /getpos
-    
-### car [car model] | cardel 
-    - ex: /car police | police2 | police3 | policet | policeb
+### car [car model] | cardel
+    - ex: /car police | police2 | police3 | policet | policeb | police cruiser
     - ex: /car fbi | fbi2
     - ex: /car ambulance | ambulance van
     - ex: /car buzzard | buzzard2 | seasparrow | polmav
+    - ex: /car 1200rt (BMWpolicebike) | srt8police [pc1] | 2015polstang (pc2) | srt8police (pc3 - duplicate?)
+    - ex: /car sfbc1 | sfbc2 | sfbc3 | sfbc4 | sfbc5 |sfum1 | sfum2 | sftsu (pp1)
     - ex: /cardel
     - models listed:
         .../server-data/resources/[esx]/esx_policejob/config.lua
         .../serverstsst-data/resources/[esx]/esx_ambulancejob/config.lua
+        
+## in-game commands (non-parameterized)
+### revive yourself
+    > /revive
 
+### get current gps position
+    > /getpos
+    
+### remove car
+    > /cardel
+
+### show car details
+    > /carshow
 
 ## server CLI commands
 ### > add_principal indentifier.steam:[hex] group.[superadmin|admin]
@@ -44,8 +55,17 @@
 
 
 ## in-game hot keys
+    f12 = screenshot
+    f10 = scoreboard
+    f9 = <unknown>
+    f8 = opens running/live CLI output
+    f7 = alternate job menu? ('invoices/fines' for police)
     f6 = job menu
+    f5 = <unknown>
+    f4 = <unknown>
+    f3 = walking style menu
     f2 = inventory
+    f1 = phone
     home = admin menu
         - bringto, goto
     f10 = scoreboard
@@ -53,6 +73,8 @@
     e = action menu (inside colored action sphere)
     v = change view
     #pad = air vehicle pitch/yaw 
+    x = put your hands up (for arrest)
+    q = get down (under fire)
     
 ## in-game common emotes (hit 't' + [type])
     - sit down: /e groundsit
