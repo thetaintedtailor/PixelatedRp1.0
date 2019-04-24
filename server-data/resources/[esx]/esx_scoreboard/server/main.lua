@@ -46,7 +46,7 @@ function AddPlayerToScoreboard(xPlayer, update)
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
 	connectedPlayers[playerId].id = playerId
-	connectedPlayers[playerId].name = xPlayer.getName()
+	connectedPlayers[playerId].name = GetPlayerName(playerId)
 	connectedPlayers[playerId].job = xPlayer.job.name
 
 	if update then
@@ -91,3 +91,18 @@ TriggerEvent('es:addGroupCommand', 'sctoggle', 'admin', function(source, args, u
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = "Toggle ID column on the scoreboard!"})
+
+
+
+function GetCharacterName(source)
+	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
+		['@identifier'] = GetPlayerIdentifiers(source)[1]
+	})
+
+	if result[1] and result[1].firstname and result[1].lastname then
+			return ('%s %s'):format(result[1].firstname, result[1].lastname)
+		end
+	else
+		return GetPlayerName(source)
+	end
+end
