@@ -42,17 +42,11 @@ end)
 
 function AddPlayerToScoreboard(xPlayer, update)
 	local playerId = xPlayer.source
-
-	local identifier = GetPlayerIdentifiers(playerId)[1]
-	local result = MySQL.Sync.fetchAll("SELECT * FROM users WHERE identifier = @identifier", { ['@identifier'] = identifier })
-
-	local firstname = result[1].firstname
-	local lastname = result[1].lastname
-
+	(print(xPlayer))
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
 	connectedPlayers[playerId].id = playerId
-	connectedPlayers[playerId].name = firstname .. " " .. lastname
+	connectedPlayers[playerId].name = xPlayer.name
 	connectedPlayers[playerId].job = xPlayer.job.name
 
 	if update then
