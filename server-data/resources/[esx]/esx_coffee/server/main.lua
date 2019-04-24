@@ -3,8 +3,7 @@ local ItemsLabels = {}
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-AddEventHandler('onMySQLReady', function()
-
+MySQL.ready(function()
 	MySQL.Async.fetchAll(
 		'SELECT * FROM items',
 		{},
@@ -12,7 +11,7 @@ AddEventHandler('onMySQLReady', function()
 
 			for i=1, #result, 1 do
 				ItemsLabels[result[i].name] = result[i].label
-			end--
+			end
 
 		end
 	)
