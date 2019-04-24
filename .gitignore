@@ -7,7 +7,7 @@
 *.xcworkspace
 
 # ignore large file types
-stream/
+
 
 
 
