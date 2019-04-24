@@ -26,28 +26,32 @@ function OpenCoffeeMenu(zone)
 	local elements = {}
 	for i=1, #Config.Zones[zone].Items, 1 do
 		local item = Config.Zones[zone].Items[i]
+		
 		table.insert(elements, {
 			label     = item.label .. ' - $' .. item.price .. ' ',
-			realLabel = item.label,
-			value     = item.name,
+			label_real = item.label,
+			item      = item.name,
 			price     = item.price
+			
+			-- menu properties
+			value      = 1,
+			type       = 'slider',
+			min        = 1,
+			max        = item.limit
 		})
 
 	end
 
 
 	ESX.UI.Menu.CloseAll()
-
 	ESX.UI.Menu.Open(
 		'default', GetCurrentResourceName(), 'coffee', {
 			title  = _U('coffee'),
+			align = 'bottom-right',
 			elements = elements
-		},
-		function(data, menu)
+		}, function(data, menu)
 			TriggerServerEvent('esx_coffee:buyItem', data.current.value, data.current.price)
-		end,
-		function(data, menu)
-
+		end, function(data, menu)
 			menu.close()
 
 			CurrentAction     = 'coffee_menu'
