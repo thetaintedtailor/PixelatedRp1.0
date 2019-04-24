@@ -76,7 +76,7 @@ Config.Hospitals = {
 		FastTravels = {
 			{
 				From = vector3(360.1, -585.0, 27.7),
-				To = { coords = vector3(336.9, -591.4, 43.3), heading = 67.3 },
+				To = { coords = vector3(300.74, -597.94, 42.4), heading = 289.86 },
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = false }
 			},
 
