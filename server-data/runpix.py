@@ -53,6 +53,10 @@ usage = (":- USAGE examples...                          \n\n"
          "              > ctl+b , d                                                   \n"
          "          # KILL current session (this will shutdown the fivem server)      \n"
          "              > ctl+d                                                     \n\n"
+         "1b) ‘$ python3 runpix.py -fivem-kill'                                   \n"
+         "      - kill (shutdown) the current 'fivem' server session              \n"
+         "           (runs: '$ tmux kill-ses -t fivem')                           \n"
+         "      - NOTE: can also kill with hot key controls (above)             \n\n"
          "2) ‘$ python3 runpix.py -dev \n"
          "      - runs dev_server.cfg \n"
          "          - uses custom 'sv_licenseKey' \n"
@@ -105,6 +109,13 @@ if argCnt > 1:
             print('\n  DONE Checking CLI flags... and attempting to join tmux fivem session')
             runSubprocess(['tmux', 'a', '-t', 'fivem'])
             sys.exit()
+        
+        if argv == '-fivem-kill':
+            print("\n '-fivem-kill' flag detected ... killing tmux session 'fivem' ... (%s)" % (filename,))
+            print('\n  DONE Checking CLI flags... and attempting to kill tmux fivem session')
+            runSubprocess(['tmux', 'kill-ses', '-t', 'fivem'])
+            sys.exit()
+
 
         if argv == '-dev':
             print("\n '-dev' flag detected ... setting %s... (%s)" % (strCfgDev,filename))
