@@ -46,7 +46,7 @@ function OpenCoffeeMenu(zone)
 	ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open(
 		'default', GetCurrentResourceName(), 'coffee', {
-			title  = _U('coffee'),
+			title  = ('coffee machine'),
 			align = 'bottom-right',
 			elements = elements
 		}, function(data, menu)
