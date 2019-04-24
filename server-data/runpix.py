@@ -35,27 +35,46 @@ def readCliArgs():
 
 print("\n FUNCTIONS declared:- STARTING -> additional '%s' run scripts (if applicable) . . . " % filename)
 
-usage = (":- USAGE examples... \n\n"
-         "1) ‘$ python3 runpix.py -dev \n"
+usage = (":- USAGE examples...                          \n\n"
+         " *** IMPORT ***                               \n\n"
+         "  must run from /srv/<project>/server-data/   \n\n"
+         " *** IMPORT ***                               \n\n"
+         "1) ‘$ python3 runpix.py -fivem'                 \n"
+         "      - runs tmux (terminal multiplexar) for maintainig fivem PID after ssh HUP/disconnect \n"
+         "          - after tmux terminal is launched, then run...                \n"
+         "          -  '$ python3 runpix.py -dev|prod'                          \n\n"
+         "1a) ‘$ python3 runpix.py -fivem-join'                                   \n"
+         "      - re-join (attach) to current 'fivem' session                     \n"
+         "           (runs: '$ tmux a -t fivem')                                  \n"
+         "      - utilized for reviewing live logs, hot-resets, etc.            \n\n"
+         "      ## tmux HOT KEYs (controls) ##                                        \n"
+         "      # cheat-sheet-ref: https://tmuxcheatsheet.com                         \n"
+         "          # detach (leave) current session                                  \n"
+         "              > ctl+b , d                                                   \n"
+         "          # KILL current session (this will shutdown the fivem server)      \n"
+         "              > ctl+d                                                     \n\n"
+         "2) ‘$ python3 runpix.py -dev \n"
          "      - runs dev_server.cfg \n"
          "          - uses custom 'sv_licenseKey' \n"
          "          - uses current IP allocation (0.0.0.0) \n"
          "          - uses default listening port (0.0.0.0:30120) \n\n"
-         "2) ‘$ python3 runpix.py -prod \n"
+         "3) ‘$ python3 runpix.py -prod \n"
          "      - runs server.cfg \n"
          "          - uses custom 'sv_licenseKey' \n"
          "          - uses current IP allocation (0.0.0.0) \n"
          "          - uses default listening port (0.0.0.0:30120) \n"
          "          - NOTE: '-prod' flag enabled 042319 \n\n"
-         "3) ‘$ python3 runpix.py -zap \n"
+         "4) ‘$ python3 runpix.py -zap \n"
          "      - runs server.cfg \n"
          "          - uses no 'sv_licenseKey' var set \n"
          "          - uses dynamic zap IP:port assisgnment (last 185.249.196.40:32070) \n"
          "          - WARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey' \n\n"
-         "4) examples... \n"
-         "      - '$ python runpix.py -dev' \n"
-         "      - '$ python runpix.py -prod' \n"
-         "      - '$ python runpix.py -zap' \n"
+         "5) examples... \n"
+         "      - '$ python runpix.py -fivem'   \n"
+         "      - '$ python runpix.py -fivem-join'   \n"
+         "      - '$ python runpix.py -dev'     \n"
+         "      - '$ python runpix.py -prod'    \n"
+         "      - '$ python runpix.py -zap'     \n"
          "      - NOTE: '-prod' flag currently enabled as of 042319 \n"
          "      - WARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey' \n\n"
          "      - . . . \n\n"
@@ -75,15 +94,24 @@ if argCnt > 1:
             print("\n ... sys.exit()\n\n")
             sys.exit()
 
+        if argv == '-fivem':
+            print("\n '-fivem' flag detected ... starting tmux session 'fivem' ... (%s)" % (filename,))
+            print('\n  DONE Checking CLI flags... and launched tmux fivem session')
+            runSubprocess(['tmux', 'new', '-s', 'fivem'])
+            sys.exit()
+
+        if argv == '-fivem-join':
+            print("\n '-fivem-join' flag detected ... joining tmux session 'fivem' ... (%s)" % (filename,))
+            print('\n  DONE Checking CLI flags... and attempting to join tmux fivem session')
+            runSubprocess(['tmux', 'a', '-t', 'fivem'])
+            sys.exit()
+
         if argv == '-dev':
             print("\n '-dev' flag detected ... setting %s... (%s)" % (strCfgDev,filename))
             stringConfig = strCfgDev
         
         if argv == '-prod':
             print("\n '-prod' flag detected ... setting %s... (%s)" % (strCfgProd,filename))
-            #print("\n NOTE: '-prod' flag currently disabled; please use '-dev'")
-            #print("\n ... sys.exit()\n\n")
-            #sys.exit()
             stringConfig = strCfgProd
 
         if argv == '-zap':
@@ -92,6 +120,10 @@ if argCnt > 1:
             stringConfig = strCfgProd
 
     print('\n  DONE Checking CLI flags...')
+    
+    ## attempting to execut tmux and launch fivem in one command (not working yet)
+    #strTmuxRun = "'%s +exec %s'" % (strPath,stringConfig)
+    #runSubprocess(['tmux', 'new', '-s', 'fivem', '-d', strTmuxRun])
     runSubprocess([strPath, '+exec', stringConfig])
     sys.exit()
 else:
