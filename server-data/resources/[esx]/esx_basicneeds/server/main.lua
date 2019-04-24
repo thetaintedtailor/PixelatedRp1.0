@@ -27,9 +27,21 @@ ESX.RegisterUsableItem('coffee', function(source)
 
 	xPlayer.removeInventoryItem('coffee', 1)
 
-	TriggerClientEvent('esx_status:add', source, 'thirst', 200000)
+	TriggerClientEvent('esx_status:add', source, 'thirst', 210000)
 	TriggerClientEvent('esx_basicneeds:onDrinkCoffee', source)
 	TriggerClientEvent('esx:showNotification', source, _U('used_coffee'))
+
+end)
+
+ESX.RegisterUsableItem('tea', function(source)
+
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	xPlayer.removeInventoryItem('coffee', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 210000)
+	TriggerClientEvent('esx_basicneeds:onDrinkTea', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_tea'))
 
 end)
 
