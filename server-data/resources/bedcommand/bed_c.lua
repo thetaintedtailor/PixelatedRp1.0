@@ -1,7 +1,7 @@
 bedNames = { 'v_med_bed1', 'v_med_bed2'} -- Add more model strings here if you'd like
 bedHashes = {}
-animDict = 'missfbi5ig_0'
-animName = 'lyinginpain_loop_steve'
+animDict = 'misslamar1dead_body'
+animName = 'dead_idle'
 isOnBed = false
 
 CreateThread(function()
