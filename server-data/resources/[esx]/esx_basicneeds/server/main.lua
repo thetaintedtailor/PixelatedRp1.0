@@ -22,14 +22,37 @@ ESX.RegisterUsableItem('water', function(source)
 	TriggerClientEvent('esx:showNotification', source, _U('used_water'))
 end)
 
+ESX.RegisterUsableItem('coffee', function(source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	xPlayer.removeInventoryItem('coffee', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 210000)
+	TriggerClientEvent('esx_basicneeds:onDrinkCoffee', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_coffee'))
+
+end)
+
+ESX.RegisterUsableItem('tea', function(source)
+
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	xPlayer.removeInventoryItem('coffee', 1)
+
+	TriggerClientEvent('esx_status:add', source, 'thirst', 210000)
+	TriggerClientEvent('esx_basicneeds:onDrinkTea', source)
+	TriggerClientEvent('esx:showNotification', source, _U('used_tea'))
+
+end)
+
 TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 	-- heal another player - don't heal source
 	if args[1] then
 		local target = tonumber(args[1])
-		
+
 		-- is the argument a number?
 		if target ~= nil then
-			
+
 			-- is the number a valid player?
 			if GetPlayerName(target) then
 				print('esx_basicneeds: ' .. GetPlayerName(source) .. ' is healing a player!')
