@@ -10,54 +10,56 @@ Citizen.CreateThread(function()
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
 	end
-	
-	Citizen.Wait(5000)
-	
+end)
+
+AddEventHandler('onClientMapStart', function()
+
 	ESX.TriggerServerCallback('esx_coffee:requestDBItems', function(CoffeeItems)
 		for k,v in pairs(CoffeeItems) do
 			Config.Zones[k].Items = v
 		end
 	end)
+
 end)
 
-
-
 function OpenCoffeeMenu(zone)
+
 	local elements = {}
+
 	for i=1, #Config.Zones[zone].Items, 1 do
+
 		local item = Config.Zones[zone].Items[i]
-		
+
 		table.insert(elements, {
 			label     = item.label .. ' - $' .. item.price .. ' ',
-			label_real = item.label,
-			item      = item.name,
+			realLabel = item.label,
+			value     = item.name,
 			price     = item.price
-			
-			-- menu properties
-			value      = 1,
-			type       = 'slider',
-			min        = 1,
-			max        = item.limit
 		})
 
 	end
 
 
 	ESX.UI.Menu.CloseAll()
+
 	ESX.UI.Menu.Open(
-		'default', GetCurrentResourceName(), 'coffee', {
-			title  = ('coffee machine'),
-			align = 'bottom-right',
+		'default', GetCurrentResourceName(), 'coffee',
+		{
+			title  = _U('coffee'),
 			elements = elements
-		}, function(data, menu)
+		},
+		function(data, menu)
 			TriggerServerEvent('esx_coffee:buyItem', data.current.value, data.current.price)
-		end, function(data, menu)
+		end,
+		function(data, menu)
+
 			menu.close()
 
 			CurrentAction     = 'coffee_menu'
 			CurrentActionMsg  = _U('press_menu')
 			CurrentActionData = {zone = zone}
-		end)
+		end
+	)
 end
 
 AddEventHandler('esx_coffee:hasEnteredMarker', function(zone)
@@ -75,6 +77,22 @@ AddEventHandler('esx_coffee:hasExitedMarker', function(zone)
 
 end)
 
+-- Create Blips
+--Citizen.CreateThread(function()
+	--for k,v in pairs(Config.Zones) do
+  	--for i = 1, #v.Pos, 1 do
+		--local blip = AddBlipForCoord(v.Pos[i].x, v.Pos[i].y, v.Pos[i].z)
+		--SetBlipSprite (blip, 52)
+		--SetBlipDisplay(blip, 4)
+		--SetBlipScale  (blip, 1.0)
+		--SetBlipColour (blip, 2)
+		--SetBlipAsShortRange(blip, true)
+		--BeginTextCommandSetBlipName("STRING")
+		--AddTextComponentString(_U('coffees'))
+		--EndTextCommandSetBlipName(blip)
+		--end
+	--end
+--end)
 
 -- Display markers
 Citizen.CreateThread(function()
