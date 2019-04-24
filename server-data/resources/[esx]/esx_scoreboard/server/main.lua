@@ -42,8 +42,7 @@ end)
 
 function AddPlayerToScoreboard(xPlayer, update)
 	local playerId = xPlayer.source
-	local rpName = nil
-	if Config.EnableESXIdentity then rpName = GetCharacterName(playerId) end
+	local rpName = GetCharacterName(playerId)
 
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
