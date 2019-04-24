@@ -84,23 +84,20 @@ Config.Hospitals = {
 				From = vector3(298.801, -598.8, 42.2),
 				To = { coords = vector3(356.2, -597.1, 28.8), heading = 253.5 },
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = false }
+			},
+			{
+				From = vector3(325.21, -598.68, 42.3),
+				To = { coords = vector3(339.9, -586.7, 74.2), heading = 249.1 },
+				Marker = { type = 34, x = 1.0, y = 1.0, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = true },
+			},
+			{
+				From = vector3(339.3, -583.9, 74.2),
+				To = { coords = vector3(325.30, -596.97, 42.4), heading = 340.42 },
+				Marker = { type = 42, x = 1.0, y = 1.0, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = true },
 			}
 		},
 
 		FastTravelsPrompt = {
-			{
-				From = vector3(319.7, -579.9, 43.3),
-				To = { coords = vector3(339.9, -586.7, 74.2), heading = 249.1 },
-				Marker = { type = 34, x = 1.0, y = 1.0, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = true },
-				Prompt = 'Press ~INPUT_CONTEXT~ to fast travel to the roof.'
-			},
-
-			{
-				From = vector3(339.3, -583.9, 74.2),
-				To = { coords = vector3(320.2, -577.1, 43.3), heading = 255.1 },
-				Marker = { type = 42, x = 1.0, y = 1.0, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = true },
-				Prompt = 'Press ~INPUT_CONTEXT~ to fast travel to the hospital.'
-			}
 		}
 	}
 }
