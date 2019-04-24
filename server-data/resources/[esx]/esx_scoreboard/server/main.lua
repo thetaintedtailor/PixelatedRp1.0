@@ -101,7 +101,6 @@ function GetCharacterName(source)
 
 	if result[1] and result[1].firstname and result[1].lastname then
 			return ('%s %s'):format(result[1].firstname, result[1].lastname)
-		end
 	else
 		return GetPlayerName(source)
 	end
