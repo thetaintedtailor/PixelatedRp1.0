@@ -41,11 +41,11 @@ Config.Hospitals = {
 		},
 
 		AmbulanceActions = {
-			vector3(325.0, -580.5, 42.3)
+			vector3(310.4, -599.1, 42.3)
 		},
 
 		Pharmacies = {
-			vector3(310.4, -599.1, 42.3)
+			vector3(325.0, -580.5, 42.3)
 		},
 
 		Vehicles = {
