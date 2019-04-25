@@ -1364,6 +1364,19 @@ RegisterCommand("testanim",function(source, args)
 end, false)
 
 
+RegisterCommand("testanim2",function(source, args)
+
+	local ad = "amb@world_human_aa_coffee@base" --- insert the animation dic here
+	local anim = "base" --- insert the animation name here
+	local player = PlayerPedId()
+	
+
+	if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+		GiveWeaponToPed(player, 0x34A67B97, 1, false, true);    
+	end
+end, false)
+
+
 ----------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ functions -----------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
