@@ -738,14 +738,14 @@ AddEventHandler('esx_drugs:GetUserInventory', function(currentZone)
 end)
 
 -- Register Usable Item
-ESX.RegisterUsableItem('weed', function(source)
+--ESX.RegisterUsableItem('weed', function(source)
 
-	local _source = source
-	local xPlayer  = ESX.GetPlayerFromId(source)
+	--local _source = source
+	--local xPlayer  = ESX.GetPlayerFromId(source)
 
-	xPlayer.removeInventoryItem('weed', 1)
+	--xPlayer.removeInventoryItem('weed', 1)
 
-	TriggerClientEvent('esx_drugs:onPot', _source)
-    TriggerClientEvent('esx:showNotification', _source, _U('used_one_weed'))
+	--TriggerClientEvent('esx_drugs:onPot', _source)
+    --TriggerClientEvent('esx:showNotification', _source, _U('used_one_weed'))
 
-end)
+--end)
