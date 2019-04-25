@@ -186,7 +186,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.3)
+    SetRunSprintMultiplierForPlayer(player, 1.9)
         
     Wait(300000)
 
