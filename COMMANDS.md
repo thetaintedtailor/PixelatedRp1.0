@@ -32,6 +32,7 @@
     - ex: /car 1200rt (BMWpolicebike) | srt8police [pc1] | 2015polstang (pc2) | srt8police (pc3 - duplicate?)
     - ex: /car sfbc1 | sfbc2 | sfbc3 | sfbc4 | sfbc5 |sfum1 | sfum2 | sftsu (pp1)
     - ex: /car titan | cargoplane 
+    - ex: /car rhino | ruiner2 | thruster
     - ex: /cardel
     - models listed:
         .../server-data/resources/[esx]/esx_policejob/config.lua
