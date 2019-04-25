@@ -11,7 +11,8 @@ CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
+RegisterCommand('bed', function()
+    Citizen.CreateThread(function()
         local playerPed = PlayerPedId()
         if isOnBed then
             ClearPedTasksImmediately(playerPed)
@@ -19,8 +20,8 @@ Citizen.CreateThread(function()
             return
         end
 
-	if (GetLastInputMethod(2) and IsControlJustPressed(1, 38) and IsControlPressed(1, 21)) and not IsPedInAnyVehicle(playerPed, true) then
         local playerPos = GetEntityCoords(playerPed, true)
+
         local bed = nil
 
         for k,v in ipairs(bedHashes) do
@@ -42,8 +43,8 @@ Citizen.CreateThread(function()
 
             isOnBed = true
         end
-	end
-end)
+    end)
+end, false)
 
 
 RegisterCommand('end', function()

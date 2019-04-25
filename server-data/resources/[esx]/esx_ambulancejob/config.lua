@@ -27,7 +27,7 @@ Config.RemoveItemsAfterRPDeath    = false
 Config.EarlyRespawnFine           = false
 Config.EarlyRespawnFineAmount     = 5000
 
-Config.RespawnPoint = { coords = vector3(341.07, -1397.31, 32.51), heading = 48.5 }
+Config.RespawnPoint = { coords = vector3(283.89, -578.62, 42.5), heading = 65.66 }
 
 Config.Hospitals = {
 	
@@ -82,7 +82,7 @@ Config.Hospitals = {
 
 			{
 				From = vector3(298.801, -598.8, 42.2),
-				To = { coords = vector3(356.2, -597.1, 28.8), heading = 253.5 },
+				To = { coords = vector3(356.2, -597.1, 27.9), heading = 253.5 },
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 189, g = 207, b = 237, a = 100, rotate = false }
 			},
 			{
