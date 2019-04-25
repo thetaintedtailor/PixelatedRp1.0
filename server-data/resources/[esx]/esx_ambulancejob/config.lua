@@ -91,7 +91,7 @@ Config.Hospitals = {
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = false }
 			},
 			{
-				From = vector3(339.3, -583.9, 74.2),
+				From = vector3(339.3, -583.9, 73.2),
 				To = { coords = vector3(325.30, -596.97, 42.4), heading = 340.42 },
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 102, g = 0, b = 102, a = 100, rotate = false }
 			}
