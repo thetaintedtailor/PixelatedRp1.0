@@ -181,12 +181,12 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_injured_generic", true)
+    SetPedMovementClipset(playerPed, "move_injured_generic", false)
     SetPedIsDrunk(playerPed, true)
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.9)
+    SetRunSprintMultiplierForPlayer(player, 3.0)
         
     Wait(300000)
 
