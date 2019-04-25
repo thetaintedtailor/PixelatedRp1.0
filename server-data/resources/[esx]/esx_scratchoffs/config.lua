@@ -1,7 +1,7 @@
 Config = {}
 
 -- Should a used scratchoff ticket be dispensed after use
-Config.GiveUsedScratchoffAfterUse = true
+Config.GiveUsedScratchoffAfterUse = false
 
 -- The chance of winning. By default this is set to 2 (1 in 2 chance of winning).
 -- In order to determine a winner the system picks a number between 1 and
