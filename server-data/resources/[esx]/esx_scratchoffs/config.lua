@@ -10,7 +10,7 @@ Config.GiveUsedScratchoffAfterUse = false
 Config.OneInChanceOfWinning = 15
 
 -- The minimum amount of a winning ticket
-Config.WinningAmountMinimum = 5
+Config.WinningAmountMinimum = 10
 
 -- The maximum amount of a winning ticket
-Config.WinningAmountMaximum = 100
+Config.WinningAmountMaximum = 500
