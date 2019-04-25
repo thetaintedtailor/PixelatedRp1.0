@@ -171,10 +171,10 @@ AddEventHandler('esx_drugeffects:onMeth', function()
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
 
-        RequestAnimSet("move_injured_generic") 
-    while not HasAnimSetLoaded("move_injured_generic") do
-      Citizen.Wait(0)
-    end    
+  --    RequestAnimSet("move_injured_generic") 
+   -- while not HasAnimSetLoaded("move_injured_generic") do
+    --  Citizen.Wait(0)
+    --end    
 
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
@@ -187,7 +187,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
    --Efects
     local player = PlayerId()  
     SetRunSprintMultiplierForPlayer(player, 3.0)
-        
+
     Wait(300000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)	
