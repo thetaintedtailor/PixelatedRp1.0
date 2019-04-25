@@ -7,10 +7,10 @@ Config.GiveUsedScratchoffAfterUse = false
 -- In order to determine a winner the system picks a number between 1 and
 -- Config.WinningOdds. If the matching number is a 1 then it is considered a
 -- winning ticket. By default a value of "2" gives a 50% chance to win.
-Config.OneInChanceOfWinning = 15
+Config.OneInChanceOfWinning = 8
 
 -- The minimum amount of a winning ticket
-Config.WinningAmountMinimum = 10
+Config.WinningAmountMinimum = 15
 
 -- The maximum amount of a winning ticket
 Config.WinningAmountMaximum = 500
