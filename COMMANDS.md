@@ -28,7 +28,7 @@
     - ex: /car police | police2 | police3 | policet | policeb | police cruiser
     - ex: /car fbi | fbi2
     - ex: /car ambulance | ambulance van
-    - ex: /car buzzard | buzzard2 | seasparrow | polmav
+    - ex: /car buzzard | buzzard2 | seasparrow | polmav / maverick
     - ex: /car 1200rt (BMWpolicebike) | srt8police [pc1] | 2015polstang (pc2) | srt8police (pc3 - duplicate?)
     - ex: /car sfbc1 | sfbc2 | sfbc3 | sfbc4 | sfbc5 |sfum1 | sfum2 | sftsu (pp1)
     - ex: /car titan | cargoplane 
@@ -37,8 +37,11 @@
         .../server-data/resources/[esx]/esx_policejob/config.lua
         .../serverstsst-data/resources/[esx]/esx_ambulancejob/config.lua
         
-## spawning ref: https://wiki.gtanet.work/index.php?title=Peds
 
+## spawning ref: https://wiki.gtanet.work/index.php?title=Peds
+    - hookers: /spawnped 42647445
+    - whales: /spawnped -1920284487
+    - dogs (small): /spawnped -1384627013
 ## in-game commands (non-parameterized)
 ### revive yourself
     > /revive
