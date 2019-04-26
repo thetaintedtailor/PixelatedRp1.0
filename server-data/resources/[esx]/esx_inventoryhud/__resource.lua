@@ -127,4 +127,5 @@ files {
     'html/img/items/wood.png',
     'html/img/items/wool.png',
     'html/img/items/alive_chicken.png',
+    'html/img/items/scratchoff.png',
 }
