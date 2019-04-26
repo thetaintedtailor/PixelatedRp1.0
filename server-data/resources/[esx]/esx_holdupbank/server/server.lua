@@ -57,10 +57,13 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 
 		if rob == false then
 		   
-		  if xPlayer.getInventoryItem('drill').count >= 1 then
-		     xPlayer.removeInventoryItem('drill', 1)
+		 -- if xPlayer.getInventoryItem('drill').count >= 1 then
+		   --  xPlayer.removeInventoryItem('drill', 1)
 
-			if(cops >= Config.NumberOfCopsRequired)then
+			if(cops >= Config.NumberOfCopsRequired)then 
+
+				if xPlayer.getInventoryItem('drill').count >= 1 then
+					xPlayer.removeInventoryItem('drill', 1)
 
 				rob = true
 				for i=1, #xPlayers, 1 do
