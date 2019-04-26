@@ -563,31 +563,31 @@ Citizen.CreateThread(function()
 			local rpmfuelusage = 0
 
 			if rpm > 0.9 then
-				rpmfuelusage = fuel - rpm / 0.8
+				rpmfuelusage = fuel - rpm / 0.4
 				Citizen.Wait(1000)
 			elseif rpm > 0.8 then
-				rpmfuelusage = fuel - rpm / 1.1
+				rpmfuelusage = fuel - rpm / 0.6
 				Citizen.Wait(1500)
 			elseif rpm > 0.7 then
-				rpmfuelusage = fuel - rpm / 2.2
+				rpmfuelusage = fuel - rpm / 0.8
 				Citizen.Wait(2000)
 			elseif rpm > 0.6 then
-				rpmfuelusage = fuel - rpm / 3.0
+				rpmfuelusage = fuel - rpm / 1.0
 				Citizen.Wait(3000)
 			elseif rpm > 0.5 then
-				rpmfuelusage = fuel - rpm / 3.2
+				rpmfuelusage = fuel - rpm / 1.2
 				Citizen.Wait(4000)
 			elseif rpm > 0.4 then
-				rpmfuelusage = fuel - rpm / 3.4
+				rpmfuelusage = fuel - rpm / 1.4
 				Citizen.Wait(5000)
 			elseif rpm > 0.3 then
-				rpmfuelusage = fuel - rpm / 3.6
+				rpmfuelusage = fuel - rpm / 1.6
 				Citizen.Wait(6000)
 			elseif rpm > 0.2 then
-				rpmfuelusage = fuel - rpm / 3.8
+				rpmfuelusage = fuel - rpm / 1.8
 				Citizen.Wait(8000)
 			else
-				rpmfuelusage = fuel - rpm / 4.0
+				rpmfuelusage = fuel - rpm / 2.0
 				Citizen.Wait(15000)
 			end
 
