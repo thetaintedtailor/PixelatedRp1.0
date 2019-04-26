@@ -1,7 +1,7 @@
 Config = {}
 Config.Locale = 'en'
 
-Config.RequiredCopsRob = 0
+Config.RequiredCopsRob = 4
 Config.RequiredCopsSell = 0
 
 Stores = {
