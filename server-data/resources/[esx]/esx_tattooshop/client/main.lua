@@ -28,14 +28,11 @@ Citizen.CreateThread(function()
 	end
 
 	-- load tattoo
---	Citizen.Wait(10000) -- wait for player skin to load, there's probably a trigger you could use instead
-end)
-
-
-AddEventHandler('playerSpawned', function()
+	--Citizen.Wait(15000) -- wait for player skin to load, there's probably a trigger you could use instead
 	while not ESX.PlayerLoaded do
 		Citizen.Wait(1)
 	end
+
 	ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
 		for _,k in pairs(tattooList) do
 			ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
