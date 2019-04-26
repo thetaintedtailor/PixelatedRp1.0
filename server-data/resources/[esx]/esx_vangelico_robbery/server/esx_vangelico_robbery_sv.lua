@@ -97,7 +97,7 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 				Stores[robb].lastrobbed = os.time()
 			else
 				TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
-				TriggerClientEvent('esx:showNotification', source, _U('min_two_police'))
+				TriggerClientEvent('esx:showNotification', source, _U('min_four_police'))
 			end
 		else
 			TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
