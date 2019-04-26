@@ -29,19 +29,19 @@ Citizen.CreateThread(function()
 
 	-- load tattoo
 	--Citizen.Wait(15000) -- wait for player skin to load, there's probably a trigger you could use instead
-
-end)
-
---RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function()
+	while xPlayer == nil do
+		Citizen.Wait(1)
+	end
+	
 	ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
 		for _,k in pairs(tattooList) do
 			ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
 		end
 		currentTattoos = tattooList
 	end)
-
 end)
+
+
 
 
 function OpenShopMenu()
