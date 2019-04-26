@@ -18,6 +18,7 @@ local LastZone					= nil
 local CurrentAction				= nil
 local CurrentActionMsg			= ''
 local CurrentActionData			= {}
+local PlayerLoaded   = false
 
 Citizen.CreateThread(function()
 	local model = nil
@@ -29,19 +30,35 @@ Citizen.CreateThread(function()
 
 	-- load tattoo
 	--Citizen.Wait(15000) -- wait for player skin to load, there's probably a trigger you could use instead
-	while xPlayer == nil do
-		Citizen.Wait(1)
-	end
-	
-	ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
-		for _,k in pairs(tattooList) do
-			ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
+
+end)
+
+AddEventHandler('playerSpawned', function()
+	Citizen.CreateThread(function()
+		while not PlayerLoaded do
+			Citizen.Wait(10)
 		end
-		currentTattoos = tattooList
+
+		ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
+			for _,k in pairs(tattooList) do
+				ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
+			end
+			currentTattoos = tattooList
+		end)
+
 	end)
 end)
 
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+	PlayerLoaded = true
 
+	TriggerEvent('chat:addMessage', {
+  	color = { 255, 0, 0},
+  	multiline = true,
+  	args = {"Me", "Please be careful to not step on too many snails!"}
+	})
+end)
 
 
 function OpenShopMenu()
