@@ -28,9 +28,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	end
 
-	-- load tattoo
-	--Citizen.Wait(15000) -- wait for player skin to load, there's probably a trigger you could use instead
-
+	TriggerEvent('playerSpawned')
 end)
 
 AddEventHandler('playerSpawned', function()
