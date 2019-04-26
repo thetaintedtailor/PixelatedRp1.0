@@ -59,7 +59,7 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 
 		local store = Stores[robb]
 
-		if (os.time() - store.lastrobbed) < 600 and store.lastrobbed ~= 0 then
+		if (os.time() - store.lastrobbed) < 14400 and store.lastrobbed ~= 0 then
 
             TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
 			TriggerClientEvent('esx:showNotification', source, _U('already_robbed') .. (1800 - (os.time() - store.lastrobbed)) .. _U('seconds'))
@@ -97,7 +97,7 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 				Stores[robb].lastrobbed = os.time()
 			else
 				TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
-				TriggerClientEvent('esx:showNotification', source, _U('min_two_police'))
+				TriggerClientEvent('esx:showNotification', source, _U('min_four_police'))
 			end
 		else
 			TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
