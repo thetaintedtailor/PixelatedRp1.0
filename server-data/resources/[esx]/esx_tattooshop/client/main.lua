@@ -43,12 +43,6 @@ AddEventHandler('playerSpawned', function()
 				ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
 			end
 			currentTattoos = tattooList
-
-			TriggerEvent('chat:addMessage', {
-				color = { 255, 0, 0},
-				multiline = true,
-				args = {"Me", "Please be careful to not step on too many snails!"}
-			})
 		end)
 
 	end)
