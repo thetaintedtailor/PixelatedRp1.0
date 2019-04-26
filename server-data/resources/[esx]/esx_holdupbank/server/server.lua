@@ -105,7 +105,7 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 			else
 				TriggerClientEvent('esx:showNotification', source, _U('min_two_police'))
 			end
-			
+		end
 		else
 			TriggerClientEvent('esx:showNotification', source, _U('robbery_already'))
 		end
