@@ -103,7 +103,7 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 					end
 				end)
 			else
-				TriggerClientEvent('esx:showNotification', source, _U('min_two_police') .. Config.NumberOfCopsRequired)
+				TriggerClientEvent('esx:showNotification', source, _U('min_two_police'))
 			end
 		end
 		else
