@@ -39,6 +39,12 @@ AddEventHandler('playerSpawned', function()
 			Citizen.Wait(10)
 		end
 
+		TriggerEvent('chat:addMessage', {
+	  	color = { 255, 0, 0},
+	  	multiline = true,
+	  	args = {"Me", "Please be careful to not step on too many snails!"}
+		})
+
 		ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
 			for _,k in pairs(tattooList) do
 				ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
@@ -53,11 +59,6 @@ RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	PlayerLoaded = true
 
-	TriggerEvent('chat:addMessage', {
-  	color = { 255, 0, 0},
-  	multiline = true,
-  	args = {"Me", "Please be careful to not step on too many snails!"}
-	})
 end)
 
 
