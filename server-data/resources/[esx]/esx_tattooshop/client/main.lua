@@ -32,8 +32,8 @@ Citizen.CreateThread(function()
 
 end)
 
-TriggerEvent('esx:playerLoaded', xPlayer)
-AddEventHandler('esx:playerLoader', function(xPlayer)
+--RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function()
 	ESX.TriggerServerCallback('esx_tattooshop:requestPlayerTattoos', function(tattooList)
 		for _,k in pairs(tattooList) do
 			ApplyPedOverlay(GetPlayerPed(-1), GetHashKey(k.collection), GetHashKey(Config.TattooList[k.collection][k.texture].nameHash))
