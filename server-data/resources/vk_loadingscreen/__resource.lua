@@ -6,6 +6,7 @@ files {
     'music/nodoubt.ogg',
     'music/mia.ogg',
     'music/imagdrag.ogg',
+    'music/sofitukker.ogg',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
