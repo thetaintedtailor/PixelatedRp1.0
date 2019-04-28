@@ -7,6 +7,8 @@ files {
     'music/mia.ogg',
     'music/imagdrag.ogg',
     'music/sofitukker.ogg',
+    'music/legomovie.ogg',
+    'music/macklemore.ogg',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
