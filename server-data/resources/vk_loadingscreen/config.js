@@ -37,7 +37,7 @@ VK.tips.list = [ // Tips list
     "Around here we call Kat the Fastest Dev in the West",
 ];
 
-VK.music.url = "music/macklemore.ogg"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "music/macklemore.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.volume = 0.1; // Music volume (0-1)
 VK.music.title = "And We Danced - Macklemore"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by 40u53"; // Music submited by... ("NONE" to desactive)
