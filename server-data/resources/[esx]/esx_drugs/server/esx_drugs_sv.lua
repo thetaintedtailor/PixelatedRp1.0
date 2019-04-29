@@ -159,19 +159,19 @@ local function SellCoke(source)
                     xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 elseif CopsConnected == 1 then
-                    xPlayer.addMoney(258)
+                    xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 elseif CopsConnected == 2 then
-                    xPlayer.addMoney(308)
+                    xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 elseif CopsConnected == 3 then
-                    xPlayer.addMoney(358)
+                    xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 elseif CopsConnected == 4 then
-                    xPlayer.addMoney(396)
+                    xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 elseif CopsConnected >= 5 then
-                    xPlayer.addMoney(428)
+                    xPlayer.addMoney(198)
                     TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
                 end
 
