@@ -37,14 +37,14 @@ function OpenActionMenuInteraction(target)
 
 	local elements = {}
 
-	table.insert(elements, {label = ('Lyft upp'), value = 'drag'})
+	table.insert(elements, {label = ('Lift up'), value = 'drag'})
   
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open(
 		'default', GetCurrentResourceName(), 'action_menu',
 		{
-			title    = ('Lyfta upp'),
+			title    = ('Lift up'),
 			align    = 'top-left',
 			elements = elements
 		},
@@ -56,7 +56,7 @@ function OpenActionMenuInteraction(target)
 		
 		if data.current.value == 'drag' then			
 			TriggerServerEvent('esx_barbie_lyftupp:checkRope')
-			ESX.ShowNotification('Du lyfter upp personen...')
+			ESX.ShowNotification('You are lifting this person up...')
 			TriggerServerEvent('esx_barbie_lyftupp:lyfteruppn', GetPlayerServerId(player))
 			Citizen.Wait(5000)
 			if hasRope == true then
@@ -77,11 +77,11 @@ function OpenActionMenuInteraction(target)
 					TaskPlayAnim(GetPlayerPed(-1), dict, "idle", 8.0, 8.0, -1, 50, 0, false, false, false)
 					isCarry = true
 				else
-					ESX.ShowNotification("Finns ingen person i närheten...")
+					ESX.ShowNotification("No one is nearby...")
 				end
 			else
-				--ESX.ShowNotification("Du har inget rep att använda...")
-			end
+				--ESX.ShowNotification("You don't own any rope...")
+      end
 			menu.close()
 		end
 
@@ -119,11 +119,10 @@ AddEventHandler('esx_barbie_lyftupp:upplyft', function(target)
 	end
 end)
 
-
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
-    if IsControlJustReleased(0, Keys['F3']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+    if IsControlJustReleased(0, Keys['F5']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
 		OpenActionMenuInteraction()
     end
   end

@@ -39,5 +39,5 @@ end)
 
 RegisterServerEvent('esx_barbie_lyftupp:lyfteruppn')
 AddEventHandler('esx_barbie_lyftupp:lyfteruppn', function(source)
-	TriggerClientEvent('esx:showNotification', source, ('Någon försöker lyfta upp dig...'))
+	TriggerClientEvent('esx:showNotification', source, ('Someone is trying to lift you up...'))
 end)
