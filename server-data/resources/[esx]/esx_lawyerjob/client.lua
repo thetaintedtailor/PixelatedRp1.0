@@ -27,7 +27,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
   PlayerData = xPlayer
 
   
-  Citizen.CreateThread(function()
+ --[[ Citizen.CreateThread(function()
   	while true do
   		Citizen.Wait(0)
 
@@ -42,12 +42,13 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
   			end
   		end
   	end
-  end)
-
+	end)]]
+	
+--[[
   if(PlayerData.job.grade_name == "boss" and PlayerData.job.name == "lawyer") then
   	createSocietyMenu(bossUI.x,bossUI.y,bossUI.z,"lawyer", "Lawyer")
   end
-end)
+end)]]
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
