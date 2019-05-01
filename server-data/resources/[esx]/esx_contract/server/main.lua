@@ -19,9 +19,9 @@ AddEventHandler('esx_clothes:sellVehicle', function(target, plate)
 			['@target'] = tPlayer.identifier
 		}, function (rowsChanged)
 			if rowsChanged ~= 0 then
-				TriggerClientEvent('esx_contract:showAnim', _source)
-				Wait(22000)
-				TriggerClientEvent('esx_contract:showAnim', _target)
+				--TriggerClientEvent('esx_contract:showAnim', _source)
+				--Wait(22000)
+				--TriggerClientEvent('esx_contract:showAnim', _target)
 				Wait(22000)
 				TriggerClientEvent('esx:showNotification', _source, _U('soldvehicle', plate))
 				TriggerClientEvent('esx:showNotification', _target, _U('boughtvehicle', plate))
