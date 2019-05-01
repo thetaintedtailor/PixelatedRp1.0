@@ -55,7 +55,7 @@ function OpenActionMenuInteraction(target)
 		ESX.UI.Menu.CloseAll()	
 		
 		if data.current.value == 'drag' then			
-			TriggerServerEvent('esx_barbie_lyftupp:checkRope')
+			--TriggerServerEvent('esx_barbie_lyftupp:checkRope')
 			ESX.ShowNotification('You are lifting this person up...')
 			TriggerServerEvent('esx_barbie_lyftupp:lyfteruppn', GetPlayerServerId(player))
 			Citizen.Wait(5000)
