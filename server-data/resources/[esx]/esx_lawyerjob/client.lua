@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
   end
 end)
 
-RegisterNetEvent('esx_phone:loaded')
+--[[RegisterNetEvent('esx_phone:loaded')
 AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 	local specialContact = {
 		name       = 'Lawyer',
@@ -20,7 +20,7 @@ AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 	}
 
 	TriggerEvent('esx_phone:addSpecialContact', specialContact.name, specialContact.number, specialContact.base64Icon)
-end)
+end)]]
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -31,7 +31,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
   	while true do
   		Citizen.Wait(0)
 
-  		if(PlayerData.job ~= nil and PlayerData.job.name == "avocat") then
+  		if(PlayerData.job ~= nil and PlayerData.job.name == "lawyer") then
   			DrawMarker(1,takeJob.x,takeJob.y,takeJob.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0)
 
   			if(GetDistanceBetweenCoords(takeJob.x,takeJob.y,takeJob.z,  GetEntityCoords(GetPlayerPed(-1)), true) < 3) then 
@@ -44,8 +44,8 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
   	end
   end)
 
-  if(PlayerData.job.grade_name == "boss" and PlayerData.job.name == "avocat") then
-  	createSocietyMenu(bossUI.x,bossUI.y,bossUI.z,"avocat", "Advokat")
+  if(PlayerData.job.grade_name == "boss" and PlayerData.job.name == "lawyer") then
+  	createSocietyMenu(bossUI.x,bossUI.y,bossUI.z,"lawyer", "Lawyer")
   end
 end)
 
@@ -220,7 +220,7 @@ function openTakeService()
 
   local elements = {
     {label = "citizen wear", value = 'citizen_wear'},
-    {label = "lawyer wear", value = 'avocat_wear'}
+    {label = "lawyer wear", value = 'lawyer_wear'}
   }
 
   ESX.UI.Menu.CloseAll()
@@ -262,7 +262,7 @@ function openTakeService()
         end)
       end
 
-      if data.current.value == 'avocat_wear' then
+      if data.current.value == 'lawyer_wear' then
 
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
