@@ -46,7 +46,7 @@ MANY MORE FEATURES TO COME, AND MANY MORE DETAILS AND EXPLANATIONS ON HOW TO USE
 #### FUTURE UPDATES ####
 ~ Bank Script with Balance/Bank Transfers
 ~ Customizable Phone Numbers
-~ More Contacts in Favorites (Businesses, Teqila-la, Car Dealership, Ammunations and more)
+~ More Contacts in Services (Businesses, Teqila-la, Car Dealership, Ammunations and more)
 ~ Customizable Text Messages as far as Colors, backgrounds per text message, Custom Icons per  contact.
 ~ If you have suggestions feel free to post them here, or contact me on Discord @ https://discord.gg/uMXwB64
 
