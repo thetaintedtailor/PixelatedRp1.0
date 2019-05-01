@@ -37,7 +37,7 @@ VK.tips.list = [ // Tips list
     "Around here we call Kat the Fastest Dev in the West",
 ];
 
-VK.music.url = "music/goingbad.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "https://www.youtube.com/watch?v=9CHnHH-kUQ8"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.volume = 0.1; // Music volume (0-1)
 VK.music.title = "Going Bad - Meek Mill, Drake"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by envy"; // Music submited by... ("NONE" to desactive)
