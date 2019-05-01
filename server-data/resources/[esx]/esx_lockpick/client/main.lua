@@ -103,7 +103,7 @@ AddEventHandler('esx_lockpick:onUse', function()
 end)
 
 function lockpickchance()
-	local nb = math.random(1, Config.percentage)
+	local nb = math.random(1, 100)
     percentage = Config.percentage
     if(nb < percentage)then
         return true
