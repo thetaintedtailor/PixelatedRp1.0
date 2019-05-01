@@ -110,12 +110,6 @@ AddEventHandler('esx:playerLoaded', function(source)
     local phoneNumber = result[1].phone_number
     xPlayer.set('phoneNumber', phoneNumber)
 
-    TriggerEvent('chat:addMessage', {
-      color = { 255, 0, 0},
-      multiline = true,
-      args = {"this is the phone msg", PhoneNumbers[xPlayer.job.name]}
-    })
-
     if PhoneNumbers[xPlayer.job.name] ~= nil then
       TriggerEvent('esx_addons_gcphone:addSource', xPlayer.job.name, source)
     end
