@@ -12,10 +12,10 @@ CONTROLS
 	Right indicator:	=	(Next Custom Radio Track)
 	Left indicator:		-	(Previous Custom Radio Track)
 	Hazard lights:	Backspace	(Phone Cancel)
-	Toggle emergency lights:	Y	(Text Chat Team)
+	Toggle emergency lights:	Q or Y	(Text Chat Team)
 	Airhorn:	E	(Horn)
-	Toggle siren:	,	(Previous Radio Station)
-	Manual siren / Change siren tone:	N	(Next Radio Station)
+	Toggle siren:	"," key or ALT	(Previous Radio Station)
+	Manual siren / Change siren tone:	R or .	(Next Radio Station)
 	Auxiliary siren:	Down Arrow	(Phone Up)
 ---------------------------------------------------
 ]]
@@ -450,7 +450,7 @@ Citizen.CreateThread(function()
 								end		
 							
 							-- TOG LX SIREN
-							elseif IsDisabledControlJustReleased(0, 19) or IsDisabledControlJustReleased(0, 82) then
+							elseif IsDisabledControlJustReleased(0, 20) or IsDisabledControlJustReleased(0, 82) then
 								local cstate = state_lxsiren[veh]
 								if cstate == 0 then
 									if IsVehicleSirenOn(veh) then
@@ -465,7 +465,7 @@ Citizen.CreateThread(function()
 								end
 								
 							-- POWERCALL
-							elseif IsDisabledControlJustReleased(0, 172) then
+							elseif IsDisabledControlJustReleased(0, 42) then
 								if state_pwrcall[veh] == true then
 									PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 									TogPowercallStateForVeh(veh, false)
