@@ -392,7 +392,7 @@ Citizen.CreateThread(function()
 						local actv_manu = false
 						local actv_horn = false
 						
-						--DisableControlAction(0, 86, true) -- INPUT_VEH_HORN	
+						DisableControlAction(0, 86, true) -- INPUT_VEH_HORN	
 						DisableControlAction(0, 172, true) -- INPUT_CELLPHONE_UP 
 						--DisableControlAction(0, 173, true) -- INPUT_CELLPHONE_DOWN
 						--DisableControlAction(0, 174, true) -- INPUT_CELLPHONE_LEFT 
@@ -451,7 +451,7 @@ Citizen.CreateThread(function()
 							
 							-- TOG LX SIREN
 							--elseif IsDisabledControlJustReleased(0, 20) or IsDisabledControlJustReleased(0, 82) then
-							elseif IsDisabledControlJustReleased(0, 82) then
+							elseif IsDisabledControlJustReleased(0, 86) then
 								local cstate = state_lxsiren[veh]
 								if cstate == 0 then
 									if IsVehicleSirenOn(veh) then
@@ -483,7 +483,8 @@ Citizen.CreateThread(function()
 							
 							-- BROWSE LX SRN TONES
 							if state_lxsiren[veh] > 0 then
-								if IsDisabledControlJustReleased(0, 80) or IsDisabledControlJustReleased(0, 81) then
+								if IsDisabledControlJustReleased(0, 80) 
+								--or IsDisabledControlJustReleased(0, 81) then
 									if IsVehicleSirenOn(veh) then
 										local cstate = state_lxsiren[veh]
 										local nstate = 1
@@ -503,7 +504,8 @@ Citizen.CreateThread(function()
 										
 							-- MANU
 							if state_lxsiren[veh] < 1 then
-								if IsDisabledControlPressed(0, 80) or IsDisabledControlPressed(0, 81) then
+								if IsDisabledControlPressed(0, 80)
+								--or IsDisabledControlPressed(0, 81) then
 									actv_manu = true
 								else
 									actv_manu = false
