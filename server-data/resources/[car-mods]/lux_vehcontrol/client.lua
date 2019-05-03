@@ -465,7 +465,7 @@ Citizen.CreateThread(function()
 								end
 								
 							-- POWERCALL
-							elseif IsDisabledControlJustReleased(0, 42) then
+							--[[elseif IsDisabledControlJustReleased(0, 42) then
 								if state_pwrcall[veh] == true then
 									PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
 									TogPowercallStateForVeh(veh, false)
@@ -477,7 +477,7 @@ Citizen.CreateThread(function()
 										count_bcast_timer = delay_bcast_timer
 									end
 								end
-								
+							]]	
 							end
 							
 							-- BROWSE LX SRN TONES
