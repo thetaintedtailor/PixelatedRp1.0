@@ -154,7 +154,7 @@ Config.Jobs.slaughterer = {
 					time = 500,
 					remove = 1,
 					max = 100, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 12,
+					price = 5,
 					requires = "packaged_chicken",
 					requires_name = _U("s_packagechicken"),
 					drop = 100
