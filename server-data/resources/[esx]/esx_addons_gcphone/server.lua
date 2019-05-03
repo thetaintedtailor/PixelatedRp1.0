@@ -51,7 +51,7 @@ end
 
 
 AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, hasDispatch, hideNumber, hidePosIfAnon)
-  print('==== Enregistrement du telephone ' .. number .. ' => ' .. type)
+  print('==== Register phone number ' .. number .. ' => ' .. type)
 	local hideNumber    = hideNumber    or false
 	local hidePosIfAnon = hidePosIfAnon or false
 
@@ -94,7 +94,7 @@ AddEventHandler('esx_addons_gcphone:startCall', function (number, message, coord
       }, PhoneNumbers[number].sources)
     end)
   else
-    print('Calls on an unregistered service => number : ' .. number)
+    print('Calls on an unregistered service => number: ' .. number)
   end
 end)
 
