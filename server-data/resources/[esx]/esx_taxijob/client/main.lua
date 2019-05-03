@@ -341,7 +341,7 @@ function OpenMobileTaxiActionsMenu()
 					local vehicle   = GetVehiclePedIsIn(playerPed, false)
 
 					if IsPedInAnyVehicle(playerPed, false) and GetPedInVehicleSeat(vehicle, -1) == playerPed then
-						if tonumber(ESX.PlayerData.job.grade) >= 3 then
+						--if tonumber(ESX.PlayerData.job.grade) >= 3 then
 							StartTaxiJob()
 						--[[else
 							if IsInAuthorizedVehicle() then
