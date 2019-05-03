@@ -483,8 +483,8 @@ Citizen.CreateThread(function()
 							
 							-- BROWSE LX SRN TONES
 							if state_lxsiren[veh] > 0 then
-								if IsDisabledControlJustReleased(0, 80) 
-								--or IsDisabledControlJustReleased(0, 81) then
+								if IsDisabledControlJustReleased(0, 80) then
+								--or IsDisabledControlJustReleased(0, 81)
 									if IsVehicleSirenOn(veh) then
 										local cstate = state_lxsiren[veh]
 										local nstate = 1
@@ -504,8 +504,8 @@ Citizen.CreateThread(function()
 										
 							-- MANU
 							if state_lxsiren[veh] < 1 then
-								if IsDisabledControlPressed(0, 80)
-								--or IsDisabledControlPressed(0, 81) then
+								if IsDisabledControlPressed(0, 80) then
+								--or IsDisabledControlPressed(0, 81) 
 									actv_manu = true
 								else
 									actv_manu = false
