@@ -28,8 +28,6 @@ AddEventHandler('esx_taxijob:success', function()
 
 	xPlayer.addMoney(total)
 	TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_earned', total))
-	end
-
 end)
 
 RegisterServerEvent('esx_taxijob:getStockItem')
