@@ -8,7 +8,7 @@ filename = 'runfivem.py'
 print("\n IMPORTs complete:- STARTING -> file '%s' . . . " % filename)
 
 ## run.sh path
-strPath = '/srv/fivem-dm4c/server/run.sh'
+strPath = '/srv/PixelatedRp1.0/server/run.sh'
 
 ## .cfg file names
 strCfgNat = 'nat_server.cfg'
