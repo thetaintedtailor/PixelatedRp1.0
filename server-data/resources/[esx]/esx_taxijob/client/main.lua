@@ -529,7 +529,7 @@ end)
 
 -- Create Blips
 Citizen.CreateThread(function()
-	local blip = AddBlipForCoord(Config.Zones.TaxiActions.Pos.x, Config.Zones.TaxiActions.Pos.y, Config.Zones.TaxiActions.Pos.z)
+	local blip = AddBlipForCoord(Config.Zones.MapMarker.Pos.x, Config.Zones.MapMarker.Pos.y, Config.Zones.MapMarker.Pos.z)
 
 	SetBlipSprite (blip, 198)
 	SetBlipDisplay(blip, 4)
