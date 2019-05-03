@@ -97,9 +97,9 @@ Citizen.CreateThread(function()
 			Citizen.Wait(300)
 	
 		-- D-pad down on controllers works, too!
-		elseif IsControlJustReleased(0, 173) and not IsInputDisabled(0) then
+		--[[elseif IsControlJustReleased(0, 173) and not IsInputDisabled(0) then
 			ToggleVehicleLock()
 			Citizen.Wait(300)
-		end
+		end]]
 	end
 end)
