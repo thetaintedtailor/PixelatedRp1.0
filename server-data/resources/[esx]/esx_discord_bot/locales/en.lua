@@ -27,6 +27,7 @@ Locales['en'] = {
 	['client_carjacking'] = 'has stolen',
 
 	['server_kill'] = 'new death',
+	['user_kill'] = 'killed'
 	['client_kill'] = 'has been killed by',
 	['client_kill_environnement'] = 'is dead by suicide or PNJ attack',
 	['with'] ='with',

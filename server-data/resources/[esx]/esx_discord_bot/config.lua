@@ -14,12 +14,12 @@ settings = {
 	LogEnterPoliceVehicle = false, -- Log when an player enter in a police vehicle.
 	LogEnterBlackListedVehicle = false, -- Log when a player enter in a blacklisted vehicle.
 	LogPedJacking = false, -- Log when a player is jacking a car
-	LogChatServer = true, -- Log when a player is talking in the chat , /command works too.
+	LogChatServer = false, -- Log when a player is talking in the chat , /command works too.
 	LogLoginServer = false, -- Log when a player is connecting/disconnecting to the server.
 	LogItemTransfer = false, -- Log when a player is giving an item.
 	LogWeaponTransfer = false, -- Log when a player is giving a weapon.
 	LogMoneyTransfer = true, -- Log when a player is giving money
-	LogMoneyBankTransfert = false, -- Log when a player is giving money from bankaccount
+	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
 
 }
 
