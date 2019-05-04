@@ -136,7 +136,7 @@ Config.Jobs.miner = {
 			Type = "vehspawner",
 			Spawner = 1,
 			Hint = _U("spawn_veh_button"),
-			Caution = 2000,
+			Caution = 50,
 			GPS = {x = 2962.40, y = 2746.20, z = 42.39}
 		},
 
@@ -162,7 +162,7 @@ Config.Jobs.miner = {
 			Type = "vehdelete",
 			Hint = _U("return_vh_button"),
 			Spawner = 1,
-			Caution = 2000,
+			Caution = 50,
 			GPS = 0,
 			Teleport = 0
 		},

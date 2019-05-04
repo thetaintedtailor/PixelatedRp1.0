@@ -110,7 +110,7 @@ Config.Jobs.slaughterer = {
 			Type = "vehspawner",
 			Spawner = 1,
 			Hint = _U("spawn_veh_button"),
-			Caution = 2000
+			Caution = 50
 		},
 
 		VehicleSpawnPoint = {
@@ -134,7 +134,7 @@ Config.Jobs.slaughterer = {
 			Type = "vehdelete",
 			Hint = _U("return_vh_button"),
 			Spawner = 1,
-			Caution = 2000,
+			Caution = 50,
 			GPS = 0,
 			Teleport = 0
 		},
