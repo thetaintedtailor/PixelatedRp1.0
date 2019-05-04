@@ -1801,7 +1801,7 @@ webpackJsonp([0], [, , , , , , function(t, e, n) {
             return {
                 subMenu: [{
                     Comp: u.a,
-                    name: "Favorites",
+                    name: "Services",
                     icon: "star"
                 }, {
                     Comp: f.a,
@@ -1978,7 +1978,7 @@ webpackJsonp([0], [, , , , , , function(t, e, n) {
         u = n.n(c),
         l = n(7);
     e.default = {
-        name: "Favorites",
+        name: "Services",
         components: {
             List: u.a
         },

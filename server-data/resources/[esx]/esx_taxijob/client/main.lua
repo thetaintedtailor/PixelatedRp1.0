@@ -341,15 +341,15 @@ function OpenMobileTaxiActionsMenu()
 					local vehicle   = GetVehiclePedIsIn(playerPed, false)
 
 					if IsPedInAnyVehicle(playerPed, false) and GetPedInVehicleSeat(vehicle, -1) == playerPed then
-						if tonumber(ESX.PlayerData.job.grade) >= 3 then
-							StartTaxiJob()
-						else
+						--if tonumber(ESX.PlayerData.job.grade) >= 3 then
+						StartTaxiJob()
+						--[[else
 							if IsInAuthorizedVehicle() then
 								StartTaxiJob()
 							else
 								ESX.ShowNotification(_U('must_in_taxi'))
-							end
-						end
+							end]]
+						--end
 					else
 						if tonumber(ESX.PlayerData.job.grade) >= 3 then
 							ESX.ShowNotification(_U('must_in_vehicle'))
@@ -529,7 +529,7 @@ end)
 
 -- Create Blips
 Citizen.CreateThread(function()
-	local blip = AddBlipForCoord(Config.Zones.TaxiActions.Pos.x, Config.Zones.TaxiActions.Pos.y, Config.Zones.TaxiActions.Pos.z)
+	local blip = AddBlipForCoord(Config.Zones.MapMarker.Pos.x, Config.Zones.MapMarker.Pos.y, Config.Zones.MapMarker.Pos.z)
 
 	SetBlipSprite (blip, 198)
 	SetBlipDisplay(blip, 4)

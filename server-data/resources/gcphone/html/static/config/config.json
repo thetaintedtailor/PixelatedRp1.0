@@ -89,6 +89,32 @@
           }
         }
       ]
+    },
+    {
+      "display": "Lawyer",
+      "backgroundColor": "brown",
+      "subMenu": [
+        {
+          "title": "Send a Message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "lawyer"
+          }
+        }
+      ]
+    },
+    {
+      "display": "Taxi",
+      "backgroundColor": "yellow",
+      "subMenu": [
+        {
+          "title": "Send a Message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "taxi"
+          }
+        }
+      ]
     }
   ],
 
