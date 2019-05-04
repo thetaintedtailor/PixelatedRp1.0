@@ -1,8 +1,6 @@
 -- Changed version of owned_vehicles to remove issues with car's not showing up
 
-USE `essentialmode`;
-
-CREATE TABLE `owned_vehicles` (
+ALTER TABLE `owned_vehicles` (
 	`owner` varchar(22) NOT NULL,
 	`plate` varchar(12) NOT NULL,
 	`vehicle` longtext,

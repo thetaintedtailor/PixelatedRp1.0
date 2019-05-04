@@ -18,14 +18,14 @@ Config.KickPossibleCheaters = true -- If true it will kick the player that tries
 Config.UseCustomKickMessage = true -- If KickPossibleCheaters is true you can set a Custom Kick Message in the locales.
 
 Config.UseDamageMult = false -- If true it costs more to store a Broken Vehicle.
-Config.DamageMult = 5 -- Higher Number = Higher Repair Price.
+Config.DamageMult = 3 -- Higher Number = Higher Repair Price.
 
 Config.CarPoundPrice      = 1000 -- Car Pound Price.
 Config.BoatPoundPrice     = 1500 -- Boat Pound Price.
 Config.AircraftPoundPrice = 7500 -- Aircraft Pound Price.
 
-Config.PolicingPoundPrice  = 500 -- Policing Pound Price.
-Config.AmbulancePoundPrice = 500 -- Ambulance Pound Price.
+Config.PolicingPoundPrice  = 20 -- Policing Pound Price.
+Config.AmbulancePoundPrice = 20 -- Ambulance Pound Price.
 
 Config.UseCarGarages        = true -- Allows use of Car Garages.
 Config.UseBoatGarages       = true -- Allows use of Boat Garages.
@@ -33,23 +33,23 @@ Config.UseAircraftGarages   = true -- Allows use of Aircraft Garages.
 Config.UsePrivateCarGarages = true -- Allows use of Private Car Garages.
 Config.UseJobCarGarages     = true -- Allows use of Job Garages.
 
-Config.DontShowPoundCarsInGarage = true -- If set to true it won't show Cars at the Pound in the Garage.
-Config.ShowVehicleLocation       = false -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.
+Config.DontShowPoundCarsInGarage = false -- If set to true it won't show Cars at the Pound in the Garage.
+Config.ShowVehicleLocation       = true -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.
 Config.UseVehicleNamesLua        = true -- Must setup a vehicle_names.lua for Custom Addon Vehicles.
 
-Config.ShowGarageSpacer1 = true -- If true it shows Spacer 1 in the List.
-Config.ShowGarageSpacer2 = false -- If true it shows Spacer 2 in the List | Don't use if spacer3 is set to true.
-Config.ShowGarageSpacer3 = true -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
+Config.ShowGarageSpacer1 = false -- If true it shows Spacer 1 in the List.
+Config.ShowGarageSpacer2 = true -- If true it shows Spacer 2 in the List | Don't use if spacer3 is set to true.
+Config.ShowGarageSpacer3 = false -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
 
-Config.ShowPoundSpacer2 = false -- If true it shows Spacer 2 in the List | Don't use if spacer3 is set to true.
-Config.ShowPoundSpacer3 = true -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
+Config.ShowPoundSpacer2 = true -- If true it shows Spacer 2 in the List | Don't use if spacer3 is set to true.
+Config.ShowPoundSpacer3 = false -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
 
 Config.MarkerType   = 1
 Config.DrawDistance = 100.0
 
 Config.BlipGarage = {
 	Sprite = 290,
-	Color = 38,
+	Color = 60,
 	Display = 2,
 	Scale = 1.0
 }
@@ -76,7 +76,7 @@ Config.BlipJobPound = {
 }
 
 Config.PointMarker = {
-	r = 0, g = 255, b = 0,     -- Green Color
+	r = 199, g = 244, b = 166,     -- Green Color
 	x = 1.5, y = 1.5, z = 1.0  -- Standard Size Circle
 }
 
@@ -134,17 +134,17 @@ Config.CarGarages = {
 	Garage_CentralLS = {
 		GaragePoint = { x = 215.800, y = -810.057, z = 29.727 },
 		SpawnPoint = { x = 229.700, y = -800.1149, z = 29.5722, h = 157.84 },
-		DeletePoint = { x = 223.797, y = -760.415, z = 29.646 }
+		DeletePoint = {x=215.124, y=-791.377, z=29.646}
 	},
 	Garage_Sandy = {
-		GaragePoint = { x = 1737.59, y = 3710.2, z = 33.14 },
-		SpawnPoint = { x = 1737.84, y = 3719.28, z = 33.04, h = 21.22 },
-		DeletePoint = { x = 1722.66, y = 3713.74, z = 33.21 }
+		GaragePoint = {x=1695.16, y=3611.10, z=34.32},
+		SpawnPoint = {x=1701.83, y=3599.49, z=34.44, h = 21.22 },
+		DeletePoint = {x=1714.26, y=3597.23, z=34.31}
 	},
 	Garage_Paleto = {
-		GaragePoint = { x = 105.359, y = 6613.586, z = 31.3973 },
-		SpawnPoint = { x = 128.7822, y = 6622.9965, z = 30.7828, h = 315.01 },
-		DeletePoint = { x = 126.3572, y = 6608.4150, z = 30.8565 }
+		GaragePoint = {x=107.95393371582, y=6611.0668945313, z=30.970394134521},
+		SpawnPoint = {x=121.06878662109, y= 6608.837890625, z= 30.914228439331, h = 315.01 },
+		DeletePoint = {x=126.3996887207, y=6620.0795898438, z=30.809488296509}
 	},
 	Garage_Prison = {
 		GaragePoint = { x = 1846.56, y = 2585.86, z = 44.67 },
@@ -155,7 +155,62 @@ Config.CarGarages = {
 		GaragePoint = { x = 1212.32, y = 339.94, z = 80.99 },
 		SpawnPoint = { x = 1199.02, y = 330.92, z = 80.99, h = 144.86 },
 		DeletePoint = { x = 1207.9, y = 343.8, z = 80.99 }
-	}
+	},
+	Garage_Morningwood = {
+		GaragePoint = {x=-1283.06, y=-214.37, z=41.45},
+		SpawnPoint = {x=-1274.77, y=-227.42, z=41.45, h = 144.86 },
+		DeletePoint = {x=-1277.15,y=-203.39,z=41.45}
+	},
+	Garage_Chumash = {
+		GaragePoint = {x = -3140.323,y = 1124.463,z = 19.70},
+		SpawnPoint = {x = -3132.638,y = 1126.662,z = 19.66, h = 144.86 },
+		DeletePoint = {x = -3136.902,y = 1102.685,z = 19.65}
+	},
+	Garage_Banham = {
+		GaragePoint = {x = -2982.561,y = 327.506,z = 13.935},
+		SpawnPoint = {x = -2977.238,y = 337.777,z = 13.768, h = 144.86 },
+		DeletePoint = {x = -2971.814,y = 355.331,z = 13.771}
+	},
+	Garage_Tattoo = {
+		GaragePoint = {x = 1319.09, y = -1663.01, z = 50.24},
+		SpawnPoint = {x = 1305.54, y = -1650.08, z = 50.58, h = 144.86 },
+		DeletePoint = {x = 1311.54, y = -1663.77, z = 50.24}
+	},
+	Garage_Lake = {
+		GaragePoint = {x=-73.165504455566, y=908.08734130859, z=234.62},
+		SpawnPoint = {x = -72.099822998047, y = 902.85479736328, z=234.63, h = 144.86 },
+		DeletePoint = {x = -66.987632751465,y = 891.65881347656,z = 234.55}
+	},
+	Garage_Occaz = {
+		GaragePoint = {x = 472.00717163086,y = -1113.5531005859,z = 28.2},
+		SpawnPoint = {x = 465.24938964844, y = -1122.1062011719, z = 28.3, h = 144.86 },
+		DeletePoint = {x = 480.43997192383, y = -1123.5560302734, z = 28.3}
+	},
+	Garage_Groove = {
+		GaragePoint = {x = -69.514305114746, y = -1822.9477539063, z = 25.941974639893 },
+		SpawnPoint = {x = -59.95, y = -1842.81, z = 25.58, h = 144.86 },
+		DeletePoint = {x = -60.4020652771, y = -1829.5288085938, z = 25.836933135986}
+	},
+	Garage_Venise = {
+		GaragePoint = {x = -1081.974609375, y = -1254.1881103516, z = 4.4244246482849 },
+		SpawnPoint = {x = -1077.2590332031,y = -1239.3200683594,z = 4.161093711853, h = 144.86 },
+		DeletePoint = {x = -1096.51, y = -1250.92, z = 4.17}
+	},
+	Garage_Tequila = {
+		GaragePoint = {x = -570.92272949219, y = 313.41049194336, z = 83.49},
+		SpawnPoint = {x = -569.47564697266, y = 323.53549194336, z = 83.47, h = 144.86},
+		DeletePoint = {x = -560.84375, y = 322.41586303711, z = 83.40}
+	},
+	Garage_Clinton = {
+		GaragePoint = {x=364.55, y=297.51, z=102.49},
+		SpawnPoint = {x = 378.00622558594, y = 288.13024902344, z = 102.16, h = 144.86},
+		DeletePoint = {x = 364.76132202148,y = 285.18911743164,z = 102.37}
+	},
+	Garage_MirrorPark = {
+		GaragePoint = {x=1033.9229736328, y=-767.10662841797, z=57.0},
+		SpawnPoint = {x=1040.6834716797, y=-778.18170166016, z=57.0, h = 144.86},
+		DeletePoint = {x=1022.7816772461, y=-763.78955078125, z=57.0}
+	},
 }
 
 Config.CarPounds = {
