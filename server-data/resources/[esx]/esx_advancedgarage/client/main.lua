@@ -163,15 +163,15 @@ function ListOwnedCarsMenu()
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' '
 						end
 					else
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						end
 					end
 					
@@ -184,15 +184,15 @@ function ListOwnedCarsMenu()
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' '
 						end
 					else
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						end
 					end
 					
@@ -248,15 +248,15 @@ function ListOwnedBoatsMenu()
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' '
 						end
 					else
 						if v.stored then
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						else
-							labelvehicle = '| '..plate..' | '..vehicleName..' |'
+							labelvehicle = ' '..plate..' | '..vehicleName..' '
 						end
 					end
 					
@@ -512,7 +512,7 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+				labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
 					if v.plate == plate then
@@ -532,7 +532,7 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+				labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
 					if v.plate == plate then
