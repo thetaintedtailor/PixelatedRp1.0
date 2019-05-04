@@ -155,7 +155,7 @@ RegisterServerEvent('esx_property:rentProperty')
 AddEventHandler('esx_property:rentProperty', function(propertyName)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 	local property = GetProperty(propertyName)
-	local rent     = ESX.Math.Round(property.price / 200)
+	local rent     = ESX.Math.Round(property.price / 1600)
 
 	SetPropertyOwned(propertyName, rent, true, xPlayer.identifier)
 end)
