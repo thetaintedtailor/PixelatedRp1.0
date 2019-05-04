@@ -12,7 +12,7 @@ Config.Limit = 10000
 	-- weight == 0 : The item do not affect character inventory weight
 	-- weight > 0 : The item cost place on inventory
 	-- weight < 0 : The item add place on inventory. Smart people will love it.
-Config.DefaultWeight = 10
+Config.DefaultWeight = 1000
 
 Config.localWeight = {
 	--- FOOD ---
@@ -96,8 +96,8 @@ Config.localWeight = {
 	meth_pooch = 1000,
 	opium = 1000,
 	opium_pooch = 1000,
-	weed = 1000,
-	weed_pooch = 1000,
+	weed = 10000,
+	weed_pooch = 10000,
 	--- ILEGALS ---
 	
 	---WEAPONS----
@@ -184,7 +184,7 @@ Config.VehicleLimit = {
     [6] = 5000, --Sports
     [7] = 5000, --Super
     [8] = 5000, --Motorcycles
-    [9] = 180000, --Off-road
+    [9] = 10000, --Off-road
     [10] = 300000, --Industrial
     [11] = 70000, --Utility
     [12] = 100000, --Vans
