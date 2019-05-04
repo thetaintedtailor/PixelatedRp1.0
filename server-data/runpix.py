@@ -108,7 +108,7 @@ argCnt = len(sys.argv)
 if argCnt > 1:
     readCliArgs()
     stringConfig = None
-    foundFlag = false
+    foundFlag = False
     print('\nChecking CLI flags...')
     for x in range(0, argCnt):
         argv = sys.argv[x]
@@ -138,23 +138,23 @@ if argCnt > 1:
         if argv == '-nat':
             print("\n '-nat' flag detected ... setting %s... (%s)" % (strCfgNat,filename))
             stringConfig = strCfgNat
-            foundFlag = true
+            foundFlag = True
 
         if argv == '-dev':
             print("\n '-dev' flag detected ... setting %s... (%s)" % (strCfgDev,filename))
             stringConfig = strCfgDev
-            foundFlag = true
+            foundFlag = True
 
         if argv == '-prod':
             print("\n '-prod' flag detected ... setting %s... (%s)" % (strCfgProd,filename))
             stringConfig = strCfgProd
-            foundFlag = true
+            foundFlag = True
 
         if argv == '-zap':
             print("\n '-zap' flag detected ... setting %s (w/o 'sv_licenseKey' set)... (%s)" % (strCfgProd,filename))
             print("\nWARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey'")
             stringConfig = strCfgProd
-            foundFlag = true
+            foundFlag = True
                 
         if argv and not foundFlag:
             print("\n NO flag detected, but found an agrv ... proceeding to set an argv: %s... (%s)" % (argv,filename))
