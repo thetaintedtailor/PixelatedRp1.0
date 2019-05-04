@@ -12,7 +12,7 @@ All cars come with meta files.
 6. Audi RS5 = rs5r (coupes)
 7. Nissan Skyline R32 = elegy2 (missing required files)	
 8. Audi RS6 = AUDIRS6TK (sports)
-9. Nissan Sliva S15 = lgtS15 (sports)
+9. Nissan Silvia S15 = lgtS15 (sports)
 10. Subaru WRX STI = SSTI (sports)
 
 Coming soon:
