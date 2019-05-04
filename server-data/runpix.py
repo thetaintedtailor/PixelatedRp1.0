@@ -83,7 +83,12 @@ usage = (":- USAGE examples...                          \n\n"
          "          - uses no 'sv_licenseKey' var set \n"
          "          - uses dynamic zap IP:port assisgnment (last 185.249.196.40:32070) \n"
          "          - WARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey' \n\n"
-         "6) examples... \n"
+         "6) ‘$ python3 runfivem.py server.cfg \n"
+         "      - runs specified 'server.cfg' file name in current working directory \n"
+         "          - uses custom 'sv_licenseKey' \n"
+         "          - uses current IP allocation (0.0.0.0) \n"
+         "          - uses default listening port (0.0.0.0:30120) \n\n"
+         "7) examples... \n"
          "      - '$ python runfivem.py -fivem'   \n"
          "      - '$ python runfivem.py -fivem-join'   \n"
          "      - '$ python runfivem.py -fivem-kill'   \n"
@@ -91,6 +96,7 @@ usage = (":- USAGE examples...                          \n\n"
          "      - '$ python runfivem.py -dev'     \n"
          "      - '$ python runfivem.py -prod'    \n"
          "      - '$ python runfivem.py -zap'     \n"
+         "      - '$ python runfivem.py server.cfg'     \n"
          "      - NOTE: '-prod' flag currently enabled as of 042319 \n"
          "      - WARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey' \n\n"
          "      - . . . \n\n"
@@ -102,6 +108,7 @@ argCnt = len(sys.argv)
 if argCnt > 1:
     readCliArgs()
     stringConfig = None
+    foundFlag = false
     print('\nChecking CLI flags...')
     for x in range(0, argCnt):
         argv = sys.argv[x]
@@ -128,24 +135,31 @@ if argCnt > 1:
             runSubprocess(['tmux', 'kill-ses', '-t', 'fivem'])
             sys.exit()
 
-
         if argv == '-nat':
             print("\n '-nat' flag detected ... setting %s... (%s)" % (strCfgNat,filename))
             stringConfig = strCfgNat
-        
+            foundFlag = true
+
         if argv == '-dev':
             print("\n '-dev' flag detected ... setting %s... (%s)" % (strCfgDev,filename))
             stringConfig = strCfgDev
+            foundFlag = true
 
         if argv == '-prod':
             print("\n '-prod' flag detected ... setting %s... (%s)" % (strCfgProd,filename))
             stringConfig = strCfgProd
+            foundFlag = true
 
         if argv == '-zap':
             print("\n '-zap' flag detected ... setting %s (w/o 'sv_licenseKey' set)... (%s)" % (strCfgProd,filename))
             print("\nWARNING: '-zap' flag expects yield error ref: no 'sv_licenseKey'")
             stringConfig = strCfgProd
-
+            foundFlag = true
+                
+        if argv and not foundFlag:
+            print("\n NO flag detected, but found an agrv ... proceeding to set an argv: %s... (%s)" % (argv,filename))
+            stringConfig = argv
+                
     print('\n  DONE Checking CLI flags...')
     
     ## attempting to execut tmux and launch fivem in one command (not working yet)
