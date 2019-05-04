@@ -28,10 +28,10 @@ Config.PolicingPoundPrice  = 20 -- Policing Pound Price.
 Config.AmbulancePoundPrice = 20 -- Ambulance Pound Price.
 
 Config.UseCarGarages        = true -- Allows use of Car Garages.
-Config.UseBoatGarages       = true -- Allows use of Boat Garages.
-Config.UseAircraftGarages   = true -- Allows use of Aircraft Garages.
-Config.UsePrivateCarGarages = true -- Allows use of Private Car Garages.
-Config.UseJobCarGarages     = true -- Allows use of Job Garages.
+Config.UseBoatGarages       = false -- Allows use of Boat Garages.
+Config.UseAircraftGarages   = false -- Allows use of Aircraft Garages.
+Config.UsePrivateCarGarages = false -- Allows use of Private Car Garages.
+Config.UseJobCarGarages     = false -- Allows use of Job Garages.
 
 Config.DontShowPoundCarsInGarage = false -- If set to true it won't show Cars at the Pound in the Garage.
 Config.ShowVehicleLocation       = true -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.
@@ -158,12 +158,12 @@ Config.CarGarages = {
 	},
 	Garage_Chumash = {
 		GaragePoint = {x = -3140.323,y = 1124.463,z = 19.70},
-		SpawnPoint = {x = -3132.638,y = 1126.662,z = 19.66, h = 144.86 },
+		SpawnPoint = {x = -3132.638, y = 1126.662, z = 19.66, h = 144.86 },
 		DeletePoint = {x = -3136.902,y = 1102.685,z = 19.65}
 	},
 	Garage_Banham = {
 		GaragePoint = {x = -2982.561,y = 327.506,z = 13.935},
-		SpawnPoint = {x = -2977.238,y = 337.777,z = 13.768, h = 144.86 },
+		SpawnPoint = {x = -2977.238, y = 337.777, z = 13.768, h = 144.86 },
 		DeletePoint = {x = -2971.814,y = 355.331,z = 13.771}
 	},
 	Garage_Tattoo = {
@@ -174,7 +174,7 @@ Config.CarGarages = {
 	Garage_Lake = {
 		GaragePoint = {x=-73.165504455566, y=908.08734130859, z=234.62},
 		SpawnPoint = {x = -72.099822998047, y = 902.85479736328, z=234.63, h = 144.86 },
-		DeletePoint = {x = -66.987632751465,y = 891.65881347656,z = 234.55}
+		DeletePoint = {x = -66.987632751465, y = 891.65881347656, z = 234.55}
 	},
 	Garage_Occaz = {
 		GaragePoint = {x = 472.00717163086,y = -1113.5531005859,z = 28.2},
@@ -226,7 +226,7 @@ Config.CarPounds = {
 -- End of Cars
 -- Start of Boats
 
---[[Config.BoatGarages = {
+Config.BoatGarages = {
 	Garage_LSDock = {
 		GaragePoint = { x = -735.87, y = -1325.08, z = 0.6 },
 		SpawnPoint = { x = -718.87, y = -1320.18, z = -0.47477427124977, h = 45.0 },
@@ -242,9 +242,9 @@ Config.CarPounds = {
 		SpawnPoint = { x = -290.46, y = 6622.72, z = -0.47477427124977, h = 52.0 },
 		DeletePoint = { x = -304.66, y = 6607.36, z = -0.47477427124977 }
 	}
-}]]
+}
 
---[[Config.BoatPounds = {
+Config.BoatPounds = {
 	Pound_LSDock = {
 		PoundPoint = { x = -738.67, y = -1400.43, z = 4.0 },
 		SpawnPoint = { x = -738.33, y = -1381.51, z = 0.12, h = 137.85 }
@@ -257,12 +257,12 @@ Config.CarPounds = {
 		PoundPoint = { x = -270.2, y = 6642.43, z = 6.36 },
 		SpawnPoint = { x = -290.38, y = 6638.54, z = -0.47477427124977, h = 130.0 }
 	}
-}]]
+}
 
 -- End of Boats
 -- Start of Aircrafts
 
---[[Config.AircraftGarages = {
+Config.AircraftGarages = {
 	Garage_LSAirport = {
 		GaragePoint = { x = -1617.14, y = -3145.52, z = 12.99 },
 		SpawnPoint = { x = -1657.99, y = -3134.38, z = 12.99, h = 330.11 },
@@ -278,14 +278,14 @@ Config.CarPounds = {
 		SpawnPoint = { x = 2122.72, y = 4804.85, z = 40.78, h = 115.04 },
 		DeletePoint = { x = 2082.36, y = 4806.06, z = 40.07 }
 	}
-}]]
+}
 
---[[Config.AircraftPounds = {
+Config.AircraftPounds = {
 	Pound_LSAirport = {
 		PoundPoint = { x = -1243.0, y = -3391.92, z = 12.94 },
 		SpawnPoint = { x = -1272.27, y = -3382.46, z = 12.94, h = 330.25 }
 	}
-}]]
+}
 
 -- End of Aircrafts
 -- Start of Private Garages
