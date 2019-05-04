@@ -1,0 +1,311 @@
+==========================================
+==========================================
+Common MySQL Tasks & Setup
+# ssh into ubuntu server
+# Install mysql-server - or - mariadb-server
+# root user privilege issues
+# add new user
+# Configuration
+# Login to mysql CLI
+# Create database
+# Show
+# Dump database
+# Import database
+# MySQL Tuner & percona-toolkit
+
+
+
+ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+ref: https://www.percona.com/software/database-tools/percona-toolkit
+	- my.cnf generation tool for initial set-up
+ref: http://dev.mysql.com/doc/
+ref: https://stackoverflow.com/a/54999810/2298002
+ref: https://stackoverflow.com/a/4546797/2298002
+ref: https://www.cyberciti.biz/faq/mysql-command-to-show-list-of-databases-on-server/
+ref: http://www.mysqltutorial.org/mysql-show-columns/
+==========================================
+
+####################################
+# ssh into ubuntu server
+####################################
+#ssh with pem key file
+$ ssh -i <file-name>.pem ubuntu@<ip-address>
+
+####################################
+# Install mysql-server - or - mariadb-server
+####################################
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+#ref: https://www.vultr.com/docs/install-mariadb-on-ubuntu-14-04
+
+## after install, server should start automatically
+$ sudo apt install mysql-server
+   - or -
+$ sudo apt install mariadb-server
+
+## start db server manually
+$ sudo systemctl restart mysql.service
+   - or - 
+$ service mysql start
+
+## check/verify db server is running 
+$ sudo netstat -tap | grep mysql
+
+#expected output:
+> tcp        0      0 localhost:mysql         *:*                LISTEN      2556/mysqld
+
+
+####################################
+# root user privilege issues
+####################################
+#ref: https://stackoverflow.com/a/35748657/2298002
+
+## if having 'root'@'localhost' errors when running fivem
+#   possibly after installing mariadb-server on top of mysql-server
+$ mysql -u root --password=password
+mysql> GRANT ALL PRIVILEGES on *.* to 'root'@'localhost' IDENTIFIED BY '<password>';
+mysql> FLUSH PRIVILEGES;
+mysql> exit
+$ sudo service mysql restart
+
+
+####################################
+# add new user
+####################################
+#ref: https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+
+## create user for this host computer and set password
+mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+## set user to read, edit, execute and perform all tasks 
+#   across all the databases and tables
+mysql> GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+
+## reload all the privileges
+mysql> FLUSH PRIVILEGES;
+
+####################################
+# enable remote access
+####################################
+#ref: https://www.configserverfirewall.com/ubuntu-linux/enable-mysql-remote-access-ubuntu/
+
+# 1) enable remote access in config file
+$ emacs /etc/mysql/mysql.conf.d/mysqld.cnf
+
+	- or - 
+
+# enable remote access in config file (ubuntu 14.04)
+$ emacs /etc/mysql/my.cnf
+
+	- or -
+
+# enable remote access in config file (for mariadb on ubuntu 14.04)
+$ emacs /etc/mysql/mysql.conf.d/mysqld.cnf
+$ emacs /etc/mysql/mysql.conf.d/mysqld.cnf
+$ emacs /etc/mysql/mariadb.conf.d/50-server.cnf 
+
+# 2a) Under the [mysqld] Locate the Line,
+bind-address            = 127.0.0.1
+
+# 2b) And change it to,
+bind-address            = 0.0.0.0
+
+# 3) restart myyqsl
+$ systemctl restart mysql.service
+
+## 4a) configure MySQL users 
+# allow access from any host
+> CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+
+## 4b) configure MySQL users 
+# allow access from specific IP address
+> CREATE USER 'username'@'192.168.1.100' IDENTIFIED BY 'password';
+
+### Troubleshoot Ubuntu MySQL Remote Access
+#To make sure that, MySQL server listens on all interfaces, 
+# run the netstat command as follows.
+$ netstat -tulnp | grep mysql
+
+# The output should show that MySQL Server running on the socket 0 0.0.0.0:3306 
+#  instead of 127.0.0.1:3306.
+#ref: https://storage.googleapis.com/static.configserverfirewall.com/images/ubuntu/mysql-remote-socket-ubuntu.png
+
+## You can also try to telnet to the MySQL port 3306 from a remote host. 
+#   For example, if the IP Address of your Ubuntu Server is 192.168.1.10, 
+#   Then from the remote host execute,
+$ telnet 192.168.1.10 3306
+
+## You can also run the nmap command from a remote computer 
+#   to check whether MySQL port 3306 is open to the remote host.
+$ nmap 192.168.1.10
+$ sudo nmap -PN -p 3306 -sV server_ip
+
+## The output should list MySQL port 3306 and the STATe should be open. 
+#   If the MySQL port 3306 not open, Then there is a firewall which blocks the port 3306.
+
+####################################
+# Configuration
+####################################
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+
+## MySQL config file (basic settings -- log file, port number, etc.)
+$ emacs /etc/mysql/my.cnf 
+
+# change bind-address directive to the server's IP address 
+# (to configure to listen for connections from network hosts)
+> bind-address            = 192.168.0.5
+
+## restart MySQL daemon after config changes
+$ sudo systemctl restart mysql.service
+
+## NOTE: 2 Database Engine Types
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+1) MyISAM (older)
+  - favors read only workload
+  - supports data type FULLTEXT (fast searching of large quantities of text data)
+  - lock occurs on entire table (one process can access a table at a time)
+  - no journaling (harder to recover data after crash)
+
+2) InndoDM (modern; default for MySQL 5.5+)
+  - lock occurs at row level
+  - data caching in memory at row level
+  - transaction journals independently of main tables (more reliable data recovery)
+
+
+####################################
+# Login to mysql CLI
+####################################
+#ssh into ubuntu server with pem key file
+$ ssh -i <file-name>.pem ubuntu@<ip-address>
+
+## start mysql command line interface
+$ mysql -u root --password=<password>
+   - or -
+$ mysql -u root -p
+> enter password (default is 'password' i think)
+
+# bring up help menu (list commands)
+mysql> \h
+
+# show existing databases
+mysql> show databases
+
+
+####################################
+# Create database 
+####################################
+#ref: https://stackoverflow.com/a/54999810/2298002
+
+## login to mysql
+$ mysql -u root -p
+
+# create new database
+mysql> create database mynewdb;
+
+# switch to using new database
+mysql> use mynewdb;
+
+# import database dump (set source)
+mysql> source ./mydbdump.sql
+
+# validate import w/ select statement
+mysql> select * from users;
+
+# validate import w/ show existing databases
+mysql> show databases
+
+
+####################################
+# Show
+####################################
+#ref: https://www.cyberciti.biz/faq/mysql-command-to-show-list-of-databases-on-server/
+#ref: http://www.mysqltutorial.org/mysql-show-columns/
+
+## login to mysql
+$ mysql -u root -p
+
+# show list of databases
+mysql> show databases;
+
+# show tables in a database (switch to db first)
+mysql> use <databasename>;
+mysql> show tables;
+
+# describe table schema (model)
+mysql> describe <table>
+
+# other various ways to show/describe table schema (columns)
+mysql> SHOW COLUMNS FROM table_name;
+mysql> SHOW COLUMNS FROM database_name.table_name;
+mysql> SHOW COLUMNS FROM table_name IN database_name;
+mysql> SHOW COLUMNS FROM table_name;
+
+
+####################################
+# Import database
+####################################
+#ref: https://stackoverflow.com/a/4546797/2298002
+
+## requires existing database 'databasename' to import into
+$ mysql -u <username> -p <databasename> < <filename.sql>
+> enter password
+
+## Import with pv (pipeviewer)
+$ sudo apt install pv
+$ pv ~/fulldump.sql | mysql
+
+# or just replace pv with cat in the following command
+$ cat ~/fulldump.sql | mysql
+
+## NOTE: 
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+	"To give us an idea of how far the import process has got you may find the 'Pipe Viewer' utility, pv, useful. The following shows how to install and use pv for this case, but if you'd rather not use it just replace pv with cat in the following command. Ignore any ETA times produced by pv, they're based on the average time taken to handle each row of the file, but the speed of inserting can vary wildly from row to row with mysqldumps"
+
+### from mysql prompt -> import database dump (set source)
+mysql> source ./mydbdump.sql
+
+####################################
+# Dump database
+####################################
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+$ mysqldump --all-databases --routines -u root -p > ~/fulldump.sql
+
+
+####################################
+# MySQL Tuner & percona-toolkit
+####################################
+#ref: https://help.ubuntu.com/lts/serverguide/mysql.html
+
+## Install MySQL Tuner
+$ sudo apt install mysqltuner
+
+## Run MySQL Tuner
+$ mysqltuner
+
+## Review output (example...)
+-------- Recommendations -----------------------------------------------------
+General recommendations:
+    Run OPTIMIZE TABLE to defragment tables for better performance
+    Increase table_cache gradually to avoid file descriptor limits
+Variables to adjust:
+    key_buffer_size (> 1.4G)
+    query_cache_size (> 32M)
+    table_cache (> 64)
+    innodb_buffer_pool_size (>= 22G)
+
+# The top section provides general information about the database server, 
+#  and the bottom section provides tuning suggestions to alter in your my.cnf.
+# Most of these can be altered live on the server without restarting, 
+#  look through the official MySQL documentation (link in Resources section) for the relevant variables to change in production. 
+#  ref: http://dev.mysql.com/doc/
+
+
+## percona-toolkit (my.cnf generation tool)
+#ref: https://www.percona.com/software/database-tools/percona-toolkit
+  - my.cnf generation tool for initial set-up
+
+
+####################################
+####################################
+
+
+
