@@ -1,5 +1,5 @@
 Config                        = {}
-Config.Locale 				  = 'fr'
+Config.Locale 				  = 'en'
 Config.green 				  = 56108
 Config.grey 				  = 8421504
 Config.red 					  = 16711680
@@ -19,7 +19,7 @@ settings = {
 	LogItemTransfer = false, -- Log when a player is giving an item.
 	LogWeaponTransfer = false, -- Log when a player is giving a weapon.
 	LogMoneyTransfer = true, -- Log when a player is giving money
-	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
+	LogMoneyBankTransfert = false, -- Log when a player is giving money from bankaccount
 
 }
 
