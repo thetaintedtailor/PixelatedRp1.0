@@ -6,7 +6,7 @@ Config.AllowPolice = true -- If true, police will be able to search players' tru
 Config.Locale   = 'en'
 
  -- Limit, unit can be whatever you want. Originally grams (as average people can hold 25kg)
-Config.Limit = 25000
+Config.Limit = 10000
 
 -- Default weight for an item:
 	-- weight == 0 : The item do not affect character inventory weight
