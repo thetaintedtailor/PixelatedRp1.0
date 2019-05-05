@@ -4,7 +4,7 @@
   <HandlingData>
     <Item type="CHandlingData">
       <handlingName>lspdsuv</handlingName>
-      <fMass value="2025.000000" />
+      <fMass value="1800.000000" />
       <fInitialDragCoeff value="3.700000" />
       <fPercentSubmerged value="90.000000" />
       <vecCentreOfMassOffset x="0.000000" y="-0.050000" z="0.000000" />
@@ -15,7 +15,7 @@
       <fDriveInertia value="1" />
       <fClutchChangeRateScaleUpShift value="2.150000" />
       <fClutchChangeRateScaleDownShift value="2.150000" />
-      <fInitialDriveMaxFlatVel value="295.000000" />
+      <fInitialDriveMaxFlatVel value="320.000000" />
       <fBrakeForce value="2.800000" />
       <fBrakeBiasFront value="0.600000" />
       <fHandBrakeForce value="0.600000" />
