@@ -341,7 +341,7 @@ $(function() {
 				BlackJack.myTurn = true;
 			} else {
 				BlackJack.deck.unmount();
-				canEscape = false;
+				//canEscape = false;
 				BlackJack = new BlackJackObject();
 				queFunc();
 			}
@@ -378,7 +378,7 @@ $(function() {
 			$score.textContent = "Dealer: 0";
 			
 			BlackJack.deck.unmount();
-			canEscape = false;
+			//canEscape = false;
 			BlackJack = new BlackJackObject();
 			queFunc();
 			
