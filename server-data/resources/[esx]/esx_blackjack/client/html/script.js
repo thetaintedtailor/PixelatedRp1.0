@@ -11,7 +11,7 @@ var $hit = document.createElement('button')
 var $stay = document.createElement('button')
 var $score = document.createElement('button')
 
-var canEscape = false;
+var canEscape = true;
 var requestedActions = 0;
 var finishedActions = 0;
 
