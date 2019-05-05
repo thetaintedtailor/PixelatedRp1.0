@@ -30,5 +30,6 @@ Locales['en'] = {
 	['user_kill'] = 'killed',
 	['client_kill'] = 'has been killed by',
 	['client_kill_environnement'] = 'is dead by suicide or PNJ attack',
+	['user_kill_environnement'] = 'is dead by suicide',
 	['with'] ='with',
 }

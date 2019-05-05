@@ -11,12 +11,12 @@ Config.webhook                = "https://discordapp.com/api/webhooks/57426842217
 
 settings = {
 	LogKills = true, -- Log when a player kill an other player.
-	LogEnterPoliceVehicle = false, -- Log when an player enter in a police vehicle.
+	LogEnterPoliceVehicle = true, -- Log when an player enter in a police vehicle.
 	LogEnterBlackListedVehicle = false, -- Log when a player enter in a blacklisted vehicle.
 	LogPedJacking = false, -- Log when a player is jacking a car
 	LogChatServer = false, -- Log when a player is talking in the chat , /command works too.
 	LogLoginServer = false, -- Log when a player is connecting/disconnecting to the server.
-	LogItemTransfer = false, -- Log when a player is giving an item.
+	LogItemTransfer = true, -- Log when a player is giving an item.
 	LogWeaponTransfer = false, -- Log when a player is giving a weapon.
 	LogMoneyTransfer = true, -- Log when a player is giving money
 	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
