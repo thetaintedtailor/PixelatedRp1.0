@@ -58,7 +58,8 @@ var BlackJackObject = function() {
 	
 	this.Win = function() {
 		// Do Something With .bet
-		TriggerServerEvent('esx_blackjack:win', self.bet)
+		//TriggerServerEvent('esx_blackjack:win', self.bet)
+		$.post('http://blackjack/win', JSON.stringify({self.bet}));
 		self.bet = 0;
 		self.myTurn = true;
 	}
@@ -66,7 +67,8 @@ var BlackJackObject = function() {
 	this.Lost = function() {
 		// Do Something With .bet
 		// SomeObject.giveMoney(self.bet);
-		TriggerServerEvent('esx_blackjack:lose', self.bet)
+		//TriggerServerEvent('esx_blackjack:lose', self.bet)
+		$.post('http://blackjack/lose', JSON.stringify({self.bet}));
 		self.bet = 0;
 		self.myTurn = true;
 	}

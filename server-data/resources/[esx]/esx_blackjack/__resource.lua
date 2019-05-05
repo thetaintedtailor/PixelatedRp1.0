@@ -2,7 +2,8 @@ resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 client_scripts {
 	'shared.js',
 	'client/blackjack.js',
-	'client/client.js'
+	'client/client.js',
+	'client/main.lua'
 }
 
 server_scripts {
@@ -17,8 +18,4 @@ files({
     'client/html/style.css'
 })
 
---[[server_scripts {
-	'shared.js',
-	'server/server.js'
-}]]--
 dependency 'es_extended'

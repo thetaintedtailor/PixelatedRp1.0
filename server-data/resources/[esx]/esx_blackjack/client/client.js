@@ -17,6 +17,7 @@ on("__cfx_nui:escape", (data, cb) => {
 	ShowMenu(false);
 })
 
+
 function ShowMenu(enable) {
 	if (enable) {
 		SetNuiFocus(true, true);
