@@ -94,7 +94,7 @@ allIpls = {
 			
 			--"security_low",
 			"security_high",
-			"equipment_basic",
+			--"equipment_basic",
 			"equipment_upgrade",
 			--"set_up",
 			--"production_basic",
