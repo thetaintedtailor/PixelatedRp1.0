@@ -160,7 +160,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
 		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	},
 
 	sergeant = {
@@ -171,7 +171,7 @@ Config.AuthorizedVehicles = {
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1  },	
 		{ model = 'SFBC2', label = 'SFBC2', price = 1  },	
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	},
 
 	intendent = {
@@ -182,7 +182,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1  },
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	},
 
 	lieutenant = {
@@ -194,7 +194,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1 },
 		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	},
 
 	chef = {
@@ -208,7 +208,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{ model = 'fbi2',  label = 'FIB SUV',price = 1},
 		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	},
 
 	boss = {
@@ -222,7 +222,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'FIB SUV',price = 1},
-		{ model = 'charger', label = 'charger', price = 1 },
+		{ model = '16charger', label = 'charger', price = 1 },
 	}
 }
 
