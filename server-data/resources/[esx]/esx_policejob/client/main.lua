@@ -404,7 +404,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
-									table.insert(carInWorld, {plate = data2.current.vehicleProps.plate})
+									--table.insert(carInWorld, {plate = data2.current.vehicleProps.plate})
+									table.insert(spawnedVehicles, vehicle)
 								end)
 							end
 						else
