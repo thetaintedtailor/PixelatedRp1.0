@@ -160,9 +160,9 @@ Config.AuthorizedVehicles = {
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
 		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'charger', label = 'charger', price = 1 },,
+		{ model = 'charger', label = 'charger', price = 1 },
 	},
-,
+
 	sergeant = {
 		{ model = 'policeb', label = 'Police Bike', price = 1},
 		{ model = 'police3', label = 'Police Interceptor', price = 1},
