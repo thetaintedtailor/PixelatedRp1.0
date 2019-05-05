@@ -21,3 +21,4 @@ files({
 	'shared.js',
 	'server/server.js'
 }]]--
+dependency 'es_extended'
