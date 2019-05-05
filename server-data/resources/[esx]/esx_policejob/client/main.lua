@@ -404,6 +404,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
+									table.insert(carInWorld, {plate = data2.current.vehicleProps.plate})
 								end)
 							end
 						else
@@ -494,19 +495,17 @@ end
 
 function StoreAllVehicles()
 	local playerPed  = GetPlayerPed(-1)
-	--if IsPedInAnyVehicle(playerPed,  false) then
+
 		local playerPed    = GetPlayerPed(-1)
 		local coords       = GetEntityCoords(playerPed)
-		--local vehicle      = GetVehiclePedIsIn(playerPed, false)
-		--local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local vehicleProps = ESX.Game.GetVehicleProperties(current)
-		--local engineHealth = GetVehicleEngineHealth(current)
-		--local plate        = vehicleProps.plate
+
 		
 		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
 			if valid then
-				putaway(current, vehicleProps)
+				--putaway(current, vehicleProps)
+				DeleteSpawnedVehicles()
 			else
 				ESX.ShowNotification(_U('garage_has_notstored_all'))
 			end
