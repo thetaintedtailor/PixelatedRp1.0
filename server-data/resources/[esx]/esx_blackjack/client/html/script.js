@@ -58,11 +58,16 @@ var BlackJackObject = function() {
 	
 	this.Win = function() {
 		// Do Something With .bet
+		TriggerServerEvent('esx_blackjack:win', self.bet)
+		self.bet = 0;
 		self.myTurn = true;
 	}
 	
 	this.Lost = function() {
 		// Do Something With .bet
+		// SomeObject.giveMoney(self.bet);
+		TriggerServerEvent('esx_blackjack:lose', self.bet)
+		self.bet = 0;
 		self.myTurn = true;
 	}
 	

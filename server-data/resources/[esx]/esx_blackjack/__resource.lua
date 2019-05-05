@@ -5,6 +5,10 @@ client_scripts {
 	'client/client.js'
 }
 
+server_scripts {
+	'server/main.lua'
+}
+
 ui_page('client/html/index.html')
 
 files({
