@@ -497,6 +497,34 @@ ESX.RegisterServerCallback('esx_policejob:storeNearbyVehicle', function(source, 
 
 end)
 
+
+ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
+		['@owner'] = xPlayer.identifier,
+		['@job'] = xPlayer.job.name
+	}, function (result)
+		if result ~= nil then
+			--local originalvehprops = json.decode(result[1].vehicle)
+			--if originalvehprops.model == vehiclemodel then
+				MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true WHERE owner = @owner AND job = @job', {
+					['@owner'] = xPlayer.identifier,
+					['@job'] = xPlayer.job.name
+				}, function (rowsChanged)
+					if rowsChanged == 0 then
+						print('esx_advancedgarage: %s attempted to store an vehicle they don\'t own!')
+					end
+					cb(true)
+				end)
+		else
+			print("you don't own any police vehicles")
+			cb(false)
+		end
+	end)
+
+end)
+
 function getPriceFromHash(hashKey, jobGrade, type)
 	if type == 'helicopter' then
 		local vehicles = Config.AuthorizedHelicopters[jobGrade]

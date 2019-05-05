@@ -298,6 +298,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 	local elements = {
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
+		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
 		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
 	}
 
@@ -419,6 +420,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 		elseif data.current.action == 'store_garage' then
 			StoreNearbyVehicle(playerCoords)
+		elseif data.current.action == 'store_all_garage' then
+			StoreAllVehicles()
 		end
 
 	end, function(data, menu)
@@ -487,6 +490,37 @@ function StoreNearbyVehicle(playerCoords)
 			ESX.ShowNotification(_U('garage_has_notstored'))
 		end
 	end, vehiclePlates)
+end
+
+function StoreAllVehicles()
+	local playerPed  = GetPlayerPed(-1)
+	--if IsPedInAnyVehicle(playerPed,  false) then
+		local playerPed    = GetPlayerPed(-1)
+		local coords       = GetEntityCoords(playerPed)
+		--local vehicle      = GetVehiclePedIsIn(playerPed, false)
+		--local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+		--local engineHealth = GetVehicleEngineHealth(current)
+		--local plate        = vehicleProps.plate
+		
+		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+			if valid then
+				putaway(current, vehicleProps)
+			else
+				ESX.ShowNotification(_U('garage_has_notstored_all'))
+			end
+		end)
+	--else
+	--	ESX.ShowNotification(_U('no_vehicle_to_enter'))
+	--end
+end
+
+function putaway(vehicle, vehicleProps)
+
+	ESX.Game.DeleteVehicle(vehicle)
+	--TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
+	ESX.ShowNotification(_U('garage_has_stored_all'))
 end
 
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
