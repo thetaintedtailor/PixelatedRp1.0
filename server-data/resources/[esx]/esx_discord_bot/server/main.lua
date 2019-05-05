@@ -142,12 +142,12 @@ AddEventHandler('esx:killerlog', function(t,killer, kilerT) -- t : 0 = NPC, 1 = 
        if(kilerT.killerinveh) then
          local model = kilerT.killervehname
 
-            sendToDiscord(_U('server_kill'), xPlayer.name .." ".._('user_kill').." "..xPlayerKiller.name.." ".._('with').." "..model,Config.red)
+            sendToDiscord(_U('server_kill'), xPlayerKiller.name .." ".._('user_kill').." "..xPlayer.name.." ".._('with').." "..model,Config.red)
 
 
 
        else
-            sendToDiscord(_U('server_kill'), xPlayer.name .." ".._('user_kill').." "..xPlayerKiller.name,Config.red)
+            sendToDiscord(_U('server_kill'), xPlayerKiller.name .." ".._('user_kill').." "..xPlayer.name,Config.red)
 
 
 
