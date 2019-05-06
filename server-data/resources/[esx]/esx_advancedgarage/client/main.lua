@@ -163,15 +163,15 @@ function ListOwnedCarsMenu()
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
-							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_garage')..' '
 						else
-							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_pound')..' '
 						end
 					else
 						if v.stored then
-							labelvehicle = ' '..plate..' | '..vehicleName..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						else
-							labelvehicle = ' '..plate..' | '..vehicleName..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
 					
@@ -184,15 +184,15 @@ function ListOwnedCarsMenu()
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
-							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_garage')..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_garage')..' '
 						else
-							labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('loc_pound')..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_pound')..' '
 						end
 					else
 						if v.stored then
-							labelvehicle = ' '..plate..' | '..vehicleName..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						else
-							labelvehicle = ' '..plate..' | '..vehicleName..' '
+							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
 					
@@ -512,7 +512,7 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('return')..' '
+				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
 					if v.plate == plate then
@@ -532,7 +532,7 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = ' '..plate..' | '..vehicleName..' | '.._U('return')..' '
+				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
 					if v.plate == plate then
