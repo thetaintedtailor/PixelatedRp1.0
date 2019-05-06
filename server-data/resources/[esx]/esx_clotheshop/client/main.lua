@@ -133,10 +133,6 @@ function OpenShopMenu()
 		'watches_2',
 		'bracelets_1',
 		'bracelets_2',
-		'helmet_1',
-		'helmet_2',
-		'glasses_1',
-		'glasses_2'
 	})
 
 end
