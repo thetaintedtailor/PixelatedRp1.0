@@ -52,8 +52,8 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 			grade_label = xPlayer.job.grade_label
 		})
 
-	else
-		TriggerEvent('es:setMoneyDisplay', 0.0)
+	--else
+		--TriggerEvent('es:setMoneyDisplay', 0.0)
 	end
 end)
 
