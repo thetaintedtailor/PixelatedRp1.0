@@ -133,6 +133,8 @@ function OpenShopMenu()
 		'watches_2',
 		'bracelets_1',
 		'bracelets_2',
+		'bag',
+		'bag_color'
 	})
 
 end
