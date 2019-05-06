@@ -34,7 +34,7 @@ function OpenShopMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm',
 		{
 			title = _U('valid_this_purchase'),
-			align = 'left',
+			align = 'right',
 			elements = {
 				{label = _U('no'), value = 'no'},
 				{label = _U('yes'), value = 'yes'}
