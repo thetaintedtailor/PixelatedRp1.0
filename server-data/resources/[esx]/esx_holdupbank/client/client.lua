@@ -17,7 +17,7 @@ function DisplayHelpText(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 
-function drawTxt(x,y ,width,height,scale, text, r,g,b,a, outline)
+function drawTxt(x,y ,width,height,scale, text, r,g,b,a)
     SetTextFont(6)
     SetTextProportional(0)
     SetTextScale(scale, scale)
@@ -25,9 +25,7 @@ function drawTxt(x,y ,width,height,scale, text, r,g,b,a, outline)
     SetTextDropShadow(0, 0, 0, 0,255)
     SetTextEdge(1, 0, 0, 0, 255)
     SetTextDropShadow()
-    if(outline)then
-	    SetTextOutline()
-	end
+	SetTextOutline()
     SetTextEntry("STRING")
     AddTextComponentString(text)
     DrawText(x - width/2, y - height/2 + 0.005)
@@ -129,7 +127,7 @@ Citizen.CreateThread(function()
 
 		if holdingup then
 
-			drawTxt(0.69, 1.44, 1.0,1.25,0.4, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
+			drawTxt(0.67, 1.44, 1.0,1.28,0.5, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
 
 			local pos2 = Banks[bank].position
 
