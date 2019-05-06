@@ -1,6 +1,6 @@
 Config = {}
 Config.Locale = 'en'
-Config.NumberOfCopsRequired = 0
+Config.NumberOfCopsRequired = 5
 
 Banks = {
 	--["fleeca"] = {
