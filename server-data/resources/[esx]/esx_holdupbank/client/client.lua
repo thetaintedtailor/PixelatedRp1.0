@@ -18,7 +18,7 @@ function DisplayHelpText(str)
 end
 
 function drawTxt(x,y ,width,height,scale, text, r,g,b,a, outline)
-    SetTextFont(0)
+    SetTextFont(6)
     SetTextProportional(0)
     SetTextScale(scale, scale)
     SetTextColour(r, g, b, a)
@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
 
 		if holdingup then
 
-			drawTxt(0.66, 1.44, 1.0,1.15,0.4, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
+			drawTxt(0.66, 1.44, 1.0,1.50,0.4, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
 
 			local pos2 = Banks[bank].position
 
