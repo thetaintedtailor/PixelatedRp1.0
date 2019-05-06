@@ -127,7 +127,7 @@ Citizen.CreateThread(function()
 
 		if holdingup then
 
-			drawTxt(0.67, 1.44, 1.0,1.28,0.5, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
+			drawTxt(0.675, 1.44, 1.0,1.30,0.5, _U('robbery_of') .. secondsRemaining .. _U('seconds_remaining'), 255, 255, 255, 255)
 
 			local pos2 = Banks[bank].position
 
