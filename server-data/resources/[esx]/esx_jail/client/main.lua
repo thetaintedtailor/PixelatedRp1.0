@@ -88,7 +88,7 @@ Citizen.CreateThread(function()
 				fastTimer = JailTime
 			end
 
-			draw2dText(_U('remaining_msg', ESX.Math.Round(fastTimer)), { 0.175, 1.255 } )
+			draw2dText(_U('remaining_msg', ESX.Math.Round(fastTimer)), { 0.175, 0.655 } )
 			fastTimer = fastTimer - 0.01
 		else
 			Citizen.Wait(1000)
