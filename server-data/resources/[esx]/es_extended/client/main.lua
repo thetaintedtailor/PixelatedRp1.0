@@ -405,11 +405,11 @@ if Config.EnableHud then
 
 			if IsPauseMenuActive() and not IsPaused then
 				IsPaused = true
-				TriggerEvent('es:setMoneyDisplay', 0.0)
+				--TriggerEvent('es:setMoneyDisplay', 0.0)
 				ESX.UI.HUD.SetDisplay(0.0)
 			elseif not IsPauseMenuActive() and IsPaused then
 				IsPaused = false
-				TriggerEvent('es:setMoneyDisplay', 1.0)
+				--TriggerEvent('es:setMoneyDisplay', 1.0)
 				ESX.UI.HUD.SetDisplay(1.0)
 			end
 		end
