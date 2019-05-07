@@ -206,13 +206,28 @@ ESX.RegisterServerCallback('esx_policejob:getOtherPlayerData', function(source, 
 
 		local xPlayer = ESX.GetPlayerFromId(target)
 
+        local result = MySQL.Sync.fetchAll('SELECT firstname, lastname, sex, dateofbirth, height FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        })
+
+        local firstname = result[1].firstname
+        local lastname  = result[1].lastname
+        local sex       = result[1].sex
+        local dob       = result[1].dateofbirth
+        local height    = result[1].height
+
 		local data = {
 			name       = GetPlayerName(target),
 			job        = xPlayer.job,
 			inventory  = xPlayer.inventory,
 			accounts   = xPlayer.accounts,
 			weapons    = xPlayer.loadout,
-            money     = xPlayer.getMoney()
+            money     = xPlayer.getMoney(),
+            firstname = firstname,
+            lastname  = lastname,
+            sex       = sex,
+            dob       = dob,
+            height    = height
 		}
 
 		TriggerEvent('esx_status:getStatus', target, 'drunk', function(status)
@@ -258,7 +273,8 @@ ESX.RegisterServerCallback('esx_policejob:getVehicleInfos', function(source, cb,
 				if Config.EnableESXIdentity then
 					retrivedInfo.owner = result2[1].firstname .. ' ' .. result2[1].lastname
 				else
-					retrivedInfo.owner = result2[1].name
+                    retrivedInfo.owner = result2[1].firstname .. ' ' .. result2[1].lastname
+					-- retrivedInfo.owner = result2[1].name
 				end
 
 				cb(retrivedInfo)
