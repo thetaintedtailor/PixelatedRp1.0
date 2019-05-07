@@ -131,7 +131,7 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     
     --Efects
     local player = PlayerId()
-    AddArmourToPed(playerPed, 100)
+    AddArmourToPed(playerPed, 50)
 end)
 
 --Opium
