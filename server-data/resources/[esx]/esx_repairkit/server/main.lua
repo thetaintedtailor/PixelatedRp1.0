@@ -9,7 +9,7 @@ ESX.RegisterUsableItem('repairkit', function(source)
 	if Config.AllowMecano then
 		TriggerClientEvent('esx_repairkit:onUse', _source)
 	else
-		if xPlayer.job.name ~= 'mecano' then
+		if xPlayer.job.name ~= 'mechanic' then
 			TriggerClientEvent('esx_repairkit:onUse', _source)
 		end
 	end
