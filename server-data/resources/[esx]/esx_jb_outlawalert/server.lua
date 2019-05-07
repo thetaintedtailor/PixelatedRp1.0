@@ -33,7 +33,7 @@ end)
 
 --RegisterServerEvent('thiefInProgressS1Police')
 --AddEventHandler('thiefInProgressS1Police', function(street1, veh, sex)
-	i--f veh == "NULL" then
+	--f veh == "NULL" then
 		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE par ~w~"..sex.." ~r~à ~w~"..street1)
 	--else
 		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE ~w~"..veh.." ~r~par ~w~"..sex.." ~r~à ~w~"..street1)
