@@ -137,7 +137,8 @@ Citizen.CreateThread(function()
 			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
-				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
+				if 
+					GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
 					
 				else
 					fishing = false
