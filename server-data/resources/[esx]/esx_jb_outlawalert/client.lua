@@ -25,7 +25,7 @@ local showOutlaw = true --Set if show outlaw act on map
 local gunshotAlert = true --Set if show alert when player use gun
 local carJackingAlert = true --Set if show when player do carjacking
 local meleeAlert = true --Set if show when player fight in melee
-local blipGunTime = 5 --in second
+local blipGunTime = 15 --in second
 local blipMeleeTime = 7 --in second
 local blipJackingTime = 10 -- in second
 local showcopsmisbehave = true  --show notification when cops steal too
@@ -198,9 +198,9 @@ Citizen.CreateThread( function()
 						ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 							local sex = nil
 							if skin.sex == 0 then
-								sex = "un homme"
+								sex = "male"
 							else
-								sex = "une femme"
+								sex = "female"
 							end
 							TriggerServerEvent('thiefInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 							local veh = GetVehiclePedIsTryingToEnter(GetPlayerPed(-1))
@@ -229,9 +229,9 @@ Citizen.CreateThread( function()
 						ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 							local sex = nil
 							if skin.sex == 0 then
-								sex = "un homme"
+								sex = "male"
 							else
-								sex = "une femme"
+								sex = "female"
 							end
 							TriggerServerEvent('thiefInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 							local veh = GetVehiclePedIsTryingToEnter(GetPlayerPed(-1))
@@ -265,9 +265,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "un homme"
+						sex = "male"
 					else
-						sex = "une femme"
+						sex = "female"
 					end
 					TriggerServerEvent('meleeInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
@@ -281,9 +281,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "un homme"
+						sex = "male"
 					else
-						sex = "une femme"
+						sex = "female"
 					end
 					TriggerServerEvent('meleeInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
@@ -312,9 +312,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "un homme"
+						sex = "male"
 					else
-						sex = "une femme"
+						sex = "female"
 					end
 					TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
@@ -328,9 +328,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "un homme"
+						sex = "male"
 					else
-						sex = "une femme"
+						sex = "female"
 					end
 					TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
