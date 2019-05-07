@@ -7,7 +7,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterServerEvent('thiefInProgress')
 AddEventHandler('thiefInProgress', function(street1, street2, veh, sex)
 	if veh == "NULL" then
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
+		TriggerClientEvent("outlawNotify", -1, "~r~Vehicle stolen by a ~w~"..sex.." ~r~between ~w~"..street1.."~r~ and ~w~"..street2)
 	else
 		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule ~w~"..veh.." ~r~ par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
 	end
