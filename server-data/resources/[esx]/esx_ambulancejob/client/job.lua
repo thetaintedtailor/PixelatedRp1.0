@@ -452,6 +452,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 	local elements = {
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
+		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
 		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
 	}
 
