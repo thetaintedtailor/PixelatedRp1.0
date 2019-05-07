@@ -1012,6 +1012,7 @@ function OpenBodySearchMenu(player)
                 amount   = data.money
             })
         end
+    --[==[
 		for i=1, #data.accounts, 1 do
 
             if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
@@ -1026,7 +1027,7 @@ function OpenBodySearchMenu(player)
             end
 
 		end
-
+    --]==]
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 
 		for i=1, #data.weapons, 1 do
