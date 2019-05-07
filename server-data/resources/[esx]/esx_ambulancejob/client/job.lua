@@ -539,7 +539,6 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 		elseif data.current.action == 'store_garage' then
 			StoreNearbyVehicle(playerCoords)
-		end
 		elseif data.current.action == 'store_all_garage' then
 			StoreAllVehicles()
 		end
