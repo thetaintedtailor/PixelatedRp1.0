@@ -905,13 +905,14 @@ function OpenPoliceActionsMenu()
 end
 
 function OpenIdentityCardMenu(player)
-    local funcname = "[" .. os.time() .. " OpenIdentityCardMenu]"
+    -- local funcname = "[" .. os.time() .. " OpenIdentityCardMenu]"
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
-        print(string.format("%s data.name: %s", funcname, data.name))
-        print(string.format("%s data.firstname: %s; data.lastname: %s", funcname, data.firstname, data.lastname))
-        print(string.format("%s data: %s", funcname, data))
+        -- print(string.format("%s data.name: %s", funcname, data.name))
+        -- print(string.format("%s data.firstname: %s; data.lastname: %s", funcname, data.firstname, data.lastname))
+        -- print(string.format("%s data: %s", funcname, data))
 		local elements    = {}
-		local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
+        local nameLabel   = _U('name', data.name)
+		-- local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
 		local jobLabel    = nil
 		local sexLabel    = nil
 		local dobLabel    = nil
@@ -1012,6 +1013,8 @@ function OpenBodySearchMenu(player)
                 amount   = data.money
             })
         end
+
+    -- UNCOMMENT TO DISPLAY BLACK_MONEY
     --[==[
 		for i=1, #data.accounts, 1 do
 
@@ -1028,6 +1031,7 @@ function OpenBodySearchMenu(player)
 
 		end
     --]==]
+
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 
 		for i=1, #data.weapons, 1 do
