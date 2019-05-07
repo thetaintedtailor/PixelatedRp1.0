@@ -522,6 +522,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
+									table.insert(spawnedVehicles, vehicle)
 								end)
 							end
 						else
@@ -539,7 +540,9 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 		elseif data.current.action == 'store_garage' then
 			StoreNearbyVehicle(playerCoords)
 		end
-
+		elseif data.current.action == 'store_all_garage' then
+			StoreAllVehicles()
+		end
 	end, function(data, menu)
 		menu.close()
 	end)
@@ -607,6 +610,26 @@ function StoreNearbyVehicle(playerCoords)
 		end
 	end, vehiclePlates)
 end
+
+function StoreAllVehicles()
+	local playerPed  = GetPlayerPed(-1)
+
+		local playerPed    = GetPlayerPed(-1)
+		local coords       = GetEntityCoords(playerPed)
+		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+
+		
+		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+			if valid then
+				DeleteSpawnedVehicles()
+			else
+				ESX.ShowNotification(_U('garage_has_notstored_all'))
+			end
+		end)
+
+end
+
 
 function GetAvailableVehicleSpawnPoint(hospital, part, partNum)
 	local spawnPoints = Config.Hospitals[hospital][part][partNum].SpawnPoints

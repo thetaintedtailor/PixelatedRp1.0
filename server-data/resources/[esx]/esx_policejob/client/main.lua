@@ -510,9 +510,7 @@ function StoreAllVehicles()
 				ESX.ShowNotification(_U('garage_has_notstored_all'))
 			end
 		end)
-	--else
-	--	ESX.ShowNotification(_U('no_vehicle_to_enter'))
-	--end
+
 end
 
 function putaway(vehicle, vehicleProps)
