@@ -53,12 +53,12 @@ end)
 
 RegisterServerEvent('gunshotInProgress')
 AddEventHandler('gunshotInProgress', function(street1, street2, sex)
-	TriggerClientEvent("outlawNotify", -1, "~r~Coup de feu par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
+	TriggerClientEvent("outlawNotify", -1, "~r~Shots fired ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
 end)
 
 RegisterServerEvent('gunshotInProgressS1')
 AddEventHandler('gunshotInProgressS1', function(street1, sex)
-	TriggerClientEvent("outlawNotify", -1, "~r~Coup de feu par ~w~"..sex.." ~r~à ~w~"..street1)
+	TriggerClientEvent("outlawNotify", -1, "~r~Shots fired ~w~"..sex.." ~r~à ~w~"..street1)
 end)
 
 RegisterServerEvent('thiefInProgressPos')
