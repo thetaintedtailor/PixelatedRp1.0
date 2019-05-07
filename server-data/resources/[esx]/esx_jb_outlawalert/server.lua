@@ -13,32 +13,32 @@ AddEventHandler('thiefInProgress', function(street1, street2, veh, sex)
 	end
 end)
 
-RegisterServerEvent('thiefInProgressS1')
-AddEventHandler('thiefInProgressS1', function(street1, veh, sex)
-	if veh == "NULL" then
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule par ~w~"..sex.." ~r~à ~w~"..street1)
-	else
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule ~w~"..veh.." ~r~par ~w~"..sex.." ~r~à ~w~"..street1)
-	end
-end)
+--RegisterServerEvent('thiefInProgressS1')
+--AddEventHandler('thiefInProgressS1', function(street1, veh, sex)
+	--if veh == "NULL" then
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule par ~w~"..sex.." ~r~à ~w~"..street1)
+	--else
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule ~w~"..veh.." ~r~par ~w~"..sex.." ~r~à ~w~"..street1)
+	--end
+--end)
 
-RegisterServerEvent('thiefInProgressPolice')
-AddEventHandler('thiefInProgressPolice', function(street1, street2, veh, sex)
-	if veh == "NULL" then
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
-	else
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE ~w~"..veh.." ~r~ par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
-	end
-end)
+--RegisterServerEvent('thiefInProgressPolice')
+--AddEventHandler('thiefInProgressPolice', function(street1, street2, veh, sex)
+	--if veh == "NULL" then
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
+	--else
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE ~w~"..veh.." ~r~ par ~w~"..sex.." ~r~entre ~w~"..street1.."~r~ et ~w~"..street2)
+	--end
+--end)
 
-RegisterServerEvent('thiefInProgressS1Police')
-AddEventHandler('thiefInProgressS1Police', function(street1, veh, sex)
-	if veh == "NULL" then
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE par ~w~"..sex.." ~r~à ~w~"..street1)
-	else
-		TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE ~w~"..veh.." ~r~par ~w~"..sex.." ~r~à ~w~"..street1)
-	end
-end)
+--RegisterServerEvent('thiefInProgressS1Police')
+--AddEventHandler('thiefInProgressS1Police', function(street1, veh, sex)
+	i--f veh == "NULL" then
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE par ~w~"..sex.." ~r~à ~w~"..street1)
+	--else
+		--TriggerClientEvent("outlawNotify", -1, "~r~Vol de vehicule de POLICE ~w~"..veh.." ~r~par ~w~"..sex.." ~r~à ~w~"..street1)
+	--end
+--end)
 
 --RegisterServerEvent('meleeInProgress')
 --AddEventHandler('meleeInProgress', function(street1, street2, sex)
