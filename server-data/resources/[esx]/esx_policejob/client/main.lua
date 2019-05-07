@@ -909,12 +909,10 @@ function OpenIdentityCardMenu(player)
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
         local funcname = "[OpenIdentityCardMenu]"
         print(string.format("%s data.name: %s", funcname, data.name))
-        -- RconPrint(string.format("%s data.name: %s", funcname, data.name))
         print(string.format("%s data.firstname: %s; data.lastname: %s", funcname, data.firstname, data.lastname))
-        -- print(string.format("%s data: %s", funcname, data))
 		local elements    = {}
-        local nameLabel   = _U('name', data.name)
-		-- local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
+        -- local nameLabel   = _U('name', data.name)
+		local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
 		local jobLabel    = nil
 		local sexLabel    = nil
 		local dobLabel    = nil
