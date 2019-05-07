@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['X']) then
+			if IsControlJustReleased(0, Keys['Z']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
@@ -137,7 +137,8 @@ Citizen.CreateThread(function()
 			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
-				if GetwaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
+				if 
+					GetwaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
 					
 				else
 					fishing = false
