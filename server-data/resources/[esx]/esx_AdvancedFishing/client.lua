@@ -104,7 +104,7 @@ Citizen.CreateThread(function()
 		Wait(5)
 		if fishing then
 			if IsControlJustReleased(0, Keys['1']) then
-				 input = 1
+				input = 1
 			end
 			if IsControlJustReleased(0, Keys['2']) then
 				input = 2
