@@ -909,7 +909,7 @@ function OpenIdentityCardMenu(player)
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
 
 		local elements    = {}
-		local nameLabel   = _U('name', data.name)
+		local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
 		local jobLabel    = nil
 		local sexLabel    = nil
 		local dobLabel    = nil
