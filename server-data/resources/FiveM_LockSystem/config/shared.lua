@@ -26,7 +26,7 @@ _VERSION = 3.1
 globalConf = {
 	["SERVER"] = {
 		versionChecker = true,			-- Set to false for disable the version checker
-		enableGiveKey = false			-- Enable or disable the /givekey chatCommand
+		enableGiveKey = true			-- Enable or disable the /givekey chatCommand
 	},
 
 	["CLIENT"] = {
