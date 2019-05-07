@@ -58,7 +58,7 @@ end)
 
 RegisterServerEvent('gunshotInProgressS1')
 AddEventHandler('gunshotInProgressS1', function(street1, sex)
-	TriggerClientEvent("outlawNotify", -1, "~r~Shots fired ~w~"..sex.." ~r~suspect is a ~w~"..street1)
+	TriggerClientEvent("outlawNotify", -1, "~r~Shots fired ~w~"..sex.." ~r~suspect was last seen at ~w~"..street1)
 end)
 
 RegisterServerEvent('thiefInProgressPos')
