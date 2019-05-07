@@ -905,7 +905,7 @@ function OpenPoliceActionsMenu()
 end
 
 function OpenIdentityCardMenu(player)
-    local funcname = "[" .. os.time() .. " OpenIdentityCardMenu]"
+    -- local funcname = "[" .. os.time() .. " OpenIdentityCardMenu]"
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
         print(string.format("%s data.name: %s", funcname, data.name))
         RconPrint(string.format("%s data.name: %s", funcname, data.name))
