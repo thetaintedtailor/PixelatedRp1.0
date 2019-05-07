@@ -129,15 +129,15 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['X']) then
+			if IsControlJustReleased(0, Keys['Z']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
-			
+				BlockWeaponWheelThisFrame()
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
-				if pos.y >= 7700 or pos.y <= -4000 or pos.x <= -3700 or pos.x >= 4300 or IsPedInAnyVehicle(GetPlayerPed(-1)) then
+				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0)  then
 					
 				else
 					fishing = false
@@ -249,7 +249,7 @@ AddEventHandler('fishing:fishstart', function()
 	if IsPedInAnyVehicle(playerPed) then
 		ESX.ShowNotification("~y~You can not fish from a vehicle")
 	else
-		if pos.y >= 7700 or pos.y <= -4000 or pos.x <= -3700 or pos.x >= 4300 then
+		if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
 			ESX.ShowNotification("~g~Fishing started")
 			TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_STAND_FISHING", 0, true)
 			fishing = true
@@ -316,8 +316,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 2500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 2500)
+		TriggerServerEvent("fishing:lowmoney", 200) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 200)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "dinghy4")
 	end
@@ -325,8 +325,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat2' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 5500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 5500)
+		TriggerServerEvent("fishing:lowmoney", 225) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 225)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "TORO")
 	end
@@ -334,8 +334,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat3' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 6000) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 6000)
+		TriggerServerEvent("fishing:lowmoney", 250) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 250)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "MARQUIS")
 	end
@@ -343,8 +343,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat4' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 7500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 7500)
+		TriggerServerEvent("fishing:lowmoney", 275) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 275)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "tug")
 	end
@@ -352,8 +352,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat5' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 4500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 4500)
+		TriggerServerEvent("fishing:lowmoney", 300) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "jetmax")
 	end
@@ -361,8 +361,8 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat6' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 3500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 3500)
+		TriggerServerEvent("fishing:lowmoney", 325) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 325)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "suntrap")
 	end
