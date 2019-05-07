@@ -134,7 +134,7 @@ Citizen.CreateThread(function()
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
-			
+				BlockWeaponWheelThisFrame()
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
 				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
