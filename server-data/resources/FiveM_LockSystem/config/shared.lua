@@ -30,11 +30,11 @@ globalConf = {
 	},
 
 	["CLIENT"] = {
-		percentage = 50,				-- Percentage chance of finding keys
+		percentage = 5,				-- Percentage chance of finding keys
 		notification = 0,				-- 0 = Disable | 1 = LockSystem notification | 2 = chatMessage notification
 		key = Keys['U'],				-- e.g : Keys["H"] will be change the U key to the H key for lock/unlock a vehicle
 		disableCar_NPC = true,			-- Set to true for disable NPC's car
-		lockTimer = 3,					-- Timer between two changes (open/close - in seconds)
+		lockTimer = 1,					-- Timer between two changes (open/close - in seconds)
 	}
 }
 
