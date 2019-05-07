@@ -137,10 +137,9 @@ Citizen.CreateThread(function()
 			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
-				if 
-					GetwaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
+				if GetwaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) then
 					
-				else
+				 else
 					fishing = false
 					ESX.ShowNotification("~r~Stopped fishing")
 				end
