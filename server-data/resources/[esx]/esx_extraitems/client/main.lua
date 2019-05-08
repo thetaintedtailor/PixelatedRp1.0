@@ -1,6 +1,7 @@
 ESX 					  = nil
 local CurrentActionData   = {}
 local lastTime 			  = 0
+local tankEquipped 		  = false
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -64,7 +65,8 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 	local coords     = GetEntityCoords(playerPed)
 	local boneIndex  = GetPedBoneIndex(playerPed, 12844)
 	local boneIndex2 = GetPedBoneIndex(playerPed, 24818)
-	
+	tankEquipped = true
+
 	ESX.Game.SpawnObject('p_s_scuba_mask_s', {
 		x = coords.x,
 		y = coords.y,
@@ -78,7 +80,8 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			AttachEntityToEntity(object2, playerPed, boneIndex2, -0.30, -0.22, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
 			AttachEntityToEntity(object, playerPed, boneIndex, 0.0, 0.0, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
 			SetPedDiesInWater(playerPed, false)
-			
+
+			while tankEquipped do
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
 			Citizen.Wait(10000)
 			ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
@@ -91,7 +94,7 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			DeleteObject(object)
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
-
+			end
 		end)
 	end)
 end)
@@ -206,6 +209,7 @@ end
 
 RegisterCommand('tank', function(source, args)
 	--SetPedDiesInWater(playerPed, true)
-	removeTank()
+	--removeTank()
+	tankEquipped = false
 end, false)
 
