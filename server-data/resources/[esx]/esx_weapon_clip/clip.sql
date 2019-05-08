@@ -3,5 +3,5 @@
  ;
  
  INSERT INTO `shops` (store, item, `price`) VALUES
-  ('TwentyFourSeven', 'clip', 1000)
+  ('TwentyFourSeven', 'clip', 100)
  ;
