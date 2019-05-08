@@ -2,6 +2,7 @@ ESX 					  = nil
 local CurrentActionData   = {}
 local lastTime 			  = 0
 local tankTimer = 0
+local tankEquipped = false
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -80,22 +81,21 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			AttachEntityToEntity(object2, playerPed, boneIndex2, -0.30, -0.22, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
 			AttachEntityToEntity(object, playerPed, boneIndex, 0.0, 0.0, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
 			SetPedDiesInWater(playerPed, false)
-
+			tankEquipped = true
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
 
-			--local tankTimer = 0
-			while tankTimer < 60 do
-				Citizen.Wait(6000)
-			--ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
+
+			while tankTimer < 3600 and tankEquipped do
+				Citizen.Wait(1000)
 				tankTimer = tankTimer + 1
 
-				if tankTimer == 15 then
+				if tankTimer == 900 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '75') .. '%.')
-				elseif tankTimer == 30 then
+				elseif tankTimer == 1800 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-				elseif tankTimer == 45 then
+				elseif tankTimer == 2700 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '25') .. '%.')
-				elseif tankTimer == 59 then
+				elseif tankTimer == 3540 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '1') .. '%.')
 				end
 			end
@@ -208,7 +208,7 @@ end)
 
 
 function removeTank()
-	tankTimer = 61
+	tankEquipped = false
 end
 
 RegisterCommand('tank', function(source, args)
@@ -216,7 +216,11 @@ RegisterCommand('tank', function(source, args)
 end, false)
 
 RegisterCommand('oxy', function(source, args)
-	local timeLeft = 100 - (tankTimer * 1.6666)
+	local timeLeft = math.floor(100 - (tankTimer * 0.027777))
 
-	ESX.ShowNotification(_U('oxygen_notify', '~y~', timeLeft) .. '%.')
+	if tankTimer > 0 then
+		ESX.ShowNotification(_U('oxygen_notify', '~y~', timeLeft) .. '%.')
+	else 
+		ESX.ShowNotification(_U('not_wearing_tank'))
+	end
 end, false)
