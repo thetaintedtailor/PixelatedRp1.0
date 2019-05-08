@@ -413,8 +413,7 @@ end
 ---------------------------------------------------------------------------
 -- Toggling Mic --
 ---------------------------------------------------------------------------
-RegisterNetEvent("Mic:ToggleMic")
-AddEventHandler("Mic:ToggleMic", function()
+RegisterCommand("mic", function(source, args)
     if not holdingMic then
         RequestModel(GetHashKey(micModel))
         while not HasModelLoaded(GetHashKey(micModel)) do
@@ -451,34 +450,40 @@ end)
 ---------------------------------------------------------------------------
 -- Toggling Boom Mic --
 ---------------------------------------------------------------------------
-RegisterNetEvent("Mic:ToggleBMic")
-AddEventHandler("Mic:ToggleBMic", function()
-    if not holdingBmic then
-        RequestModel(GetHashKey(bmicModel))
-        while not HasModelLoaded(GetHashKey(bmicModel)) do
+
+RegisterCommand("Mic:ToggleBMic", function(source, args)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if xPlayer.job.name == 'reporter' then
+    	if not holdingBmic then
+	     RequestModel(GetHashKey(bmicModel))
+        	while not HasModelLoaded(GetHashKey(bmicModel)) do
             Citizen.Wait(100)
         end
 		
-        local plyCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()), 0.0, 0.0, -5.0)
-        local bmicspawned = CreateObject(GetHashKey(bmicModel), plyCoords.x, plyCoords.y, plyCoords.z, true, true, false)
-        Citizen.Wait(1000)
-        local netid = ObjToNet(bmicspawned)
-        SetNetworkIdExistsOnAllMachines(netid, true)
-        NetworkSetNetworkIdDynamic(netid, true)
-        SetNetworkIdCanMigrate(netid, false)
-        AttachEntityToEntity(bmicspawned, GetPlayerPed(PlayerId()), GetPedBoneIndex(GetPlayerPed(PlayerId()), 28422), -0.08, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 0, 1, 0, 1)
-        TaskPlayAnim(GetPlayerPed(PlayerId()), 1.0, -1, -1, 50, 0, 0, 0, 0) -- 50 = 32 + 16 + 2
-        TaskPlayAnim(GetPlayerPed(PlayerId()), bmicanimDict, bmicanimName, 1.0, -1, -1, 50, 0, 0, 0, 0)
-        bmic_net = netid
-        holdingBmic = true
-    else
-        ClearPedSecondaryTask(GetPlayerPed(PlayerId()))
-        DetachEntity(NetToObj(bmic_net), 1, 1)
-        DeleteEntity(NetToObj(bmic_net))
-        bmic_net = nil
-        holdingBmic = false
-        usingBmic = false
-    end
+        	local plyCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()), 0.0, 0.0, -5.0)
+        	local bmicspawned = CreateObject(GetHashKey(bmicModel), plyCoords.x, plyCoords.y, plyCoords.z, true, true, false)
+        	Citizen.Wait(1000)
+        	local netid = ObjToNet(bmicspawned)
+        	SetNetworkIdExistsOnAllMachines(netid, true)
+        	NetworkSetNetworkIdDynamic(netid, true)
+        	SetNetworkIdCanMigrate(netid, false)
+        	AttachEntityToEntity(bmicspawned, GetPlayerPed(PlayerId()), GetPedBoneIndex(GetPlayerPed(PlayerId()), 28422), -0.08, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 0, 1, 0, 1)
+        	TaskPlayAnim(GetPlayerPed(PlayerId()), 1.0, -1, -1, 50, 0, 0, 0, 0) -- 50 = 32 + 16 + 2
+        	TaskPlayAnim(GetPlayerPed(PlayerId()), bmicanimDict, bmicanimName, 1.0, -1, -1, 50, 0, 0, 0, 0)
+        	bmic_net = netid
+       		holdingBmic = true
+    	else
+        	ClearPedSecondaryTask(GetPlayerPed(PlayerId()))
+        	DetachEntity(NetToObj(bmic_net), 1, 1)
+        	DeleteEntity(NetToObj(bmic_net))
+        	bmic_net = nil
+        	holdingBmic = false
+        	usingBmic = false
+		end
+	else
+		ESX.ShowNotification('You are not a reporter')
+	end
 end)
 
 Citizen.CreateThread(function()
