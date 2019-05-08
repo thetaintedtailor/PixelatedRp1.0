@@ -80,11 +80,11 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			SetPedDiesInWater(playerPed, false)
 			
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
-			Citizen.Wait(1800000)
+			Citizen.Wait(10000)
 			ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-			Citizen.Wait(900000)
+			Citizen.Wait(2000)
 			ESX.ShowNotification(_U('oxygen_notify', '~o~', '25') .. '%.')
-			Citizen.Wait(900000)
+			Citizen.Wait(2000)
 			ESX.ShowNotification(_U('oxygen_notify', '~r~', '0') .. '%.')
 			
 			SetPedDiesInWater(playerPed, true)
@@ -196,9 +196,11 @@ end)
 
 function removeTank()
 	local playerPed  = GetPlayerPed(-1)
+	local obj1 = GetHashKey('p_s_scuba_mask_s')
+	local obj2 = GetHashKey('p_s_scuba_tank_s')
 	SetPedDiesInWater(playerPed, true)
-	ESX.Game.DeleteObject('p_s_scuba_mask_s')
-	ESX.Game.DeleteObject('p_s_scuba_tank_s')
+	ESX.Game.DeleteObject(obj1)
+	ESX.Game.DeleteObject(obj2)
 	ClearPedSecondaryTask(playerPed)
 end
 
