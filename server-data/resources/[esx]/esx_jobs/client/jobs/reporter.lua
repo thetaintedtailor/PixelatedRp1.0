@@ -1,3 +1,4 @@
+ESX = nil
 local holdingCam = false
 local usingCam = false
 local holdingMic = false
@@ -21,6 +22,7 @@ local UI = {
 	y = -0.001 ,
 }
 
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Config.Jobs.reporter = {
 
@@ -451,7 +453,7 @@ end)
 -- Toggling Boom Mic --
 ---------------------------------------------------------------------------
 
-RegisterCommand("Mic:ToggleBMic", function(source, args)
+RegisterCommand("bmic", function(source, args)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if xPlayer.job.name == 'reporter' then
