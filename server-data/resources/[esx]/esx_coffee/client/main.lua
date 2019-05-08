@@ -34,7 +34,8 @@ function OpenCoffeeMenu(zone)
 			label     = item.label .. ' - $' .. item.price .. ' ',
 			realLabel = item.label,
 			value     = item.name,
-			price     = item.price
+			price     = item.price,
+			max       = item.limit
 		})
 
 	end

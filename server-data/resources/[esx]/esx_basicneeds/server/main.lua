@@ -9,7 +9,7 @@ ESX.RegisterUsableItem('burger', function(source)
 
 	TriggerClientEvent('esx_status:add', source, 'hunger', 1000000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
-	TriggerClientEvent('esx:showNotification', source, _U('used_bread'))
+	TriggerClientEvent('esx:showNotification', source, _U('used_burger'))
 end)
 
 ESX.RegisterUsableItem('water', function(source)
