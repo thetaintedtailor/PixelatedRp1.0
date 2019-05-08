@@ -1,7 +1,6 @@
 ESX 					  = nil
 local CurrentActionData   = {}
 local lastTime 			  = 0
-local tankEquipped 		  = false
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -81,20 +80,25 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			AttachEntityToEntity(object, playerPed, boneIndex, 0.0, 0.0, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
 			SetPedDiesInWater(playerPed, false)
 
-			while tankEquipped do
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
-			Citizen.Wait(10000)
-			ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-			Citizen.Wait(2000)
-			ESX.ShowNotification(_U('oxygen_notify', '~o~', '25') .. '%.')
-			Citizen.Wait(2000)
-			ESX.ShowNotification(_U('oxygen_notify', '~r~', '0') .. '%.')
-			
+
+			local timer = 0
+			while timer < 60 do
+				Citizen.Wait(1000)
+			--ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
+				timer = timer + 1
+
+				if timer == 30 then
+					ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
+				elseif timer == 45 then
+					ESX.ShowNotification(_U('oxygen_notify', '~y~', '25') .. '%.')
+				end
+			end
 			SetPedDiesInWater(playerPed, true)
 			DeleteObject(object)
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
-			end
+
 		end)
 	end)
 end)
