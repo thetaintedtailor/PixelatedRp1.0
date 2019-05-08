@@ -200,3 +200,16 @@ AddEventHandler('esx_extraitems:picnic', function()
 end)
 
 
+function removeTank()
+	local playerPed  = GetPlayerPed(-1)
+	SetPedDiesInWater(playerPed, true)
+	DeleteObject('p_s_scuba_mask_s')
+	DeleteObject('p_s_scuba_tank_s')
+	ClearPedSecondaryTask(playerPed)
+end
+
+RegisterCommand('tank', function(source, args)
+	--SetPedDiesInWater(playerPed, true)
+	removeTank()
+end, false)
+
