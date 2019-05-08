@@ -80,7 +80,7 @@ end)
 
 -- unjail after time served
 RegisterServerEvent('esx_jail:unjailTime')
-AddEventHandler('esx_jail:unjailTime', function()
+AddEventHandler('esx_jail:unjailTime', function(source)
 	unjail(source)
 end)
 
@@ -118,7 +118,8 @@ function unjail(target)
 end
 
 RegisterServerEvent('esx_jail:replenishInmate')
-AddEventHandler('esx_jail:replenishInmate', function()
+AddEventHandler('esx_jail:replenishInmate', function(source)
+
 	TriggerClientEvent('esx_status:add', source, 'hunger', 1000000)
 	TriggerClientEvent('esx_status:add', source, 'thirst', 1000000)
 end)
