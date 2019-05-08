@@ -103,28 +103,28 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(5)
 		if fishing then
-			if DisabledControlPressed(0, Keys['1']) then
+			if IsControlJustReleased(0, Keys['1']) then
 				input = 1
 			end
-			if DisabledControlPressed(0, Keys['2']) then
+			if IsControlJustReleased(0, Keys['2']) then
 				input = 2
 			end
-			if DisabledControlPressed(0, Keys['3']) then
+			if IsControlJustReleased(0, Keys['3']) then
 				input = 3
 			end
-			if DisabledControlPressed(0, Keys['4']) then
+			if IsControlJustReleased(0, Keys['4']) then
 				input = 4
 			end
-			if DisabledControlPressed(0, Keys['5']) then
+			if IsControlJustReleased(0, Keys['5']) then
 				input = 5
 			end
-			if DisabledControlPressed(0, Keys['6']) then
+			if IsControlJustReleased(0, Keys['6']) then
 				input = 6
 			end
-			if DisabledControlPressed(0, Keys['7']) then
+			if IsControlJustReleased(0, Keys['7']) then
 				input = 7
 			end
-			if DisabledControlPressed(0, Keys['8']) then
+			if IsControlJustReleased(0, Keys['8']) then
 				input = 8
 			end
 			
@@ -134,7 +134,6 @@ Citizen.CreateThread(function()
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
-				BlockWeaponWheelThisFrame()
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
 				if GetWaterHeight(pos.x, pos.y, pos.z-0.0, pos.z-0.5) then
