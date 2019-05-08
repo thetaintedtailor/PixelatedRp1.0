@@ -14,7 +14,7 @@ ESX                             = nil
 
 local Blips = {
 	{ name="Hunting", id=141,x=-769.23773193359, y=5595.6215820313, z=33.48571395874},
-	{ name="Hunting Seller", id=141,x=-969.16375732422, y=-2107.9033203125, z=31.475671768188},
+	{ name="Hunting Seller", id=141,x=969.16375732422, y=-2107.9033203125, z=31.475671768188},
 }
 
 Citizen.CreateThread(function()
