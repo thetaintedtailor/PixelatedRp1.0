@@ -92,12 +92,12 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
 
-			RegisterCommand('tank', function(source, args)
+			if IsControlJustReleased(0, 20) then
 				SetPedDiesInWater(playerPed, true)
 				DeleteObject(object)
 				DeleteObject(object2)
 				ClearPedSecondaryTask(playerPed)
-			end, false)
+			end
 		end)
 	end)
 end)
