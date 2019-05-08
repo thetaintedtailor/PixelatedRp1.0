@@ -51,11 +51,11 @@ function OpenBossMenu(society, close, options)
 	end
 
 	local defaultOptions = {
-		withdraw  = true,
-		deposit   = true,
-		wash      = true,
+		withdraw  = false,
+		deposit   = false,
+		wash      = false,
 		employees = true,
-		grades    = true
+		grades    = false
 	}
 
 	for k,v in pairs(defaultOptions) do
