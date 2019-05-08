@@ -92,12 +92,6 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
 
-			if IsControlJustReleased(0, 20) then
-				SetPedDiesInWater(playerPed, true)
-				DeleteObject(object)
-				DeleteObject(object2)
-				ClearPedSecondaryTask(playerPed)
-			end
 		end)
 	end)
 end)
@@ -203,8 +197,8 @@ end)
 function removeTank()
 	local playerPed  = GetPlayerPed(-1)
 	SetPedDiesInWater(playerPed, true)
-	DeleteObject('p_s_scuba_mask_s')
-	DeleteObject('p_s_scuba_tank_s')
+	ESX.Game.DeleteObject('p_s_scuba_mask_s')
+	ESX.Game.DeleteObject('p_s_scuba_tank_s')
 	ClearPedSecondaryTask(playerPed)
 end
 
