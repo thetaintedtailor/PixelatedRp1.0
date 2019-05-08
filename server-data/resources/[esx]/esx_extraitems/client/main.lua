@@ -80,17 +80,25 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			SetPedDiesInWater(playerPed, false)
 			
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
-			Citizen.Wait(50000)
+			Citizen.Wait(1800000)
 			ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-			Citizen.Wait(25000)
+			Citizen.Wait(900000)
 			ESX.ShowNotification(_U('oxygen_notify', '~o~', '25') .. '%.')
-			Citizen.Wait(25000)
+			Citizen.Wait(900000)
 			ESX.ShowNotification(_U('oxygen_notify', '~r~', '0') .. '%.')
 			
 			SetPedDiesInWater(playerPed, true)
 			DeleteObject(object)
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
+		
+			RegisterCommand('tank', function()
+				SetPedDiesInWater(playerPed, true)
+				DeleteObject(object)
+				DeleteObject(object2)
+				ClearPedSecondaryTask(playerPed)
+			end)
+
 		end)
 	end)
 end)
@@ -146,7 +154,7 @@ AddEventHandler('esx_extraitems:redgull', function()
 	ESX.ShowNotification(_U('redgull_consumed'))
 	
 	local timer = 0
-	while timer < 300 do
+	while timer < 60 do
 		ResetPlayerStamina(PlayerId())
 		Citizen.Wait(2000)
 		timer = timer + 2
