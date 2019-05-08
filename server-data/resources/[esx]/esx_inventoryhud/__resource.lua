@@ -128,4 +128,12 @@ files {
     'html/img/items/wool.png',
     'html/img/items/alive_chicken.png',
     'html/img/items/scratchoff.png',
+    'html/img/items/burger.png',
+    'html/img/items/coffee.png',
+    'html/img/items/donut.png',
+    'html/img/items/oxygen_mask.png',
+    'html/img/items/picnic.png',
+    'html/img/items/redgull.png',
+    'html/img/items/rose.png',
+    'html/img/items/sandwich.png',
 }

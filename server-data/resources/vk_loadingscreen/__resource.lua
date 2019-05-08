@@ -3,6 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
+    'music/meekmill-goingbad.mp3',
     'music/nodoubt-hellagood.mp3',
     'music/imagdrag-imsosorry.mp3',
     'music/legomovie.mp3',

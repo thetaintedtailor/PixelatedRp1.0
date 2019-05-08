@@ -115,7 +115,7 @@ Config.Jobs.fueler = {
 			Type = "vehspawner",
 			Spawner = 1,
 			Hint = _U("spawn_truck_button"),
-			Caution = 2000,
+			Caution = 50,
 			GPS = {x = 602.25, y = 2926.62, z = 39.68}
 		},
 
@@ -141,7 +141,7 @@ Config.Jobs.fueler = {
 			Type = "vehdelete",
 			Hint = _U("return_vh_button"),
 			Spawner = 1,
-			Caution = 2000,
+			Caution = 50,
 			GPS = 0,
 			Teleport = 0
 		},

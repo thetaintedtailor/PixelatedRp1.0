@@ -34,7 +34,7 @@ function OpenShopMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm',
 		{
 			title = _U('valid_this_purchase'),
-			align = 'top-left',
+			align = 'right',
 			elements = {
 				{label = _U('no'), value = 'no'},
 				{label = _U('yes'), value = 'yes'}
@@ -56,7 +56,7 @@ function OpenShopMenu()
 								ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'save_dressing',
 								{
 									title = _U('save_in_dressing'),
-									align = 'top-left',
+									align = 'right',
 									elements = {
 										{label = _U('no'),  value = 'no'},
 										{label = _U('yes'), value = 'yes'}
@@ -122,16 +122,19 @@ function OpenShopMenu()
 		'decals_1',
 		'decals_2',
 		'arms',
+		'arms_2',
 		'pants_1',
 		'pants_2',
 		'shoes_1',
 		'shoes_2',
 		'chain_1',
 		'chain_2',
-		'helmet_1',
-		'helmet_2',
-		'glasses_1',
-		'glasses_2'
+		'watches_1',
+		'watches_2',
+		'bracelets_1',
+		'bracelets_2',
+		'bags_1',
+		'bags_2'
 	})
 
 end

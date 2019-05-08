@@ -298,6 +298,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 	local elements = {
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
+		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
 		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
 	}
 
@@ -403,6 +404,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
+									table.insert(spawnedVehicles, vehicle)
 								end)
 							end
 						else
@@ -419,6 +421,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 		elseif data.current.action == 'store_garage' then
 			StoreNearbyVehicle(playerCoords)
+		elseif data.current.action == 'store_all_garage' then
+			StoreAllVehicles()
 		end
 
 	end, function(data, menu)
@@ -487,6 +491,33 @@ function StoreNearbyVehicle(playerCoords)
 			ESX.ShowNotification(_U('garage_has_notstored'))
 		end
 	end, vehiclePlates)
+end
+
+function StoreAllVehicles()
+	local playerPed  = GetPlayerPed(-1)
+
+		local playerPed    = GetPlayerPed(-1)
+		local coords       = GetEntityCoords(playerPed)
+		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+
+		
+		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+			if valid then
+				--putaway(current, vehicleProps)
+				DeleteSpawnedVehicles()
+			else
+				ESX.ShowNotification(_U('garage_has_notstored_all'))
+			end
+		end)
+
+end
+
+function putaway(vehicle, vehicleProps)
+
+	ESX.Game.DeleteVehicle(vehicle)
+	--TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
+	ESX.ShowNotification(_U('garage_has_stored_all'))
 end
 
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
@@ -874,9 +905,8 @@ end
 function OpenIdentityCardMenu(player)
 
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
-
 		local elements    = {}
-		local nameLabel   = _U('name', data.name)
+		local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
 		local jobLabel    = nil
 		local sexLabel    = nil
 		local dobLabel    = nil
@@ -977,6 +1007,9 @@ function OpenBodySearchMenu(player)
                 amount   = data.money
             })
         end
+
+    -- UNCOMMENT TO DISPLAY BLACK_MONEY
+    --[==[
 		for i=1, #data.accounts, 1 do
 
             if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
@@ -991,6 +1024,7 @@ function OpenBodySearchMenu(player)
             end
 
 		end
+    --]==]
 
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 

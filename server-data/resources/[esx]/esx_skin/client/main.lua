@@ -95,7 +95,7 @@ function OpenMenu(submitCb, cancelCb, restrict)
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'skin', {
 			title    = _U('skin_menu'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 			TriggerEvent('skinchanger:getSkin', function(skin)
@@ -228,9 +228,9 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		if isCameraActive then
-			if IsControlPressed(0, Keys['N4']) then
+			if IsControlPressed(0, Keys['3']) then
 				angle = angle - 1
-			elseif IsControlPressed(0, 109) then
+			elseif IsControlPressed(0, Keys['4']) then
 				angle = angle + 1
 			end
 

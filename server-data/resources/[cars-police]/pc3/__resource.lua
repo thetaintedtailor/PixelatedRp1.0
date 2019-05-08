@@ -14,4 +14,4 @@ files {
     --'vehiclelayouts.meta',
 }
 
---client_script 'vehicle_names.lua'
+client_script 'vehicle_names.lua'

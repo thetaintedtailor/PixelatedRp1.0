@@ -1,0 +1,23 @@
+When installing this car pack please make sure to remove ( )
+When installing the cars to the database please make sure you 
+use the right yt file. 
+
+All cars come with meta files.
+
+1. 1984 Mazda rx7 = 84rx7k (sports category)
+2. 370z Nissan Nismo = 370z (sports)
+3. 1974 Chevy Caprice = FLACCO (sportsclassics)
+4. 2017 Nissan Nismo GTR = gtr (super)
+5. Mazda MX Miata = n6 (coupes category)
+6. Audi RS5 = rs5r (coupes)
+7. Nissan Skyline R32 = elegy2 (missing required files)	
+8. Audi RS6 = AUDIRS6TK (sports)
+9. Nissan Silvia S15 = lgtS15 (sports)
+10. Subaru WRX STI = SSTI (sports)
+
+Coming soon:
+
+PD Charger 
+PD Mustang
+EMS Truck
+Mech Tow Truck
