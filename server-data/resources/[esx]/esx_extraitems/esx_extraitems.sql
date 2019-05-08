@@ -1,30 +1,30 @@
 INSERT INTO `items` (`name`, `label`, `limit`) VALUES
-	('picnic', 'Picknick kit', 1),
-	('donut', 'Munk', 6),
-	('oxygen_mask', 'Dykmask', 2),
-	('sandwich', 'Macka', 5),
-	('rose', 'Röd ros', 1),
+	('picnic', 'Picnic Basket', 1),
+	('donut', 'Donut', 12),
+	('oxygen_mask', 'Oxygen Mask', 2),
+	('sandwich', 'Sandwich', 2),
+	('rose', 'Red Rose', 1),
 	('redgull', 'Redgull', 4)
 ;
 
 INSERT INTO `shops` (store, item, price) VALUES
 
-	('LTDgasoline', 'picnic', 500),
-	('LTDgasoline', 'donut', 20),
-	('LTDgasoline', 'oxygen_mask', 6500),
-	('LTDgasoline', 'sandwich', 30),
-	('LTDgasoline', 'rose', 55),
-	('LTDgasoline', 'redgull', 2000),
-	('TwentyFourSeven', 'picnic', 500),
-	('TwentyFourSeven', 'donut', 20),
-	('TwentyFourSeven', 'oxygen_mask', 6500),
-	('TwentyFourSeven', 'sandwich', 30),
-	('TwentyFourSeven', 'rose', 55),
-	('TwentyFourSeven', 'redgull', 2000),
-	('RobsLiquor', 'picnic', 500),
-	('RobsLiquor', 'donut', 20),
-	('RobsLiquor', 'oxygen_mask', 6500),
-	('RobsLiquor', 'sandwich', 30),
-	('RobsLiquor', 'rose', 55),
-	('RobsLiquor', 'redgull', 2000)
+	('LTDgasoline', 'picnic', 20),
+	('LTDgasoline', 'donut', 2),
+	('LTDgasoline', 'oxygen_mask', 1500),
+	('LTDgasoline', 'sandwich', 8),
+	('LTDgasoline', 'rose', 5),
+	('LTDgasoline', 'redgull', 10),
+	('TwentyFourSeven', 'picnic', 20),
+	('TwentyFourSeven', 'donut', 2),
+	('TwentyFourSeven', 'oxygen_mask', 1500),
+	('TwentyFourSeven', 'sandwich', 8),
+	('TwentyFourSeven', 'rose', 5),
+	('TwentyFourSeven', 'redgull', 10),
+	('RobsLiquor', 'picnic', 20),
+	('RobsLiquor', 'donut', 2),
+	('RobsLiquor', 'oxygen_mask', 1500),
+	('RobsLiquor', 'sandwich', 8),
+	('RobsLiquor', 'rose', 5),
+	('RobsLiquor', 'redgull', 10)
 ;
