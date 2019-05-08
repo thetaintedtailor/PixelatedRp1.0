@@ -1,6 +1,7 @@
 ESX 					  = nil
 local CurrentActionData   = {}
 local lastTime 			  = 0
+local tankTimer = 0
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -82,23 +83,24 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
 
-			local timer = 0
-			while timer < 60 do
+			--local tankTimer = 0
+			while tankTimer < 60 do
 				Citizen.Wait(1000)
 			--ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-				timer = timer + 1
+				tankTimer = tankTimer + 1
 
-				if timer == 30 then
+				if tankTimer == 30 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-				elseif timer == 45 then
+				elseif tankTimer == 45 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '25') .. '%.')
 				end
 			end
+
 			SetPedDiesInWater(playerPed, true)
 			DeleteObject(object)
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
-
+			tankTimer = 0
 		end)
 	end)
 end)
@@ -202,18 +204,10 @@ end)
 
 
 function removeTank()
-	local playerPed  = GetPlayerPed(-1)
-	local obj1 = GetHashKey('p_s_scuba_mask_s')
-	local obj2 = GetHashKey('p_s_scuba_tank_s')
-	SetPedDiesInWater(playerPed, true)
-	ESX.Game.DeleteObject(obj1)
-	ESX.Game.DeleteObject(obj2)
-	ClearPedSecondaryTask(playerPed)
+	tankTimer = 61
 end
 
 RegisterCommand('tank', function(source, args)
-	--SetPedDiesInWater(playerPed, true)
-	--removeTank()
-	tankEquipped = false
+	removeTank()
 end, false)
 
