@@ -85,14 +85,18 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 
 			--local tankTimer = 0
 			while tankTimer < 60 do
-				Citizen.Wait(1000)
+				Citizen.Wait(6000)
 			--ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
 				tankTimer = tankTimer + 1
 
-				if tankTimer == 30 then
+				if tankTimer == 15 then
+					ESX.ShowNotification(_U('oxygen_notify', '~y~', '75') .. '%.')
+				elseif tankTimer == 30 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
 				elseif tankTimer == 45 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '25') .. '%.')
+				elseif tankTimer == 59 then
+					ESX.ShowNotification(_U('oxygen_notify', '~y~', '1') .. '%.')
 				end
 			end
 
@@ -211,3 +215,8 @@ RegisterCommand('tank', function(source, args)
 	removeTank()
 end, false)
 
+RegisterCommand('oxy', function(source, args)
+	local timeLeft = 100 - (tankTimer * 1.6666)
+
+	ESX.ShowNotification(_U('oxygen_notify', '~y~', timeLeft) .. '%.')
+end, false)
