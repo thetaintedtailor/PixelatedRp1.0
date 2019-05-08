@@ -206,6 +206,16 @@ Config.CarGarages = {
 		SpawnPoint = {x=1041.1444, y=-777.70135, z=57.0, h = 358.802},
 		DeletePoint = {x=1022.7816772461, y=-763.78955078125, z=57.0}
 	},
+	Garage_Mall = {
+		GaragePoint = {x=-1220.25598, y=-640.5289, z=24.89},
+		SpawnPoint = {x=-1213.18566, y=-661.56951, z=25.90, h = 33.964},
+		DeletePoint = {x=-1226.1035, y=-648.34002, z=24.90}
+	},
+	Garage_LittleCaesars = {
+		GaragePoint = {x=-450.94812, y=-794.05529, z=29.54},
+		SpawnPoint = {x=-460.23361, y=-797.20996, z=30.54, h = 88.67470},
+		DeletePoint = {x=-453.62088, y=-801.42236, z=29.54}
+	},
 }
 
 Config.CarPounds = {
