@@ -380,6 +380,6 @@ function OpenBoatsMenu(x, y , z)
     end,
 	function(data, menu)
 		menu.close()
-		end
-	)
-end
+	end
+	
+end)
