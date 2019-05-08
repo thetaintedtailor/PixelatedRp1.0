@@ -260,3 +260,17 @@ function DrawM(hint, type, x, y, z)
 	ESX.Game.Utils.DrawText3D({x = x, y = y, z = z + 1.0}, hint, 0.4)
 	DrawMarker(type, x, y, z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 255, 255, 100, false, true, 2, false, false, false, false)
 end
+
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+		if (not OnGoingHuntSession) then
+			HideHudComponentThisFrame(14) -- hide crosshair
+		--elseif (OnGoingHuntSession) then
+			--ShowHudComponentThisFrame(14) -- show crosshair
+		--else
+		--	HideHudComponentThisFrame(14) -- hide crosshair
+		end
+	end
+end)
