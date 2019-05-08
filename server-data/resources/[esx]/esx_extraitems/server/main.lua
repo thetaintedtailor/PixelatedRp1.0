@@ -14,7 +14,7 @@ ESX.RegisterUsableItem('donut', function(source)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 	
 	xPlayer.removeInventoryItem('donut', 1)
-	TriggerClientEvent('esx_status:add', source, 'hunger', 100000)
+	TriggerClientEvent('esx_status:add', source, 'hunger', 250000)
 end)
 
 ESX.RegisterUsableItem('oxygen_mask', function(source)
@@ -28,7 +28,7 @@ ESX.RegisterUsableItem('sandwich', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	
 	xPlayer.removeInventoryItem('sandwich', 1)
-	TriggerClientEvent('esx_status:add', source, 'hunger', 230000)
+	TriggerClientEvent('esx_status:add', source, 'hunger', 750000)
 end)
 
 ESX.RegisterUsableItem('rose', function(source)
@@ -42,5 +42,5 @@ ESX.RegisterUsableItem('redgull', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	
 	xPlayer.removeInventoryItem('redgull', 1)
-	TriggerClientEvent('esx_status:add', source, 'thirst', 50000)
+	TriggerClientEvent('esx_status:remove', source, 'thirst', 100000)
 end)
