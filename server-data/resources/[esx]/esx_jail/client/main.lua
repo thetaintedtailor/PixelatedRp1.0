@@ -32,7 +32,11 @@ AddEventHandler('esx_jail:jail', function(jailTime)
 					TriggerEvent('skinchanger:loadClothes', skin, Config.Uniforms['prison_wear'].female)
 				end
 			end)
-			
+
+			-- Refill hunger/thirst
+			TriggerClientEvent('esx_status:add', source, 'hunger', 1000000)
+			TriggerClientEvent('esx_status:add', source, 'thirst', 1000000)
+
 			-- Clear player
 			SetPedArmour(playerPed, 0)
 			ClearPedBloodDamage(playerPed)
