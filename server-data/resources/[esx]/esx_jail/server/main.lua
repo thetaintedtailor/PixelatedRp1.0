@@ -116,3 +116,9 @@ function unjail(target)
 
 	TriggerClientEvent('esx_jail:unjail', target)
 end
+
+RegisterServerEvent('esx_jail:replenishInmate')
+AddEventHandler('esx_jail:replenishInmate', function()
+	TriggerClientEvent('esx_status:add', source, 'hunger', 1000000)
+	TriggerClientEvent('esx_status:add', source, 'thirst', 1000000)
+end)

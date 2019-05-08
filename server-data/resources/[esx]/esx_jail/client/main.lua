@@ -34,8 +34,7 @@ AddEventHandler('esx_jail:jail', function(jailTime)
 			end)
 
 			-- Refill hunger/thirst
-			TriggerClientEvent('esx_status:add', source, 'hunger', 1000000)
-			TriggerClientEvent('esx_status:add', source, 'thirst', 1000000)
+			TriggerEvent('esx_jail:replenishInmate')
 
 			-- Clear player
 			SetPedArmour(playerPed, 0)
