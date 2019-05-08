@@ -91,14 +91,13 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			DeleteObject(object)
 			DeleteObject(object2)
 			ClearPedSecondaryTask(playerPed)
-		
-			RegisterCommand('tank', function()
+
+			RegisterCommand('tank', function(source, args)
 				SetPedDiesInWater(playerPed, true)
 				DeleteObject(object)
 				DeleteObject(object2)
 				ClearPedSecondaryTask(playerPed)
-			end)
-
+			end, false)
 		end)
 	end)
 end)
@@ -199,3 +198,5 @@ AddEventHandler('esx_extraitems:picnic', function()
 	end)
 	
 end)
+
+
