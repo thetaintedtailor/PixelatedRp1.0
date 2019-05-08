@@ -3,6 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
+    'music/jessrabbit-whydontyoudoright.mp3',
     'music/meekmill-goingbad.mp3',
     'music/nodoubt-hellagood.mp3',
     'music/imagdrag-imsosorry.mp3',
