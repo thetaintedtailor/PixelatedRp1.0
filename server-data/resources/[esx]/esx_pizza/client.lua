@@ -185,7 +185,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             pourboire = math.random(100, 200)
 
             TriggerEvent("pNotify:SendNotification", {
-              text = "You received a tip! : " "$" .. pourboire ..,
+              text = "You received a tip! : " "$" .. pourboire .. ,
               type = "success",
               queue = "global",
               timeout = 4000,
@@ -251,7 +251,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               afaitunepizzamin = false
 
               TriggerEvent("pNotify:SendNotification", {
-                text = "Thank you for working, here is your pay : " "$" .. paie ..,
+                text = "Thank you for working, here is your pay : " "$" .. paie .. ,
                 type = "success",
                 queue = "global",
                 timeout = 4000,
