@@ -138,7 +138,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             distance = round(GetDistanceBetweenCoords(pizzeria.x, pizzeria.y, pizzeria.z, px,py,pz))
             paie = distance * coefflouze
 
-            spawn_faggio()
+            spawn_futo()
             goliv(livpt,livr)
             nbPizza = math.random(1, 3)
 
