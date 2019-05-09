@@ -371,12 +371,11 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
-              RemoveBlip(liv)
             })
 
             TriggerServerEvent("pizza:paiefinale")
 
-            SetWaypointOff()
+            SetWaypointOff() and RemoveBlip(liv)
 
             afaitunepizzamin = false
 
@@ -393,7 +392,6 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
-              RemoveBlip(liv)
             })
           end
         end
