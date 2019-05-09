@@ -28,9 +28,8 @@ Config.Items = {
 
 Config.Images = {
   [1] = {item = "water",   src = "img/water.png"},
-  [3] = {item = "bandage",   src = "img/bandage.png"},
   [2] = {item = "burger",   src = "img/burger.png"},
-  [4] = {item = "clip",   src = "img/clip.png"},
+  [3] = {item = "clip",   src = "img/clip.png"},
   [5] = {item = "coffee",   src = "img/coffee.png"},
   [6] = {item = "donut",   src = "img/donut.png"},
   [7] = {item = "drill",   src = "img/drill.png"},
@@ -44,6 +43,7 @@ Config.Images = {
   [15] = {item = "scratchoff",   src = "img/scratchoff.png"},
   [16] = {item = "water",   src = "img/water.png"},
   [17] = {item = "weed",   src = "img/weed.png"},
+  [18] = {item = "bandage",   src = "img/bandage.png"},
 }
 
 Config.Zones = {
