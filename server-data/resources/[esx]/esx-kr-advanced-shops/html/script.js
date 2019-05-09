@@ -24,8 +24,9 @@ $(function() {
 			for (i = 0; i < event.data.result.length; i++) {
 		
 				$('#wrapper').append(
-					`<div class = "image" id = ${event.data.result[i].item} label = ${event.data.result[i].label} count = ${event.data.result[i].count} price = ${event.data.result[i].price}>
-						<img src="${event.data.result[i].src}"/>
+					`<div class = "image" id = ${event.data.result[i].item} label = ${event.data.result[i].label} count = ${event.data.result[i].count} price = ${event.data.result[i].price}
+						style="background-image:url(${event.data.result[i].src})">
+						
 						<h3 class = "h4">${event.data.result[i].label}</h3>
 						<h4 class = "h4">$${event.data.result[i].price}</h4>
 						<h5 class = "h4">In stock: ${event.data.result[i].count}x</h5>
