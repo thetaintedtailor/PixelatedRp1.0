@@ -214,7 +214,6 @@ end)
 
 ESX.RegisterServerCallback('esx_kr_shop:getAllShipments', function(source, cb, id)
   local identifier = ESX.GetPlayerFromId(source).identifier
-
         MySQL.Async.fetchAll(
         'SELECT * FROM shipments WHERE id = @id AND identifier = @identifier',
         {
@@ -264,7 +263,7 @@ AddEventHandler('esx_kr_shops:GetAllItems', function(id)
     local _source = source
     local identifier = ESX.GetPlayerFromId(_source).identifier
     local xPlayer = ESX.GetPlayerFromId(_source)
-
+    
     MySQL.Async.fetchAll(
     'SELECT * FROM shipments WHERE id = @id AND identifier = @identifier',
     {
