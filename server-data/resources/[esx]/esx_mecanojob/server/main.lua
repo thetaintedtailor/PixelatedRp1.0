@@ -12,7 +12,7 @@ if Config.MaxInService ~= -1 then
 	TriggerEvent('esx_service:activateService', 'mechanic', Config.MaxInService)
 end
 
---TriggerEvent('esx_phone:registerNumber', 'mechanic', _U('mechanic_customer'), true, true)
+TriggerEvent('esx_phone:registerNumber', 'mechanic', _U('mechanic_customer'), true, true)
 TriggerEvent('esx_society:registerSociety', 'mechanic', 'Mechanic', 'society_mechanic', 'society_mechanic', 'society_mehanic', {type = 'private'})
 
 local function Harvest(source)
