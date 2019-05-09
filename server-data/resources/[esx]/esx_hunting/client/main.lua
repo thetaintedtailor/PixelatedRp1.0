@@ -57,9 +57,16 @@ local AnimalPositions = {
 	{ x = -1259.99, y = 5002.75, z = 151.36 },
 	{ x = -960.91, y = 5001.16, z = 183.0 },
 }
+--[[
+local HuntingZone = {
+	{ x = -591.05, y = 5613.56, z = 38 },
+	{ x = -489.76, y = 5231.88, z = 87 },
+	{ x = -546.48, y = 4861.54, z = 89 },
+
+}]]
 
 local AnimalsInSession = {}
-
+local killDifference = 6
 local Positions = {
 	['StartHunting'] = { ['hint'] = '[E] Start Hunting', ['x'] = -769.23773193359, ['y'] = 5595.6215820313, ['z'] = 33.48571395874 },
 	['Sell'] = { ['hint'] = '[E] Sell', ['x'] = 969.16375732422, ['y'] = -2107.9033203125, ['z'] = 31.475671768188 },
@@ -115,6 +122,7 @@ function LoadMarkers()
 							if IsControlJustReleased(0, Keys['E']) then
 								if index == 'StartHunting' then
 									StartHuntingSession()
+									KillerTimer()
 								else
 									SellItems()
 								end
@@ -135,7 +143,7 @@ function StartHuntingSession()
 	if OnGoingHuntSession then
 
 		OnGoingHuntSession = false
-
+		
 		RemoveWeaponFromPed(PlayerPedId(), GetHashKey("WEAPON_HEAVYSNIPER"), true, true)
 		RemoveWeaponFromPed(PlayerPedId(), GetHashKey("WEAPON_KNIFE"), true, true)
 
@@ -159,9 +167,7 @@ function StartHuntingSession()
 
 		--Animals
 
-		Citizen.CreateThread(function()
-
-				
+		Citizen.CreateThread(function()			
 			for index, value in pairs(AnimalPositions) do
 				local Animal = CreatePed(5, GetHashKey('a_c_deer'), value.x, value.y, value.z, 0.0, true, false)
 				TaskWanderStandard(Animal, true, true)
@@ -220,6 +226,18 @@ function StartHuntingSession()
 	end
 end
 
+function KillTimer()
+	Citizen.CreateThread(function()
+		local killCount = 0
+		while OnGoingHuntSession do
+			Citizen.Wait(300000)
+			--local playerCoords = GetEntityCoords(PlayerPedId())
+			
+		end
+	end)
+end
+
+
 function SlaughterAnimal(AnimalId)
 
 	TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
@@ -266,11 +284,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		if (not OnGoingHuntSession) then
-			HideHudComponentThisFrame(14) -- hide crosshair
-		--elseif (OnGoingHuntSession) then
-			--ShowHudComponentThisFrame(14) -- show crosshair
-		--else
-		--	HideHudComponentThisFrame(14) -- hide crosshair
+			HideHudComponentThisFrame(14)
 		end
 	end
 end)
