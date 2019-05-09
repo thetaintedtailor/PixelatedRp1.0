@@ -227,7 +227,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
         SetNewWaypoint(pizzeria.x,pizzeria.y)
 
         TriggerEvent("pNotify:SendNotification", {
-          text = "Go back to Pizzeria for more deliveries!",
+          text = "Go back to the Pizzeria for more deliveries!",
           type = "info",
           queue = "global",
           timeout = 4000,
@@ -276,11 +276,11 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
               TriggerServerEvent("pizza:itemadd", nbPizza)
 
-            else
+            --else
 
-              notifmoto1 = true
+              --notifmoto1 = true
 
-              while notifmoto1 == true do
+              --[[while notifmoto1 == true do
 
                 TriggerEvent("pNotify:SendNotification", {
                   text = "Return the scooter! ",
@@ -288,18 +288,18 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
                   queue = "global",
                   timeout = 4000,
                   layout = "bottomRight"
-                })
+                }]])
 
-                notifmoto1 = false
+                --notifmoto1 = false
 
               end
             end
           end
-        else
+        --else
 
-          notifmoto2 = true
+          --notifmoto2 = true
 
-          while notifmoto2 == true do
+          --[[while notifmoto2 == true do
 
             TriggerEvent("pNotify:SendNotification", {
               text = "Return the scooter! ",
@@ -307,9 +307,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
-            })
+            }]])
 
-            notifmoto2 = false
+            --notifmoto2 = false
 
           end
         end
@@ -408,13 +408,13 @@ function goliv(livpt,livr) -- Fonction d'ajout du point en fonction de la destin
   SetNewWaypoint(livpt[livr].x,livpt[livr].y)
 end
 
-function spawn_faggio() -- Thread spawn faggio
+function spawn_futo() -- Thread spawn futo
 
   Citizen.Wait(0)
 
   local myPed = GetPlayerPed(-1)
   local player = PlayerId()
-  local vehicle = GetHashKey('faggio2')
+  local vehicle = GetHashKey('futo')
 
   RequestModel(vehicle)
 
@@ -423,7 +423,7 @@ function spawn_faggio() -- Thread spawn faggio
   end
 
   local plateJob = math.random(1000, 9999)
-  local spawned_car = CreateVehicle(vehicle, spawnfaggio.x,spawnfaggio.y,spawnfaggio.z, 431.436, - 996.786, 25.1887, true, false)
+  local spawned_car = CreateVehicle(vehicle, spawnfuto.x,spawnfuto.y,spawnfuto.z, 431.436, - 996.786, 25.1887, true, false)
 
   local plate = "PIZZ"..plateJob
 
