@@ -276,11 +276,11 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
               TriggerServerEvent("pizza:itemadd", nbPizza)
 
-            --else
+              --[[else
 
-              --notifmoto1 = true
+              notifmoto1 = true
 
-              --[[while notifmoto1 == true do
+              while notifmoto1 == true do
 
                 TriggerEvent("pNotify:SendNotification", {
                   text = "Return the scooter! ",
@@ -288,18 +288,18 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
                   queue = "global",
                   timeout = 4000,
                   layout = "bottomRight"
-                }]])
+                })
 
-                --notifmoto1 = false
+                --notifmoto1 = false]]
 
               end
             end
           end
-        --else
+         --else
 
-          --notifmoto2 = true
+          --[[notifmoto2 = true
 
-          --[[while notifmoto2 == true do
+          while notifmoto2 == true do
 
             TriggerEvent("pNotify:SendNotification", {
               text = "Return the scooter! ",
@@ -307,9 +307,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
-            }]])
+            })
 
-            --notifmoto2 = false
+            notifmoto2 = false]]
 
           end
         end
