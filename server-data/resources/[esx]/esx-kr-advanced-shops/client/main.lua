@@ -430,7 +430,7 @@ function GetAllShipments(id)
 
 	ESX.TriggerServerCallback('esx_kr_shop:getTime', function(time)
 	ESX.TriggerServerCallback('esx_kr_shop:getAllShipments', function(items)
-
+		Citizen.Trace ("this is the item log", items)
 	local once = true
 	local once2 = true
 
