@@ -27,8 +27,8 @@ Config.Items = {
 }
 
 Config.Images = {
-  --[1] = {item = "water",   src = "img/water.png"},
-  --[2] = {item = "burger",   src = "img/burger.png"},
+  [1] = {item = "water",   src = "img/water.png"},
+  [2] = {item = "burger",   src = "img/burger.png"},
   --[3] = {item = "clip",   src = "img/clip.png"},
   --[5] = {item = "coffee",   src = "img/coffee.png"},
   --[6] = {item = "donut",   src = "img/donut.png"},
