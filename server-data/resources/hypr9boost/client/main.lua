@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
     while true do
 
         Citizen.Wait(0)
-		local force = 100.0
+		local force = 160.0
         	local ped = GetPlayerPed(-1)
 		local playerVeh = GetVehiclePedIsIn(ped, false)
 	
