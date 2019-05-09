@@ -21,7 +21,7 @@ local nbPizza = 0
 
 local pizzeria = { x = -1285.73, y = -1387.15, z = 3.44} --Configuration marker prise de service
 local pizzeriafin = { x = -1282.740, y = -1386.488, z = 3.44} --Configuration marker fin de service
-local spawnfaggio = { x = -1278.39, y = -1386.84, z = 3.38 } --Configuration du point de spawn du faggio
+local spawnfuto = { x = -1278.39, y = -1386.84, z = 3.38 } --Configuration du point de spawn du futo
 
 local livpt = { --Configuration des points de livraisons (repris ceux de Maykellll1 / NetOut)
 [1] = {name = "Vinewood Hills",x = -1220.50, y = 666.95 , z = 143.10},
@@ -242,7 +242,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       if GetDistanceBetweenCoords(pizzeria.x,pizzeria.y,pizzeria.z, GetEntityCoords(GetPlayerPed(-1),true)) < 3 and afaitunepizzamin == true then
         HelpText("Press ~INPUT_CONTEXT~ for more deliveries",0,1,0.5,0.8,0.6,255,255,255,255)
 
-        if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("faggio2"))  then
+        if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("futo"))  then
 
           if IsControlJustPressed(1,38) then
 
