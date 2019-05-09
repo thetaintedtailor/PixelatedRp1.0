@@ -131,7 +131,6 @@ AddEventHandler('fishing:catch', function(bait)
 		if bait == "none" then
 			
 			if rnd >= 70 then
-			TriggerClientEvent('fishing:message', _source, "~y~You are currently fishing without any equipped bait")
 				if  xPlayer.getInventoryItem('fish').count > 100 then
 						TriggerClientEvent('fishing:message', _source, "~r~You cant hold more fish")
 					else
