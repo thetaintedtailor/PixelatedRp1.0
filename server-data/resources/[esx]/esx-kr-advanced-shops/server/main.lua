@@ -214,14 +214,13 @@ end)
 
 ESX.RegisterServerCallback('esx_kr_shop:getAllShipments', function(source, cb, id)
   local identifier = ESX.GetPlayerFromId(source).identifier
-  print("player id passing into sql", identifier)
-  print("store id", id)
         MySQL.Async.fetchAll(
         'SELECT * FROM shipments WHERE id = @id AND identifier = @identifier',
         {
             ['@id'] = id,
             ['@identifier'] = identifier,
         }, function(result)
+        print("server side log",result)
         cb(result)
     end)
 end)
