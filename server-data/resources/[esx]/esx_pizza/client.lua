@@ -290,9 +290,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
                   layout = "bottomRight"
                 })
 
-                --notifmoto1 = false]]
+                --notifmoto1 = false
 
-              end
+              end]]
             end
           end
          --else
@@ -309,9 +309,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               layout = "bottomRight"
             })
 
-            notifmoto2 = false]]
+            notifmoto2 = false
 
-          end
+          end]]
         end
       end
     end
