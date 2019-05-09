@@ -94,9 +94,9 @@ end
 Citizen.CreateThread(function()
 while true do
 	Wait(600)
-		if pause and fishing then
-			pausetimer = pausetimer + 1
-		end
+	if pause and fishing then
+		pausetimer = pausetimer + 1
+	end
 end
 end)
 Citizen.CreateThread(function()
