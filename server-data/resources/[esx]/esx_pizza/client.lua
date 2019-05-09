@@ -358,8 +358,6 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
           py = 0
           pz = 0
 
-          RemoveBlip(liv)
-          Wait(250)
           if afaitunepizzamin == true then
 
             local vehicleu = GetVehiclePedIsIn(GetPlayerPed(-1), false)
@@ -373,6 +371,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
+              RemoveBlip(liv)
             })
 
             TriggerServerEvent("pizza:paiefinale")
@@ -394,6 +393,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
+              RemoveBlip(liv)
             })
           end
         end
