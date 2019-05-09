@@ -140,7 +140,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
             spawn_futo()
             goliv(livpt,livr)
-            nbPizza = math.random(1, 3)
+            nbPizza = math.random(1, 6)
 
             TriggerServerEvent("pizza:itemadd", nbPizza)
         end
@@ -272,7 +272,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               paie = distance * coefflouze
 
               goliv(livpt,livr)
-              nbPizza = math.random(1, 3)
+              nbPizza = math.random(1, 6)
 
               TriggerServerEvent("pizza:itemadd", nbPizza)
 
