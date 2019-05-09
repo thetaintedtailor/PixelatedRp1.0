@@ -357,7 +357,6 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
           px = 0
           py = 0
           pz = 0
-          RemoveBlip(liv)
 
           if afaitunepizzamin == true then
 
@@ -377,6 +376,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
             TriggerServerEvent("pizza:paiefinale")
 
             SetWaypointOff()
+            RemoveBlip(liv)
 
             afaitunepizzamin = false
 
