@@ -2,7 +2,7 @@
 Config.Jobs.MoonShine
   BlipInfos = {
     Sprite = 310, 
-	Color = 70
+	  Color = 70
   },
   Vehicles = { 
     Truck = {
