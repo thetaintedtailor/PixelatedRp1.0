@@ -855,7 +855,7 @@ function Robbery(id)
 						SetEntityHeading(safe, coords1[id].heading)
 						FreezeEntityPosition(safe, true)
 
-                        SetEntityHealth(safe, 10000)
+                        SetEntityHealth(safe, 100)
                         OnRobbery = true
 						Var = safe
 						Id = id
@@ -882,7 +882,7 @@ Citizen.CreateThread(function()
 				if OnRobbery and GetDistanceBetweenCoords(playerpos.x, playerpos.y, playerpos.z, Coordss.x, Coordss.y, Coordss.z, true) <= 15 then
 					
 					local hp = GetEntityHealth(Var)
-					TriggerEvent("mt:missiontext", "Break the vault:~r~ " .. hp/100 .. "%", 1000)
+					TriggerEvent("mt:missiontext", "Break the vault:~r~ " .. hp/100 .. "%", 10)
 
 				if hp == 0 then
 					OnRobbery = false
