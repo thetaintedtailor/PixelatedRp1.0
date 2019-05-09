@@ -37,41 +37,41 @@ local livpt = { --Configuration des points de livraisons (repris ceux de Maykell
 [11] ={name = "Davis"         ,x = 85.19   , y = -1958.18, z = 20.12},
 [12] ={name ="Chamberlain Hills",x = -213.00, y =-1617.35 , z =37.35},
 [13] ={name ="La puerta"      ,x = -1015.65, y =-1515.05 ,z = 5.51},
-[14] ={name ="chez un client" ,x= -1004.788, y=-1154.824,z = 1.64603},
-[15] ={name ="chez un client" ,x= -1113.937, y=-1193.136,z = 1.827304},
-[16] ={name ="chez un client" ,x= -1075.903, y=-1026.452,z = 4.031562},
-[17] ={name ="chez un client" ,x= -1056.485, y=-1001.234,z = 1.639098},
-[18] ={name ="chez un client" ,x= -1090.886, y=-926.188,z = 2.630009},
-[19] ={name ="chez un client" ,x= -1075.903, y=-1026.452,z = 4.031562},
-[20] ={name ="chez un client" ,x= -1181.652, y=-988.6455,z = 1.634243},
-[21] ={name ="chez un client" ,x= -1151.11, y=-990.905,z = 1.638789},
-[22] ={name ="chez un client" ,x= -1022.788, y=-896.3149,z = 4.908271},
-[23] ={name ="chez un client" ,x= -1060.738, y=-826.829,z = 18.69866},
-[24] ={name ="chez un client" ,x= -968.6487, y=-1329.453,z = 5.144861},
-[25] ={name ="chez un client" ,x= -1185.5, y=-1386.238,z = 4.112149},
-[26] ={name ="chez un client" ,x= -1132.848, y=-1456.029,z = 4.372081},
-[27] ={name ="chez un client" ,x= -1125.602, y=-1544.203,z = 5.391256},
-[28] ={name ="chez un client" ,x= -1084.74, y=-1558.709,z = 4.10145},
-[29] ={name ="chez un client" ,x= -1098.367, y=-1679.272,z = 3.853804},
-[30] ={name ="chez un client" ,x= -1155.863, y=-1574.202,z = 8.344403},
-[31] ={name ="chez un client" ,x= -1122.675, y=-1557.524,z = 5.277201},
-[32] ={name ="chez un client" ,x= -1108.679, y=-1527.393,z = 6.265457},
-[33] ={name ="chez un client" ,x= -1273.549, y=-1382.664,z = 3.81341},
-[34] ={name ="chez un client" ,x= -1342.454, y=-1234.849,z = 5.420023},
-[35] ={name ="chez un client" ,x= -1351.21, y=-1128.669,z = 3.626104},
-[36] ={name ="chez un client" ,x= -1343.232, y=-1043.639,z = 7.303696},
-[37] ={name ="chez un client" ,x= -729.2556, y=-880.1547,z = 22.22747},
-[38] ={name ="chez un client" ,x= -831.3006, y=-864.8558,z = 20.22383},
-[39] ={name ="chez un client" ,x= -810.4093, y=-978.4364,z = 13.74061},
-[40] ={name ="chez un client" ,x= -683.8874, y=-876.8568,z = 24.02004},
-[41] ={name ="chez un client" ,x= -1031.316, y=-903.0217,z = 3.692086},
-[42] ={name ="chez un client" ,x= -1262.703, y=-1123.342,z = 7.092357},
-[43] ={name ="chez un client" ,x= -1225.079, y=-1208.524,z = 7.619214},
-[44] ={name ="chez un client" ,x= -1207.095, y=-1263.851,z = 6.378308},
-[45] ={name ="chez un client" ,x= -1086.787, y=-1278.122,z = 5.09411},
-[46] ={name ="chez un client" ,x= -886.1298, y=-1232.698,z = 5.006698},
-[47] ={name ="chez un client" ,x= -753.5927, y=-1512.016,z = 4.370816},
-[48] ={name ="chez un client" ,x= -696.3545, y=-1386.89,z = 4.846177}
+[14] ={name ="Customer Location" ,x= -1004.788, y=-1154.824,z = 1.64603},
+[15] ={name ="Customer Location" ,x= -1113.937, y=-1193.136,z = 1.827304},
+[16] ={name ="Customer Location" ,x= -1075.903, y=-1026.452,z = 4.031562},
+[17] ={name ="Customer Location" ,x= -1056.485, y=-1001.234,z = 1.639098},
+[18] ={name ="Customer Location" ,x= -1090.886, y=-926.188,z = 2.630009},
+[19] ={name ="Customer Location" ,x= -1075.903, y=-1026.452,z = 4.031562},
+[20] ={name ="Customer Location" ,x= -1181.652, y=-988.6455,z = 1.634243},
+[21] ={name ="Customer Location" ,x= -1151.11, y=-990.905,z = 1.638789},
+[22] ={name ="Customer Location" ,x= -1022.788, y=-896.3149,z = 4.908271},
+[23] ={name ="Customer Location" ,x= -1060.738, y=-826.829,z = 18.69866},
+[24] ={name ="Customer Location" ,x= -968.6487, y=-1329.453,z = 5.144861},
+[25] ={name ="Customer Location" ,x= -1185.5, y=-1386.238,z = 4.112149},
+[26] ={name ="Customer Location" ,x= -1132.848, y=-1456.029,z = 4.372081},
+[27] ={name ="Customer Location" ,x= -1125.602, y=-1544.203,z = 5.391256},
+[28] ={name ="Customer Location" ,x= -1084.74, y=-1558.709,z = 4.10145},
+[29] ={name ="Customer Location" ,x= -1098.367, y=-1679.272,z = 3.853804},
+[30] ={name ="Customer Location" ,x= -1155.863, y=-1574.202,z = 8.344403},
+[31] ={name ="Customer Location" ,x= -1122.675, y=-1557.524,z = 5.277201},
+[32] ={name ="Customer Location" ,x= -1108.679, y=-1527.393,z = 6.265457},
+[33] ={name ="Customer Location" ,x= -1273.549, y=-1382.664,z = 3.81341},
+[34] ={name ="Customer Location" ,x= -1342.454, y=-1234.849,z = 5.420023},
+[35] ={name ="Customer Location" ,x= -1351.21, y=-1128.669,z = 3.626104},
+[36] ={name ="Customer Location" ,x= -1343.232, y=-1043.639,z = 7.303696},
+[37] ={name ="Customer Location" ,x= -729.2556, y=-880.1547,z = 22.22747},
+[38] ={name ="Customer Location" ,x= -831.3006, y=-864.8558,z = 20.22383},
+[39] ={name ="Customer Location" ,x= -810.4093, y=-978.4364,z = 13.74061},
+[40] ={name ="Customer Location" ,x= -683.8874, y=-876.8568,z = 24.02004},
+[41] ={name ="Customer Location" ,x= -1031.316, y=-903.0217,z = 3.692086},
+[42] ={name ="Customer Location" ,x= -1262.703, y=-1123.342,z = 7.092357},
+[43] ={name ="Customer Location" ,x= -1225.079, y=-1208.524,z = 7.619214},
+[44] ={name ="Customer Location" ,x= -1207.095, y=-1263.851,z = 6.378308},
+[45] ={name ="Customer Location" ,x= -1086.787, y=-1278.122,z = 5.09411},
+[46] ={name ="Customer Location" ,x= -886.1298, y=-1232.698,z = 5.006698},
+[47] ={name ="Customer Location" ,x= -753.5927, y=-1512.016,z = 4.370816},
+[48] ={name ="Customer Location" ,x= -696.3545, y=-1386.89,z = 4.846177}
 }
 
 local blips = {
@@ -154,7 +154,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       while notif == true do
 
         TriggerEvent("pNotify:SendNotification", {
-          text = "Direction : " ..destinol.. " pour livrer la pizza",
+          text = "Go to : " ..destinol.. " to deliver pizza",
           type = "info",
           queue = "global",
           timeout = 4000,
@@ -185,7 +185,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             pourboire = math.random(100, 200)
 
             TriggerEvent("pNotify:SendNotification", {
-              text = "A small tip : " .. pourboire .. "$",
+              text = "You received a tip! : " .. pourboire .. "$",
               type = "success",
               queue = "global",
               timeout = 4000,
@@ -227,7 +227,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
         SetNewWaypoint(pizzeria.x,pizzeria.y)
 
         TriggerEvent("pNotify:SendNotification", {
-          text = "GPS to Pizzeria !",
+          text = "Go back to Pizzeria for more deliveries!",
           type = "info",
           queue = "global",
           timeout = 4000,
@@ -240,7 +240,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       DrawMarker(1,pizzeria.x,pizzeria.y,pizzeria.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,0,255,0, 200, 0, 0, 0, 0)
 
       if GetDistanceBetweenCoords(pizzeria.x,pizzeria.y,pizzeria.z, GetEntityCoords(GetPlayerPed(-1),true)) < 3 and afaitunepizzamin == true then
-        HelpText("Press ~INPUT_CONTEXT~ to pick up the pizzas",0,1,0.5,0.8,0.6,255,255,255,255)
+        HelpText("Press ~INPUT_CONTEXT~ for more deliveries",0,1,0.5,0.8,0.6,255,255,255,255)
 
         if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("faggio2"))  then
 
@@ -276,13 +276,13 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
               TriggerServerEvent("pizza:itemadd", nbPizza)
 
-            else
+            --else
 
-              notifmoto1 = true
+              --notifmoto1 = true
 
-              while notifmoto1 == true do
+              --while notifmoto1 == true do
 
-                TriggerEvent("pNotify:SendNotification", {
+                --[[TriggerEvent("pNotify:SendNotification", {
                   text = "Et la moto tu l'as oublié ?",
                   type = "error",
                   queue = "global",
@@ -307,9 +307,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               queue = "global",
               timeout = 4000,
               layout = "bottomRight"
-            })
+            })]]
 
-            notifmoto2 = false
+            --notifmoto2 = false
 
           end
         end
@@ -387,7 +387,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
             deleteCar( vehicleu )
 
             TriggerEvent("pNotify:SendNotification", {
-              text = "Thanks anyway, have a nice day!",
+              text = "Have a nice day!",
               type = "error",
               queue = "global",
               timeout = 4000,
