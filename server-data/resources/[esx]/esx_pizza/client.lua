@@ -185,7 +185,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             pourboire = math.random(100, 200)
 
             TriggerEvent("pNotify:SendNotification", {
-              text = "$" .. pourboire .. "You received a tip! : ",
+              text = "$" .. pourboire .. " : You received a tip! ",
               type = "success",
               queue = "global",
               timeout = 4000,
@@ -251,7 +251,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               afaitunepizzamin = false
 
               TriggerEvent("pNotify:SendNotification", {
-                text = "$" .. paie .. " : Delivery Pay ",
+                text = "$" .. paie .. " : Delivery Payment ",
                 type = "success",
                 queue = "global",
                 timeout = 4000,
@@ -387,7 +387,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
             deleteCar( vehicleu )
 
             TriggerEvent("pNotify:SendNotification", {
-              text = "Have a nice day!",
+              text = "You have stopped working",
               type = "error",
               queue = "global",
               timeout = 4000,
