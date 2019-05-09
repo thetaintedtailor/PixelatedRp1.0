@@ -10,13 +10,40 @@ Config.ChangeNamePrice = 500 -- In $ - how much you can change the shops name fo
 
 -- CONFIG ITEMS, DON'T FORGET TO ADD CORRECT NUMBER IN THE BRACKETS
 Config.Items = {
-    [1] = {label = "Water",       item = "water",        price = 5},
-    --[2] = {label = "Bread",      item = "bread",       price = 5},
+    [1] = {label = "Water",       item = "water",        price = 1},
+    [2] = {label = "Burger",       item = "burger",        price = 5},
+    [3] = {label = "Ammo",       item = "clip",        price = 5},
+    [4] = {label = "Coffee",       item = "coffee",        price = 3},
+    [5] = {label = "Donuts",       item = "donut",        price = 4},
+    [6] = {label = "Drill",       item = "drill",        price = 4000},
+    [7] = {label = "Lockpick",       item = "lockpick",        price = 25},
+    [8] = {label = "ScubaGear",       item = "oxygen_mask",        price = 500},
+    [9] = {label = "PicnicBasket",       item = "picnic",        price = 5},
+    [10] = {label = "RedBull",       item = "redgull",        price = 5},
+    [11] = {label = "RepairKit",       item = "repairkit",        price = 500},
+    [12] = {label = "Rose",       item = "rose",        price = 5},
+    [13] = {label = "Sandwich",       item = "sandwich",        price = 5},
+    [14] = {label = "Scratchoff",       item = "scratchoff",        price = 5},
 }
 
 Config.Images = {
-  [1] = {item = "water",   src = "img/bottle.png"},
-  --[2] = {item = "bread",   src = "img/burger.png"},
+  [1] = {item = "water",   src = "img/water.png"},
+  [2] = {item = "bandage",   src = "img/bandage.png"},
+  [3] = {item = "burger",   src = "img/burger.png"},
+  [4] = {item = "clip",   src = "img/clip.png"},
+  [5] = {item = "coffee",   src = "img/coffee.png"},
+  [6] = {item = "donut",   src = "img/donut.png"},
+  [7] = {item = "drill",   src = "img/drill.png"},
+  [8] = {item = "lockpick",   src = "img/lockpick.png"},
+  [9] = {item = "oxygen_mask",   src = "img/oxygen_mask.png"},
+  [10] = {item = "picnic",   src = "img/picnic.png"},
+  [11] = {item = "redgull",   src = "img/redgull.png"},
+  [12] = {item = "repairkit",   src = "img/repairkit.png"},
+  [13] = {item = "rose",   src = "img/rose.png"},
+  [14] = {item = "sandwich",   src = "img/sandwich.png"},
+  [15] = {item = "scratchoff",   src = "img/scratchoff.png"},
+  [16] = {item = "water",   src = "img/water.png"},
+  [17] = {item = "weed",   src = "img/weed.png"},
 }
 
 Config.Zones = {
