@@ -35,7 +35,7 @@ local livpt = { --Configuration des points de livraisons (repris ceux de Maykell
 [9] = {name = "Mission Row"   ,x = 284.50  , y = -938.50 , z = 28.35},
 [10] ={name = "Rancho"        ,x = 411.59  , y = -1487.54, z = 29.14},
 [11] ={name = "Davis"         ,x = 85.19   , y = -1958.18, z = 20.12},
-[12] ={name "Chamberlain Hills",x = -213.00, y =-1617.35 , z =36.85},
+[12] ={name ="Chamberlain Hills",x = -213.00, y =-1617.35 , z =36.85},
 [13] ={name ="La puerta"      ,x = -1015.65, y =-1515.05 ,z = 5.51},
 [14] ={name ="Customer Location" ,x= -1004.788, y=-1154.824,z = 1.04603},
 [15] ={name ="Customer Location" ,x= -1113.937, y=-1193.136,z = 1.327304},
@@ -357,6 +357,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
           px = 0
           py = 0
           pz = 0
+          RemoveBlip(liv)
 
           if afaitunepizzamin == true then
 
