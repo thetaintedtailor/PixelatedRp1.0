@@ -358,6 +358,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
           py = 0
           pz = 0
           RemoveBlip(liv)
+          SetWaypointOff()
 
           if afaitunepizzamin == true then
 
