@@ -30,7 +30,7 @@ client_scripts {
 	'client/jobs/reporter.lua',
 	'client/jobs/slaughterer.lua',
 	'client/jobs/tailor.lua',
-	'client/CxK_Moonshine.lua',
+	'client/jobs/CxK_Moonshine.lua',
 	'client/main.lua'
 }
 
