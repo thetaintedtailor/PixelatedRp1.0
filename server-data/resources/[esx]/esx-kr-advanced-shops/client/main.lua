@@ -855,7 +855,7 @@ function Robbery(id)
 						SetEntityHeading(safe, coords1[id].heading)
 						FreezeEntityPosition(safe, true)
 
-                        SetEntityHealth(safe, 100)
+                        SetEntityHealth(safe, 1000)
                         OnRobbery = true
 						Var = safe
 						Id = id
