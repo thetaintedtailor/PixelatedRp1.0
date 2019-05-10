@@ -1,7 +1,7 @@
 Config                            = {}
 Config.DrawDistance               = 20.0
 Config.Locale = 'en'
-Config.DeliveryTime = 120 -- IN SECOUNDS DEFAULT (18000) IS 5 HOURS / 300 MINUTES
+Config.DeliveryTime = 30 -- IN SECOUNDS DEFAULT (18000) IS 5 HOURS / 300 MINUTES
 Config.TimeBetweenRobberies = 60
 Config.CutOnRobbery = 10 -- IN PERCENTAGE FROM THE TARGET SHOP
 Config.RequiredPolices = 1 -- For the robbery
@@ -13,7 +13,7 @@ Config.Items = {
     [1] = {label = "Water",       item = "water",        price = 1},
     [2] = {label = "Burger",       item = "burger",        price = 5},
     [3] = {label = "Ammunition Clip",       item = "clip",        price = 5},
-    --[3] = {label = "Coffee",       item = "coffee",        price = 3},
+    [4] = {label = "Coffee",       item = "coffee",        price = 3},
     --[5] = {label = "Donut",       item = "donut",        price = 4},
     --[4] = {label = "Drill",       item = "drill",        price = 4000},
     --[5] = {label = "Lockpick",       item = "lockpick",        price = 25},
@@ -30,7 +30,7 @@ Config.Images = {
   [1] = {item = "water",   src = "img/water.png"},
   [2] = {item = "burger",   src = "img/burger.png"},                          
   [3] = {item = "clip",   src = "img/clip.png"},
-  --[4] = {item = "coffee",   src = "img/coffee.png"},
+  [4] = {item = "coffee",   src = "img/coffee.png"},
   --[5] = {item = "donut",   src = "img/donut.png"},
   --[6] = {item = "drill",   src = "img/drill.png"},
   --[7] = {item = "lockpick",   src = "img/lockpick.png"},
