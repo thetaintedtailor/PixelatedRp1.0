@@ -1,19 +1,18 @@
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
+--       Licensed under: AGPLv3        --
+--  GNU AFFERO GENERAL PUBLIC LICENSE  --
+--     Version 3, 19 November 2007     --
 
---Citizen.CreateThread(function()
-	--while true do
-		--Citizen.Wait(0)
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
 
-		--if NetworkIsSessionStarted() then
-			--TriggerServerEvent('es:firstJoinProper')
-			--TriggerEvent('es:allowedToSpawn')
-			--return
-		--end
-	--end
---end)
+		if NetworkIsSessionStarted() then
+			TriggerServerEvent('es:firstJoinProper')
+			TriggerEvent('es:allowedToSpawn')
+			return
+		end
+	end
+end)
 
 local loaded = false
 local oldPos
@@ -27,21 +26,6 @@ Citizen.CreateThread(function()
 		if(oldPos ~= pos)then
 			TriggerServerEvent('es:updatePositions', pos.x, pos.y, pos.z)
 			oldPos = pos
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		
-		if pvpEnabled then
-			for i = 0,32 do
-				if NetworkIsPlayerActive(i) then
-					SetCanAttackFriendly(GetPlayerPed(i), true, true)
-					NetworkSetFriendlyFireOption(true)
-				end
-			end
 		end
 	end
 end)
@@ -73,10 +57,3 @@ RegisterNetEvent("es:enablePvp")
 AddEventHandler("es:enablePvp", function()
 	pvpEnabled = true
 end)
-
-RegisterCommand("getpos", function(source, args, raw)
-    local ped = GetPlayerPed(PlayerId())
-    local coords = GetEntityCoords(ped, false)
-    local heading = GetEntityHeading(ped)
-    TriggerEvent("chatMessage", tostring("X: " .. coords.x .. " Y: " .. coords.y .. " Z: " .. coords.z .. " HEADING: " .. heading))
-end, false)

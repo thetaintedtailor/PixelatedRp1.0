@@ -1,14 +1,12 @@
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
+--       Licensed under: AGPLv3        --
+--  GNU AFFERO GENERAL PUBLIC LICENSE  --
+--     Version 3, 19 November 2007     --
 
 -- Global variables
 Users = {}
 commands = {}
 settings = {}
 settings.defaultSettings = {
-	['pvpEnabled'] = GetConvar('es_pvpEnabled', 'false'),
 	['permissionDenied'] = GetConvar('es_permissionDenied', 'false'),
 	['startingCash'] = GetConvar('es_startingCash', '0'),
 	['startingBank'] = GetConvar('es_startingBank', '0'),
