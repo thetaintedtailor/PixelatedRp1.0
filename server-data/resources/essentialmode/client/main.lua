@@ -1,7 +1,7 @@
 --       Licensed under: AGPLv3        --
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
-
+--[[
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
 			return
 		end
 	end
-end)
+end)]]
 
 local loaded = false
 local oldPos

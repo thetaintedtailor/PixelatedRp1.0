@@ -2178,7 +2178,8 @@ AddEventHandler('esx_policejob:updateBlip', function()
 			for i=1, #players, 1 do
 				if players[i].job.name == 'police' then
 					local id = GetPlayerFromServerId(players[i].source)
-					if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= PlayerPedId() then
+					--NetworkIsPlayerActive(id) and
+					if GetPlayerPed(id) ~= PlayerPedId() then
 						createBlip(id)
 					end
 				end
