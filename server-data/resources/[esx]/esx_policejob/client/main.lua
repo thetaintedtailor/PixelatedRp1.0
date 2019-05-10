@@ -97,8 +97,8 @@ function OpenCloakroomMenu()
 		table.insert(elements, {label = _U('police_wear'), value = 'intendent_wear'})
 	elseif grade == 'lieutenant' then
 		table.insert(elements, {label = _U('police_wear'), value = 'lieutenant_wear'})
-	elseif grade == 'chief' then
-		table.insert(elements, {label = _U('police_wear'), value = 'chief_wear'})
+	elseif grade == 'chef' then
+		table.insert(elements, {label = _U('police_wear'), value = 'chef_wear'})
 	elseif grade == 'boss' then
 		table.insert(elements, {label = _U('police_wear'), value = 'boss_wear'})
 	end
@@ -213,7 +213,7 @@ function OpenCloakroomMenu()
 			data.current.value == 'sergeant_wear' or
 			data.current.value == 'intendent_wear' or
 			data.current.value == 'lieutenant_wear' or
-			data.current.value == 'chief_wear' or
+			data.current.value == 'chef_wear' or
 			data.current.value == 'boss_wear' or
 			data.current.value == 'bullet_wear' or
 			data.current.value == 'gilet_wear'
