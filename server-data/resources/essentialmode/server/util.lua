@@ -7,6 +7,7 @@ Users = {}
 commands = {}
 settings = {}
 settings.defaultSettings = {
+	['pvpEnabled'] = true,
 	['permissionDenied'] = GetConvar('es_permissionDenied', 'false'),
 	['startingCash'] = GetConvar('es_startingCash', '0'),
 	['startingBank'] = GetConvar('es_startingBank', '0'),
