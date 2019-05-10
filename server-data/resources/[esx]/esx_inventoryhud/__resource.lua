@@ -136,4 +136,6 @@ files {
     'html/img/items/redgull.png',
     'html/img/items/rose.png',
     'html/img/items/sandwich.png',
+    'html/img/items/pizza.png',
+    'html/img/items/packaged_plank.png',
 }
