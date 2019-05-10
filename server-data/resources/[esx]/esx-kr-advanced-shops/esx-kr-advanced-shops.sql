@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS `owned_shops` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `identifier` varchar(250) DEFAULT NULL,
   `ShopNumber` int(11) DEFAULT NULL,
   `money` int(11) DEFAULT '0',
@@ -30,6 +31,7 @@ INSERT INTO `owned_shops` (`identifier`, `ShopNumber`, `money`, `ShopValue`, `La
   ('0', 17, 0, 150000, 1549643682, '0');
   
 CREATE TABLE IF NOT EXISTS `shipments` (
+  `table_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id` int(11) DEFAULT NULL,
   `identifier` varchar(50) DEFAULT NULL,
   `label` varchar(50) DEFAULT NULL,
@@ -41,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `shipments` (
 
 
 CREATE TABLE IF NOT EXISTS `shops` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `ShopNumber` int(11) NOT NULL DEFAULT '0',
   `src` varchar(50) NOT NULL,
   `count` int(11) NOT NULL,
