@@ -1,18 +1,19 @@
 --       Licensed under: AGPLv3        --
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
---[[
+
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
 		if NetworkIsSessionStarted() then
-			TriggerServerEvent('es:firstJoinProper')
-			TriggerEvent('es:allowedToSpawn')
+			--TriggerServerEvent('es:firstJoinProper')
+			--TriggerEvent('es:allowedToSpawn')
+			TriggerEvent('es:enablePvp')
 			return
 		end
 	end
-end)]]
+end)
 
 local loaded = false
 local oldPos
