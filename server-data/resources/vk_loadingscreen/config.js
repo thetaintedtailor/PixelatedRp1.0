@@ -39,7 +39,7 @@ VK.tips.list = [ // Tips list
 
 
 VK.music.volume = 0.1; // Music volume (0-1)
-VK.music.url = "music/jessrabbit-whydontyoudoright.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.url = "music/ManilaGrey-FriendsofFriends.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.title = "Why dont you do right - Jessica Rabbit"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by DeludedWench(Rori)"; // Music submited by... ("NONE" to desactive)
 
