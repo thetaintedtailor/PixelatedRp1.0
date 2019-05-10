@@ -6,4 +6,4 @@ Config.IgnoreAbort			= true   -- Remove lockpick from inventory even if user abo
 Config.AllowMecano			= true   -- Allow mechanics to use this lockpick?
 Config.NPCVehiclesLocked    = false   -- Lock all npc vehicles
 Config.Locale				= 'en'
-Config.percentage           = 15	 -- Percentage chance of success. Higher % mean better luck to get it unlocked.
+Config.percentage           = 20	 -- Percentage chance of success. Higher % mean better luck to get it unlocked.
