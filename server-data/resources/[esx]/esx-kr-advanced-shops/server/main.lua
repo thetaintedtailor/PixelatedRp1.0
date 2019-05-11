@@ -156,7 +156,7 @@ AddEventHandler('esx_kr_shops:Buy', function(id, Item, ItemCount)
                 TriggerClientEvent('esx:showNotification', src, '~r~invalid quantity.')
             else
                 xPlayer.removeMoney(ItemCount * result[1].price)
-                TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~You bought ' .. ItemCount .. 'x ' .. Item .. ' for $' .. ItemCount * result[1].price)
+                TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~You bought ' .. ItemCount .. ' x ' .. Item .. ' for $' .. ItemCount * result[1].price)
                 xPlayer.addInventoryItem(result[1].item, ItemCount)
 
                 MySQL.Async.execute("UPDATE owned_shops SET money = @money WHERE ShopNumber = @Number",
