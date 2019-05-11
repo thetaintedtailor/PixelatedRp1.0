@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
     AddTextEntry('gtrnismo17', 'Nissan GT-R Nismo')
     AddTextEntry('na6', 'Mazda MX Miata')
     AddTextEntry('rs5r', 'Audi RS 5')
-    AddTextEntry('RS6', 'Audi RS 6')
+    AddTextEntry('rs6', 'Audi RS 6')
     AddTextEntry('SSTI', 'Subaru WRX STI')
 end)
 
