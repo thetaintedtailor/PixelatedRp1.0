@@ -31,12 +31,11 @@ VK.backgrounds.duration = 8000; // Background duration (in ms) before transition
 
 VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
-    "Press F1 to pull up your phone. Emergency services can be found in the 'favorites' menu.",
+    "Press F1 to pull up your phone. Emergency/legal/taxi services can be found in the 'services' menu.",
     "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "A full list of our emotes can be found on the Discord.",
+    "A full list of our emotes and chat commands can be found on the Discord #list-of-commands",
     "Around here we call Kat the Fastest Dev in the West",
 ];
-
 
 VK.music.volume = 0.1; // Music volume (0-1)
 VK.music.url = "music/ManilaGrey-FriendsofFriends.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
