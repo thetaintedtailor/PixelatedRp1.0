@@ -89,7 +89,7 @@ Config.AuthorizedWeapons = {
 
 	officer = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { nil, nil, 1000, nil, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
