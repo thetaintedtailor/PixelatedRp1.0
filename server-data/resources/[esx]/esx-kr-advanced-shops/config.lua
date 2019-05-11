@@ -1,7 +1,7 @@
 Config                            = {}
 Config.DrawDistance               = 20.0
 Config.Locale = 'en'
-Config.DeliveryTime = 3600 -- IN SECOUNDS DEFAULT (18000) IS 5 HOURS / 300 MINUTES
+Config.DeliveryTime = 15 -- IN SECOUNDS DEFAULT (18000) IS 5 HOURS / 300 MINUTES
 Config.TimeBetweenRobberies = 14400
 Config.CutOnRobbery = 15 -- IN PERCENTAGE FROM THE TARGET SHOP
 Config.RequiredPolices = 2 -- For the robbery
