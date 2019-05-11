@@ -305,9 +305,9 @@ function OpenBoss()
 		table.insert(elements, {label = 'Shipments',    value = 'shipments'})
         table.insert(elements, {label = 'Put an item up for sale', value = 'putitem'})
         table.insert(elements, {label = 'Take an item out',    value = 'takeitem'})
-        table.insert(elements, {label = 'Put an money in your company',    value = 'putmoney'})
+        table.insert(elements, {label = 'Put money into your company',    value = 'putmoney'})
         table.insert(elements, {label = 'Take out money from your company',    value = 'takemoney'})
-        table.insert(elements, {label = 'Change name on your company: $' .. Config.ChangeNamePrice,    value = 'changename'})
+        table.insert(elements, {label = 'Change company name: $' .. Config.ChangeNamePrice,    value = 'changename'})
 		table.insert(elements, {label = 'Sell your company for $' .. math.floor(data[1].ShopValue / Config.SellValue),   value = 'sell'})
 
 		ESX.UI.Menu.Open(
@@ -326,7 +326,7 @@ function OpenBoss()
             
 
             ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'takeoutmoney', {
-                title = 'How much whould you like to take out?'
+                title = 'How much would you like to take out?'
             }, function(data2, menu2)
   
 			local amount = tonumber(data2.value)
@@ -344,7 +344,7 @@ function OpenBoss()
 			ESX.UI.Menu.CloseAll()
 
 			ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'putinmoney', {
-			title = 'How much whould you like to put in?'
+			title = 'How much would you like to put in?'
 			}, function(data3, menu3)
 			local amount = tonumber(data3.value)
 			TriggerServerEvent('esx_kr_shops:addMoney', amount, number)
@@ -540,7 +540,7 @@ local name = data.current.ItemName
     if data.current.value == 'removeitem' then
         menu.close()
         ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'howmuch', {
-        title = 'How much whould you like to take out?'
+        title = 'How much would you like to take out?'
         }, function(data2, menu2)
 
         local count = tonumber(data2.value)
@@ -849,7 +849,7 @@ function Robbery(id)
                         z = coords1[id].z - 1,
 					}
 						TriggerServerEvent('esx_phone:send', "police", "Shop robbery at the " .. result.name .. '\'s shop', true, coords)
-						TriggerServerEvent('esx_kr_shops-robbery:NotifyOwner', "~r~Your store ~b~(" .. result.name .. ')~r~ is under robbery', id)
+						TriggerServerEvent('esx_kr_shops-robbery:NotifyOwner', "~r~Your store ~b~(" .. result.name .. ')~r~ is being robbed!', id)
 						
 						ESX.Game.SpawnObject(1089807209, coords, function(safe)
 						SetEntityHeading(safe, coords1[id].heading)
@@ -863,10 +863,10 @@ function Robbery(id)
 						Name = result.name
 						end)
                 else
-					ESX.ShowNotification("~r~There is not enough polices online " .. results .. '/' .. Config.RequiredPolices)
+					ESX.ShowNotification("~r~There are not enough police online " .. results .. '/' .. Config.RequiredPolices)
 				end
 			else
-				ESX.ShowNotification("~r~This shop has already bein robbed, please wait " ..  math.floor((Config.TimeBetweenRobberies - result.time)  / 60) .. ' minutes')
+				ESX.ShowNotification("~r~This shop has already been robbed, please wait " ..  math.floor((Config.TimeBetweenRobberies - result.time)  / 60) .. ' minutes')
 			end
 		end)
 	end, id)

@@ -295,7 +295,7 @@ AddEventHandler('esx_kr_shop:MakeShipment', function(id, item, price, count, lab
 
             MySQL.Async.execute('INSERT INTO shipments (id, label, identifier, item, price, count, time) VALUES (@id, @label, @identifier, @item, @price, @count, @time)',{['@id']       = id,['@label']      = label,['@identifier'] = identifier,['@item']       = item,['@price']      = price,['@count']      = count,['@time']       = os.time()})
             MySQL.Async.fetchAll("UPDATE owned_shops SET money = @money WHERE ShopNumber = @ShopNumber",{['@ShopNumber'] = id,['@money']    = result[1].money - price * count,})  
-            TriggerClientEvent('esx:showNotification', _source, '~g~You ordered' .. count .. ' pieces ' .. label .. ' for $' .. price * count)
+            TriggerClientEvent('esx:showNotification', _source, '~g~You ordered' .. count .. 'x' .. label .. ' for $' .. price * count)
         else
             TriggerClientEvent('esx:showNotification', _source, '~r~You don\'t have enough money in your shop.')
         end
@@ -351,7 +351,7 @@ local identifier = ESX.GetPlayerFromId(source).identifier
           
         if os.time() - result[1].LastRobbery <= 900 then
             time = os.time() - result[1].LastRobbery
-            TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~Your shop money has been locked due to robbery, please wait ' .. math.floor((900 - time) / 60) .. ' minutes')
+            TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~Your shop money has been locked due to a robbery, please wait ' .. math.floor((900 - time) / 60) .. ' minutes')
             return
         end
 
@@ -364,7 +364,7 @@ local identifier = ESX.GetPlayerFromId(source).identifier
                 ['@identifier'] = identifier
             })
             xPlayer.removeMoney(amount)
-        TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~You put in $' .. amount .. ' in your shop')
+        TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~You put $' .. amount .. ' into your shop')
         else
         TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~You can\'t put in more than you own')
         end
@@ -389,7 +389,7 @@ local xPlayer = ESX.GetPlayerFromId(src)
 
     if os.time() - result[1].LastRobbery <= 900 then
         time = os.time() - result[1].LastRobbery
-        TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~Your shop money has been locked due to robbery, please wait ' .. math.floor((900 - time) / 60) .. ' minutes')
+        TriggerClientEvent('esx:showNotification', xPlayer.source, '~r~Your shop money has been locked due to a robbery, please wait ' .. math.floor((900 - time) / 60) .. ' minutes')
         return
     end
       
