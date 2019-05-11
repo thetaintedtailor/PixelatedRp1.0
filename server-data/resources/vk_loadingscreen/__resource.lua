@@ -3,6 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
+    'music/kraddy-androidporn.mp3',
     'music/jessrabbit-whydontyoudoright.mp3',
 	'music/ManilaGrey-FriendsofFriends.mp3',
     'icon/crown.png',
