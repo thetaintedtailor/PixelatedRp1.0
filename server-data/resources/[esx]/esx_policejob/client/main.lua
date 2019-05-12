@@ -732,8 +732,8 @@ function OpenPoliceActionsMenu()
 				{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
 				{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
 				{label = _U('fine'),			value = 'fine'},
-				{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
-                {label = _U('jail'),            value = 'jail'}
+				{label = _U('unpaid_bills'),	value = 'unpaid_bills'}
+                --{label = _U('jail'),            value = 'jail'}
 			}
 		
 			if Config.EnableLicenses then
