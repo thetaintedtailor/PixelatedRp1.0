@@ -69,6 +69,7 @@ AddEventHandler("esx-qalle-jail:unJailPlayer", function()
 	jailTime = 0
 
 	UnJail()
+	close.menu()
 end)
 
 function JailLogin()
