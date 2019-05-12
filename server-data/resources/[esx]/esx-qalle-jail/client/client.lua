@@ -289,7 +289,6 @@ function DeliverPackage(packageId)
 					Packaging = false
 
 					TriggerServerEvent("esx-qalle-jail:prisonWorkReward")
-					EditJailTime(jailPlayer, -1)
 				end
 			end
 		end
