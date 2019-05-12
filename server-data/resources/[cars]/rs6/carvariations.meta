@@ -3,161 +3,29 @@
 <CVehicleModelInfoVariation>
   <variationData>
     <Item>
-      <modelName>audirs6tk</modelName>
+      <modelName>rs6</modelName>
       <colors>
         <Item>
           <indices content="char_array">
-            0 
-            8 
-            2
-            0 
+            00
+            91
+            00
+            122
           </indices>
           <liveries>
+            <Item value="true" />
             <Item value="false" />
             <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            38 
-            38 
-            38
-            38 
-          </indices>
-          <liveries>
             <Item value="false" />
             <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            112
-            106 
-            5
-            39 
-          </indices>
-          <liveries>
             <Item value="false" />
             <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            88 
-            88 
-            88
-            42 
-          </indices>
-          <liveries>
             <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            4 
-            38 
-            4
-            38 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            5 
-            38 
-            5
-            38 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            3 
-            107 
-            6
-            4 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            62 
-            107 
-            64
-            64 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            29 
-            29 
-            29
-            29 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
-          </liveries>
-        </Item>
-		<Item>
-          <indices content="char_array">
-            64 
-            64 
-            64
-            39 
-          </indices>
-          <liveries>
-            <Item value="false" />
-            <Item value="false" />
-			<Item value="false" />
-			<Item value="true" />
-			<Item value="false" />
           </liveries>
         </Item>
       </colors>
       <kits>
-        <Item>492_audirs6tk_modkit</Item>
+        <Item>936_rs6_modkit</Item>
       </kits>
       <windowsWithExposedEdges />
       <plateProbabilities>
@@ -168,8 +36,9 @@
           </Item>
         </Probabilities>
       </plateProbabilities>
-      <lightSettings value="492" />
+      <lightSettings value="1" />
       <sirenSettings value="0" />
     </Item>
+
   </variationData>
 </CVehicleModelInfoVariation>

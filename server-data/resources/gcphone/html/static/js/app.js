@@ -1138,7 +1138,7 @@ webpackJsonp([0], [, , , , , , function(t, e, n) {
                 var n = e.appelsDisplayNumber;
                 return (e.contacts.find(function(t) {
                     return t.number === n
-                }) || {}).display || "Inconnu"
+                }) || {}).display || "Unknown number"
             },
             appelsDisplayNumber: function(t, e) {
                 return !0 === e.isInitiatorCall ? t.appelsInfo.receiver_num : !0 === t.appelsInfo.hidden ? "###-####" : t.appelsInfo.transmitter_num

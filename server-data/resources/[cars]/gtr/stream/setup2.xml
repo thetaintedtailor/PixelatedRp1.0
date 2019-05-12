@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <SSetupData>
-  <deviceName>dlc_gtr</deviceName>
+  <deviceName>dlc_ngtr35nismo17</deviceName>
   <datFile>content.xml</datFile>
   <timeStamp>00/00/0000 00:00:00</timeStamp>
-  <nameHash>gtr</nameHash>
+  <nameHash>ngtr35nismo17</nameHash>
   <contentChangeSetGroups>
     <Item>
       <NameHash>GROUP_STARTUP</NameHash>
       <ContentChangeSets>
-        <Item>gtr_AUTOGEN</Item>
+        <Item>ngtr35nismo17_AUTOGEN</Item>
       </ContentChangeSets>
     </Item>
   </contentChangeSetGroups>

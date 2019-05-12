@@ -99,7 +99,7 @@ function OpenMenuGarage(PointType)
 	
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'garage_menu', {
 		title    = _U('garage'),
-		align    = 'top-left',
+		align    = 'left',
 		elements = elements
 	}, function(data, menu)
 		menu.close()
@@ -203,7 +203,7 @@ function ListOwnedCarsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_car', {
 			title    = _U('garage_cars'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			if data.current.value.stored then
@@ -288,7 +288,7 @@ function ListOwnedBoatsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_boat', {
 			title    = _U('garage_boats'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			if data.current.value.stored then
@@ -373,7 +373,7 @@ function ListOwnedAircraftsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_aircraft', {
 			title    = _U('garage_aircrafts'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			if data.current.value.stored then
@@ -550,7 +550,7 @@ function ReturnOwnedCarsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_car', {
 			title    = _U('pound_cars'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyCars', function(hasEnoughMoney)
@@ -627,7 +627,7 @@ function ReturnOwnedBoatsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_boat', {
 			title    = _U('pound_boats'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyBoats', function(hasEnoughMoney)
@@ -704,7 +704,7 @@ function ReturnOwnedAircraftsMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_aircraft', {
 			title    = _U('pound_aircrafts'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyAircrafts', function(hasEnoughMoney)
@@ -781,7 +781,7 @@ function ReturnOwnedPolicingMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_policing', {
 			title    = _U('pound_police'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyPolicing', function(hasEnoughMoney)
@@ -858,7 +858,7 @@ function ReturnOwnedAmbulanceMenu()
 		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_ambulance', {
 			title    = _U('pound_ambulance'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		}, function(data, menu)
 			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyAmbulance', function(hasEnoughMoney)
@@ -886,7 +886,7 @@ function reparation(apprasial, vehicle, vehicleProps)
 	
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'delete_menu', {
 		title    = _U('damaged_vehicle'),
-		align    = 'top-left',
+		align    = 'left',
 		elements = elements
 	}, function(data, menu)
 		menu.close()

@@ -106,7 +106,7 @@ function OpenMecanoActionsMenu()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mecano_actions', {
 		title    = _U('mechanic'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 		if data.current.value == 'vehicle_list' then
@@ -125,7 +125,7 @@ function OpenMecanoActionsMenu()
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner', {
 						title    = _U('service_vehicle'),
-						align    = 'top-left',
+						align    = 'right',
 						elements = elements
 					}, function(data, menu)
 						menu.close()
@@ -158,7 +158,7 @@ function OpenMecanoActionsMenu()
 
 				ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_vehicle', {
 					title    = _U('service_vehicle'),
-					align    = 'top-left',
+					align    = 'right',
 					elements = elements
 				}, function(data, menu)
 					if Config.MaxInService == -1 then
@@ -238,7 +238,7 @@ function OpenMecanoHarvestMenu()
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mecano_harvest', {
 			title    = _U('harvest'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 
@@ -278,7 +278,7 @@ function OpenMecanoCraftMenu()
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mecano_craft', {
 			title    = _U('craft'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 			if data.current.value == 'blow_pipe' then
@@ -311,7 +311,7 @@ function OpenMobileMecanoActionsMenu()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mobile_mecano_actions', {
 		title    = _U('mechanic'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = {
 			{label = _U('billing'),       value = 'billing'},
 			{label = _U('hijack'),        value = 'hijack_vehicle'},
@@ -536,7 +536,7 @@ function OpenMobileMecanoActionsMenu()
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mobile_mecano_actions_spawn', {
 			title    = _U('objects'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = {
 				{label = _U('roadcone'), value = 'prop_roadcone02a'},
 				{label = _U('toolbox'),  value = 'prop_toolchest_01'}
@@ -588,7 +588,7 @@ function OpenGetStocksMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu',
 		{
 			title    = _U('mechanic_stock'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 
@@ -640,7 +640,7 @@ function OpenPutStocksMenu()
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu', {
 			title    = _U('inventory'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 

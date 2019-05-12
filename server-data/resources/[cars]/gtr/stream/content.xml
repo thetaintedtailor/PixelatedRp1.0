@@ -5,49 +5,42 @@
   <includedDataFiles />
   <dataFiles>
     <Item>
-      <filename>dlc_gtr:/data/vehicles.meta</filename>
+      <filename>dlc_ngtr35nismo17:/common/data/vehicles.meta</filename>
       <fileType>VEHICLE_METADATA_FILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
       <persistent value="false" />
     </Item>
     <Item>
-      <filename>dlc_gtr:/data/carcols.meta</filename>
+      <filename>dlc_ngtr35nismo17:/common/data/carcols.meta</filename>
       <fileType>CARCOLS_FILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
       <persistent value="false" />
     </Item>
     <Item>
-      <filename>dlc_gtr:/data/carvariations.meta</filename>
+      <filename>dlc_ngtr35nismo17:/common/data/carvariations.meta</filename>
       <fileType>VEHICLE_VARIATION_FILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
       <persistent value="false" />
     </Item>
     <Item>
-      <filename>dlc_gtr:/data/dlctext.meta</filename>
+      <filename>dlc_ngtr35nismo17:/common/data/dlctext.meta</filename>
       <fileType>TEXTFILE_METAFILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
       <persistent value="false" />
     </Item>
     <Item>
-      <filename>dlc_gtr:/data/handling.meta</filename>
+      <filename>dlc_ngtr35nismo17:/common/data/handling.meta</filename>
       <fileType>HANDLING_FILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
       <persistent value="false" />
     </Item>	
     <Item>
-      <filename>dlc_gtr:/%PLATFORM%/vehicles.rpf</filename>
-      <fileType>RPF_FILE</fileType>
-      <overlay value="false" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_gtr:/%PLATFORM%/vehiclemods/gtr_mods.rpf</filename>
+      <filename>dlc_ngtr35nismo17:/%PLATFORM%/vehicles.rpf</filename>
       <fileType>RPF_FILE</fileType>
       <overlay value="false" />
       <disabled value="true" />
@@ -56,16 +49,15 @@
   </dataFiles>
   <contentChangeSets>
 	<Item>
-	  <changeSetName>gtr_AUTOGEN</changeSetName>
+	  <changeSetName>ngtr35nismo17_AUTOGEN</changeSetName>
 	  <filesToDisable />
 	  <filesToEnable>
-        <Item>dlc_gtr:/data/handling.meta</Item>
-        <Item>dlc_gtr:/data/vehicles.meta</Item>
-        <Item>dlc_gtr:/data/carcols.meta</Item>
-        <Item>dlc_gtr:/data/carvariations.meta</Item>
-        <Item>dlc_gtr:/data/dlctext.meta</Item>	
-        <Item>dlc_gtr:/%PLATFORM%/vehicles.rpf</Item>
-        <Item>dlc_gtr:/%PLATFORM%/vehiclemods/gtr_mods.rpf</Item>
+        <Item>dlc_ngtr35nismo17:/common/data/handling.meta</Item>
+        <Item>dlc_ngtr35nismo17:/common/data/vehicles.meta</Item>
+        <Item>dlc_ngtr35nismo17:/common/data/carcols.meta</Item>
+        <Item>dlc_ngtr35nismo17:/common/data/carvariations.meta</Item>
+        <Item>dlc_ngtr35nismo17:/common/data/dlctext.meta</Item>	
+        <Item>dlc_ngtr35nismo17:/%PLATFORM%/vehicles.rpf</Item>
 	  </filesToEnable>
 	  <txdToLoad />
 	  <txdToUnload />
