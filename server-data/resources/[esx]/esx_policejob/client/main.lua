@@ -720,9 +720,9 @@ function OpenPoliceActionsMenu()
 		if data.current.value == 'jail_menu' then
 			TriggerEvent("esx-qalle-jail:openJailMenu")
 		end
-		wait(10 * 10000)
-		ESX.UI.Menu.CloseAll()
-			
+		menu.close()
+		
+		
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
 				{label = _U('id_card'),			value = 'identity_card'},
