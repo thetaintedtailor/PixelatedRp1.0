@@ -101,7 +101,6 @@ AddEventHandler("esx-qalle-jail:prisonWorkReward", function()
 	local xPlayer = ESX.GetPlayerFromId(src)
 
 	xPlayer.addMoney(math.random(13, 21))
-	EditJailTime(source, -1)
 
 	TriggerClientEvent("esx:showNotification", src, "Thanks, here you have som cash for food!")
 end)
