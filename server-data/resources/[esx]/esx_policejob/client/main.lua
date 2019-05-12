@@ -719,6 +719,7 @@ function OpenPoliceActionsMenu()
 		
 		if data.current.value == 'jail_menu' then
 			TriggerEvent("esx-qalle-jail:openJailMenu")
+		end
 			
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
