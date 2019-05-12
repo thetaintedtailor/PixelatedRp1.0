@@ -99,20 +99,11 @@ AddEventHandler("esx-qalle-jail:prisonWorkReward", function()
 	local src = source
 
 	local xPlayer = ESX.GetPlayerFromId(src)
-	local Identifier = xPlayer.identifier
 
 	xPlayer.addMoney(math.random(13, 21))
+	EditJailTime(source, -1)
 
 	TriggerClientEvent("esx:showNotification", src, "Thanks, here you have som cash for food!")
-
-	MySQL.Async.execute(
-       "UPDATE users SET jail = @newJailTime WHERE identifier = @identifier",
-        {
-			['@identifier'] = Identifier,
-			['@newJailTime'] = tonumber(-1)
-		}
-	)
-
 end)
 
 function JailPlayer(jailPlayer, jailTime)
