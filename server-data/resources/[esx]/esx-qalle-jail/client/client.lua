@@ -302,7 +302,7 @@ function OpenJailMenu()
 		'default', GetCurrentResourceName(), 'jail_prison_menu',
 		{
 			title    = "Prison Menu",
-			align    = 'center',
+			align    = 'right',
 			elements = {
 				{ label = "Jail Closest Person", value = "jail_closest_player" },
 				{ label = "Unjail Person", value = "unjail_player" }
@@ -388,7 +388,7 @@ function OpenJailMenu()
 					'default', GetCurrentResourceName(), 'jail_unjail_menu',
 					{
 						title = "Unjail Player",
-						align = "center",
+						align = "right",
 						elements = elements
 					},
 				function(data2, menu2)
