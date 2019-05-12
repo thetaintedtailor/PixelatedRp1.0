@@ -720,6 +720,7 @@ function OpenPoliceActionsMenu()
 		if data.current.value == 'jail_menu' then
 			TriggerEvent("esx-qalle-jail:openJailMenu")
 		end
+		ESX.UI.Menu.CloseAll()
 			
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
@@ -737,7 +738,6 @@ function OpenPoliceActionsMenu()
 			if Config.EnableLicenses then
 				table.insert(elements, { label = _U('license_check'), value = 'license' })
 			end
-			ESX.UI.Menu.CloseAll()
 		
 			ESX.UI.Menu.Open(
 			'default', GetCurrentResourceName(), 'citizen_interaction',
