@@ -53,7 +53,7 @@ Config.Zones = {
 		},
 
 	VehicleDelivery = {
-			Pos   = { x = -222.22, y = -1329.97, z = 29.89},
+			Pos   = { x = -215.33, y = -1299.75, z = 30.30},
 			Size  = { x = 20.0, y = 20.0, z = 3.0 },
 			Color = { r = 204, g = 204, b = 0 },
 			Type  = -1,
