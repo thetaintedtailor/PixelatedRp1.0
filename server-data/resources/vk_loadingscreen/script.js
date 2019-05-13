@@ -43,7 +43,7 @@ VK.music.howl = new Howl({
     loop: true,
     html5: true,
     volume: VK.music.volume || 1
-}).play();
+});
 var paused = false;
 
 window.addEventListener("keydown", function(e) {
