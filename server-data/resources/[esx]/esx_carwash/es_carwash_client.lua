@@ -40,7 +40,7 @@ Citizen.CreateThread(function ()
 		if IsPedSittingInAnyVehicle(GetPlayerPed(-1)) then 
 			for i = 1, #vehicleWashStation do
 				garageCoords2 = vehicleWashStation[i]
-				DrawMarker(36, garageCoords2[1], garageCoords2[2], garageCoords2[3], 0, 0, 0, 0, 0, 0, 2.0, 2.0, 2.0, 0, 157, 0, 155, 0, 0, 2, 0, 0, 0, 0)
+				DrawMarker(36, garageCoords2[1], garageCoords2[2], garageCoords2[3], 0, 0, 0, 0, 0, 0, 5.0, 5.0, 2.0, 0, 157, 0, 155, 0, 0, 2, 0, 0, 0, 0)
 				if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), garageCoords2[1], garageCoords2[2], garageCoords2[3], true ) < 5 then
 					es_carwash_DrawSubtitleTimed("Press [~g~ E ~s~] to wash your vehicle!")
 					if IsControlJustPressed(1, Key) then
