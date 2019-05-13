@@ -26,8 +26,8 @@
 					$('#list').empty();
 					for (let i in event.data.players) {
 						let player = event.data.players[i];
-						console.log(JSON.stringify(player, null, 4))
-						$('#list').append('<div class="player" id="player_' + player.id + '">' + player.firstname + '</div>');
+
+						$('#list').append('<div class="player" id="player_' + player.id + '">' + player.name + '</div>');
 					}
 
 					$(".player").click(function () {
