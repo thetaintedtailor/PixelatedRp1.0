@@ -22,7 +22,8 @@ RegisterCommand('twt', function(source, args, rawCommand)
 	local name = GetPlayerName(source)
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
-	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), args }, color = { 0, 153, 204 } })
+	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), tostring(args)}, color={0,153,204} })
+
 	--print(('%s: %s'):format(name, args))
 end, false)
 
