@@ -9,7 +9,7 @@ Config.zones = {
 	YardEnter = {
 		x = 998.34,
 		y = -3091.86,
-		z = -38.00,
+		z = -40.00,
 		w = 2.0,
 		h = 1.0,
 		visible = true,
@@ -34,7 +34,7 @@ Config.zones = {
 			g = 0,
 			b = 0
 		}
-	}
+	},
 }
 
 -- Landing point, keep the same name as markers
