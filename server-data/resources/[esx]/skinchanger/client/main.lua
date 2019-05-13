@@ -185,8 +185,8 @@ function GetMaxVals()
 		bags_2			= GetNumberOfPedTextureVariations		(playerPed, 5, Character['bags_1']) - 1,
 		--helmet_1		= GetNumberOfPedPropDrawableVariations	(playerPed, 0) - 1,
 		--helmet_2		= GetNumberOfPedPropTextureVariations	(playerPed, 0, Character['helmet_1']) - 1,
-		--glasses_1		= GetNumberOfPedPropDrawableVariations	(playerPed, 1) - 1,
-		--glasses_2		= GetNumberOfPedPropTextureVariations	(playerPed, 1, Character['glasses_1'] - 1),
+		glasses_1		= GetNumberOfPedPropDrawableVariations	(playerPed, 1) - 1,
+		glasses_2		= GetNumberOfPedPropTextureVariations	(playerPed, 1, Character['glasses_1'] - 1),
 		watches_1		= GetNumberOfPedPropDrawableVariations	(playerPed, 6) - 1,
 		watches_2		= GetNumberOfPedPropTextureVariations	(playerPed, 6, Character['watches_1']) - 1,
 		bracelets_1		= GetNumberOfPedPropDrawableVariations	(playerPed, 7) - 1,
@@ -323,8 +323,8 @@ AddEventHandler('skinchanger:getData', function(cb)
 		for i=1, #components, 1 do
 			if k == components[i].name then
 				components[i].value = v
-				components[i].zoomOffset = Components[i].zoomOffset
-				components[i].camOffset = Components[i].camOffset
+				--components[i].zoomOffset = Components[i].zoomOffset
+				--components[i].camOffset = Components[i].camOffset
 			end
 		end
 	end
