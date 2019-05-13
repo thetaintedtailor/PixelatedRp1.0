@@ -178,8 +178,8 @@ Citizen.CreateThread(function()
 			DisableControlAction(2, 35, true)
 			DisableControlAction(0, 25, true) -- Input Aim
 			DisableControlAction(0, 24, true) -- Input Attack
-			--DisableControlAction(0, Keys['3'])
-			--DisableControlAction(0, Keys['4'])
+			DisableControlAction(0, Keys['3'])
+			DisableControlAction(0, Keys['4'])
 
 			local playerPed = PlayerPedId()
 			local coords    = GetEntityCoords(playerPed)
@@ -230,9 +230,9 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		if isCameraActive then
-			if IsControlPressed(0, Keys['3']) then
+			if IsDisabledControlPressed(0, Keys['3']) then
 				angle = angle - 1
-			elseif IsControlPressed(0, Keys['4']) then
+			elseif IsDisabledControlPressed(0, Keys['4']) then
 				angle = angle + 1
 			end
 
