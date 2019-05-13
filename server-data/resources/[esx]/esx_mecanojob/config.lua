@@ -41,12 +41,14 @@ Config.Zones = {
 
 	VehicleSpawnPoint = {
 			Pos   = {x = -210.89, y = -1304.43, z = 30.29},
+			Pos   = {x = 1171.57, y = 2656.94, z = 38.08},
 			Size  = { x = 1.5, y = 1.5, z = 1.0 },
 			Type  = -1,
 		},
 
 	VehicleDeleter = {
 			Pos   = { x = -199.82, y = -1306.86, z = 30.28 },
+			Pos   = {x = 1171.57, y = 2656.94, z = 38.08},
 			Size  = { x = 3.0, y = 3.0, z = 1.0 },
 			Color = { r = 204, g = 204, b = 0 },
 			Type  = 1,
@@ -54,6 +56,7 @@ Config.Zones = {
 
 	VehicleDelivery = {
 			Pos   = { x = -222.22, y = -1329.97, z = 29.89},
+			Pos   = {x = 1171.57, y = 2656.94, z = 38.08},
 			Size  = { x = 20.0, y = 20.0, z = 3.0 },
 			Color = { r = 204, g = 204, b = 0 },
 			Type  = -1,
