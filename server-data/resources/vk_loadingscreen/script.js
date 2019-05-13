@@ -46,6 +46,23 @@ VK.music.howl = new Howl({
 });
 VK.music.howl.play();
 
+function onKeyDown(event) {
+    switch (event.keyCode) {
+        case 32: //SpaceBar                    
+            if (play) {
+                VK.music.howl.pause();
+                play = false;
+            } else {
+                VK.music.howl.play();
+                play = true;
+            }
+            break;
+    }
+return false;
+}
+
+window.addEventListener("keydown", onKeyDown, false);
+
 if (VK.music.title != "NONE") {
     document.querySelector(".music .title .label").innerHTML = VK.music.title;
 } else {
