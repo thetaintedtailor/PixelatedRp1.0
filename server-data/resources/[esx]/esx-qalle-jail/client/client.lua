@@ -144,9 +144,7 @@ function InJail()
 					end
 				end)	
 				
-			end
-
-			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
+				TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
 
 			if jailTime == 0 then
 				UnJail()
