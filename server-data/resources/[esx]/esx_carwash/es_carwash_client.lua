@@ -16,7 +16,7 @@ Citizen.CreateThread(function ()
 	for i = 1, #vehicleWashStation do
 		garageCoords = vehicleWashStation[i]
 		stationBlip = AddBlipForCoord(garageCoords[1], garageCoords[2], garageCoords[3])
-		SetBlipSprite(stationBlip, 100) -- 100 = carwash
+		SetBlipSprite(stationBlip, 36) -- 100 = carwash
 		SetBlipAsShortRange(stationBlip, true)
 	end
     return
@@ -42,7 +42,7 @@ Citizen.CreateThread(function ()
 				garageCoords2 = vehicleWashStation[i]
 				DrawMarker(1, garageCoords2[1], garageCoords2[2], garageCoords2[3], 0, 0, 0, 0, 0, 0, 5.0, 5.0, 2.0, 0, 157, 0, 155, 0, 0, 2, 0, 0, 0, 0)
 				if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), garageCoords2[1], garageCoords2[2], garageCoords2[3], true ) < 5 then
-					es_carwash_DrawSubtitleTimed("Press [~g~INPUT_PICKUP~s~] to wash your vehicle!")
+					es_carwash_DrawSubtitleTimed("Press [~g~ E ~s~] to wash your vehicle!")
 					if IsControlJustPressed(1, Key) then
 						TriggerServerEvent('es_carwash:checkmoney')
 					end
