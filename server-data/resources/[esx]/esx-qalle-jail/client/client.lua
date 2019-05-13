@@ -124,6 +124,28 @@ function InJail()
 
 			ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
 
+			local Male = GetHashKey("mp_m_freemode_01")
+
+				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
+					if skin.sex == 0 then
+						SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
+						SetPedComponentVariation(GetPlayerPed(-1), 4, 9, 4, 0)--Jean
+						SetPedComponentVariation(GetPlayerPed(-1), 6, 61, 0, 0)--Chaussure
+						SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
+						SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
+					elseif skin.sex == 1 then
+						SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
+						SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
+						SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
+						SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
+						SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+					else
+						TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
+					end
+				end)	
+				
+			end
+
 			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
 
 			if jailTime == 0 then
@@ -134,29 +156,6 @@ function InJail()
 
 			Citizen.Wait(60000)
 		end
-
-		local Male = GetHashKey("mp_m_freemode_01")
-
-		ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
-			if skin.sex == 0 then
-				SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
-				SetPedComponentVariation(GetPlayerPed(-1), 4, 9, 4, 0)--Jean
-				SetPedComponentVariation(GetPlayerPed(-1), 6, 61, 0, 0)--Chaussure
-				SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
-				SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
-			elseif skin.sex == 1 then
-				SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
-				SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
-				SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
-				SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
-				SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
-			else
-				TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
-			end
-
-			Citizen.Wait(5000)
-				
-		end)
 
 	end)
 
