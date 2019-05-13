@@ -22,7 +22,7 @@ Config.Items = {
     [10] = {label = "Repair Kit",       item = "repairkit",        price = 450},
     [11] = {label = "Red Rose",       item = "rose",        price = 5},
     [12] = {label = "Sandwich",       item = "sandwich",        price = 4},
-    [13] = {label = "Scratchoff Ticket",       item = "scratchoff",        price = 1},
+    [13] = {label = "Scratchoff Ticket",       item = "scratchoff",        price = 15},
 }
 
 Config.Images = {
