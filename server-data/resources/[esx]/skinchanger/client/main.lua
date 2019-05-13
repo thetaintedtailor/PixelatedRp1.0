@@ -295,9 +295,17 @@ function ApplySkin(skin, clothes)
 	SetPedComponentVariation	(playerPed, 5,		Character['bags_1'],			Character['bags_2'], 2)						-- Bag
 
 
-	ClearPedProp(playerPed, 0) -- Helmet
-	ClearPedProp(playerPed, 1) -- Glasses
+	if Character['helmet_1'] == -1 then
+		ClearPedProp(playerPed, 0)
+	else
+		SetPedPropIndex			(playerPed, 0,		Character['helmet_1'],			Character['helmet_2'], 2)					-- Helmet
+	end
 
+	if Character['glasses_1'] == -1 then
+		ClearPedProp(playerPed, 1)
+	else
+		SetPedPropIndex			(playerPed, 1,		Character['glasses_1'],			Character['glasses_2'], 2)					-- Glasses
+	end
 
 	if Character['watches_1'] == -1 then
 		ClearPedProp(playerPed, 6)
