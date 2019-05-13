@@ -323,8 +323,8 @@ AddEventHandler('skinchanger:getData', function(cb)
 		for i=1, #components, 1 do
 			if k == components[i].name then
 				components[i].value = v
-				--components[i].zoomOffset = Components[i].zoomOffset
-				--components[i].camOffset = Components[i].camOffset
+				components[i].zoomOffset = Components[i].zoomOffset
+				components[i].camOffset = Components[i].camOffset
 			end
 		end
 	end
