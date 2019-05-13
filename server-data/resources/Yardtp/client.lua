@@ -20,7 +20,7 @@ AddEventHandler('tp:hasEnteredMarker', function(zone)
 
 	if zone == 'YardExit' then
 		CurrentAction = zone
-	end	
+	end
 
 end)
 

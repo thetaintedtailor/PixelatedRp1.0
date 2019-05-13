@@ -34,7 +34,7 @@ Config.zones = {
 			g = 0,
 			b = 0
 		}
-	},
+	}
 }
 
 -- Landing point, keep the same name as markers
@@ -56,5 +56,6 @@ Config.point = {
 
 -- Automatic teleport list (no need to puseh E key in the marker)
 Config.auto = {
-	
+	'YardEnter',
+	'YardExit'
 }
