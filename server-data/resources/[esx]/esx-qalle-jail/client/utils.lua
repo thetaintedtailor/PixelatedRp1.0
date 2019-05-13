@@ -143,7 +143,7 @@ function TeleportPlayer(pos)
 			local action = data.current.value
 			local position = Config.Teleports[action]
 
-			if action == "Security" then
+			if action == "Jail" or action == "Security" then
 
 				if PlayerData.job.name ~= "police" then
 					ESX.ShowNotification("You don't have an key to go here!")
