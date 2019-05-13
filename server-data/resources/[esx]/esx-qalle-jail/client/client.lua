@@ -35,7 +35,7 @@ RegisterNetEvent("esx:playerLoaded")
 AddEventHandler("esx:playerLoaded", function(newData)
 	PlayerData = newData
 
-	Citizen.Wait(25000)
+	Citizen.Wait(15000)
 
 	ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
 		if skin.sex == 0 then
