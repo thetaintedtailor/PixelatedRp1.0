@@ -50,8 +50,10 @@ window.addEventListener("keydown", function(e) {
     if (event.keyCode === 32) {
         if (!paused) {
             VK.music.howl.pause();
+            paused = true;
         } else {
             VK.music.howl.play();
+            paused = false;
         }
     } else {
         return;
