@@ -219,9 +219,7 @@ AddEventHandler('esx_mecanojob:onNPCJobMissionCompleted', function()
 		total = total * 2
 	end
 
-	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-		account.addMoney(total)
-	end)
+	xPlayer.addMoney(total)
 
 	TriggerClientEvent("esx:showNotification", _source, _U('your_comp_earned').. total)
 end)
