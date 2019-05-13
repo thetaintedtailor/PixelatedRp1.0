@@ -37,7 +37,7 @@ VK.tips.list = [ // Tips list
     "Around here we call Kat the Fastest Dev in the West",
 ];
 
-VK.music.volume = 0.1; // Music volume (0-1)
+VK.music.volume = 0.08; // Music volume (0-1)
 VK.music.url = "music/kraddy-androidporn.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
 VK.music.title = "Android - Kraddy"; // Music title ("NONE" to desactive)
 VK.music.submitedBy = "suggested by DeludedWench (Rori)"; // Music submited by... ("NONE" to desactive)
