@@ -712,10 +712,17 @@ function OpenPoliceActionsMenu()
 		elements = {
 			{label = _U('citizen_interaction'),	value = 'citizen_interaction'},
 			{label = _U('vehicle_interaction'),	value = 'vehicle_interaction'},
-			{label = _U('object_spawner'),		value = 'object_spawner'}
+			{label = _U('object_spawner'),		value = 'object_spawner'},
+			{label = "Jail Menu",               value = 'jail_menu'}
 		}
 	}, function(data, menu)
-
+		
+		if data.current.value == 'jail_menu' then
+			TriggerEvent("esx-qalle-jail:openJailMenu")
+		end
+		menu.close()
+		
+		
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
 				{label = _U('id_card'),			value = 'identity_card'},
@@ -725,8 +732,8 @@ function OpenPoliceActionsMenu()
 				{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
 				{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
 				{label = _U('fine'),			value = 'fine'},
-				{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
-                {label = _U('jail'),            value = 'jail'}
+				{label = _U('unpaid_bills'),	value = 'unpaid_bills'}
+                --{label = _U('jail'),            value = 'jail'}
 			}
 		
 			if Config.EnableLicenses then

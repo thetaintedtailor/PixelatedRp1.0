@@ -13,29 +13,13 @@ end)
 
 -- Keep the same name as in the config.lua
 AddEventHandler('tp:hasEnteredMarker', function(zone)
+	
+	if zone == 'YardEnter' then
+		CurrentAction = zone
+	end	
 
-    if zone == 'WeedEnter' then
-    	CurrentAction = zone
-    end
-	
-	if zone == 'WeedExit' then
-    	CurrentAction = zone
-    end
-	
-	if zone == 'MethEnter' then
-    	CurrentAction = zone
-    end
-	
-	if zone == 'MethExit' then
-    	CurrentAction = zone
-    end
-	
-	if zone == 'CokeEnter' then
-    	CurrentAction = zone
-    end
-	
-	if zone == 'CokeExit' then
-    	CurrentAction = zone
+	if zone == 'YardExit' then
+		CurrentAction = zone
 	end
 
 end)

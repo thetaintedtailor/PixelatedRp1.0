@@ -108,6 +108,9 @@ Config.Zones = {
   Shop20 = {
     Pos = {x = 1729.216,  y = 6414.131, z = 34.037, number = 20}
   },
+  Shop21 = {
+    Pos = {x = 1787.07,  y = 2486.43, z = -123.70, number = 21}
+  },
   Robbery1 = {
     Pos   = {x = 379.19, y = 332.08, z = 102.57, number = 101, red = true},
   },
