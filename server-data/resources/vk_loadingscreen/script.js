@@ -43,25 +43,20 @@ VK.music.howl = new Howl({
     loop: true,
     html5: true,
     volume: VK.music.volume || 1
-});
-VK.music.howl.play();
+}).play();
+var paused = false;
 
-function onKeyDown(event) {
-    switch (event.keyCode) {
-        case 32: //SpaceBar                    
-            if (play) {
-                VK.music.howl.pause();
-                play = false;
-            } else {
-                VK.music.howl.play();
-                play = true;
-            }
-            break;
+window.addEventListener("keydown", function(e) {
+    if (event.keyCode === 32) {
+        if (!paused) {
+            VK.music.howl.pause();
+        } else {
+            VK.music.howl.play();
+        }
+    } else {
+        return;
     }
-return false;
-}
-
-window.addEventListener("keydown", onKeyDown, false);
+}, false);
 
 if (VK.music.title != "NONE") {
     document.querySelector(".music .title .label").innerHTML = VK.music.title;
