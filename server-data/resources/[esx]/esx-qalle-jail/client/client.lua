@@ -159,7 +159,8 @@ function InJail()
 				else
 					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
 				end
-				Citizen.Wait(5000)
+				
+				Citizen.Wait(15000)
 			end)
 		end	
 	end)	
