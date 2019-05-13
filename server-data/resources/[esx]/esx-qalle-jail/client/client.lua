@@ -284,6 +284,13 @@ function DeliverPackage(packageId)
 
 			if DistanceCheck <= 2.0 then
 				if IsControlJustPressed(0, 38) then
+					do 
+						jailTime = jailTime -1
+				
+						ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
+				
+						TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
+					end
 					DeleteEntity(packageId)
 					ClearPedTasksImmediately(PlayerPedId())
 					Packaging = false
