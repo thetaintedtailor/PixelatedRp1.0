@@ -123,24 +123,8 @@ function InJail()
 			jailTime = jailTime - 1
 
 			ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
-				
-			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
 
-			if jailTime == 0 then
-				UnJail()
-
-				TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
-			end
-
-			Citizen.Wait(60000)
-		end
-
-	end)
-
-	Citizen.CreateThread(function()
-
-		while jailTime > 0 do			
-
+			
 			local Male = GetHashKey("mp_m_freemode_01")
 
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
@@ -159,11 +143,22 @@ function InJail()
 				else
 					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
 				end
-				
-				Citizen.Wait(15000)
+
 			end)
-		end	
-	end)	
+				
+			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
+
+			if jailTime == 0 then
+				UnJail()
+
+				TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
+			end
+
+			Citizen.Wait(60000)
+		end
+
+	end)
+	
 	--Jail Timer--
 
 	--Prison Work--
