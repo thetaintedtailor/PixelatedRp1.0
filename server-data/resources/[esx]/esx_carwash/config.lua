@@ -6,7 +6,7 @@ Config.zones = {
 	Carwash1 = {           
 		x = 26.49,
 		y = -1391.95,
-		z = 29.00,
+		z = 28.80,
 		w = 1.0,
 		h = 1.0,
 		visible = true,
@@ -20,9 +20,9 @@ Config.zones = {
 	},
 	
 	Carwash2 = {         
-		x = 169.02,
-		y = -1720,
-		z = 28.79,
+		x = 167.31,
+		y = -1721.65,
+		z = 28.99,
 		w = 1.0,
 		h = 1.0,
 		visible = true,
