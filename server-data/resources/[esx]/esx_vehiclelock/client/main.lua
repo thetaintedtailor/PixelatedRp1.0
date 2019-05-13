@@ -64,6 +64,7 @@ function ToggleVehicleLock()
 	end
 
 	if not DoesEntityExist(vehicle) then
+		ESX.ShowNotification("No vehicles to lock nearby.")
 		return
 	end
 
@@ -83,6 +84,8 @@ function ToggleVehicleLock()
 
 				TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_unlocked') } })
 			end
+		else 
+			ESX.ShowNotification("You do not own this vehicle.")
 		end
 
 	end, ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)))
