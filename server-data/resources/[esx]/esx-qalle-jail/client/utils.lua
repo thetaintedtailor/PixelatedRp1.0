@@ -23,7 +23,7 @@ function LoadModel(model)
 	end
 end
 
-function HideHUDThisFrame()
+--[[function HideHUDThisFrame()
 	HideHelpTextThisFrame()
 	HideHudAndRadarThisFrame()
 	HideHudComponentThisFrame(1)
@@ -40,7 +40,7 @@ function HideHUDThisFrame()
 	HideHudComponentThisFrame(15)
 	HideHudComponentThisFrame(18)
 	HideHudComponentThisFrame(19)
-end
+end]]
 
 function Cutscene()
 	DoScreenFadeOut(100)
@@ -135,7 +135,7 @@ function TeleportPlayer(pos)
 			'default', GetCurrentResourceName(), 'teleport_jail',
 			{
 				title    = "Choose Position",
-				align    = 'center',
+				align    = 'right',
 				elements = elements
 			},
 		function(data, menu)
@@ -143,7 +143,7 @@ function TeleportPlayer(pos)
 			local action = data.current.value
 			local position = Config.Teleports[action]
 
-			if action == "Boiling Broke" or action == "Security" then
+			if action == "Security" then
 
 				if PlayerData.job.name ~= "police" then
 					ESX.ShowNotification("You don't have an key to go here!")
