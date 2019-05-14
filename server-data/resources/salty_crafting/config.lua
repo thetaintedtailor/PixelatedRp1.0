@@ -11,9 +11,11 @@ Config.Recipes = {
 	},
 	
 	-- Can be a weapon, must follow this format
-	['WEAPON_ASSAULTRIFLE'] = { 
-		{item = "steel", quantity = 4 }, 
-		{item = "gunpowder", quantity = 2},
+	['WEAPON_CARBINERIFLE'] = { 
+		{item = "upper", quantity = 1}, 
+		{item = "lower", quantity = 1},
+		{item = "barrel", quantity = 1},
+		{item = "magazine", quantity = 1},
 	}
 }
 
