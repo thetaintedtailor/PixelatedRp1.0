@@ -139,4 +139,5 @@ files {
     'html/img/items/pizza.png',
     'html/img/items/packaged_plank.png',
     'html/img/items/nitro.png',
+    'html/img/items/diamondnecklace.png',
 }

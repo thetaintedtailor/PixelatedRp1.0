@@ -5,12 +5,24 @@ Config.WeaponAmmo = 42
 
 Config.Recipes = {
 	-- Can be a normal ESX item
-	["lockpick"] = { 
+	["diamondnecklace"] = { 
+		{item = "diamond", quantity = 4 }, 
+		{item = "silverchain", quantity = 1 },
+	},
+
+	["repairkit"] = { 
 		{item = "bobbypin", quantity = 4 }, 
 		{item = "rubberband", quantity = 1 },
 	},
 	
 	-- Can be a weapon, must follow this format
+	['WEAPON_CARBINERIFLE'] = { 
+		{item = "upper", quantity = 1}, 
+		{item = "lower", quantity = 1},
+		{item = "barrel", quantity = 1},
+		{item = "magazine", quantity = 1},
+	},
+
 	['WEAPON_CARBINERIFLE'] = { 
 		{item = "upper", quantity = 1}, 
 		{item = "lower", quantity = 1},
