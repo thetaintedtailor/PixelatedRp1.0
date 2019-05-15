@@ -141,7 +141,7 @@ files {
     'html/img/items/nitro.png',
     'html/img/items/diamondnecklace.png',
     'html/img/items/apbody.png',
-    'html/img/items/barrell.png',
+    'html/img/items/barrel.png',
     'html/img/items/bionictrigger.png',
     'html/img/items/bobbypen.png',
     'html/img/items/brass.png',
@@ -156,4 +156,5 @@ files {
     'html/img/items/smgbody.png',
     'html/img/items/stud.png',
     'html/img/items/upper.png',
+    'html/img/items/silverchain.png',
 }
