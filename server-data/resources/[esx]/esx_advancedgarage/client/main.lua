@@ -418,7 +418,7 @@ function StoreOwnedCarsMenu()
 			else
 				ESX.ShowNotification(_U('cannot_store_vehicle'))
 			end
-		end, vehicleProps, fuel)
+		end, vehicleProps, currentFuel)
 	else
 		ESX.ShowNotification(_U('no_vehicle_to_enter'))
 	end
