@@ -401,7 +401,7 @@ function StoreOwnedCarsMenu()
 		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local engineHealth = GetVehicleEngineHealth(current)
 		local plate        = vehicleProps.plate
-		local currentFuel  = exports["esx_legacyfuel"]:GetFuel(vehicle)
+		local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(vehicle))
 		
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
