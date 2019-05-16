@@ -20,7 +20,7 @@ Config.EnableBlips = true -- If true then it will show blips | false does the Op
 Config.EnablePeds = true -- If true then it will add Peds on Markers | false does the Opposite.
 
 Config.Locations = {
-	{ x=-449.31, y=-340.86, z=34.50, heading=81.63 }, -- Police Booking Room
+	{ x=-449.31, y=-340.86, z=34.50, heading=80.63 }, -- Police Booking Room
 	--{ x = 260.3, y = -1343.68, z = 23.54, heading = 257.66 } -- Hospital Bottom Floor
 }
 
