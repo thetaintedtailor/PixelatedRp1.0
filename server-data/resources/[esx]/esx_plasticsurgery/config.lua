@@ -8,7 +8,7 @@ Config.MarkerColor  = {r = 102, g = 102, b = 204}
 
 Config.BlipPlasticSurgery = {
 	Sprite = 403,
-	Color = 0,
+	Color = 44,
 	Display = 2,
 	Scale = 1.0
 }
