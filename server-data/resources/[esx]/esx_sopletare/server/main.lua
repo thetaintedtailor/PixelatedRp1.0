@@ -7,7 +7,7 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 2)
+    local luck = math.random(1, 4)
 
     if luck == 1 then
 
@@ -21,15 +21,11 @@ AddEventHandler('esx_sopletare:getItem', function()
             'gunpowder',
             'lower',
             'picnic',
-            'pistolbody',
-            'redgull',
             'ring',
-            'rose',
             'rose',
             'rubberband',
             'sandwich',
             'silverchain',
-            'smgbody',
             'stud',
 
         }
@@ -42,15 +38,15 @@ AddEventHandler('esx_sopletare:getItem', function()
         player.addInventoryItem(randomItems, quantity)
         sendNotification(source, 'You found ' .. quantity .. ' st ' .. itemfound, 'success', 2500)
 
-    elseif luck == 2 then
+    elseif luck == 4 then
 
         local weapons = { -- add whatever weapons you want here
-            'WEAPON_KNIFE',
-            'WEAPON_MACHETE',
-            'WEAPON_SWITCHBLADE',
-            'WEAPON_HATCHET',
-            'WEAPON_GOLFCLUB',
-            'WEAPON_HAMMER',
+            --'WEAPON_KNIFE',
+            --'WEAPON_MACHETE',
+            --'WEAPON_SWITCHBLADE',
+            --'WEAPON_HATCHET',
+            --'WEAPON_GOLFCLUB',
+            --'WEAPON_HAMMER',
 
         }
 
