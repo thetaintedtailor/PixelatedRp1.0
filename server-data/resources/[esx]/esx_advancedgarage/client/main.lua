@@ -925,7 +925,7 @@ function SpawnVehicle(vehicle, plate, fuel)
 		z = this_Garage.SpawnPoint.z + 1
 	}, this_Garage.SpawnPoint.h, function(callback_vehicle)
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
-		exports["LegacyFuel"]:SetFuel(callback_vehicle, fuel)
+		exports["esx_legacyfuel"]:SetFuel(callback_vehicle, fuel)
 		SetVehRadioStation(callback_vehicle, "OFF")
 		TaskWarpPedIntoVehicle(GetPlayerPed(-1), callback_vehicle, -1)
 		local carplate = GetVehicleNumberPlateText(callback_vehicle)
