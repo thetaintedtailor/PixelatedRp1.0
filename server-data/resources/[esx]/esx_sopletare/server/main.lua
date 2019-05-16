@@ -19,7 +19,6 @@ AddEventHandler('esx_sopletare:getItem', function()
             'burger',
             'choke',
             'gunpowder',
-            'lower',
             'picnic',
             'ring',
             'rose',
@@ -27,6 +26,23 @@ AddEventHandler('esx_sopletare:getItem', function()
             'sandwich',
             'silverchain',
             'stud',
+            'apbody',
+            'pistolbody',
+            'redgull',
+            'oxygen_mask',
+            'smgbody',
+            'upper',
+            'bandage'
+            'cannabis',
+            'clothe',
+            'coke_pooch',
+            'weed_pooch',
+            'copper',
+            'drill',
+            'gold',
+            'meth_pooch',
+            'scratchoff_used',
+            'wool',
 
         }
 
