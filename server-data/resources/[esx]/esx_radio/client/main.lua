@@ -92,26 +92,26 @@ AddEventHandler("esx_walkie:stopActionB", function()
     NetworkSetTalkerProximity(6.00) -- Sprachreichweite wird 6 Meter
 end)
 
-RegisterNetEvent("esx_walkie:startAnim") -- Event, um andere Personen Animation starten zu lassen
-AddEventHandler("esx_walkie:startAnim", function(player)
-    Citizen.CreateThread(function()
-    	if not IsPedSittingInAnyVehicle(GetPlayerPed(-1)) then
-        RequestAnimDict("random@arrests")
-        while not HasAnimDictLoaded( "random@arrests") do
-            Citizen.Wait(1)
-        end
-        TaskPlayAnim(GetPlayerPed(-1), "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
-    end
-    end)
-end)
-RegisterNetEvent("esx_walkie:stopAnim")
-AddEventHandler("esx_walkie:stopAnim", function(player)
-    Citizen.CreateThread(function()
-        Citizen.Wait(1)
-        ClearPedTasks(GetPlayerPed(-1))
-    end)
-    TriggerServerEvent("esx_walkie:playSoundWithinDistanceServer",10.0, 'copradio', 0.7)
-end)
+---RegisterNetEvent("esx_walkie:startAnim") -- Event, um andere Personen Animation starten zu lassen
+---AddEventHandler("esx_walkie:startAnim", function(player)
+    --Citizen.CreateThread(function()
+    	--if not IsPedSittingInAnyVehicle(GetPlayerPed(-1)) then
+       -- RequestAnimDict("random@arrests")
+        --while not HasAnimDictLoaded( "random@arrests") do
+            --Citizen.Wait(1)
+        --end
+        --TaskPlayAnim(GetPlayerPed(-1), "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
+    --end
+    --end)
+--end)
+--RegisterNetEvent("esx_walkie:stopAnim")
+--AddEventHandler("esx_walkie:stopAnim", function(player)
+    --Citizen.CreateThread(function()
+        --Citizen.Wait(1)
+        --ClearPedTasks(GetPlayerPed(-1))
+    --end)
+    --TriggerServerEvent("esx_walkie:playSoundWithinDistanceServer",10.0, 'copradio', 0.7)
+--end)
 
 RegisterNetEvent('esx_walkie:playSoundWithinDistanceClient')
 AddEventHandler('esx_walkie:playSoundWithinDistanceClient', function(playerNetId, maxDistance, soundFile, soundVolume)
