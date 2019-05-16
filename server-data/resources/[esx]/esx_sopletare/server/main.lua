@@ -7,7 +7,7 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 10)
+    local luck = math.random(1, 15)
 
     if luck == 1 then
 
@@ -54,7 +54,7 @@ AddEventHandler('esx_sopletare:getItem', function()
         player.addInventoryItem(randomItems, quantity)
         sendNotification(source, 'You found ' .. quantity .. ' st ' .. itemfound, 'success', 2500)
 
-    elseif luck == 10 then
+    elseif luck == 15 then
 
         local weapons = { -- add whatever weapons you want here
             'WEAPON_KNIFE',
