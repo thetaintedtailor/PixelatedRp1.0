@@ -137,7 +137,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
 		['@owner'] = xPlayer.identifier,
 		['@plate'] = vehicleProps.plate
 	}, function (result)
