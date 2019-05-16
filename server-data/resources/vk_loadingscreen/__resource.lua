@@ -5,7 +5,7 @@ files {
     'style.css',
     'music/kraddy-androidporn.mp3',
     'music/jessrabbit-whydontyoudoright.mp3',
-	'music/thetruth-wincantlose.mp3'
+	'music/thetruth-wincantlose.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
