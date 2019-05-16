@@ -131,7 +131,7 @@ AddEventHandler('fishing:catch', function(bait)
 		if bait == "none" then
 			
 			if rnd >= 70 then
-			 TriggerClientEvent('fishing:message', _source, "~y~You are currently fishing without any equipped bait")
+			TriggerClientEvent('fishing:message', _source, "~y~You are currently fishing without any equipped bait")
 				if  xPlayer.getInventoryItem('fish').count > 100 then
 						TriggerClientEvent('fishing:message', _source, "~r~You cant hold more fish")
 					else
@@ -150,7 +150,6 @@ AddEventHandler('fishing:catch', function(bait)
 						xPlayer.addInventoryItem('fish', weight)
 					end
 				end
-			end	
 		end
 		if bait == "shark" then
 			if rnd >= 82 then
@@ -203,13 +202,13 @@ AddEventHandler('fishing:startSelling', function(item)
 			if item == "fish" then
 					local FishQuantity = xPlayer.getInventoryItem('fish').count
 						if FishQuantity <= 4 then
-							TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
-					    else   
-							xPlayer.removeInventoryItem('fish', 5)
-							local payment = Config.FishPrice.a
-							payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
-							xPlayer.addMoney(payment)
-						end
+						TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
+					else   
+						xPlayer.removeInventoryItem('fish', 5)
+						local payment = Config.FishPrice.a
+						payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
+						xPlayer.addMoney(payment)
+						
 						
 			end
 				
@@ -249,5 +248,3 @@ AddEventHandler('fishing:startSelling', function(item)
 			
 	
 end)
-
-
