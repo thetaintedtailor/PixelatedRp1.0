@@ -159,6 +159,7 @@ function ListOwnedCarsMenu()
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
 					local plate        = v.plate
+
 					local labelvehicle
 					
 					if Config.ShowVehicleLocation then
@@ -208,7 +209,7 @@ function ListOwnedCarsMenu()
 		}, function(data, menu)
 			if data.current.value.stored then
 				menu.close()
-				SpawnVehicle(data.current.value.vehicle, data.current.value.plate)
+				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel_level)
 			else
 				ESX.ShowNotification(_U('car_is_impounded'))
 			end
@@ -399,6 +400,7 @@ function StoreOwnedCarsMenu()
 		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local engineHealth = GetVehicleEngineHealth(current)
 		local plate        = vehicleProps.plate
+		local currentFuel  = exports["esx_legacyfuel"]:GetFuel(vehicle)
 		
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
@@ -416,7 +418,7 @@ function StoreOwnedCarsMenu()
 			else
 				ESX.ShowNotification(_U('cannot_store_vehicle'))
 			end
-		end, vehicleProps)
+		end, vehicleProps, fuel)
 	else
 		ESX.ShowNotification(_U('no_vehicle_to_enter'))
 	end
@@ -495,13 +497,13 @@ function ReturnOwnedCarsMenu()
 	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedCars', function(ownedCars)
 		local elements = {}
 		
-		if Config.ShowPoundSpacer2 then
+		--[[if Config.ShowPoundSpacer2 then
 			table.insert(elements, {label = _U('spacer2')})
 		end
 		
 		if Config.ShowPoundSpacer3 then
 			table.insert(elements, {label = _U('spacer3')})
-		end
+		end]]
 		
 		for _,v in pairs(ownedCars) do
 			if Config.UseVehicleNamesLua then
@@ -916,13 +918,14 @@ function putaway(vehicle, vehicleProps)
 end
 
 -- Spawn Cars
-function SpawnVehicle(vehicle, plate)
+function SpawnVehicle(vehicle, plate, fuel)
 	ESX.Game.SpawnVehicle(vehicle.model, {
 		x = this_Garage.SpawnPoint.x,
 		y = this_Garage.SpawnPoint.y,
 		z = this_Garage.SpawnPoint.z + 1
 	}, this_Garage.SpawnPoint.h, function(callback_vehicle)
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
+		exports["LegacyFuel"]:SetFuel(callback_vehicle, fuel)
 		SetVehRadioStation(callback_vehicle, "OFF")
 		TaskWarpPedIntoVehicle(GetPlayerPed(-1), callback_vehicle, -1)
 		local carplate = GetVehicleNumberPlateText(callback_vehicle)
