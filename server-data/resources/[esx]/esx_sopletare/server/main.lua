@@ -7,7 +7,7 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 6)
+    local luck = math.random(1, 4)
 
     if luck == 1 then
 
