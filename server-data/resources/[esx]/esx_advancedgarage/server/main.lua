@@ -115,13 +115,14 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOwnedCars', function(source, c
 			cb(ownedCars)
 		end)
 	else
-		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND Type = @Type AND job = @job AND fuel_level', {
+		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND Type = @Type AND job = @job', {
 			['@owner']  = GetPlayerIdentifiers(source)[1],
 			['@Type']   = 'car',
 			['@job']    = ''
 		}, function(data)
 			for _,v in pairs(data) do
 				local vehicle = json.decode(v.vehicle)
+				print("this is out of db", v.fuel_level)
 				table.insert(ownedCars, {vehicle = vehicle, stored = v.stored, plate = v.plate, fuel = v.fuel_level})
 			end
 			cb(ownedCars)
