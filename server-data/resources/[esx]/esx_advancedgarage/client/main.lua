@@ -156,7 +156,7 @@ function ListOwnedCarsMenu()
 			for _,v in pairs(ownedCars) do
 
 				if Config.UseVehicleNamesLua then
-					--local hashVehicule = v.vehicle.model
+					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
 					local plate        = v.plate
