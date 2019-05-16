@@ -94,9 +94,9 @@ end
 Citizen.CreateThread(function()
 while true do
 	Wait(600)
-	if pause and fishing then
-		pausetimer = pausetimer + 1
-	end
+		if pause and fishing then
+			pausetimer = pausetimer + 1
+		end
 end
 end)
 Citizen.CreateThread(function()
@@ -134,6 +134,7 @@ Citizen.CreateThread(function()
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
+				
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
 				if GetWaterHeight(pos.x, pos.y, pos.z-0.0, pos.z-0.5) then
