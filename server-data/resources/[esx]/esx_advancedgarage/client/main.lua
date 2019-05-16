@@ -209,6 +209,7 @@ function ListOwnedCarsMenu()
 		}, function(data, menu)
 			if data.current.value.stored then
 				menu.close()
+				print("this is the data", data)
 				print("this is the fuel level", data.current.value.fuel_level)
 				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel_level)
 			else
