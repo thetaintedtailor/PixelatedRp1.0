@@ -7,7 +7,7 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 4)
+    local luck = math.random(1, 3)
 
     if luck == 1 then
 
@@ -32,7 +32,7 @@ AddEventHandler('esx_sopletare:getItem', function()
 
         local player = ESX.GetPlayerFromId(source)
         local randomItems = items[math.random(#items)]
-        local quantity = math.random(#items)
+        local quantity = math.random(1, 2)
         local itemfound = ESX.GetItemLabel(randomItems)
 
         player.addInventoryItem(randomItems, quantity)
