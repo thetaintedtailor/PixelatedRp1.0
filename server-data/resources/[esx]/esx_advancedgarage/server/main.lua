@@ -144,7 +144,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 			local originalvehprops = json.decode(result[1].vehicle)
 			if originalvehprops.model == vehiclemodel then
 
-				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle AND fuel_level = @fuel_level WHERE owner = @owner AND plate = @plate', {
+				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle WHERE owner = @owner AND plate = @plate', {
 					['@owner']  = GetPlayerIdentifiers(source)[1],
 					['@vehicle'] = json.encode(vehicleProps),
 					['@plate']  = vehicleProps.plate,
