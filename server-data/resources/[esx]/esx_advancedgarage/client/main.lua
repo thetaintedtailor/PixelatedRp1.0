@@ -154,7 +154,7 @@ function ListOwnedCarsMenu()
 			ESX.ShowNotification(_U('garage_nocars'))
 		else
 			for _,v in pairs(ownedCars) do
-				print("fuel level coming in to top portion of function", v)
+				print("fuel level coming in to top portion of function", v.fuel)
 				if Config.UseVehicleNamesLua then
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
