@@ -7,16 +7,31 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 6)
+    local luck = math.random(1, 20)
 
     if luck == 1 then
 
         local items = { -- add whatever items you want here
-            'fishing_lure',
-            'bandage',
-            'weed_pooch',
-            'bread',
-            'lotteryticket'
+            'bionictrigger',
+            'barrel',
+            'bobbypen',
+            'brass',
+            'burger',
+            'choke',
+            'gunpowder',
+            'lower',
+            'picnic',
+            'pistolbody',
+            'redgull',
+            'ring',
+            'rose',
+            'rose',
+            'rubberband',
+            'sandwich',
+            'silverchain',
+            'smgbody',
+            'stud',
+
         }
 
         local player = ESX.GetPlayerFromId(source)
@@ -31,7 +46,12 @@ AddEventHandler('esx_sopletare:getItem', function()
 
         local weapons = { -- add whatever weapons you want here
             'WEAPON_KNIFE',
-            'WEAPON_PISTOL'
+            'WEAPON_MACHETE',
+            'WEAPON_SWITCHBLADE',
+            'WEAPON_HATCHET',
+            'WEAPON_GOLFCLUB',
+            'WEAPON_HAMMER',
+
         }
 
         local player = ESX.GetPlayerFromId(source)
@@ -40,8 +60,8 @@ AddEventHandler('esx_sopletare:getItem', function()
         local weaponfound = ESX.GetWeaponLabel(randomWeapons)
 
         player.addWeapon(randomWeapons, quantity)
-        sendNotification(source, 'Du hittade en ' .. weaponfound, 'success', 2500)
+        sendNotification(source, 'You found a ' .. weaponfound, 'success', 2500)
     else
-        sendNotification(source, 'Du hittade ingenting, skaffa dig ett jobb kanske?', 'error', 2000)
+        sendNotification(source, 'You found nothing, get a job you fucking bum', 'error', 2000)
     end
 end)
