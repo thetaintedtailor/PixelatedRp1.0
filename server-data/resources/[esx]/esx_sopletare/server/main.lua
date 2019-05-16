@@ -7,7 +7,7 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 20)
+    local luck = math.random(1, 10)
 
     if luck == 1 then
 
@@ -40,7 +40,7 @@ AddEventHandler('esx_sopletare:getItem', function()
         local itemfound = ESX.GetItemLabel(randomItems)
 
         player.addInventoryItem(randomItems, quantity)
-        sendNotification(source, 'Du hittade ' .. quantity .. ' st ' .. itemfound, 'success', 2500)
+        sendNotification(source, 'You found ' .. quantity .. ' st ' .. itemfound, 'success', 2500)
 
     elseif luck == 4 then
 
