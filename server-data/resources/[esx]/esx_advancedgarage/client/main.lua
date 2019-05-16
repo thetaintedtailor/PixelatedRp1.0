@@ -212,7 +212,7 @@ function ListOwnedCarsMenu()
 				menu.close()
 				print("this is the data", data.current.value)
 				print("this is the fuel level", data.current.value.fuel_level)
-				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel_level)
+				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel)
 			else
 				ESX.ShowNotification(_U('car_is_impounded'))
 			end
