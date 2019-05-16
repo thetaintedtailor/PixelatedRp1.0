@@ -136,7 +136,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 	local vehplate = vehicleProps.plate:match("^%s*(.-)%s*$")
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
-	print("fuel going into db", fuel)
+
 	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
 		['@owner'] = xPlayer.identifier,
 		['@plate'] = vehicleProps.plate
@@ -145,7 +145,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 			local originalvehprops = json.decode(result[1].vehicle)
 			if originalvehprops.model == vehiclemodel then
 				print("fuel before mysql", fuel)
-				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle AND @fuel = fuel_level WHERE owner = @owner AND plate = @plate', {
+				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle AND fuel_level = @fuel WHERE owner = @owner AND plate = @plate', {
 					['@owner']  = GetPlayerIdentifiers(source)[1],
 					['@vehicle'] = json.encode(vehicleProps),
 					['@plate']  = vehicleProps.plate,
