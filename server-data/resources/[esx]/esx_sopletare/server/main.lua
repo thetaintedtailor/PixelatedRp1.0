@@ -32,8 +32,8 @@ AddEventHandler('esx_sopletare:getItem', function()
             'oxygen_mask',
             'smgbody',
             'upper',
-            'bandage'
-            'cannabis',
+            'bandage',
+            'weed',
             'clothe',
             'coke_pooch',
             'weed_pooch',
