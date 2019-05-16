@@ -136,7 +136,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 	local vehplate = vehicleProps.plate:match("^%s*(.-)%s*$")
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
-	
+	print("fuel going into db", fuel)
 	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
 		['@owner'] = xPlayer.identifier,
 		['@plate'] = vehicleProps.plate

@@ -154,7 +154,7 @@ function ListOwnedCarsMenu()
 			ESX.ShowNotification(_U('garage_nocars'))
 		else
 			for _,v in pairs(ownedCars) do
-				print("fuel level coming in to top portion of function", v.fuel)
+
 				if Config.UseVehicleNamesLua then
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -210,8 +210,6 @@ function ListOwnedCarsMenu()
 		}, function(data, menu)
 			if data.current.value.stored then
 				menu.close()
-				print("this is the data", data.current.value)
-				print("this is the fuel level", data.current.value.fuel_level)
 				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel)
 			else
 				ESX.ShowNotification(_U('car_is_impounded'))
