@@ -11,7 +11,7 @@
 html {
 	overflow: hidden;
 }
-/* 
+
 #hud {
 	position: absolute;
 	font-family: 'Pricedown';
@@ -20,7 +20,7 @@ html {
 	padding: 4px;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	text-align: right;
-	top: 50;
+	top: 80;
 	right: 40;
 }
 
@@ -28,8 +28,8 @@ html {
 	font-family: bankgothic;
 	position: absolute;
 	right: 40;
-	bottom: 290;
-	font-size: 4em;
+	bottom: 40;
+	font-size: 2em;
 	font-weight: bold;
 	color: #FFF;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -42,12 +42,12 @@ html {
 	color: #fff;
 	position: absolute;
 	left: 40;
-	top: 60;
+	top: 0;
 }
 
 .menu .head {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 38px;
+	font-size: 28px;
 	padding: 10px;
 	background: #1A1A1A;
 	border-bottom: 3px solid #BC1635;
@@ -84,4 +84,4 @@ html {
 
 .menu .menu-items .menu-item.selected {
 	background-color: #ccc;
-} */
+}
