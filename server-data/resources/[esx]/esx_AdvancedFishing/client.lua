@@ -415,9 +415,9 @@ Citizen.CreateThread(function() -- End boatrental
 
         Citizen.Wait(0)
 
-        if boatrental == true then
-
-            DrawMarker(1,boatrentalend.x,boatrentalend.y,boatrentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+		if boatrental == true then
+			
+			DrawMarker(1,boatrentalend.x,boatrentalend.y,boatrentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
 
                 if GetDistanceBetweenCoords(boatrentalend.x, boatrentalend.y, boatrentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 1.5 then
                     HelpText("Press ~INPUT_CONTEXT~ to collect your deposit!",0,1,0.5,0.8,0.6,255,255,255,255)
@@ -462,8 +462,6 @@ Citizen.CreateThread(function() -- End boatrental
                         end    
                     end
                 end
-            
-            end
         end    
     end    
   
