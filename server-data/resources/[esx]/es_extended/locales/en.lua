@@ -42,7 +42,6 @@ Locales['en'] = {
   ['received_paycheck'] = 'received paycheck',
   ['bank'] = 'bank',
   ['black_money'] = 'dirty Money',
-
   ['act_imp'] = 'action impossible',
   ['in_vehicle'] = 'you can\'t give anything to someone in a vehicle',
   ['cannot_pickup_room'] = 'you do not have enough space in your inventory to pick up ~y~%s~s~!',
