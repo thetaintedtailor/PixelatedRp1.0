@@ -124,12 +124,8 @@ end)
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
-    if IsControlJustReleased(0, Keys['F5']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-			OpenActionMenuInteraction()
-		elseif IsControlJustReleased(0, Keys['BACKSPACE']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-			menu.close()
-		elseif IsControlJustReleased(0, Keys['F5']) then
-			menu.close()
+    if IsControlJustReleased(0, Keys['F5']) then
+			toggleMenu()
     end
   end
 end)
@@ -138,3 +134,11 @@ RegisterNetEvent('esx_barbie_lyftupp')
 AddEventHandler('esx_barbie_lyftupp', function()
   OpenActionMenuInteraction()
 end)
+
+function toggleMenu() 
+	if not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+		OpenActionMenuInteraction()
+	elseif ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+		menu.close()
+	end
+end
