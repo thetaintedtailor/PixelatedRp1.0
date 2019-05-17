@@ -29,7 +29,7 @@ html {
 	position: absolute;
 	right: 40;
 	bottom: 290;
-	font-size: 2em;
+	font-size: 4em;
 	font-weight: bold;
 	color: #FFF;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -42,12 +42,12 @@ html {
 	color: #fff;
 	position: absolute;
 	left: 40;
-	top: 0;
+	top: 60;
 }
 
 .menu .head {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 28px;
+	font-size: 38px;
 	padding: 10px;
 	background: #1A1A1A;
 	border-bottom: 3px solid #BC1635;
