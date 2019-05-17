@@ -124,7 +124,7 @@ end)
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
-    if IsControlJustReleased(0, Keys['F5']) then
+    if IsControlJustReleased(0, Keys['F5']) or IsControlJustReleased(0, Keys['BACKSPACE']) then
 			toggleMenu()
     end
   end
@@ -139,6 +139,6 @@ function toggleMenu()
 	if not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
 		OpenActionMenuInteraction()
 	elseif ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-		ESX.UI.Menu.CloseAll()
+		ESX.UI.Menu.CloseAll() or 
 	end
 end
