@@ -29,7 +29,6 @@ local lastInput = 0
 local pause = false
 local pausetimer = 0
 local correct = 0
-local boatrentalend = { x = 3863.3811035156, y = 4470.161621938, z = -0.47262713313103}, { x = -1616.1900634766, y = 5252.4506835938, z = 0.12119972705841}, { x = -3421.2475585938, y = 947.39935302734, z = -0.46575874090195}, { x = -715.21875, y = -1330.1292724609, z = 0.3856446146965}, { x = 1292.4088134766, y = 4220.8701171875, z = 30.477062225342}
 local livr = 0
 local px = 0
 local py = 0
@@ -404,8 +403,8 @@ function OpenBoatsMenu(x, y , z)
 	
 		end		
 	end,
-	function(data, menu)
-		menu.close()
+		function(data, menu)
+			menu.close()
 		end
 	)
 end
