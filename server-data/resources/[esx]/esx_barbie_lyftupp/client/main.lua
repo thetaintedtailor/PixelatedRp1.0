@@ -139,6 +139,6 @@ function toggleMenu()
 	if not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
 		OpenActionMenuInteraction()
 	elseif ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-		menu.close()
+		ESX.UI.Menu.CloseAll()
 	end
 end
