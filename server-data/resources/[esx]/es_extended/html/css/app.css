@@ -11,7 +11,7 @@
 html {
 	overflow: hidden;
 }
-
+/* 
 #hud {
 	position: absolute;
 	font-family: 'Pricedown';
@@ -84,4 +84,4 @@ html {
 
 .menu .menu-items .menu-item.selected {
 	background-color: #ccc;
-}
+} */
