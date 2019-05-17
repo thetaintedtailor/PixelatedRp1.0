@@ -102,9 +102,9 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOwnedCars', function(source, c
 	local ownedCars = {}
 	
 	if Config.DontShowPoundCarsInGarage == true then
-		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND Type = @Type AND job = @job AND `stored` = @stored', {
+		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND type = @type AND job = @job AND `stored` = @stored', {
 			['@owner']  = GetPlayerIdentifiers(source)[1],
-			['@Type']   = 'car',
+			['@type']   = 'car',
 			['@job']    = '',
 			['@stored'] = true
 		}, function(data)
@@ -115,14 +115,14 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOwnedCars', function(source, c
 			cb(ownedCars)
 		end)
 	else
-		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND Type = @Type AND job = @job', {
+		MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND type = @type AND job = @job', {
 			['@owner']  = GetPlayerIdentifiers(source)[1],
-			['@Type']   = 'car',
+			['@type']   = 'car',
 			['@job']    = ''
 		}, function(data)
 			for _,v in pairs(data) do
 				local vehicle = json.decode(v.vehicle)
-				table.insert(ownedCars, {vehicle = vehicle, stored = v.stored, plate = v.plate})
+				table.insert(ownedCars, {vehicle = vehicle, stored = v.stored, plate = v.plate, fuel = v.fuel_level})
 			end
 			cb(ownedCars)
 		end)
@@ -130,23 +130,25 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOwnedCars', function(source, c
 end)
 
 -- Store Vehicles
-ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, cb, vehicleProps)
+ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, cb, vehicleProps, fuel)
 	local ownedCars = {}
 	local vehplate = vehicleProps.plate:match("^%s*(.-)%s*$")
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
-	
-	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
 		['@owner'] = xPlayer.identifier,
 		['@plate'] = vehicleProps.plate
 	}, function (result)
 		if result[1] ~= nil then
 			local originalvehprops = json.decode(result[1].vehicle)
 			if originalvehprops.model == vehiclemodel then
-				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle WHERE owner = @owner AND plate = @plate', {
+
+				MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle, fuel_level = @fuel_level WHERE owner = @owner AND plate = @plate', {
 					['@owner']  = GetPlayerIdentifiers(source)[1],
 					['@vehicle'] = json.encode(vehicleProps),
-					['@plate']  = vehicleProps.plate
+					['@plate']  = vehicleProps.plate,
+					['@fuel_level'] = fuel
 				}, function (rowsChanged)
 					if rowsChanged == 0 then
 						print(('esx_advancedgarage: %s attempted to store an vehicle they don\'t own!'):format(GetPlayerIdentifiers(source)[1]))
