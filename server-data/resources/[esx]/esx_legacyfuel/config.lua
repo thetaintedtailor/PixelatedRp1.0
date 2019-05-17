@@ -87,15 +87,15 @@ Config.Classes = {
 
 -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second
 Config.FuelUsage = {
-	[1.0] = 0.7,
-	[0.9] = 0.6,
-	[0.8] = 0.5,
-	[0.7] = 0.4,
-	[0.6] = 0.3,
-	[0.5] = 0.2,
-	[0.4] = 0.1,
-	[0.3] = 0.09,
-	[0.2] = 0.08,
+	[1.0] = 0.6,
+	[0.9] = 0.5,
+	[0.8] = 0.4,
+	[0.7] = 0.3,
+	[0.6] = 0.2,
+	[0.5] = 0.1,
+	[0.4] = 0.09,
+	[0.3] = 0.08,
+	[0.2] = 0.07,
 	[0.1] = 0.04,
 	[0.0] = 0.0,
 }
