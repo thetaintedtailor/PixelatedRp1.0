@@ -126,9 +126,9 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
     if IsControlJustReleased(0, Keys['F5']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
 			OpenActionMenuInteraction()
-		elseif IsControlJustReleased(0, Keys['F5']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-			menu.closeAll()
-		elseif IsControlJustReleased(0, Keys['ESC']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+		elseif IsControlJustReleased(0, Keys['BACKSPACE']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+			menu.close()
+		elseif IsControlJustReleased(0, Keys['F5']) then
 			menu.close()
     end
   end
