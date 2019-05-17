@@ -45,7 +45,7 @@ function OpenActionMenuInteraction(target)
 		'default', GetCurrentResourceName(), 'action_menu',
 		{
 			title    = ('Lift up'),
-			align    = 'top-left',
+			align    = 'left',
 			elements = elements
 		},
     function(data, menu)
@@ -56,9 +56,9 @@ function OpenActionMenuInteraction(target)
 		
 		if data.current.value == 'drag' then			
 			--TriggerServerEvent('esx_barbie_lyftupp:checkRope')
-			ESX.ShowNotification('You are lifting this person up...')
+			--ESX.ShowNotification('You are lifting this person up...')
 			TriggerServerEvent('esx_barbie_lyftupp:lyfteruppn', GetPlayerServerId(player))
-			Citizen.Wait(5000)
+			Citizen.Wait(3000)
 			if hasRope == true then
 				local dict = "anim@heists@box_carry@"
 				
@@ -104,6 +104,7 @@ AddEventHandler('esx_barbie_lyftupp:upplyft', function(target)
 	local dict = "amb@code_human_in_car_idles@low@ps@"
 	
 	if isCarry == false then
+		ESX.ShowNotification('You are lifting this person up...')
 		LoadAnimationDictionary("amb@code_human_in_car_idles@generic@ps@base")
 		TaskPlayAnim(lPed, "amb@code_human_in_car_idles@generic@ps@base", "base", 8.0, -8, -1, 33, 0, 0, 40, 0)
 		
@@ -111,6 +112,7 @@ AddEventHandler('esx_barbie_lyftupp:upplyft', function(target)
 		
 		isCarry = true
 	else
+		ESX.ShowNotification('You are setting this person down.')
 		DetachEntity(GetPlayerPed(-1), true, false)
 		ClearPedTasksImmediately(targetPed)
 		ClearPedTasksImmediately(GetPlayerPed(-1))
@@ -123,7 +125,11 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
     if IsControlJustReleased(0, Keys['F5']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
-		OpenActionMenuInteraction()
+			OpenActionMenuInteraction()
+		elseif IsControlJustReleased(0, Keys['F5']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+			menu.closeAll()
+		elseif IsControlJustReleased(0, Keys['ESC']) and ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'action_menu') then
+			menu.close()
     end
   end
 end)
