@@ -58,11 +58,13 @@ function OpenActionMenuInteraction(target)
 			--TriggerServerEvent('esx_barbie_lyftupp:checkRope')
 			if isCarry == false then
 				ESX.ShowNotification('You are lifting this person up...')
-			else if isCarry == true then 
+			elseif isCarry == true then 
 				ESX.ShowNotification('You are setting this person down.')
 			end
+
 			TriggerServerEvent('esx_barbie_lyftupp:lyfteruppn', GetPlayerServerId(player))
 			Citizen.Wait(3000)
+
 			if hasRope == true then
 				local dict = "anim@heists@box_carry@"
 				
