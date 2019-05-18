@@ -157,4 +157,7 @@ files {
     'html/img/items/stud.png',
     'html/img/items/upper.png',
     'html/img/items/silverchain.png',
+    'html/img/items/medicaltape.png',
+    'html/img/items/gauze.png',
+    'html/img/items/morphine.png',
 }
