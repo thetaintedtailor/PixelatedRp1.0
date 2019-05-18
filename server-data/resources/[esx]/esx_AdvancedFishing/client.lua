@@ -291,8 +291,8 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 			if (IsInVehicle()) then
 				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
-					DrawMarker(1, 3861.89, 4469.97, -0.47 - 1, 0, 0, 0, 0, 0, 0, 2.5001, 2.5001, 1.0001, 255, 165, 0,165, 0, 0, 0,0)
-					if GetDistanceBetweenCoords(3861.89, 4469.97, -0.47, GetEntityCoords(LocalPed())) < 2.0 then
+					DrawMarker(1, 3861.89, 4469.97, 1.00 - 1, 0, 0, 0, 0, 0, 0, 2.5001, 2.5001, 1.0001, 255, 165, 0,165, 0, 0, 0,0)
+					if GetDistanceBetweenCoords(3861.89, 4469.97, 1.00, GetEntityCoords(LocalPed())) < 2.0 then
 						local playerPed = PlayerPedId()
 						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
 						SetTextComponentFormat('STRING');
