@@ -29,7 +29,6 @@ local lastInput = 0
 local pause = false
 local pausetimer = 0
 local correct = 0
-local rentalend = { x = 3864.4628, y = 4469.6845, z = 1.0}
 
 local bait = "none"
 
@@ -293,19 +292,20 @@ Citizen.CreateThread(function()
 		Citizen.Wait(100)
 
 			if boatrental == true then
-				DrawMarker(1,rentalend.x,rentalend.y,rentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
 
-				if IsInVehicle() then
+				DrawMarker(1,x = 3864.4628, y = 4469.6845, z = 1.0, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
 
-						if GetDistanceBetweenCoords(rentalend.x, rentalend.y, rentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
+				if (IsInVehicle()) then
+
+						if GetDistanceBetweenCoords(x = 3864.4628, y = 4469.6845, z = 1.0, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
 							DisplayHelpText('Press E to return rental')
 							
-							local vehicle = GetHashKey('toro')
+							local vehicleu = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 							local playerPed = PlayerPedId()
 							
 							if IsPedInAnyVehicle(playerPed, false) then
 								if IsControlJustReleased(1, Keys['E']) then
-									 deleteCar( vehicle )
+									 deleteCar( vehicleu )
 								end
 							end
 						end
@@ -342,7 +342,7 @@ function OpenBoatsMenu(x, y , z)
 		elements = elements,
 	},
 	
-	if boatrental == false
+	if boatrental == false then
 
 		function(data, menu)
 
