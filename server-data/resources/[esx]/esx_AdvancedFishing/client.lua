@@ -23,7 +23,6 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local boatrental = false
 local fishing = false
 local lastInput = 0
 local pause = false
@@ -75,8 +74,8 @@ for _, info in pairs(Config.MarkerZones) do
 			BeginTextCommandSetBlipName("STRING")
 			AddTextComponentString("Boat rental")
 			EndTextCommandSetBlipName(info.blip)
-	  end
-	
+		end
+		
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
@@ -403,7 +402,7 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent('esx:spawnVehicle', "predator")
 			end
 			ESX.UI.Menu.CloseAll()
-	end,
+			end,
 		function(data, menu)
 			menu.close()
 		end
