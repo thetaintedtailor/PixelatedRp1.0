@@ -291,26 +291,22 @@ Citizen.CreateThread(function()
 
 		Citizen.Wait(100)
 
-			if boatrental == true then
-
-				DrawMarker(1,x = 3864.4628, y = 4469.6845, z = 1.0, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
-
+			if boatrental == false then
+				DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
 				if (IsInVehicle()) then
-
-						if GetDistanceBetweenCoords(x = 3864.4628, y = 4469.6845, z = 1.0, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
-							DisplayHelpText('Press E to return rental')
-							
-							local vehicleu = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
+						if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
 							local playerPed = PlayerPedId()
-							
+							local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
+							DisplayHelpText('Press E to return boat')
 							if IsPedInAnyVehicle(playerPed, false) then
-								if IsControlJustReleased(1, Keys['E']) then
-									 deleteCar( vehicleu )
+								if (IsControlJustReleased(1, 38)) then
+									ESX.Game.DeleteVehicle(auto)
 								end
 							end
-						end
+					end
 				end
-			end		
+		end	
 	end
 end)
 
@@ -342,98 +338,76 @@ function OpenBoatsMenu(x, y , z)
 		elements = elements,
 	},
 	
-	if boatrental == false then
+	
+	function(data, menu)
 
-		function(data, menu)
-
-				if data.current.value == 'boat' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "dinghy4")
-					boatrental = true
-				end
-			
-				if data.current.value == 'boat2' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "TORO")
-					boatrental = true
-				end
-			
-				if data.current.value == 'boat3' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "MARQUIS")
-					boatrental = true
-				end
-
-				if data.current.value == 'boat4' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "tug")
-					boatrental = true
-				end
-		
-				if data.current.value == 'boat5' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "jetmax")
-					boatrental = true
-				end
-		
-				if data.current.value == 'boat6' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerServerEvent("fishing:lowmoney", 300) 
-					TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "suntrap")
-					boatrental = true
-				end
-		
-		
-				if data.current.value == 'police' then
-					ESX.UI.Menu.CloseAll()
-
-					TriggerEvent("chatMessage", 'You took out a boat')
-					SetPedCoordsKeepVehicle(ped, x, y , z)
-					TriggerEvent('esx:spawnVehicle', "predator")
-					boatrental = true
-				end
+			if data.current.value == 'boat' then
 				ESX.UI.Menu.CloseAll()
 
-		end,
-			function(data, menu)
-				menu.close()
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "dinghy4")
 			end
-		)
-	end	
-end
+		
+			if data.current.value == 'boat2' then
+				ESX.UI.Menu.CloseAll()
 
-function IsInVehicle() --Fonction de verification de la presence ou non en vehicule du joueur
-  local ply = GetPlayerPed(-1)
-  if IsPedSittingInAnyVehicle(ply) then
-    return true
-  else
-    return false
-  end
-end
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "TORO")
+			end
+		
+			if data.current.value == 'boat3' then
+				ESX.UI.Menu.CloseAll()
 
-function deleteCar( entity )
-  Citizen.InvokeNative( 0xEA386986E786A54F, Citizen.PointerValueIntInitialized( entity ) ) --Native qui del le vehicule
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "MARQUIS")
+			end
+
+			if data.current.value == 'boat4' then
+				ESX.UI.Menu.CloseAll()
+
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "tug")
+			end
+	
+			if data.current.value == 'boat5' then
+				ESX.UI.Menu.CloseAll()
+
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "jetmax")
+			end
+	
+			if data.current.value == 'boat6' then
+				ESX.UI.Menu.CloseAll()
+
+				TriggerServerEvent("fishing:lowmoney", 300) 
+				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "suntrap")
+			end
+	
+	
+			if data.current.value == 'police' then
+				ESX.UI.Menu.CloseAll()
+
+				TriggerEvent("chatMessage", 'You took out a boat')
+				SetPedCoordsKeepVehicle(ped, x, y , z)
+				TriggerEvent('esx:spawnVehicle', "predator")
+			end
+			ESX.UI.Menu.CloseAll()
+
+	end,
+		function(data, menu)
+			menu.close()
+		end
+	)
 end
