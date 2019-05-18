@@ -5,6 +5,13 @@ Config.WeaponAmmo = 42
 
 Config.Recipes = {
 	-- Can be a normal ESX item
+	["medikit"] = { 
+		{item = "morphine", quantity = 4 }, 
+		{item = "gauze", quantity = 4 },
+		{item = "medicaltape", quantity = 2 }, 
+		{item = "bandage", quantity = 10 },
+	},
+
 	["lockpick"] = { 
 		{item = "rubberband", quantity = 4 }, 
 		{item = "bobbypin", quantity = 1 },
