@@ -293,7 +293,6 @@ Citizen.CreateThread(function()
 
 			if boatrental == false then
 				DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
-				if (IsInVehicle()) then
 					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
 						if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
 							local playerPed = PlayerPedId()
