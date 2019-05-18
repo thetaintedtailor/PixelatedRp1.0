@@ -293,17 +293,17 @@ Citizen.CreateThread(function()
 
 				if (IsInVehicle()) then
 
-					if IsVehicleModel(GetVehiclePedIsUsing(playerPedId(-1), true), GetHashKey("TORO"))  then
+					if IsVehicleModel(GetVehiclePedIsUsing(playerPedId(), true), GetHashKey("TORO"))  then
 						DrawMarker(0, 3823.2824, 4460.1093, 3.4306, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
-						if GetDistanceBetweenCoords(3823.28, 4460.1093, 3.4306, GetEntityCoords(LocalPed())) < 2.0 then
-							local playerPed = PlayerPedId(-1)
-							local auto = GetVehiclePedIsUsing(playerPedId(-1)) 
+						if GetDistanceBetweenCoords(3823.2824, 4460.1093, 3.4306, GetEntityCoords(LocalPed())) < 2.0 then
+							local playerPed = PlayerPedId()
+							local auto = GetVehiclePedIsUsing(playerPedId()) 
 							
 							SetTextComponentFormat('STRING');
 							AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
 							DisplayHelpTextFromStringLabel(0, 0, 1, -1);
 							
-							if IsPedInAnyVehicle(playerPed, false) then
+							if IsPedInAnyVehicle(playerPed, true) then
 								if	IsControlJustReleased(1, Keys['E']) then
 										DeleteVehicle(GetVehiclePedIsUsing(playerPed, true))
 								end
