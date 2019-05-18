@@ -75,11 +75,11 @@ AddEventHandler('playerDropped', function(reason)
 		end
 
 	end
-
+--[[
 	if(inConnection[_source] ~= nil) then
 		table.remove(inConnection, _source)
 	end
-
+]]
 end)
 
 AddEventHandler("playerConnecting", function(playerName, reason, deferrals)
@@ -125,6 +125,7 @@ AddEventHandler("playerConnecting", function(playerName, reason, deferrals)
 	end
 
 	-- TEST IF PLAYER IS IN PRIORITY LIST
+	--[[
 	if (onlinePlayers >= Config.PlayersToStartRocade or #PriorityList > 0)  and not isVip then
 		deferrals.defer()
 		local stopSystem = false
@@ -201,9 +202,10 @@ AddEventHandler("playerConnecting", function(playerName, reason, deferrals)
 
 		end
 		deferrals.done() -- connect
-	end
+	end]]
 end)
 
+--[[
 RegisterServerEvent("esx_whitelistExtended:removePlayerToInConnect")
 AddEventHandler("esx_whitelistExtended:removePlayerToInConnect", function()
 	local _source = source
@@ -234,6 +236,7 @@ function checkOnlinePlayers()
 end
 
 checkOnlinePlayers()
+]]
 
 TriggerEvent('es:addGroupCommand', 'reloadwl', 'admin', function (source, args, user)
 	loadWhiteList()
