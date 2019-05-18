@@ -93,12 +93,12 @@ function DisplayHelpText(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 Citizen.CreateThread(function()
-while true do
-	Wait(600)
-		if pause and fishing then
-			pausetimer = pausetimer + 1
-		end
-end
+	while true do
+		Wait(600)
+			if pause and fishing then
+				pausetimer = pausetimer + 1
+			end
+	end
 end)
 Citizen.CreateThread(function()
 	while true do
