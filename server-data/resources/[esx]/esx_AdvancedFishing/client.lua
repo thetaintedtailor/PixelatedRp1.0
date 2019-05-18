@@ -23,6 +23,7 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
+local vehicle = GetHashKey('toro')
 local boatrental = false
 local fishing = false
 local lastInput = 0
@@ -292,24 +293,27 @@ Citizen.CreateThread(function()
 
 		Citizen.Wait(100)
 
+			if boatrental == true then
+				DrawMarker(1,rentalend.x,rentalend.y,rentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+
 				if IsInVehicle() then
 
-					if IsPedInAnyVehicle(playerPedId(), true)  then
-						DrawMarker(1,rentalend.x,rentalend.y,rentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), vehicle)  then
 						if GetDistanceBetweenCoords(rentalend.x, rentalend.y, rentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
 							DisplayHelpText('Press E to return rental')
 
 							local playerPed = PlayerPedId()
-							local auto = GetVehiclePedIsUsing(playerPedId()) 
+							local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
 							
-							if IsPedInAnyVehicle(playerPed, true) then
-								if	IsControlJustReleased(1, Keys['E']) then
-										DeleteVehicle(GetVehiclePedIsUsing(playerPed, true))
+							if IsPedInAnyVehicle(playerPed, false) then
+								if IsControlJustReleased(1, Keys['E']) then
+									 deleteCar( vehicle )
 								end
 							end
 						end
 					end
-				end	
+				end
+			end		
 	end
 end)
 
@@ -424,8 +428,6 @@ function IsInVehicle() --Fonction de verification de la presence ou non en vehic
   end
 end
 
-function HelpText(text, state) --Fonction qui permet de creer les "Help Text" (Type "Appuyez sur ...")
-  SetTextComponentFormat("STRING")
-  AddTextComponentString(text)
-  DisplayHelpTextFromStringLabel(0, state, 0, -1)
+function deleteCar( entity )
+  Citizen.InvokeNative( 0xEA386986E786A54F, Citizen.PointerValueIntInitialized( entity ) ) --Native qui del le vehicule
 end
