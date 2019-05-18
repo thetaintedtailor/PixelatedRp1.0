@@ -29,6 +29,7 @@ local lastInput = 0
 local pause = false
 local pausetimer = 0
 local correct = 0
+local rentalend = { x = 3864.4628, y = 4469.6845, z = 1.0}
 
 local bait = "none"
 
@@ -291,17 +292,15 @@ Citizen.CreateThread(function()
 
 		Citizen.Wait(100)
 
-				if (IsInVehicle()) then
+				if IsInVehicle() then
 
 					if IsPedInAnyVehicle(playerPedId(), true)  then
-						DrawMarker(0, 3823.2824, 4460.1093, 3.4306, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
-						if GetDistanceBetweenCoords(3823.2824, 4460.1093, 3.4306, GetEntityCoords(LocalPed())) < 2.0 then
+						DrawMarker(1,rentalend.x,rentalend.y,rentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+						if GetDistanceBetweenCoords(rentalend.x, rentalend.y, rentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
+							DisplayHelpText('Press E to return rental')
+
 							local playerPed = PlayerPedId()
 							local auto = GetVehiclePedIsUsing(playerPedId()) 
-							
-							SetTextComponentFormat('STRING');
-							AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
-							DisplayHelpTextFromStringLabel(0, 0, 1, -1);
 							
 							if IsPedInAnyVehicle(playerPed, true) then
 								if	IsControlJustReleased(1, Keys['E']) then
@@ -414,4 +413,19 @@ function OpenBoatsMenu(x, y , z)
 			menu.close()
 		end
 	)
+end
+
+function IsInVehicle() --Fonction de verification de la presence ou non en vehicule du joueur
+  local ply = GetPlayerPed(-1)
+  if IsPedSittingInAnyVehicle(ply) then
+    return true
+  else
+    return false
+  end
+end
+
+function HelpText(text, state) --Fonction qui permet de creer les "Help Text" (Type "Appuyez sur ...")
+  SetTextComponentFormat("STRING")
+  AddTextComponentString(text)
+  DisplayHelpTextFromStringLabel(0, state, 0, -1)
 end
