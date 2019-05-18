@@ -23,12 +23,16 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-
+local boatrental = false
 local fishing = false
 local lastInput = 0
 local pause = false
 local pausetimer = 0
-local correct = 0 
+local correct = 0
+local px = 0
+local py = 0
+local pz = 0
+local boatrentalend = { x = -3420.7   ,y = 950.66 ,z = 7.35} 
 
 local bait = "none"
 
@@ -327,7 +331,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "dinghy4")
 				boatrental = true
-				notif = true
 			end
 		
 			if data.current.value == 'boat2' then
@@ -338,7 +341,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "TORO")
 				boatrental = true
-				notif = true
 			end
 		
 			if data.current.value == 'boat3' then
@@ -349,7 +351,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "MARQUIS")
 				boatrental = true
-				notif = true
 			end
 
 			if data.current.value == 'boat4' then
@@ -358,9 +359,8 @@ function OpenBoatsMenu(x, y , z)
 				TriggerServerEvent("fishing:lowmoney", 300) 
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
-				TriggerEvent('esx:spawnVehicle', "tug"
+				TriggerEvent('esx:spawnVehicle', "tug")
 				boatrental = true
-				notif = true
 			end
 	
 			if data.current.value == 'boat5' then
@@ -371,7 +371,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "jetmax")
 				boatrental = true
-				notif = true
 			end
 	
 			if data.current.value == 'boat6' then
@@ -382,7 +381,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "suntrap")
 				boatrental = true
-				notif = true
 			end
 	
 	
@@ -393,7 +391,6 @@ function OpenBoatsMenu(x, y , z)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "predator")
 				boatrental = true
-				notif = true
 			end
 			ESX.UI.Menu.CloseAll()
 	
@@ -403,4 +400,82 @@ function OpenBoatsMenu(x, y , z)
 			menu.close()
 		end
 	)
+end
+
+Citizen.CreateThread(function()
+  while true do
+
+    Citizen.Wait(0)
+
+    if boatrental == true then
+
+      DrawMarker(1,boatrentalend.x,boatrentalend.y,boatrentalend.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+
+      if GetDistanceBetweenCoords(boatrentalend.x, boatrentalend.y, boatrentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 1.5 then
+        HelpText("Press ~'E'~ to collect your deposit!",0,1,0.5,0.8,0.6,255,255,255,255)
+
+        if IsControlJustPressed(1,38) then
+            boatrental = false
+
+            px = 0
+            py = 0
+            pz = 0
+
+          if boatrental == true then
+
+            local vehicleu = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+
+						SetEntityAsMissionEntity( vehicleu, true, true )
+            deleteCar( vehicleu )
+
+            TriggerEvent("pNotify:SendNotification", {
+              text = "You have returned the rental boat",
+              type = "success",
+              queue = "global",
+              timeout = 4000,
+              layout = "bottomRight"
+            })
+
+            TriggerServerEvent("boatrental:end")
+
+            boatrental = false
+
+          else
+
+            local vehicleu = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+
+            SetEntityAsMissionEntity( vehicleu, true, true )
+            deleteCar( vehicleu )
+
+            TriggerEvent("pNotify:SendNotification", {
+              text = "You have returned the rental boat",
+              type = "error",
+              queue = "global",
+              timeout = 4000,
+              layout = "bottomRight"
+            })
+          end
+        end
+      end
+    end
+  end
+end)
+
+function deleteCar( entity )
+  Citizen.InvokeNative( 0xEA386986E786A54F, Citizen.PointerValueIntInitialized( entity ) )
+end
+
+function IsInVehicle()
+  local ply = GetPlayerPed(-1)
+    if IsPedSittingInAnyVehicle(ply) then
+        return true
+    else
+        return false
+    end
+end
+
+function HelpText(text, state)
+  SetTextComponentFormat("STRING")
+  AddTextComponentString(text)
+  DisplayHelpTextFromStringLabel(0, state, 0, -1)
 end
