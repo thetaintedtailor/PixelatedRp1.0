@@ -74,7 +74,7 @@ for _, info in pairs(Config.MarkerZones) do
 			BeginTextCommandSetBlipName("STRING")
 			AddTextComponentString("Boat rental")
 			EndTextCommandSetBlipName(info.blip)
-		end
+	end
 		
 Citizen.CreateThread(function()
     while true do
@@ -271,15 +271,15 @@ Citizen.CreateThread(function()
             	local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
             	if distance <= 1.40 then
 
-									DisplayHelpText('Press E to rent a boat')
+					DisplayHelpText('Press E to rent a boat')
 					
-									if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+						if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
 									
-										OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
+							OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
 						
-									end 
-							elseif distance < 1.45 then
-										ESX.UI.Menu.CloseAll()
+						end 
+				elseif distance < 1.45 then
+					ESX.UI.Menu.CloseAll()
         	    end
     	    end
 	end
@@ -288,15 +288,17 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
+
 			if (IsInVehicle()) then
+
 				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
 					DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
 					if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
 						local playerPed = PlayerPedId()
 						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
-						SetTextComponentFormat('STRING');
-						AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
-						DisplayHelpTextFromStringLabel(0, 0, 1, -1);
+
+						DisplayHelpText('Press E to return boat')
+						
 						if IsPedInAnyVehicle(playerPed, false) then
 							if (IsControlJustReleased(1, 38)) then
 								ESX.Game.DeleteVehicle(auto)
@@ -329,8 +331,8 @@ function OpenBoatsMenu(x, y , z)
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open(
-    'default', GetCurrentResourceName(), 'client',
-    {
+  'default', GetCurrentResourceName(), 'client',
+	{
 		title    = 'Rent a boat',
 		align    = 'bottom-right',
 		elements = elements,
