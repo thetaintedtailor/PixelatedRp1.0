@@ -104,7 +104,7 @@ end
 
 -- Check if a place is free for the first in line
 Citizen.CreateThread(function()
-	local maxServerSlots = GetConvarInt('sv_maxclients', 1)
+	local maxServerSlots = GetConvarInt('sv_maxclients', 32)
 	
 	while true do
 		Citizen.Wait(Config.TimerCheckPlaces * 1000)

@@ -4,16 +4,16 @@ Config = {}
 -------- Intervalles en secondes -------------------
 ----------------------------------------------------
 
--- Temps d'attente Antispam / Waiting time for antispam
-Config.AntiSpamTimer = 2
+-- Waiting time for antispam
+Config.AntiSpamTimer = 8
 
 -- Vérification et attribution d'une place libre / Verification and allocation of a free place
 Config.TimerCheckPlaces = 3
 
--- Mise à jour du message (emojis) et accès à la place libérée pour l'heureux élu / Update of the message (emojis) and access to the free place for the lucky one
+-- Update of the message (emojis) and access to the free place for the lucky one
 Config.TimerRefreshClient = 3
 
--- Mise à jour du nombre de points / Number of points updating
+-- Number of points updating
 Config.TimerUpdatePoints = 6
 
 ----------------------------------------------------
@@ -40,7 +40,7 @@ Config.Points = {
 ------------- Textes des messages ------------------
 ----------------------------------------------------
 
--- Si steam n'est pas détecté / If steam is not detected
+-- If steam is not detected
 --Config.NoSteam = "Steam n'a pas été détecté. Veuillez (re)lancer Steam et FiveM, puis réessayer."
   Config.NoSteam = "Steam was not detected. Please (re)launch Steam and FiveM, and try again."
 
@@ -56,11 +56,11 @@ Config.PointsRP = "kilometers"
 --Config.Position = "Vous êtes en position "
 Config.Position = "You are in position "
 
--- Texte avant les emojis / Text before emojis
+-- Text before emojis
 --Config.EmojiMsg = "Si les emojis sont figés, relancez votre client : "
 Config.EmojiMsg = "If the emojis are frozen, restart your client: "
 
--- Quand le type gagne à la loterie / When the player win the lottery
+-- When the player win the lottery
 --Config.EmojiBoost = "!!! Youpi, " .. Config.LoterieBonusPoints .. " " .. Config.PointsRP .. " gagnés !!!"
 Config.EmojiBoost = "!!! Yippee, " .. Config.LoterieBonusPoints .. " " .. Config.PointsRP .. " won !!!"
 
