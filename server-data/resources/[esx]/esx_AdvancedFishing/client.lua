@@ -66,16 +66,16 @@ local blip3 = AddBlipForCoord(Config.SellShark.x, Config.SellShark.y, Config.Sel
 			EndTextCommandSetBlipName(blip3)
 			
 for _, info in pairs(Config.MarkerZones) do
-		info.blip = AddBlipForCoord(info.x, info.y, info.z)
-		SetBlipSprite(info.blip, 455)
-		SetBlipDisplay(info.blip, 4)
-		SetBlipScale(info.blip, 1.0)
-		SetBlipColour(info.blip, 20)
-		SetBlipAsShortRange(info.blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Boat rental")
-		EndTextCommandSetBlipName(info.blip)
-	end
+			info.blip = AddBlipForCoord(info.x, info.y, info.z)
+			SetBlipSprite(info.blip, 455)
+			SetBlipDisplay(info.blip, 4)
+			SetBlipScale(info.blip, 1.0)
+			SetBlipColour(info.blip, 20)
+			SetBlipAsShortRange(info.blip, true)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString("Boat rental")
+			EndTextCommandSetBlipName(info.blip)
+	  end
 	
 Citizen.CreateThread(function()
     while true do
@@ -83,7 +83,7 @@ Citizen.CreateThread(function()
         for k in pairs(Config.MarkerZones) do
 		
             DrawMarker(1, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 1.0, 0, 150, 150, 100, 0, 0, 0, 0)	
-		end
+				end
     end
 end)
 			
@@ -267,23 +267,22 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	
         	for k in pairs(Config.MarkerZones) do
-        		local ped = PlayerPedId()
+        			local ped = PlayerPedId()
             	local pedcoords = GetEntityCoords(ped, false)
             	local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
             	if distance <= 1.40 then
 
-						DisplayHelpText('Press E to rent a boat')
+									DisplayHelpText('Press E to rent a boat')
 					
-						if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+									if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+									
+										OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
 						
-							OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
-			
-						end 
-				elseif distance < 1.45 then
-					ESX.UI.Menu.CloseAll()
-            	end
-        	end
-    	end
+									end 
+							elseif distance < 1.45 then
+										ESX.UI.Menu.CloseAll()
+        	    end
+    	    end
 	end
 end)
 
@@ -294,11 +293,11 @@ Citizen.CreateThread(function()
 				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
 					DrawMarker(1, 3861.89, 4469.97, -0.47 - 1, 0, 0, 0, 0, 0, 0, 2.5001, 2.5001, 1.0001, 255, 165, 0,165, 0, 0, 0,0)
 					if GetDistanceBetweenCoords(3861.89, 4469.97, -0.47, GetEntityCoords(LocalPed())) < 2.0 then
-					local playerPed = PlayerPedId()
-					local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
-					SetTextComponentFormat('STRING');
-					AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
-					DisplayHelpTextFromStringLabel(0, 0, 1, -1);
+						local playerPed = PlayerPedId()
+						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
+						SetTextComponentFormat('STRING');
+						AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
+						DisplayHelpTextFromStringLabel(0, 0, 1, -1);
 						if IsPedInAnyVehicle(playerPed, false) then
 							if (IsControlJustReleased(1, 38)) then
 								ESX.Game.DeleteVehicle(auto)
