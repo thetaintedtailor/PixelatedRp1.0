@@ -221,7 +221,7 @@ AddEventHandler('fishing:startSelling', function(item)
 
 				if FishQuantity <= 0 then
 					TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ turtles')			
-				else   
+				else
 					xPlayer.removeInventoryItem('turtle', 1)
 					local payment = Config.TurtlePrice.a
 					payment = math.random(Config.TurtlePrice.a, Config.TurtlePrice.b) 

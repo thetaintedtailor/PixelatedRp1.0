@@ -296,7 +296,7 @@ Citizen.CreateThread(function()
 						local playerPed = PlayerPedId()
 						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
 						SetTextComponentFormat('STRING');
-						AddTextComponentString("Press ~E~ to return ~b~rental");
+						AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
 						DisplayHelpTextFromStringLabel(0, 0, 1, -1);
 						if IsPedInAnyVehicle(playerPed, false) then
 							if (IsControlJustReleased(1, 38)) then
