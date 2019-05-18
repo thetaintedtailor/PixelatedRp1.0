@@ -295,20 +295,19 @@ Citizen.CreateThread(function()
 
 				if (IsInVehicle()) then
 
-					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("dinghy4"))  then
-						DrawMarker(1, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
+					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
+						DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
 						if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
 							local playerPed = PlayerPedId()
 							local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
 							
 							SetTextComponentFormat('STRING');
-							AddTextComponentString("Press ~'E'~ to return ~b~rental");
+							AddTextComponentString("Press ~INPUT_CONTEXT~ to return ~b~rental");
 							DisplayHelpTextFromStringLabel(0, 0, 1, -1);
 							
 							if IsPedInAnyVehicle(playerPed, false) then
-								if (IsControlJustReleased(1, Keys['1']) then
-									ESX.Game.DeleteVehicle(auto)
-
+								if	IsControlJustReleased(1, Keys['E']) then
+										DeleteVehicle(GetVehiclePedIsIn(playerPed, true))
 								end
 							end
 						end
