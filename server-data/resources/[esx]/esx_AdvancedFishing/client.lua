@@ -298,7 +298,7 @@ Citizen.CreateThread(function()
 
 				if IsInVehicle() then
 
-					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), vehicle)  then
+					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("toro"))  then
 						if GetDistanceBetweenCoords(rentalend.x, rentalend.y, rentalend.z, GetEntityCoords(GetPlayerPed(-1),true)) < 2.0 then
 							DisplayHelpText('Press E to return rental')
 
