@@ -15,7 +15,7 @@ AddEventHandler("boatrental:end", function()
 	xPlayer.addMoney(deposit)
 
 	TriggerClientEvent("pNotify:SendNotification", source, {
-		text = "Here is your deposit back! : "$" .. deposit .. ",
+		text = "Here is your deposit back! : " .. deposit .. "$",
 		type = "success",
 		queue = "global",
 		timeout = 4000,
