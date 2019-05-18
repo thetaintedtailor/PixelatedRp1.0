@@ -289,11 +289,11 @@ end)
 Citizen.CreateThread(function()
 	while true do
 
-		Citizen.Wait(0)
+		Citizen.Wait(100)
 
 				if (IsInVehicle()) then
 
-					if IsVehicleModel(GetVehiclePedIsUsing(playerPedId(), true), GetHashKey("TORO"))  then
+					if IsPedInAnyVehicle(playerPedId(), true)  then
 						DrawMarker(0, 3823.2824, 4460.1093, 3.4306, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
 						if GetDistanceBetweenCoords(3823.2824, 4460.1093, 3.4306, GetEntityCoords(LocalPed())) < 2.0 then
 							local playerPed = PlayerPedId()
