@@ -289,9 +289,9 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-		if boatrental == true then
-			DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
-				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("toro"))  then
+			if (IsInVehicle()) then
+				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
+					DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
 					if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
 						local playerPed = PlayerPedId()
 						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
@@ -305,7 +305,7 @@ Citizen.CreateThread(function()
 						end
 					end
 				end
-		end
+			end
 	end
 end)
 
@@ -340,8 +340,6 @@ function OpenBoatsMenu(x, y , z)
 	
 	function(data, menu)
 
-		if boatrental == false then
-
 			if data.current.value == 'boat' then
 				ESX.UI.Menu.CloseAll()
 
@@ -349,7 +347,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "dinghy4")
-				boatrental = true
 			end
 		
 			if data.current.value == 'boat2' then
@@ -359,7 +356,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "TORO")
-				boatrental = true
 			end
 		
 			if data.current.value == 'boat3' then
@@ -369,7 +365,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "MARQUIS")
-				boatrental = true
 			end
 
 			if data.current.value == 'boat4' then
@@ -379,7 +374,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "tug")
-				boatrental = true
 			end
 	
 			if data.current.value == 'boat5' then
@@ -389,7 +383,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "jetmax")
-				boatrental = true
 			end
 	
 			if data.current.value == 'boat6' then
@@ -399,7 +392,6 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "suntrap")
-				boatrental = true
 			end
 	
 	
@@ -409,10 +401,8 @@ function OpenBoatsMenu(x, y , z)
 				TriggerEvent("chatMessage", 'You took out a boat')
 				SetPedCoordsKeepVehicle(ped, x, y , z)
 				TriggerEvent('esx:spawnVehicle', "predator")
-				boatrental = true
 			end
 			ESX.UI.Menu.CloseAll()
-		end	
 	end,
 		function(data, menu)
 			menu.close()
