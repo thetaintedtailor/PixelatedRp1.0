@@ -61,6 +61,9 @@ Locales['en'] = {
   ['pharmacy_take'] = 'take <span style="color:blue;">%s</span>',
   ['medikit'] = 'medikit',
   ['bandage'] = 'bandage',
+  ['gauze'] = 'gauze',
+  ['morphine'] = 'morphine',
+  ['medicaltape'] = 'medicaltape',
   ['max_item'] = 'You are already carrying enough.',
   -- F6 Menu
   ['ems_menu'] = 'EMS Menu',
