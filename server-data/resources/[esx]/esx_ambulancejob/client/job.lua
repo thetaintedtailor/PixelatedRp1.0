@@ -896,7 +896,7 @@ function OpenPharmacyMenu()
 		title    = _U('pharmacy_menu_title'),
 		align    = 'left',
 		elements = {
-			{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
+			--{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
 			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'},
 			{label = _U('pharmacy_take', _U('morphine')), value = 'morphine'},
 			{label = _U('pharmacy_take', _U('gauze')), value = 'gauze'},
