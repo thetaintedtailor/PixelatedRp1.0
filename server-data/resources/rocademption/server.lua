@@ -111,7 +111,7 @@ Citizen.CreateThread(function()
 
 		CheckConnecting()
 
-		-- si une place est demandée et disponible
+		-- if a place is requested and available
 		if #waiting > 0 and #connecting + #GetPlayers() < maxServerSlots then
 			ConnectFirst()
 		end

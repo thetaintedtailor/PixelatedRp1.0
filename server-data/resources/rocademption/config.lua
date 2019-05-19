@@ -29,11 +29,20 @@ Config.RemovePoints = 1
 -- Number of points earned for those who have 3 identical emojis (lottery)
 Config.LoterieBonusPoints = 25
 
--- Accès prioritaires / Priority access
+-- Priority access
 Config.Points = {
 	-- {'steamID', points},
 	-- {'steam:0123456789', 1000}
-	{'steam:110000104f88629', 1000}
+	{'steam:110000104f88629', 1000},
+	{'steam:110000104D64509', 1000},
+	{'steam:110000134C6DE86', 500},
+	{'steam:1100001184DB220', 500},
+	{'steam:110000104F1466F', 500},
+	{'steam:110000112C1D3B6', 500},
+	{'steam:110000106293560', 500},
+	{'steam:11000010DD6175D', 1000},
+	{'steam:11000013b44adb1', 1000},
+	{'steam:1100001052bd9b2', 1000},
 }
 
 ----------------------------------------------------
