@@ -215,7 +215,6 @@ AddEventHandler('fishing:startSelling', function(item)
 				
 
 				
-			end
 			if item == "turtle" then
 				local FishQuantity = xPlayer.getInventoryItem('turtle').count
 
