@@ -33,48 +33,48 @@ local bait = "none"
 
 local blip = AddBlipForCoord(Config.SellFish.x, Config.SellFish.y, Config.SellFish.z)
 
-			SetBlipSprite (blip, 356)
-			SetBlipDisplay(blip, 4)
-			SetBlipScale  (blip, 1.1)
-			SetBlipColour (blip, 17)
-			SetBlipAsShortRange(blip, true)
-			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Fish selling")
-			EndTextCommandSetBlipName(blip)
+	SetBlipSprite (blip, 356)
+	SetBlipDisplay(blip, 4)
+	SetBlipScale  (blip, 1.1)
+	SetBlipColour (blip, 17)
+	SetBlipAsShortRange(blip, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Fish selling")
+	EndTextCommandSetBlipName(blip)
 			
 local blip2 = AddBlipForCoord(Config.SellTurtle.x, Config.SellTurtle.y, Config.SellTurtle.z)
 
-			SetBlipSprite (blip2, 68)
-			SetBlipDisplay(blip2, 4)
-			SetBlipScale  (blip2, 0.9)
-			SetBlipColour (blip2, 49)
-			SetBlipAsShortRange(blip2, true)
-			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Sea Turtle dealer")
-			EndTextCommandSetBlipName(blip2)
-			
+	SetBlipSprite (blip2, 68)
+	SetBlipDisplay(blip2, 4)
+	SetBlipScale  (blip2, 0.9)
+	SetBlipColour (blip2, 49)
+	SetBlipAsShortRange(blip2, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Sea Turtle dealer")
+	EndTextCommandSetBlipName(blip2)
+		
 local blip3 = AddBlipForCoord(Config.SellShark.x, Config.SellShark.y, Config.SellShark.z)
 
-			SetBlipSprite (blip3, 68)
-			SetBlipDisplay(blip3, 4)
-			SetBlipScale  (blip3, 0.9)
-			SetBlipColour (blip3, 49)
-			SetBlipAsShortRange(blip3, true)
-			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Shark meat dealer")
-			EndTextCommandSetBlipName(blip3)
-			
+	SetBlipSprite (blip3, 68)
+	SetBlipDisplay(blip3, 4)
+	SetBlipScale  (blip3, 0.9)
+	SetBlipColour (blip3, 49)
+	SetBlipAsShortRange(blip3, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Shark meat dealer")
+	EndTextCommandSetBlipName(blip3)
+		
 for _, info in pairs(Config.MarkerZones) do
-		info.blip = AddBlipForCoord(info.x, info.y, info.z)
-		SetBlipSprite(info.blip, 455)
-		SetBlipDisplay(info.blip, 4)
-		SetBlipScale(info.blip, 1.0)
-		SetBlipColour(info.blip, 20)
-		SetBlipAsShortRange(info.blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Boat rental")
-		EndTextCommandSetBlipName(info.blip)
-	end
+	info.blip = AddBlipForCoord(info.x, info.y, info.z)
+	SetBlipSprite(info.blip, 455)
+	SetBlipDisplay(info.blip, 4)
+	SetBlipScale(info.blip, 1.0)
+	SetBlipColour(info.blip, 20)
+	SetBlipAsShortRange(info.blip, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Boat rental")
+	EndTextCommandSetBlipName(info.blip)
+end
 	
 Citizen.CreateThread(function()
     while true do
@@ -92,12 +92,12 @@ function DisplayHelpText(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 Citizen.CreateThread(function()
-while true do
-	Wait(600)
-		if pause and fishing then
-			pausetimer = pausetimer + 1
-		end
-end
+	while true do
+		Wait(600)
+			if pause and fishing then
+				pausetimer = pausetimer + 1
+			end
+	end
 end)
 Citizen.CreateThread(function()
 	while true do
@@ -270,13 +270,16 @@ Citizen.CreateThread(function()
             local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
             if distance <= 1.40 then
 
-					DisplayHelpText('Press E to rent a boat')
+				DisplayHelpText('Press E to rent a boat')
 					
-					if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
-						OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
-					end 
+				if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+					OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
+				end 
+
 			elseif distance < 1.45 then
+
 				ESX.UI.Menu.CloseAll()
+
             end
         end
     end
