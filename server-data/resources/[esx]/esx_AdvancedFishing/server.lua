@@ -184,7 +184,7 @@ AddEventHandler('fishing:catch', function(bait)
 			
 		end
 	
-	
+		
 end)
 
 RegisterServerEvent("fishing:lowmoney")
