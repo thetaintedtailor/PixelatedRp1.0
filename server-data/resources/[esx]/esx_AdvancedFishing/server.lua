@@ -5,6 +5,7 @@ print("Advanced Fishing developed by Kuzaky | Discord: Kuzkay#9999")
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+
 ESX.RegisterUsableItem('turtlebait', function(source)
 
 	local _source = source
@@ -201,13 +202,13 @@ AddEventHandler('fishing:startSelling', function(item)
 			if item == "fish" then
 					local FishQuantity = xPlayer.getInventoryItem('fish').count
 						if FishQuantity <= 4 then
-							TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
-						else   
-							xPlayer.removeInventoryItem('fish', 5)
-							local payment = Config.FishPrice.a
-							payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
-							xPlayer.addMoney(payment)
-						end
+						TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
+					else   
+						xPlayer.removeInventoryItem('fish', 5)
+						local payment = Config.FishPrice.a
+						payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
+						xPlayer.addMoney(payment)
+						
 						
 			end
 				
@@ -215,12 +216,13 @@ AddEventHandler('fishing:startSelling', function(item)
 				
 
 				
+			end
 			if item == "turtle" then
 				local FishQuantity = xPlayer.getInventoryItem('turtle').count
 
 				if FishQuantity <= 0 then
 					TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ turtles')			
-				else
+				else   
 					xPlayer.removeInventoryItem('turtle', 1)
 					local payment = Config.TurtlePrice.a
 					payment = math.random(Config.TurtlePrice.a, Config.TurtlePrice.b) 
