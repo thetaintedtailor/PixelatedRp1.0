@@ -65,24 +65,24 @@ local blip3 = AddBlipForCoord(Config.SellShark.x, Config.SellShark.y, Config.Sel
 			EndTextCommandSetBlipName(blip3)
 			
 for _, info in pairs(Config.MarkerZones) do
-			info.blip = AddBlipForCoord(info.x, info.y, info.z)
-			SetBlipSprite(info.blip, 455)
-			SetBlipDisplay(info.blip, 4)
-			SetBlipScale(info.blip, 1.0)
-			SetBlipColour(info.blip, 20)
-			SetBlipAsShortRange(info.blip, true)
-			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Boat rental")
-			EndTextCommandSetBlipName(info.blip)
-		end
-		
+		info.blip = AddBlipForCoord(info.x, info.y, info.z)
+		SetBlipSprite(info.blip, 455)
+		SetBlipDisplay(info.blip, 4)
+		SetBlipScale(info.blip, 1.0)
+		SetBlipColour(info.blip, 20)
+		SetBlipAsShortRange(info.blip, true)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Boat rental")
+		EndTextCommandSetBlipName(info.blip)
+	end
+	
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
         for k in pairs(Config.MarkerZones) do
 		
             DrawMarker(1, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 1.0, 0, 150, 150, 100, 0, 0, 0, 0)	
-				end
+		end
     end
 end)
 			
@@ -93,10 +93,10 @@ function DisplayHelpText(str)
 end
 Citizen.CreateThread(function()
 while true do
-		Wait(600)
-			if pause and fishing then
-				pausetimer = pausetimer + 1
-			end
+	Wait(600)
+		if pause and fishing then
+			pausetimer = pausetimer + 1
+		end
 end
 end)
 Citizen.CreateThread(function()
@@ -104,7 +104,7 @@ Citizen.CreateThread(function()
 		Wait(5)
 		if fishing then
 			if IsControlJustReleased(0, Keys['1']) then
-				input = 1
+				 input = 1
 			end
 			if IsControlJustReleased(0, Keys['2']) then
 				input = 2
@@ -129,16 +129,16 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['Z']) then
+			if IsControlJustReleased(0, Keys['X']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
-
+			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
 				if GetWaterHeight(pos.x, pos.y, pos.z-0.0, pos.z-0.5) then
-
+					
 				else
 					fishing = false
 					ESX.ShowNotification("~r~Stopped fishing")
@@ -261,28 +261,25 @@ AddEventHandler('fishing:fishstart', function()
 end, false)
 
 Citizen.CreateThread(function()
-	while true do
-		
-		Citizen.Wait(0)
+    while true do
+        Citizen.Wait(0)
 	
-        	for k in pairs(Config.MarkerZones) do
-        			local ped = PlayerPedId()
-            	local pedcoords = GetEntityCoords(ped, false)
-            	local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
-          		if distance <= 1.40 then
+        for k in pairs(Config.MarkerZones) do
+        	local ped = PlayerPedId()
+            local pedcoords = GetEntityCoords(ped, false)
+            local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
+            if distance <= 1.40 then
 
-								DisplayHelpText('Press E to rent a boat')
+					DisplayHelpText('Press E to rent a boat')
 					
-								if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
-									
-									OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
-						
-								end 
-							elseif distance < 1.45 then
-								ESX.UI.Menu.CloseAll()
-        	    end
-    	    end
-	end
+					if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+						OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
+					end 
+			elseif distance < 1.45 then
+				ESX.UI.Menu.CloseAll()
+            end
+        end
+    end
 end)
 
 function OpenBoatsMenu(x, y , z)
@@ -291,12 +288,12 @@ function OpenBoatsMenu(x, y , z)
 	local elements = {}
 	
 	
-		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">300$</span>', value = 'boat'})
-		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">300$</span>', value = 'boat6'}) 
-		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">300$</span>', value = 'boat5'}) 	
-		table.insert(elements, {label = '<span style="color:green;">Toro</span> <span style="color:red;">300$</span>', value = 'boat2'}) 
-		table.insert(elements, {label = '<span style="color:green;">Marquis</span> <span style="color:red;">300$</span>', value = 'boat3'}) 
-		table.insert(elements, {label = '<span style="color:green;">Tug boat</span> <span style="color:red;">300$</span>', value = 'boat4'})
+		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">2500$</span>', value = 'boat'})
+		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">3500$</span>', value = 'boat6'}) 
+		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">4500$</span>', value = 'boat5'}) 	
+		table.insert(elements, {label = '<span style="color:green;">Toro</span> <span style="color:red;">5500$</span>', value = 'boat2'}) 
+		table.insert(elements, {label = '<span style="color:green;">Marquis</span> <span style="color:red;">6000$</span>', value = 'boat3'}) 
+		table.insert(elements, {label = '<span style="color:green;">Tug boat</span> <span style="color:red;">7500$</span>', value = 'boat4'})
 		
 	--If user has police job they will be able to get free Police Predator boat
 	if PlayerData.job.name == "police" then
@@ -306,12 +303,12 @@ function OpenBoatsMenu(x, y , z)
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open(
-  'default', GetCurrentResourceName(), 'client',
-	{
+    'default', GetCurrentResourceName(), 'client',
+    {
 		title    = 'Rent a boat',
 		align    = 'bottom-right',
 		elements = elements,
-	},
+    },
 	
 	
 	function(data, menu)
@@ -319,26 +316,26 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 2500) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 2500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "dinghy4")
 	end
-
+	
 	if data.current.value == 'boat2' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 5500) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 5500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "TORO")
 	end
-
+	
 	if data.current.value == 'boat3' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 6000) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 6000)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "MARQUIS")
 	end
@@ -346,31 +343,31 @@ function OpenBoatsMenu(x, y , z)
 	if data.current.value == 'boat4' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 7500) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 7500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "tug")
 	end
-
+	
 	if data.current.value == 'boat5' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 4500) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 4500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "jetmax")
 	end
-
+	
 	if data.current.value == 'boat6' then
 		ESX.UI.Menu.CloseAll()
 
-		TriggerServerEvent("fishing:lowmoney", 300) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 300)
+		TriggerServerEvent("fishing:lowmoney", 3500) 
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 3500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "suntrap")
 	end
-
-
+	
+	
 	if data.current.value == 'police' then
 		ESX.UI.Menu.CloseAll()
 
@@ -379,9 +376,9 @@ function OpenBoatsMenu(x, y , z)
 		TriggerEvent('esx:spawnVehicle', "predator")
 	end
 	ESX.UI.Menu.CloseAll()
+	
 
-
-	end,
+    end,
 	function(data, menu)
 		menu.close()
 		end
