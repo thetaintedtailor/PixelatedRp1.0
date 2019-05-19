@@ -285,31 +285,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-
-			if (IsInVehicle()) then
-
-				if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("MARQUIS"))  then
-					DrawMarker(0, 3861.89, 4469.97, 1.50, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.0, 3.0, 2.0, 0, 70, 250, 30, false, true, 2, false, false, false, false)
-					if GetDistanceBetweenCoords(3861.89, 4469.97, 1.50, GetEntityCoords(LocalPed())) < 2.0 then
-						local playerPed = PlayerPedId()
-						local auto = GetVehiclePedIsIn(GetPlayerPed(-1)) 
-
-						DisplayHelpText('Press E to return boat')
-						
-						if IsPedInAnyVehicle(playerPed, false) then
-							if (IsControlJustReleased(1, 38)) then
-								ESX.Game.DeleteVehicle(auto)
-							end
-						end
-					end
-				end
-			end
-	end
-end)
-
 function OpenBoatsMenu(x, y , z)
 	local ped = PlayerPedId()
 	PlayerData = ESX.GetPlayerData()
