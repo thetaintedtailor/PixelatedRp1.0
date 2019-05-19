@@ -74,7 +74,7 @@ for _, info in pairs(Config.MarkerZones) do
 			BeginTextCommandSetBlipName("STRING")
 			AddTextComponentString("Boat rental")
 			EndTextCommandSetBlipName(info.blip)
-	end
+		end
 		
 Citizen.CreateThread(function()
     while true do
@@ -82,7 +82,7 @@ Citizen.CreateThread(function()
         for k in pairs(Config.MarkerZones) do
 		
             DrawMarker(1, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 1.0, 0, 150, 150, 100, 0, 0, 0, 0)	
-		end
+				end
     end
 end)
 			
@@ -269,17 +269,17 @@ Citizen.CreateThread(function()
         			local ped = PlayerPedId()
             	local pedcoords = GetEntityCoords(ped, false)
             	local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
-            	if distance <= 1.40 then
+          		if distance <= 1.40 then
 
-					DisplayHelpText('Press E to rent a boat')
+								DisplayHelpText('Press E to rent a boat')
 					
-						if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+								if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
 									
-							OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
+									OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
 						
-						end 
-				elseif distance < 1.45 then
-					ESX.UI.Menu.CloseAll()
+								end 
+							elseif distance < 1.45 then
+								ESX.UI.Menu.CloseAll()
         	    end
     	    end
 	end
