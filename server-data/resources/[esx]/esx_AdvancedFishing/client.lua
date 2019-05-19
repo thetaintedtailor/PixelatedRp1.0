@@ -65,16 +65,16 @@ local blip3 = AddBlipForCoord(Config.SellShark.x, Config.SellShark.y, Config.Sel
 			EndTextCommandSetBlipName(blip3)
 			
 for _, info in pairs(Config.MarkerZones) do
-		info.blip = AddBlipForCoord(info.x, info.y, info.z)
-		SetBlipSprite(info.blip, 455)
-		SetBlipDisplay(info.blip, 4)
-		SetBlipScale(info.blip, 1.0)
-		SetBlipColour(info.blip, 20)
-		SetBlipAsShortRange(info.blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Boat rental")
-		EndTextCommandSetBlipName(info.blip)
-	end
+			info.blip = AddBlipForCoord(info.x, info.y, info.z)
+			SetBlipSprite(info.blip, 455)
+			SetBlipDisplay(info.blip, 4)
+			SetBlipScale(info.blip, 1.0)
+			SetBlipColour(info.blip, 20)
+			SetBlipAsShortRange(info.blip, true)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString("Boat rental")
+			EndTextCommandSetBlipName(info.blip)
+		end
 	
 Citizen.CreateThread(function()
     while true do
@@ -82,7 +82,7 @@ Citizen.CreateThread(function()
         for k in pairs(Config.MarkerZones) do
 		
             DrawMarker(1, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 1.0, 0, 150, 150, 100, 0, 0, 0, 0)	
-		end
+				end
     end
 end)
 			
@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['X']) then
+			if IsControlJustReleased(0, Keys['Z']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
@@ -378,9 +378,9 @@ function OpenBoatsMenu(x, y , z)
 	ESX.UI.Menu.CloseAll()
 	
 
-    end,
+  end,
 	function(data, menu)
 		menu.close()
-		end
+	end
 	)
 end
