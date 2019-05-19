@@ -6,5 +6,5 @@ client_scripts {
 }
 server_scripts { 
 	'server.lua',  
-  'config.lua'
+	'config.lua'
 }
