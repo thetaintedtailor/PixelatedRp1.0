@@ -170,7 +170,7 @@ AddEventHandler('fishing:catch', function(bait)
 									xPlayer.addInventoryItem('shark', 1)
 							end
 						end	
-							else
+			else
 									if xPlayer.getInventoryItem('fish').count > 100 then
 										TriggerClientEvent('fishing:message', _source, "~r~You cant hold more fish")
 									else
@@ -179,13 +179,13 @@ AddEventHandler('fishing:catch', function(bait)
 										xPlayer.addInventoryItem('fish', weight)
 									end
 								
-							end
 			end
 			
 		end
-	
-		
+
 end)
+		
+
 
 RegisterServerEvent("fishing:lowmoney")
 AddEventHandler("fishing:lowmoney", function(money)
