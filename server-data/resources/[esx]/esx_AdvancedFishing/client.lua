@@ -92,12 +92,12 @@ function DisplayHelpText(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 Citizen.CreateThread(function()
-while true do
-	Wait(600)
-		if pause and fishing then
-			pausetimer = pausetimer + 1
-		end
-end
+	while true do
+		Wait(600)
+			if pause and fishing then
+				pausetimer = pausetimer + 1
+			end
+	end
 end)
 Citizen.CreateThread(function()
 	while true do
@@ -270,14 +270,14 @@ Citizen.CreateThread(function()
             local distance = Vdist(pedcoords.x, pedcoords.y, pedcoords.z, Config.MarkerZones[k].x, Config.MarkerZones[k].y, Config.MarkerZones[k].z)
             if distance <= 1.40 then
 
-					DisplayHelpText('Press E to rent a boat')
-					
-					if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
-						OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
-					end 
-			elseif distance < 1.45 then
-				ESX.UI.Menu.CloseAll()
-            end
+							DisplayHelpText('Press E to rent a boat')
+							
+							if IsControlJustPressed(0, Keys['E']) and IsPedOnFoot(ped) then
+								OpenBoatsMenu(Config.MarkerZones[k].xs, Config.MarkerZones[k].ys, Config.MarkerZones[k].zs)
+							end 
+						elseif distance < 1.45 then
+							ESX.UI.Menu.CloseAll()
+						end
         end
     end
 end)
