@@ -239,7 +239,8 @@ end)
 TriggerEvent('es:addGroupCommand', 'revive', 'admin', function(source, args, user)
 	if args[1] ~= nil then
 		if GetPlayerName(tonumber(args[1])) ~= nil then
-			print(('esx_ambulancejob: %s used admin revive'):format(GetPlayerIdentifiers(source)[1]))
+			local Source = source
+			print(('esx_ambulancejob: %s used admin revive'):format(GetPlayerIdentifiers(Source)[1]))
 			TriggerClientEvent('esx_ambulancejob:revive', tonumber(args[1]))
 		end
 	else
