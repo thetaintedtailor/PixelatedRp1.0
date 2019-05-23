@@ -521,7 +521,7 @@ function TakeItem(number)
   ESX.TriggerServerCallback('esx_kr_shop:getShopItems', function(result)
 
 	for i=1, #result, 1 do
-	    if result[i].count > 0 then
+		if result[i].count > 0 and result[i].count <= result[i].limit then
 	    	table.insert(elements, {label = result[i].label .. ' | ' .. result[i].count ..' pieces in storage [' .. result[i].price .. ' $ per piece', value = 'removeitem', ItemName = result[i].item})
 	    end
     end
