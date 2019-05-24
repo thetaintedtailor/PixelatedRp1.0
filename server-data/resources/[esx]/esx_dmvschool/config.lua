@@ -1,7 +1,7 @@
 Config                 = {}
 Config.DrawDistance    = 100.0
 Config.MaxErrors       = 5
-Config.SpeedMultiplier = 3.6
+Config.SpeedMultiplier = 2.236936
 Config.Locale = 'en'
 
 Config.Prices = {
