@@ -51,15 +51,13 @@ end)
 
 AddEventHandler('rconCommand', function(commandName, args)
     if commandName == 'status' then
-        local cnt = 0
         for netid, data in pairs(names) do
-            cnt = cnt + 1
             local guid = GetPlayerIdentifiers(netid)
 
             if guid and guid[1] and data then
                 local ping = GetPlayerPing(netid)
 
-                RconPrint('[' .. cnt .. '] ' .. netid .. ' ' .. guid[1] .. ' ' .. data.name .. ' ' .. GetPlayerEP(netid) .. ' ' .. ping .. "\n")
+                RconPrint(netid .. ' ' .. guid[1] .. ' ' .. data.name .. ' ' .. GetPlayerEP(netid) .. ' ' .. ping .. "\n")
             end
         end
 
