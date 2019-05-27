@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/iceicebaby.mp3',
+    'music/smug-dancin.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
