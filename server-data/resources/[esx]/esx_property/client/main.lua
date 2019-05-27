@@ -518,7 +518,7 @@ function OpenRoomMenu(property, owner)
 					menu2.close()
 				end)
 			end)
--
+
 		elseif data.current.value == 'remove_cloth' then
 
 			ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
@@ -532,7 +532,7 @@ function OpenRoomMenu(property, owner)
 				end
 
 				ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'remove_cloth', {
-					title    = property.label .. ' - ' .. _U('remove_cloth'),
+					--title    = property.label .. ' - ' .. _U('remove_cloth'),
 					align    = 'top-left',
 					elements = elements
 				}, function(data2, menu2)
