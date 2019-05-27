@@ -519,30 +519,30 @@ function OpenRoomMenu(property, owner)
 				end)
 			end)
 
-		elseif data.current.value == 'remove_cloth' then
+		--elseif data.current.value == 'remove_cloth' then
 
-			ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
-				local elements = {}
+			--ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
+				--local elements = {}
 
-				for i=1, #dressing, 1 do
-					table.insert(elements, {
-						label = dressing[i],
-						value = i
-					})
-				end
+				--for i=1, #dressing, 1 do
+					--table.insert(elements, {
+						--label = dressing[i],
+						--value = i
+					--})
+				--end
 
-				ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'remove_cloth', {
-					title    = property.label .. ' - ' .. _U('remove_cloth'),
-					align    = 'top-left',
-					elements = elements
-				}, function(data2, menu2)
+				--ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'remove_cloth', {
+					--title    = property.label .. ' - ' .. _U('remove_cloth'),
+					--align    = 'top-left',
+					--elements = elements
+				--}, function(data2, menu2)
+					--menu2.close()
+					--TriggerServerEvent('esx_property:removeOutfit', data2.current.value)
+					--ESX.ShowNotification(_U('removed_cloth'))
+				--end, function(data2, menu2)
 					menu2.close()
-					TriggerServerEvent('esx_property:removeOutfit', data2.current.value)
-					ESX.ShowNotification(_U('removed_cloth'))
-				end, function(data2, menu2)
-					menu2.close()
-				end)
-			end)
+				--end)
+			--end)
 
 		elseif data.current.value == 'room_inventory' then
 			OpenRoomInventoryMenu(property, owner)
