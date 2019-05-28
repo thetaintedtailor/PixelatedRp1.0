@@ -183,6 +183,7 @@ Citizen.CreateThread( function()
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
 				loadAnimDict( "random@arrests" )
 				loadAnimDict( "random@arrests@busted" )
+				ClearPedTasks(player)
 				if ( IsEntityPlayingAnim( player, "random@arrests@busted", "idle_a", 3 ) ) then 
 					TaskPlayAnim( player, "random@arrests@busted", "exit", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
 					Wait (3000)
