@@ -15,7 +15,7 @@ local year
 Citizen.CreateThread(function()
 	while true do
 		Wait(1)
-		timeAndDateString = "|"
+		timeAndDateString = ""
 		
 		if displayTime == true then
 			CalculateTimeToDisplay()
@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
 		end
 		if displayDate == true then
 			CalculateDateToDisplay()
-			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " |"
+			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " "
 		end
 		
 		SetTextFont(0)
