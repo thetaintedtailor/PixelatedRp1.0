@@ -1417,5 +1417,6 @@ Citizen.CreateThread(function()
 			DeleteObject(prop)
 			DetachEntity(secondaryprop, 1, 1)
 			DeleteObject(secondaryprop)
+		end
 	end
 end)
