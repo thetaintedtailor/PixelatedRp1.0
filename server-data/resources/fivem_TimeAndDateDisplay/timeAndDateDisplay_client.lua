@@ -32,7 +32,7 @@ Citizen.CreateThread(function()
 		
 		SetTextFont(6)
 		SetTextProportional(0)
-		SetTextScale(0.90, 0.90)
+		SetTextScale(0.50, 0.50)
 		SetTextColour(255, 255, 255, 255)
 		SetTextDropshadow(0, 0, 0, 0, 255)
 		SetTextEdge(1, 0, 0, 0, 255)
@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 		SetTextEntry("STRING")
 		
 		AddTextComponentString(timeAndDateString)
-		DrawText(0.3, 0.7)
+		DrawText(0.2, 0.9)
 	end
 end)
 
