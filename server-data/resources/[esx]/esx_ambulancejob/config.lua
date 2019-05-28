@@ -74,6 +74,9 @@ Config.Hospitals = {
 		},
 
 		FastTravels = {
+		},
+		-- Prompted fast travels (below) are for ems only --
+		FastTravelsPrompt = {
 			{
 				From = vector3(360.1, -585.0, 27.7),
 				To = { coords = vector3(300.74, -597.94, 42.4), heading = 289.86 },
@@ -96,9 +99,6 @@ Config.Hospitals = {
 				To = { coords = vector3(338.90, -592.15, 42.32), heading = 340.42 },
 				Marker = { type = 1, x = 1.5, y = 1.5, z = 1.0, r = 189, g = 207, b = 237, a = 100, rotate = false }
 			}
-		},
-		-- Prompted fast travels (below) are for ems only --
-		FastTravelsPrompt = {
 		}
 	}
 }
