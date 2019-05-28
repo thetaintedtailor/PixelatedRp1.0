@@ -30,15 +30,15 @@ Citizen.CreateThread(function()
 			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " "
 		end
 		
-		SetTextFont(0)
-		SetTextProportional(1)
+		SetTextFont(6)
+		SetTextProportional(0)
 		SetTextScale(0.30, 0.30)
 		SetTextColour(255, 255, 255, 255)
 		SetTextDropshadow(0, 0, 0, 0, 255)
 		SetTextEdge(1, 0, 0, 0, 255)
 		SetTextDropShadow()
 		SetTextOutline()
-		SetTextRightJustify(true)
+		--SetTextRightJustify(true)
 		SetTextWrap(0,0.95)
 		SetTextEntry("STRING")
 		
