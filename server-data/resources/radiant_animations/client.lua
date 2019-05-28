@@ -177,12 +177,10 @@ Citizen.CreateThread( function()
 				end
 			end
 
-		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, 184) then
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, handsUpButton) then
 			local player = PlayerPedId()
 			local surrendered = false
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
-	
-				print('keys being pressed')
 				loadAnimDict( "random@arrests" )
 				loadAnimDict( "random@arrests@busted" )
 				if ( IsEntityPlayingAnim( player, "random@arrests@busted", "idle_a", 3 ) ) then 
