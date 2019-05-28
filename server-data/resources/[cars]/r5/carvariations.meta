@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <CVehicleModelInfoVariation>
-  <variationData> 
+  <variationData>
     <Item>
-      <modelName>rs5r</modelName>
+      <modelName>rs5</modelName>
       <colors>
         <Item>
           <indices content="char_array">
-            50 
-            00 
-            156 
+            11
             00
-						04
-						00
+            00
+            04
+          </indices>
+          <liveries>
+            <Item value="true" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+	 <Item>
+          <indices content="char_array">
+            27
+            0
+            00
+            27
           </indices>
           <liveries>
             <Item value="true" />
@@ -27,14 +43,20 @@
         </Item>
       </colors>
       <kits>
-        <Item>9519_rs5r_modkit</Item>
+        <Item>6789_rs5_modkit</Item>
       </kits>
       <windowsWithExposedEdges />
       <plateProbabilities>
-        <Probabilities />
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
       </plateProbabilities>
-      <lightSettings value="9519" />
+      <lightSettings value="6789" />
       <sirenSettings value="0" />
     </Item>
-   </variationData>
+
+  </variationData>
 </CVehicleModelInfoVariation>

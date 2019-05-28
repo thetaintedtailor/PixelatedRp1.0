@@ -4,18 +4,18 @@
   <residentAnims />
   <InitDatas>
     <Item>
-      <modelName>rs5r</modelName>
-      <txdName>rs5r</txdName>
-      <handlingId>rs5r</handlingId>
-      <gameName>rs5r</gameName>
-      <vehicleMakeName>Audi</vehicleMakeName>
+      <modelName>rs5</modelName>
+      <txdName>rs5</txdName>
+      <handlingId>RS5</handlingId>
+      <gameName>Rs5</gameName>
+      <vehicleMakeName>Audi Rs5</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>SULTANRS</audioNameHash>
+      <audioNameHash>SHEAVA</audioNameHash>
       <layout>LAYOUT_LOW</layout>
       <coverBoundOffsets>ZION_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -81,10 +81,10 @@
       <frequency value="30" />
       <swankness>SWANKNESS_3</swankness>
       <maxNum value="10" />
-      <flags>FLAG_HAS_LIVERY FLAG_AVERAGE_CAR FLAG_HAS_INTERIOR_EXTRAS FLAG_PARKING_SENSORS FLAG_EXTRAS_STRONG</flags>
+      <flags>FLAG_RECESSED_HEADLIGHT_CORONAS FLAG_HAS_LIVERY FLAG_SPAWN_ON_TRAILER FLAG_AVERAGE_CAR FLAG_HAS_INTERIOR_EXTRAS FLAG_PARKING_SENSORS FLAG_EXTRAS_ALL FLAG_EXTRAS_STRONG</flags>
       <type>VEHICLE_TYPE_CAR</type>
       <plateType>VPT_BACK_PLATES</plateType>
-	  <dashboardType>VDT_RACE</dashboardType>
+	  <dashboardType>VDT_BANSHEE</dashboardType>
       <vehicleClass>VC_COUPE</vehicleClass>
       <wheelType>VWT_SPORT</wheelType>
       <trailers />
@@ -115,8 +115,8 @@
   </InitDatas>
   <txdRelationships>
     <Item>
-      <parent>vehicles_sultan_interior</parent>
-      <child>rs5r</child>
+      <parent>vehicles_banshee_interior</parent>
+      <child>RS5</child>
     </Item>
   </txdRelationships>
 </CVehicleModelInfo__InitDataList>
