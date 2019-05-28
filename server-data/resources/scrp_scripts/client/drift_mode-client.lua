@@ -15,7 +15,7 @@ local Keys = {
 }
 
 -- Handle key press
-IsEngineOn = true
+
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
@@ -27,27 +27,6 @@ Citizen.CreateThread(function()
 				TriggerEvent('chatMessage', _U('drift'), {167,101,181}, _U('drift_enabled'))
 			else
 				TriggerEvent('chatMessage', _U('drift'), {167,101,181}, _U('drift_disabled'))
-			end
-
-		elseif IsControlPressed(1, Keys["LEFTSHIFT"]) and IsControlPressed(1, Keys["E"]) then
-			print("hey", IsEngineOn)
-			local playerPed = GetPlayerPed(-1)
-			local vehicle = GetVehiclePedIsIn(playerPed, false)
-
-			if (IsPedSittingInAnyVehicle(playerPed)) then 
-				if IsEngineOn == true then
-					IsEngineOn = false
-					SetVehicleEngineOn(vehicle,false,false,false)
-				else
-					IsEngineOn = true
-					SetVehicleUndriveable(vehicle,false)
-					SetVehicleEngineOn(vehicle,true,false,false)
-				end
-				
-				while (IsEngineOn == false) do
-					SetVehicleUndriveable(vehicle,true)
-					Citizen.Wait(0)
-				end
 			end
 		end
 	end

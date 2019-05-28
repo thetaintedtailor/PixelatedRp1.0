@@ -792,7 +792,7 @@ RegisterCommand("e",function(source, args)
 					end       
 				end
 				
-			elseif argh == 'copidle' then
+			elseif argh == 'cop' then
 				local ad = "amb@code_human_wander_idles_cop@male@static" --- insert the animation dic here
 				local anim = "static" --- insert the animation name here
 				local player = PlayerPedId()
