@@ -12,6 +12,7 @@ AddEventHandler('chatMessage', function(source, name, message)
 	end
 end)
 
+--[[
 RegisterCommand('twt', function(source, args, rawCommand)
 	if source == 0 then
 		print('esx_rpchat: you can\'t use this command from rcon!')
@@ -25,7 +26,7 @@ RegisterCommand('twt', function(source, args, rawCommand)
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), tostring(args)}, color={0,153,204} })
 	--print(('%s: %s'):format(name, args))
 end, false)
-
+]]
 
 
 RegisterCommand('do', function(source, args, rawCommand)
