@@ -153,7 +153,7 @@ Citizen.CreateThread( function()
 
 	while true do
 		Citizen.Wait(0)
-		if (IsControlJustPressed(0,handsUpButton)) and GetLastInputMethod(2) then
+		if (IsControlJustPressed(0,handsUpButton)) and not IsControlPressed(0, Keys['SHIFT']) and GetLastInputMethod(2) then
 			local ped = PlayerPedId()
 	
 			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
