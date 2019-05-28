@@ -32,7 +32,7 @@
 			data.type = 'default';
 
 		if(typeof data.align == 'undefined')
-			data.align = 'top-left';
+			data.align = 'left';
 
 		data._index     = ESX_MENU.focus.length;
 		data._namespace = namespace;

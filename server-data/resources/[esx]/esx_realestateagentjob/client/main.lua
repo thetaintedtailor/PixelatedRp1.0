@@ -54,7 +54,7 @@ function OpenRealestateAgentMenu()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'realestateagent', {
 		title    = _U('realtor'),
-		align    = 'top-left',
+		align    = 'left',
 		elements = elements
 	}, function(data, menu)
 
