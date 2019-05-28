@@ -1,7 +1,6 @@
 
 local driftmode = false
 local drift_speed_limit = 100.0
-local IsEngineOn = true
 
 local Keys = {
   ["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57,
@@ -16,6 +15,7 @@ local Keys = {
 }
 
 -- Handle key press
+IsEngineOn = true
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
@@ -28,7 +28,9 @@ Citizen.CreateThread(function()
 			else
 				TriggerEvent('chatMessage', _U('drift'), {167,101,181}, _U('drift_disabled'))
 			end
+
 		elseif IsControlPressed(1, Keys["LEFTSHIFT"]) and IsControlPressed(1, Keys["E"]) then
+			print("hey", IsEngineOn)
 			local playerPed = GetPlayerPed(-1)
 			local vehicle = GetVehiclePedIsIn(playerPed, false)
 
