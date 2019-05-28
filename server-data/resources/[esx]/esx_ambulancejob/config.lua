@@ -37,7 +37,7 @@ Config.Hospitals = {
 			coords = vector3(292.3, -583.6, 43.2),
 			sprite = 61,
 			scale  = 1.2,
-			color  = 2
+			color  = 38
 		},
 
 		AmbulanceActions = {
