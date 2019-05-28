@@ -48,10 +48,9 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
-end)
-		end
 	end
 end)
+
 
 Citizen.CreateThread(function()
 	local vehicle
