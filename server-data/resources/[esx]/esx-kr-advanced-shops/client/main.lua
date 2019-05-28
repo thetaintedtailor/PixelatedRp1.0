@@ -723,12 +723,12 @@ Citizen.CreateThread(function()
 
 		SetBlipSprite (blip, 374)
 		SetBlipDisplay(blip, 4)
-		SetBlipScale  (blip, 1.2)
-		SetBlipColour (blip, 5)
+		SetBlipScale  (blip, 1)
+		SetBlipColour (blip, 52)
 		SetBlipAsShortRange(blip, true)
 
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString('Properties')
+		AddTextComponentString('Shops for Sale')
 		EndTextCommandSetBlipName(blip)
 end)
 
