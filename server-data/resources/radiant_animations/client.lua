@@ -177,7 +177,8 @@ Citizen.CreateThread( function()
 				end
 			end
 
-		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlJustPressed(0, 183) then
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, 184) then
+			print('keys being pressed')
 			local surrendered = false
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
 				loadAnimDict( "random@arrests" )
