@@ -344,7 +344,7 @@ AddEventHandler('esx_ambulancejob:hasEnteredMarker', function(hospital, part, pa
 		local travelItem = Config.Hospitals[hospital][part][partNum]
 
 		CurrentAction = part
-		CurrentActionMsg = travelItem.Prompt
+		CurrentActionMsg = _U('fast_travel')
 		CurrentActionData = {to = travelItem.To.coords, heading = travelItem.To.heading}
 	end
 end)
