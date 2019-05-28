@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 		SetTextEntry("STRING")
 		
 		AddTextComponentString(timeAndDateString)
-		DrawText(0.2, 0.9)
+		DrawText(0.16, 0.88)
 	end
 end)
 
