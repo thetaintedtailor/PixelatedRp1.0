@@ -24,7 +24,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 
 	if Config.EnableHud then
 
-		for i=1, #xPlayer.accounts, 1 do
+		--[[for i=1, #xPlayer.accounts, 1 do
 			local accountTpl = '<div><img src="img/accounts/' .. xPlayer.accounts[i].name .. '.png"/>&nbsp;{{money}}</div>'
 
 			ESX.UI.HUD.RegisterElement('account_' .. xPlayer.accounts[i].name, i-1, 0, accountTpl, {
@@ -34,7 +34,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 			ESX.UI.HUD.UpdateElement('account_' .. xPlayer.accounts[i].name, {
 				money = ESX.Math.GroupDigits(xPlayer.accounts[i].money)
 			})
-		end
+		end]]
 
 		local jobTpl = '<div>{{job_label}} - {{grade_label}}</div>'
 
@@ -52,7 +52,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 			grade_label = xPlayer.job.grade_label
 		})
 
-	else
+
 		TriggerEvent('es:setMoneyDisplay', 0.0)
 	end
 end)
@@ -409,7 +409,7 @@ if Config.EnableHud then
 				ESX.UI.HUD.SetDisplay(0.0)
 			elseif not IsPauseMenuActive() and IsPaused then
 				IsPaused = false
-				TriggerEvent('es:setMoneyDisplay', 1.0)
+				TriggerEvent('es:setMoneyDisplay', 0.0)
 				ESX.UI.HUD.SetDisplay(1.0)
 			end
 		end

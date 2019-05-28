@@ -54,7 +54,7 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), menuName,
 	{
 		title    = menuTitle,
-		align    = 'top-left',
+		align    = 'left',
 		elements = elems
 	}, function(data, menu)
 		local isRimMod, found = false, false

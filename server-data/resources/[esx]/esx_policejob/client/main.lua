@@ -114,7 +114,7 @@ function OpenCloakroomMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'cloakroom',
 	{
 		title    = _U('cloakroom'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
@@ -267,7 +267,7 @@ function OpenArmoryMenu(station)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory',
 	{
 		title    = _U('armory'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
@@ -298,12 +298,13 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 	local elements = {
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
+		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
 		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle', {
 		title    = _U('garage_title'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
@@ -389,7 +390,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_garage', {
 						title    = _U('garage_title'),
-						align    = 'top-left',
+						align    = 'right',
 						elements = garage
 					}, function(data2, menu2)
 						if data2.current.stored then
@@ -403,6 +404,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
+									table.insert(spawnedVehicles, vehicle)
 								end)
 							end
 						else
@@ -419,6 +421,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 		elseif data.current.action == 'store_garage' then
 			StoreNearbyVehicle(playerCoords)
+		elseif data.current.action == 'store_all_garage' then
+			StoreAllVehicles()
 		end
 
 	end, function(data, menu)
@@ -489,6 +493,33 @@ function StoreNearbyVehicle(playerCoords)
 	end, vehiclePlates)
 end
 
+function StoreAllVehicles()
+	local playerPed  = GetPlayerPed(-1)
+
+		local playerPed    = GetPlayerPed(-1)
+		local coords       = GetEntityCoords(playerPed)
+		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+
+		
+		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+			if valid then
+				--putaway(current, vehicleProps)
+				DeleteSpawnedVehicles()
+			else
+				ESX.ShowNotification(_U('garage_has_notstored_all'))
+			end
+		end)
+
+end
+
+function putaway(vehicle, vehicleProps)
+
+	ESX.Game.DeleteVehicle(vehicle)
+	--TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
+	ESX.ShowNotification(_U('garage_has_stored_all'))
+end
+
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
 	local spawnPoints = Config.PoliceStations[station][part][partNum].SpawnPoints
 	local found, foundSpawnPoint = false, nil
@@ -514,14 +545,14 @@ function OpenShopMenu(elements, restoreCoords, shopCoords)
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_shop', {
 		title    = _U('vehicleshop_title'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_shop_confirm',
 		{
 			title    = _U('vehicleshop_confirm', data.current.name, data.current.price),
-			align    = 'top-left',
+			align    = 'right',
 			elements = {
 				{ label = _U('confirm_no'), value = 'no' },
 				{ label = _U('confirm_yes'), value = 'yes' }
@@ -677,14 +708,21 @@ function OpenPoliceActionsMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'police_actions',
 	{
 		title    = 'Police',
-		align    = 'top-left',
+		align    = 'right',
 		elements = {
 			{label = _U('citizen_interaction'),	value = 'citizen_interaction'},
 			{label = _U('vehicle_interaction'),	value = 'vehicle_interaction'},
-			{label = _U('object_spawner'),		value = 'object_spawner'}
+			{label = _U('object_spawner'),		value = 'object_spawner'},
+			{label = "Jail Menu",               value = 'jail_menu'}
 		}
 	}, function(data, menu)
-
+		
+		if data.current.value == 'jail_menu' then
+			TriggerEvent("esx-qalle-jail:openJailMenu")
+		end
+		menu.close()
+		
+		
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
 				{label = _U('id_card'),			value = 'identity_card'},
@@ -694,8 +732,8 @@ function OpenPoliceActionsMenu()
 				{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
 				{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
 				{label = _U('fine'),			value = 'fine'},
-				{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
-                {label = _U('jail'),            value = 'jail'}
+				{label = _U('unpaid_bills'),	value = 'unpaid_bills'}
+                --{label = _U('jail'),            value = 'jail'}
 			}
 		
 			if Config.EnableLicenses then
@@ -706,7 +744,7 @@ function OpenPoliceActionsMenu()
 			'default', GetCurrentResourceName(), 'citizen_interaction',
 			{
 				title    = _U('citizen_interaction'),
-				align    = 'top-left',
+				align    = 'right',
 				elements = elements
 			}, function(data2, menu2)
 				local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
@@ -762,7 +800,7 @@ function OpenPoliceActionsMenu()
 			'default', GetCurrentResourceName(), 'vehicle_interaction',
 			{
 				title    = _U('vehicle_interaction'),
-				align    = 'top-left',
+				align    = 'right',
 				elements = elements
 			}, function(data2, menu2)
 				coords  = GetEntityCoords(playerPed)
@@ -833,7 +871,7 @@ function OpenPoliceActionsMenu()
 			'default', GetCurrentResourceName(), 'citizen_interaction',
 			{
 				title    = _U('traffic_interaction'),
-				align    = 'top-left',
+				align    = 'right',
 				elements = {
 					{label = _U('cone'),		value = 'prop_roadcone02a'},
 					{label = _U('barrier'),		value = 'prop_barrier_work05'},
@@ -874,9 +912,8 @@ end
 function OpenIdentityCardMenu(player)
 
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
-
 		local elements    = {}
-		local nameLabel   = _U('name', data.name)
+		local nameLabel   = _U('name', data.firstname .. ' ' .. data.lastname)
 		local jobLabel    = nil
 		local sexLabel    = nil
 		local dobLabel    = nil
@@ -952,7 +989,7 @@ function OpenIdentityCardMenu(player)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction',
 		{
 			title    = _U('citizen_interaction'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
 	
@@ -977,6 +1014,9 @@ function OpenBodySearchMenu(player)
                 amount   = data.money
             })
         end
+
+    -- UNCOMMENT TO DISPLAY BLACK_MONEY
+    --[==[
 		for i=1, #data.accounts, 1 do
 
             if data.accounts[i].name == 'black_money' and data.accounts[i].money >= 0 then
@@ -991,6 +1031,7 @@ function OpenBodySearchMenu(player)
             end
 
 		end
+    --]==]
 
 		table.insert(elements, {label = _U('guns_label'), value = nil})
 
@@ -1019,7 +1060,7 @@ function OpenBodySearchMenu(player)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'body_search',
 		{
 			title    = _U('search'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements,
 		},
 		function(data, menu)
@@ -1046,7 +1087,7 @@ function OpenFineMenu(player)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'fine',
 	{
 		title    = _U('fine'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = {
 			{label = _U('traffic_offense'), value = 0},
 			{label = _U('minor_offense'),   value = 1},
@@ -1079,7 +1120,7 @@ function OpenFineCategoryMenu(player, category)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'fine_category',
 		{
 			title    = _U('fine'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
 
@@ -1153,7 +1194,7 @@ function ShowPlayerLicense(player)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
 		{
 			title    = _U('license_revoke'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
 			ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
@@ -1185,7 +1226,7 @@ function OpenUnpaidBillsMenu(player)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'billing',
 		{
 			title    = _U('unpaid_bills'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 	
@@ -1212,7 +1253,7 @@ function OpenVehicleInfosMenu(vehicleData)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_infos',
 		{
 			title    = _U('vehicle_info'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, nil, function(data, menu)
 			menu.close()
@@ -1239,7 +1280,7 @@ function OpenGetWeaponMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory_get_weapon',
 		{
 			title    = _U('get_weapon_menu'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 
@@ -1275,7 +1316,7 @@ function OpenPutWeaponMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory_put_weapon',
 	{
 		title    = _U('put_weapon_menu'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
@@ -1356,7 +1397,7 @@ function OpenBuyWeaponsMenu()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory_buy_weapons', {
 		title    = _U('armory_weapontitle'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = elements
 	}, function(data, menu)
 
@@ -1389,7 +1430,7 @@ end
 function OpenWeaponComponentShop(components, weaponName, parentShop)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory_buy_weapons_components', {
 		title    = _U('armory_componenttitle'),
-		align    = 'top-left',
+		align    = 'right',
 		elements = components
 	}, function(data, menu)
 
@@ -1433,7 +1474,7 @@ function OpenGetStocksMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu',
 		{
 			title    = _U('police_stock'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 
@@ -1489,7 +1530,7 @@ function OpenPutStocksMenu()
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu',
 		{
 			title    = _U('inventory'),
-			align    = 'top-left',
+			align    = 'right',
 			elements = elements
 		}, function(data, menu)
 
@@ -2144,7 +2185,8 @@ AddEventHandler('esx_policejob:updateBlip', function()
 			for i=1, #players, 1 do
 				if players[i].job.name == 'police' then
 					local id = GetPlayerFromServerId(players[i].source)
-					if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= PlayerPedId() then
+					--NetworkIsPlayerActive(id) and
+					if GetPlayerPed(id) ~= PlayerPedId() then
 						createBlip(id)
 					end
 				end

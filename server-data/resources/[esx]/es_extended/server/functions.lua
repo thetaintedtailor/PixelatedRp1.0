@@ -99,7 +99,8 @@ ESX.SavePlayer = function(xPlayer, cb)
 	end)
 
 	Async.parallel(asyncTasks, function(results)
-		RconPrint('[SAVED] ' .. xPlayer.name .. "\n")
+        RconPrint('[' .. os.time() .. '] [SAVED] ' .. xPlayer.name .. "\n")
+		-- RconPrint('[SAVED] ' .. xPlayer.name .. "\n")
 
 		if cb ~= nil then
 			cb()
@@ -120,7 +121,8 @@ ESX.SavePlayers = function(cb)
 	end
 
 	Async.parallelLimit(asyncTasks, 8, function(results)
-		RconPrint('[SAVED] All players' .. "\n")
+        RconPrint('[' .. os.time() .. '] [SAVED] All players' .. "\n")
+		-- RconPrint('[SAVED] All players' .. "\n")
 
 		if cb ~= nil then
 			cb()

@@ -177,8 +177,8 @@ function GetMaxVals()
 		shoes_2			= GetNumberOfPedTextureVariations		(playerPed, 6, Character['shoes_1']) - 1,
 		mask_1			= GetNumberOfPedDrawableVariations		(playerPed, 1) - 1,
 		mask_2			= GetNumberOfPedTextureVariations		(playerPed, 1, Character['mask_1']) - 1,
-		bproof_1		= GetNumberOfPedDrawableVariations		(playerPed, 9) - 1,
-		bproof_2		= GetNumberOfPedTextureVariations		(playerPed, 9, Character['bproof_1']) - 1,
+		--bproof_1		= GetNumberOfPedDrawableVariations		(playerPed, 9) - 1,
+		--bproof_2		= GetNumberOfPedTextureVariations		(playerPed, 9, Character['bproof_1']) - 1,
 		chain_1			= GetNumberOfPedDrawableVariations		(playerPed, 7) - 1,
 		chain_2			= GetNumberOfPedTextureVariations		(playerPed, 7, Character['chain_1']) - 1,
 		bags_1			= GetNumberOfPedDrawableVariations		(playerPed, 5) - 1,
@@ -293,6 +293,7 @@ function ApplySkin(skin, clothes)
 	SetPedComponentVariation	(playerPed, 9,		Character['bproof_1'],			Character['bproof_2'], 2)					-- bulletproof
 	SetPedComponentVariation	(playerPed, 7,		Character['chain_1'],			Character['chain_2'], 2)					-- chain
 	SetPedComponentVariation	(playerPed, 5,		Character['bags_1'],			Character['bags_2'], 2)						-- Bag
+
 
 	if Character['helmet_1'] == -1 then
 		ClearPedProp(playerPed, 0)

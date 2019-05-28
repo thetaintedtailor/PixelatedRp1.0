@@ -44,7 +44,21 @@ VK.music.howl = new Howl({
     html5: true,
     volume: VK.music.volume || 1
 });
-VK.music.howl.play();
+var paused = false;
+
+window.addEventListener("keydown", function(e) {
+    if (event.keyCode === 32) {
+        if (!paused) {
+            VK.music.howl.pause();
+            paused = true;
+        } else {
+            VK.music.howl.play();
+            paused = false;
+        }
+    } else {
+        return;
+    }
+}, false);
 
 if (VK.music.title != "NONE") {
     document.querySelector(".music .title .label").innerHTML = VK.music.title;

@@ -143,7 +143,7 @@ function EnterProperty(name, owner)
 			RequestIpl(property.ipls[i])
 
 			while not IsIplActive(property.ipls[i]) do
-				Citizen.Wait(0)
+				Citizen.Wait(500)
 			end
 		end
 

@@ -55,7 +55,7 @@ function OpenAnimationsMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'animations_sub',
 	{
 		title    = "walking styles",
-		align    = 'top-left',
+		align    = 'left',
 		elements = elements
 	}, function(data, menu)
 		local type = data.current.type

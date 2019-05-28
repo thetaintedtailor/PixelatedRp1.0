@@ -67,7 +67,7 @@
 }
 
 .menu .head {
-	background-color: #506be6;
+	background-color: rgba(100,54,237, 0.9);
 	text-align: center;
 	height: 40px;
 	line-height: 40px;
@@ -81,14 +81,35 @@
 .menu .menu-items .menu-item {
 	height: 40px;
 	display: block;
-	background-color: #f1f1f1;
-	box-shadow: inset 1px 0px 0px 1px #b8b8b8;
+	background-color: rgba(31, 30, 43, 0.6);
+	box-shadow: inset 1px 0px 0px 1px rgba(31, 30, 43, 0.7);
 	height: 32px;
 	line-height: 32px;
-	color: #3A3A3A;
+	color: #fff;
 	text-align: center;
 }
 
 .menu .menu-items .menu-item.selected {
-	background-color: #d0d0d0;
+	background-color: rgb(76,74,98);
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: rgba(31, 30, 43, 0.3); 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: rgba(100,54,237, 0.9); 
+	border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }

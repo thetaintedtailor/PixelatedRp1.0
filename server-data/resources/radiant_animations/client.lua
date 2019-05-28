@@ -118,69 +118,36 @@ local handsUpButton				= 73 --- H by default -- use 73 for X
 local Keys = {["X"] = 73, ["Z"] = 20}
 
 
---- Function for radio chatter function
+local crouched = false
 Citizen.CreateThread( function()
+    while true do
+        Citizen.Wait( 10 )
 
-	while true do
-		Citizen.Wait(0)
-		-- if you use ESX Framework and want this to be a cop only thing then replace the line below this with the following:
-		if (PlayerData.job ~= nil and PlayerData.job.name == 'police') and (IsControlJustPressed(0,radioButton)) then
-		--if (IsControlJustPressed(0,radioButton))  then
-			local ped = PlayerPedId()
-			--TriggerEvent('chatMessage', 'TESTING ANIMATION')
-	
-			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
-				radioActive = true
-	
-				if radioActive then
-	
-					RequestAnimDict( "random@arrests" )
-	
-					while ( not HasAnimDictLoaded( "random@arrests" ) ) do 
-						Citizen.Wait( 100 )
-					end
-	
-					if IsEntityPlayingAnim(ped, "random@arrests", "generic_radio_chatter", 3) then
-						ClearPedSecondaryTask(ped)
-					else
-						TaskPlayAnim(ped, "random@arrests", "generic_radio_chatter", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
-						local prop_name = prop_name
-						local secondaryprop_name = secondaryprop_name
-						DetachEntity(prop, 1, 1)
-						DeleteObject(prop)
-						DetachEntity(secondaryprop, 1, 1)
-						DeleteObject(secondaryprop)
-						--SetPedCurrentWeaponVisible(ped, 0, 1, 1, 1)
-					end
-				end
-			end
-		end
-	end
-end)
-	
---- Broke this into two functions because it was bugging out for some reason.
-	
-Citizen.CreateThread( function()
-	
-	while true do
-		Citizen.Wait(0)
-		-- if you use ESX Framework and want this to be a cop only thing then replace the line below this with the following:
-		if (PlayerData.job ~= nil and PlayerData.job.name == 'police') and (IsControlJustReleased(0,57))  and (radioActive) then
-		--if (IsControlJustReleased(0,raisehandbutton))  and (radioActive) then
-			local ped = PlayerPedId()
-	
-			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
-				radioActive = false
-				ClearPedSecondaryTask(ped)
-				--SetPedCurrentWeaponVisible(ped, 1, 1, 1, 1)
-			end
-		end
+        local ped = GetPlayerPed( -1 )
 
-			
-	end
-	
-end)
+        if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
+            DisableControlAction( 0, 36, true ) -- INPUT_DUCK
 
+            if ( not IsPauseMenuActive() ) then
+                if ( IsDisabledControlJustPressed( 0, 36 ) ) then
+                    RequestAnimSet( "move_ped_crouched" )
+
+                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do
+                        Citizen.Wait( 100 )
+                    end
+
+                    if ( crouched == true ) then
+                        ResetPedMovementClipset( ped, 0 )
+                        crouched = false
+                    elseif ( crouched == false ) then
+                        SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
+                        crouched = true
+                    end
+                end
+            end
+        end
+    end
+end )
 
 Citizen.CreateThread( function()
 

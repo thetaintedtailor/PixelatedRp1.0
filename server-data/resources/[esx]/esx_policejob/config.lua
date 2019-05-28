@@ -5,7 +5,7 @@ Config.MarkerType                 = 1
 Config.MarkerSize                 = { x = 1.5, y = 1.5, z = 0.5 }
 Config.MarkerColor                = { r = 50, g = 50, b = 204 }
 
-Config.EnablePlayerManagement     = false
+Config.EnablePlayerManagement     = true
 Config.EnableArmoryManagement     = false
 Config.EnableESXIdentity          = false -- enable if you're using esx_identity
 Config.EnableNonFreemodePeds      = false -- turn this on if you want custom peds
@@ -14,7 +14,7 @@ Config.EnableLicenses             = false -- enable if you're using esx_license
 Config.EnableHandcuffTimer        = true -- enable handcuff timer? will unrestrain player after the time ends
 Config.HandcuffTimer              = 10 * 60000 -- 10 mins
 
-Config.EnableJobBlip              = false -- enable blips for colleagues, requires esx_society
+Config.EnableJobBlip              = true -- enable blips for colleagues, requires esx_society
 
 Config.MaxInService               = -1
 Config.Locale = 'en'
@@ -168,7 +168,6 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4',label = 'SFBC4', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1  },	
 	},
 
@@ -179,7 +178,6 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4',label = 'SFBC4', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1  },
 	},
 
@@ -190,7 +188,6 @@ Config.AuthorizedVehicles = {
 		{ model = 'police3', label = 'Police Interceptor', price = 1},
 		{ model = 'SFBC4',label = 'SFBC4', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
 		{ model = 'SFBC3', label = 'SFBC3', price = 1 },
 	},
 
@@ -203,12 +200,12 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'FIB SUV',price = 1},
-		{ model = '1200rt', label = '1200rt', price = 1 }
+		{ model = 'fbi2',  label = 'FIB SUV',price = 1},
 	},
 
 	boss = {
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		{ model = 'policeb', label = 'Police Bike', price = 1},
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
 		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
@@ -217,7 +214,6 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'FIB SUV',price = 1},
-		{ model = '1200rt', label = '1200rt', price = 1 }
 	}
 }
 

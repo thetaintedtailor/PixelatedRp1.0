@@ -12,7 +12,7 @@ if Config.MaxInService ~= -1 then
 	TriggerEvent('esx_service:activateService', 'mechanic', Config.MaxInService)
 end
 
---TriggerEvent('esx_phone:registerNumber', 'mechanic', _U('mechanic_customer'), true, true)
+TriggerEvent('esx_phone:registerNumber', 'mechanic', _U('mechanic_customer'), true, true)
 TriggerEvent('esx_society:registerSociety', 'mechanic', 'Mechanic', 'society_mechanic', 'society_mechanic', 'society_mehanic', {type = 'private'})
 
 local function Harvest(source)
@@ -219,9 +219,7 @@ AddEventHandler('esx_mecanojob:onNPCJobMissionCompleted', function()
 		total = total * 2
 	end
 
-	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-		account.addMoney(total)
-	end)
+	xPlayer.addMoney(total)
 
 	TriggerClientEvent("esx:showNotification", _source, _U('your_comp_earned').. total)
 end)
