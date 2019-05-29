@@ -306,7 +306,7 @@ Citizen.CreateThread( function()
         local street1 = GetStreetNameFromHashKey(s1)
         local street2 = GetStreetNameFromHashKey(s2)
 		if IsPedShooting(GetPlayerPed(-1)) then
-			if GetSelectedPedWeapon(ped) ~= GetHashKey("weapon_petrolcan") or GetSelectedPedWeapon(ped) ~= GetHashKey("WEAPON_STUNGUN") then
+			if GetSelectedPedWeapon(GetPlayerPed(-1)) ~= GetHashKey("weapon_petrolcan") or GetSelectedPedWeapon(GetPlayerPed(-1)) ~= GetHashKey("WEAPON_STUNGUN") then
 				print("alert being sent")
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
 				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
