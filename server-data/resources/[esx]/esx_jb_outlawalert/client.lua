@@ -307,7 +307,7 @@ Citizen.CreateThread( function()
 		local street2 = GetStreetNameFromHashKey(s2)
 		local playerPed = GetPlayerPed(-1)
 		if IsPedShooting(playerPed) then
-			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") then
+			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") and GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_PETROLCAN")  then
 				print("alert being sent")
 				print("ped weapon", GetSelectedPedWeapon(playerPed))
 				print("weapon hash", GetHashKey("WEAPON_STUNGUN"))
