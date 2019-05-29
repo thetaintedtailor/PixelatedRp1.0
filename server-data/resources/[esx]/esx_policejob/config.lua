@@ -80,7 +80,7 @@ Config.PoliceStations = {
 }
 
 Config.AuthorizedWeapons = {
-	recruit = {
+	cadet = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 0 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -90,12 +90,13 @@ Config.AuthorizedWeapons = {
 	officer = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
-	sergeant = {
+	deputy = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
@@ -104,7 +105,25 @@ Config.AuthorizedWeapons = {
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
-	intendent = {
+	senior_officer = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	corporal = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	sergeant = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
@@ -122,7 +141,43 @@ Config.AuthorizedWeapons = {
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
-	chef = {
+	captain = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	commander = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	deputy_sheriff = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	deputy_chief = {
+		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
+		{ weapon = 'WEAPON_STUNGUN', price = 1 },
+		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
+	},
+
+	sheriff = {
 		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
@@ -150,7 +205,7 @@ Config.AuthorizedVehicles = {
 		}
 	},
 
-	recruit = {
+	cadet = {
 
 	},
 
@@ -164,7 +219,70 @@ Config.AuthorizedVehicles = {
 		--{ model = 'policeb', label = 'Police Bike', price = 1},
 		{ model = '1200rt', label = '1200rt', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
 
+	deputy = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	senior_officer = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	corporal = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
 	},
 
 	sergeant = {
@@ -177,19 +295,13 @@ Config.AuthorizedVehicles = {
 		--{ model = 'policeb', label = 'Police Bike', price = 1},
 		{ model = '1200rt', label = '1200rt', price = 1 },
 		{ model = 'srt8police', label = 'srt8police', price = 1 },
-
-	},
-
-	intendent = {
-		--{model = 'policeold1',label = 'Caprice',price = 1},
-		--{model = 'police',label = 'Crown Victoria',price = 1},
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		--{ model = 'policeb', label = 'Police Bike', price = 1},
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
 	},
 
 	lieutenant = {
@@ -211,7 +323,83 @@ Config.AuthorizedVehicles = {
 		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
 	},
 
-	chef = {
+	captain = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	commander = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	deputy_sheriff = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	deputy_chief = {
+		--{model = 'policeold1',label = 'Caprice',price = 1},
+		--{model = 'police',label = 'Crown Victoria',price = 1},
+		{model = 'police2',label = 'Charger',price = 1},
+		{model = 'police3', label = 'Police Interceptor', price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
+		{ model = '2015polstang', label = 'Polstang', price = 1 },
+		--{ model = 'policeb', label = 'Police Bike', price = 1},
+		{ model = '1200rt', label = '1200rt', price = 1 },
+		{ model = 'srt8police', label = 'srt8police', price = 1 },
+		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
+		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
+		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
+		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
+		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
+		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+	},
+
+	sheriff = {
 		--{model = 'policeold1',label = 'Caprice',price = 1},
 		--{model = 'police',label = 'Crown Victoria',price = 1},
 		{model = 'police2',label = 'Charger',price = 1},
@@ -251,13 +439,59 @@ Config.AuthorizedVehicles = {
 }
 
 Config.AuthorizedHelicopters = {
-	recruit = {},
+	cadet = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
 
-	officer = {},
+	officer = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
 
-	sergeant = {},
+	deputy = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
 
-	intendent = {},
+	senior_officer = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	corporal = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	sergeant = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
 
 	lieutenant = {
 		{
@@ -268,7 +502,43 @@ Config.AuthorizedHelicopters = {
 		}
 	},
 
-	chef = {
+	captain = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	commander = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	deputy_sheriff = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	deputy_chief = {
+		{
+			model = 'polmav',
+			label = 'Police Maverick',
+			livery = 0,
+			price = 1
+		}
+	},
+
+	sheriff = {
 		{
 			model = 'polmav',
 			label = 'Police Maverick',
@@ -290,7 +560,7 @@ Config.AuthorizedHelicopters = {
 -- CHECK SKINCHANGER CLIENT MAIN.LUA for matching elements
 
 Config.Uniforms = {
-	recruit_wear = {
+	cadet_wear = {
 		male = {
 			['tshirt_1'] = 59,  ['tshirt_2'] = 1,
 			['torso_1'] = 55,   ['torso_2'] = 0,
@@ -338,6 +608,78 @@ Config.Uniforms = {
 			['ears_1'] = 2,     ['ears_2'] = 0
 		}
 	},
+	deputy_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	senior_officer_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	corporal_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
 	sergeant_wear = {
 		male = {
 			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
@@ -354,30 +696,6 @@ Config.Uniforms = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
 			['torso_1'] = 48,   ['torso_2'] = 0,
 			['decals_1'] = 7,   ['decals_2'] = 1,
-			['arms'] = 44,
-			['pants_1'] = 34,   ['pants_2'] = 0,
-			['shoes_1'] = 27,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
-		}
-	},
-	intendent_wear = {
-		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
-			['decals_1'] = 8,   ['decals_2'] = 2,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
-		},
-		female = {
-			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
-			['torso_1'] = 48,   ['torso_2'] = 0,
-			['decals_1'] = 7,   ['decals_2'] = 2,
 			['arms'] = 44,
 			['pants_1'] = 34,   ['pants_2'] = 0,
 			['shoes_1'] = 27,   ['shoes_2'] = 0,
@@ -410,11 +728,11 @@ Config.Uniforms = {
 			['ears_1'] = 2,     ['ears_2'] = 0
 		}
 	},
-	chef_wear = {
+	captain_wear = {
 		male = {
 			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
 			['torso_1'] = 55,   ['torso_2'] = 0,
-			['decals_1'] = 8,   ['decals_2'] = 3,
+			['decals_1'] = 0,   ['decals_2'] = 0,
 			['arms'] = 41,
 			['pants_1'] = 25,   ['pants_2'] = 0,
 			['shoes_1'] = 25,   ['shoes_2'] = 0,
@@ -425,7 +743,103 @@ Config.Uniforms = {
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
 			['torso_1'] = 48,   ['torso_2'] = 0,
-			['decals_1'] = 7,   ['decals_2'] = 3,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	commander_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	deputy_sheriff_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	deputy_chief_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 44,
+			['pants_1'] = 34,   ['pants_2'] = 0,
+			['shoes_1'] = 27,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		}
+	},
+	sheriff_wear = {
+		male = {
+			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['torso_1'] = 55,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 41,
+			['pants_1'] = 25,   ['pants_2'] = 0,
+			['shoes_1'] = 25,   ['shoes_2'] = 0,
+			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['chain_1'] = 0,    ['chain_2'] = 0,
+			['ears_1'] = 2,     ['ears_2'] = 0
+		},
+		female = {
+			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
+			['torso_1'] = 48,   ['torso_2'] = 0,
+			['decals_1'] = 0,   ['decals_2'] = 0,
 			['arms'] = 44,
 			['pants_1'] = 34,   ['pants_2'] = 0,
 			['shoes_1'] = 27,   ['shoes_2'] = 0,
