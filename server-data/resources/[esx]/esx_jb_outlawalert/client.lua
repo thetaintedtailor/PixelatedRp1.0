@@ -308,9 +308,6 @@ Citizen.CreateThread( function()
 		local playerPed = GetPlayerPed(-1)
 		if IsPedShooting(playerPed) then
 			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") and GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_PETROLCAN")  then
-				print("alert being sent")
-				print("ped weapon", GetSelectedPedWeapon(playerPed))
-				print("weapon hash", GetHashKey("WEAPON_STUNGUN"))
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
 				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
 				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
@@ -346,8 +343,6 @@ Citizen.CreateThread( function()
 					end)
 					Wait(3000)
 				end
-			else
-				print('no alert')
 			end
         end
     end
