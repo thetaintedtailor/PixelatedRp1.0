@@ -28,7 +28,7 @@ local meleeAlert = false --Set if show when player fight in melee
 local blipGunTime = 15 --in second
 local blipMeleeTime = 7 --in second
 local blipJackingTime = 10 -- in second
-local showcopsmisbehave = true  --show notification when cops steal too
+local showcopsmisbehave = false  --show notification when cops steal too
 --End config
 
 local timing = timer * 60000 --Don't touche it
@@ -305,41 +305,44 @@ Citizen.CreateThread( function()
         local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
         local street1 = GetStreetNameFromHashKey(s1)
         local street2 = GetStreetNameFromHashKey(s2)
-        if IsPedShooting(GetPlayerPed(-1)) then
-            DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-			if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
-			elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-					local sex = nil
-					if skin.sex == 0 then
-						sex = "male"
-					else
-						sex = "female"
-					end
-					TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
-					if s2 == 0 then
-						TriggerServerEvent('gunshotInProgressS1', street1, sex)
-					elseif s2 ~= 0 then
-						TriggerServerEvent("gunshotInProgress", street1, street2, sex)
-					end
-				end)
-				Wait(3000)
-			else
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-					local sex = nil
-					if skin.sex == 0 then
-						sex = "male"
-					else
-						sex = "female"
-					end
-					TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
-					if s2 == 0 then
-						TriggerServerEvent('gunshotInProgressS1', street1, sex)
-					elseif s2 ~= 0 then
-						TriggerServerEvent("gunshotInProgress", street1, street2, sex)
-					end
-				end)
-				Wait(3000)
+		if IsPedShooting(GetPlayerPed(-1)) then
+			if GetSelectedPedWeapon(ped) ~= GetHashKey("weapon_petrolcan") or GetSelectedPedWeapon(ped) ~= GetHashKey("WEAPON_STUNGUN") then
+				print("alert being sent")
+				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
+				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
+					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+						local sex = nil
+						if skin.sex == 0 then
+							sex = "male"
+						else
+							sex = "female"
+						end
+						TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
+						if s2 == 0 then
+							TriggerServerEvent('gunshotInProgressS1', street1, sex)
+						elseif s2 ~= 0 then
+							TriggerServerEvent("gunshotInProgress", street1, street2, sex)
+						end
+					end)
+					Wait(3000)
+				else
+					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+						local sex = nil
+						if skin.sex == 0 then
+							sex = "male"
+						else
+							sex = "female"
+						end
+						TriggerServerEvent('gunshotInProgressPos', plyPos.x, plyPos.y, plyPos.z)
+						if s2 == 0 then
+							TriggerServerEvent('gunshotInProgressS1', street1, sex)
+						elseif s2 ~= 0 then
+							TriggerServerEvent("gunshotInProgress", street1, street2, sex)
+						end
+					end)
+					Wait(3000)
+				end
 			end
         end
     end
