@@ -234,6 +234,15 @@ Config.DoorList = {
 		size = 2
 	},
 
+	-- Cell doors
+	{
+		objName = 'v_ilev_ph_cellgate',
+		objCoords  = {x = 1799.32, y = 2478.95, z = -122.70},
+		textCoords = {x = 1799.32, y = 2478.95, z = -122.70},
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
 	--
 	-- Addons
 	--
