@@ -20,9 +20,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	while true do
-		for k,v in pairs(vehicles) do 
-			SetVehicleModelIsSuppressed(v.hash, true)
-		end
+	for k,v in pairs(vehicles) do 
+		SetVehicleModelIsSuppressed(v.hash, true)
 	end
 end)
