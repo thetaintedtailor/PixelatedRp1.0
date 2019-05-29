@@ -304,10 +304,13 @@ Citizen.CreateThread( function()
         local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
         local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
         local street1 = GetStreetNameFromHashKey(s1)
-        local street2 = GetStreetNameFromHashKey(s2)
-		if IsPedShooting(GetPlayerPed(-1)) then
-			if GetSelectedPedWeapon(GetPlayerPed(-1)) ~= GetHashKey("weapon_petrolcan") or GetSelectedPedWeapon(GetPlayerPed(-1)) ~= GetHashKey("WEAPON_STUNGUN") then
+		local street2 = GetStreetNameFromHashKey(s2)
+		local playerPed = GetPlayerPed(-1)
+		if IsPedShooting(playerPed) then
+			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") then
 				print("alert being sent")
+				print("ped weapon", GetSelectedPedWeapon(playerPed))
+				print("weapon hash", GetHashKey("WEAPON_STUNGUN"))
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
 				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
 				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
