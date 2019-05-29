@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/smug-dancin.mp3',
+    'music/subfocus_lastjungle.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
