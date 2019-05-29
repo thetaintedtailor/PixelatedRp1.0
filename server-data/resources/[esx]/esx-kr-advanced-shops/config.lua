@@ -4,7 +4,7 @@ Config.Locale = 'en'
 Config.DeliveryTime = 15 -- IN SECOUNDS DEFAULT (18000) IS 5 HOURS / 300 MINUTES
 Config.TimeBetweenRobberies = 14400
 Config.CutOnRobbery = 15 -- IN PERCENTAGE FROM THE TARGET SHOP
-Config.RequiredPolices = 1 -- For the robbery
+Config.RequiredPolices = 0 -- For the robbery
 Config.SellValue = 1 -- This is the shops value divided by 2
 Config.ChangeNamePrice = 5000 -- In $ - how much you can change the shops name for
 
