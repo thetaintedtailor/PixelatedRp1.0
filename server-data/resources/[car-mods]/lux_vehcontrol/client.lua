@@ -401,7 +401,7 @@ Citizen.CreateThread(function()
 						DisableControlAction(0, 82, true) -- INPUT_VEH_PREV_RADIO
 						DisableControlAction(0, 19, true) -- INPUT_CHARACTER_WHEEL 
 						DisableControlAction(0, 85, true) -- INPUT_VEH_RADIO_WHEEL 
-						DisableControlAction(0, 80, true) -- INPUT_VEH_CIN_CAM 
+						--DisableControlAction(0, 80, true) -- INPUT_VEH_CIN_CAM 
 					
 						SetVehRadioStation(veh, "OFF")
 						SetVehicleRadioEnabled(veh, false)
@@ -483,7 +483,7 @@ Citizen.CreateThread(function()
 							
 							-- BROWSE LX SRN TONES
 							if state_lxsiren[veh] > 0 then
-								if IsDisabledControlJustReleased(0, 80) then
+								if IsDisabledControlJustReleased(0, 157) then
 								--or IsDisabledControlJustReleased(0, 81)
 									if IsVehicleSirenOn(veh) then
 										local cstate = state_lxsiren[veh]
@@ -504,7 +504,7 @@ Citizen.CreateThread(function()
 										
 							-- MANU
 							if state_lxsiren[veh] < 1 then
-								if IsDisabledControlPressed(0, 80) then
+								if IsDisabledControlPressed(0, 157) then
 								--or IsDisabledControlPressed(0, 81) 
 									actv_manu = true
 								else
