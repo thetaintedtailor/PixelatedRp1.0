@@ -849,7 +849,7 @@ function Robbery(id)
                         y = coords1[id].y,
                         z = coords1[id].z - 1,
 					}
-						TriggerServerEvent('esx_phone:send', "police", "Shop robbery at the " .. result.name .. '\'s shop', true, coords)
+						TriggerServerEvent('esx_addons_gcphone:startCall', "police", "Shop robbery at " .. result.name .. '!', coords)
 						TriggerServerEvent('esx_kr_shops-robbery:NotifyOwner', "~r~Your store ~b~(" .. result.name .. ')~r~ is being robbed!', id)
 						
 						ESX.Game.SpawnObject(1089807209, coords, function(safe)
