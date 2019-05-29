@@ -804,7 +804,7 @@ function OpenPoliceActionsMenu()
 				elements = elements
 			}, function(data2, menu2)
 				coords  = GetEntityCoords(playerPed)
-				vehicle = GetClosestVehicle(pos.x, pos.y, pos.z, 5.0, 0, 71)
+				vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
 				action  = data2.current.value
 				
 				if action == 'search_database' then
