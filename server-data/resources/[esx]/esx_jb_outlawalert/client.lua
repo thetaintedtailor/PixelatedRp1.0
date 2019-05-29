@@ -346,6 +346,8 @@ Citizen.CreateThread( function()
 					end)
 					Wait(3000)
 				end
+			else
+				print('no alert')
 			end
         end
     end
