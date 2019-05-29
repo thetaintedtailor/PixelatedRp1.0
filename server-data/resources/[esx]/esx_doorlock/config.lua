@@ -240,21 +240,24 @@ Config.DoorList = {
 		objCoords  = {x = 1798.450, y=2479.150, z = -122.540},
 		textCoords = {x = 1799.61, y=2479.150, z = -122.540},
 		authorizedJobs = { 'police' },
-		locked = true
+		locked = true,
+		distance = 4
 	},
 	{
 		objName = 'Prop_LD_jail_door',
 		objCoords  = {x=1795.290, y=2479.180, z=-122.550},
-		textCoords = {x=1795.290, y=2479.180, z=-122.550},
+		textCoords = {x=1796.340, y=2479.160, z=-122.550},
 		authorizedJobs = { 'police' },
-		locked = true
+		locked = true,
+		distance = 4
 	},
 	{
 		objName = 'Prop_LD_jail_door',
 		objCoords  = {x=1792.130, y=2479.210, z=-122.550},
-		textCoords = {x=1792.130, y=2479.210, z=-122.550},
+		textCoords = {x=1793.290, y=2479.170, z=-122.550},
 		authorizedJobs = { 'police' },
-		locked = true
+		locked = true,
+		distance = 4
 	},
 
 
