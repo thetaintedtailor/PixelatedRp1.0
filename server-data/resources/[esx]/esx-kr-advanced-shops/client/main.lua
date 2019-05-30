@@ -161,11 +161,11 @@ Citizen.CreateThread(function ()
 										result = result,
 										owner = Owner,
 									})
+									DisableControlAction(0,Keys['E'],true)
 								end
 			
 							end, number)
 						end, number)
-						citizen.wait(500)
 					elseif ShopId >= 100 then
 						Robbery(number - 100)
 					end
