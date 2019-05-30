@@ -165,7 +165,7 @@ Citizen.CreateThread(function ()
 			
 							end, number)
 						end, number)
-						citizen.wait(5000)
+						citizen.wait(500)
 					elseif ShopId >= 100 then
 						Robbery(number - 100)
 					end
