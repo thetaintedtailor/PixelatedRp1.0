@@ -139,6 +139,7 @@ Citizen.CreateThread(function ()
 			DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 
 				if IsControlJustReleased(0, Keys['E']) then
+					DisableControlAction(0,Keys['E'],true) 
 
 					if ShopId == 'center' then
 						OpenShopCenter()
@@ -161,9 +162,7 @@ Citizen.CreateThread(function ()
 										result = result,
 										owner = Owner,
 									})
-									DisableControlAction(0,Keys['E'],true)
-								end
-			
+								end 
 							end, number)
 						end, number)
 					elseif ShopId >= 100 then
