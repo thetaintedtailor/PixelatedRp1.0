@@ -532,7 +532,9 @@ function TakeItem(number)
   {
 	title    = 'Shop',
 	align    = 'left',
-	elements = elements
+	elements = elements,
+	min      = 1,
+	max      = item.limit
   },
   function(data, menu)
 local name = data.current.ItemName

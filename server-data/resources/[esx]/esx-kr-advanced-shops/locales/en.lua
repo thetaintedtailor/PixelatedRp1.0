@@ -7,4 +7,5 @@ Locales['en'] = {
 	['robbery_cancel'] = '~r~The robbery was canceled (you went too far)',
 	['set_price'] = 'Set price on what you want to sell.',
 	['how_much'] = 'How much whould you like to sell?',
+	['player_cannot_hold'] = 'You don\'t have enough room for this item',
 }

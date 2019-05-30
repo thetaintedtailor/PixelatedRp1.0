@@ -142,18 +142,20 @@ AddEventHandler('esx_kr_shops:Buy', function(id, Item, ItemCount)
             ['@Number'] = id,
             ['@item'] = Item,
         }, function(result)
+            
 
-    
         MySQL.Async.fetchAll(
         'SELECT * FROM owned_shops WHERE ShopNumber = @Number',
         {
             ['@Number'] = id,
         }, function(result2)
-
+            local sourceItem = xPlayer.getInventoryItem(Item)
             if xPlayer.getMoney() < ItemCount * result[1].price then
                 TriggerClientEvent('esx:showNotification', src, '~r~You don\'t have enough money.')
             elseif ItemCount <= 0 then
                 TriggerClientEvent('esx:showNotification', src, '~r~invalid quantity.')
+            elseif sourceItem.limit ~= -1 and (sourceItem.count + itemCount) > sourceItem.limit then
+                TriggerClientEvent('esx:showNotification', _source, _U('player_cannot_hold'))
             else
                 xPlayer.removeMoney(ItemCount * result[1].price)
                 TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~You bought ' .. ItemCount .. ' x ' .. Item .. ' for $' .. ItemCount * result[1].price)
@@ -180,7 +182,7 @@ AddEventHandler('esx_kr_shops:Buy', function(id, Item, ItemCount)
                         ['@name'] = result[1].item
                     })
                 end
-            end
+            end 
         end)
     end)
 end)
