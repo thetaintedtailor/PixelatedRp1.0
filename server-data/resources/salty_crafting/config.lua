@@ -41,38 +41,43 @@ Config.Recipes = {
 	['WEAPON_CARBINERIFLE'] = { 
 		{item = "upper", quantity = 1}, 
 		{item = "lower", quantity = 1},
-		{item = "barrel", quantity = 1},
+		{item = "arbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
 	},
 
 	['WEAPON_PUMPSHOTGUN'] = { 
 		{item = "shotgunbody", quantity = 1},
 		{item = "choke", quantity = 1},
-		{item = "barrel", quantity = 1},
+		{item = "shotgunbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
 	},
 
 	['WEAPON_APPISTOL'] = { 
 		{item = "apbody", quantity = 1},
-		{item = "barrel", quantity = 1},
+		{item = "pistolbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
 	},
 
 	['WEAPON_MICROSMG'] = { 
 		{item = "smgbody", quantity = 1},
-		{item = "barrel", quantity = 1},
+		{item = "smgbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
 	},
 
 	['WEAPON_PISTOL'] = { 
 		{item = "pistolbody", quantity = 1},
-		{item = "barrel", quantity = 1},
+		{item = "pistolbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
 	},
 }
 

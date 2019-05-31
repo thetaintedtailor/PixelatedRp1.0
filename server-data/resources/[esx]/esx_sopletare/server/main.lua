@@ -15,7 +15,7 @@ AddEventHandler('esx_sopletare:getItem', function()
             'bionictrigger',
             'shotgunbody',
             'firingpin',
-            'barrel',
+            'arbarrel',
             'bobbypen',
             'brass',
             'burger',
@@ -45,6 +45,11 @@ AddEventHandler('esx_sopletare:getItem', function()
             'meth_pooch',
             'scratchoff',
             'wool',
+            'spring',
+            'shotgunbarrel',
+            'pistolbarrel',
+            'smgbarrel',
+            
 
         }
 
