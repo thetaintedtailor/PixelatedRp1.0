@@ -162,4 +162,9 @@ files {
     'html/img/items/morphine.png',
     'html/img/items/shotgunbody.png',
     'html/img/items/firingpin.png',
+    'html/img/items/arbarrel.png',
+    'html/img/items/shotgunbarrel.png',
+    'html/img/items/pistolbarrel.png',
+    'html/img/items/smgbarrel.png',
+    'html/img/items/spring.png',
 }
