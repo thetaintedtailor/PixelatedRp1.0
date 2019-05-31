@@ -160,4 +160,6 @@ files {
     'html/img/items/medicaltape.png',
     'html/img/items/gauze.png',
     'html/img/items/morphine.png',
+    'html/img/items/shotgunbody.png',
+    'html/img/items/firingpin.png',
 }

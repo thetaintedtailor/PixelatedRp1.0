@@ -18,7 +18,7 @@ Config.Recipes = {
 	},
 
 	["clip"] = { 
-		{item = "gunpowder", quantity = 4 }, 
+		{item = "gunpowder", quantity = 1 }, 
 		{item = "brass", quantity = 1 },
 	},
 
@@ -43,29 +43,36 @@ Config.Recipes = {
 		{item = "lower", quantity = 1},
 		{item = "barrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
 	},
 
 	['WEAPON_PUMPSHOTGUN'] = { 
+		{item = "shotgunbody", quantity = 1},
 		{item = "choke", quantity = 1},
 		{item = "barrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
 	},
 
 	['WEAPON_APPISTOL'] = { 
 		{item = "apbody", quantity = 1},
 		{item = "barrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
 	},
 
 	['WEAPON_MICROSMG'] = { 
 		{item = "smgbody", quantity = 1},
 		{item = "barrel", quantity = 1},
-		{item = "bionictrigger", quantity = 1}, 
+		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
 	},
 
 	['WEAPON_PISTOL'] = { 
 		{item = "pistolbody", quantity = 1},
 		{item = "barrel", quantity = 1},
+		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
 	},
 }
 

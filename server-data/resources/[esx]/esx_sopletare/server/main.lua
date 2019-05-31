@@ -13,6 +13,8 @@ AddEventHandler('esx_sopletare:getItem', function()
 
         local items = { -- add whatever items you want here
             'bionictrigger',
+            'shotgunbody',
+            'firingpin',
             'barrel',
             'bobbypen',
             'brass',
