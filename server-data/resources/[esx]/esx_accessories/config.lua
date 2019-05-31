@@ -23,7 +23,7 @@ Config.ShopsBlips = {
 		Pos = { 
 			{ x = -1338.129, y = -1278.200, z = 3.872 },
 		},
-		Blip = { sprite = 362, color = 2 }
+		Blip = { sprite = 362, color = 64 }
 	},
 	Helmet = {
 		Pos = nil,

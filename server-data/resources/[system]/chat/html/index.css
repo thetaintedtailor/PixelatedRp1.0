@@ -38,6 +38,7 @@ em {
   max-width: 1000px;
   background-color: rgba(52, 73, 94, 0.7);
   -webkit-animation-duration: 2s;
+  z-index: -1;
 }
 
 

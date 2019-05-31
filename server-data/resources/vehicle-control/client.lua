@@ -2,7 +2,6 @@
 interactionDistance = 3.5 --The radius you have to be in to interact with the vehicle.
 
 --  V A R I A B L E S --
-engineoff = false
 saved = false
 controlsave_bool = false
 windowsUp = true

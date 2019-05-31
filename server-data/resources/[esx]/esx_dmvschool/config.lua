@@ -1,7 +1,7 @@
 Config                 = {}
 Config.DrawDistance    = 100.0
 Config.MaxErrors       = 5
-Config.SpeedMultiplier = 3.6
+Config.SpeedMultiplier = 2.236936
 Config.Locale = 'en'
 
 Config.Prices = {
@@ -18,9 +18,9 @@ Config.VehicleModels = {
 }
 
 Config.SpeedLimits = {
-	residence = 50,
-	town      = 80,
-	freeway   = 120
+	residence = 30,
+	town      = 50,
+	freeway   = 75
 }
 
 Config.Zones = {

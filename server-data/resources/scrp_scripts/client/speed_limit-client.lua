@@ -49,6 +49,8 @@ Citizen.CreateThread(function()
 		else
 			resetSpeedOnEnter = true
 		end
+
+		
 	end
 end)
 

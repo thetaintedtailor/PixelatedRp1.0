@@ -439,7 +439,7 @@ function OpenMobileMecanoActionsMenu()
 			local vehicle = GetVehiclePedIsIn(playerPed, false)
 
 			if GetPedInVehicleSeat(vehicle, -1) == playerPed then
-				ESX.ShowNotification(_U('vehicle_impounded'))
+				ESX.ShowNotification(_U('vehicle_impounded')) 
 				ESX.Game.DeleteVehicle(vehicle)
 			else
 				ESX.ShowNotification(_U('must_seat_driver'))

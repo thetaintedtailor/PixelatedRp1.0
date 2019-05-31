@@ -87,18 +87,30 @@ function OpenCloakroomMenu()
 		{ label = _U('gilet_wear'), value = 'gilet_wear' }
 	}
 
-	if grade == 'recruit' then
-		table.insert(elements, {label = _U('police_wear'), value = 'recruit_wear'})
+	if grade == 'cadet' then
+		table.insert(elements, {label = _U('police_wear'), value = 'cadet_wear'})
 	elseif grade == 'officer' then
 		table.insert(elements, {label = _U('police_wear'), value = 'officer_wear'})
+	elseif grade == 'deputy' then
+		table.insert(elements, {label = _U('police_wear'), value = 'deputy_wear'})
+	elseif grade == 'senior_officer' then
+		table.insert(elements, {label = _U('police_wear'), value = 'senior_officer_wear'})
+	elseif grade == 'corporal' then
+		table.insert(elements, {label = _U('police_wear'), value = 'corporal_wear'})
 	elseif grade == 'sergeant' then
 		table.insert(elements, {label = _U('police_wear'), value = 'sergeant_wear'})
-	elseif grade == 'intendent' then
-		table.insert(elements, {label = _U('police_wear'), value = 'intendent_wear'})
 	elseif grade == 'lieutenant' then
 		table.insert(elements, {label = _U('police_wear'), value = 'lieutenant_wear'})
-	elseif grade == 'chef' then
-		table.insert(elements, {label = _U('police_wear'), value = 'chef_wear'})
+	elseif grade == 'captain' then
+		table.insert(elements, {label = _U('police_wear'), value = 'captain_wear'})
+	elseif grade == 'commander' then
+		table.insert(elements, {label = _U('police_wear'), value = 'commander_wear'})
+	elseif grade == 'deputy_sheriff' then
+		table.insert(elements, {label = _U('police_wear'), value = 'deputy_sheriff_wear'})
+	elseif grade == 'deputy_chief' then
+		table.insert(elements, {label = _U('police_wear'), value = 'deputy_chief_wear'})
+	elseif grade == 'sheriff' then
+		table.insert(elements, {label = _U('police_wear'), value = 'sheriff_wear'})
 	elseif grade == 'boss' then
 		table.insert(elements, {label = _U('police_wear'), value = 'boss_wear'})
 	end
@@ -208,12 +220,18 @@ function OpenCloakroomMenu()
 		end
 
 		if
-			data.current.value == 'recruit_wear' or
+			data.current.value == 'cadet_wear' or
 			data.current.value == 'officer_wear' or
+			data.current.value == 'deputy_wear' or
+			data.current.value == 'senior_officer_wear' or
+			data.current.value == 'corporal_wear' or
 			data.current.value == 'sergeant_wear' or
-			data.current.value == 'intendent_wear' or
 			data.current.value == 'lieutenant_wear' or
-			data.current.value == 'chef_wear' or
+			data.current.value == 'captain_wear' or
+			data.current.value == 'commander_wear' or
+			data.current.value == 'deputy_sheriff_wear' or
+			data.current.value == 'deputy_chief_wear' or
+			data.current.value == 'sheriff_wear' or
 			data.current.value == 'boss_wear' or
 			data.current.value == 'bullet_wear' or
 			data.current.value == 'gilet_wear'
@@ -804,7 +822,7 @@ function OpenPoliceActionsMenu()
 				elements = elements
 			}, function(data2, menu2)
 				coords  = GetEntityCoords(playerPed)
-				vehicle = ESX.Game.GetVehicleInDirection()
+				vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
 				action  = data2.current.value
 				
 				if action == 'search_database' then
@@ -2240,9 +2258,6 @@ function StartHandcuffTimer()
 	end)
 end
 
--- TODO
---   - return to garage if owned
---   - message owner that his vehicle has been impounded
 function ImpoundVehicle(vehicle)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
 	ESX.Game.DeleteVehicle(vehicle) 

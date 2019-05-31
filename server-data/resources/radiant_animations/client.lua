@@ -115,78 +115,45 @@
 local radioActive 				= false
 local radioButton				= 244 --- U by default  -- use 57 for f10
 local handsUpButton				= 73 --- H by default -- use 73 for X
-local Keys = {["X"] = 73, ["Z"] = 20}
+local Keys = {["X"] = 73, ["Z"] = 20, ["SHIFT"] = 209}
 
 
---- Function for radio chatter function
+local crouched = false
 Citizen.CreateThread( function()
+    while true do
+        Citizen.Wait( 10 )
 
-	while true do
-		Citizen.Wait(0)
-		-- if you use ESX Framework and want this to be a cop only thing then replace the line below this with the following:
-		if (PlayerData.job ~= nil and PlayerData.job.name == 'police') and (IsControlJustPressed(0,radioButton)) then
-		--if (IsControlJustPressed(0,radioButton))  then
-			local ped = PlayerPedId()
-			--TriggerEvent('chatMessage', 'TESTING ANIMATION')
-	
-			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
-				radioActive = true
-	
-				if radioActive then
-	
-					RequestAnimDict( "random@arrests" )
-	
-					while ( not HasAnimDictLoaded( "random@arrests" ) ) do 
-						Citizen.Wait( 100 )
-					end
-	
-					if IsEntityPlayingAnim(ped, "random@arrests", "generic_radio_chatter", 3) then
-						ClearPedSecondaryTask(ped)
-					else
-						TaskPlayAnim(ped, "random@arrests", "generic_radio_chatter", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
-						local prop_name = prop_name
-						local secondaryprop_name = secondaryprop_name
-						DetachEntity(prop, 1, 1)
-						DeleteObject(prop)
-						DetachEntity(secondaryprop, 1, 1)
-						DeleteObject(secondaryprop)
-						--SetPedCurrentWeaponVisible(ped, 0, 1, 1, 1)
-					end
-				end
-			end
-		end
-	end
-end)
-	
---- Broke this into two functions because it was bugging out for some reason.
-	
-Citizen.CreateThread( function()
-	
-	while true do
-		Citizen.Wait(0)
-		-- if you use ESX Framework and want this to be a cop only thing then replace the line below this with the following:
-		if (PlayerData.job ~= nil and PlayerData.job.name == 'police') and (IsControlJustReleased(0,57))  and (radioActive) then
-		--if (IsControlJustReleased(0,raisehandbutton))  and (radioActive) then
-			local ped = PlayerPedId()
-	
-			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
-				radioActive = false
-				ClearPedSecondaryTask(ped)
-				--SetPedCurrentWeaponVisible(ped, 1, 1, 1, 1)
-			end
-		end
+        local ped = GetPlayerPed( -1 )
 
-			
-	end
-	
-end)
+        if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
+            DisableControlAction( 0, 36, true ) -- INPUT_DUCK
 
+            if ( not IsPauseMenuActive() ) then
+                if ( IsDisabledControlJustPressed( 0, 36 ) ) then
+                    RequestAnimSet( "move_ped_crouched" )
+
+                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do
+                        Citizen.Wait( 100 )
+                    end
+
+                    if ( crouched == true ) then
+                        ResetPedMovementClipset( ped, 0 )
+                        crouched = false
+                    elseif ( crouched == false ) then
+                        SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
+                        crouched = true
+                    end
+                end
+            end
+        end
+    end
+end )
 
 Citizen.CreateThread( function()
 
 	while true do
 		Citizen.Wait(0)
-		if (IsControlJustPressed(0,handsUpButton)) and GetLastInputMethod(2) then
+		if (IsControlJustPressed(0,handsUpButton)) and not IsControlPressed(0, Keys['SHIFT']) and GetLastInputMethod(2) then
 			local ped = PlayerPedId()
 	
 			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
@@ -209,6 +176,44 @@ Citizen.CreateThread( function()
 					DeleteObject(secondaryprop)
 				end
 			end
+
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, handsUpButton) then
+			local player = PlayerPedId()
+			local surrendered = false
+			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
+				loadAnimDict( "random@arrests" )
+				loadAnimDict( "random@arrests@busted" )
+
+				if ( IsEntityPlayingAnim( player, "random@arrests@busted", "idle_a", 3 ) ) then 
+					TaskPlayAnim( player, "random@arrests@busted", "exit", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (3000)
+					TaskPlayAnim( player, "random@arrests", "kneeling_arrest_get_up", 8.0, 1.0, -1, 128, 0, 0, 0, 0 )
+					surrendered = false
+				else
+					ClearPedTasks(player)
+					TaskPlayAnim( player, "random@arrests", "idle_2_hands_up", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (4000)
+					TaskPlayAnim( player, "random@arrests", "kneeling_arrest_idle", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (500)
+					TaskPlayAnim( player, "random@arrests@busted", "enter", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (1000)
+					TaskPlayAnim( player, "random@arrests@busted", "idle_a", 8.0, 1.0, -1, 9, 0, 0, 0, 0 )
+					Wait(100)
+					surrendered = true
+				end     
+			end
+
+			Citizen.CreateThread(function() --disabling controls while surrendured
+				while surrendered do
+					Citizen.Wait(0)
+					if IsEntityPlayingAnim(GetPlayerPed(PlayerId()), "random@arrests@busted", "idle_a", 3) then
+						DisableControlAction(1, 140, true)
+						DisableControlAction(1, 141, true)
+						DisableControlAction(1, 142, true)
+						DisableControlAction(0,21,true)
+					end
+				end
+			end)
 		end
 	end
 end)
@@ -787,7 +792,7 @@ RegisterCommand("e",function(source, args)
 					end       
 				end
 				
-			elseif argh == 'copidle' then
+			elseif argh == 'cop' then
 				local ad = "amb@code_human_wander_idles_cop@male@static" --- insert the animation dic here
 				local anim = "static" --- insert the animation name here
 				local player = PlayerPedId()
@@ -1342,6 +1347,11 @@ RegisterCommand("e",function(source, args)
 	end
 end, false)
 
+
+
+
+
+
 ----Use /testanimation command, you can use this to easily test new animations---
 
 RegisterCommand("testanim",function(source, args)
@@ -1411,6 +1421,5 @@ Citizen.CreateThread(function()
 			DetachEntity(secondaryprop, 1, 1)
 			DeleteObject(secondaryprop)
 		end
-
 	end
 end)

@@ -29,7 +29,7 @@ function OpenAccessoryMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'set_unset_accessory',
 	{
 		title = _U('set_unset'),
-		align = 'top-left',
+		align = 'left',
 		elements = {
 			{label = _U('helmet'), value = 'Helmet'},
 			{label = _U('ears'), value = 'Ears'},
@@ -88,7 +88,7 @@ function OpenShopMenu(accessory)
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm',
 		{
 			title = _U('valid_purchase'),
-			align = 'top-left',
+			align = 'left',
 			elements = {
 				{label = _U('no'), value = 'no'},
 				{label = _U('yes', ESX.Math.GroupDigits(Config.Price)), value = 'yes'}

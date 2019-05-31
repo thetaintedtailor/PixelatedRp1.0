@@ -9,78 +9,102 @@ Config.EnableBlips = false -- for some reason ATM blips are extremly buggy and w
 
 Config.ATMLocations = {
 	{ ['x'] = -386.733,  ['y'] = 6045.953,  ['z'] = 31.501},
-	{ ['x'] = -110.753,  ['y'] = 6467.703,  ['z'] = 31.784},
-	{ ['x'] = 155.4300,  ['y'] = 6641.991,  ['z'] = 31.784},
-	{ ['x'] = 174.6720,  ['y'] = 6637.218,  ['z'] = 31.784},
-	{ ['x'] = 1703.138,  ['y'] = 6426.783,  ['z'] = 32.730},
-	{ ['x'] = 1735.114,  ['y'] = 6411.035,  ['z'] = 35.164},
-	{ ['x'] = 1702.842,  ['y'] = 4933.593,  ['z'] = 42.051},
-	{ ['x'] = 1967.333,  ['y'] = 3744.293,  ['z'] = 32.272},
-	{ ['x'] = 1174.532,  ['y'] = 2705.278,  ['z'] = 38.027},
-	{ ['x'] = 2564.399,  ['y'] = 2585.100,  ['z'] = 38.016},
-	{ ['x'] = 2558.683,  ['y'] = 349.6010,  ['z'] = 108.050},
-	{ ['x'] = 2558.051,  ['y'] = 389.4817,  ['z'] = 108.660},
-	{ ['x'] = 1077.692,  ['y'] = -775.796,  ['z'] = 58.218},
-	{ ['x'] = 1139.018,  ['y'] = -469.886,  ['z'] = 66.789},
-	{ ['x'] = 1168.975,  ['y'] = -457.241,  ['z'] = 66.641},
-	{ ['x'] = 1153.884,  ['y'] = -326.540,  ['z'] = 69.245},
-	{ ['x'] = 236.4638,  ['y'] = 217.4718,  ['z'] = 106.840},
-	{ ['x'] = 265.0043,  ['y'] = 212.1717,  ['z'] = 106.780},
-	{ ['x'] = -164.568,  ['y'] = 233.5066,  ['z'] = 94.919},
-	{ ['x'] = -1827.04,  ['y'] = 785.5159,  ['z'] = 138.020},
-	{ ['x'] = -1409.39,  ['y'] = -99.2603,  ['z'] = 52.473},
-	{ ['x'] = -1215.64,  ['y'] = -332.231,  ['z'] = 37.881},
-	{ ['x'] = -2072.41,  ['y'] = -316.959,  ['z'] = 13.345},
-	{ ['x'] = -2975.72,  ['y'] = 379.7737,  ['z'] = 14.992},
-	{ ['x'] = -2962.60,  ['y'] = 482.1914,  ['z'] = 15.762},
-	{ ['x'] = -3144.13,  ['y'] = 1127.415,  ['z'] = 20.868},
-	{ ['x'] = -1305.40,  ['y'] = -706.240,  ['z'] = 25.352},
-	{ ['x'] = -717.614,  ['y'] = -915.880,  ['z'] = 19.268},
-	{ ['x'] = -526.566,  ['y'] = -1222.90,  ['z'] = 18.434},
-	{ ['x'] = 149.4551,  ['y'] = -1038.95,  ['z'] = 29.366},
-	{ ['x'] = -846.304,  ['y'] = -340.402,  ['z'] = 38.687},
-	{ ['x'] = -1216.27,  ['y'] = -331.461,  ['z'] = 37.773},
-	{ ['x'] = -56.1935,  ['y'] = -1752.53,  ['z'] = 29.452},
-	{ ['x'] = -273.001,  ['y'] = -2025.60,  ['z'] = 30.197},
-	{ ['x'] = 314.187,   ['y'] = -278.621,  ['z'] = 54.170},
-	{ ['x'] = -351.534,  ['y'] = -49.529,   ['z'] = 49.042},
-	{ ['x'] = -1570.197, ['y'] = -546.651,  ['z'] = 34.955},
-	{ ['x'] = 33.232,    ['y'] = -1347.849, ['z'] = 29.497},
-	{ ['x'] = 129.216,   ['y'] = -1292.347, ['z'] = 29.269},
-	{ ['x'] = 289.012,   ['y'] = -1256.545, ['z'] = 29.440},
-	{ ['x'] = 1686.753,  ['y'] = 4815.809,  ['z'] = 42.008},
-	{ ['x'] = -302.408,  ['y'] = -829.945,  ['z'] = 32.417},
-	{ ['x'] = 5.134,     ['y'] = -919.949,  ['z'] = 29.557},
-	{ ['x'] = -284.037,  ['y'] = 6224.385,  ['z'] = 31.187},
-	{ ['x'] = -135.165,  ['y'] = 6365.738,  ['z'] = 31.101},
-	{ ['x'] = -94.9690,  ['y'] = 6455.301,  ['z'] = 31.784},
-	{ ['x'] = 1821.917,  ['y'] = 3683.483,  ['z'] = 34.244},
-	{ ['x'] = 540.0420,  ['y'] = 2671.007,  ['z'] = 42.177},
-	{ ['x'] = 381.2827,  ['y'] = 323.2518,  ['z'] = 103.270},
-	{ ['x'] = 285.2029,  ['y'] = 143.5690,  ['z'] = 104.970},
-	{ ['x'] = 157.7698,  ['y'] = 233.5450,  ['z'] = 106.450},
-	{ ['x'] = -1205.35,  ['y'] = -325.579,  ['z'] = 37.870},
-	{ ['x'] = -2955.70,  ['y'] = 488.7218,  ['z'] = 15.486},
-	{ ['x'] = -3044.22,  ['y'] = 595.2429,  ['z'] = 7.595},
-	{ ['x'] = -3241.10,  ['y'] = 996.6881,  ['z'] = 12.500},
-	{ ['x'] = -3241.11,  ['y'] = 1009.152,  ['z'] = 12.877},
-	{ ['x'] = -538.225,  ['y'] = -854.423,  ['z'] = 29.234},
-	{ ['x'] = -711.156,  ['y'] = -818.958,  ['z'] = 23.768},
-	{ ['x'] = -256.831,  ['y'] = -719.646,  ['z'] = 33.444},
-	{ ['x'] = -203.548,  ['y'] = -861.588,  ['z'] = 30.205},
-	{ ['x'] = 112.4102,  ['y'] = -776.162,  ['z'] = 31.427},
-	{ ['x'] = 112.9290,  ['y'] = -818.710,  ['z'] = 31.386},
-	{ ['x'] = 119.9000,  ['y'] = -883.826,  ['z'] = 31.191},
-	{ ['x'] = -261.692,  ['y'] = -2012.64,  ['z'] = 30.121},
-	{ ['x'] = -254.112,  ['y'] = -692.483,  ['z'] = 33.616},
-	{ ['x'] = -1415.909, ['y'] = -211.825,  ['z'] = 46.500},
-	{ ['x'] = -1430.122, ['y'] = -211.014,  ['z'] = 46.500},
-	{ ['x'] = 287.645,   ['y'] = -1282.646, ['z'] = 29.659},
-	{ ['x'] = 295.839,   ['y'] = -895.640,  ['z'] = 29.217},
-	{ ['x'] = -1315.73,  ['y'] = -834.89,   ['z'] = 16.96},
-	{ ['x'] = 89.75,     ['y'] = 2.35,      ['z'] = 68.31},
-	{ ['x'] = 2682.996,  ['y'] = 3286.561,  ['z'] = 55.241},
-	{ ['x'] = -1390.800, ['y'] = -590.746,  ['z'] = 30.319},
-	{ ['x'] = -611.73999, ['y'] = -704.74749,  ['z'] = 31.23},
-	{ ['x'] = -614.48986, ['y'] = -704.79864,  ['z'] = 31.23},
+	{ ['x'] = -111.33,  ['y'] = 6467.42,  ['z'] = 31.784}, -- paleto blvd bank
+	{ ['x'] = -112.47,  ['y'] = 6468.70,  ['z'] = 31.63}, -- paleto blvd bank
+	{ ['x'] = -113.34,  ['y'] = 6469.92,  ['z'] = 31.63}, -- paleto blvd bank
+	{ ['x'] = 155.4300,  ['y'] = 6641.991,  ['z'] = 31.784}, -- SW atm near paleto LSC
+	{ ['x'] = 174.6720,  ['y'] = 6637.218,  ['z'] = 31.784}, -- SE atm near paleto LSC
+	{ ['x'] = 1703.82,  ['y'] = 6426.28,  ['z'] = 32.64}, -- gas station: senora fwy, mt chiliad
+	{ ['x'] = 1735.114,  ['y'] = 6411.035,  ['z'] = 35.164}, -- 24/7 atm senora fwy, mt chiliad
+	{ ['x'] = 1702.842,  ['y'] = 4933.593,  ['z'] = 42.051}, -- LTD atm grapeseed main street
+	{ ['x'] = 1967.333,  ['y'] = 3744.293,  ['z'] = 32.272}, -- 24/7 ATM niland ave, sandy shores
+	{ ['x'] = 1175.01,  ['y'] = 2706.57,  ['z'] = 38.09}, -- Fleeca bank route 68, sandy shores
+	{ ['x'] = 1176.57,  ['y'] = 2706.59,  ['z'] = 38.10}, -- Fleeca bank route 68, sandy shores
+	{ ['x'] = 2564.399,  ['y'] = 2585.100,  ['z'] = 38.016}, -- rex's diner atm senora way, davis quartz
+	{ ['x'] = 2559.49,  ['y'] = 350.92,  ['z'] = 108.050}, -- gas station atm palomino fwy, tataviam mountains
+	{ ['x'] = 2558.051,  ['y'] = 389.4817,  ['z'] = 108.660}, -- 24/7 atm palomino fwy, tataviam mountains
+	{ ['x'] = 1077.692,  ['y'] = -775.796,  ['z'] = 58.218}, -- atm west mirror drive, mirror park
+	{ ['x'] = 1139.018,  ['y'] = -469.886,  ['z'] = 66.789}, -- SW atm mirror park bld, mirror park
+	{ ['x'] = 1168.975,  ['y'] = -457.241,  ['z'] = 66.641}, -- NE atm mirror park blvd, mirror park
+	{ ['x'] = 1153.884,  ['y'] = -326.540,  ['z'] = 69.245}, -- LTD atm west mirror drive, mirror park
+	{ ['x'] = 235.86,  ['y'] = 219.32,  ['z'] = 106.29}, -- Vinewood bank west-side
+	{ ['x'] = 236.76,  ['y'] = 217.45,  ['z'] = 106.29}, -- Vinewood bank west-side
+	{ ['x'] = 237.78,  ['y'] = 215.75,  ['z'] = 106.29}, -- Vinewood bank west-side
+	{ ['x'] = 265.002,  ['y'] = 214.21,  ['z'] = 106.28}, -- Vinewood bank east-side
+	{ ['x'] = 264.31,  ['y'] = 212.24,  ['z'] = 106.28}, -- Vinewood bank east-side
+	{ ['x'] = 263.35,  ['y'] = 210.27,  ['z'] = 106.28}, -- Vinewood bank east-side
+	{ ['x'] = -164.40,  ['y'] = 232.53,  ['z'] = 94.92}, -- atm eclipse blvd, west vinewood
+	{ ['x'] = -164.38,  ['y'] = 234.92,  ['z'] = 94.92}, -- atm eclipse blvd, west vinewood
+	{ ['x'] = -1827.04,  ['y'] = 785.5159,  ['z'] = 138.020}, -- LTD atm banham canyon dr/north rockford dr, richman glen
+	{ ['x'] = -1408.94,  ['y'] = -100.31,  ['z'] = 52.39}, -- atm cougar ave, rockford hills
+	{ ['x'] = -1409.72,  ['y'] = -98.49,  ['z'] = 52.45}, -- atm cougar ave, rockford hills
+	{ ['x'] = -1212.64,  ['y'] = -330.15,  ['z'] = 37.79}, -- Fleeca bank boulevard del perro, rockford hills
+	{ ['x'] = -1214.14,  ['y'] = -330.96,  ['z'] = 37.79}, -- Fleeca bank boulevard del perro, rockford hills
+	{ ['x'] = -2072.41,  ['y'] = -316.959,  ['z'] = 13.345}, -- gas station atm del perro fwy, pacific bluffs
+	{ ['x'] = -2975.72,  ['y'] = 379.7737,  ['z'] = 14.992}, -- rob's liquor atm great ocean hwy, banham canyon
+	{ ['x'] = -2963.02,  ['y'] = 483.29,  ['z'] = 15.70}, -- Fleeca bank great ocean hwy, banham canyon
+	{ ['x'] = -2963.22,  ['y'] = 481.37,  ['z'] = 15.71}, -- Fleeca bank great ocean hwy, banham canyon
+	{ ['x'] = -3144.13,  ['y'] = 1127.415,  ['z'] = 20.868}, -- atm great ocean hwy, chumash
+	{ ['x'] = -1305.40,  ['y'] = -706.240,  ['z'] = 25.352}, -- astro cinema atm del perro fwy, del perro
+	{ ['x'] = -717.614,  ['y'] = -915.880,  ['z'] = 19.268}, -- LTD atm ginger st, little seoul
+	{ ['x'] = -526.566,  ['y'] = -1222.90,  ['z'] = 18.434}, -- gas station atm calais ave, little seoul
+	{ ['x'] = 150.18,  ['y'] = -1040.27,  ['z'] = 29.37}, --Fleeca bank vespucci blvd, pillbox hill
+	{ ['x'] = 148.32,  ['y'] = -1039.66,  ['z'] = 29.38}, --Fleeca bank vespucci blvd, pillbox hill
+	{ ['x'] = -846.304,  ['y'] = -340.402,  ['z'] = 38.687}, -- atm heritage way, rockford hills
+	{ ['x'] = -1212.85,  ['y'] = -330.36,  ['z'] = 37.79}, -- Fleeca bank boulevard del perro, rockford hills
+	{ ['x'] = -1214.53,  ['y'] = -330.92,  ['z'] = 37.79}, -- Fleeca bank boulevard del perro, rockford hills
+	{ ['x'] = -56.1935,  ['y'] = -1752.53,  ['z'] = 29.452}, -- LTD atm grove st, davis
+	{ ['x'] = -273.001,  ['y'] = -2025.60,  ['z'] = 30.197}, -- Maze bank arena west-side atm, davis ave
+	{ ['x'] = -261.692,  ['y'] = -2012.64,  ['z'] = 30.121}, -- maze bank arena east-side atm, davis ave
+	{ ['x'] = 314.59,   ['y'] = -278.23,  ['z'] = 54.170}, -- Fleeca bank hawick ave/meteor st, alta
+	{ ['x'] = 312.91,   ['y'] = -278.18,  ['z'] = 54.170}, -- Fleeca bank hawick ave/meteor st, alta
+	{ ['x'] = -350.60,  ['y'] = -49.51,   ['z'] = 49.042}, -- Fleeca bank hawick ave, burton
+	{ ['x'] = -352.28,  ['y'] = -48.76,   ['z'] = 49.05}, -- Fleeca bank hawick ave, burton
+	{ ['x'] = -1570.197, ['y'] = -546.651,  ['z'] = 34.955}, -- atm bay city ave/blvd del perro, del perro
+	{ ['x'] = -1571.37, ['y'] = -547.18,  ['z'] = 34.96}, -- atm bay city ave/blvd del perro, del perro
+	{ ['x'] = 33.232,    ['y'] = -1347.849, ['z'] = 29.497}, -- 24/7 atm innocence blvd/elgin ave, strawberry
+	{ ['x'] = 128.70,   ['y'] = -1291.40, ['z'] = 29.27}, -- vanilla unicorn atm olympic fwy, strawberry
+	{ ['x'] = 129.36,   ['y'] = -1292.72, ['z'] = 29.27}, -- vanilla unicorn atm olympic fwy, strawberry
+	{ ['x'] = 289.012,   ['y'] = -1256.545, ['z'] = 29.440}, -- gas station atm olympic fwy/strawberry ave, strawberry
+	{ ['x'] = 1686.753,  ['y'] = 4815.809,  ['z'] = 42.008}, -- clothing store atm grapeseed main st/grapeseed ave, grapeseed
+	{ ['x'] = -303.42,  ['y'] = -830.33,  ['z'] = 32.36}, -- atm vespucci blvd/peaceful st, pillbox hill
+	{ ['x'] = -301.72,  ['y'] = -830.68,  ['z'] = 32.33}, -- atm vespucci blvd/peaceful st, pillbox hill
+	{ ['x'] = 5.134,     ['y'] = -919.949,  ['z'] = 29.557}, -- atm power st/low power st, pillbox hill
+	{ ['x'] = -283.48,  ['y'] = 6225.45,  ['z'] = 31.49}, -- atm duluoz ave/paleto blvd , paleto bay
+	{ ['x'] = -133.50,  ['y'] = 6365.30,  ['z'] = 31.38}, -- atm paleto blvd/pyrite ave, paleto bay
+	{ ['x'] = -96.62,  ['y'] = 6454.81,  ['z'] = 31.46}, -- atm paleto blvd/cascabel ave, paleto bay
+	{ ['x'] = -95.03,  ['y'] = 6456.68,  ['z'] = 31.46}, -- atm paleto blvd/cascabel ave, paleto bay
+	{ ['x'] = 1821.917,  ['y'] = 3683.483,  ['z'] = 34.244}, -- atm zancudo ave/mt view dr, sandy shores
+	{ ['x'] = 540.0420,  ['y'] = 2671.007,  ['z'] = 42.177}, -- 24/7 atm route 68, harmony
+	{ ['x'] = 381.2827,  ['y'] = 323.2518,  ['z'] = 103.270}, -- 24/7 atm clinton ave, downtown vinewood
+	{ ['x'] = 285.64,  ['y'] = 143.77,  ['z'] = 104.970}, -- whirligig cinema atm vinewood blvd, downtown vinewood
+	{ ['x'] = 157.7698,  ['y'] = 233.5450,  ['z'] = 106.450}, -- atm vinewood blvd, downtown vinewood
+	{ ['x'] = -1205.35,  ['y'] = -325.579,  ['z'] = 37.870}, -- outside 24/7 vinewood blvd, downtown vinewood
+	{ ['x'] = -2956.62,  ['y'] = 488.24,  ['z'] = 15.486}, -- outside fleeca bank atm great ocean hwy, banham canyon
+	{ ['x'] = -2959.01,  ['y'] = 488.37,  ['z'] = 15.486}, -- outside fleeca bank atm great ocean hwy, banham canyon
+	{ ['x'] = -3044.22,  ['y'] = 595.2429,  ['z'] = 7.595}, -- outside 24/7 ineseno blvd, banham canyon
+	{ ['x'] = -3240.73,  ['y'] = 997.05,  ['z'] = 12.53}, -- outside 24/7 barbareno blvd, chumash
+	{ ['x'] = -3241.11,  ['y'] = 1009.152,  ['z'] = 12.877}, -- 24/7 atm barbareno blvd, chumash
+	{ ['x'] = -538.225,  ['y'] = -854.423,  ['z'] = 29.234}, -- vespucci blvd/calais ave, little seoul
+	{ ['x'] = -712.93,  ['y'] = -819.48,  ['z'] = 23.768}, -- atm vespucci blvd/ginger st, little seoul
+	{ ['x'] = -710.00,  ['y'] = -819.79,  ['z'] = 23.64}, -- atm vespucci blvd/ginger st, little seoul
+	{ ['x'] = -255.74,  ['y'] = -716.21,  ['z'] = 33.48}, -- atm peaceful st/san andreas ave, pillbox hill
+	{ ['x'] = -203.548,  ['y'] = -861.588,  ['z'] = 30.205}, -- atm vespucci blvd/alta st, pillbox hill
+	{ ['x'] = 111.16,  ['y'] = -775.61,  ['z'] = 31.44}, -- atm san andreas ave, pillbox hill
+	{ ['x'] = 114.31,  ['y'] = -776.94,  ['z'] = 31.42}, -- atm san andreas ave, pillbox hill
+	{ ['x'] = 112.9290,  ['y'] = -818.710,  ['z'] = 31.386}, -- atm san andreas/elgin ave, pillbox hill
+	{ ['x'] = 119.9000,  ['y'] = -883.826,  ['z'] = 31.191}, -- escapism travel atm elgin ave, pilbbox hill
+	{ ['x'] = -254.112,  ['y'] = -692.483,  ['z'] = 33.616}, -- atm peaceful st/san andreas ave, pillbox hill
+	{ ['x'] = -1415.909, ['y'] = -211.825,  ['z'] = 46.500}, -- tivoli cinema, morningwood blvd/cougar ave, morningwood
+	{ ['x'] = -1430.122, ['y'] = -211.014,  ['z'] = 46.500}, -- tivoli cinema, morningwood blvd/cougar ave, morningwood
+	{ ['x'] = 287.645,   ['y'] = -1282.646, ['z'] = 29.659}, -- gas station atm, capital blvd, strawberry
+	{ ['x'] = 295.94,   ['y'] = -893.82,  ['z'] = 29.22}, -- atm strawberry ave/san andreas ave, mission row
+	{ ['x'] = 295.28,   ['y'] = -896.01,  ['z'] = 29.21}, -- atm strawberry ave/san andreas ave, mission row
+	{ ['x'] = -1316.30,  ['y'] = -835.15,   ['z'] = 16.96}, -- atm bay city ave/sandcastle way, del perro
+	{ ['x'] = -1315.21,  ['y'] = -836.22,   ['z'] = 16.96}, -- atm bay city ave/sandcastle way, del perro
+	{ ['x'] = 89.75,     ['y'] = 2.35,      ['z'] = 68.31}, -- atm spanish ave, downtown vinewood
+	{ ['x'] = 2682.996,  ['y'] = 3286.561,  ['z'] = 55.241}, -- 24/7 atm senora fwy, grand senora desert
+	{ ['x'] = -1390.800, ['y'] = -590.746,  ['z'] = 30.319}, -- bahama mama's atm, marathon ave, del perro
+	{ ['x'] = -611.73999, ['y'] = -704.74749,  ['z'] = 31.23}, -- atm palomino ave/san andreas ave, little seoul
+	{ ['x'] = -614.48986, ['y'] = -704.79864,  ['z'] = 31.23}, -- atm palomino ave/san andreas ave, little seoul
 }
