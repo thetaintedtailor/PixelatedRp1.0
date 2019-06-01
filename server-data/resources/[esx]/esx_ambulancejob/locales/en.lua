@@ -62,6 +62,9 @@ Locales['en'] = {
   ['medikit'] = 'medikit',
   ['bandage'] = 'bandage',
   ['max_item'] = 'You are already carrying enough.',
+  ['gauze'] = 'gauze',
+  ['morphine'] = 'morphine',
+  ['medicaltape'] = 'medicaltape',
   -- F6 Menu
   ['ems_menu'] = 'EMS Menu',
   ['ems_menu_title'] = 'ambulance - EMS Menu',

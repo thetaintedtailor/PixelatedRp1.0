@@ -6,7 +6,7 @@ Config.red 					  = 16711680
 Config.orange 				  = 16744192
 Config.blue 				  = 2061822
 Config.purple 				  = 11750815
-Config.webhook                = "https://discordapp.com/api/webhooks/574268422171525120/5iM1NElmdDWIHKDd50my6JYBQsw2HtI94elacfKIDonD1r5Qf7dCAj16XE10CsxBoA1d"
+Config.webhook                = "https://discordapp.com/api/webhooks/582630624976699425/c85nvVzuBXVDPWIEmeZcBgtBjx7_cXk6-hmjrzNDg3dnl4yJO9dqsbFDzOn2pDw2BH_f"
 
 
 settings = {

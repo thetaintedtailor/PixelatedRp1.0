@@ -29,7 +29,6 @@
 }
 
 .dialog {
-
   font-family     : bankgothic;  
   background-color: #fff;
   color           : #fff;
@@ -41,6 +40,7 @@
   width           : 600px;
   height          : 104px;
   transform       : translate(-50%, -50%);
+  z-index: 1;
 }
 
 .dialog.big {

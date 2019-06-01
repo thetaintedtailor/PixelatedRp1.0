@@ -38,9 +38,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/macmiller-weekend.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Weekend - Mac Miller ft. Miguel"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by Leks (IGN: Lex Stovsky)"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/ab-soda.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Soda - Azealia Banks"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by Kat (ign: Alice Sadia)"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/tCWn8Scx/pixelated.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)

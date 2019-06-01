@@ -115,7 +115,7 @@
 local radioActive 				= false
 local radioButton				= 244 --- U by default  -- use 57 for f10
 local handsUpButton				= 73 --- H by default -- use 73 for X
-local Keys = {["X"] = 73, ["Z"] = 20}
+local Keys = {["X"] = 73, ["Z"] = 20, ["SHIFT"] = 209}
 
 
 local crouched = false
@@ -153,7 +153,7 @@ Citizen.CreateThread( function()
 
 	while true do
 		Citizen.Wait(0)
-		if (IsControlJustPressed(0,handsUpButton)) and GetLastInputMethod(2) then
+		if (IsControlJustPressed(0,handsUpButton)) and not IsControlPressed(0, Keys['SHIFT']) and GetLastInputMethod(2) then
 			local ped = PlayerPedId()
 	
 			if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
@@ -176,6 +176,44 @@ Citizen.CreateThread( function()
 					DeleteObject(secondaryprop)
 				end
 			end
+
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, handsUpButton) then
+			local player = PlayerPedId()
+			local surrendered = false
+			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
+				loadAnimDict( "random@arrests" )
+				loadAnimDict( "random@arrests@busted" )
+
+				if ( IsEntityPlayingAnim( player, "random@arrests@busted", "idle_a", 3 ) ) then 
+					TaskPlayAnim( player, "random@arrests@busted", "exit", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (3000)
+					TaskPlayAnim( player, "random@arrests", "kneeling_arrest_get_up", 8.0, 1.0, -1, 128, 0, 0, 0, 0 )
+					surrendered = false
+				else
+					ClearPedTasks(player)
+					TaskPlayAnim( player, "random@arrests", "idle_2_hands_up", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (4000)
+					TaskPlayAnim( player, "random@arrests", "kneeling_arrest_idle", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (500)
+					TaskPlayAnim( player, "random@arrests@busted", "enter", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
+					Wait (1000)
+					TaskPlayAnim( player, "random@arrests@busted", "idle_a", 8.0, 1.0, -1, 9, 0, 0, 0, 0 )
+					Wait(100)
+					surrendered = true
+				end     
+			end
+
+			Citizen.CreateThread(function() --disabling controls while surrendured
+				while surrendered do
+					Citizen.Wait(0)
+					if IsEntityPlayingAnim(GetPlayerPed(PlayerId()), "random@arrests@busted", "idle_a", 3) then
+						DisableControlAction(1, 140, true)
+						DisableControlAction(1, 141, true)
+						DisableControlAction(1, 142, true)
+						DisableControlAction(0,21,true)
+					end
+				end
+			end)
 		end
 	end
 end)
@@ -754,7 +792,7 @@ RegisterCommand("e",function(source, args)
 					end       
 				end
 				
-			elseif argh == 'copidle' then
+			elseif argh == 'cop' then
 				local ad = "amb@code_human_wander_idles_cop@male@static" --- insert the animation dic here
 				local anim = "static" --- insert the animation name here
 				local player = PlayerPedId()
@@ -1309,6 +1347,11 @@ RegisterCommand("e",function(source, args)
 	end
 end, false)
 
+
+
+
+
+
 ----Use /testanimation command, you can use this to easily test new animations---
 
 RegisterCommand("testanim",function(source, args)
@@ -1378,6 +1421,5 @@ Citizen.CreateThread(function()
 			DetachEntity(secondaryprop, 1, 1)
 			DeleteObject(secondaryprop)
 		end
-
 	end
 end)

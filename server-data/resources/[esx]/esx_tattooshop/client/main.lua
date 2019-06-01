@@ -125,7 +125,7 @@ function addBlips()
 	for _,k in pairs(Config.Zones) do
 		local blip = AddBlipForCoord(k.x, k.y, k.z)
 		SetBlipSprite(blip, 75)
-		SetBlipColour(blip, 1)
+		SetBlipColour(blip, 64)
 		SetBlipAsShortRange(blip, true)
 
 		BeginTextCommandSetBlipName('STRING')

@@ -19,9 +19,6 @@
 -- Current Database: `zap408714_1`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `zap408714_1` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-
-USE `zap408714_1`;
 
 --
 -- Table structure for table `addon_account`

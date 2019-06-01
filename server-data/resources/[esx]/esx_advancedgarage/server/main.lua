@@ -335,7 +335,7 @@ end)
 -- Pay for Pounded Cars
 RegisterServerEvent('esx_advancedgarage:payCar')
 AddEventHandler('esx_advancedgarage:payCar', function()
-	local xPlayer = ESX.GetPlayerFromId(source)
+	local xPlayer = ESX.GetPlayerFromId(source) 
 	xPlayer.removeMoney(Config.CarPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.CarPoundPrice)
 end)

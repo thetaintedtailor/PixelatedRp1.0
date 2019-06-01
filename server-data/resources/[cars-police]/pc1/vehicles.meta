@@ -16,7 +16,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>POLICE</audioNameHash>
+      <audioNameHash>police2</audioNameHash>
       <layout>LAYOUT_STD_HIGHWINDOW</layout>
       <coverBoundOffsets>POLICE_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -96,7 +96,7 @@
       <type>VEHICLE_TYPE_CAR</type>
       <plateType>VPT_FRONT_AND_BACK_PLATES</plateType>
 	  <dashboardType>VDT_CAVALCADE</dashboardType>
-      <vehicleClass>VC_SUV</vehicleClass>
+      <vehicleClass>VC_EMERGENCY</vehicleClass>
       <wheelType>VWT_SUV</wheelType>
       <trailers />
       <additionalTrailers />

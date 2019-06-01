@@ -47,11 +47,3 @@ RegisterCommand('bed', function()
 end, false)
 
 
-RegisterCommand('end', function()
-    local playerPed = PlayerPedId()
-    local playerPos = GetEntityCoords(playerPed, true)
-    local bedHash = GetHashKey('v_med_bed1')
-    CreateObject(bedHash, playerPos.x, playerPos.y + 1.0, playerPos.z - 0.95, true, true, true)
-end, false)
-
-
