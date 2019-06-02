@@ -77,7 +77,6 @@ Config.Recipes = {
 		{item = "pistolbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
-		{item = "spring", quantity = 1},
 	},
 }
 
