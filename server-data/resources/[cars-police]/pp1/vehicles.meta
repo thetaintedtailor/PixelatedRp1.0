@@ -106,8 +106,6 @@
       <needsRopeTexture value="false" />
       <requiredExtras />
       <rewards>
-        <Item>REWARD_AMMO_CARBINERIFLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
       </rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
@@ -238,11 +236,7 @@
       <needsRopeTexture value="false" />
       <requiredExtras>EXTRA_3</requiredExtras>
 	  <requiredExtras>EXTRA_7</requiredExtras>
-      <rewards>
-        <Item>REWARD_WEAPON_PUMPSHOTGUN</Item>
-        <Item>REWARD_AMMO_PUMPSHOTGUN_ENTER_VEHICLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -374,11 +368,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_PUMPSHOTGUN</Item>
-        <Item>REWARD_AMMO_PUMPSHOTGUN_ENTER_VEHICLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -503,11 +493,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_PUMPSHOTGUN</Item>
-        <Item>REWARD_AMMO_PUMPSHOTGUN_ENTER_VEHICLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -637,11 +623,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_PUMPSHOTGUN</Item>
-        <Item>REWARD_AMMO_PUMPSHOTGUN_ENTER_VEHICLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -758,11 +740,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_CARBINERIFLE</Item>
-        <Item>REWARD_AMMO_CARBINERIFLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -880,11 +858,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_CARBINERIFLE</Item>
-        <Item>REWARD_AMMO_CARBINERIFLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
@@ -1015,11 +989,7 @@
       <bumpersNeedToCollideWithMap value="false" />
       <needsRopeTexture value="false" />
       <requiredExtras />
-      <rewards>
-        <Item>REWARD_WEAPON_CARBINERIFLE</Item>
-        <Item>REWARD_AMMO_CARBINERIFLE</Item>
-        <Item>REWARD_STAT_WEAPON</Item>
-      </rewards>
+      <rewards></rewards>
       <cinematicPartCamera>
         <Item>WHEEL_FRONT_RIGHT_CAMERA</Item>
         <Item>WHEEL_FRONT_LEFT_CAMERA</Item>
