@@ -267,7 +267,7 @@
     <Item>
       <modelName>SFBC2</modelName>
       <txdName>SFBC2</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>police2</handlingId>
       <gameName>SFBC2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
