@@ -77,7 +77,6 @@ Config.Recipes = {
 		{item = "pistolbarrel", quantity = 1},
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
-		{item = "spring", quantity = 1},
 	},
 }
 
@@ -94,5 +93,5 @@ Config.Shop = {
 -- Enable crafting menu through a keyboard shortcut
 Config.Keyboard = {
 	useKeyboard = true,
-	keyCode = 244
+	keyCode = 56
 }
