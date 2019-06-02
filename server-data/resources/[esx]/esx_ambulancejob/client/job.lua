@@ -903,8 +903,11 @@ function OpenPharmacyMenu()
 		title    = _U('pharmacy_menu_title'),
 		align    = 'left',
 		elements = {
-			{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
-			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'}
+			--{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
+			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'},
+			{label = _U('pharmacy_take', _U('morphine')), value = 'morphine'},
+			{label = _U('pharmacy_take', _U('gauze')), value = 'gauze'},
+			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'}
 		}
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)
