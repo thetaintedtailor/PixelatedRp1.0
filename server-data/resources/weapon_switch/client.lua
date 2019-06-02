@@ -123,10 +123,10 @@ Citizen.CreateThread(function()
 						Citizen.Wait(1000)
 						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
 					end
-				end
+				end 
 			end
-		else
-			lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 		end
+
+		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 	end
 end)
