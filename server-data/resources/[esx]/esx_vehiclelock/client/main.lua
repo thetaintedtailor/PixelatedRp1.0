@@ -104,5 +104,6 @@ Citizen.CreateThread(function()
 			ToggleVehicleLock()
 			Citizen.Wait(300)
 		end]]
+		end
 	end
 end)

@@ -225,7 +225,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	deputy = {
@@ -244,7 +244,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	senior_officer = {
@@ -263,7 +263,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	corporal = {
@@ -282,7 +282,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	sergeant = {
@@ -301,7 +301,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	lieutenant = {
@@ -320,7 +320,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	captain = {
@@ -339,7 +339,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	commander = {
@@ -358,7 +358,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	deputy_sheriff = {
@@ -377,7 +377,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	deputy_chief = {
@@ -396,7 +396,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	sheriff = {
@@ -415,7 +415,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
 	boss = {
@@ -434,7 +434,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Chevy Tahoe',price = 1},
+		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	}
 }
 
