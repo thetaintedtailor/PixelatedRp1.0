@@ -81,6 +81,7 @@ files {
     'html/img/items/WEAPON_COMBATPISTOL.png',
     'html/img/items/WEAPON_CROWBAR.png',
     'html/img/items/WEAPON_GOLFCLUB.png',
+    'html/img/items/WEAPON_HATCHET.png',
     'html/img/items/WEAPON_KNIFE.png',
     'html/img/items/WEAPON_MACHETE.png',
     'html/img/items/WEAPON_MICROSMG.png',
