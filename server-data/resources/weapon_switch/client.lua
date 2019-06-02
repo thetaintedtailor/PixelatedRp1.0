@@ -100,31 +100,33 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		local ped = PlayerPedId()
 
-		if not IsPedInAnyVehicle(ped, true) then
-			if Config.PedAbleToWalkWhileSwapping then
-				animFlag = 48
+		if not IsPedInAnyVehicle(ped, false) then
+			if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
+				if Config.PedAbleToWalkWhileSwapping then
+					animFlag = 48
+				else
+					animFlag = 0
+				end
+
+				for i=1, #Config.WeaponList do
+					if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.WeaponList[i] then
+						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+						TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
+
+						Citizen.Wait(1000)
+						SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
+					end
+
+					if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.UnarmedHash then
+						TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
+
+						Citizen.Wait(1000)
+						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+					end
+				end
 			else
-				animFlag = 0
-			end
-
-			for i=1, #Config.WeaponList do
-				if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.WeaponList[i] then
-					SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-					TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
-
-					Citizen.Wait(1000)
-					SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
-				end
-
-				if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.UnarmedHash then
-					TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
-
-					Citizen.Wait(1000)
-					SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-				end
+				lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 			end
 		end
-
-		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 	end
 end)
