@@ -17,7 +17,7 @@ Config.WeaponList = {
 	-102973651, --hatchet
 	-581044007, --machete
 	-1951375401, --flashlight
-	-538741184, --switchblade
+	---538741184, --switchblade
 	1737195953, --nightstick
 	1317494643, --hammer
 	-2067956739, --crowbar
@@ -75,58 +75,65 @@ Config.WeaponList = {
 	600439132, --ball
 	126349499, --snowball
 	-37975472, --smokegrenade
-	
-
-
 }
 
 Config.PedAbleToWalkWhileSwapping = true
 Config.UnarmedHash = -1569615261
 
 Citizen.CreateThread(function()
-	local animDict = 'reaction@intimidation@1h'
-
-	local animIntroName = 'intro'
-	local animOutroName = 'outro'
-
-	local animFlag = 0
-
-	RequestAnimDict(animDict)
-	  
-	while not HasAnimDictLoaded(animDict) do
-		Citizen.Wait(100)
-	end
-
-	local lastWeapon = nil
-
 	while true do
 		Citizen.Wait(0)
+		local ped = PlayerPedId()
+		if DoesEntityExist( ped ) and not IsEntityDead( ped ) and not IsPedInAnyVehicle(PlayerPedId(), true) then
+			loadAnimDict( "reaction@intimidation@1h" )
+			loadAnimDict( "weapons@pistol_1h@gang" )
+			if CheckWeapon(ped) then
+				if holstered then
+					TaskPlayAnim(ped, "reaction@intimidation@1h", "intro", 8.0, 2.0, -1, 48, 2, 0, 0, 0 )
+					DisablePlayerFiring(GetPlayerPed(-1), true)
+					Citizen.Wait(2500)
+					DisablePlayerFiring(GetPlayerPed(-1), false)
+					ClearPedTasks(ped)
 
-		if not IsPedInAnyVehicle(GetPlayerPed(-1), true) then
-			if Config.PedAbleToWalkWhileSwapping then
-				animFlag = 48
-			else
-				animFlag = 0
-			end
-
-			for i=1, #Config.WeaponList do
-				if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(GetPlayerPed(-1)) == Config.WeaponList[i] then
-					SetCurrentPedWeapon(GetPlayerPed(-1), Config.UnarmedHash, true)
-					TaskPlayAnim(GetPlayerPed(-1), animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
-
-					Citizen.Wait(1000)
-					SetCurrentPedWeapon(GetPlayerPed(-1), Config.WeaponList[i], true)
+					Citizen.Wait(100)					
+					holstered = false
 				end
+			elseif not CheckWeapon(ped) then
+				if not holstered then
+					TaskPlayAnim(ped, "reaction@intimidation@1h", "outro", 8.0, 2.0, -1, 48, 2, 0, 0, 0 )
+					DisablePlayerFiring(GetPlayerPed(-1), true)
+					Citizen.Wait(1500)
+					DisablePlayerFiring(GetPlayerPed(-1), false)			
+					ClearPedTasks(ped)
 
-				if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(GetPlayerPed(-1)) == Config.UnarmedHash then
-					TaskPlayAnim(GetPlayerPed(-1), animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
-
-					Citizen.Wait(1000)
-					SetCurrentPedWeapon(GetPlayerPed(-1), Config.UnarmedHash, true)
+					holstered = true
 				end
 			end
 		end
-
-		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 	end
 end)
+
+
+function CheckWeapon(ped)
+	for i = 1, #Config.WeaponList do
+		if Config.WeaponList[i] == GetSelectedPedWeapon(ped) then
+			return true
+		end
+	end
+	return false
+end
+
+function DisableActions(ped)
+	DisableControlAction(1, 140, true)
+	DisableControlAction(1, 141, true)
+	DisableControlAction(1, 142, true)
+	DisableControlAction(1, 37, true) -- Disables INPUT_SELECT_WEAPON (TAB)
+	DisablePlayerFiring(ped, true) -- Disable weapon firing
+end
+
+function loadAnimDict( dict )
+	while ( not HasAnimDictLoaded( dict ) ) do
+		RequestAnimDict( dict )
+		Citizen.Wait( 0 )
+	end
+end
