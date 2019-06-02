@@ -100,7 +100,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		local ped = PlayerPedId()
 
-		if not IsPedInAnyVehicle(ped, true) then
+		if not IsPedInAnyVehicle(ped, true) and lastweapon ~= Config.UnarmedHash then
 			if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
 				if Config.PedAbleToWalkWhileSwapping then
 					animFlag = 48
@@ -125,8 +125,8 @@ Citizen.CreateThread(function()
 					end
 				end 
 			end
-		else
-			Citizen.Wait(100)
+		--else
+			--Citizen.Wait(100)
 		end
 
 		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
