@@ -185,7 +185,6 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     Wait(300000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
-    SetEntityHealth(GetPlayerPed(-1),200)
     AddArmourToPed(playerPed, 50)
     
 end)
