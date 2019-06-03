@@ -155,9 +155,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     
     --Efects
     local player = PlayerId()
-    local health = GetEntityHealth(playerPed)
-    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
-    SetEntityHealth(playerPed, newHealth)
+    SetEntityHealth(GetPlayerPed(-1),100)
  end)
 
 --Meth
