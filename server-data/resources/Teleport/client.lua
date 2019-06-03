@@ -36,7 +36,7 @@ AddEventHandler('tp:hasEnteredMarker', function(zone)
 	
 	if zone == 'CokeExit' then
     	CurrentAction = zone
-	end
+    end
 
 end)
 
