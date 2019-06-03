@@ -83,7 +83,7 @@ function Normal()
 			
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
-    ResetPedMovementClipset(playerPed, 0)
+    --ResetPedMovementClipset(playerPed, 0) <- it might cause the push of the vehicles
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
   end)
@@ -131,98 +131,96 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     
     --Efects
     local player = PlayerId()
-    AddArmourToPed(playerPed, 50)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+        
+    Wait(300000)
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)		
 end)
 
 --Opium
---RegisterNetEvent('esx_drugeffects:onOpium')
---AddEventHandler('esx_drugeffects:onOpium', function()
+RegisterNetEvent('esx_drugeffects:onOpium')
+AddEventHandler('esx_drugeffects:onOpium', function()
   
-  --local playerPed = GetPlayerPed(-1)
+  local playerPed = GetPlayerPed(-1)
   
-        --RequestAnimSet("move_m@drunk@moderatedrunk") 
-    --while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-      --Citizen.Wait(0)
-    --end    
+        RequestAnimSet("move_m@drunk@moderatedrunk") 
+    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+      Citizen.Wait(0)
+    end    
 
-    --TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    --Citizen.Wait(3000)
-    --ClearPedTasksImmediately(playerPed)
-    --SetTimecycleModifier("spectator5")
-    --SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-    --SetPedIsDrunk(playerPed, true)
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+    SetPedIsDrunk(playerPed, true)
     
     --Efects
-    --local player = PlayerId()
-    --SetRunSprintMultiplierForPlayer(player, 1.2)
-    --SetSwimMultiplierForPlayer(player, 1.3)
+    local player = PlayerId()
+    SetRunSprintMultiplierForPlayer(player, 1.2)
+    SetSwimMultiplierForPlayer(player, 1.3)
 
-    --Wait(520000)
+    Wait(520000)
 
-    --SetRunSprintMultiplierForPlayer(player, 1.0)
-    --SetSwimMultiplierForPlayer(player, 1.0)
- --end)
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetSwimMultiplierForPlayer(player, 1.0)
+ end)
 
 --Meth
---RegisterNetEvent('esx_drugeffects:onMeth')
---AddEventHandler('esx_drugeffects:onMeth', function()
+RegisterNetEvent('esx_drugeffects:onMeth')
+AddEventHandler('esx_drugeffects:onMeth', function()
   
-  --local playerPed = GetPlayerPed(-1)
-  --local maxHealth = GetEntityMaxHealth(playerPed)
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
 
-  --    RequestAnimSet("move_injured_generic") 
-   -- while not HasAnimSetLoaded("move_injured_generic") do
-    --  Citizen.Wait(0)
-    --end    
+        RequestAnimSet("move_injured_generic") 
+    while not HasAnimSetLoaded("move_injured_generic") do
+      Citizen.Wait(0)
+    end    
 
-    --TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    --Citizen.Wait(3000)
-    --ClearPedTasksImmediately(playerPed)
-    --SetTimecycleModifier("spectator5")
-    --SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_injured_generic", false)
-    --SetPedIsDrunk(playerPed, false)
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_injured_generic", true)
+    SetPedIsDrunk(playerPed, true)
     
    --Efects
-    --local player = PlayerId()  
-    --SetRunSprintMultiplierForPlayer(player, 3.0)
-
-    --Wait(300000)
-
-    --SetRunSprintMultiplierForPlayer(player, 1.0)	
+    local player = PlayerId()  
+    local health = GetEntityHealth(playerPed)
+    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
+    SetEntityHealth(playerPed, newHealth)
     
---end)
+end)
 
 --Coke
---RegisterNetEvent('esx_drugeffects:onCoke')
---AddEventHandler('esx_drugeffects:onCoke', function()
+RegisterNetEvent('esx_drugeffects:onCoke')
+AddEventHandler('esx_drugeffects:onCoke', function()
   
-  --local playerPed = GetPlayerPed(-1)
-  --local maxHealth = GetEntityMaxHealth(playerPed)
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
 
-        --RequestAnimSet("move_m@hurry_butch@a") 
-    --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
-      --Citizen.Wait(0)
-    --end    
+        RequestAnimSet("move_m@hurry_butch@a") 
+    while not HasAnimSetLoaded("move_m@hurry_butch@a") do
+      Citizen.Wait(0)
+    end    
 
-    --TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    --Citizen.Wait(3000)
-    --ClearPedTasksImmediately(playerPed)
-    --SetTimecycleModifier("spectator5")
-    --SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
-    --SetPedIsDrunk(playerPed, true)
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
+    SetPedIsDrunk(playerPed, true)
     
     --Efects
-    --local player = PlayerId()
-    --AddArmourToPed(playerPed, 100)
-    --local health = GetEntityHealth(playerPed)
-    --local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
-    --SetEntityHealth(playerPed, newHealth)
-        
-    --Wait(300000)
-
-    --SetRunSprintMultiplierForPlayer(player, 1.0)	
+    local player = PlayerId()
+    AddArmourToPed(playerPed, 100)
+    local health = GetEntityHealth(playerPed)
+    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
+    SetEntityHealth(playerPed, newHealth)
     
---end)
+end)
