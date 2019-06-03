@@ -180,11 +180,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.3)
-
-    Wait(300000)
-
-    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetPlayerInvincible(PlayerId())
     
 end)
 
