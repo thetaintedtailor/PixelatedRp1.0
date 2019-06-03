@@ -131,11 +131,7 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     
     --Efects
     local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.3)
-        
-    Wait(300000)
-
-    SetRunSprintMultiplierForPlayer(player, 1.0)		
+    AddArmourToPed(playerPed, 50)	
 end)
 
 --Opium
@@ -159,13 +155,9 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     
     --Efects
     local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.2)
-    SetSwimMultiplierForPlayer(player, 1.3)
-
-    Wait(520000)
-
-    SetRunSprintMultiplierForPlayer(player, 1.0)
-    SetSwimMultiplierForPlayer(player, 1.0)
+    local health = GetEntityHealth(playerPed)
+    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
+    SetEntityHealth(playerPed, newHealth)
  end)
 
 --Meth
@@ -190,9 +182,12 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    local health = GetEntityHealth(playerPed)
-    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
-    SetEntityHealth(playerPed, newHealth)
+    AddArmourToPed(playerPed, 50)	
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+        
+    Wait(300000)
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)
     
 end)
 
@@ -218,9 +213,10 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    AddArmourToPed(playerPed, 100)
-    local health = GetEntityHealth(playerPed)
-    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
-    SetEntityHealth(playerPed, newHealth)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+        
+    Wait(300000)
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)
     
 end)
