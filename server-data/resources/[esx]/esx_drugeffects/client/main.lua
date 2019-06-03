@@ -180,7 +180,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.3)
+    SetRunSprintMultiplierForPlayer(player, 1.7)
     AddArmourToPed(playerPed, 50)  
     Wait(300000)
 
