@@ -180,7 +180,13 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    SetPlayerInvincible(PlayerId())
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+        
+    Wait(300000)
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetEntityHealth(GetPlayerPed(-1),200)
+    AddArmourToPed(playerPed, 50)
     
 end)
 
@@ -206,7 +212,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.3)
+    SetRunSprintMultiplierForPlayer(player, 1.5)
         
     Wait(300000)
 
