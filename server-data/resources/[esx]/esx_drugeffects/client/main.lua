@@ -181,7 +181,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
    --Efects
     local player = PlayerId()  
     SetRunSprintMultiplierForPlayer(player, 1.7)
-    AddArmourToPed(playerPed, 50)  
+      
     Wait(300000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
@@ -194,7 +194,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
   
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
-  local timer = 0
+  
         RequestAnimSet("move_m@hurry_butch@a") 
     while not HasAnimSetLoaded("move_m@hurry_butch@a") do
       Citizen.Wait(0)
@@ -210,14 +210,15 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    while timer < 300 do
-		  ResetPlayerStamina(PlayerId())
-		  Citizen.Wait(2000)
-      timer = timer + 2
+    local timer = 0
+      while timer < 300 do
+		    ResetPlayerStamina(PlayerId())
+		    Citizen.Wait(2000)
+        timer = timer + 2
     SetRunSprintMultiplierForPlayer(player, 1.5)
         
     Wait(300000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
-    end
+      end
 end)
