@@ -131,7 +131,7 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     
     --Efects
     local player = PlayerId()
-    SetEntityHealth(GetPlayerPed(-1),100)
+    SetEntityHealth(GetPlayerPed(-1),200)
 end)
 
 --Opium
@@ -155,7 +155,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     
     --Efects
     local player = PlayerId()
-    AddArmourToPed(playerPed, 50)
+    AddArmourToPed(playerPed, 100)
  end)
 
 --Meth
@@ -180,7 +180,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    AddArmourToPed(playerPed, 50)	
+    AddArmourToPed(playerPed, 50),	
     SetRunSprintMultiplierForPlayer(player, 1.3)
         
     Wait(300000)
