@@ -12,7 +12,7 @@ Config.EnableNonFreemodePeds      = false -- turn this on if you want custom ped
 Config.EnableLicenses             = false -- enable if you're using esx_license
 
 Config.EnableHandcuffTimer        = true -- enable handcuff timer? will unrestrain player after the time ends
-Config.HandcuffTimer              = 10 * 60000 -- 10 mins
+Config.HandcuffTimer              = 25 * 60000 -- 25 mins
 
 Config.EnableJobBlip              = true -- enable blips for colleagues, requires esx_society
 
