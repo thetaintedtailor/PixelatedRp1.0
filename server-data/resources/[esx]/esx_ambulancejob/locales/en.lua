@@ -65,6 +65,7 @@ Locales['en'] = {
   ['gauze'] = 'gauze',
   ['morphine'] = 'morphine',
   ['medicaltape'] = 'medicaltape',
+  ['k3v'] = 'k3v',
   -- F6 Menu
   ['ems_menu'] = 'EMS Menu',
   ['ems_menu_title'] = 'ambulance - EMS Menu',

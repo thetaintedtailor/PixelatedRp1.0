@@ -907,7 +907,8 @@ function OpenPharmacyMenu()
 			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'},
 			{label = _U('pharmacy_take', _U('morphine')), value = 'morphine'},
 			{label = _U('pharmacy_take', _U('gauze')), value = 'gauze'},
-			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'}
+			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'},
+			{label = _U('pharmacy_take', _U('k3v')), value = 'k3v'}
 		}
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)
