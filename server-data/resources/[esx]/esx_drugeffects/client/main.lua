@@ -200,7 +200,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
       --Citizen.Wait(0)
     --end    
 
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    TaskStartScenarioInPlace(playerPed, "snort_coke_a_male1", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
