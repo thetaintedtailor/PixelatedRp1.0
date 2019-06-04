@@ -182,7 +182,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     local player = PlayerId()  
     SetRunSprintMultiplierForPlayer(player, 1.3)
     AddArmourToPed(playerPed, 35)  
-    Wait(300000)
+    Wait(30000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
      
@@ -217,7 +217,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
       Citizen.Wait(2000)
       timer = timer + 2  
     end
-    Wait(300000)
+    Wait(30000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
     
