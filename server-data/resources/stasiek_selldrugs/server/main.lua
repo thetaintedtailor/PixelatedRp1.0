@@ -159,7 +159,8 @@ AddEventHandler('sellDrugs', function()
 	
 	xPlayer.addMoney(money)
 	TriggerClientEvent('sold', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('you_have_sold') .. '~b~'..x..'~w~' .. _U(drugtype) .. money .. '$')
+	print('~b~'..x..'~w~' .. drugtype .. money .. '$')
+	TriggerClientEvent('esx:showNotification', _source, _U('you_have_sold'))
 end)
 
 
