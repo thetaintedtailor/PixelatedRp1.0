@@ -24,13 +24,13 @@ AddEventHandler('sellDrugs', function()
 			if weedqty == 1 then
 				x = 1
 			elseif weedqty == 2 then
-				x = math.random(1,2)
+				x = 1
 			elseif weedqty == 3 then
-				x = math.random(1,3)
+				x = 1
 			elseif weedqty == 4 then
-				x = math.random(1,4)
+				x = 1
 			elseif weedqty >= 5 then
-				x = math.random(1,5)
+				x = 1
 			end
 		elseif weedqtySingle > 0 and Config.SellSingle then
 			drugType = 'weed'
@@ -52,13 +52,13 @@ AddEventHandler('sellDrugs', function()
 			if methqty == 1 then
 				x = 1
 			elseif methqty == 2 then
-				x = math.random(1,2)
+				x = 1
 			elseif methqty == 3 then
-				x = math.random(1,3)
+				x = 1
 			elseif methqty == 4 then
-				x = math.random(1,4)
+				x = 1
 			elseif methqty >= 5 then
-				x = math.random(1,5)
+				x = 1
 			end
 		elseif methqtySingle > 0 and Config.SellSingle then
 			drugType = 'meth'
@@ -80,13 +80,13 @@ AddEventHandler('sellDrugs', function()
 			if cokeqty == 1 then
 				x = 1
 			elseif cokeqty == 2 then
-				x = math.random(1,2)
+				x = 1
 			elseif cokeqty == 3 then
-				x = math.random(1,3)
+				x = 1
 			elseif cokeqty == 4 then
-				x = math.random(1,4)
+				x = 1
 			elseif cokeqty >= 5 then
-				x = math.random(1,5)
+				x = 1
 			end
 		elseif cokeqtySingle > 0 and Config.SellSingle then
 			drugType = 'coke'
@@ -108,13 +108,13 @@ AddEventHandler('sellDrugs', function()
 			if opiuqty == 1 then
 				x = 1
 			elseif opiuqty == 2 then
-				x = math.random(1,2)
+				x = 1
 			elseif opiuqty == 3 then
-				x = math.random(1,3)
+				x = 1
 			elseif opiuqty == 4 then
-				x = math.random(1,4)
+				x = 1
 			elseif opiuqty >= 5 then
-				x = math.random(1,5)
+				x = 1
 			end
 		elseif opiuqtySingle > 0 and Config.SellSingle then
 			drugType = 'opium'
