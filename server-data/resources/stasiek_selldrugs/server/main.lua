@@ -15,7 +15,7 @@ AddEventHandler('sellDrugs', function()
 	local opiuqty = xPlayer.getInventoryItem('opium_pooch').count
 	local opiuqtySingle = xPlayer.getInventoryItem('opium').count
 	local x = 0
-	local blackMoney = 0
+	local money = 0
 	local drugType = nil
 	
 	if Config.SellWeed and weedqty > 0 or Config.SellWeed and weedqtySingle > 0 then
@@ -136,30 +136,30 @@ AddEventHandler('sellDrugs', function()
 	end
 	
 	if drugType=='weed_pooch' then	--pooch
-		blackMoney = Config.WeedPrice * 5 * x
+		money = Config.WeedPrice * 5 * x
 	elseif drugType=='meth_pooch' then
-		blackMoney = Config.MethPrice * 5 * x
+		money = Config.MethPrice * 5 * x
 	elseif drugType=='coke_pooch' then
-		blackMoney = Config.CokePrice * 5 * x
+		money = Config.CokePrice * 5 * x
 	elseif drugType=='opium_pooch' then
-		blackMoney = Config.OpiuPrice * 5 * x
+		money = Config.OpiuPrice * 5 * x
 	elseif drugType=='weed' then	--single
-		blackMoney = Config.WeedPrice * x
+		money = Config.WeedPrice * x
 	elseif drugType=='meth' then
-		blackMoney = Config.MethPrice * x
+		money = Config.MethPrice * x
 	elseif drugType=='coke' then
-		blackMoney = Config.CokePrice * x
+		money = Config.CokePrice * x
 	elseif drugType=='opium' then
-		blackMoney = Config.OpiuPrice * x
+		money = Config.OpiuPrice * x
 	end
 	
 	if drugType ~= nil then
 		xPlayer.removeInventoryItem(drugType, x)
 	end
 	
-	xPlayer.addAccountMoney('black_money', blackMoney)
+	xPlayer.addMoney(money)
 	TriggerClientEvent('sold', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('you_have_sold') .. '~b~'..x..'~w~' .. _U(drugtype) .. blackMoney .. '$')
+	TriggerClientEvent('esx:showNotification', _source, _U('you_have_sold') .. '~b~'..x..'~w~' .. _U(drugtype) .. money .. '$')
 end)
 
 
