@@ -49,17 +49,15 @@ AddEventHandler('esx_sopletare:getItem', function()
             'shotgunbarrel',
             'pistolbarrel',
             'smgbarrel',
-            
-
         }
 
         local player = ESX.GetPlayerFromId(source)
         local randomItems = items[math.random(#items)]
         local quantity = 1
         local itemfound = ESX.GetItemLabel(randomItems)
-
+        print(randomItems, quantity)
         player.addInventoryItem(randomItems, quantity)
-        sendNotification(source, 'You found ' .. quantity .. '  ' .. itemfound, 'success', 2500)
+        sendNotification(source, 'You found ' .. quantity .. ' ' .. itemfound, 'success', 2500)
 
     elseif luck == 15 then
 
