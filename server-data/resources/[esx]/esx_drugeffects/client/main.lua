@@ -165,22 +165,22 @@ AddEventHandler('esx_drugeffects:onMeth', function()
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
 
-        RequestAnimSet("move_injured_generic") 
-    while not HasAnimSetLoaded("move_injured_generic") do
-      Citizen.Wait(0)
-    end    
+        --RequestAnimSet("move_injured_generic") 
+    --while not HasAnimSetLoaded("move_injured_generic") do
+      --Citizen.Wait(0)
+    --end    
 
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_injured_generic", true)
-    SetPedIsDrunk(playerPed, true)
+    --SetPedMovementClipset(playerPed, "move_injured_generic", true)
+    --SetPedIsDrunk(playerPed, true)
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.9)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
       
     Wait(300000)
 
@@ -211,7 +211,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     --Efects
     local player = PlayerId()
     local timer = 0
-    SetRunSprintMultiplierForPlayer(player, 1.9)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
     while timer < 300 do
       ResetPlayerStamina(PlayerId())
       Citizen.Wait(2000)
