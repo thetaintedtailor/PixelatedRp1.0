@@ -211,7 +211,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     --Efects
     local player = PlayerId()
     local timer = 0
-    while timer < 300 do
+    while timer < 30 do
       print()
       SetRunSprintMultiplierForPlayer(player, 1.3)
       ResetPlayerStamina(player)
@@ -221,6 +221,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     Wait(5000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
+    ESX.ShowNotification('The drugs have worn off')
     
     
 end)
