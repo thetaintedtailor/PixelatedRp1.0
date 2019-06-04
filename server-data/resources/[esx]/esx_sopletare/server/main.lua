@@ -57,7 +57,7 @@ AddEventHandler('esx_sopletare:getItem', function()
         local itemfound = ESX.GetItemLabel(randomItems)
 
         player.addInventoryItem(randomItems, quantity)
-        sendNotification(source, 'You found ' .. quantity .. itemfound, 'success', 2500)
+        sendNotification(source, 'You found ' .. quantity .. ' ' .. itemfound, 'success', 2500)
 
     elseif luck == 15 then
 
