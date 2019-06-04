@@ -53,3 +53,13 @@ ESX.RegisterUsableItem('xanax', function(source)
 
 	TriggerClientEvent('esx_status:remove', _source, 'drug', 249000)
 end)
+
+ESX.RegisterUsableItem('crack', function(source)
+        
+        local _source = source
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeInventoryItem('crack', 1)
+
+	TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+	TriggerClientEvent('esx_drugeffects:onCrack', source)
+end)
