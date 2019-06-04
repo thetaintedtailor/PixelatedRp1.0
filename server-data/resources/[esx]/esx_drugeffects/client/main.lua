@@ -210,19 +210,12 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    local timer = 0
-    while timer < 30 do
-      print()
-      SetRunSprintMultiplierForPlayer(player, 1.3)
-      ResetPlayerStamina(player)
-      Citizen.Wait(2000)
-      timer = timer + 2  
-    end
-    Wait(5000)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+      
+    Wait(30000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
-    ESX.ShowNotification('You feel slower')
-    
+    ESX.ShowNotification('You feel slower') 
     
 end)
 
