@@ -116,18 +116,18 @@ AddEventHandler('esx_drugeffects:onWeed', function()
   
   local playerPed = GetPlayerPed(-1)
   
-    RequestAnimSet("move_m@hipster@a") 
-    while not HasAnimSetLoaded("move_m@hipster@a") do
-      Citizen.Wait(0)
-    end    
+    --RequestAnimSet("move_m@hipster@a") 
+    --while not HasAnimSetLoaded("move_m@hipster@a") do
+      --Citizen.Wait(0)
+    --end    
 
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_m@hipster@a", true)
-    SetPedIsDrunk(playerPed, true)
+    --SetPedMovementClipset(playerPed, "move_m@hipster@a", true)
+    --SetPedIsDrunk(playerPed, true)
     
     --Efects
     local player = PlayerId()
@@ -140,18 +140,18 @@ AddEventHandler('esx_drugeffects:onOpium', function()
   
   local playerPed = GetPlayerPed(-1)
   
-        RequestAnimSet("move_m@drunk@moderatedrunk") 
-    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-      Citizen.Wait(0)
-    end    
+        --RequestAnimSet("move_m@drunk@moderatedrunk") 
+   -- while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+      --Citizen.Wait(0)
+    --end    
 
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-    SetPedIsDrunk(playerPed, true)
+    --SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+    --SetPedIsDrunk(playerPed, true)
     
     --Efects
     local player = PlayerId()
@@ -180,7 +180,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()  
-    SetRunSprintMultiplierForPlayer(player, 1.9)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
     AddArmourToPed(playerPed, 35)  
     Wait(300000)
 
