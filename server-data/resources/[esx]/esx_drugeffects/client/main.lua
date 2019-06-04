@@ -216,7 +216,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
 		    Citizen.Wait(2000)
         timer = timer + 2
       end
-    SetRunSprintMultiplierForPlayer(player, 1.5)
+    SetRunSprintMultiplierForPlayer(player, 2.0)
         
     Wait(300000)
 
