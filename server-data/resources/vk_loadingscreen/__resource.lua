@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/ab-soda.mp3',
+    'music/Omnia-CYBERPUNK.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
