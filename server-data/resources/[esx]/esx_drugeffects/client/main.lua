@@ -221,4 +221,5 @@ AddEventHandler('esx_drugeffects:onCoke', function()
 		    Citizen.Wait(2000)
         timer = timer + 2
       end
+    end
 end)
