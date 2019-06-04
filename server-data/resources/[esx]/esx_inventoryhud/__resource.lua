@@ -170,4 +170,5 @@ files {
     'html/img/items/spring.png',
     'html/img/items/crack.png',
     'html/img/items/bakingsoda.png',
+    'html/img/items/k3v.png',
 }

@@ -256,3 +256,41 @@ AddEventHandler('esx_drugeffects:onCrack', function()
     
     
 end)
+
+--k3v
+RegisterNetEvent('esx_drugeffects:onK3v')
+AddEventHandler('esx_drugeffects:onK3v', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
+  
+       -- RequestAnimSet("move_m@hurry_butch@a") 
+    --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
+      --Citizen.Wait(0)
+    --end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    --SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
+    --SetPedIsDrunk(playerPed, true)
+    
+    --Efects
+    local player = PlayerId()
+    local timer = 0
+    while timer < 30 do
+      print()
+      SetRunSprintMultiplierForPlayer(player, 1.3)
+      ResetPlayerStamina(player)
+      Citizen.Wait(2000)
+      timer = timer + 2  
+    end
+    Wait(5000)
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    ESX.ShowNotification('You feel slower')
+    
+    
+end)
