@@ -168,4 +168,5 @@ files {
     'html/img/items/pistolbarrel.png',
     'html/img/items/smgbarrel.png',
     'html/img/items/spring.png',
+    'html/img/items/crack.png',
 }

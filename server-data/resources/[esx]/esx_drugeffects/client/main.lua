@@ -178,7 +178,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     --SetPedMovementClipset(playerPed, "move_injured_generic", true)
     --SetPedIsDrunk(playerPed, true)
     
-   --Efects
+   --Effects
     local player = PlayerId()  
     SetRunSprintMultiplierForPlayer(player, 1.3)
     AddArmourToPed(playerPed, 35)  
