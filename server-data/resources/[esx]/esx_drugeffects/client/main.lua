@@ -212,8 +212,9 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     local player = PlayerId()
     local timer = 0
     while timer < 300 do
+      print()
       SetRunSprintMultiplierForPlayer(player, 1.3)
-      ResetPlayerStamina(PlayerId())
+      ResetPlayerStamina(player)
       Citizen.Wait(2000)
       timer = timer + 2  
     end
