@@ -107,4 +107,8 @@ Config.ATMLocations = {
 	{ ['x'] = -1390.800, ['y'] = -590.746,  ['z'] = 30.319}, -- bahama mama's atm, marathon ave, del perro
 	{ ['x'] = -611.73999, ['y'] = -704.74749,  ['z'] = 31.23}, -- atm palomino ave/san andreas ave, little seoul
 	{ ['x'] = -614.48986, ['y'] = -704.79864,  ['z'] = 31.23}, -- atm palomino ave/san andreas ave, little seoul
+	{ ['x'] = -207.06, ['y'] = -1341.63,  ['z'] = 34.89}, -- atm Benny's
+	{ ['x'] = -1140.17, ['y'] = -2006.30,  ['z'] = 13.18}, -- atm Airport LSCustoms
+	{ ['x'] = 724.60, ['y'] = -1071.64,  ['z'] = 23.13}, -- atm 'The Den' LSCustoms
+	{ ['x'] = -344.97, ['y'] = -123.05,  ['z'] = 39.01}, -- atm Central LSCustoms
 }
