@@ -275,8 +275,6 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
 
-    --SetPedIsDrunk(playerPed, true)
-    
     --Effects
     local playerId = PlayerId()
     local timer = 0
