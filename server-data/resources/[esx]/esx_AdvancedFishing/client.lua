@@ -94,9 +94,9 @@ end
 Citizen.CreateThread(function()
 while true do
 	Wait(600)
-	if pause and fishing then
-		pausetimer = pausetimer + 1
-	end
+		if pause and fishing then
+			pausetimer = pausetimer + 1
+		end
 end
 end)
 Citizen.CreateThread(function()
@@ -104,7 +104,7 @@ Citizen.CreateThread(function()
 		Wait(5)
 		if fishing then
 			if IsControlJustReleased(0, Keys['1']) then
-				input = 1
+				 input = 1
 			end
 			if IsControlJustReleased(0, Keys['2']) then
 				input = 2
@@ -129,14 +129,15 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['Z']) then
+			if IsControlJustReleased(0, Keys['X']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
+			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
-				if GetWaterHeight(pos.x, pos.y, pos.z-0.0, pos.z-0.5) then
+				if pos.y >= 7700 or pos.y <= -4000 or pos.x <= -3700 or pos.x >= 4300 or IsPedInAnyVehicle(GetPlayerPed(-1)) then
 					
 				else
 					fishing = false
@@ -248,7 +249,7 @@ AddEventHandler('fishing:fishstart', function()
 	if IsPedInAnyVehicle(playerPed) then
 		ESX.ShowNotification("~y~You can not fish from a vehicle")
 	else
-		if  GetWaterHeight(pos.x, pos.y, pos.z-0.0, pos.z-0.5) then
+		if pos.y >= 7700 or pos.y <= -4000 or pos.x <= -3700 or pos.x >= 4300 then
 			ESX.ShowNotification("~g~Fishing started")
 			TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_STAND_FISHING", 0, true)
 			fishing = true
@@ -380,6 +381,6 @@ function OpenBoatsMenu(x, y , z)
     end,
 	function(data, menu)
 		menu.close()
-	end
-	
-end)
+		end
+	)
+end
