@@ -4,7 +4,7 @@ Config.TimeToSell = 15 -- how many seconds player have to wait/stand near ped
 Config.CallCops = true -- if true and if ped reject your offer then there is [Config.CallCopsPercent]% to call cops
 Config.CopsRequiredToSell = 0 -- required cops on server to sell drugs
 Config.CallCopsPercent = 5 -- (min1) if 1 cops will be called every time=100%, 2=50%, 3=33%, 4=25%, 5=20%
-Config.PedRejectPercent = 3 -- (min1) if 1 ped reject offer=100%, 2=50%, 3=33%, 4=25%, 5=20%
+Config.PedRejectPercent = 2 -- (min1) if 1 ped reject offer=100%, 2=50%, 3=33%, 4=25%, 5=20%
 Config.PlayAnimation = true -- just play animation when sold
 Config.SellPooch = true -- if true, players can sell pooch like weed_pooch, meth_pooch
 Config.SellSingle = false -- if true, players can sell single item like weed, meth
