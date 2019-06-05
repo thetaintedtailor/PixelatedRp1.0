@@ -803,42 +803,42 @@ AddEventHandler('esx_illegal_drugs:GetUserInventory', function(currentZone)
 	)
 end)
 
-ESX.RegisterUsableItem('weed', function(source)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+--ESX.RegisterUsableItem('weed', function(source)
+	--local _source = source
+	--local xPlayer = ESX.GetPlayerFromId(_source)
 
-	xPlayer.removeInventoryItem('weed', 1)
+	--xPlayer.removeInventoryItem('weed', 1)
 
-	TriggerClientEvent('esx_illegal_drugs:onPot', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('used_one_weed'))
-end)
+	--TriggerClientEvent('esx_illegal_drugs:onPot', _source)
+	--TriggerClientEvent('esx:showNotification', _source, _U('used_one_weed'))
+--end)
 
-ESX.RegisterUsableItem('meth', function(source)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+--ESX.RegisterUsableItem('meth', function(source)
+	--local _source = source
+	--local xPlayer = ESX.GetPlayerFromId(_source)
 
-	xPlayer.removeInventoryItem('meth', 1)
+	--xPlayer.removeInventoryItem('meth', 1)
 
-	TriggerClientEvent('esx_illegal_drugs:onMeth', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('used_one_meth'))
-end)
+	--TriggerClientEvent('esx_illegal_drugs:onMeth', _source)
+	--TriggerClientEvent('esx:showNotification', _source, _U('used_one_meth'))
+--end)
 
-ESX.RegisterUsableItem('opium', function(source)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+--ESX.RegisterUsableItem('opium', function(source)
+	--local _source = source
+	--local xPlayer = ESX.GetPlayerFromId(_source)
 
-	xPlayer.removeInventoryItem('opium', 1)
+	--xPlayer.removeInventoryItem('opium', 1)
 
-	TriggerClientEvent('esx_illegal_drugs:onOpium', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('used_one_opium'))
-end)
+	--TriggerClientEvent('esx_illegal_drugs:onOpium', _source)
+	--TriggerClientEvent('esx:showNotification', _source, _U('used_one_opium'))
+--end)
 
-ESX.RegisterUsableItem('coke', function(source)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+--ESX.RegisterUsableItem('coke', function(source)
+	--local _source = source
+	--local xPlayer = ESX.GetPlayerFromId(_source)
 
-	xPlayer.removeInventoryItem('coke', 1)
+	--xPlayer.removeInventoryItem('coke', 1)
 
-	TriggerClientEvent('esx_illegal_drugs:onCoke', _source)
-	TriggerClientEvent('esx:showNotification', _source, _U('used_one_coke'))
-end)
+	--TriggerClientEvent('esx_illegal_drugs:onCoke', _source)
+	--TriggerClientEvent('esx:showNotification', _source, _U('used_one_coke'))
+--end)
