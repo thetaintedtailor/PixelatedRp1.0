@@ -164,7 +164,7 @@ end)
 --Show help notification ("PRESS E...")
 RegisterNetEvent('playerhasdrugs')
 AddEventHandler('playerhasdrugs', function()
-	ESX.ShowHelpNotification(_U('input'))
+	--ESX.ShowHelpNotification(_U('input'))
 	playerHasDrugs = true
 end)
 
