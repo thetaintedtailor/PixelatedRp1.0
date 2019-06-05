@@ -263,14 +263,20 @@ AddEventHandler('esx_drugeffects:onK3v', function()
   
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
-  
+  local player = PlayerId()
+  local ad = "mp_suicide"
+  local anim = "pill"
+  loadAnimDict(ad)
        -- RequestAnimSet("move_m@hurry_butch@a") 
     --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
       --Citizen.Wait(0)
     --end    
 
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
+    --TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    --Citizen.Wait(3000)
+    TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+		Wait(2750)
+		--ClearPedTasks(PlayerPedId())
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
@@ -278,7 +284,7 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     --SetPedIsDrunk(playerPed, true)
     
     --Efects
-    local player = PlayerId()
+    --local player = PlayerId()
     local timer = 0
     while timer < 30 do
       print()
