@@ -12,7 +12,7 @@ ESX.RegisterUsableItem('weed_pooch', function(source)
 	xPlayer.removeInventoryItem('weed_pooch', 1)
 
 	TriggerClientEvent('esx_status:add', _source, 'drug', 166000)
-	TriggerClientEvent('esx_drugeffects:onPouch of weed', source)
+	TriggerClientEvent('esx_drugeffects:onWeed', source)
 end)
 
 ESX.RegisterUsableItem('opium_pooch', function(source)
