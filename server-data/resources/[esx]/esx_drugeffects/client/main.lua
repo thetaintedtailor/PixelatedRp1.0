@@ -290,7 +290,8 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     Wait(5000)
 
     SetRunSprintMultiplierForPlayer(player, 1.0)]]
-    ESX.ShowNotification('You feel slower')
+    TriggerEvent('chatMessage', '^2 Testing K3V')
+    --ESX.ShowNotification('You feel slower')
     
     
 end)
