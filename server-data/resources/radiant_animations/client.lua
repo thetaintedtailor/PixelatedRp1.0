@@ -1356,8 +1356,8 @@ end, false)
 
 RegisterCommand("testanim",function(source, args)
 
-	local ad = "amb@world_human_aa_coffee@base" --- insert the animation dic here
-	local anim = "base" --- insert the animation name here
+	local ad = "mp_suicide" --- insert the animation dic here
+	local anim = "pill" --- insert the animation name here
 	local player = PlayerPedId()
 	
 
@@ -1367,8 +1367,11 @@ RegisterCommand("testanim",function(source, args)
 		if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
 			TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
 			ClearPedSecondaryTask(player)
+			ClearPedTasks(PlayerPedId())
 		else
 			TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+			Wait(2750)
+			ClearPedTasks(PlayerPedId())
 		end       
 	end
 end, false)

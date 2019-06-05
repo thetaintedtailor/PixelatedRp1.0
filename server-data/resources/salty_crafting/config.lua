@@ -17,6 +17,12 @@ Config.Recipes = {
 		{item = "bobbypin", quantity = 1 },
 	},
 
+	["crack"] = { 
+		{item = "bakingsoda", quantity = 1 }, 
+		{item = "coke", quantity = 1 },
+		{item = "water", quantity = 1 },
+	},
+
 	["clip"] = { 
 		{item = "gunpowder", quantity = 1 }, 
 		{item = "brass", quantity = 1 },
