@@ -84,7 +84,6 @@ function Normal()
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     --ResetPedMovementClipset(playerPed, 0) <- it might cause the push of the vehicles
-    --SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
   end)
 
@@ -101,7 +100,6 @@ function overdose()
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
-    --SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
 
   end)
@@ -115,19 +113,12 @@ RegisterNetEvent('esx_drugeffects:onWeed')
 AddEventHandler('esx_drugeffects:onWeed', function()
   
   local playerPed = GetPlayerPed(-1)
-  
-    --RequestAnimSet("move_m@hipster@a") 
-    --while not HasAnimSetLoaded("move_m@hipster@a") do
-      --Citizen.Wait(0)
-    --end    
 
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@hipster@a", true)
-    --SetPedIsDrunk(playerPed, true)
     
     --Efects
     local player = PlayerId()
@@ -140,18 +131,11 @@ AddEventHandler('esx_drugeffects:onOpium', function()
   
   local playerPed = GetPlayerPed(-1)
   
-        --RequestAnimSet("move_m@drunk@moderatedrunk") 
-   -- while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-      --Citizen.Wait(0)
-    --end    
-
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-    --SetPedIsDrunk(playerPed, true)
     
     --Efects
     local player = PlayerId()
@@ -165,19 +149,12 @@ AddEventHandler('esx_drugeffects:onMeth', function()
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
 
-        --RequestAnimSet("move_injured_generic") 
-    --while not HasAnimSetLoaded("move_injured_generic") do
-      --Citizen.Wait(0)
-    --end    
-
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_injured_generic", true)
-    --SetPedIsDrunk(playerPed, true)
-    
+
    --Effects
     local player = PlayerId()  
     SetRunSprintMultiplierForPlayer(player, 1.3)
@@ -195,18 +172,11 @@ AddEventHandler('esx_drugeffects:onCoke', function()
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
   
-       -- RequestAnimSet("move_m@hurry_butch@a") 
-    --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
-      --Citizen.Wait(0)
-    --end    
-
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
-    --SetPedIsDrunk(playerPed, true)
     
     --Efects
     local player = PlayerId()
@@ -226,19 +196,12 @@ AddEventHandler('esx_drugeffects:onCrack', function()
   local playerPed = GetPlayerPed(-1)
   local maxHealth = GetEntityMaxHealth(playerPed)
   
-       -- RequestAnimSet("move_m@hurry_butch@a") 
-    --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
-      --Citizen.Wait(0)
-    --end    
-
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
-    --SetPedIsDrunk(playerPed, true)
-    
+
     --Efects
     local player = PlayerId()
     local timer = 0
@@ -253,8 +216,7 @@ AddEventHandler('esx_drugeffects:onCrack', function()
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
     ESX.ShowNotification('You feel slower')
-    
-    
+      
 end)
 
 --k3v
