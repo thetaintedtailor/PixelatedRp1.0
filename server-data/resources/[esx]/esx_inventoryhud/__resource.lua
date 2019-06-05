@@ -171,4 +171,6 @@ files {
     'html/img/items/crack.png',
     'html/img/items/bakingsoda.png',
     'html/img/items/k3v.png',
+    'html/img/items/opium.png',
+    'html/img/items/opium_pooch.png',
 }
