@@ -84,7 +84,7 @@ function Normal()
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     --ResetPedMovementClipset(playerPed, 0) <- it might cause the push of the vehicles
-    SetPedIsDrug(playerPed, false)
+    --SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
   end)
 
@@ -101,7 +101,7 @@ function overdose()
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
-    SetPedIsDrug(playerPed, false)
+    --SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
 
   end)
