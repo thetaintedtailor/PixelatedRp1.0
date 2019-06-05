@@ -164,7 +164,7 @@ end)
 --Show help notification ("PRESS E...")
 RegisterNetEvent('playerhasdrugs')
 AddEventHandler('playerhasdrugs', function()
-	ESX.ShowHelpNotification(_U('input'))
+	--ESX.ShowHelpNotification(_U('input'))
 	playerHasDrugs = true
 end)
 
@@ -219,9 +219,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "mężczyznę" --male/change it to your language
+						sex = "male" --male/change it to your language
 					else
-						sex = "kobietę" --female/change it to your language
+						sex = "female" --female/change it to your language
 					end
 					TriggerServerEvent('drugsInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
@@ -236,9 +236,9 @@ Citizen.CreateThread( function()
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local sex = nil
 					if skin.sex == 0 then
-						sex = "mężczyznę"
+						sex = "male"
 					else
-						sex = "kobietę"
+						sex = "female"
 					end
 					TriggerServerEvent('drugsInProgressPos', plyPos.x, plyPos.y, plyPos.z)
 					if s2 == 0 then
