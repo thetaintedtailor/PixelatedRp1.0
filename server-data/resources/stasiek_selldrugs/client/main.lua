@@ -162,11 +162,11 @@ AddEventHandler('nomoredrugs', function()
 end)
 
 --Show help notification ("PRESS E...")
-RegisterNetEvent('playerhasdrugs')
-AddEventHandler('playerhasdrugs', function()
-	ESX.ShowHelpNotification(_U('input'))
-	playerHasDrugs = true
-end)
+--RegisterNetEvent('playerhasdrugs')
+--AddEventHandler('playerhasdrugs', function()
+	--ESX.ShowHelpNotification(_U('input'))
+	--playerHasDrugs = true
+--end)
 
 --DISPATCH BEGIN (better do not touch)
 --Only if Config.CallCops = true
