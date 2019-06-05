@@ -271,15 +271,15 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
 	  Wait(2750)
 		ClearPedTasks(player)
-    --ClearPedTasksImmediately(playerPed)
-    --SetTimecycleModifier("spectator5")
-    --SetPedMotionBlur(playerPed, true)
-    --SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
+
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+
     --SetPedIsDrunk(playerPed, true)
     
-    --Efects
+    --Effects
     --local player = PlayerId()
-    --[[local timer = 0
+    local timer = 0
     while timer < 30 do
       print()
       SetRunSprintMultiplierForPlayer(player, 1.3)
@@ -289,9 +289,8 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     end
     Wait(5000)
 
-    SetRunSprintMultiplierForPlayer(player, 1.0)]]
-    TriggerEvent('chatMessage', '^2 Testing K3V')
-    --ESX.ShowNotification('You feel slower')
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    ESX.ShowNotification('You feel slower')
     
     
 end)
