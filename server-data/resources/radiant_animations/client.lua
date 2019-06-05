@@ -1366,11 +1366,12 @@ RegisterCommand("testanim",function(source, args)
 		TriggerEvent('chatMessage', '^2 Testing Animation')
 		if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
 			TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-			Wait(2750)
 			ClearPedSecondaryTask(player)
 			ClearPedTasks(PlayerPedId())
 		else
 			TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+			Wait(2750)
+			ClearPedTasks(PlayerPedId())
 		end       
 	end
 end, false)
