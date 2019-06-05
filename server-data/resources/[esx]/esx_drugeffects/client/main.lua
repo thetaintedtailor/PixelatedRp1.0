@@ -279,7 +279,7 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     
     --Efects
     --local player = PlayerId()
-    local timer = 0
+    --[[local timer = 0
     while timer < 30 do
       print()
       SetRunSprintMultiplierForPlayer(player, 1.3)
@@ -289,7 +289,7 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     end
     Wait(5000)
 
-    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetRunSprintMultiplierForPlayer(player, 1.0)]]
     ESX.ShowNotification('You feel slower')
     
     
