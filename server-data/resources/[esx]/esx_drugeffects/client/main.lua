@@ -269,7 +269,7 @@ AddEventHandler('esx_drugeffects:onK3v', function()
       --Citizen.Wait(0)
     --end    
 
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    TaskStartScenarioInPlace(playerPed, “mp_suicide”; anim = “pill”;, 0, 1)
     Citizen.Wait(3000)
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
