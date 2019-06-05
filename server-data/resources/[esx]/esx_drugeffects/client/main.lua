@@ -267,16 +267,10 @@ AddEventHandler('esx_drugeffects:onK3v', function()
   local ad = "mp_suicide"
   local anim = "pill"
   loadAnimDict(ad)
-       -- RequestAnimSet("move_m@hurry_butch@a") 
-    --while not HasAnimSetLoaded("move_m@hurry_butch@a") do
-      --Citizen.Wait(0)
-    --end    
 
-    --TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    --Citizen.Wait(3000)
-    --TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-		--Wait(2750)
-		--ClearPedTasks(playerPed)
+    TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+	  Wait(2750)
+		ClearPedTasks(playerPed)
     --ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
