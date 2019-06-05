@@ -111,8 +111,8 @@ end
 --Drugs Effects
 
 --Weed
-RegisterNetEvent('esx_drugeffects:onWeed')
-AddEventHandler('esx_drugeffects:onWeed', function()
+RegisterNetEvent('esx_drugeffects:onPouch of weed')
+AddEventHandler('esx_drugeffects:onPouch of weed', function()
   
   local playerPed = GetPlayerPed(-1)
   
