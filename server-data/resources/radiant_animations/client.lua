@@ -1356,8 +1356,8 @@ end, false)
 
 RegisterCommand("testanim",function(source, args)
 
-	local ad = "amb@world_human_aa_coffee@base" --- insert the animation dic here
-	local anim = "base" --- insert the animation name here
+	local ad = "mp_suicide" --- insert the animation dic here
+	local anim = "pill" --- insert the animation name here
 	local player = PlayerPedId()
 	
 
