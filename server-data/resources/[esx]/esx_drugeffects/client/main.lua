@@ -268,7 +268,7 @@ AddEventHandler('esx_drugeffects:onK3v', function()
   local anim = "pill"
   loadAnimDict(ad)
 
-    TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
 	  Wait(2750)
 		ClearPedTasks(player)
 
@@ -278,18 +278,18 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     --SetPedIsDrunk(playerPed, true)
     
     --Effects
-    --local player = PlayerId()
+    local playerId = PlayerId()
     local timer = 0
     while timer < 30 do
       print()
-      SetRunSprintMultiplierForPlayer(player, 1.3)
-      ResetPlayerStamina(player)
+      SetRunSprintMultiplierForPlayer(playerId, 1.3)
+      ResetPlayerStamina(playerId)
       Citizen.Wait(2000)
       timer = timer + 2  
     end
     Wait(5000)
 
-    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetRunSprintMultiplierForPlayer(playerId, 1.0)
     ESX.ShowNotification('You feel slower')
     
     
