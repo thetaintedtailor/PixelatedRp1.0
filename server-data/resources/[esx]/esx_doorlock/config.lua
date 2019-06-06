@@ -177,7 +177,7 @@ Config.DoorList = {
 	{
 		objName = 'V_ILev_PH_GenDoor006',
 		objCoords  = {x = 470.34, y = -993.66, z = 25.10},
-		textCoords = {x = 470.34, y = -993.66, z = 25.10},
+		textCoords = {x = 470.36, y = -994.62, z = 25.10},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2,
@@ -187,7 +187,7 @@ Config.DoorList = {
 	{
 		objName = 'V_ILev_PH_GenDoor006',
 		objCoords  = {x = 468.73, y = -992.75, z = 25.10},
-		textCoords = {x = 468.73, y = -992.75, z = 25.10},
+		textCoords = {x = 467.71, y = -992.69, z = 25.10},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2,
