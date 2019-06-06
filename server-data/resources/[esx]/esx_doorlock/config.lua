@@ -180,7 +180,7 @@ Config.DoorList = {
 		textCoords = {x = 470.36, y = -994.62, z = 25.10},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
-		distance = 1,
+		distance = 2,
 	},
 
 	-- Outer interrogation room door
@@ -189,7 +189,7 @@ Config.DoorList = {
 		objCoords  = {x = 468.73, y = -992.75, z = 25.10},
 		textCoords = {x = 467.71, y = -992.69, z = 25.10},
 		authorizedJobs = { 'police', 'offpolice' },
-		locked = true,
+		locked = false,
 		distance = 1,
 	},
 
