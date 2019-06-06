@@ -173,6 +173,27 @@ Config.DoorList = {
 		size = 2
 	},
 
+	-- Interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 470.34, y = -993.66, z = 25.10},
+		textCoords = {x = 470.34, y = -993.66, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+
+	-- Outer interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 468.73, y = -992.75, z = 25.10},
+		textCoords = {x = 468.73, y = -992.75, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+
+
 	--
 	-- Sandy Shores
 	--
