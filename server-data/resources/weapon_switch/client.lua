@@ -126,7 +126,7 @@ Citizen.CreateThread(function()
 				end 
 			end
 		else
-			Citizen.Wait(100)
+			Citizen.Wait(150)
 		end
 
 		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
