@@ -274,7 +274,7 @@ Config.DoorList = {
 	-- Pillbox Hospital Inner Doors
 
 	{
-		objName = 'V_40_doorfr2',
+		objName = 'V_40_sidedoor',
 		objCoords  = {x=328.62, y=-585.20, z=43.33},
 		textCoords = {x=329.39, y=-585.44, z=43.33},
 		authorizedJobs = {'ambulance'},
@@ -282,7 +282,7 @@ Config.DoorList = {
 		distance = 4
 	},
 	{
-		objName = 'V_40_doorfr2',
+		objName = 'V_40_sidedoor',
 		objCoords  = {x=330.79, y=-585.99, z=43.33},
 		textCoords = {x=330.13, y=-585.74, z=43.33},
 		authorizedJobs = {'ambulance'},
