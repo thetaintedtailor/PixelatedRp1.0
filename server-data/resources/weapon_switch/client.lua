@@ -101,10 +101,9 @@ Citizen.CreateThread(function()
 	--local policeAnimDict = 
 	local animIntroName = 'intro'
 	local animOutroName = 'outro'
-
 	local animFlag = 0
-
 	local lastWeapon = nil
+	requestAnimations(civilAnimDict)
 
 	while true do
 		Citizen.Wait(0)
