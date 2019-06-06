@@ -110,7 +110,7 @@ Citizen.CreateThread(function()
 		local ped = PlayerPedId()
 		local playerData = ESX.GetPlayerData()
 
-		if playerData.job.name ~= 'police' then
+		--if playerData.job.name ~= 'police' then
 			if not IsPedInAnyVehicle(ped, true) then
 				if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
 					if Config.PedAbleToWalkWhileSwapping then
@@ -139,7 +139,7 @@ Citizen.CreateThread(function()
 			else
 				Citizen.Wait(200)
 			end
-		end
+		--end
 		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 	end
 end)
