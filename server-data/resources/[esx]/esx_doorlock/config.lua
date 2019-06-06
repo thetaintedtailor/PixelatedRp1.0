@@ -276,7 +276,7 @@ Config.DoorList = {
 	{
 		objName = 'v_40_sidedr',
 		objCoords  = {x=328.62, y=-585.20, z=43.33},
-		textCoords = {x=328.62, y=-585.20, z=43.33},
+		textCoords = {x=329.39, y=-585.44, z=43.33},
 		authorizedJobs = {'ambulance'},
 		locked = true,
 	},
