@@ -234,7 +234,7 @@ Config.DoorList = {
 		size = 2
 	},
 
-	-- Cell doors
+	-- Prison Cell doors
 	{
 		objName = 'Prop_LD_jail_door',
 		objCoords  = {x = 1798.450, y=2479.150, z = -122.540},
@@ -271,21 +271,20 @@ Config.DoorList = {
 		locked = true,
 	},
 
+	-- Pillbox Hospital Inner Doors
 
-	--
-	-- Addons
-	--
-
-	--[[
-	-- Entrance Gate (Mission Row mod) https://www.gta5-mods.com/maps/mission-row-pd-ymap-fivem-v1
 	{
-		objName = 'prop_gate_airport_01',
-		objCoords  = {x = 420.133, y = -1017.301, z = 28.086},
-		textCoords = {x = 420.133, y = -1021.00, z = 32.00},
-		authorizedJobs = { 'police', 'offpolice' },
+		objName = 'v_40_sidedr',
+		objCoords  = {x=328.62, y=-585.20, z=43.33},
+		textCoords = {x=328.62, y=-585.20, z=43.33},
+		authorizedJobs = {'ambulance'},
 		locked = true,
-		distance = 14,
-		size = 2
-	}
-	--]]
+	},
+	{
+		objName = 'v_40_sidedr',
+		objCoords  = {x=330.79, y=-585.99, z=43.33},
+		textCoords = {x=330.79, y=-585.99, z=43.33},
+		authorizedJobs = {'ambulance'},
+		locked = true,
+	},
 }
