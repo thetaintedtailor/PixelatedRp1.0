@@ -1,3 +1,4 @@
+ESX               = nil
 Config = {}
 
 Config.WeaponList = {
@@ -80,55 +81,74 @@ Config.WeaponList = {
 Config.PedAbleToWalkWhileSwapping = true
 Config.UnarmedHash = -1569615261
 
-Citizen.CreateThread(function()
-	local animDict = 'reaction@intimidation@1h'
 
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+		
+	while ESX.GetPlayerData().job == nil do
+		Citizen.Wait(10)
+	end
+end)
+
+
+
+
+Citizen.CreateThread(function()
+	local civilAnimDict = 'reaction@intimidation@1h'
+	--local policeAnimDict = 
 	local animIntroName = 'intro'
 	local animOutroName = 'outro'
 
 	local animFlag = 0
-
-	RequestAnimDict(animDict)
-	  
-	while not HasAnimDictLoaded(animDict) do
-		Citizen.Wait(100)
-	end
 
 	local lastWeapon = nil
 
 	while true do
 		Citizen.Wait(0)
 		local ped = PlayerPedId()
+		local playerData = ESX.GetPlayerData()
 
-		if not IsPedInAnyVehicle(ped, true) then
-			if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
-				if Config.PedAbleToWalkWhileSwapping then
-					animFlag = 48
-				else
-					animFlag = 0
+		if PlayerData.job.name ~= 'police' then
+			if not IsPedInAnyVehicle(ped, true) then
+				if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
+					if Config.PedAbleToWalkWhileSwapping then
+						animFlag = 48
+					else
+						animFlag = 0
+					end
+
+					for i=1, #Config.WeaponList do
+						if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.WeaponList[i] then
+							SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+							TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
+
+							Citizen.Wait(1000)
+							SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
+						end
+
+						if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.UnarmedHash then
+							TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
+
+							Citizen.Wait(1000)
+							SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+						end
+					end 
 				end
-
-				for i=1, #Config.WeaponList do
-					if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.WeaponList[i] then
-						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-						TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
-
-						Citizen.Wait(1000)
-						SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
-					end
-
-					if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.UnarmedHash then
-						TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
-
-						Citizen.Wait(1000)
-						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-					end
-				end 
+			else
+				Citizen.Wait(200)
 			end
-		else
-			Citizen.Wait(150)
 		end
-
 		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 	end
 end)
+
+function requestAnimations(dict) 
+	RequestAnimDict(dict)
+
+	while not HasAnimDictLoaded(dict) do
+		Citizen.Wait(100)
+	end
+end
