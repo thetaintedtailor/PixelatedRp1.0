@@ -29,7 +29,7 @@ Config.Locale = 'en'
 
 Config.Zones = {
 	CokeField =			{x=1093.139,  y=-3195.673,  z=-39.131},
-	CokeProcessing =	{x=1087.23,  y=-3197.28,  z=-38.99},
+	CokeProcessing =	{x=1101.99,  y=-3193.78,  z=-37.99},
 	--CokeDealer =		{x=977.38,   y=-103.95,   z=217.56},
 	MethField =			{x=1005.721,  y=-3200.301,  z=-38.519},
 	MethProcessing =	{x=1014.878,  y=-3194.871,  z=-38.993},
