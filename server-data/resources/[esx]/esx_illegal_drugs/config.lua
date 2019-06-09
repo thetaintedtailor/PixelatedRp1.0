@@ -42,7 +42,7 @@ Config.Zones = {
 	--OpiumDealer =		{x=-3155.608, y=1125.368,   z=20.858}
 }
 
-Config.DisableBlip = false -- Set to true to disable blips. False to enable them.
+Config.DisableBlip = true -- Set to true to disable blips. False to enable them.
 Config.Map = {
 
     {name="Drugs Are Hidden",      color=6, scale=1.6, id=378, x=-472.6,     y=-714.99,     z=81.18},
