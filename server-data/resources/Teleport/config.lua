@@ -12,11 +12,11 @@ Config.zones = {
 		z = -2.51,
 		w = 2.0,
 		h = 1.0,
-		visible = true, -- Set this to true to make the marker visible. False to disable it.
+		visible = false, -- Set this to true to make the marker visible. False to disable it.
 		t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
 		color = {
 			r = 0,
-			g = 102,
+			g = 102,7
 			b = 0
 		}
 		
