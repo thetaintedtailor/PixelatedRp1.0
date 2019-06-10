@@ -18,7 +18,7 @@ Config.Recipes = {
 	},
 
 	["fixkit"] = { 
-		{item = "toolbox", quantity = 4 }, 
+		{item = "toolbox", quantity = 1 }, 
 		{item = "battery", quantity = 1 },
 	},	
 
