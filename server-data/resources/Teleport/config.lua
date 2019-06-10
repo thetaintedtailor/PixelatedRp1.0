@@ -16,7 +16,7 @@ Config.zones = {
 		t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
 		color = {
 			r = 0,
-			g = 102,7
+			g = 102,
 			b = 0
 		}
 		
