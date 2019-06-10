@@ -7,9 +7,9 @@ Config.actionKey = 51
 Config.zones = {
 	
 	WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
-		x = -539.21716308594,
-		y = -1720.1965332031,
-		z = 19.382791519165,
+		x = -899.87,
+		y = -2309.02,
+		z = -3.51,
 		w = 2.0,
 		h = 1.0,
 		visible = false, -- Set this to true to make the marker visible. False to disable it.
@@ -109,9 +109,9 @@ Config.point = {
 	},
 	
 	WeedExit = {             --This is where you land when you use the exit teleport.
-		x = -534.21716308594,
-		y = -1718.1965332031,
-		z = 19.382791519165
+		x = -902.48,
+		y = -2305.42,
+		z = -3.51
 	},
 
 	MethEnter = {
