@@ -49,6 +49,8 @@ AddEventHandler('esx_sopletare:getItem', function()
             'shotgunbarrel',
             'pistolbarrel',
             'smgbarrel',
+            'toolbox',
+            'battery',
         }
 
         local player = ESX.GetPlayerFromId(source)
