@@ -103,15 +103,15 @@ Config.zones = {
 Config.point = {
 
 	WeedEnter = {           --This is where you land when you use the entrance teleport.
-		x = 1066.009,
-		y = -3183.386,
-		z = -39.164
+		x = -899.86,
+		y = -2309.01,
+		z = -2.51
 	},
 	
 	WeedExit = {             --This is where you land when you use the exit teleport.
-		x = -534.21716308594,
-		y = -1718.1965332031,
-		z = 19.382791519165
+		x = -900.91,
+		y = -2305.59,
+		z = -3.51
 	},
 
 	MethEnter = {
@@ -127,15 +127,15 @@ Config.point = {
 	},
 
 	CokeEnter = {
-		x = 1088.636,
-		y = -3188.551, 
-		z = -38.993
+		x = 374.95,
+		y = -576.11, 
+		z = 17.48
 	},
 	
 	CokeExit = {
-		x = -61.071701049805,
-		y = 6441.6674804688, 
-		z = 32.685699462891
+		x = 370.63,
+		y = -576.11, 
+		z = 17.76
 	}
 }
 
