@@ -12,6 +12,7 @@ client_scripts {
   'locales/pl.lua',
   'config.lua',
   'client/main.lua',
+  'handsup.lua'
 }
 
 server_scripts {
