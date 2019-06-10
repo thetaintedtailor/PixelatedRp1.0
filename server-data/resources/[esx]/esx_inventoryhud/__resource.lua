@@ -173,4 +173,7 @@ files {
     'html/img/items/k3v.png',
     'html/img/items/opium.png',
     'html/img/items/opium_pooch.png',
+    'html/img/items/battery.png',
+    'html/img/items/toolbox.png',
+    'html/img/items/drill.png',
 }
