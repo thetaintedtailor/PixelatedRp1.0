@@ -38,7 +38,7 @@ Config.Zones = {
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
 	--WeedDealer =		{x = 85.58,   y= -1959.34,  z= 20.13},
 	OpiumField =		{x=-2163.93,  y=5192.19,   z=15.01},
-	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=176.52},
+	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=5.79},
 	--OpiumDealer =		{x=-3155.608, y=1125.368,   z=20.858}
 }
 
