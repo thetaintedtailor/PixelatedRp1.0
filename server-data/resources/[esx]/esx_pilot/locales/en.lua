@@ -37,4 +37,5 @@ Locales['en'] = {
   ['taxi_client'] = 'taxi Client',
   ['have_withdrawn'] = 'you have withdrawn x',
   ['added'] = 'you added x',
+  ['spawn_plane'] = 'Spawn your heli',
 }
