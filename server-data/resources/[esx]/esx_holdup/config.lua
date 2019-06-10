@@ -8,7 +8,7 @@ Config.Marker = {
 }
 
 Config.PoliceNumberRequired = 0
-Config.TimerBeforeNewRob    = 5400 -- The cooldown timer on a store after robbery was completed / canceled, in seconds
+Config.TimerBeforeNewRob    = 21600 -- The cooldown timer on a store after robbery was completed / canceled, in seconds
 
 Config.MaxDistance    = 20   -- max distance from the robbary, going any longer away from it will to cancel the robbary
 Config.GiveBlackMoney = false -- give black money? If disabled it will give cash instead
@@ -16,7 +16,7 @@ Config.GiveBlackMoney = false -- give black money? If disabled it will give cash
 Stores = {
 	["paleto_twentyfourseven"] = {
 		position = { x = 1736.32, y = 6419.47, z = 35.03 },
-		reward = math.random(1000, 3000),
+		reward = math.random(1500, 3000),
 		nameOfStore = "24/7. (Paleto Bay)",
 		secondsRemaining = 350, -- seconds
 		lastRobbed = 0
@@ -37,7 +37,7 @@ Stores = {
 	},
 	["bar_one"] = {
 		position = { x = 1990.57, y = 3044.95, z = 47.21 },
-		reward = math.random(1000, 3000),
+		reward = math.random(1500, 3000),
 		nameOfStore = "Yellow Jack. (Sandy Shores)",
 		secondsRemaining = 300, -- seconds
 		lastRobbed = 0
