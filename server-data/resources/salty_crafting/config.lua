@@ -1,7 +1,7 @@
 Config = {}
 
 -- Ammo given by default to crafted weapons
-Config.WeaponAmmo = 42
+Config.WeaponAmmo = 1
 
 Config.Recipes = {
 	-- Can be a normal ESX item
@@ -29,7 +29,7 @@ Config.Recipes = {
 	},
 
 	["clip"] = { 
-		{item = "gunpowder", quantity = 1 }, 
+		{item = "gunpowder", quantity = 2 }, 
 		{item = "brass", quantity = 1 },
 	},
 
