@@ -7,9 +7,9 @@ Config.actionKey = 51
 Config.zones = {
 	
 	WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
-		x = -899.87,
-		y = -2309.02,
-		z = -2.51,
+		x = -899.22,
+		y = -2309.39,
+		z = -3.51,
 		w = 2.0,
 		h = 1.0,
 		visible = false, -- Set this to true to make the marker visible. False to disable it.
