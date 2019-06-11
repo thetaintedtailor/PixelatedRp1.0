@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/JuiceWRLD_Robbery.mp3',
+    'music/cakin.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
