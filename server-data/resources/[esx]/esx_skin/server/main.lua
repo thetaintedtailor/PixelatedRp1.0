@@ -36,23 +36,25 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(users)
-		local user = users[1]
-		local skin = nil
+	if xPlayer ~= nil then
+		MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
+			['@identifier'] = xPlayer.identifier
+		}, function(users)
+			local user = users[1]
+			local skin = nil
 
-		local jobSkin = {
-			skin_male   = xPlayer.job.skin_male,
-			skin_female = xPlayer.job.skin_female
-		}
+			local jobSkin = {
+				skin_male   = xPlayer.job.skin_male,
+				skin_female = xPlayer.job.skin_female
+			}
 
-		if user.skin ~= nil then
-			skin = json.decode(user.skin)
-		end
+			if user.skin ~= nil then
+				skin = json.decode(user.skin)
+			end
 
-		cb(skin, jobSkin)
-	end)
+			cb(skin, jobSkin)
+		end)
+	end
 end)
 
 -- Commands
