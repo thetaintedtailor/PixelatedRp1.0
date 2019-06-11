@@ -100,13 +100,18 @@ function OnPlayerDeath()
 	StartDistressSignal()
 
 	StartScreenEffect('DeathFailOut', 0, false)
+	ragDoll()
+end
+
+function ragDoll()
 	ClearPedTasksImmediately(GetPlayerPed(-1))
-
-	repeat
-		Citizen.Wait(60000)
-		ClearPedTasksImmediately(GetPlayerPed(-1))
-	until IsDead == false
-
+	
+	Citizen.CreateThread(function()
+		while IsDead == true
+			Citizen.Wait(60000)
+			ClearPedTasksImmediately(GetPlayerPed(-1))
+		end
+	end)
 end
 
 function StartDistressSignal()
