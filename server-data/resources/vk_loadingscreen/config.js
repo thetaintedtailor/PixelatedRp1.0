@@ -33,7 +33,7 @@ VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
     "Press F1 to pull up your phone. Emergency/legal/taxi services can be found in the 'services' menu.",
     "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "A full list of our emotes and chat commands can be found on the Discord #list-of-commands",
+    "Our EMS team is HIRING!",
     "Around here we call Kat the Fastest Dev in the West",
 ];
 
