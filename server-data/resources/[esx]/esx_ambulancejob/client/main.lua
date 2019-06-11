@@ -102,10 +102,10 @@ function OnPlayerDeath()
 	StartScreenEffect('DeathFailOut', 0, false)
 	ClearPedTasksImmediately(GetPlayerPed(-1))
 
-	repeat
+	while IsDead == false
 		Citizen.Wait(60000)
 		ClearPedTasksImmediately(GetPlayerPed(-1))
-	until IsDead == false
+	end
 
 end
 
