@@ -113,7 +113,7 @@ RegisterNUICallback("DeleteCharacter", function(data, cb)
     end
     cb("ok")
 end)
-
+--[[
 RegisterCommand('switch', function()
     TriggerEvent('kashactersC:ReloadCharacters')
-    end)
+    end)]]
