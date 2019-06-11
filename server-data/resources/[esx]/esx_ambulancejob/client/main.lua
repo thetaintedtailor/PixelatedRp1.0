@@ -100,6 +100,13 @@ function OnPlayerDeath()
 	StartDistressSignal()
 
 	StartScreenEffect('DeathFailOut', 0, false)
+	ClearPedTasksImmediately(GetPlayerPed(-1))
+
+	repeat
+		Citizen.Wait(60000)
+		ClearPedTasksImmediately(GetPlayerPed(-1))
+	until IsDead == false
+
 end
 
 function StartDistressSignal()
