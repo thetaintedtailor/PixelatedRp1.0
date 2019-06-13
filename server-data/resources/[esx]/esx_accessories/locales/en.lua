@@ -9,6 +9,7 @@ Locales ['en'] = {
   ['shirt'] = 'take off shirt',
   ['pants'] = 'take off pants',
   ['shoes'] = 'take off shoes',
+  ['bag'] = 'take off your bag',
   ['clothes'] = 'put on your clothes',
   ['shop'] = '%s shop',
   ['set_unset'] = 'put on / Take off',

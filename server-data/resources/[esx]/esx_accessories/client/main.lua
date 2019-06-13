@@ -35,6 +35,7 @@ function OpenAccessoryMenu()
 			{label = _U('ears'), value = 'Ears'},
 			{label = _U('mask'), value = 'Mask'},
 			{label = _U('glasses'), value = 'Glasses'},
+			{label = _U('bag'), value = 'Bag'},
 			{label = _U('shirt'), value = 'Shirt'},
 			{label = _U('pants'), value = 'Pants'},
 			{label = _U('shoes'), value = 'Shoes'},
