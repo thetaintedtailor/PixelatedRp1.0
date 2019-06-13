@@ -29,7 +29,7 @@ Config.Recipes = {
 	},
 
 	["clip"] = { 
-		{item = "gunpowder", quantity = 2 }, 
+		{item = "gunpowder", quantity = 1 }, 
 		{item = "brass", quantity = 1 },
 	},
 
@@ -44,7 +44,7 @@ Config.Recipes = {
 	},
 
 	["diamondring"] = { 
-		{item = "diamond", quantity = 4 }, 
+		{item = "diamond", quantity = 1 }, 
 		{item = "ring", quantity = 1 },
 	},
 	
