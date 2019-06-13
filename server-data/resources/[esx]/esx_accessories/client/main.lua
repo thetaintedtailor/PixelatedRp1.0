@@ -34,12 +34,40 @@ function OpenAccessoryMenu()
 			{label = _U('helmet'), value = 'Helmet'},
 			{label = _U('ears'), value = 'Ears'},
 			{label = _U('mask'), value = 'Mask'},
-			{label = _U('glasses'), value = 'Glasses'}
+			{label = _U('glasses'), value = 'Glasses'},
+			{label = _U('bag'), value = 'Bag'},
+			{label = _U('shirt'), value = 'Shirt'},
+			{label = _U('pants'), value = 'Pants'},
+			{label = _U('shoes'), value = 'Shoes'},
+			{label = _U('clothes'), value = 'Clothes'},
 		}
 	}, function(data, menu)
-		menu.close()
-		SetUnsetAccessory(data.current.value)
+		if data.current.value == 'Helmet' or data.current.value == 'Ears' or data.current.value == 'Mask' or data.current.value == 'Glasses' then
+			menu.close()
+			SetUnsetAccessory(data.current.value)
 
+		elseif data.current.value == "Shirt" then
+			menu.close()
+			TriggerEvent('esx_accessories:shirt')
+
+		elseif data.current.value == "Pants" then
+			menu.close()
+			TriggerEvent('esx_accessories:pants')
+
+		elseif data.current.value == "Shoes" then
+			menu.close()
+			TriggerEvent('esx_accessories:shoes')
+
+		elseif data.current.value == "Bag" then
+			menu.close()
+			TriggerEvent('esx_accessories:bag')
+
+		elseif data.current.value == "Clothes" then
+			menu.close()
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
+				TriggerEvent('skinchanger:loadSkin', skin)
+			end)
+		end
 	end, function(data, menu)
 		menu.close()
 	end)
@@ -74,6 +102,75 @@ function SetUnsetAccessory(accessory)
 
 	end, accessory)
 end
+
+RegisterNetEvent('esx_accessories:shirt')
+AddEventHandler('esx_accessories:shirt', function()
+	TriggerEvent('skinchanger:getSkin', function(skin)
+		if(skin.sex == 0) then
+			local clothesSkin = {
+			['tshirt_1'] = 15, ['tshirt_2'] = 0,
+			['torso_1'] = 15, ['torso_2'] = 0,
+			['arms'] = 15, ['arms_2'] = 0
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+		else
+			local clothesSkin = {
+			['tshirt_1'] = 34, ['tshirt_2'] = 0,
+			['torso_1'] = 15, ['torso_2'] = 0,
+			['arms'] = 15, ['arms_2'] = 0
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+		end
+	end)
+end)
+
+RegisterNetEvent('esx_accessories:pants')
+AddEventHandler('esx_accessories:pants', function()
+	TriggerEvent('skinchanger:getSkin', function(skin)
+
+		if(skin.sex == 0) then
+			local clothesSkin = {
+			['pants_1'] = 21, ['pants_2'] = 0
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+		else 
+			local clothesSkin = {
+			['pants_1'] = 15, ['pants_2'] = 0
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+			print('oops')
+		end
+	end)
+end)
+
+RegisterNetEvent('esx_accessories:shoes')
+AddEventHandler('esx_accessories:shoes', function()
+	TriggerEvent('skinchanger:getSkin', function(skin)
+	
+		if(skin.sex == 0) then
+		local clothesSkin = {
+		['shoes_1'] = 34, ['shoes_2'] = 0
+		}
+		TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+		else
+		local clothesSkin = {
+		['shoes_1'] = 35, ['shoes_2'] = 0
+		}
+		TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+		end
+	end)
+end)
+
+RegisterNetEvent('esx_accessories:bag')
+AddEventHandler('esx_accessories:bag', function()
+	TriggerEvent('skinchanger:getSkin', function(skin)
+		local clothesSkin = {
+		['bags_1'] = 0, ['bags_2'] = 0
+		}
+		TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+	end)
+end)
+
 
 function OpenShopMenu(accessory)
 	local _accessory = string.lower(accessory)
