@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/cakin.mp3',
+    'music/readyornot.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
