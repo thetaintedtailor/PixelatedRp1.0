@@ -294,7 +294,7 @@ function NextWeatherStage()
 	elseif CurrentWeather == "CLEARING" or CurrentWeather == "OVERCAST" then
 		local new = math.random(1,6)
 		if new == 1 then
-			if CurrentWeather == "CLEARING" then CurrentWeather = "FOGGY" else CurrentWeather = "RAIN" end
+			CurrentWeather = "FOGGY"
 		elseif new == 2 then
 			CurrentWeather = "CLOUDS"
 		elseif new == 3 then
