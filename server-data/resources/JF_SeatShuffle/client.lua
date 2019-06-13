@@ -10,7 +10,7 @@ function disableSeatShuffle(flag)
 	disableShuffle = flag
 end
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		if IsPedInAnyVehicle(GetPlayerPed(-1), false) and disableShuffle then
@@ -21,12 +21,12 @@ Citizen.CreateThread(function()
 			end
 		end
 	end
-end)
+end)]]
 
 Citizen.CreateThread(function()
 	while true do
 	  Citizen.Wait(0)
-	  DisablePlayerVehicleRewards(PlayerId())
+
 	  if IsControlJustReleased(0, 23) and running ~= true and GetVehiclePedIsIn(GetPlayerPed(-1), false) == 0 then
 		local vehicle = VehicleInFront()
 		running = true
@@ -49,6 +49,8 @@ Citizen.CreateThread(function()
 		end
 		running = false
 	  end
+
+
 	end
   end)
 
