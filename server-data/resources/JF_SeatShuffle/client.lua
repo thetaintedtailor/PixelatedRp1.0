@@ -12,6 +12,19 @@ end
 
 Citizen.CreateThread(function()
 	while true do
+		Citizen.Wait(0)
+		if IsPedInAnyVehicle(GetPlayerPed(-1), false) and disableShuffle then
+			if GetPedInVehicleSeat(GetVehiclePedIsIn(GetPlayerPed(-1), false), 0) == GetPlayerPed(-1) then
+				if GetIsTaskActive(GetPlayerPed(-1), 165) then
+					SetPedIntoVehicle(GetPlayerPed(-1), GetVehiclePedIsIn(GetPlayerPed(-1), false), 0)
+				end
+			end
+		end
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
 	  Citizen.Wait(0)
 	  DisablePlayerVehicleRewards(PlayerId())
 	  if IsControlJustReleased(0, 23) and running ~= true and GetVehiclePedIsIn(GetPlayerPed(-1), false) == 0 then
@@ -38,6 +51,7 @@ Citizen.CreateThread(function()
 	  end
 	end
   end)
+
 
 RegisterNetEvent("SeatShuffle")
 AddEventHandler("SeatShuffle", function()
