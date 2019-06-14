@@ -149,18 +149,7 @@ function OpenCuffMenu()
                 end
               end
               if data2.current.value == 'put_in_vehicle' then
-                if Config.EnableItems then
-                    ESX.TriggerServerCallback('esx_thief:getItemQ', function(quantity)
-                        if quantity > 0 then
-                            IsAbleToSearch = false
-                            TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
-                        else
-                            ESX.ShowNotification(_U('no_rope'))
-                        end
-                    end, 'rope')
-                else
-                    TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
-                end
+                TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
               end  
               if data2.current.value == 'search' then
 
