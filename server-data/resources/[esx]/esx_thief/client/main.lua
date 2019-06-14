@@ -257,21 +257,48 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(10)
     if handcuffed then
-      DisableControlAction(2, 24, true) -- Attack
-      DisableControlAction(2, 257, true) -- Attack 2
-      DisableControlAction(2, 25, true) -- Aim
-      DisableControlAction(2, 263, true) -- Melee Attack 1
-      DisableControlAction(0, 30,  true) -- MoveLeftRight
-      DisableControlAction(0, 31,  true) -- MoveUpDown
-      DisableControlAction(2, Keys['R'], true) -- Reload
-      DisableControlAction(2, Keys['TOP'], true) -- Open phone (not needed?)
-      DisableControlAction(2, Keys['SPACE'], true) -- Jump
-      DisableControlAction(2, Keys['Q'], true) -- Cover
-      DisableControlAction(2, Keys['TAB'], true) -- Select Weapon
-      DisableControlAction(2, Keys['F'], true) -- Also 'enter'?
-      DisableControlAction(2, Keys['F1'], true) -- Disable phone
-      DisableControlAction(2, Keys['F2'], true) -- Inventory
-      DisableControlAction(2, Keys['F3'], true) -- Animations
+        DisableControlAction(0, 1, true) -- Disable pan
+        DisableControlAction(0, 2, true) -- Disable tilt
+        DisableControlAction(0, 24, true) -- Attack
+        DisableControlAction(0, 257, true) -- Attack 2
+        DisableControlAction(0, 25, true) -- Aim
+        DisableControlAction(0, 263, true) -- Melee Attack 1
+        DisableControlAction(0, Keys['W'], true) -- W
+        DisableControlAction(0, Keys['A'], true) -- A
+        DisableControlAction(0, 31, true) -- S (fault in Keys table!)
+        DisableControlAction(0, 30, true) -- D (fault in Keys table!)
+
+        DisableControlAction(0, Keys['R'], true) -- Reload
+        DisableControlAction(0, Keys['SPACE'], true) -- Jump
+        DisableControlAction(0, Keys['Q'], true) -- Cover
+        DisableControlAction(0, Keys['TAB'], true) -- Select Weapon
+        DisableControlAction(0, Keys['F'], true) -- Also 'enter'?
+
+        DisableControlAction(0, Keys['F1'], true) -- Disable phone
+        DisableControlAction(0, Keys['F2'], true) -- Inventory
+        DisableControlAction(0, Keys['F3'], true) -- Animations
+        DisableControlAction(0, Keys['F6'], true) -- Job
+
+        DisableControlAction(0, Keys['V'], true) -- Disable changing view
+        DisableControlAction(0, Keys['C'], true) -- Disable looking behind
+        DisableControlAction(0, Keys['X'], true) -- Disable clearing animation
+        DisableControlAction(2, Keys['P'], true) -- Disable pause screen
+
+        DisableControlAction(0, 59, true) -- Disable steering in vehicle
+        DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
+        DisableControlAction(0, 72, true) -- Disable reversing in vehicle
+
+        DisableControlAction(2, Keys['LEFTCTRL'], true) -- Disable going stealth
+
+        DisableControlAction(0, 47, true)  -- Disable weapon
+        DisableControlAction(0, 264, true) -- Disable melee
+        DisableControlAction(0, 257, true) -- Disable melee
+        DisableControlAction(0, 140, true) -- Disable melee
+        DisableControlAction(0, 141, true) -- Disable melee
+        DisableControlAction(0, 142, true) -- Disable melee
+        DisableControlAction(0, 143, true) -- Disable melee
+        DisableControlAction(0, 75, true)  -- Disable exit vehicle
+        DisableControlAction(27, 75, true) -- Disable exit vehicle
     else
       Citizen.Wait(1000)
     end
@@ -478,8 +505,12 @@ end)
 RegisterNetEvent('esx_thief:putInVehicle')
 AddEventHandler('esx_thief:putInVehicle', function()
 	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
-
+    local coords = GetEntityCoords(playerPed)
+    
+    if not handcuffed then
+		return
+    end
+    
 	if IsAnyVehicleNearPoint(coords, 5.0) then
 		local vehicle = GetClosestVehicle(coords, 5.0, 0, 71)
 
@@ -495,7 +526,8 @@ AddEventHandler('esx_thief:putInVehicle', function()
 
 			if freeSeat then
 				TaskWarpPedIntoVehicle(playerPed, vehicle, freeSeat)
-				DragStatus.IsDragged = false
+                IsDragged = not IsDragged
+                CopPed = tonumber(cop)
 			end
 		end
 	end
