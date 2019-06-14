@@ -1348,8 +1348,21 @@ RegisterCommand("e",function(source, args)
 end, false)
 
 
-
-
+RegisterCommand('roll', function(source, args, rawCommand)
+	local number = math.random(1,6)
+	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
+	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+	Citizen.Wait(1500)
+	ClearPedTasks(GetPlayerPed(-1))
+	TriggerEvent('chatMessage', '[Dice]', {128, 0, 128}, 'You Rolled: '..number)
+   end)
+   
+   function loadAnimDict(dict)
+	while not HasAnimDictLoaded(dict) do
+	 RequestAnimDict( dict )
+	 Citizen.Wait(5)
+	end
+   end
 
 
 ----Use /testanimation command, you can use this to easily test new animations---
