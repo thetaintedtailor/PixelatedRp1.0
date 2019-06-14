@@ -16,6 +16,9 @@ local IdentifierTables = {
     {table = "datastore_data", column = "owner"},
     {table = "addon_account_data", column = "owner"},
     {table = "addon_inventory_items", column = "owner"},
+    {table = "billing", column = "identifier"},
+    {table = "jail", column = "identifier"},
+    {table = "phone_users_contacts", column = "identifier"},
 }
 
 RegisterServerEvent("kashactersS:SetupCharacters")
