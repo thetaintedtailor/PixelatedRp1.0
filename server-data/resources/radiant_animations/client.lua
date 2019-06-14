@@ -117,7 +117,7 @@ local radioButton				= 244 --- U by default  -- use 57 for f10
 local handsUpButton				= 73 --- H by default -- use 73 for X
 local Keys = {["X"] = 73, ["Z"] = 20, ["SHIFT"] = 209}
 
-
+--[[
 local crouched = false
 Citizen.CreateThread( function()
     while true do
@@ -145,7 +145,7 @@ Citizen.CreateThread( function()
             end
         end
     end
-end )
+end )]]
 
 Citizen.CreateThread( function()
 
