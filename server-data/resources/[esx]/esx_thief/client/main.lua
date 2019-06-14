@@ -480,10 +480,6 @@ AddEventHandler('esx_thief:putInVehicle', function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 
-	if not IsHandcuffed then
-		return
-	end
-
 	if IsAnyVehicleNearPoint(coords, 5.0) then
 		local vehicle = GetClosestVehicle(coords, 5.0, 0, 71)
 

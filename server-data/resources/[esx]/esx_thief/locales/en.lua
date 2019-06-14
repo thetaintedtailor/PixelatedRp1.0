@@ -28,5 +28,6 @@ Locales['en'] = {
     ['no_rope']             = 'you do not have a rope',
     ['gun_label']           = 'weapons',
     ['not_armed']           = 'you are not armed',
+    ['put_in_vehicle']      = 'put in Vehicle',
 }
     
