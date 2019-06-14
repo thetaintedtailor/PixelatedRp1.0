@@ -29,5 +29,6 @@ Locales['en'] = {
     ['gun_label']           = 'weapons',
     ['not_armed']           = 'you are not armed',
     ['put_in_vehicle']      = 'put in Vehicle',
+    ['out_the_vehicle']     = 'drag out from vehicle',
 }
     
