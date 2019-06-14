@@ -13,11 +13,11 @@ local dropShadow = false
 local nbrDisplaying = 1
 
 RegisterCommand('me', function(source, args)
-    local text = ''-- edit here if you want to change the language : EN: the person / FR: la personne
+    local text = ''
     for i = 1,#args do
         text = text .. ' ' .. args[i]
     end
-    ---text = text .. ' *'
+
     TriggerServerEvent('3dme:shareDisplay', text)
 end)
 
@@ -99,5 +99,23 @@ function DrawText3D(x,y,z, text)
         if background.enable then
             DrawRect(_x, _y+scale/75, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
         end
+    end
+end
+
+
+RegisterCommand('roll', function(source, args, rawCommand)
+	local number = math.random(1,6)
+	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
+	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+	Citizen.Wait(1500)
+	ClearPedTasks(GetPlayerPed(-1))
+	TriggerEvent('chatMessage', '[Dice]', {128, 0, 128}, 'You Rolled: '..number)
+	TriggerServerEvent('3dme:shareDisplay', 'You Rolled: '..number)
+end)
+   
+function loadAnimDict(dict)
+	while not HasAnimDictLoaded(dict) do
+        RequestAnimDict( dict )
+	    Citizen.Wait(5)
     end
 end
