@@ -1,6 +1,7 @@
 -- Settings
 local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text
-local font = 2 -- Font of the text
+local meFont = 2 -- Font of the text
+local diceFont = 0
 local time = 7000 -- Duration of the display of the text : 1000ms = 1sec
 local background = {
     enable = true,
@@ -18,16 +19,16 @@ RegisterCommand('me', function(source, args)
         text = text .. ' ' .. args[i]
     end
 
-    TriggerServerEvent('3dme:shareDisplay', text)
+    TriggerServerEvent('3dme:shareDisplay', text, meFont)
 end)
 
 RegisterNetEvent('3dme:triggerDisplay')
-AddEventHandler('3dme:triggerDisplay', function(text, source)
+AddEventHandler('3dme:triggerDisplay', function(text, source, font)
     local offset = 1 + (nbrDisplaying*0.04)
-    Display(GetPlayerFromServerId(source), text, offset)
+    Display(GetPlayerFromServerId(source), text, offset, font)
 end)
 
-function Display(mePlayer, text, offset)
+function Display(mePlayer, text, offset, font)
     local displaying = true
 
     -- Chat message
@@ -58,7 +59,7 @@ function Display(mePlayer, text, offset)
             local dist = Vdist2(coordsMe, coords)
             if dist < 2500 then
                 if HasEntityClearLosToEntity(PlayerPedId(), GetPlayerPed(mePlayer), 17 ) then
-                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+1, text)
+                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+1, text, font)
                 end
             end
         end
@@ -66,7 +67,7 @@ function Display(mePlayer, text, offset)
     end)
 end
 
-function DrawText3D(x,y,z, text)
+function DrawText3D(x,y,z, text, font)
     local onScreen,_x,_y = World3dToScreen2d(x,y,z)
     local px,py,pz = table.unpack(GetGameplayCamCoord())
     local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
@@ -127,7 +128,7 @@ RegisterCommand('roll', function(source, args, rawCommand)
     TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
     Citizen.Wait(1500)
     ClearPedTasks(GetPlayerPed(-1))
-    TriggerServerEvent('3dme:shareDisplay', 'Rolled a d' .. die .. ' ' .. rolls .. ' time(s): ' .. number)
+    TriggerServerEvent('3dme:shareDisplay', 'Rolled a d' .. die .. ' ' .. rolls .. ' time(s): ' .. number, diceFont)
 end)
 
 function loadAnimDict(dict)
