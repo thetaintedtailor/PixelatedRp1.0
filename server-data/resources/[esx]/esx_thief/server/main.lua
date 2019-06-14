@@ -171,5 +171,6 @@ end)
 
 RegisterServerEvent('esx_thief:OutVehicle')
 AddEventHandler('esx_thief:OutVehicle', function(target)
-	local xPlayer = ESX.GetPlayerFromId(source)
+  local xPlayer = ESX.GetPlayerFromId(source)
+  TriggerClientEvent('esx_thief:OutVehicle', target)
 end)
