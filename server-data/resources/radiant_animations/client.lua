@@ -121,21 +121,19 @@ local Keys = {["X"] = 73, ["Z"] = 20, ["SHIFT"] = 209}
 local crouched = false
 Citizen.CreateThread( function()
     while true do
-        Citizen.Wait( 10 )
+        Citizen.Wait(1)
 
         local ped = GetPlayerPed( -1 )
 
-        if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
+        if (DoesEntityExist(ped) and not IsEntityDead(ped)) then
             DisableControlAction( 0, 36, true ) -- INPUT_DUCK
 
-            if ( not IsPauseMenuActive() ) then
+			if ( not IsPauseMenuActive() ) then
+				RequestAnimSet( "move_ped_crouched" )
                 if ( IsDisabledControlJustPressed( 0, 36 ) ) then
-                    RequestAnimSet( "move_ped_crouched" )
-
                     while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do
                         Citizen.Wait( 100 )
                     end
-
                     if ( crouched == true ) then
                         ResetPedMovementClipset( ped, 0 )
                         crouched = false
@@ -177,7 +175,7 @@ Citizen.CreateThread( function()
 				end
 			end
 
-		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, handsUpButton) then
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, 26) then
 			local player = PlayerPedId()
 			local surrendered = false
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
