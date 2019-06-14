@@ -169,13 +169,7 @@ AddEventHandler('esx_thief:putInVehicle', function(target)
   TriggerClientEvent('esx_thief:putInVehicle', target)
 end)
 
-RegisterServerEvent('esx_policejob:OutVehicle')
-AddEventHandler('esx_policejob:OutVehicle', function(target)
+RegisterServerEvent('esx_thief:OutVehicle')
+AddEventHandler('esx_thief:OutVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
-
-	if xPlayer.job.name == 'police' then
-		TriggerClientEvent('esx_policejob:OutVehicle', target)
-	else
-		print(('esx_policejob: %s attempted to drag out from vehicle (not cop)!'):format(xPlayer.identifier))
-	end
 end)

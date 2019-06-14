@@ -79,6 +79,7 @@ function OpenCuffMenu()
         {label = _U('uncuff'), value = 'uncuff'}, 
         {label = _U('drag'), value = 'drag'},
         {label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
+        {label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
         {label = _U('search'), value = 'search'},
       }
 
@@ -162,6 +163,20 @@ function OpenCuffMenu()
                     TriggerServerEvent('esx_thief:putInVehicle', GetPlayerServerId(closestPlayer))
                 end
               end 
+              if data2.current.value == 'out_the_vehicle' then
+                if Config.EnableItems then
+                    ESX.TriggerServerCallback('esx_thief:getItemQ', function(quantity)
+                        if quantity > 0 then
+                            IsAbleToSearch = false
+                            TriggerServerEvent('esx_thief:OutVehicle', GetPlayerServerId(closestPlayer))
+                        else
+                            ESX.ShowNotification(_U('no_rope'))
+                        end
+                    end, 'rope')
+                else
+                    TriggerServerEvent('esx_thief:OutVehicle', GetPlayerServerId(closestPlayer))
+                end
+              end
               if data2.current.value == 'search' then
 
                 local ped = PlayerPedId()
@@ -533,8 +548,8 @@ AddEventHandler('esx_thief:putInVehicle', function()
 	end
 end)
 
-RegisterNetEvent('esx_policejob:OutVehicle')
-AddEventHandler('esx_policejob:OutVehicle', function()
+RegisterNetEvent('esx_thiefjob:OutVehicle')
+AddEventHandler('esx_thiefjob:OutVehicle', function()
 	local playerPed = PlayerPedId()
 
 	if not IsPedSittingInAnyVehicle(playerPed) then
