@@ -103,43 +103,36 @@ function DrawText3D(x,y,z, text)
 end
 
 
-RegisterCommand('droll1', function(source, args, rawCommand)
-	local number = math.random(1,6)
-	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
-	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-	Citizen.Wait(1500)
-	ClearPedTasks(GetPlayerPed(-1))
-	TriggerServerEvent('3dme:shareDisplay', 'You rolled a '..number)
+RegisterCommand('roll', function(source, args, rawCommand)
+    -- Interpret the number of sides
+    local die = 6
+    if args[1] ~= nil and tonumber(args[1]) then
+        die = tonumber(args[1])
+    end
+
+    -- Interpret the number of rolls
+    rolls = 1
+    if args[2] ~= nil and tonumber(args[2]) then
+        rolls = tonumber(args[2])
+    end
+
+    -- Roll and add up rolls
+    local number = 0
+    for i = rolls,1,-1
+    do
+        number = number + math.random(1,die)
+    end
+
+    loadAnimDict("anim@mp_player_intcelebrationmale@wank")
+    TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+    Citizen.Wait(1500)
+    ClearPedTasks(GetPlayerPed(-1))
+    TriggerServerEvent('3dme:shareDisplay', 'Rolled a d' .. die .. ' ' .. rolls .. ' time(s): ' .. number)
 end)
 
-RegisterCommand('droll2', function(source, args, rawCommand)
-    local diceOne = math.random(1,6)
-    local diceTwo = math.random(1,6)
-    local text = 'You rolled: ' .. diceOne .. ' ' .. diceTwo
-	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
-	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-	Citizen.Wait(1500)
-	ClearPedTasks(GetPlayerPed(-1))
-	TriggerEvent('chatMessage', '[Dice]', {128, 0, 128}, text)
-	TriggerServerEvent('3dme:shareDisplay', text)
-end)
-
-RegisterCommand('droll3', function(source, args, rawCommand)
-    local diceOne = math.random(1,6)
-    local diceTwo = math.random(1,6)
-    local diceThree = math.random(1,6)
-    local text = 'You rolled: ' .. diceOne .. ' ' .. diceTwo .. ' ' .. diceThree
-	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
-	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
-	Citizen.Wait(1500)
-	ClearPedTasks(GetPlayerPed(-1))
-	TriggerServerEvent('3dme:shareDisplay', text)
-end)
-
-   
 function loadAnimDict(dict)
-	while not HasAnimDictLoaded(dict) do
+    while not HasAnimDictLoaded(dict) do
         RequestAnimDict( dict )
-	    Citizen.Wait(5)
+        Citizen.Wait(5)
     end
 end
