@@ -15,6 +15,6 @@ Citizen.CreateThread(function()
     AddTextEntry('rs6', 'Audi RS 6')
     AddTextEntry('SSTI', 'Subaru WRX STI')
     AddTextEntry('KART', 'Go-Kart')
-    AddTextEntry('Shifter_kart', 'Shifter Go-Kart')
+    AddTextEntry('Shifter_KART', 'Shifter Go-Kart')
 end)
 
