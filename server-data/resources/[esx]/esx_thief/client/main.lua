@@ -78,8 +78,8 @@ function OpenCuffMenu()
         {label = _U('cuff'), value = 'cuff'},
         {label = _U('uncuff'), value = 'uncuff'}, 
         {label = _U('drag'), value = 'drag'},
-        {label = _U('search'), value = 'search'},
         {label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
+        {label = _U('search'), value = 'search'},
       }
 
   ESX.UI.Menu.CloseAll()
@@ -149,8 +149,19 @@ function OpenCuffMenu()
                 end
               end
               if data2.current.value == 'put_in_vehicle' then
-                TriggerServerEvent('esx_thief:putInVehicle', GetPlayerServerId(closestPlayer))
-              end  
+                if Config.EnableItems then
+                    ESX.TriggerServerCallback('esx_thief:getItemQ', function(quantity)
+                        if quantity > 0 then
+                            IsAbleToSearch = false
+                            TriggerServerEvent('esx_thief:putInVehicle', GetPlayerServerId(closestPlayer))
+                        else
+                            ESX.ShowNotification(_U('no_rope'))
+                        end
+                    end, 'rope')
+                else
+                    TriggerServerEvent('esx_thief:putInVehicle', GetPlayerServerId(closestPlayer))
+                end
+              end 
               if data2.current.value == 'search' then
 
                 local ped = PlayerPedId()
