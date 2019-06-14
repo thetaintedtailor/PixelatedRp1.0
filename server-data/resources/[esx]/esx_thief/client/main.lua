@@ -515,7 +515,7 @@ Citizen.CreateThread(function()
       if not IsPedSittingInAnyVehicle(targetPed) then
           AttachEntityToEntity(playerPed, targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
     end
-  end)
+end)
 
 RegisterNetEvent('animation')
 AddEventHandler('animation', function()
