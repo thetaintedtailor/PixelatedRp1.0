@@ -508,40 +508,14 @@ Citizen.CreateThread(function()
 	end
 end)
 ]]--
+
 Citizen.CreateThread(function()
-	local playerPed
-	local targetPed
-
-	while true do
-		Citizen.Wait(1)
-
-		if handcuffed then
-			playerPed = PlayerPedId()
-
-			if IsDragged then
-				targetPed = GetPlayerPed(GetPlayerFromServerId(DragStatus.CopId))
-
-				-- undrag if target is in an vehicle
-				if not IsPedSittingInAnyVehicle(targetPed) then
-					AttachEntityToEntity(playerPed, targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-				else
-					IsDragged = not IsDragged
-					DetachEntity(playerPed, true, false)
-				end
-
-				if IsPedDeadOrDying(targetPed, true) then
-					IsDragged = not IsDragged
-					DetachEntity(playerPed, true, false)
-				end
-
-			else
-				DetachEntity(playerPed, true, false)
-			end
-		else
-			Citizen.Wait(500)
-		end
-	end
-end)
+    while true do
+      Wait(0)
+      if not IsPedSittingInAnyVehicle(targetPed) then
+          AttachEntityToEntity(playerPed, targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+    end
+  end)
 
 RegisterNetEvent('animation')
 AddEventHandler('animation', function()
