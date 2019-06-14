@@ -78,7 +78,8 @@ function OpenCuffMenu()
         {label = _U('cuff'), value = 'cuff'},
         {label = _U('uncuff'), value = 'uncuff'}, 
         {label = _U('drag'), value = 'drag'},
-		{label = _U('search'), value = 'search'}, 
+        {label = _U('search'), value = 'search'},
+        {label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
       }
 
   ESX.UI.Menu.CloseAll()
@@ -145,6 +146,20 @@ function OpenCuffMenu()
                     end, 'rope')
                 else
                     TriggerServerEvent('dragServer', GetPlayerServerId(player))
+                end
+              end
+              if data2.current.value == 'put_in_vehicle' then
+                if Config.EnableItems then
+                    ESX.TriggerServerCallback('esx_thief:getItemQ', function(quantity)
+                        if quantity > 0 then
+                            IsAbleToSearch = false
+                            TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
+                        else
+                            ESX.ShowNotification(_U('no_rope'))
+                        end
+                    end, 'rope')
+                else
+                    TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
                 end
               end  
               if data2.current.value == 'search' then
@@ -460,5 +475,44 @@ AddEventHandler('animation', function()
         TaskPlayAnim(pid,"amb@prop_human_bum_bin@idle_b","idle_d",-1, -1, -1, 120, 1, 0, 0, 0)
 end)
 
+RegisterNetEvent('esx_policejob:putInVehicle')
+AddEventHandler('esx_policejob:putInVehicle', function()
+	local playerPed = PlayerPedId()
+	local coords = GetEntityCoords(playerPed)
 
+	if not IsHandcuffed then
+		return
+	end
 
+	if IsAnyVehicleNearPoint(coords, 5.0) then
+		local vehicle = GetClosestVehicle(coords, 5.0, 0, 71)
+
+		if DoesEntityExist(vehicle) then
+			local maxSeats, freeSeat = GetVehicleMaxNumberOfPassengers(vehicle)
+
+			for i=maxSeats - 1, 0, -1 do
+				if IsVehicleSeatFree(vehicle, i) then
+					freeSeat = i
+					break
+				end
+			end
+
+			if freeSeat then
+				TaskWarpPedIntoVehicle(playerPed, vehicle, freeSeat)
+				DragStatus.IsDragged = false
+			end
+		end
+	end
+end)
+
+RegisterNetEvent('esx_policejob:OutVehicle')
+AddEventHandler('esx_policejob:OutVehicle', function()
+	local playerPed = PlayerPedId()
+
+	if not IsPedSittingInAnyVehicle(playerPed) then
+		return
+	end
+
+	local vehicle = GetVehiclePedIsIn(playerPed, false)
+	TaskLeaveVehicle(playerPed, vehicle, 16)
+end)
