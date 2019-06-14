@@ -103,14 +103,25 @@ function DrawText3D(x,y,z, text)
 end
 
 
-RegisterCommand('roll', function(source, args, rawCommand)
+RegisterCommand('droll1', function(source, args, rawCommand)
 	local number = math.random(1,6)
 	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
 	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
 	Citizen.Wait(1500)
 	ClearPedTasks(GetPlayerPed(-1))
-	TriggerEvent('chatMessage', '[Dice]', {128, 0, 128}, 'You Rolled: '..number)
 	TriggerServerEvent('3dme:shareDisplay', 'You Rolled: '..number)
+end)
+
+RegisterCommand('droll2', function(source, args, rawCommand)
+    local diceOne = math.random(1,6)
+    local diceTwo = math.random(1,6)
+    local text = 'You rolled a ' .. diceOne .. 'and a ' .. diceTwo .. 'total: '.. diceOne + diceTwo
+	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
+	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+	Citizen.Wait(1500)
+	ClearPedTasks(GetPlayerPed(-1))
+	TriggerEvent('chatMessage', '[Dice]', {128, 0, 128}, text)
+	TriggerServerEvent('3dme:shareDisplay', text)
 end)
    
 function loadAnimDict(dict)
