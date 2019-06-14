@@ -163,10 +163,10 @@ ESX.RegisterServerCallback('esx_thief:getItemQ', function(source, cb, item)
     cb(quantity)
 end)
 
-RegisterServerEvent('esx_policejob:putInVehicle')
-AddEventHandler('esx_policejob:putInVehicle', function(target)
+RegisterServerEvent('esx_thief:putInVehicle')
+AddEventHandler('esx_thief:putInVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
-  TriggerClientEvent('esx_policejob:putInVehicle', target)
+  TriggerClientEvent('esx_thief:putInVehicle', target)
 end)
 
 RegisterServerEvent('esx_policejob:OutVehicle')

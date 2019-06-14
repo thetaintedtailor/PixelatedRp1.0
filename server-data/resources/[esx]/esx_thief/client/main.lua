@@ -149,7 +149,7 @@ function OpenCuffMenu()
                 end
               end
               if data2.current.value == 'put_in_vehicle' then
-                TriggerServerEvent('esx_policejob:putInVehicle', GetPlayerServerId(closestPlayer))
+                TriggerServerEvent('esx_thief:putInVehicle', GetPlayerServerId(closestPlayer))
               end  
               if data2.current.value == 'search' then
 
@@ -464,8 +464,8 @@ AddEventHandler('animation', function()
         TaskPlayAnim(pid,"amb@prop_human_bum_bin@idle_b","idle_d",-1, -1, -1, 120, 1, 0, 0, 0)
 end)
 
-RegisterNetEvent('esx_policejob:putInVehicle')
-AddEventHandler('esx_policejob:putInVehicle', function()
+RegisterNetEvent('esx_thief:putInVehicle')
+AddEventHandler('esx_thief:putInVehicle', function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 
