@@ -106,14 +106,14 @@ end
 RegisterCommand('roll', function(source, args, rawCommand)
     -- Interpret the number of sides
     local die = 6
-    if args[1] ~= nil and tonumber(args[1]) then
-        die = tonumber(args[1])
+    if args[2] ~= nil and tonumber(args[2]) then
+        die = tonumber(args[2])
     end
 
     -- Interpret the number of rolls
     rolls = 1
-    if args[2] ~= nil and tonumber(args[2]) then
-        rolls = tonumber(args[2])
+    if args[1] ~= nil and tonumber(args[1]) then
+        rolls = tonumber(args[1])
     end
 
     -- Roll and add up rolls
