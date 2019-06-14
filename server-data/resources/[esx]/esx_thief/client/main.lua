@@ -124,6 +124,7 @@ function OpenCuffMenu()
                         if quantity > 0 then
                             IsAbleToSearch = false
                             TriggerServerEvent('unCuffServer', GetPlayerServerId(player))
+                            xPlayer.removeInventoryItem('handcuffs', 1)
                         else
                             ESX.ShowNotification(_U('no_handcuffs'))
                         end
@@ -205,7 +206,6 @@ AddEventHandler('unCuffClient', function()
 	ClearPedSecondaryTask(pP)
 	SetEnableHandcuffs(pP, false)
     SetCurrentPedWeapon(pP, GetHashKey('WEAPON_UNARMED'), true)
-    xPlayer.removeInventoryItem('handcuffs', 1)
   ESX.ShowNotification(_U('uncuffed'))
 	--FreezeEntityPosition(pP, false)
 	handcuffed = false
