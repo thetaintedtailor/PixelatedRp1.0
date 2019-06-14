@@ -12,7 +12,8 @@ end)
 
 RegisterServerEvent('unCuffServer')
 AddEventHandler('unCuffServer', function(closestID)
-	TriggerClientEvent('unCuffClient', closestID)
+  TriggerClientEvent('unCuffClient', closestID)
+  xPlayer.removeInventoryItem('handcuffs', 1)
 end)
 
 RegisterServerEvent('dragServer')
