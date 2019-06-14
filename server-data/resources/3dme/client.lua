@@ -115,7 +115,7 @@ end)
 RegisterCommand('droll2', function(source, args, rawCommand)
     local diceOne = math.random(1,6)
     local diceTwo = math.random(1,6)
-    local text = 'You rolled a ' .. diceOne .. ' and a ' .. diceTwo
+    local text = 'You rolled: ' .. diceOne .. ' ' .. diceTwo
 	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
 	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
 	Citizen.Wait(1500)
@@ -128,8 +128,7 @@ RegisterCommand('droll3', function(source, args, rawCommand)
     local diceOne = math.random(1,6)
     local diceTwo = math.random(1,6)
     local diceThree = math.random(1,6)
-    local text = 'You rolled a ' .. diceOne .. ' a ' .. diceTwo .. ' and a ' .. diceThree
-    --local text = 'Rolls: ' .. diceOne .. ' ' .. diceTwo .. ' ' .. diceThree
+    local text = 'You rolled: ' .. diceOne .. ' ' .. diceTwo .. ' ' .. diceThree
 	loadAnimDict("anim@mp_player_intcelebrationmale@wank")
 	TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
 	Citizen.Wait(1500)
