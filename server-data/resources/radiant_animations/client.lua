@@ -117,35 +117,35 @@ local radioButton				= 244 --- U by default  -- use 57 for f10
 local handsUpButton				= 73 --- H by default -- use 73 for X
 local Keys = {["X"] = 73, ["Z"] = 20, ["SHIFT"] = 209}
 
-
 local crouched = false
+
 Citizen.CreateThread( function()
-    while true do
-        Citizen.Wait( 10 )
+    while true do 
+        Citizen.Wait( 1 )
 
         local ped = GetPlayerPed( -1 )
 
-        if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
-            DisableControlAction( 0, 36, true ) -- INPUT_DUCK
+        if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
+            DisableControlAction( 0, 36, true ) -- INPUT_DUCK  
 
-            if ( not IsPauseMenuActive() ) then
-                if ( IsDisabledControlJustPressed( 0, 36 ) ) then
+            if ( not IsPauseMenuActive() ) then 
+                if ( IsDisabledControlJustPressed( 0, 36 ) ) then 
                     RequestAnimSet( "move_ped_crouched" )
 
-                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do
+                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
                         Citizen.Wait( 100 )
-                    end
+                    end 
 
-                    if ( crouched == true ) then
+                    if ( crouched == true ) then 
                         ResetPedMovementClipset( ped, 0 )
-                        crouched = false
+                        crouched = false 
                     elseif ( crouched == false ) then
                         SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
-                        crouched = true
-                    end
+                        crouched = true 
+                    end 
                 end
-            end
-        end
+            end 
+        end 
     end
 end )
 
@@ -177,7 +177,7 @@ Citizen.CreateThread( function()
 				end
 			end
 
-		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, handsUpButton) then
+		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, 26) then
 			local player = PlayerPedId()
 			local surrendered = false
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
@@ -1346,10 +1346,6 @@ RegisterCommand("e",function(source, args)
 		end
 	end
 end, false)
-
-
-
-
 
 
 ----Use /testanimation command, you can use this to easily test new animations---
