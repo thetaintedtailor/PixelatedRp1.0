@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/readyornot.mp3',
+    'music/perfect_day.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
