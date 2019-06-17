@@ -8,18 +8,18 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
 	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
-		local dressing = store.get('outfits')
+		local outfit = store.get('outfits')
 
-		if dressing == nil then
-			dressing = {}
+		if outfit == nil then
+			outfit = {}
 		end
 
-		table.insert(dressing, {
+		table.insert(outfit, {
 			label = label,
 			skin  = skin
 		})
 
-		store.set('outfits', outfits)
+		store.set('outfits', outfit)
 	end)
 end)
 

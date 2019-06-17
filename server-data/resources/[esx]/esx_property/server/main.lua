@@ -388,12 +388,12 @@ end)
 ESX.RegisterServerCallback('esx_property:getPlayerDressing', function(source, cb)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		local count  = store.count('dressing')
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
+		local count  = store.count('outfits')
 		local labels = {}
 
 		for i=1, count, 1 do
-			local entry = store.get('dressing', i)
+			local entry = store.get('outfits', i)
 			table.insert(labels, entry.label)
 		end
 
@@ -404,8 +404,8 @@ end)
 ESX.RegisterServerCallback('esx_property:getPlayerOutfit', function(source, cb, num)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		local outfit = store.get('dressing', num)
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
+		local outfit = store.get('outfits', num)
 		cb(outfit.skin)
 	end)
 end)
@@ -414,11 +414,11 @@ RegisterServerEvent('esx_property:removeOutfit')
 AddEventHandler('esx_property:removeOutfit', function(label)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		local dressing = store.get('dressing') or {}
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
+		local outfit = store.get('outfits') or {}
 
-		table.remove(dressing, label)
-		store.set('dressing', dressing)
+		table.remove(outfit, label)
+		store.set('outfits', outfit)
 	end)
 end)
 
