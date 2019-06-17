@@ -7,8 +7,8 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		local dressing = store.get('dressing')
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
+		local dressing = store.get('outfits')
 
 		if dressing == nil then
 			dressing = {}
@@ -19,7 +19,7 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 			skin  = skin
 		})
 
-		store.set('dressing', dressing)
+		store.set('outfits', outfits)
 	end)
 end)
 
@@ -39,7 +39,7 @@ ESX.RegisterServerCallback('esx_clotheshop:checkPropertyDataStore', function(sou
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local foundStore = false
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
 		foundStore = true
 	end)
 
