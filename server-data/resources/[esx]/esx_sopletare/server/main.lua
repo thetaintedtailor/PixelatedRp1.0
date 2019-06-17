@@ -28,6 +28,7 @@ AddEventHandler('esx_sopletare:getItem', function()
             'pistolbody',
             'smgbody',
             'upper',
+            'lower',
             'coke_pooch',
             'weed_pooch',
             'meth_pooch',

@@ -176,4 +176,6 @@ files {
     'html/img/items/battery.png',
     'html/img/items/toolbox.png',
     'html/img/items/drill.png',
+    'html/img/items/pistolpermit.png',
+    'html/img/items/class2permit.png',
 }

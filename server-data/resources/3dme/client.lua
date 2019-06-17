@@ -1,6 +1,6 @@
 -- Settings
 local color = { r = 220, g = 220, b = 220, alpha = 255 } -- Color of the text
-local font = 2 -- Font of the text
+local font = 0 -- Font of the text
 local time = 7000 -- Duration of the display of the text : 1000ms = 1sec
 local background = {
     enable = true,
@@ -13,11 +13,11 @@ local dropShadow = false
 local nbrDisplaying = 1
 
 RegisterCommand('me', function(source, args)
-    local text = ''-- edit here if you want to change the language : EN: the person / FR: la personne
+    local text = ''
     for i = 1,#args do
         text = text .. ' ' .. args[i]
     end
-    ---text = text .. ' *'
+
     TriggerServerEvent('3dme:shareDisplay', text)
 end)
 
@@ -99,5 +99,40 @@ function DrawText3D(x,y,z, text)
         if background.enable then
             DrawRect(_x, _y+scale/75, width, height, background.color.r, background.color.g, background.color.b , background.color.alpha)
         end
+    end
+end
+
+
+RegisterCommand('roll', function(source, args, rawCommand)
+    -- Interpret the number of sides
+    local die = 6
+    if args[2] ~= nil and tonumber(args[2]) then
+        die = tonumber(args[2])
+    end
+
+    -- Interpret the number of rolls
+    rolls = 1
+    if args[1] ~= nil and tonumber(args[1]) then
+        rolls = tonumber(args[1])
+    end
+
+    -- Roll and add up rolls
+    local number = 0
+    for i = rolls,1,-1
+    do
+        number = number + math.random(1,die)
+    end
+
+    loadAnimDict("anim@mp_player_intcelebrationmale@wank")
+    TaskPlayAnim(GetPlayerPed(-1), "anim@mp_player_intcelebrationmale@wank", "wank", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+    Citizen.Wait(1500)
+    ClearPedTasks(GetPlayerPed(-1))
+    TriggerServerEvent('3dme:shareDisplay', 'Rolled ' .. rolls .. ' d' .. die .. '. total: ' .. number)
+end)
+
+function loadAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+        RequestAnimDict( dict )
+        Citizen.Wait(5)
     end
 end

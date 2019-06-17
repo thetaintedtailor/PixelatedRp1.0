@@ -12,7 +12,13 @@ local IdentifierTables = {
 	{table = "user_parkings", column = "identifier"},
 	{table = "user_accounts", column = "identifier"},
 	{table = "user_contacts", column = "identifier"},
-	{table = "user_inventory", column = "identifier"},
+    {table = "user_inventory", column = "identifier"},
+    {table = "datastore_data", column = "owner"},
+    {table = "addon_account_data", column = "owner"},
+    {table = "addon_inventory_items", column = "owner"},
+    {table = "billing", column = "identifier"},
+    {table = "jail", column = "identifier"},
+    {table = "phone_users_contacts", column = "identifier"},
 }
 
 RegisterServerEvent("kashactersS:SetupCharacters")
