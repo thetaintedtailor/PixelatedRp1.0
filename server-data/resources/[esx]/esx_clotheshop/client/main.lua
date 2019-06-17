@@ -69,7 +69,7 @@ function OpenShopMenu()
 											title = _U('name_outfit')
 										}, function(data3, menu3)
 											menu3.close()
-
+											print('I need to know where this is', data)
 											TriggerEvent('skinchanger:getSkin', function(skin)
 												TriggerServerEvent('esx_clotheshop:saveOutfit', data3.value, skin)
 											end)
