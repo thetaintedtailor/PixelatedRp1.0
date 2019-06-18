@@ -112,3 +112,61 @@ AddEventHandler('esx:playerLoaded', function(source)
 
 	xPlayer.set('dataStores', dataStores)
 end)
+
+-- Fix for kashacters duplication entry --
+-- Fix was taken from this link --
+-- https://forum.fivem.net/t/release-esx-kashacters-multi-character/251613/448?u=xxfri3ndlyxx --
+AddEventHandler('esx:playerLoaded', function(source)
+
+	local result = MySQL.Sync.fetchAll('SELECT * FROM datastore')
+  
+	  for i=1, #result, 1 do
+		  local name   = result[i].name
+		  local label  = result[i].label
+		  local shared = result[i].shared
+  
+		  local result2 = MySQL.Sync.fetchAll('SELECT * FROM datastore_data WHERE name = @name', {
+			  ['@name'] = name
+		  })
+  
+		  if shared == 0 then
+  
+			  table.insert(DataStoresIndex, name)
+			  DataStores[name] = {}
+  
+			  for j=1, #result2, 1 do
+				  local storeName  = result2[j].name
+				  local storeOwner = result2[j].owner
+				  local storeData  = (result2[j].data == nil and {} or json.decode(result2[j].data))
+				  local dataStore  = CreateDataStore(storeName, storeOwner, storeData)
+  
+				  table.insert(DataStores[name], dataStore)
+			  end
+		  end
+	  end
+  
+	  local _source = source
+	  local xPlayer = ESX.GetPlayerFromId(_source)
+		local dataStores = {}
+	
+	  for i=1, #DataStoresIndex, 1 do
+		  local name      = DataStoresIndex[i]
+		  local dataStore = GetDataStore(name, xPlayer.identifier)
+  
+		  if dataStore == nil then
+			  MySQL.Async.execute('INSERT INTO datastore_data (name, owner, data) VALUES (@name, @owner, @data)',
+			  {
+				  ['@name']  = name,
+				  ['@owner'] = xPlayer.identifier,
+				  ['@data']  = '{}'
+			  })
+  
+			  dataStore = CreateDataStore(name, xPlayer.identifier, {})
+			  table.insert(DataStores[name], dataStore)
+		  end
+  
+		  table.insert(dataStores, dataStore)
+	  end
+  
+	  xPlayer.set('dataStores', dataStores)
+  end)

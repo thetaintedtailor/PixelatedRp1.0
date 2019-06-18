@@ -5,12 +5,16 @@ Citizen.CreateThread(function()
         TriggerEvent('esx:getSharedObject', function (obj) ESX = obj end)
     end
 end)
+
 Citizen.CreateThread(function()
-    Citizen.Wait(7)
-    if NetworkIsSessionStarted() then
-        Citizen.Wait(100)
-        TriggerServerEvent("kashactersS:SetupCharacters")
-        TriggerEvent("kashactersC:SetupCharacters")
+    while true do
+        Citizen.Wait(0)
+        if NetworkIsSessionStarted() then
+            Citizen.Wait(100)
+            TriggerServerEvent("kashactersS:SetupCharacters")
+            TriggerEvent("kashactersC:SetupCharacters")
+            return -- break the loop
+        end
     end
 end)
 
