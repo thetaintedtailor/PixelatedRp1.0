@@ -150,34 +150,10 @@ Citizen.CreateThread( function()
 end )
 
 Citizen.CreateThread( function()
-
 	while true do
-		--Citizen.Wait(0)
-		--if (IsControlJustPressed(0,handsUpButton)) and not IsControlPressed(0, Keys['SHIFT']) and GetLastInputMethod(2) then
-			--local ped = PlayerPedId()
-	
-			--if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then
-	
-				--RequestAnimDict( "random@mugging3" )
-	
-				--while ( not HasAnimDictLoaded( "random@mugging3" ) ) do 
-					--Citizen.Wait( 100 )
-				--end
-	
-				--if IsEntityPlayingAnim(ped, "random@mugging3", "handsup_standing_base", 3) then
-					--ClearPedSecondaryTask(ped)
-				--else
-					--TaskPlayAnim(ped, "random@mugging3", "handsup_standing_base", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
-					--local prop_name = prop_name
-					--local secondaryprop_name = secondaryprop_name
-					--DetachEntity(prop, 1, 1)
-					--DeleteObject(prop)
-					--DetachEntity(secondaryprop, 1, 1)
-					--DeleteObject(secondaryprop)
-				--end
-			--end
+		Citizen.Wait(0)
 
-		elseif IsControlPressed(0, Keys['SHIFT']) and IsControlPressed(0, 26) then
+		if IsControlPressed(0, 19) and IsControlPressed(0, 73) then
 			local player = PlayerPedId()
 			local surrendered = false
 			if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
