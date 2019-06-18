@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/perfect_day.mp3',
+    'music/feelSoGood_mase.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
