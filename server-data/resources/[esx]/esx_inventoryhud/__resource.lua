@@ -178,4 +178,5 @@ files {
     'html/img/items/drill.png',
     'html/img/items/pistolpermit.png',
     'html/img/items/class2permit.png',
+    'html/img/items/handcuffs.png',
 }
