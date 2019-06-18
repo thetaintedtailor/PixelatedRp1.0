@@ -51,7 +51,7 @@ Citizen.CreateThread(function()
 
 							if not handsup then
 								handsup = true
-								TaskPlayAnim(lped, "random@mugging3", "handsup_standing_base", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
+								TaskPlayAnim(lPed, "random@mugging3", "handsup_standing_base", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
                                 TriggerServerEvent("esx_thief:update", handsup)
 							end
 						end)
