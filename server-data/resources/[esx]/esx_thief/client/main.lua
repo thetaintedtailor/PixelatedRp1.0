@@ -78,8 +78,8 @@ function OpenCuffMenu()
         {label = _U('cuff'), value = 'cuff'},
         {label = _U('uncuff'), value = 'uncuff'}, 
         {label = _U('drag'), value = 'drag'},
-        {label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
-        {label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
+        --{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
+        --{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
         {label = _U('search'), value = 'search'},
       }
 
