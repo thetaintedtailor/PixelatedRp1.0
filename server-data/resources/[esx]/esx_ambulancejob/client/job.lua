@@ -625,7 +625,7 @@ function StoreAllVehicles()
 	local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 	local vehicleProps = ESX.Game.GetVehicleProperties(current)
 	local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
-		
+	print("before server call", currentFuel)
 	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
 		if valid then
 			DeleteSpawnedVehicles()
