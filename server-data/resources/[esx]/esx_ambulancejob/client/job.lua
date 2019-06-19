@@ -510,8 +510,10 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 							label = label,
 							stored = v.stored,
 							model = props.model,
-							vehicleProps = props
+							vehicleProps = props,
+							fuel = v.fuel_level
 						})
+						
 					end
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_garage', {
@@ -524,10 +526,10 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 							if foundSpawn then
 								menu2.close()
-								print("fuel level from db", data2.current.fuel_level)
+								print("fuel level from db", data2.current.fuel)
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
-									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel_level)
+									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
 									table.insert(spawnedVehicles, vehicle)
