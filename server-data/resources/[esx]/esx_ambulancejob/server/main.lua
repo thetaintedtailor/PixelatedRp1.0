@@ -141,10 +141,7 @@ end)
 ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(source, cb, nearbyVehicles)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local foundPlate, foundNum
-	local fuel
-	print("hi", nearbyVehicles)
-	print("hey", nearbyVehicles[1])
-	print("this is what I need", nearbyVehicles[1].fuel)
+	local fuel = nearbyVehicles[1].fuel
 
 	for k,v in ipairs(nearbyVehicles) do
 		local result = MySQL.Sync.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND plate = @plate AND job = @job', {
