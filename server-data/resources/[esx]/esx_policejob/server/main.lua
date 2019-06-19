@@ -523,8 +523,9 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 	}, function (result)
 		if result ~= nil then
 			for k,v in pairs(result) do
-			print("result key", k)
-			print('result value', v)
+				for a,b in pairs(v) do	
+					print("key", a)
+					print("key", b)
 			end
 			--local originalvehprops = json.decode(result[1].vehicle)
 			--if originalvehprops.model == vehiclemodel then
