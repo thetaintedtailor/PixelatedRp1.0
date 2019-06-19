@@ -526,7 +526,6 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 							if foundSpawn then
 								menu2.close()
-								print("fuel level from db", data2.current.fuel)
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
 									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
@@ -564,6 +563,7 @@ function StoreNearbyVehicle(playerCoords)
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
+			print("get fuel from vehicle", math.floor(exports["esx_legacyfuel"]:GetFuel(v)))
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
