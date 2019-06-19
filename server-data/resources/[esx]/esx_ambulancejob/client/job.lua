@@ -622,20 +622,17 @@ end
 
 function StoreAllVehicles()
 	local playerPed  = GetPlayerPed(-1)
-
-		local playerPed    = GetPlayerPed(-1)
-		local coords       = GetEntityCoords(playerPed)
-		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
-		local vehicleProps = ESX.Game.GetVehicleProperties(current)
-		local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
+	local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+	local vehicleProps = ESX.Game.GetVehicleProperties(current)
+	local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
 		
-		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid, currentFuel)
-			if valid then
-				DeleteSpawnedVehicles()
-			else
-				ESX.ShowNotification(_U('garage_has_notstored_all'))
-			end
-		end)
+	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+		if valid then
+			DeleteSpawnedVehicles()
+		else
+			ESX.ShowNotification(_U('garage_has_notstored_all'))
+		end
+	end, currentFuel)
 
 end
 
