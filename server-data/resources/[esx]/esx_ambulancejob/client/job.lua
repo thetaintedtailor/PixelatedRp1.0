@@ -636,13 +636,13 @@ function StoreAllVehicles()
 
 	end
 
-	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+	--[[ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
 		if valid then
 			DeleteSpawnedVehicles()
 		else
 			ESX.ShowNotification(_U('garage_has_notstored_all'))
 		end
-	end, vehiclesAndFuel)
+	end, vehiclesAndFuel)]]
 
 end
 
