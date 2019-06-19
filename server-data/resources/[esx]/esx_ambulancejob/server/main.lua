@@ -141,6 +141,7 @@ end)
 ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(source, cb, nearbyVehicles)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local foundPlate, foundNum
+	local fuel
 
 	for k,v in ipairs(nearbyVehicles) do
 		local result = MySQL.Sync.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND plate = @plate AND job = @job', {
@@ -151,6 +152,9 @@ ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(sourc
 
 		if result[1] then
 			foundPlate, foundNum = result[1].plate, k
+			fuel = result[1].fuel
+			print("hey", result[1].fuel)
+			print("hey", result[1])
 			break
 		end
 	end
@@ -161,7 +165,8 @@ ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(sourc
 		MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true WHERE owner = @owner AND plate = @plate AND job = @job', {
 			['@owner'] = xPlayer.identifier,
 			['@plate'] = foundPlate,
-			['@job'] = xPlayer.job.name
+			['@job'] = xPlayer.job.name,
+			['@fuel_level'] = fuel
 		}, function (rowsChanged)
 			if rowsChanged == 0 then
 				print(('esx_ambulancejob: %s has exploited the garage!'):format(xPlayer.identifier))

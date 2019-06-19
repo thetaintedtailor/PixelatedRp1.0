@@ -561,12 +561,13 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-
+			--local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
-					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v)),
+					fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 				})
 			end
 		end
