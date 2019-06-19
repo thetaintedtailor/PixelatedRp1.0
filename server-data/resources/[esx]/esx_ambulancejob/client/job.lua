@@ -632,8 +632,7 @@ function StoreAllVehicles()
 			--plate = v.plate,
 			--fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
 		--})
-		print('vehicle props', ESX.Game.GetVehicleProperties(current))
-		print('vehicle plate?', ESX.Game.GetVehicleProperties(current).plate)
+		print('vehicle plate?', GetVehicleNumberPlateText(v))
 
 	end
 
