@@ -628,13 +628,14 @@ function StoreAllVehicles()
 	local vehiclesAndFuel = {}
 
 	for k,v in ipairs (spawnedVehicles) do
-		table.insert(vehiclesAndFuel, {
-			plate = v.plate,
-			fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
-		})
+		--table.insert(vehiclesAndFuel, {
+			--plate = v.plate,
+			--fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
+		--})
 		print('these are the cars', v)
+		print('or these are', k)
 	end
-	
+
 	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
 		if valid then
 			DeleteSpawnedVehicles()
