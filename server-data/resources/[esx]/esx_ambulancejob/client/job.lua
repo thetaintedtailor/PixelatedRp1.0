@@ -527,7 +527,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
-
+									exports["esx_legacyfuel"]:SetFuel(vehicle, fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
 									table.insert(spawnedVehicles, vehicle)
