@@ -622,6 +622,9 @@ end
 
 function StoreAllVehicles()
 	local playerPed  = GetPlayerPed(-1)
+	--local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
+	--local vehicleProps = ESX.Game.GetVehicleProperties(current)
+	--local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
 	local vehiclesAndFuel = {}
 
 	for k,v in ipairs (spawnedVehicles) do
@@ -629,17 +632,18 @@ function StoreAllVehicles()
 			--plate = v.plate,
 			--fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
 		--})
-		print('car fuel levels?', math.floor(exports["esx_legacyfuel"]:GetFuel(v)))
+		print('vehicle props', ESX.Game.GetVehicleProperties(current))
+		print('vehicle plate?', ESX.Game.GetVehicleProperties(current).plate)
 
 	end
 
-	--[[ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
 		if valid then
 			DeleteSpawnedVehicles()
 		else
 			ESX.ShowNotification(_U('garage_has_notstored_all'))
 		end
-	end, vehiclesAndFuel)]]
+	end, vehiclesAndFuel)
 
 end
 
