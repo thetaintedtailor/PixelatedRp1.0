@@ -514,16 +514,18 @@ ESX.RegisterServerCallback('esx_policejob:storeNearbyVehicle', function(source, 
 end)
 
 
-ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, fuel)
+ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, vehiclesAndFuel)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	print("hey", fuel)
+	print("hey", vehiclesAndFuel[1])
 	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
+			print("result", result)
 			--local originalvehprops = json.decode(result[1].vehicle)
 			--if originalvehprops.model == vehiclemodel then
+			--[[
 				MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job', {
 					['@owner'] = xPlayer.identifier,
 					['@job'] = xPlayer.job.name,
@@ -533,7 +535,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 						print('esx_advancedgarage: %s attempted to store an vehicle they don\'t own!')
 					end
 					cb(true)
-				end)
+				end)]]
 		else
 			print("you don't own any police vehicles")
 			cb(false)
