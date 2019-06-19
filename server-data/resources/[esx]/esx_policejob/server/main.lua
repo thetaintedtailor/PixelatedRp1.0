@@ -522,7 +522,10 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
-			print("result", result)
+			for k,v in pairs(result) do
+			print("result key", k)
+			print('result value', v)
+			end
 			--local originalvehprops = json.decode(result[1].vehicle)
 			--if originalvehprops.model == vehiclemodel then
 			--[[
