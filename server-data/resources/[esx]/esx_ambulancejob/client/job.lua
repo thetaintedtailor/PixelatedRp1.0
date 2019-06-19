@@ -563,7 +563,6 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-			--local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
@@ -628,9 +627,9 @@ function StoreAllVehicles()
 		local coords       = GetEntityCoords(playerPed)
 		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local vehicleProps = ESX.Game.GetVehicleProperties(current)
-
+		local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
 		
-		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid, currentFuel)
 			if valid then
 				DeleteSpawnedVehicles()
 			else
