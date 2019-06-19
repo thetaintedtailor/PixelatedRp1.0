@@ -159,7 +159,7 @@ ESX.RegisterServerCallback('esx_ambulancejob:storeNearbyVehicle', function(sourc
 	if not foundPlate then
 		cb(false)
 	else
-		MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true WHERE owner = @owner AND plate = @plate AND job = @job', {
+		MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND plate = @plate AND job = @job', {
 			['@owner'] = xPlayer.identifier,
 			['@plate'] = foundPlate,
 			['@job'] = xPlayer.job.name,
