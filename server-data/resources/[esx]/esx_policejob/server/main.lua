@@ -524,12 +524,18 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		if result ~= nil then
 			for k,v in pairs(result) do
 				for a,b in pairs(v) do	
-					print("key", a)
-					print("value", b)
+					--print("key", a)
+					--print("value", b)
+					for c,d in ipairs (vehiclesAndFuel) do	
+						if d.plate == b 
+							print('my god we made it boys')
+						else
+							print("this is value in vehiclesandfuel", d)
+						end 
+					end
 				end
 			end
 
-			print("this is unpack", unpack(result))
 			--[[result = {
 				plate = asifjh 2232,
 				plate = affe 211
