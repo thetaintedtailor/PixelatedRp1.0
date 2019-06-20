@@ -516,7 +516,7 @@ end)
 
 ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, vehiclesAndFuel)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	print("hey", vehiclesAndFuel[1])
+	--print("hey", vehiclesAndFuel[1])
 	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
@@ -526,11 +526,12 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 				for a,b in pairs(v) do	
 					--print("key", a)
 					--print("value", b)
-					for c,d in ipairs (vehiclesAndFuel) do	
+					for c,d in ipairs(vehiclesAndFuel) do	
 						if d.plate == b then
 							print('my god we made it boys')
 						else
-							print("this is value in vehiclesandfuel", d)
+							print("this is value in vehiclesandfuel", d[c])
+							print("please hack", d[c].plate)
 						end 
 					end
 				end
