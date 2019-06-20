@@ -531,7 +531,9 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 
 							if k4 == 'plate' then
 								print("this is v4", v4)
+								print('v4 type', type(v4))
 								print('this is v2', v2)
+								print('v2 type', type(v2))
 
 								if v4 == v2 then
 									print("PLATE MATCHED",v2)
