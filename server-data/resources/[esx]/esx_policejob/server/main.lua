@@ -522,7 +522,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
-			for k1, v1 in ipairs(results) do
+			for k1, v1 in pairs(results) do
 				print('key', k1)
 				print('value', v1)
 				--[[for k2, v2 in pairs(v1) do
