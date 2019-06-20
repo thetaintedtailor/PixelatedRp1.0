@@ -528,6 +528,10 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					print("key", b)
 				end
 			end
+			result = {
+				plate = asifjh 2232,
+				plate = affe 211
+			}
 			--local originalvehprops = json.decode(result[1].vehicle)
 			--if originalvehprops.model == vehiclemodel then
 			--[[
