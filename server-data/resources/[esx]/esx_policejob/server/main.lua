@@ -527,7 +527,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					--print("key", a)
 					--print("value", b)
 					for c,d in ipairs (vehiclesAndFuel) do	
-						if d.plate == b 
+						if d.plate == b then
 							print('my god we made it boys')
 						else
 							print("this is value in vehiclesandfuel", d)
