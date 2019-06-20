@@ -525,13 +525,15 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 			for k,v in pairs(result) do
 				for a,b in pairs(v) do	
 					print("key", a)
-					print("key", b)
+					print("value", b)
 				end
 			end
-			result = {
+
+			print("this is unpack", unpack(result))
+			--[[result = {
 				plate = asifjh 2232,
 				plate = affe 211
-			}
+			}]]
 			--local originalvehprops = json.decode(result[1].vehicle)
 			--if originalvehprops.model == vehiclemodel then
 			--[[
