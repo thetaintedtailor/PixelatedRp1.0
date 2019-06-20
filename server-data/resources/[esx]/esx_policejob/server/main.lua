@@ -534,8 +534,8 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 								end
 							end
 						end
-					end
-				end]]
+					end]]
+				end
 			end
 			--[[result = {
 				plate = asifjh 2232,
