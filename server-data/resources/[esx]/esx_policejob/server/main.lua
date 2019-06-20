@@ -522,13 +522,11 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
-			for k1, v1 in pairs(results) do
-				print('key', k1)
-				print('value', v1)
-				--[[for k2, v2 in pairs(v1) do
+			for k1, v1 in ipairs(result) do
+				for k2, v2 in pairs(v1) do
 					print("key of v1", k2)
 					print("value of v1", v2)
-					for k3,v3 in pairs(vehicles) do
+					--[[for k3,v3 in pairs(vehicles) do
 						for k4,v4 in pairs(v3) do
 							if k4 == 'plate' then
 								if v4 == v2 then
@@ -536,8 +534,8 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 								end
 							end
 						end
-					end
-				end]]
+					end]]
+				end
 			end
 			--[[result = {
 				plate = asifjh 2232,
