@@ -528,7 +528,11 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					--print("value of v1", v2)
 					for k3,v3 in pairs(vehiclesAndFuel) do
 						for k4,v4 in pairs(v3) do
+							print("key of v3", k4)
+							print("value of v3", v4)
+
 							if k4 == 'plate' then
+								print('plate match for vehiclesandfuel')
 								if v4 == v2 then
 									print(v2)
 								end
