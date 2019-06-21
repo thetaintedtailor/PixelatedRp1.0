@@ -627,7 +627,7 @@ function StoreAllVehicles()
 	for k,v in ipairs (spawnedVehicles) do
 		table.insert(vehiclesAndFuel, {
 			plate = GetVehicleNumberPlateText(v),
-			fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(current))
+			fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 		})
 	end
 
