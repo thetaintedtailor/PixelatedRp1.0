@@ -516,52 +516,31 @@ end)
 
 ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, vehiclesAndFuel)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	--print("hey", vehiclesAndFuel[1])
+
 	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
-			for k1, v1 in ipairs(result) do
-				for k2, v2 in pairs(v1) do
-					--print("key of v1", k2)
-					--print("value of v1", v2)
-					for k3,v3 in pairs(vehiclesAndFuel) do
-						for k4,v4 in pairs(v3) do
-
-							if k4 == 'plate' then
-								print("this is v4", v4)
-								print('v4 type', type(v4))
-								print('this is v2', v2)
-								print('v2 type', type(v2))
-
-								if v4 == v2 then
-									print("PLATE MATCHED",v2)
-								else
-									print('no match')
-								end
-							end
+			--for k1, v1 in ipairs(result) do
+			--	for k2, v2 in pairs(v1) do
+			for k3,v3 in pairs(vehiclesAndFuel) do
+				for k4,v4 in pairs(v3) do
+					if k4 == 'plate' then
+						MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
+							['@owner'] = xPlayer.identifier,
+							['@job'] = xPlayer.job.name,
+							['@plate'] = v4.plate,
+							['@fuel_level'] = v4.fuel
+						}, function (rowsChanged)
+						if rowsChanged == 0 then
+							print('esx_advancedgarage: 0 rows changed for car storage')
 						end
+							cb(true)
+						end)
 					end
 				end
 			end
-			--[[result = {
-				plate = asifjh 2232,
-				plate = affe 211
-			}]]
-			--local originalvehprops = json.decode(result[1].vehicle)
-			--if originalvehprops.model == vehiclemodel then
-			--[[
-				MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job', {
-					['@owner'] = xPlayer.identifier,
-					['@job'] = xPlayer.job.name,
-					['@fuel_level'] = fuel
-				}, function (rowsChanged)
-					if rowsChanged == 0 then
-						print('esx_advancedgarage: %s attempted to store an vehicle they don\'t own!')
-					end
-					cb(true)
-				end)]]
 		else
 			print("you don't own any police vehicles")
 			cb(false)
