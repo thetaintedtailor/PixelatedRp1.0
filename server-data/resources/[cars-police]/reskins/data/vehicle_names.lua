@@ -7,7 +7,7 @@ Citizen.CreateThread(function()
 	-- POLICE3
 	AddTextEntry('0x71FA16EA', 'Police3')
 	-- POLICE4
-	AddTextEntry('0x8A63C7B9', 'Police4')
+	--AddTextEntry('0x8A63C7B9', 'Police4')
 	-- POLICE5
 	AddTextEntry('0x9C32EB57', 'Police5') 		
 	-- POLICE6
