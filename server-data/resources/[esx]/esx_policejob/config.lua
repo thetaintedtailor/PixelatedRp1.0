@@ -215,7 +215,7 @@ Config.AuthorizedVehicles = {
 		{model = 'police7',label = 'Crown Victoria', price = 1},
 		{model = 'police2',label = 'Charger', price = 1},
 		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Interceptor Sedan',price = 1},
+		{model = 'police4',label = 'Unmarked',price = 1},
 		{model = 'police5',label = 'Interceptor Utility',price = 1},
 		{ model = '2015polstang', label = 'Polstang', price = 1 },
 		--{ model = 'policeb', label = 'Police Bike', price = 1},
