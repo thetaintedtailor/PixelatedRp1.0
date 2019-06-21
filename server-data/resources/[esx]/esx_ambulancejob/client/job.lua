@@ -563,7 +563,7 @@ function StoreNearbyVehicle(playerCoords)
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
-			if math.floor(exports["esx_legacyfuel"]:GetFuel(v) == 0 then
+			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				print('FUEL IS AT ZERO')
 			end
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
