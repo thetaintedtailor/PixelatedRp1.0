@@ -522,8 +522,6 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		['@job'] = xPlayer.job.name
 	}, function (result)
 		if result ~= nil then
-			--for k1, v1 in ipairs(result) do
-			--	for k2, v2 in pairs(v1) do
 			for k3,v3 in pairs(vehiclesAndFuel) do
 				for k4,v4 in pairs(v3) do
 					if k4 == 'plate' then
@@ -534,7 +532,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 							['@fuel_level'] = v3.fuel
 						}, function (rowsChanged)
 						if rowsChanged == 0 then
-							print('esx_advancedgarage: 0 rows changed for car storage')
+							print('esx_advancedgarage: 0 rows changed for job car storage')
 						end
 							cb(true)
 						end)
