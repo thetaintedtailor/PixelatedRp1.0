@@ -564,7 +564,8 @@ function StoreNearbyVehicle(playerCoords)
 		for k,v in ipairs(vehicles) do
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
 			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
-				Wait(100)
+				print('FUEL AT ZERO?')
+				Wait(2000)
 			end
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
