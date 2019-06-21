@@ -634,7 +634,7 @@
     </Item>	
 	
 	<Item>
-    <modelName>POLICE7</modelName>
+    <modelName>POLICE</modelName>
 	<colors>
         <Item>
           <indices content="char_array">

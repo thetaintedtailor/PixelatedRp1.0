@@ -648,8 +648,8 @@
     </Item>
 	
 	<Item>
-      <modelName>POLICE7</modelName>
-      <txdName>POLICE7</txdName>
+      <modelName>POLICE</modelName>
+      <txdName>POLICE</txdName>
       <handlingId>POLICE</handlingId>
       <gameName>POLICE</gameName>
       <vehicleMakeName />
