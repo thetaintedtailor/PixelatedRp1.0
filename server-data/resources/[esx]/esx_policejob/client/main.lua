@@ -2268,6 +2268,7 @@ function ImpoundVehicle(vehicle)
 
 	if GetVehicleClass(vehicle) == 18 then
 		local plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+		print('this is the plate', plate)
 		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', plate, true)
 	else
 		print('this is not a police vehicle')
