@@ -2267,13 +2267,22 @@ function ImpoundVehicle(vehicle)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
 
 	if GetVehicleClass(vehicle) == 18 then
-		local plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
-		print('this is the plate', plate)
-		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', plate, true)
-	else
-		print('this is not a police vehicle')
+		local impoundPlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+
+		print("this is the function", ESX.Math.Trim(GetVehicleNumberPlateText(v)))
+		print("this is without trim", GetVehicleNumberPlateText(v))
+		print('this is the vehicle', vehicle)
+
+
+		--[[if impoundPlate == nil then 
+			break
+		else
+			print('this is the plate', impoundPlate)
+			TriggerServerEvent('esx_vehicleshop:setJobVehicleState', plate, true)
+
+			ESX.Game.DeleteVehicle(vehicle) 
+			ESX.ShowNotification(_U('impound_successful'))
+		end]]
 	end
-	ESX.Game.DeleteVehicle(vehicle) 
-	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false
 end
