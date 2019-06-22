@@ -2265,7 +2265,13 @@ end
 
 function ImpoundVehicle(vehicle)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	print("this is class", GetVehicleClass(vehicle))
+
+	if GetVehicleClass(vehicle) == 18 then
+		local plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', plate, true)
+	else
+		print('this is not a police vehicle')
+	end
 	ESX.Game.DeleteVehicle(vehicle) 
 	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false
