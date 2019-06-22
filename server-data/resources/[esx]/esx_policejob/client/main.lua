@@ -536,13 +536,6 @@ function StoreAllVehicles()
 
 end
 
-function putaway(vehicle, vehicleProps)
-
-	ESX.Game.DeleteVehicle(vehicle)
-	--TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
-	ESX.ShowNotification(_U('garage_has_stored_all'))
-end
-
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
 	local spawnPoints = Config.PoliceStations[station][part][partNum].SpawnPoints
 	local found, foundSpawnPoint = false, nil
@@ -1870,12 +1863,19 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, Keys['F1'], true) -- Disable phone
 			DisableControlAction(0, Keys['F2'], true) -- Inventory
 			DisableControlAction(0, Keys['F3'], true) -- Animations
+			DisableControlAction(0, Keys['F5'], true) -- Lift Menu
 			DisableControlAction(0, Keys['F6'], true) -- Job
+			DisableControlAction(0, Keys['F7'], true) -- Invoices
+			DisableControlAction(0, Keys['F9'], true) -- Crafting Menu
+			DisableControlAction(0, Keys['F10'], true) -- Animations
 
-			DisableControlAction(0, Keys['V'], true) -- Disable changing view
-			DisableControlAction(0, Keys['C'], true) -- Disable looking behind
-			DisableControlAction(0, Keys['X'], true) -- Disable clearing animation
+			--DisableControlAction(0, Keys['V'], true) -- Disable changing view
+			--DisableControlAction(0, Keys['C'], true) -- Disable looking behind
+			DisableControlAction(0, Keys['X'], true) -- Disable hands up
 			DisableControlAction(2, Keys['P'], true) -- Disable pause screen
+			DisableControlAction(2, Keys['Z'], true) -- Disable clearing animation
+			DisableControlAction(2, Keys['B'], true) -- Disable fingerpoint
+			DisableControlAction(2, Keys['L'], true) -- Disable Cross arms
 
 			DisableControlAction(0, 59, true) -- Disable steering in vehicle
 			DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
