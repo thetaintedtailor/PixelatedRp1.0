@@ -2265,13 +2265,7 @@ end
 
 function ImpoundVehicle(vehicle)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	for k,v in pairs(spawnedVehicles) do
-		if vehicle == v then
-			print('this is a police vehicle')
-		else 
-			print('not a police vehicle')
-		end
-	end
+	print("this is class", GetVehicleClass(vehicle))
 	ESX.Game.DeleteVehicle(vehicle) 
 	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false
