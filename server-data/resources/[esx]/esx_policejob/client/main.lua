@@ -2264,7 +2264,7 @@ function StartHandcuffTimer()
 	end)
 end
 
-function ImpoundVehicle(vehicle, vehicleData)
+function ImpoundVehicle(vehicle, vehiclePlate)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
 	print('plate', vehiclePlate)
 	if GetVehicleClass(vehicle) == 18 then
