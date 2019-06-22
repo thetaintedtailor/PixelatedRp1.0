@@ -2265,7 +2265,9 @@ end
 
 function ImpoundVehicle(vehicle, vehicleData)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	print(vehicleData)
+	for k,v in pairs(vehicleData) do
+		print("vehicledata", v)
+	end
 	if GetVehicleClass(vehicle) == 18 then
 		local impoundPlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
 
