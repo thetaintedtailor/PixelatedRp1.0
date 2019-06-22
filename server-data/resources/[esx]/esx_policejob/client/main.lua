@@ -2268,17 +2268,10 @@ function ImpoundVehicle(vehicle, vehiclePlate)
 
 	--print('plate', vehiclePlate)
 	if GetVehicleClass(vehicle) == 18 then
-		--local impoundPlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
-
-		--print("this is the function", ESX.Math.Trim(GetVehicleNumberPlateText(v)))
-		--print("this is without trim", GetVehicleNumberPlateText(v))
-		--print('this is the vehicle', vehicle)
-
 		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', vehiclePlate, true)
-		end
+	end
 
 	ESX.Game.DeleteVehicle(vehicle) 
 	ESX.ShowNotification(_U('impound_successful'))
-	end
 	CurrentTask.Busy = false
 end
