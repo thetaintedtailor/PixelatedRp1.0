@@ -821,6 +821,7 @@ function OpenPoliceActionsMenu()
 			}, function(data2, menu2)
 				coords  = GetEntityCoords(playerPed)
 				vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+				vehiclePlate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 				action  = data2.current.value
 				
 				if action == 'search_database' then
@@ -854,7 +855,7 @@ function OpenPoliceActionsMenu()
 						CurrentTask.Busy = true
 						CurrentTask.Task = ESX.SetTimeout(10000, function()
 							ClearPedTasks(playerPed)
-							ImpoundVehicle(vehicle, vehicleData)
+							ImpoundVehicle(vehicle, vehiclePlate)
 							Citizen.Wait(100) -- sleep the entire script to let stuff sink back to reality
 						end)
 						
@@ -2265,8 +2266,7 @@ end
 
 function ImpoundVehicle(vehicle, vehicleData)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	local vehicleHash = GetHashKey(vehicle)
-	print('plate', GetVehicleNumberPlateText(vehicleHash))
+	print('plate', vehiclePlate)
 	if GetVehicleClass(vehicle) == 18 then
 		local impoundPlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
 
