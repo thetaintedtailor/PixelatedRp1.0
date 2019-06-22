@@ -539,6 +539,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					end
 				end
 			end
+			
 		else
 			print("you don't own any police vehicles")
 			cb(false)
