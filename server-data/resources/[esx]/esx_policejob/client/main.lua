@@ -841,7 +841,7 @@ function OpenPoliceActionsMenu()
 							ESX.ShowNotification(_U('vehicle_unlocked'))
 						end
 					elseif action == 'impound' then
-					
+						
 						-- is the script busy?
 						if CurrentTask.Busy then
 							return
@@ -854,7 +854,7 @@ function OpenPoliceActionsMenu()
 						CurrentTask.Busy = true
 						CurrentTask.Task = ESX.SetTimeout(10000, function()
 							ClearPedTasks(playerPed)
-							ImpoundVehicle(vehicle)
+							ImpoundVehicle(vehicle, vehicleData)
 							Citizen.Wait(100) -- sleep the entire script to let stuff sink back to reality
 						end)
 						
@@ -2263,15 +2263,15 @@ function StartHandcuffTimer()
 	end)
 end
 
-function ImpoundVehicle(vehicle)
+function ImpoundVehicle(vehicle, vehicleData)
 	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-
+	print(vehicleData)
 	if GetVehicleClass(vehicle) == 18 then
 		local impoundPlate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
 
-		print("this is the function", ESX.Math.Trim(GetVehicleNumberPlateText(v)))
-		print("this is without trim", GetVehicleNumberPlateText(v))
-		print('this is the vehicle', vehicle)
+		--print("this is the function", ESX.Math.Trim(GetVehicleNumberPlateText(v)))
+		--print("this is without trim", GetVehicleNumberPlateText(v))
+		--print('this is the vehicle', vehicle)
 
 
 		--[[if impoundPlate == nil then 
