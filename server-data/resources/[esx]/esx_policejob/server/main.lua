@@ -542,7 +542,17 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 										cb(true)
 									end)
 								else
-									print('no matches', v2, v4)
+									MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+										['@owner'] = xPlayer.identifier,
+										['@job'] = xPlayer.job.name,
+										['@fuel_level'] = 20
+									}, function (result)
+										if result == 0 then
+											print('esx_advancedgarage: 0 rows changed for job car storage')
+										else
+											cb(true)
+										end
+									end)
 								end
 							end
 						end
