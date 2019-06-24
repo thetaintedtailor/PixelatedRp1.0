@@ -528,11 +528,11 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 						--print("results v loop", k2, v2)
 					for k3,v3 in pairs(vehiclesAndFuel) do
 						for k4,v4 in pairs(v3) do
-							if k4 == 'plate' then
+							if k4 == 'plate' and k2 == 'plate' then
 								if v2 == v3.plate then
 									print('plates matched', v2, v3.plate)
 								else
-									print('no matches')
+									print('no matches', v2, v3.plate)
 								end
 						--[[MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
 							['@owner'] = xPlayer.identifier,
