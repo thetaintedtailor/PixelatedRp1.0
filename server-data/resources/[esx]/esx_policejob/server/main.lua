@@ -521,8 +521,16 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
 	}, function (result)
+		
 		if result ~= nil then
-			for k3,v3 in pairs(vehiclesAndFuel) do
+			for k,v in pairs(result) do
+				for k2,v2 in pairs(v) do
+					print("results v loop", k2, v2)
+				end
+			end
+
+
+			--[[for k3,v3 in pairs(vehiclesAndFuel) do
 				for k4,v4 in pairs(v3) do
 					if k4 == 'plate' then
 						MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
@@ -539,7 +547,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					end
 				end
 			end
-			
+			]]
 		else
 			print("you don't own any police vehicles")
 			cb(false)
