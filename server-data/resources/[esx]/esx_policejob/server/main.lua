@@ -516,7 +516,7 @@ end)
 
 ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, vehiclesAndFuel)
 	local xPlayer = ESX.GetPlayerFromId(source)
-
+	print('function called')
 	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
