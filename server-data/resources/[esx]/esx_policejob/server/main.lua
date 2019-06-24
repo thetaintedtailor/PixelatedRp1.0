@@ -547,7 +547,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 				end
 			end
 
-			MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+			MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
 				['@owner'] = xPlayer.identifier,
 				['@job'] = xPlayer.job.name,
 				['@fuel_level'] = 20
