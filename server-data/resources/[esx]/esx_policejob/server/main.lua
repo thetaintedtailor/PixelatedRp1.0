@@ -556,6 +556,11 @@ ESX.RegisterServerCallback('esx_policejob:recoverImpounded', function(source, cb
 		['@job'] = xPlayer.job.name,
 		['@fuel_level'] = 20
 	}, function (result)
+		if result == 0 then
+			cb(false)
+		else
+			cb(true)
+		end
 	end)
 end)
 

@@ -317,7 +317,9 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
 		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
-		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
+		{label = _U('garage_recoverimpound'), action = 'recover_impound'},
+		{label = _U('garage_buyitem'), action = 'buy_vehicle'},
+
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle', {
@@ -538,8 +540,12 @@ function StoreAllVehicles()
 end
 
 function RecoverImpoundedVehicles()
-	ESX.TriggerServerCallback('esx_policejob:recoverImpounded', function()
-		
+	ESX.TriggerServerCallback('esx_policejob:recoverImpounded', function(valid)
+		if valid then
+			ESX.ShowNotification(_U('garage_has_recovered_all'))
+		else
+			ESX.ShowNotification(_U('garage_has_not_recovered_all'))
+		end
 	end)
 end
 
