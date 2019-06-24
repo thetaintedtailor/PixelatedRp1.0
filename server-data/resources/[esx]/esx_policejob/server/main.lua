@@ -545,7 +545,18 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 			cb(false)
 		end
 	end)
+end)
 
+
+ESX.RegisterServerCallback('esx_policejob:recoverImpounded', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+		['@owner'] = xPlayer.identifier,
+		['@job'] = xPlayer.job.name,
+		['@fuel_level'] = 20
+	}, function (result)
+	end)
 end)
 
 function getPriceFromHash(hashKey, jobGrade, type)

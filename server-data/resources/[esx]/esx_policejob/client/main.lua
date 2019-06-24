@@ -442,6 +442,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 			StoreNearbyVehicle(playerCoords)
 		elseif data.current.action == 'store_all_garage' then
 			StoreAllVehicles()
+		elseif data.current.action == 'recover_impound' then
+			RecoverImpoundedVehicles()
 		end
 
 	end, function(data, menu)
@@ -533,8 +535,16 @@ function StoreAllVehicles()
 			ESX.ShowNotification(_U('garage_has_notstored_all'))
 		end
 	end, vehiclesAndFuel)
-
 end
+
+function RecoverImpoundedVehicles()
+	ESX.TriggerServerCallback('esx_policejob:recoverImpounded', function()
+		
+	end)
+end
+
+
+
 
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
 	local spawnPoints = Config.PoliceStations[station][part][partNum].SpawnPoints
@@ -2266,10 +2276,9 @@ end
 
 function ImpoundVehicle(vehicle, vehiclePlate)
 
-	--print('plate', vehiclePlate)
-	if GetVehicleClass(vehicle) == 18 then
+	--[[if GetVehicleClass(vehicle) == 18 then
 		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', vehiclePlate, true)
-	end
+	end]]
 
 	ESX.Game.DeleteVehicle(vehicle) 
 	ESX.ShowNotification(_U('impound_successful'))
