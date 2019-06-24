@@ -525,7 +525,6 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		if result ~= nil then
 			for k,v in pairs(result) do
 				for k2,v2 in pairs(v) do
-						---print("results v loop", k2, v2)
 					for k3,v3 in pairs(vehiclesAndFuel) do
 						for k4,v4 in pairs(v3) do
 							if k4 == 'plate' then
@@ -541,24 +540,24 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 									end
 										cb(true)
 									end)
-								else
-									MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
-										['@owner'] = xPlayer.identifier,
-										['@job'] = xPlayer.job.name,
-										['@fuel_level'] = 20
-									}, function (result)
-										if result == 0 then
-											print('esx_advancedgarage: 0 rows changed for job car storage')
-										else
-											cb(true)
-										end
-									end)
 								end
 							end
 						end
 					end
 				end
 			end
+
+			MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+				['@owner'] = xPlayer.identifier,
+				['@job'] = xPlayer.job.name,
+				['@fuel_level'] = 20
+			}, function (result)
+				if result == 0 then
+					print('esx_advancedgarage: 0 rows changed for job car storage')
+				else
+					cb(true)
+				end
+			end)
 		else
 			print("you don't own any police vehicles")
 			cb(false)
