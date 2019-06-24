@@ -529,7 +529,7 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 					for k3,v3 in pairs(vehiclesAndFuel) do
 						for k4,v4 in pairs(v3) do
 							if k4 == 'plate' and k2 == 'plate' then
-								if v4 == v2 then
+								if v2 == v4 then
 									print('plates matched', v2, v4)
 								else
 									print('no matches', v2, v4)
