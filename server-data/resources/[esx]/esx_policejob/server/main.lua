@@ -525,26 +525,25 @@ ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb
 		if result ~= nil then
 			for k,v in pairs(result) do
 				for k2,v2 in pairs(v) do
-						print("results v loop", k2, v2)
+						---print("results v loop", k2, v2)
 					for k3,v3 in pairs(vehiclesAndFuel) do
 						for k4,v4 in pairs(v3) do
-							if k4 == 'plate' and k2 == 'plate' then
+							if k4 == 'plate' then
 								if v2 == v4 then
-									print('plates matched', v2, v4)
+									MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
+										['@owner'] = xPlayer.identifier,
+										['@job'] = xPlayer.job.name,
+										['@plate'] = v3.plate,
+										['@fuel_level'] = v3.fuel
+									}, function (rowsChanged)
+									if rowsChanged == 0 then
+										print('esx_advancedgarage: 0 rows changed for job car storage')
+									end
+										cb(true)
+									end)
 								else
 									print('no matches', v2, v4)
 								end
-						--[[MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
-							['@owner'] = xPlayer.identifier,
-							['@job'] = xPlayer.job.name,
-							['@plate'] = v3.plate,
-							['@fuel_level'] = v3.fuel
-						}, function (rowsChanged)
-						if rowsChanged == 0 then
-							print('esx_advancedgarage: 0 rows changed for job car storage')
-						end
-							cb(true)
-						end)]]
 							end
 						end
 					end
