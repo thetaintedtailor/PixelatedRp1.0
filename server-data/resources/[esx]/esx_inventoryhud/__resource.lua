@@ -179,7 +179,7 @@ files {
     'html/img/items/pistolpermit.png',
     'html/img/items/class2permit.png',
     'html/img/items/handcuffs.png',
-    'html/img/items/fishingpole.png',
+    'html/img/items/fishingrod.png',
     'html/img/items/fishbait.png',
     'html/img/items/turtle.png',
     'html/img/items/turtlebait.png',
