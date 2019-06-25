@@ -184,5 +184,9 @@ files {
     'html/img/items/turtle.png',
     'html/img/items/turtlebait.png',
     'html/img/items/shark.png',
+    'html/img/items/vicodin.png',
+    'html/img/items/amoxicillin.png',
+    'html/img/items/xanax.png',
+    'html/img/items/ibuprofen.png',
     'html/img/items/rope.png',
 }
