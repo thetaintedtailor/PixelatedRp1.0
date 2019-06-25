@@ -104,28 +104,28 @@ Citizen.CreateThread(function()
 		Wait(5)
 		if fishing then
 			if IsControlJustReleased(0, Keys['N']) then
-				 input = 1
+				 input = N
 			end
 			if IsControlJustReleased(0, Keys['M']) then
-				input = 2
+				input = M
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = 3
+				input = N
 			end
 			if IsControlJustReleased(0, Keys['M']) then
-				input = 4
+				input = M
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = 5
+				input = N
 			end
 			if IsControlJustReleased(0, Keys['M']) then
-				input = 6
+				input = M
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = 7
+				input = N
 			end
 			if IsControlJustReleased(0, Keys['M']) then
-				input = 8
+				input = M
 			end
 			
 			
