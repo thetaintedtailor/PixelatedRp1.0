@@ -287,12 +287,12 @@ function OpenBoatsMenu(x, y , z)
 	local elements = {}
 	
 	
-		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">2500$</span>', value = 'boat'})
-		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">3500$</span>', value = 'boat6'}) 
-		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">4500$</span>', value = 'boat5'}) 	
-		table.insert(elements, {label = '<span style="color:green;">Toro</span> <span style="color:red;">5500$</span>', value = 'boat2'}) 
-		table.insert(elements, {label = '<span style="color:green;">Marquis</span> <span style="color:red;">6000$</span>', value = 'boat3'}) 
-		table.insert(elements, {label = '<span style="color:green;">Tug boat</span> <span style="color:red;">7500$</span>', value = 'boat4'})
+		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">250$</span>', value = 'boat'})
+		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">350$</span>', value = 'boat6'}) 
+		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">450$</span>', value = 'boat5'}) 	
+		table.insert(elements, {label = '<span style="color:green;">Toro</span> <span style="color:red;">500$</span>', value = 'boat2'}) 
+		table.insert(elements, {label = '<span style="color:green;">Marquis</span> <span style="color:red;">600$</span>', value = 'boat3'}) 
+		table.insert(elements, {label = '<span style="color:green;">Tug boat</span> <span style="color:red;">750$</span>', value = 'boat4'})
 		
 	--If user has police job they will be able to get free Police Predator boat
 	if PlayerData.job.name == "police" then
