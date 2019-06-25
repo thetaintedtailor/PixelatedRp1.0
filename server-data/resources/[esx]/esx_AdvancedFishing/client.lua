@@ -194,11 +194,11 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+	BlockWeaponWheelThisFrame()
 	while true do
 		local wait = math.random(Config.FishTime.a , Config.FishTime.b)
 		Wait(wait)
-			if fishing then
-				BlockWeaponWheelThisFrame()	
+			if fishing then	
 				pause = true
 				correct = math.random(1,8)
 				ESX.ShowNotification("~g~Fish is taking the bait \n ~h~Press " .. correct .. " to catch it")
