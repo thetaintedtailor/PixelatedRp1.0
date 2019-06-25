@@ -108,6 +108,7 @@ files({
   'html/img/redgull.png',
   'html/img/rose.png',
   'html/img/sandwich.png',
+  'html/img/bakingsoda.png',
 })
 
 client_scripts {

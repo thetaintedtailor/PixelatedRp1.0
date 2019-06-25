@@ -317,7 +317,9 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 		{label = _U('garage_storeditem'), action = 'garage'},
 		{label = _U('garage_storeitem'), action = 'store_garage'},
 		{label = _U('garage_storeallitems'), action = 'store_all_garage'},
-		{label = _U('garage_buyitem'), action = 'buy_vehicle'}
+		--{label = _U('garage_recoverimpound'), action = 'recover_impound'},
+		{label = _U('garage_buyitem'), action = 'buy_vehicle'},
+
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle', {
@@ -402,7 +404,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 							label = label,
 							stored = v.stored,
 							model = props.model,
-							vehicleProps = props
+							vehicleProps = props,
+							fuel = v.fuel_level
 						})
 					end
 
@@ -419,7 +422,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
-
+									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
 									table.insert(spawnedVehicles, vehicle)
@@ -441,6 +444,8 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 			StoreNearbyVehicle(playerCoords)
 		elseif data.current.action == 'store_all_garage' then
 			StoreAllVehicles()
+		elseif data.current.action == 'recover_impound' then
+			RecoverImpoundedVehicles()
 		end
 
 	end, function(data, menu)
@@ -454,12 +459,15 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-
+			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
+				Wait(2000)
+			end
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
-					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v)),
+					fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 				})
 			end
 		end
@@ -513,30 +521,37 @@ end
 
 function StoreAllVehicles()
 	local playerPed  = GetPlayerPed(-1)
+	local vehiclesAndFuel = {}
 
-		local playerPed    = GetPlayerPed(-1)
-		local coords       = GetEntityCoords(playerPed)
-		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
-		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+	for k,v in ipairs (spawnedVehicles) do
+		table.insert(vehiclesAndFuel, {
+			plate = ESX.Math.Trim(GetVehicleNumberPlateText(v)),
+			fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
+		})
+	end
 
-		
-		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
-			if valid then
-				--putaway(current, vehicleProps)
-				DeleteSpawnedVehicles()
-			else
-				ESX.ShowNotification(_U('garage_has_notstored_all'))
-			end
-		end)
-
+	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+		if valid then
+			DeleteSpawnedVehicles()
+		else
+			ESX.ShowNotification(_U('garage_has_notstored_all'))
+		end
+	end, vehiclesAndFuel)
 end
 
-function putaway(vehicle, vehicleProps)
-
-	ESX.Game.DeleteVehicle(vehicle)
-	--TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
-	ESX.ShowNotification(_U('garage_has_stored_all'))
+--[[
+function RecoverImpoundedVehicles()
+	ESX.TriggerServerCallback('esx_policejob:recoverImpounded', function(valid)
+		if valid then
+			ESX.ShowNotification(_U('garage_has_recovered_all'))
+		else
+			ESX.ShowNotification(_U('garage_has_not_recovered_all'))
+		end
+	end)
 end
+]]
+
+
 
 function GetAvailableVehicleSpawnPoint(station, part, partNum)
 	local spawnPoints = Config.PoliceStations[station][part][partNum].SpawnPoints
@@ -823,6 +838,7 @@ function OpenPoliceActionsMenu()
 			}, function(data2, menu2)
 				coords  = GetEntityCoords(playerPed)
 				vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+				vehiclePlate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 				action  = data2.current.value
 				
 				if action == 'search_database' then
@@ -843,7 +859,7 @@ function OpenPoliceActionsMenu()
 							ESX.ShowNotification(_U('vehicle_unlocked'))
 						end
 					elseif action == 'impound' then
-					
+						
 						-- is the script busy?
 						if CurrentTask.Busy then
 							return
@@ -856,7 +872,7 @@ function OpenPoliceActionsMenu()
 						CurrentTask.Busy = true
 						CurrentTask.Task = ESX.SetTimeout(10000, function()
 							ClearPedTasks(playerPed)
-							ImpoundVehicle(vehicle)
+							ImpoundVehicle(vehicle, vehiclePlate)
 							Citizen.Wait(100) -- sleep the entire script to let stuff sink back to reality
 						end)
 						
@@ -1865,12 +1881,19 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, Keys['F1'], true) -- Disable phone
 			DisableControlAction(0, Keys['F2'], true) -- Inventory
 			DisableControlAction(0, Keys['F3'], true) -- Animations
+			DisableControlAction(0, Keys['F5'], true) -- Lift Menu
 			DisableControlAction(0, Keys['F6'], true) -- Job
+			DisableControlAction(0, Keys['F7'], true) -- Invoices
+			DisableControlAction(0, Keys['F9'], true) -- Crafting Menu
+			DisableControlAction(0, Keys['F10'], true) -- Animations
 
-			DisableControlAction(0, Keys['V'], true) -- Disable changing view
-			DisableControlAction(0, Keys['C'], true) -- Disable looking behind
-			DisableControlAction(0, Keys['X'], true) -- Disable clearing animation
+			--DisableControlAction(0, Keys['V'], true) -- Disable changing view
+			--DisableControlAction(0, Keys['C'], true) -- Disable looking behind
+			DisableControlAction(0, Keys['X'], true) -- Disable hands up
 			DisableControlAction(2, Keys['P'], true) -- Disable pause screen
+			DisableControlAction(2, Keys['Z'], true) -- Disable clearing animation
+			DisableControlAction(2, Keys['B'], true) -- Disable fingerpoint
+			DisableControlAction(2, Keys['L'], true) -- Disable Cross arms
 
 			DisableControlAction(0, 59, true) -- Disable steering in vehicle
 			DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
@@ -2258,8 +2281,10 @@ function StartHandcuffTimer()
 	end)
 end
 
-function ImpoundVehicle(vehicle)
-	--local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
+function ImpoundVehicle(vehicle, vehiclePlate)
+	--[[if GetVehicleClass(vehicle) == 18 then
+		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', vehiclePlate, true)
+	end]]
 	ESX.Game.DeleteVehicle(vehicle) 
 	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false

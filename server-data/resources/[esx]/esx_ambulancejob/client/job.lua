@@ -510,8 +510,10 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 							label = label,
 							stored = v.stored,
 							model = props.model,
-							vehicleProps = props
+							vehicleProps = props,
+							fuel = v.fuel_level
 						})
+						
 					end
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_garage', {
@@ -524,10 +526,9 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 							if foundSpawn then
 								menu2.close()
-
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
-
+									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
 									table.insert(spawnedVehicles, vehicle)
@@ -561,12 +562,15 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-
 			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
+			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
+				Wait(2000)
+			end
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
-					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v))
+					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v)),
+					fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 				})
 			end
 		end
@@ -620,20 +624,22 @@ end
 
 function StoreAllVehicles()
 	local playerPed  = GetPlayerPed(-1)
+	local vehiclesAndFuel = {}
 
-		local playerPed    = GetPlayerPed(-1)
-		local coords       = GetEntityCoords(playerPed)
-		local current 	   = GetPlayersLastVehicle(GetPlayerPed(-1), true)
-		local vehicleProps = ESX.Game.GetVehicleProperties(current)
+	for k,v in ipairs (spawnedVehicles) do
+		table.insert(vehiclesAndFuel, {
+			plate = GetVehicleNumberPlateText(v),
+			fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
+		})
+	end
 
-		
-		ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
-			if valid then
-				DeleteSpawnedVehicles()
-			else
-				ESX.ShowNotification(_U('garage_has_notstored_all'))
-			end
-		end)
+	ESX.TriggerServerCallback('esx_policejob:storeAllVehicles', function(valid)
+		if valid then
+			DeleteSpawnedVehicles()
+		else
+			ESX.ShowNotification(_U('garage_has_notstored_all'))
+		end
+	end, vehiclesAndFuel)
 
 end
 
@@ -907,7 +913,8 @@ function OpenPharmacyMenu()
 			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'},
 			{label = _U('pharmacy_take', _U('morphine')), value = 'morphine'},
 			{label = _U('pharmacy_take', _U('gauze')), value = 'gauze'},
-			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'}
+			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'},
+			{label = _U('pharmacy_take', _U('k3v')), value = 'k3v'}
 		}
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)

@@ -1,7 +1,7 @@
 Config = {}
 
 -- Ammo given by default to crafted weapons
-Config.WeaponAmmo = 42
+Config.WeaponAmmo = 1
 
 Config.Recipes = {
 	-- Can be a normal ESX item
@@ -15,6 +15,17 @@ Config.Recipes = {
 	["lockpick"] = { 
 		{item = "rubberband", quantity = 4 }, 
 		{item = "bobbypin", quantity = 1 },
+	},
+
+	["fixkit"] = { 
+		{item = "toolbox", quantity = 1 }, 
+		{item = "battery", quantity = 1 },
+	},	
+
+	["crack"] = { 
+		{item = "bakingsoda", quantity = 1 }, 
+		{item = "coke_pooch", quantity = 1 },
+		{item = "water", quantity = 1 },
 	},
 
 	["clip"] = { 
@@ -33,7 +44,7 @@ Config.Recipes = {
 	},
 
 	["diamondring"] = { 
-		{item = "diamond", quantity = 4 }, 
+		{item = "diamond", quantity = 1 }, 
 		{item = "ring", quantity = 1 },
 	},
 	

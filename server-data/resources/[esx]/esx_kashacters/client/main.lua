@@ -5,12 +5,16 @@ Citizen.CreateThread(function()
         TriggerEvent('esx:getSharedObject', function (obj) ESX = obj end)
     end
 end)
+
 Citizen.CreateThread(function()
-    Citizen.Wait(7)
-    if NetworkIsSessionStarted() then
-        Citizen.Wait(100)
-        TriggerServerEvent("kashactersS:SetupCharacters")
-        TriggerEvent("kashactersC:SetupCharacters")
+    while true do
+        Citizen.Wait(0)
+        if NetworkIsSessionStarted() then
+            Citizen.Wait(100)
+            TriggerServerEvent("kashactersS:SetupCharacters")
+            TriggerEvent("kashactersC:SetupCharacters")
+            return -- break the loop
+        end
     end
 end)
 
@@ -95,6 +99,15 @@ RegisterNUICallback("CharacterChosen", function(data, cb)
     end
     cb("ok")
 end)
+
+RegisterNetEvent('kashactersC:Skinchanger')
+AddEventHandler('kashactersC:Skinchanger', function(source)
+    local source_ = source
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+    TriggerEvent('skinchanger:loadSkin', skin)
+    end)
+end)
+
 RegisterNUICallback("DeleteCharacter", function(data, cb)
     SetNuiFocus(false,false)
     DoScreenFadeOut(500)
@@ -104,3 +117,7 @@ RegisterNUICallback("DeleteCharacter", function(data, cb)
     end
     cb("ok")
 end)
+--[[
+RegisterCommand('switch', function()
+    TriggerEvent('kashactersC:ReloadCharacters')
+    end)]]

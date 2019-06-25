@@ -23,6 +23,7 @@ Config.Items = {
     [11] = {label = "Red Rose",       item = "rose",        price = 5},
     [12] = {label = "Sandwich",       item = "sandwich",        price = 4},
     [13] = {label = "Scratchoff Ticket",       item = "scratchoff",        price = 15},
+    [14] = {label = "Baking Soda",       item = "bakingsoda",        price = 15},
 }
 
 Config.Images = {
@@ -41,6 +42,7 @@ Config.Images = {
   [13] = {item = "scratchoff",   src = "img/scratchoff.png"},
   [14] = {item = "weed",   src = "img/weed.png"},
   [15] = {item = "bandage",   src = "img/bandage.png"},
+  [16] = {item = "bakingsoda",   src = "img/bakingsoda.png"},
 }
 
 Config.Zones = {

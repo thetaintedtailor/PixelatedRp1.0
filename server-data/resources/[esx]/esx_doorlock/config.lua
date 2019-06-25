@@ -173,6 +173,36 @@ Config.DoorList = {
 		size = 2
 	},
 
+	-- Interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 470.34, y = -993.66, z = 25.10},
+		textCoords = {x = 470.36, y = -994.62, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+
+	-- Outer interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 468.73, y = -992.75, z = 25.10},
+		textCoords = {x = 467.71, y = -992.69, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = false,
+		distance = 1,
+	},
+
+	-- Evidence room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 478.42, y = -987.25, z = 25.10},
+		textCoords = {x = 477.59, y = -987.28, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+
 	--
 	-- Sandy Shores
 	--
@@ -234,7 +264,7 @@ Config.DoorList = {
 		size = 2
 	},
 
-	-- Cell doors
+	-- Prison Cell doors
 	{
 		objName = 'Prop_LD_jail_door',
 		objCoords  = {x = 1798.450, y=2479.150, z = -122.540},
@@ -271,21 +301,22 @@ Config.DoorList = {
 		locked = true,
 	},
 
+	-- Pillbox Hospital Inner Doors
 
-	--
-	-- Addons
-	--
-
-	--[[
-	-- Entrance Gate (Mission Row mod) https://www.gta5-mods.com/maps/mission-row-pd-ymap-fivem-v1
 	{
-		objName = 'prop_gate_airport_01',
-		objCoords  = {x = 420.133, y = -1017.301, z = 28.086},
-		textCoords = {x = 420.133, y = -1021.00, z = 32.00},
-		authorizedJobs = { 'police', 'offpolice' },
+		objName = 'v_ilev_cor_firedoor',
+		objCoords  = {x=328.62, y=-585.20, z=43.33},
+		textCoords = {x=329.39, y=-585.44, z=43.33},
+		authorizedJobs = {'ambulance'},
 		locked = true,
-		distance = 14,
-		size = 2
-	}
-	--]]
+		distance = 4
+	},
+	{
+		objName = 'v_ilev_cor_firedoor',
+		objCoords  = {x=330.79, y=-585.99, z=43.33},
+		textCoords = {x=330.13, y=-585.74, z=43.33},
+		authorizedJobs = {'ambulance'},
+		locked = true,
+		distance = 4
+	},
 }

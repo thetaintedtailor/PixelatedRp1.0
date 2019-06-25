@@ -514,32 +514,73 @@ ESX.RegisterServerCallback('esx_policejob:storeNearbyVehicle', function(source, 
 end)
 
 
-ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb)
+ESX.RegisterServerCallback('esx_policejob:storeAllVehicles', function(source, cb, vehiclesAndFuel)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT plate FROM owned_vehicles WHERE owner = @owner AND job = @job', {
 		['@owner'] = xPlayer.identifier,
 		['@job'] = xPlayer.job.name
 	}, function (result)
+		
 		if result ~= nil then
-			--local originalvehprops = json.decode(result[1].vehicle)
-			--if originalvehprops.model == vehiclemodel then
-				MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true WHERE owner = @owner AND job = @job', {
-					['@owner'] = xPlayer.identifier,
-					['@job'] = xPlayer.job.name
-				}, function (rowsChanged)
-					if rowsChanged == 0 then
-						print('esx_advancedgarage: %s attempted to store an vehicle they don\'t own!')
+			for k,v in pairs(result) do
+				for k2,v2 in pairs(v) do
+					for k3,v3 in pairs(vehiclesAndFuel) do
+						for k4,v4 in pairs(v3) do
+							if k4 == 'plate' then
+								if v2 == v4 then
+									MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND plate = @plate', {
+										['@owner'] = xPlayer.identifier,
+										['@job'] = xPlayer.job.name,
+										['@plate'] = v3.plate,
+										['@fuel_level'] = v3.fuel
+									}, function (rowsChanged)
+									if rowsChanged == 0 then
+										print('esx_advancedgarage: 0 rows changed for job car storage')
+									end
+										cb(true)
+									end)
+								end
+							end
+						end
 					end
+				end
+			end
+
+			MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+				['@owner'] = xPlayer.identifier,
+				['@job'] = xPlayer.job.name,
+				['@fuel_level'] = 20
+			}, function (result)
+				if result == 0 then
+					print('esx_advancedgarage: 0 rows changed for job car storage')
+				else
 					cb(true)
-				end)
+				end
+			end)
 		else
 			print("you don't own any police vehicles")
 			cb(false)
 		end
 	end)
-
 end)
+
+
+--[[ESX.RegisterServerCallback('esx_policejob:recoverImpounded', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	MySQL.Async.fetchAll('UPDATE owned_vehicles SET `stored` = true, fuel_level = @fuel_level WHERE owner = @owner AND job = @job AND `stored` = false', {
+		['@owner'] = xPlayer.identifier,
+		['@job'] = xPlayer.job.name,
+		['@fuel_level'] = 20
+	}, function (result)
+		if result == 0 then
+			cb(false)
+		else
+			cb(true)
+		end
+	end)
+end)]]
 
 function getPriceFromHash(hashKey, jobGrade, type)
 	if type == 'helicopter' then

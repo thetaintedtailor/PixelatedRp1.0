@@ -7,9 +7,9 @@ Config.actionKey = 51
 Config.zones = {
 	
 	WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
-		x = -539.21716308594,
-		y = -1720.1965332031,
-		z = 19.382791519165,
+		x = -899.22,
+		y = -2309.39,
+		z = -3.51,
 		w = 2.0,
 		h = 1.0,
 		visible = false, -- Set this to true to make the marker visible. False to disable it.
@@ -38,20 +38,20 @@ Config.zones = {
 		
 	},
 	
-	MethEnter = {
-		x = 1301.3995361328,
-		y = 4319.1743164063,
-		z = 37.703685760498,
-		w = 2.0,
-		h = 1.0,		
-		visible = false,
-		t = 1,
-		color = {
-			r = 102,
-			g = 0,
-			b = 0
-		}
-	},
+	--MethEnter = {
+		--x = 1301.3995361328,
+		--y = 4319.1743164063,
+		--z = 37.703685760498,
+		--w = 2.0,
+		--h = 1.0,		
+		--visible = false,
+		--t = 1,
+		--color = {
+			--r = 102,
+			--g = 0,
+			--b = 0
+		--}
+	--},
 	
 	MethExit = {
 		x = 1012.136,
@@ -69,9 +69,9 @@ Config.zones = {
 	},
 
 	CokeEnter = {
-		x = -58.071701049805,
-		y = 6441.6674804688,
-		z = 32.685699462891,
+		x = 374.94,
+		y = -576.20,
+		z = 18.48,
 		w = 2.0,
 		h = 1.0,		
 		visible = false,
@@ -109,9 +109,9 @@ Config.point = {
 	},
 	
 	WeedExit = {             --This is where you land when you use the exit teleport.
-		x = -534.21716308594,
-		y = -1718.1965332031,
-		z = 19.382791519165
+		x = -902.48,
+		y = -2305.42,
+		z = -3.51
 	},
 
 	MethEnter = {
@@ -133,9 +133,9 @@ Config.point = {
 	},
 	
 	CokeExit = {
-		x = -61.071701049805,
-		y = 6441.6674804688, 
-		z = 32.685699462891
+		x = 370.70,
+		y = -577.08, 
+		z = 17.76
 	}
 }
 

@@ -122,8 +122,8 @@ function RequestAllIpls()
 	RequestIpl("CS3_07_MPGates")
 
 	-- Pillbox hospital: 356.8, -590.1, 43.3
-	RequestIpl("RC12B_Default")
-	-- RequestIpl("RC12B_Fixed")
+	RemoveIpl("rc12b_default")
+	RequestIpl("rc12b_hospitalinterior")
 
 	-- Josh's house: -1117.163, 303.1, 66.522
 	RequestIpl("bh1_47_joshhse_unburnt")

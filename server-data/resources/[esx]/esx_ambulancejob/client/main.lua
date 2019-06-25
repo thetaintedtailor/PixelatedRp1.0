@@ -100,6 +100,13 @@ function OnPlayerDeath()
 	StartDistressSignal()
 
 	StartScreenEffect('DeathFailOut', 0, false)
+	ClearPedTasksImmediately(GetPlayerPed(-1))
+
+	repeat
+		Citizen.Wait(60000)
+		ClearPedTasksImmediately(GetPlayerPed(-1))
+	until IsDead == false
+
 end
 
 function StartDistressSignal()
@@ -324,6 +331,7 @@ AddEventHandler('esx_ambulancejob:revive', function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	TriggerServerEvent('esx_ambulancejob:setDeathStatus', false)
+	TriggerEvent('esx_status:set', 'drug', 0)
 
 	Citizen.CreateThread(function()
 		DoScreenFadeOut(800)

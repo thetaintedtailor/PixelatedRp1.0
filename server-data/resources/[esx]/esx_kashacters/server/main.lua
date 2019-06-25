@@ -12,7 +12,13 @@ local IdentifierTables = {
 	{table = "user_parkings", column = "identifier"},
 	{table = "user_accounts", column = "identifier"},
 	{table = "user_contacts", column = "identifier"},
-	{table = "user_inventory", column = "identifier"},
+    {table = "user_inventory", column = "identifier"},
+    {table = "datastore_data", column = "owner"},
+    {table = "addon_account_data", column = "owner"},
+    {table = "addon_inventory_items", column = "owner"},
+    {table = "billing", column = "identifier"},
+    {table = "jail", column = "identifier"},
+    {table = "phone_users_contacts", column = "identifier"},
 }
 
 RegisterServerEvent("kashactersS:SetupCharacters")
@@ -32,6 +38,7 @@ AddEventHandler('kashactersS:CharacterChosen', function(charid, ischar)
     SetCharToIdentifier(GetPlayerIdentifiers(src)[1], tonumber(charid))
     if ischar == "true" then
         spawn = GetSpawnPos(src)
+        TriggerClientEvent("kashactersC:Skinchanger", src)
     else
 		TriggerClientEvent('skinchanger:loadDefaultModel', src, true, cb)
         spawn = { x = 195.55, y = -933.36, z = 29.90 } -- DEFAULT SPAWN POSITION

@@ -1,7 +1,7 @@
 local logEnabled = true
 
 RegisterServerEvent('3dme:shareDisplay')
-AddEventHandler('3dme:shareDisplay', function(text)
+AddEventHandler('3dme:shareDisplay', function(text, font)
 	TriggerClientEvent('3dme:triggerDisplay', -1, text, source)
 	if logEnabled then
 		setLog(text, source)

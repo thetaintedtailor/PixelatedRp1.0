@@ -1,7 +1,9 @@
 Locales['en'] = {
   ['ooc_prefix'] = 'OOC | %s',
   ['twt_help'] = 'send a tweet',
+  ['ad_help'] = 'make an advertisement',
   ['twt_prefix'] = '^0[^4Twitter^0] (^5@%s^0)',
+  ['ad_prefix'] = '^0[^4AD^0] (^5@%s^0)',
   ['me_help'] = 'personal action',
   ['me_prefix'] = 'me | %s',
   ['do_help'] = 'RP information',
