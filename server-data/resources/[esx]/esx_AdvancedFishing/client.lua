@@ -316,7 +316,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 2500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 2500)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 250)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "dinghy4")
 	end
@@ -325,7 +325,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 5500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 5500)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 500)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "TORO")
 	end
@@ -334,7 +334,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 6000) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 6000)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 600)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "MARQUIS")
 	end
@@ -343,7 +343,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 7500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 7500)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 750)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "tug")
 	end
@@ -352,7 +352,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 4500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 4500)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 450)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "jetmax")
 	end
@@ -361,7 +361,7 @@ function OpenBoatsMenu(x, y , z)
 		ESX.UI.Menu.CloseAll()
 
 		TriggerServerEvent("fishing:lowmoney", 3500) 
-		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 3500)
+		TriggerEvent("chatMessage", 'You rented a boat for', {255,0,255}, '$' .. 350)
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "suntrap")
 	end
