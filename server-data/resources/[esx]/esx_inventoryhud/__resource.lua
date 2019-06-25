@@ -184,4 +184,5 @@ files {
     'html/img/items/turtle.png',
     'html/img/items/turtlebait.png',
     'html/img/items/shark.png',
+    'html/img/items/rope.png',
 }
