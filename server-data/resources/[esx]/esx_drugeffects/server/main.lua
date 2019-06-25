@@ -73,3 +73,43 @@ ESX.RegisterUsableItem('k3v', function(source)
 	TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
 	TriggerClientEvent('esx_drugeffects:onK3v', source)
 end)
+
+ESX.RegisterUsableItem('vicodin', function(source)
+        
+	local _source = source
+local xPlayer = ESX.GetPlayerFromId(source)
+xPlayer.removeInventoryItem('vicodin', 1)
+
+TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+TriggerClientEvent('esx_drugeffects:onVicodin', source)
+end)
+
+ESX.RegisterUsableItem('amoxicillin', function(source)
+        
+	local _source = source
+local xPlayer = ESX.GetPlayerFromId(source)
+xPlayer.removeInventoryItem('amoxicillin', 1)
+
+TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+TriggerClientEvent('esx_drugeffects:onAmoxicillin', source)
+end)
+
+ESX.RegisterUsableItem('ibuprofen', function(source)
+        
+	local _source = source
+local xPlayer = ESX.GetPlayerFromId(source)
+xPlayer.removeInventoryItem('ibuprofen', 1)
+
+TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+TriggerClientEvent('esx_drugeffects:onIbuprofen', source)
+end)
+
+ESX.RegisterUsableItem('xanax', function(source)
+        
+	local _source = source
+local xPlayer = ESX.GetPlayerFromId(source)
+xPlayer.removeInventoryItem('xanax', 1)
+
+TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+TriggerClientEvent('esx_drugeffects:onXanax', source)
+end)

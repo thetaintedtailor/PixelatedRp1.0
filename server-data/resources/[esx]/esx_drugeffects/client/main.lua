@@ -254,6 +254,79 @@ AddEventHandler('esx_drugeffects:onK3v', function()
     
 end)
 
+RegisterNetEvent('esx_drugeffects:onVicodin')
+AddEventHandler('esx_drugeffects:onVicodin', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
+  local player = PlayerPedId()
+  local ad = "mp_suicide"
+  local anim = "pill"
+  loadAnimDict(ad)
+
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+	  Wait(2750)
+		ClearPedTasks(player)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true) 
+    
+end)
+
+RegisterNetEvent('esx_drugeffects:onAmoxicillin')
+AddEventHandler('esx_drugeffects:onAmoxicillin', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
+  local player = PlayerPedId()
+  local ad = "mp_suicide"
+  local anim = "pill"
+  loadAnimDict(ad)
+
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+	  Wait(2750)
+		ClearPedTasks(player)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true) 
+    
+end)
+
+RegisterNetEvent('esx_drugeffects:onIbuprofen')
+AddEventHandler('esx_drugeffects:onIbuprofen', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
+  local player = PlayerPedId()
+  local ad = "mp_suicide"
+  local anim = "pill"
+  loadAnimDict(ad)
+
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+	  Wait(2750)
+		ClearPedTasks(player)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true) 
+    
+end)
+
+RegisterNetEvent('esx_drugeffects:onXanax')
+AddEventHandler('esx_drugeffects:onXanax', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  local maxHealth = GetEntityMaxHealth(playerPed)
+  local player = PlayerPedId()
+  local ad = "mp_suicide"
+  local anim = "pill"
+  loadAnimDict(ad)
+
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+	  Wait(2750)
+		ClearPedTasks(player)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true) 
+    
+end)
+
+
 function loadAnimDict(dict)
 	while (not HasAnimDictLoaded(dict)) do
 		RequestAnimDict(dict)
