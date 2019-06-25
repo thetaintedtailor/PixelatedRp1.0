@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
 			end
 			
 			
-			if IsControlJustReleased(0, Keys['X']) then
+			if IsControlJustReleased(0, Keys['Z']) then
 				fishing = false
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
