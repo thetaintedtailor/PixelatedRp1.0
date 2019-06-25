@@ -104,28 +104,28 @@ Citizen.CreateThread(function()
 		Wait(5)
 		if fishing then
 			if IsControlJustReleased(0, Keys['N']) then
-				 input = N
-			end
-			if IsControlJustReleased(0, Keys['M']) then
-				input = M
+				 input = 1
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = N
-			end
-			if IsControlJustReleased(0, Keys['M']) then
-				input = M
+				input = 2
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = N
-			end
-			if IsControlJustReleased(0, Keys['M']) then
-				input = M
+				input = 3
 			end
 			if IsControlJustReleased(0, Keys['N']) then
-				input = N
+				input = 4
 			end
-			if IsControlJustReleased(0, Keys['M']) then
-				input = M
+			if IsControlJustReleased(0, Keys['N']) then
+				input = 5
+			end
+			if IsControlJustReleased(0, Keys['N']) then
+				input = 6
+			end
+			if IsControlJustReleased(0, Keys['N']) then
+				input = 7
+			end
+			if IsControlJustReleased(0, Keys['N']) then
+				input = 8
 			end
 			
 			
@@ -200,7 +200,7 @@ Citizen.CreateThread(function()
 		Wait(wait)
 			if fishing then
 				pause = true
-				correct = math.random(1,8)
+				correct = Keys['N']
 				ESX.ShowNotification("~g~Fish is taking the bait \n ~h~Press " .. correct .. " to catch it")
 				input = 0
 				pausetimer = 0
