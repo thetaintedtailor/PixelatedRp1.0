@@ -90,7 +90,7 @@ ESX.RegisterUsableItem('amoxicillin', function(source)
 local xPlayer = ESX.GetPlayerFromId(source)
 xPlayer.removeInventoryItem('amoxicillin', 1)
 
-TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
+TriggerClientEvent('esx_status:add', _source, 'drug', 0)
 TriggerClientEvent('esx_drugeffects:onAmoxicillin', source)
 end)
 
