@@ -134,7 +134,6 @@ Citizen.CreateThread(function()
 				ESX.ShowNotification("~r~Stopped fishing")
 			end
 			if fishing then
-			
 				playerPed = GetPlayerPed(-1)
 				local pos = GetEntityCoords(GetPlayerPed(-1))
 				if GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z-3.0) or IsPedInAnyVehicle(GetPlayerPed(-1)) then
@@ -199,6 +198,7 @@ Citizen.CreateThread(function()
 		local wait = math.random(Config.FishTime.a , Config.FishTime.b)
 		Wait(wait)
 			if fishing then
+				BlockWeaponWheelThisFrame()	
 				pause = true
 				correct = math.random(1,8)
 				ESX.ShowNotification("~g~Fish is taking the bait \n ~h~Press " .. correct .. " to catch it")
