@@ -103,28 +103,28 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(5)
 		if fishing then
-			if IsControlJustReleased(0, Keys['1']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				 input = 9
 			end
-			if IsControlJustReleased(0, Keys['2']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['3']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['4']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['5']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['6']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['7']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
-			if IsControlJustReleased(0, Keys['8']) then
+			if IsControlJustReleased(0, Keys['9']) then
 				input = 9
 			end
 			
