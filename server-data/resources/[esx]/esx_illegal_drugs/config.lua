@@ -9,19 +9,19 @@ Config.RequiredCopsMeth  = 0 --Ammount of cop that need to be online to be able 
 Config.RequiredCopsWeed  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell weed
 Config.RequiredCopsOpium = 0 --Ammount of cop that need to be online to be able to harvest/process/sell opium
 
-Config.TimeToFarmWeed     = 10  * 1000 -- Ammount of time to harvest weed
+Config.TimeToFarmWeed     = 4  * 1000 -- Ammount of time to harvest weed
 Config.TimeToProcessWeed  = 10  * 1000 -- Ammount of time to process weed
 Config.TimeToSellWeed     = 10  * 1000 -- Ammount of time to sell weed
 
-Config.TimeToFarmOpium    = 10  * 1000 -- Ammount of time to harvest coke
+Config.TimeToFarmOpium    = 5  * 1000 -- Ammount of time to harvest coke
 Config.TimeToProcessOpium = 10  * 1000 -- Ammount of time to process coke
 Config.TimeToSellOpium    = 10  * 1000 -- Ammount of time to sell coke
 
 Config.TimeToFarmCoke     = 5  * 1000 -- Ammount of time to harvest coke
-Config.TimeToProcessCoke  = 5  * 1000 -- Ammount of time to process coke
+Config.TimeToProcessCoke  = 11 * 1000 -- Ammount of time to process coke
 Config.TimeToSellCoke     = 11  * 1000 -- Ammount of time to sell coke
 
-Config.TimeToFarmMeth     = 11  * 1000 -- Ammount of time to harvest meth
+Config.TimeToFarmMeth     = 5  * 1000 -- Ammount of time to harvest meth
 Config.TimeToProcessMeth  = 11  * 1000 -- Ammount of time to process meth
 Config.TimeToSellMeth     = 11  * 1000 -- Ammount of time to sell meth
 
