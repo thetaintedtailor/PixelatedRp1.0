@@ -240,7 +240,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       if GetDistanceBetweenCoords(pizzeria.x,pizzeria.y,pizzeria.z, GetEntityCoords(GetPlayerPed(-1),true)) < 3 and afaitunepizzamin == true then
         HelpText("Press ~INPUT_CONTEXT~ for more deliveries",0,1,0.5,0.8,0.6,255,255,255,255)
 
-        if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("futo"))  then
+        --if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("futo"))  then
 
           if IsControlJustPressed(1,38) then
 
@@ -293,24 +293,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               end]]
             end
           end
-         --else
-
-          --[[notifmoto2 = true
-
-          while notifmoto2 == true do
-
-            TriggerEvent("pNotify:SendNotification", {
-              text = "Return the scooter! ",
-              type = "error",
-              queue = "global",
-              timeout = 4000,
-              layout = "bottomRight"
-            })
-
-            notifmoto2 = false
-
-          end]]
-        end
+       --end
       end
     end
     if IsEntityDead(GetPlayerPed(-1)) then
