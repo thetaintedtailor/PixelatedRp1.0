@@ -1,8 +1,3 @@
---Copyright ZAUB1
---N'hesitez pas a rejoindre mon discord : https://discord.gg/yFuSEGj
---Et a me contacter directement pour tout bug ou suggestions
-
---ESX INIT--
 
 ESX = nil
 
@@ -21,7 +16,7 @@ local pizzeria = { x = -1285.73, y = -1387.15, z = 3.44} --Configuration marker 
 local pizzeriafin = { x = -1275.69, y = -1389.95, z = 3.37} --Configuration marker for finishing job
 local spawnfuto = { x = -1283.80, y = -1392.99, z = 4.43 } --Configuration for futo spawn point
 
-local livpt = { --Configuration des points de livraisons (repris ceux de Maykellll1 / NetOut)
+local livpt = { --Configure delivery points 
 [1] = {name = "Vinewood Hills",x = -1220.50, y = 666.95 , z = 143.10},
 [2] = {name = "Vinewood Hills",x = -1338.97, y = 606.31 , z = 133.37},
 [3] = {name = "Rockford Hills",x = -1051.85, y = 431.66 , z = 76.06 },
@@ -69,7 +64,16 @@ local livpt = { --Configuration des points de livraisons (repris ceux de Maykell
 [45] ={name ="Customer Location" ,x= -1086.787, y=-1278.122,z = 4.59411},
 [46] ={name ="Customer Location" ,x= -886.1298, y=-1232.698,z = 4.506698},
 [47] ={name ="Customer Location" ,x= -753.5927, y=-1512.016,z = 3.870816},
-[48] ={name ="Customer Location" ,x= -696.3545, y=-1386.89,z = 4.346177}
+[48] ={name ="Customer Location" ,x= -696.3545, y=-1386.89,z = 4.346177},
+[49] ={name ="Steamboat Beers" , x= -1209.70, y=-1384.15,z = 3.06},
+[50] ={name ="Customer Location" , x= -1109.87, y=-1481.31,z = 3.90},
+[51] ={name ="Customer Location" , x= -1135.79, y=-1468.75,z = 3.61},
+[52] ={name ="Customer Location" , x= -1349.96, y=-1161.60,z = 3.51},
+[53] ={name ="County Lifeguard" , x= -1482.54, y=-1030.33, z = 5.15},
+[54] ={name ="Customer Location" , x= -1040.63, y=-1475.03, z = 4.58},
+[55] ={name ="Customer Location" , x= -1130.35, y=-1496.31, z = 3.43},
+[56] ={name ="Customer Location" , x= -1118.51, y=-1487.06, z = 3.70},
+[57] ={name ="Customer Location" , x= -1117.59, y=-1439.53, z = 4.11},
 }
 
 local blips = {
@@ -82,7 +86,7 @@ local coefflouze = 0.1 --Coeficient multiplicateur qui en fonction de la distanc
 
 local isInJobPizz = false
 local livr = 0
-local plateab = "POPJOBS"
+local plateab = "PIZJOBS"
 local isToHouse = false
 local isToPizzaria = false
 local paie = 0
@@ -128,7 +132,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             notif = true
             isInJobPizz = true
             isToHouse = true
-            livr = math.random(1, 48)
+            livr = math.random(1, 57)
 
             px = livpt[livr].x
             py = livpt[livr].y
@@ -202,7 +206,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
           else
             isToHouse = true
             isToPizzaria = false
-            livr = math.random(1, 48)
+            livr = math.random(1, 57)
 
             px = livpt[livr].x
             py = livpt[livr].y
@@ -260,7 +264,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
               isInJobPizz = true
               isToHouse = true
-              livr = math.random(1, 48)
+              livr = math.random(1, 57)
 
               px = livpt[livr].x
               py = livpt[livr].y
@@ -367,7 +371,7 @@ end)
 
 --FONCTIONS--
 
-function goliv(livpt,livr) -- Fonction d'ajout du point en fonction de la destination de livraison chosie
+function goliv(livpt,livr) -- Add waypoint according to the delivery destination
   liv = AddBlipForCoord(livpt[livr].x,livpt[livr].y, livpt[livr].z)
   SetBlipSprite(liv, 1)
   SetNewWaypoint(livpt[livr].x,livpt[livr].y)
