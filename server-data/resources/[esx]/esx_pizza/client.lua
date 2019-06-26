@@ -339,7 +339,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
 
     if isInJobPizz == true then
 
-      DrawMarker(1,pizzeriafin.x,pizzeriafin.y,pizzeriafin.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
+      DrawMarker(1,pizzeriafin.x,pizzeriafin.y,pizzeriafin.z, 0, 0, 0, 0, 0, 0, 5.5001, 5.5001, 1.0001,255,0,0,200, 0, 0, 0, 0)
 
       if GetDistanceBetweenCoords(pizzeriafin.x, pizzeriafin.y, pizzeriafin.z, GetEntityCoords(GetPlayerPed(-1),true)) < 1.5 then
         HelpText("Press ~INPUT_CONTEXT~ to stop delivering ~r~pizza",0,1,0.5,0.8,0.6,255,255,255,255)
