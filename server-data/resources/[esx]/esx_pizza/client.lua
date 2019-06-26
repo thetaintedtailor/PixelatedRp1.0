@@ -18,7 +18,7 @@ local nbPizza = 0
 --CONFIGURATION--
 
 local pizzeria = { x = -1285.73, y = -1387.15, z = 3.44} --Configuration marker for starting job
-local pizzeriafin = { x = -1275.69, y = -1389.95, z = 4.27} --Configuration marker for finishing job
+local pizzeriafin = { x = -1275.69, y = -1389.95, z = 3.37} --Configuration marker for finishing job
 local spawnfuto = { x = -1283.80, y = -1392.99, z = 4.43 } --Configuration for futo spawn point
 
 local livpt = { --Configuration des points de livraisons (repris ceux de Maykellll1 / NetOut)
