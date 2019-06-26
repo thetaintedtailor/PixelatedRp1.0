@@ -32,7 +32,7 @@ Config.Zones = {
 	CokeProcessing =	{x=1101.99,  y=-3193.78,  z=-37.99},
 	--CokeDealer =		{x=977.38,   y=-103.95,   z=217.56},
 	MethField =			{x=1005.721,  y=-3200.301,  z=-38.519},
-	MethProcessing =	{x=1014.878,  y=-3194.871,  z=-38.993},
+	MethProcessing =	{x=1010.93,  y=-3197.05,  z=-38.99},
 	--MethDealer =		{x=1391.93,     y=3605.77,   z=37.94},
 	WeedField =			{x=1057.448,  y=-3197.646,  z=-39.138},
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
