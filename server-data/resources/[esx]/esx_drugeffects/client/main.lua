@@ -285,7 +285,7 @@ AddEventHandler('esx_drugeffects:onAmoxicillin', function()
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
 	  Wait(2750)
 		ClearPedTasks(player)
-    SetTimecycleModifier("spectator5")
+    --SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, false) 
     
 end)
