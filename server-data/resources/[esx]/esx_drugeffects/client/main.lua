@@ -286,7 +286,7 @@ AddEventHandler('esx_drugeffects:onAmoxicillin', function()
 	  Wait(2750)
 		ClearPedTasks(player)
     SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true) 
+    SetPedMotionBlur(playerPed, false) 
     
 end)
 
@@ -304,7 +304,7 @@ AddEventHandler('esx_drugeffects:onIbuprofen', function()
 	  Wait(2750)
 		ClearPedTasks(player)
     SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true) 
+    SetPedMotionBlur(playerPed, false) 
     
 end)
 
