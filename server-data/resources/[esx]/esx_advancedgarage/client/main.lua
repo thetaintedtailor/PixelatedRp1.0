@@ -436,6 +436,7 @@ function StoreOwnedBoatsMenu()
 		local current 	    = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local engineHealth  = GetVehicleEngineHealth(current)
 		local plate         = vehicleProps.plate
+		local currentFuel  = math.floor(exports["esx_legacyfuel"]:GetFuel(vehicle))
 		
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
@@ -453,7 +454,7 @@ function StoreOwnedBoatsMenu()
 			else
 				ESX.ShowNotification(_U('cannot_store_vehicle'))
 			end
-		end, vehicleProps)
+		end, vehicleProps, currentFuel)
 	else
 		ESX.ShowNotification(_U('no_vehicle_to_enter'))
 	end
