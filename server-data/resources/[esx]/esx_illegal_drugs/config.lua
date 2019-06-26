@@ -17,8 +17,8 @@ Config.TimeToFarmOpium    = 10  * 1000 -- Ammount of time to harvest coke
 Config.TimeToProcessOpium = 10  * 1000 -- Ammount of time to process coke
 Config.TimeToSellOpium    = 10  * 1000 -- Ammount of time to sell coke
 
-Config.TimeToFarmCoke     = 11  * 1000 -- Ammount of time to harvest coke
-Config.TimeToProcessCoke  = 11  * 1000 -- Ammount of time to process coke
+Config.TimeToFarmCoke     = 5  * 1000 -- Ammount of time to harvest coke
+Config.TimeToProcessCoke  = 5  * 1000 -- Ammount of time to process coke
 Config.TimeToSellCoke     = 11  * 1000 -- Ammount of time to sell coke
 
 Config.TimeToFarmMeth     = 11  * 1000 -- Ammount of time to harvest meth
