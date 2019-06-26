@@ -244,7 +244,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
           if IsControlJustPressed(1,38) then
 
-            if IsInVehicle() then
+            --if IsInVehicle() then
 
               afaitunepizzamin = false
 
@@ -273,25 +273,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               nbPizza = math.random(1, 6)
 
               TriggerServerEvent("pizza:itemadd", nbPizza)
-
-              --[[else
-
-              notifmoto1 = true
-
-              while notifmoto1 == true do
-
-                TriggerEvent("pNotify:SendNotification", {
-                  text = "Return the scooter! ",
-                  type = "error",
-                  queue = "global",
-                  timeout = 4000,
-                  layout = "bottomRight"
-                })
-
-                --notifmoto1 = false
-
-              end]]
-            end
+            --end
           end
        --end
       end
