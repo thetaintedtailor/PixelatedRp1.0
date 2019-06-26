@@ -194,7 +194,7 @@ Config.VehicleLimit = {
     [17] = 40000, --Service
     [18] = 40000, --Emergency
     [19] = 0, --Military
-    [20] = 150000, --Commercial
+    [20] = 250000, --Commercial
     [21] = 0, --Trains
 }
 Config.VehiclePlate = {
