@@ -28,7 +28,7 @@ Config.PolicingPoundPrice  = 20 -- Policing Pound Price.
 Config.AmbulancePoundPrice = 20 -- Ambulance Pound Price.
 
 Config.UseCarGarages        = true -- Allows use of Car Garages.
-Config.UseBoatGarages       = false -- Allows use of Boat Garages.
+Config.UseBoatGarages       = true -- Allows use of Boat Garages.
 Config.UseAircraftGarages   = false -- Allows use of Aircraft Garages.
 Config.UsePrivateCarGarages = false -- Allows use of Private Car Garages.
 Config.UseJobCarGarages     = false -- Allows use of Job Garages.
