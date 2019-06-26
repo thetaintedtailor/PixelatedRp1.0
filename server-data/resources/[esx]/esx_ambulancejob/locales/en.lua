@@ -66,6 +66,10 @@ Locales['en'] = {
   ['morphine'] = 'morphine',
   ['medicaltape'] = 'medicaltape',
   ['k3v'] = 'k3v',
+  ['vicadin'] = 'vicadin',
+  ['ibuprofen'] = 'ibuprofen',
+  ['amoxicillin'] = 'amoxicillin',
+  ['xanax'] = 'xanax',
   -- F6 Menu
   ['ems_menu'] = 'EMS Menu',
   ['ems_menu_title'] = 'ambulance - EMS Menu',
