@@ -212,7 +212,7 @@ Citizen.CreateThread(function()
 			}
 
 			local posToLook = {
-				x = coords.x + ((zoomOffset+0.5) * thetaToLook.x),
+				x = coords.x + ((zoomOffset+2.5) * thetaToLook.x),
 				y = coords.y + ((zoomOffset+0.5) * thetaToLook.y)
 			}
 			print("hey", zoomOffset)
