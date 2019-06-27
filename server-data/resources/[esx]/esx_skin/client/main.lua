@@ -217,7 +217,7 @@ Citizen.CreateThread(function()
 			}
 			print("hey", camOffset)
 			SetCamCoord(cam, pos.x - 1.0, pos.y - 0.3, coords.z + camOffset)
-			PointCamAtCoord(cam, posToLook.x - 1.0, posToLook.y, coords.z + camOffset + 0.5)
+			PointCamAtCoord(cam, posToLook.x - 1.0, posToLook.y - 0.3, coords.z + camOffset + 0.5)
 
 			ESX.ShowHelpNotification(_U('use_rotate_view'))
 		else
