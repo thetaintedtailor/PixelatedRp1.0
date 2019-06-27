@@ -82,7 +82,7 @@ function OpenShopMenu()
 												TriggerServerEvent('esx_clotheshop:saveOutfit', data3.value, outfitToSave)
 											end)
 
-											ESX.ShowNotification(_U('saved_outfit'))
+											--ESX.ShowNotification(_U('saved_outfit'))
 										end, function(data3, menu3)
 											menu3.close()
 										end)

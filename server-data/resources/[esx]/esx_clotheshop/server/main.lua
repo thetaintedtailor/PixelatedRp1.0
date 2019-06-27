@@ -11,7 +11,6 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 		local outfit = store.get('outfits')
 		local count  = store.count('outfits')
 
-		print(count)
 		if outfit == nil then
 			outfit = {}	
 		end
@@ -24,6 +23,7 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 			})
 
 			store.set('outfits', outfit)
+			TriggerClientEvent('esx:showNotification', source, _U('saved_outfit'))
 		end
 	end)
 end)
