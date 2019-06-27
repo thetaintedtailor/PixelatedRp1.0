@@ -154,7 +154,7 @@ function CreateSkinCam()
 	RenderScriptCams(true, true, 500, true, true)
 
 	isCameraActive = true
-	SetCamRot(cam, 0.0, 0.0, 150.0, true)
+	SetCamRot(cam, 0.0, 0.0, 350.0, true)
 	--SetCamFov(cam, 90)
 	SetEntityHeading(playerPed, 90.0)
 end
