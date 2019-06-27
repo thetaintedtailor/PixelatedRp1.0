@@ -148,7 +148,7 @@ end
 function CreateSkinCam()
 
 	if not DoesCamExist(cam) then
-		cam = CreateCam('DEFAULT_SPLINE_CAMERA', true)
+		cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
 	end
 
 	SetCamActive(cam, true)
