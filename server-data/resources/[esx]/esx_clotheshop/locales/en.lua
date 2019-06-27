@@ -10,4 +10,5 @@ Locales['en'] = {
 	['name_outfit'] = 'name your outfit',
 	['saved_outfit'] = 'the outfit has been saved!',
 	['outfit_limit'] = 'You are over the limit of outfits.',
+	['near_outfit_limit'] = 'You have reached the maximum amount of outfits.'
 }
