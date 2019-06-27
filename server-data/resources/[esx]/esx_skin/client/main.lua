@@ -216,7 +216,6 @@ Citizen.CreateThread(function()
 				y = coords.y + (zoomOffset * thetaToLook.y)
 			}
 			print("hey", zoomOffset)
-			print("hi", posToLook[1].x)
 			SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset)
 			PointCamAtCoord(cam, posToLook.x, posToLook.y, coords.z + camOffset)
 
