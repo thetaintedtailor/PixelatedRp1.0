@@ -147,7 +147,7 @@ end
 
 function CreateSkinCam()
 	if not DoesCamExist(cam) then
-		cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
+		cam = CreateCam('DEFAULT_SCRIPTED_FLY_CAMERA', true)
 	end
 
 	SetCamActive(cam, true)
@@ -155,7 +155,7 @@ function CreateSkinCam()
 
 	isCameraActive = true
 	SetCamRot(cam, 0.0, 0.0, 200.0, true)
-	SetCameraRange(cam, 600)
+	SetCamFov(cam, 90)
 	SetEntityHeading(playerPed, 90.0)
 end
 
