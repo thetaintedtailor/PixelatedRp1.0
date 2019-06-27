@@ -13,15 +13,18 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 
 		print(count)
 		if outfit == nil then
-			outfit = {}
+			outfit = {}	
 		end
+		if count >= 10 then
+			TriggerClientEvent('esx:showNotification', source, _U('outfit_limit'))
+		else
+			table.insert(outfit, {
+				label = label,
+				skin  = skin
+			})
 
-		table.insert(outfit, {
-			label = label,
-			skin  = skin
-		})
-
-		store.set('outfits', outfit)
+			store.set('outfits', outfit)
+		end
 	end)
 end)
 
