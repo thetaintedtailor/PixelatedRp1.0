@@ -155,7 +155,7 @@ function CreateSkinCam()
 	RenderScriptCams(true, true, 500, true, true)]]
 
 	isCameraActive = true
-	SetFollowPedCamViewMode(1)
+	SetFollowPedCamViewMode(2)
 	--SetCamRot(cam, 0.0, 0.0, 200.0, true)
 	--SetEntityHeading(playerPed, 90.0)
 end
