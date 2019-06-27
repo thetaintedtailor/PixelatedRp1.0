@@ -212,11 +212,11 @@ Citizen.CreateThread(function()
 			}
 
 			local posToLook = {
-				x = coords.x + ((zoomOffset+0.5) * thetaToLook.x),
-				y = coords.y + ((zoomOffset+3.5) * thetaToLook.y)
+				x = coords.x + ((zoomOffset) * thetaToLook.x),
+				y = coords.y + ((zoomOffset) * thetaToLook.y)
 			}
-			print("hey", zoomOffset)
-			SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset)
+			print("hey", camOffset)
+			SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset + 2.0)
 			PointCamAtCoord(cam, posToLook.x, posToLook.y, coords.z + camOffset)
 
 			ESX.ShowHelpNotification(_U('use_rotate_view'))
