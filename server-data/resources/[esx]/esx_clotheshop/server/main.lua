@@ -9,7 +9,9 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 
 	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
 		local outfit = store.get('outfits')
+		local count  = store.count('outfits')
 
+		print(count)
 		if outfit == nil then
 			outfit = {}
 		end

@@ -446,7 +446,7 @@ function OpenRoomMenu(property, owner)
 
 	if CurrentPropertyOwner == owner then
 		table.insert(elements, {label = _U('player_clothes'), value = 'player_dressing'})
-		--table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
+		table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
 	end
 
 	table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
@@ -488,7 +488,7 @@ function OpenRoomMenu(property, owner)
 
 			ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
 				local elements = {}
-
+				
 				for i=1, #dressing, 1 do
 					table.insert(elements, {
 						label = dressing[i],

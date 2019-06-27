@@ -390,6 +390,7 @@ ESX.RegisterServerCallback('esx_property:getPlayerDressing', function(source, cb
 
 	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
 		local count  = store.count('outfits')
+		
 		local labels = {}
 
 		for i=1, count, 1 do
