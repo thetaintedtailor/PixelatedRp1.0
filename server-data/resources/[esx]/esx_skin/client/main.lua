@@ -146,15 +146,17 @@ function OpenMenu(submitCb, cancelCb, restrict)
 end
 
 function CreateSkinCam()
+	--[[
 	if not DoesCamExist(cam) then
 		cam = CreateCam('DEFAULT_SPLINE_CAMERA', true)
 	end
 
 	SetCamActive(cam, true)
-	RenderScriptCams(true, true, 500, true, true)
+	RenderScriptCams(true, true, 500, true, true)]]
 
 	isCameraActive = true
-	SetCamRot(cam, 0.0, 0.0, 200.0, true)
+	SetFollowPedCamViewMode(1)
+	--SetCamRot(cam, 0.0, 0.0, 200.0, true)
 	--SetCamFov(cam, 90)
 	SetEntityHeading(playerPed, 90.0)
 end
