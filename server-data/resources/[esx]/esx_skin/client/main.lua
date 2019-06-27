@@ -16,7 +16,7 @@ local LastSkin       = nil
 local PlayerLoaded   = false
 local cam            = nil
 local isCameraActive = false
-local zoomOffset     = 30.0
+local zoomOffset     = 80.0
 local camOffset      = 0.0
 local heading        = 90.0
 
