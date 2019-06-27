@@ -146,19 +146,18 @@ function OpenMenu(submitCb, cancelCb, restrict)
 end
 
 function CreateSkinCam()
-
+--[[
 	if not DoesCamExist(cam) then
 		cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
 	end
 
 	SetCamActive(cam, true)
-	RenderScriptCams(true, true, 500, true, true)
+	RenderScriptCams(true, true, 500, true, true)]]
 
 	isCameraActive = true
-	--SetFollowPedCamViewMode(1)
-	SetCamRot(cam, 0.0, 0.0, 200.0, true)
-	--SetCamFov(cam, 90)
-	SetEntityHeading(playerPed, 90.0)
+	SetFollowPedCamViewMode(1)
+	--SetCamRot(cam, 0.0, 0.0, 200.0, true)
+	--SetEntityHeading(playerPed, 90.0)
 end
 
 function DeleteSkinCam()
@@ -215,9 +214,8 @@ Citizen.CreateThread(function()
 				x = coords.x + ((zoomOffset) * thetaToLook.x),
 				y = coords.y + ((zoomOffset) * thetaToLook.y)
 			}
-			print("hey", camOffset)
-			SetCamCoord(cam, pos.x - 1.0, pos.y - 0.3, coords.z + camOffset)
-			PointCamAtCoord(cam, posToLook.x - 1.0, posToLook.y + 0.3, coords.z + camOffset)
+			SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset)
+			PointCamAtCoord(cam, posToLook.x, posToLook.y, coords.z + camOffset)
 
 			ESX.ShowHelpNotification(_U('use_rotate_view'))
 		else
