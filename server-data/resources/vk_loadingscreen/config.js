@@ -33,14 +33,13 @@ VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
     "Press F1 to pull up your phone. Emergency/legal/taxi services can be found in the 'services' menu.",
     "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "Our EMS team is HIRING!",
-    "Around here we call Kat the Fastest Dev in the West",
+    "Our Police Department is HIRING!",
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/perfect_day.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Perfect Day - The Constellations"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by Raj (IGN: Crazy Earl/McPoshface) "; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/fool_forever.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Forever Fool - The Harpoonist & The Axe Murderer"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by Indigojar (IGN: Jimmy Lee)"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/tCWn8Scx/pixelated.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)

@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/perfect_day.mp3',
+    'music/fool_forever.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
