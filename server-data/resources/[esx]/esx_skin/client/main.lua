@@ -16,7 +16,7 @@ local LastSkin       = nil
 local PlayerLoaded   = false
 local cam            = nil
 local isCameraActive = false
-local zoomOffset     = 80.0
+local zoomOffset     = 0.0
 local camOffset      = 0.0
 local heading        = 90.0
 
@@ -215,7 +215,8 @@ Citizen.CreateThread(function()
 				x = coords.x + (zoomOffset * thetaToLook.x),
 				y = coords.y + (zoomOffset * thetaToLook.y)
 			}
-
+			print("hey", zoomOffset)
+			print("hi", posToLook[1].x)
 			SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset)
 			PointCamAtCoord(cam, posToLook.x, posToLook.y, coords.z + camOffset)
 
