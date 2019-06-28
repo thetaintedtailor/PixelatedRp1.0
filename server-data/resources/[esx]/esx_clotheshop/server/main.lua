@@ -7,19 +7,33 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		local dressing = store.get('dressing')
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
+		local outfit = store.get('outfits')
+		local count  = store.count('outfits')
 
-		if dressing == nil then
-			dressing = {}
+		if outfit == nil then
+			outfit = {}	
 		end
+		if count >= 10 then
+			TriggerClientEvent('esx:showNotification', source, _U('outfit_limit'))
+		elseif count >= 9 then
+			table.insert(outfit, {
+				label = label,
+				skin  = skin
+			})
 
-		table.insert(dressing, {
-			label = label,
-			skin  = skin
-		})
+			store.set('outfits', outfit)
+			TriggerClientEvent('esx:showNotification', source, _U('saved_outfit'))
+			TriggerClientEvent('esx:showNotification', source, _U('near_outfit_limit'))
+		else
+			table.insert(outfit, {
+				label = label,
+				skin  = skin
+			})
 
-		store.set('dressing', dressing)
+			store.set('outfits', outfit)
+			TriggerClientEvent('esx:showNotification', source, _U('saved_outfit'))
+		end
 	end)
 end)
 
@@ -39,7 +53,7 @@ ESX.RegisterServerCallback('esx_clotheshop:checkPropertyDataStore', function(sou
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local foundStore = false
 
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
+	TriggerEvent('esx_datastore:getDataStore', 'closet', xPlayer.identifier, function(store)
 		foundStore = true
 	end)
 

@@ -17,6 +17,7 @@ local CurrentAction           = nil
 local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local HasPaid                = false
+local outfitCategories = {'tshirt_1','tshirt_2','torso_1','torso_2','decals_1','decals_2','arms','arms_2','pants_1','pants_2','shoes_1','shoes_2','chain_1','chain_2','watches_1','watches_2','bracelets_1','bracelets_2','bags_1','bags_2'}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -69,12 +70,19 @@ function OpenShopMenu()
 											title = _U('name_outfit')
 										}, function(data3, menu3)
 											menu3.close()
-
 											TriggerEvent('skinchanger:getSkin', function(skin)
-												TriggerServerEvent('esx_clotheshop:saveOutfit', data3.value, skin)
+												local outfitToSave = {}
+												for k, v in pairs(outfitCategories) do
+													for a,b in pairs(skin) do
+														if a == v then
+															outfitToSave[a] = b
+														end
+													end
+												end
+												TriggerServerEvent('esx_clotheshop:saveOutfit', data3.value, outfitToSave)
 											end)
 
-											ESX.ShowNotification(_U('saved_outfit'))
+											--ESX.ShowNotification(_U('saved_outfit'))
 										end, function(data3, menu3)
 											menu3.close()
 										end)
