@@ -65,8 +65,8 @@ Config.localWeight = {
 	washed_stone = 14000,
 	wood = 5000,
 	wool = 2500,
-	shark = 50000
-	turtle = 10000
+	shark = 50000,
+	turtle = 10000,
 	--- JOBS ---
 	
 	--- MISC ---
