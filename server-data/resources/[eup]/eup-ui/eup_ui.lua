@@ -2140,7 +2140,7 @@ CreateThread(function()
     end
 
     determineGender()
-
+    print(gender)
     while gender == nil do
         Wait(0)
     end
