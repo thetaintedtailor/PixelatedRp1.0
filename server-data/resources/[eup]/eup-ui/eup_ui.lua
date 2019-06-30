@@ -12,8 +12,6 @@ Citizen.CreateThread(function()
 	end
 
     PlayerData = ESX.GetPlayerData()
-    determineGender()
-    print("return the whole dang function", determineGender())
 end)
 
 local outfits = {
@@ -2079,14 +2077,13 @@ for name, outfit in pairs(outfits) do
     if not categoryOutfits[outfit.category] then
         categoryOutfits[outfit.category] = {}
     end
-    print('hey this is gender being assigned properly', gender)
-    print(type(name))
+
     if gender == 'Female' and string.find(name, 'Female', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     elseif gender == 'Male' and string.find(name, 'Male', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     else 
-        --print('something went horribly wrong')
+        print('something went horribly wrong')
     end
 end
 
@@ -2136,6 +2133,12 @@ RegisterCommand('eup', function()
 end, false)
 
 CreateThread(function()
+    
+    determineGender()
+    while gender == nil do
+        Wait(0)
+    end
+
     while true do
         Wait(0)
 
