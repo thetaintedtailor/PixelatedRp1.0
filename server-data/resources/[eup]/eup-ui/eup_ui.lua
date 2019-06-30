@@ -2116,10 +2116,8 @@ function determineGender()
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
         if skin.sex == 0 then
             gender = 'Male'
-            return gender
         else
             gender = 'Female'
-            return gender
         end
     end) 
 end
