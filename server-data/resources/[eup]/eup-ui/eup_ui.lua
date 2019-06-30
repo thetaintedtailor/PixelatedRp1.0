@@ -2078,8 +2078,14 @@ for name, outfit in pairs(outfits) do
     if not categoryOutfits[outfit.category] then
         categoryOutfits[outfit.category] = {}
     end
-
-    categoryOutfits[outfit.category][name] = outfit
+    print('hey this is gender being assigned properly', gender)
+    if gender == 'Female' and string.find(name, 'Female', 1, true) then
+        categoryOutfits[outfit.category][name] = outfit
+    elseif gender == 'Male' and string(name, 'Male', 1, true) then
+        categoryOutfits[outfit.category][name] = outfit
+    else 
+        print('something went horribly wrong')
+    end
 end
 
 local menuPool = NativeUI.CreatePool()
@@ -2089,13 +2095,14 @@ for name, list in pairs(categoryOutfits) do
     local subMenu = menuPool:AddSubMenu(mainMenu, name)
 
     for id, outfit in pairs(list) do
-        if gender == 'Female' and string.find(stringToCheck, 'Female', 1, true) then
+
+        --if gender == 'Female' and string.find(stringToCheck, 'Female', 1, true) then
             outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
             subMenu:AddItem(outfit.item)
-        else 
-            outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
-            subMenu:AddItem(outfit.item)
-        end
+       -- else 
+           -- outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
+           -- subMenu:AddItem(outfit.item)
+       -- end
     end
 
     subMenu.OnItemSelect = function(sender, item, index)
