@@ -23,24 +23,12 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName)
 		Windows = {},
 		Children = {},
 		Controls = {
-			Back = {
-				Enabled = true,
-			},
-			Select = {
-				Enabled = true,
-			},
-			Left = {
-				Enabled = true,
-			},
-			Right = {
-				Enabled = true,
-			},
-			Up = {
-				Enabled = true,
-			},
-			Down = {
-				Enabled = true,
-			},
+			Back = {Enabled = true},
+			Select = {Enabled = true},
+			Left = {Enabled = true},
+			Right = {Enabled = true},
+			Up = {Enabled = true},
+			Down = {Enabled = true},
 		},
 		ParentMenu = nil,
 		ParentItem = nil,
@@ -67,7 +55,7 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName)
 			ScaleWithSafezone = true,
 			ResetCursorOnOpen = false,
 			MouseControlsEnabled = false,
-			MouseEdgeEnabled = true,
+			MouseEdgeEnabled = false,
 			ControlDisablingEnabled = true,
 			Audio = {
 				Library = "HUD_FRONTEND_DEFAULT_SOUNDSET",

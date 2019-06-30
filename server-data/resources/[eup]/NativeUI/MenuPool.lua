@@ -57,7 +57,7 @@ end
 function MenuPool:ResetCursorOnOpen(bool)
 	if bool ~= nil then
 		for _, Menu in pairs(self.Menus) do
-			Menu.Settings.ResetCursorOnOpen = tobool(bool)
+			Menu.Settings.ResetCursorOnOpen = false
 		end
 	end
 end
