@@ -2116,17 +2116,16 @@ function populateOutfits()
 end
 
 function determineGender() 
-    local assignGender = 'Mutant'
-
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
         if skin.sex == 0 then
-            assignGender = 'Male'
+            gender = 'Male'
         else
-            print('inside server callback')
-            assignGender = 'Female'
+            gender = 'Female'
+            print('inside callback', gender)
         end
     end)
-    gender = assignGender
+
+    print('outside callback', gender)
 end
 
 RegisterCommand('eup', function()
@@ -2143,7 +2142,7 @@ CreateThread(function()
     end
 
     determineGender()
-    print(gender)
+    --print(gender)
     while gender == nil do
         Wait(0)
     end
