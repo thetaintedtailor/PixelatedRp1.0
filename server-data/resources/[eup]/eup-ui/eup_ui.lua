@@ -2117,11 +2117,12 @@ end
 
 function determineGender() 
     local assignGender = 'Mutant'
-    
+
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
         if skin.sex == 0 then
             assignGender = 'Male'
         else
+            print('inside server callback')
             assignGender = 'Female'
         end
     end)
