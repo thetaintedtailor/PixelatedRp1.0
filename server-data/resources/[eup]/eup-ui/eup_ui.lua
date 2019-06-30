@@ -1,5 +1,5 @@
 local PlayerData		= {}
-local gender = nil
+local gender = 'Female'
 
 Citizen.CreateThread(function()
 	while ESX == nil do
