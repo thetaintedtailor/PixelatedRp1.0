@@ -2123,7 +2123,6 @@ function determineGender()
             gender = 'Male'
         else
             gender = 'Female'
-            print('inside callback', gender)
         end
         busy = false
     end)
@@ -2131,8 +2130,7 @@ function determineGender()
     while busy == true do
         Citizen.Wait(5)
     end
-    
-    print('outside callback', gender)
+
 end
 
 RegisterCommand('eup', function()
@@ -2149,10 +2147,10 @@ CreateThread(function()
     end
 
     determineGender()
-    --print(gender)
-    while gender == nil do
-        Wait(0)
-    end
+
+    --while gender == nil do
+        --Wait(0)
+    --end
 
     populateOutfits()
     menuPool:Add(mainMenu)
