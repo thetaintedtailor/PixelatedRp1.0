@@ -2087,7 +2087,7 @@ function populateOutfits()
         elseif gender == 'Male' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         else 
-            --print('something went horribly wrong')
+            print('Outfit menu did not populate correctly. Please contact admin.')
         end
     end
 
@@ -2147,10 +2147,6 @@ CreateThread(function()
     end
 
     determineGender()
-
-    --while gender == nil do
-        --Wait(0)
-    --end
 
     populateOutfits()
     menuPool:Add(mainMenu)
