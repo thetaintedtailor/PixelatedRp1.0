@@ -1,5 +1,5 @@
 local PlayerData		= {}
-local gender = 'Female'
+local gender = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -2114,11 +2114,12 @@ end
 function determineGender() 
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
         if skin.sex == 0 then
-            gender = 'Male'
+            assignGender = 'Male'
         else
-            gender = 'Female'
+            assignGender = 'Female'
         end
-    end) 
+    end, assignGender)
+    gender = assignGender
 end
 
 menuPool:Add(mainMenu)
