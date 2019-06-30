@@ -14,6 +14,7 @@ Citizen.CreateThread(function()
 	end
 
     PlayerData = ESX.GetPlayerData()
+    print(PlayerData.sex)
 
 end)
 
