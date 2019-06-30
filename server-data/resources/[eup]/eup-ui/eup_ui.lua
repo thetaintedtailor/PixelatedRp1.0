@@ -2074,38 +2074,42 @@ end
 
 local categoryOutfits = {}
 
-for name, outfit in pairs(outfits) do
-    if not categoryOutfits[outfit.category] then
-        categoryOutfits[outfit.category] = {}
-    end
-    print('hey', gender)
-    if gender == 'Female' and string.find(name, 'Female', 1, true) then
-        categoryOutfits[outfit.category][name] = outfit
-    elseif gender == 'Male' and string.find(name, 'Male', 1, true) then
-        categoryOutfits[outfit.category][name] = outfit
-    else 
-        --print('something went horribly wrong')
-    end
-end
-
-local menuPool = NativeUI.CreatePool()
-local mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
-
-for name, list in pairs(categoryOutfits) do
-    local subMenu = menuPool:AddSubMenu(mainMenu, name)
-
-    for id, outfit in pairs(list) do
-            outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
-            subMenu:AddItem(outfit.item)
+function populateOutfits()
+    for name, outfit in pairs(outfits) do
+        if not categoryOutfits[outfit.category] then
+            categoryOutfits[outfit.category] = {}
+        end
+        
+        if gender == 'Female' and string.find(name, 'Female', 1, true) then
+            categoryOutfits[outfit.category][name] = outfit
+        elseif gender == 'Male' and string.find(name, 'Male', 1, true) then
+            categoryOutfits[outfit.category][name] = outfit
+        else 
+            --print('something went horribly wrong')
+        end
     end
 
-    subMenu.OnItemSelect = function(sender, item, index)
-        -- find the outfit
-        for _, outfit in pairs(list) do
-            if outfit.item == item then
-                CreateThread(function()
-                    setOutfit(outfit)
-                end)
+
+    local menuPool = NativeUI.CreatePool()
+    local mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
+
+
+    for name, list in pairs(categoryOutfits) do
+        local subMenu = menuPool:AddSubMenu(mainMenu, name)
+
+        for id, outfit in pairs(list) do
+                outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
+                subMenu:AddItem(outfit.item)
+        end
+
+        subMenu.OnItemSelect = function(sender, item, index)
+            -- find the outfit
+            for _, outfit in pairs(list) do
+                if outfit.item == item then
+                    CreateThread(function()
+                        setOutfit(outfit)
+                    end)
+                end
             end
         end
     end
@@ -2145,6 +2149,8 @@ CreateThread(function()
         Wait(0)
     end
 
+    populateOutfits()
+    
     while true do
         Wait(0)
         menuPool:ProcessMenus()
