@@ -2116,6 +2116,8 @@ function populateOutfits()
 end
 
 function determineGender() 
+    local busy = true
+
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
         if skin.sex == 0 then
             gender = 'Male'
@@ -2123,8 +2125,13 @@ function determineGender()
             gender = 'Female'
             print('inside callback', gender)
         end
+        busy = false
     end)
 
+    while busy == true do
+        Citizen.Wait(5)
+    end
+    
     print('outside callback', gender)
 end
 
