@@ -2078,13 +2078,13 @@ for name, outfit in pairs(outfits) do
     if not categoryOutfits[outfit.category] then
         categoryOutfits[outfit.category] = {}
     end
-
+    print('hey', gender)
     if gender == 'Female' and string.find(name, 'Female', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     elseif gender == 'Male' and string.find(name, 'Male', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     else 
-        print('something went horribly wrong')
+        --print('something went horribly wrong')
     end
 end
 
