@@ -2084,7 +2084,7 @@ for name, outfit in pairs(outfits) do
     elseif gender == 'Male' and string(name, 'Male', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     else 
-        print('something went horribly wrong')
+        --print('something went horribly wrong')
     end
 end
 
@@ -2095,14 +2095,8 @@ for name, list in pairs(categoryOutfits) do
     local subMenu = menuPool:AddSubMenu(mainMenu, name)
 
     for id, outfit in pairs(list) do
-
-        --if gender == 'Female' and string.find(stringToCheck, 'Female', 1, true) then
             outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
             subMenu:AddItem(outfit.item)
-       -- else 
-           -- outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
-           -- subMenu:AddItem(outfit.item)
-       -- end
     end
 
     subMenu.OnItemSelect = function(sender, item, index)
@@ -2119,6 +2113,7 @@ end
 
 function determineGender() 
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+        print('hey', skin)
         if skin.sex == 0 then
             gender = 'Male'
             return gender
