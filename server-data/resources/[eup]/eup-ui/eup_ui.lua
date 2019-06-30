@@ -1,7 +1,7 @@
 local PlayerData		= {}
 local gender = nil
-local menuPool = nil
-local mainMenu = nil
+local menuPool = NativeUI.CreatePool()
+local mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -2091,8 +2091,8 @@ function populateOutfits()
         end
     end
 
-    menuPool = NativeUI.CreatePool()
-    mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
+   -- menuPool = NativeUI.CreatePool()
+    --mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
 
     for name, list in pairs(categoryOutfits) do
         local subMenu = menuPool:AddSubMenu(mainMenu, name)
@@ -2134,25 +2134,13 @@ function determineGender()
 
 end
 
-RegisterCommand('eup', function()
-    if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
-        mainMenu:Visible(not mainMenu:Visible())
-    else
-        ESX.ShowNotification('You are not a police officer.')
-    end
-end, false)
-
-CreateThread(function()
+Citizen.CreateThread(function()
     while ESX == nil do
         Citizen.Wait(0)
     end
 
     determineGender()
     populateOutfits()
-
-    while mainMenu == nil do
-        Citizen.Wait(100)
-    end
 
     menuPool:Add(mainMenu)
     menuPool:RefreshIndex()
@@ -2162,3 +2150,11 @@ CreateThread(function()
         menuPool:ProcessMenus()
     end
 end)
+
+RegisterCommand('eup', function()
+    if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
+        mainMenu:Visible(not mainMenu:Visible())
+    else
+        ESX.ShowNotification('You are not a police officer.')
+    end
+end, false)
