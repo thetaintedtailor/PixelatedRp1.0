@@ -2113,6 +2113,7 @@ function populateOutfits()
             end
         end
     end
+
 end
 
 function determineGender() 
@@ -2147,12 +2148,12 @@ CreateThread(function()
     end
 
     determineGender()
-
-    while gender == nil do
-        Citizen.Wait(0)
-    end
-    
     populateOutfits()
+
+    while mainMenu == nil do
+        Citizen.Wait(100)
+    end
+
     menuPool:Add(mainMenu)
     menuPool:RefreshIndex()
 
