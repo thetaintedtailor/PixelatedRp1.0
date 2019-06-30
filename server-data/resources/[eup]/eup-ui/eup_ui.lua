@@ -1,5 +1,7 @@
 local PlayerData		= {}
 local gender = nil
+local menuPool = nil
+local mainMenu = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -2089,10 +2091,8 @@ function populateOutfits()
         end
     end
 
-
-    local menuPool = NativeUI.CreatePool()
-    local mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
-
+    menuPool = NativeUI.CreatePool()
+    mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
 
     for name, list in pairs(categoryOutfits) do
         local subMenu = menuPool:AddSubMenu(mainMenu, name)
@@ -2126,10 +2126,6 @@ function determineGender()
     gender = assignGender
 end
 
-menuPool:Add(mainMenu)
-
-menuPool:RefreshIndex()
-
 RegisterCommand('eup', function()
     if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
         mainMenu:Visible(not mainMenu:Visible())
@@ -2150,7 +2146,9 @@ CreateThread(function()
     end
 
     populateOutfits()
-    
+    menuPool:Add(mainMenu)
+    menuPool:RefreshIndex()
+
     while true do
         Wait(0)
         menuPool:ProcessMenus()
