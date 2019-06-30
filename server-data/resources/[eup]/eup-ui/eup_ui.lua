@@ -2080,6 +2080,7 @@ for name, outfit in pairs(outfits) do
         categoryOutfits[outfit.category] = {}
     end
     print('hey this is gender being assigned properly', gender)
+    print(type(name))
     if gender == 'Female' and string.find(name, 'Female', 1, true) then
         categoryOutfits[outfit.category][name] = outfit
     elseif gender == 'Male' and string(name, 'Male', 1, true) then
