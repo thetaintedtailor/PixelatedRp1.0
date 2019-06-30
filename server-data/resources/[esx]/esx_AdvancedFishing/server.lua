@@ -72,7 +72,7 @@ AddEventHandler('fishing:catch', function(bait)
 	xPlayer = ESX.GetPlayerFromId(_source)
 	if bait == "turtle" then
 		if rnd >= 78 then
-			if rnd >= 94 then
+			if rnd >= 99 then
 				TriggerClientEvent('fishing:setbait', _source, "none")
 				TriggerClientEvent('fishing:message', _source, "~r~It was huge and it broke your fishing rod!")
 				TriggerClientEvent('fishing:break', _source)
@@ -154,7 +154,7 @@ AddEventHandler('fishing:catch', function(bait)
 		if bait == "shark" then
 			if rnd >= 82 then
 			
-						if rnd >= 91 then
+						if rnd >= 99 then
 							TriggerClientEvent('fishing:setbait', _source, "none")
 							TriggerClientEvent('fishing:message', _source, "~r~It was huge and it broke your fishing rod!")
 							TriggerClientEvent('fishing:break', _source)
