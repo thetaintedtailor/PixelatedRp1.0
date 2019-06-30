@@ -15,23 +15,6 @@ Citizen.CreateThread(function()
 
 end)
 
-CreateThread(function()
-    while ESX == nil do
-        Citizen.Wait(0)
-    end
-
-    determineGender()
-
-    while gender == nil do
-        Wait(0)
-    end
-
-    while true do
-        Wait(0)
-        menuPool:ProcessMenus()
-    end
-end)
-
 local outfits = {
     ['Male LSPD Uniform (Long Sleeve)'] = {
         category = 'LSPD',
@@ -2149,3 +2132,20 @@ RegisterCommand('eup', function()
         ESX.ShowNotification('You are not a police officer.')
     end
 end, false)
+
+CreateThread(function()
+    while ESX == nil do
+        Citizen.Wait(0)
+    end
+
+    determineGender()
+
+    while gender == nil do
+        Wait(0)
+    end
+
+    while true do
+        Wait(0)
+        menuPool:ProcessMenus()
+    end
+end)
