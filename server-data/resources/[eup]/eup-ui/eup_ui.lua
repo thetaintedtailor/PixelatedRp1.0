@@ -13,6 +13,7 @@ Citizen.CreateThread(function()
 
     PlayerData = ESX.GetPlayerData()
     determineGender()
+    print("return the whole dang function", determineGender())
 end)
 
 local outfits = {
@@ -2113,7 +2114,6 @@ end
 
 function determineGender() 
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-        print('hey', skin.sex)
         if skin.sex == 0 then
             gender = 'Male'
             return gender
