@@ -12,6 +12,24 @@ Citizen.CreateThread(function()
 	end
 
     PlayerData = ESX.GetPlayerData()
+
+end)
+
+CreateThread(function()
+    while ESX == nil do
+        Citizen.Wait(0)
+    end
+
+    determineGender()
+
+    while gender == nil do
+        Wait(0)
+    end
+
+    while true do
+        Wait(0)
+        menuPool:ProcessMenus()
+    end
 end)
 
 local outfits = {
@@ -2131,17 +2149,3 @@ RegisterCommand('eup', function()
         ESX.ShowNotification('You are not a police officer.')
     end
 end, false)
-
-CreateThread(function()
-    
-    determineGender()
-    while gender == nil do
-        Wait(0)
-    end
-
-    while true do
-        Wait(0)
-
-        menuPool:ProcessMenus()
-    end
-end)
