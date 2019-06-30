@@ -2148,6 +2148,10 @@ CreateThread(function()
 
     determineGender()
 
+    while gender == nil do
+        Citizen.Wait(0)
+    end
+    
     populateOutfits()
     menuPool:Add(mainMenu)
     menuPool:RefreshIndex()
