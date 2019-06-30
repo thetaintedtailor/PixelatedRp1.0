@@ -1,4 +1,5 @@
 local PlayerData		= {}
+local gender = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -10,7 +11,8 @@ Citizen.CreateThread(function()
 		Citizen.Wait(10)
 	end
 
-	PlayerData = ESX.GetPlayerData()
+    PlayerData = ESX.GetPlayerData()
+    determineGender()
 end)
 
 local outfits = {
@@ -2087,8 +2089,13 @@ for name, list in pairs(categoryOutfits) do
     local subMenu = menuPool:AddSubMenu(mainMenu, name)
 
     for id, outfit in pairs(list) do
-        outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
-        subMenu:AddItem(outfit.item)
+        if gender == 'Female' and string.find(stringToCheck, 'Female', 1, true) then
+            outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
+            subMenu:AddItem(outfit.item)
+        else 
+            outfit.item = NativeUI.CreateItem(id, 'Select this outfit.')
+            subMenu:AddItem(outfit.item)
+        end
     end
 
     subMenu.OnItemSelect = function(sender, item, index)
@@ -2101,6 +2108,18 @@ for name, list in pairs(categoryOutfits) do
             end
         end
     end
+end
+
+function determineGender() 
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+        if skin.sex == 0 then
+            gender = 'Male'
+            return gender
+        else
+            gender = 'Female'
+            return gender
+        end
+    end) 
 end
 
 menuPool:Add(mainMenu)
