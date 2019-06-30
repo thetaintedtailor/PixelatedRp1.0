@@ -2134,6 +2134,14 @@ function determineGender()
 
 end
 
+RegisterCommand('eup', function()
+    if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
+        mainMenu:Visible(not mainMenu:Visible())
+    else
+        ESX.ShowNotification('You are not a police officer.')
+    end
+end, false)
+
 Citizen.CreateThread(function()
     while ESX == nil do
         Citizen.Wait(0)
@@ -2150,11 +2158,3 @@ Citizen.CreateThread(function()
         menuPool:ProcessMenus()
     end
 end)
-
-RegisterCommand('eup', function()
-    if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
-        mainMenu:Visible(not mainMenu:Visible())
-    else
-        ESX.ShowNotification('You are not a police officer.')
-    end
-end, false)
