@@ -13,12 +13,6 @@ Citizen.CreateThread(function()
 		Citizen.Wait(10)
 	end
 
-    PlayerData = ESX.GetPlayerData()
-    populateOutfits()
-
-    menuPool:Add(mainMenu)
-    menuPool:RefreshIndex()
-
 end)
 
 local outfits = {
@@ -2150,7 +2144,11 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
     end
 
-    --determineGender()
+    PlayerData = ESX.GetPlayerData()
+    populateOutfits()
+
+    menuPool:Add(mainMenu)
+    menuPool:RefreshIndex()
 
     while true do
         Wait(0)
