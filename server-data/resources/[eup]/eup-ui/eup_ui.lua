@@ -14,7 +14,7 @@ Citizen.CreateThread(function()
 	end
 
     PlayerData = ESX.GetPlayerData()
-    print("this is in eup", PlayerData.sex)
+    populateOutfits()
 
 end)
 
@@ -2088,6 +2088,7 @@ function populateOutfits()
         elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         else 
+            print(PlayerData.sex)
             print('Outfit menu did not populate correctly. Please contact admin.')
         end
     end
@@ -2150,7 +2151,6 @@ Citizen.CreateThread(function()
     end
 
     --determineGender()
-    populateOutfits()
 
     menuPool:Add(mainMenu)
     menuPool:RefreshIndex()
