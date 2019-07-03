@@ -2090,12 +2090,6 @@ function populateOutfits()
             categoryOutfits[outfit.category][name] = outfit
         elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
-        elseif string.find(name, 'Female', 1, true) ~=  nil then
-            print('outfits ok')
-        else 
-            print("string.find", name)
-
-            --print('Outfit menu did not populate correctly. Please contact admin.')
         end
     end
 
@@ -2144,7 +2138,7 @@ function determineGender()
 end]]
 
 RegisterCommand('eup', function()
-    if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
+    if (PlayerData.job ~= nil) and (PlayerData.job.name == 'police' or PlayerData.job.name == 'offpolice') then
         mainMenu:Visible(not mainMenu:Visible())
     else
         ESX.ShowNotification('You are not a police officer.')
