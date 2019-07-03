@@ -244,6 +244,8 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 
 	end)
 
+
+	print('userdata stuff', userData.sex, userData.playerName)
 end)
 
 AddEventHandler('playerDropped', function(reason)
@@ -501,11 +503,7 @@ AddEventHandler('esx:onPickup', function(id)
 end)
 
 ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
-	print('get player from ID', ESX.GetPlayerFromId(source))
-
 	local xPlayer = ESX.GetPlayerFromId(source)
-
-	print('xPlayer inside es extended', xPlayer)
 
 	cb({
 		identifier   = xPlayer.identifier,
