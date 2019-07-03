@@ -196,11 +196,9 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 			MySQL.Async.fetchAll('SELECT `sex` FROM `users` WHERE `identifier` = @identifier', {
 				['@identifier'] = player.getIdentifier()
 			}, function(result)
-				print('new code here')
 				if result[1].sex ~= nil then
 					userData.sex = json.decode(result[1].sex)
-				else 
-					print(result[1])
+					print("gender fetch", json.decode(result[1].sex))
 				end
 			end)
 		end)
@@ -209,7 +207,8 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		Async.parallel(tasks, function(results)
 
 			local xPlayer = CreateExtendedPlayer(player, userData.accounts, userData.inventory, userData.job, userData.loadout, userData.playerName, userData.lastPosition, userData.sex)
-
+			print('xPlayer object', xPlayer)
+			print('userData object', userData.sex, userData.playerName)
 			xPlayer.getMissingAccounts(function(missingAccounts)
 
 				if #missingAccounts > 0 then
