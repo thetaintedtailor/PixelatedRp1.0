@@ -2092,7 +2092,7 @@ function populateOutfits()
         
         if string.find(PlayerData.sex, 'f', 1, true) ~= nil and string.find(name, 'Female', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
-        elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
+        elseif string.find(PlayerData.sex, 'm', 1, true) ~= nil and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         end
     end
@@ -2121,25 +2121,6 @@ function populateOutfits()
     end
 
 end
-
---[[
-function determineGender() 
-    local busy = true
-
-    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-        if skin.sex == 0 then
-            gender = 'Male'
-        else
-            gender = 'Female'
-        end
-        busy = false
-    end)
-
-    while busy == true do
-        Citizen.Wait(5)
-    end
-
-end]]
 
 RegisterCommand('eup', function()
     if (PlayerData.job ~= nil) and (PlayerData.job.name == 'police' or PlayerData.job.name == 'offpolice') then
