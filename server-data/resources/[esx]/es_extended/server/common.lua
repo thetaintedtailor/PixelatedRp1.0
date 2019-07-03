@@ -37,8 +37,6 @@ AddEventHandler('esx:playerLoaded', function(source)
 	local xPlayerAccounts = xPlayer.getAccounts()
 	local xPlayerItems    = xPlayer.getInventory()
 
-
-	print('this is playerLoaded', xPlayer)
 	for i=1, #xPlayerAccounts, 1 do
 		accounts[xPlayerAccounts[i].name] = xPlayerAccounts[i].money
 	end

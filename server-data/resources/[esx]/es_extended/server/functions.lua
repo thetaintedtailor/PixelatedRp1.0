@@ -151,6 +151,9 @@ end
 
 
 ESX.GetPlayerFromId = function(source)
+	print('this is source', source)
+	print('this is ESX.players', ESX.Players)
+	
 	print('this is getPlayerfromid', ESX.Players[tonumber(source)])
 	return ESX.Players[tonumber(source)]
 end

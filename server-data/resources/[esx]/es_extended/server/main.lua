@@ -243,9 +243,6 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		end)
 
 	end)
-
-
-	print('userdata stuff', userData.sex, userData.playerName)
 end)
 
 AddEventHandler('playerDropped', function(reason)
