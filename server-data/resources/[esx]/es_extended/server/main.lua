@@ -192,7 +192,6 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		end)
 
 		-- Get gender
-		--[[
 		table.insert(tasks, function(cb)
 			MySQL.Async.fetchAll('SELECT `sex` FROM `users` WHERE `identifier` = @identifier', {
 				['@identifier'] = player.getIdentifier()
@@ -200,8 +199,10 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 				if result[1].sex ~= nil then
 					userData.sex = result[1].sex
 				end
+
+				cb()
 			end)
-		end)]]
+		end)
 
 		-- Run Tasks
 		Async.parallel(tasks, function(results)
