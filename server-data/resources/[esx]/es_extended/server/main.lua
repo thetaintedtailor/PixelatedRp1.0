@@ -192,6 +192,7 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		end)
 
 		-- Get gender
+		--[[
 		table.insert(tasks, function(cb)
 			MySQL.Async.fetchAll('SELECT `sex` FROM `users` WHERE `identifier` = @identifier', {
 				['@identifier'] = player.getIdentifier()
@@ -200,12 +201,13 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 					userData.sex = result[1].sex
 				end
 			end)
-		end)
+		end)]]
 
 		-- Run Tasks
 		Async.parallel(tasks, function(results)
 
 			local xPlayer = CreateExtendedPlayer(player, userData.accounts, userData.inventory, userData.job, userData.loadout, userData.playerName, userData.lastPosition, userData.sex)
+
 			xPlayer.getMissingAccounts(function(missingAccounts)
 
 				if #missingAccounts > 0 then

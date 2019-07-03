@@ -153,11 +153,6 @@ end
 ESX.GetPlayerFromId = function(source)
 	print('this is ESX.players', ESX.Players[0], ESX.Players[1])
 
-	for k,v in pairs(ESX.Players) do
-		print('inside loop', k, v)
-	end
-
-	print('this is getPlayerfromid', ESX.Players[tonumber(source)])
 	return ESX.Players[tonumber(source)]
 end
 
