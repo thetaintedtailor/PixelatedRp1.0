@@ -2083,7 +2083,7 @@ function populateOutfits()
             categoryOutfits[outfit.category] = {}
         end
         
-        if PlayerData.sex == 'f' and string.find(name, 'Female', 1, true) then
+        if string.find(PlayerData.sex, 'f', 1, true) and string.find(name, 'Female', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
