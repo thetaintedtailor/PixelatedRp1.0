@@ -197,8 +197,8 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 				['@identifier'] = player.getIdentifier()
 			}, function(result)
 				if result[1].sex ~= nil then
-					userData.sex = json.decode(result[1].sex)
-					print("gender fetch", json.decode(result[1].sex))
+					userData.sex = result[1].sex
+					print("gender fetch", result[1].sex)
 				end
 			end)
 		end)
