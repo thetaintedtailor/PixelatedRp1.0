@@ -2447,7 +2447,7 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName)
             InstructionalButtons = true,
             MultilineFormats = true,
             ScaleWithSafezone = true,
-            ResetCursorOnOpen = true,
+            ResetCursorOnOpen = false,
             MouseControlsEnabled = true,
             MouseEdgeEnabled = true,
             ControlDisablingEnabled = true,
