@@ -9,7 +9,7 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		loadout      = {},
 		playerName   = GetPlayerName(_source),
 		lastPosition = nil,
-		sex 		 = nil
+		sex 		 = 0
 	}
 
 	TriggerEvent('es:getPlayerFromId', _source, function(player)
