@@ -2093,7 +2093,7 @@ function populateOutfits()
         elseif string.find(name, 'Female', 1, true) ~=  nil then
             print('outfits ok')
         else 
-            print("string.find", string.find(name, 'Female', 1, true))
+            print("string.find", name)
 
             --print('Outfit menu did not populate correctly. Please contact admin.')
         end
