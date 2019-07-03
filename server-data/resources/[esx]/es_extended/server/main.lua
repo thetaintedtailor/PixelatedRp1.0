@@ -198,7 +198,6 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 			}, function(result)
 				if result[1].sex ~= nil then
 					userData.sex = result[1].sex
-					print("gender fetch", result[1].sex)
 				end
 			end)
 		end)
@@ -207,8 +206,6 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		Async.parallel(tasks, function(results)
 
 			local xPlayer = CreateExtendedPlayer(player, userData.accounts, userData.inventory, userData.job, userData.loadout, userData.playerName, userData.lastPosition, userData.sex)
-			print('xPlayer object', xPlayer)
-			print('userData object', userData.sex, userData.playerName)
 			xPlayer.getMissingAccounts(function(missingAccounts)
 
 				if #missingAccounts > 0 then
@@ -504,7 +501,11 @@ AddEventHandler('esx:onPickup', function(id)
 end)
 
 ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
+	print('get player from ID', ESX.GetPlayerFromId(source))
+
 	local xPlayer = ESX.GetPlayerFromId(source)
+
+	print('xPlayer inside es extended', xPlayer)
 
 	cb({
 		identifier   = xPlayer.identifier,
