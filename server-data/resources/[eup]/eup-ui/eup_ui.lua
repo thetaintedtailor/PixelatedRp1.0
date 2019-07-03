@@ -11,8 +11,18 @@ Citizen.CreateThread(function()
 
 	while ESX.GetPlayerData().job == nil do
 		Citizen.Wait(10)
-	end
+    end
+    
+    PlayerData = ESX.GetPlayerData()
+    populateOutfits()
 
+    menuPool:Add(mainMenu)
+    menuPool:RefreshIndex()
+
+    while true do
+        Wait(0)
+        menuPool:ProcessMenus()
+    end
 end)
 
 local outfits = {
@@ -2139,6 +2149,7 @@ RegisterCommand('eup', function()
     end
 end, false)
 
+--[[
 Citizen.CreateThread(function()
     while ESX == nil do
         Citizen.Wait(0)
@@ -2154,4 +2165,4 @@ Citizen.CreateThread(function()
         Wait(0)
         menuPool:ProcessMenus()
     end
-end)
+end)]]
