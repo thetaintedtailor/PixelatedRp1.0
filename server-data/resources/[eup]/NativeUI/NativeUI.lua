@@ -2448,8 +2448,8 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName)
             MultilineFormats = true,
             ScaleWithSafezone = true,
             ResetCursorOnOpen = false,
-            MouseControlsEnabled = true,
-            MouseEdgeEnabled = true,
+            MouseControlsEnabled = false,
+            MouseEdgeEnabled = false,
             ControlDisablingEnabled = true,
             Audio = {
                 Library = "HUD_FRONTEND_DEFAULT_SOUNDSET",
