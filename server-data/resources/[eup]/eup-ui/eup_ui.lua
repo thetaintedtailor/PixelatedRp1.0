@@ -2087,8 +2087,11 @@ function populateOutfits()
             categoryOutfits[outfit.category][name] = outfit
         elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
+        elseif string.find(PlayerData.sex, 'f', 1, true) ~= nil then
+            print('playerdata ok')
+        elseif string.find(name, 'Female', 1, true) ~=  nil then
+            print('outfits ok')
         else 
-            print("this is gender", PlayerData.sex)
             print("string.find", string.find(PlayerData.sex, 'f', 1, true))
 
             --print('Outfit menu did not populate correctly. Please contact admin.')
