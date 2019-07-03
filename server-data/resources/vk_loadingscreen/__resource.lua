@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/fool_forever.mp3',
+    'music/CarsonHayes_Miami.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
