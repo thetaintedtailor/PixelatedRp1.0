@@ -477,6 +477,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Menu interactions
+--[[
 Citizen.CreateThread(function()
 	while true do
 
@@ -487,7 +488,7 @@ Citizen.CreateThread(function()
 		--end
 
 	end
-end)
+end)]]
 
 -- Dot above head
 if Config.ShowDotAbovePlayer then
