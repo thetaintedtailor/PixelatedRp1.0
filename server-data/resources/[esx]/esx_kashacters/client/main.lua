@@ -104,7 +104,7 @@ RegisterNetEvent('kashactersC:Skinchanger')
 AddEventHandler('kashactersC:Skinchanger', function(source)
     local source_ = source
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-    TriggerEvent('skinchanger:loadSkin', skin)
+        TriggerEvent('skinchanger:loadSkin', skin)
     end)
 end)
 
