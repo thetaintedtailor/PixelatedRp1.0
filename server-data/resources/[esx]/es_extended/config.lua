@@ -12,4 +12,4 @@ Config.EnableHud            = true -- enable the default hud? Display current jo
 Config.PaycheckInterval     = 7 * 60000
 Config.MaxPlayers           = GetConvarInt('sv_maxclients', 32)
 
-Config.EnableDebug          = false
+Config.EnableDebug          = true
