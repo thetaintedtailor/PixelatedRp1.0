@@ -1,7 +1,7 @@
 local PlayerData		= {}
 local gender = nil
-local menuPool = NativeUI.CreatePool()
-local mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
+local menuPool = nil
+local mainMenu = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -2092,8 +2092,8 @@ function populateOutfits()
         end
     end
 
-   -- menuPool = NativeUI.CreatePool()
-    --mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
+    menuPool = NativeUI.CreatePool()
+    mainMenu = NativeUI.CreateMenu('EUP FiveM', 'Pick your outfit!')
 
     for name, list in pairs(categoryOutfits) do
         local subMenu = menuPool:AddSubMenu(mainMenu, name)
