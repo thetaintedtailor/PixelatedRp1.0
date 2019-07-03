@@ -16,6 +16,9 @@ Citizen.CreateThread(function()
     PlayerData = ESX.GetPlayerData()
     populateOutfits()
 
+    menuPool:Add(mainMenu)
+    menuPool:RefreshIndex()
+
 end)
 
 local outfits = {
@@ -2083,14 +2086,14 @@ function populateOutfits()
             categoryOutfits[outfit.category] = {}
         end
         
-        if string.find(PlayerData.sex, 'f', 1, true) ~= nil and string.find(name, 'Female', 1, true) ~=  nil then
+        if string.find(PlayerData.sex, 'f', 1, true) ~= nil and string.find(name, 'Female', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         elseif PlayerData.sex == 'm' and string.find(name, 'Male', 1, true) then
             categoryOutfits[outfit.category][name] = outfit
         elseif string.find(name, 'Female', 1, true) ~=  nil then
             print('outfits ok')
         else 
-            print("string.find", string.find(PlayerData.sex, 'f', 1, true))
+            print("string.find", string.find(name, 'Female', 1, true))
 
             --print('Outfit menu did not populate correctly. Please contact admin.')
         end
@@ -2154,9 +2157,6 @@ Citizen.CreateThread(function()
     end
 
     --determineGender()
-
-    menuPool:Add(mainMenu)
-    menuPool:RefreshIndex()
 
     while true do
         Wait(0)
