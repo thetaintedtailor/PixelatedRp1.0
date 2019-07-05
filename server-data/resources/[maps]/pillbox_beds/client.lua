@@ -37,7 +37,6 @@ Citizen.CreateThread(function()
 
                 if IsControlJustReleased(0, Keys['E']) then
                     playerPos = GetEntityCoords(PlayerPedId(), true)
-                    print('player position', playerPos)
 
                     bedActive(bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, bedID.heading, bedID)
                 end
@@ -67,7 +66,7 @@ function bedActive(x, y, z, heading)
                 if IsControlJustReleased(0, Keys['X']) then
                     ClearPedTasks(GetPlayerPed(-1))
                     FreezeEntityPosition(GetPlayerPed(-1), false)
-                    SetEntityCoords(GetPlayerPed(-1), x + 1.0, y, z)
+                    SetEntityCoords(GetPlayerPed(-1), playerPos.x, playerPos.y, playerPos.z)
                     InAction = false
                 end
             end
