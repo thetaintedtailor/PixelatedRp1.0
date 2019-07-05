@@ -48,11 +48,11 @@ end)
 function bedActive(x, y, z, heading)
 
     SetEntityCoords(GetPlayerPed(-1), x, y, z + 0.3)
-    RequestAnimDict('anim@gangops@morgue@table@')
-    while not HasAnimDictLoaded('anim@gangops@morgue@table@') do
+    RequestAnimDict('misslamar1dead_body')
+    while not HasAnimDictLoaded('misslamar1dead_body') do
         Citizen.Wait(0)
     end
-    TaskPlayAnim(GetPlayerPed(-1), 'anim@gangops@morgue@table@' , 'ko_front' ,8.0, -8.0, -1, 1, 0, false, false, false )
+    TaskPlayAnim(GetPlayerPed(-1), 'misslamar1dead_body', 'dead_idle' ,8.0, -8.0, -1, 1, 0, false, false, false )
     SetEntityHeading(GetPlayerPed(-1), heading + 180.0)
     InAction = true
 
