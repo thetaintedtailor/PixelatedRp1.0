@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/CarsonHayes_Miami.mp3',
+    'music/STORMZY.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
