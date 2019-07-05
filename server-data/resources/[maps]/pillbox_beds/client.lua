@@ -38,9 +38,7 @@ Citizen.CreateThread(function()
                 if IsControlJustReleased(0, Keys['E']) then
                     playerPos = GetEntityCoords(playerPed, true)
                     print('player position', playerPos)
-                    for k,v in pairs(playerPos) do
-                        print(k,v)
-                    end
+
                     bedActive(bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, bedID.heading, bedID)
                 end
             end
