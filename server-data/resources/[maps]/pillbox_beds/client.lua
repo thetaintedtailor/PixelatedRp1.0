@@ -62,8 +62,8 @@ function bedActive(x, y, z, heading)
             Citizen.Wait(0)
 
             if InAction == true then
-                headsUp('Press ~INPUT_VEH_DUCK~ to get back up')
-                if IsControlJustReleased(0, Keys['X']) then
+                headsUp('Press Z to get back up')
+                if IsControlJustReleased(0, Keys['Z']) then
                     ClearPedTasks(GetPlayerPed(-1))
                     FreezeEntityPosition(GetPlayerPed(-1), false)
                     SetEntityCoords(GetPlayerPed(-1), playerPos.x, playerPos.y, playerPos.z)
