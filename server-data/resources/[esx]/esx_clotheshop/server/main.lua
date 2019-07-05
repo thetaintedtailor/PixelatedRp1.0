@@ -14,6 +14,7 @@ AddEventHandler('esx_clotheshop:saveOutfit', function(label, skin)
 		if outfit == nil then
 			outfit = {}	
 		end
+		
 		if count >= 10 then
 			TriggerClientEvent('esx:showNotification', source, _U('outfit_limit'))
 		elseif count >= 9 then

@@ -13,6 +13,7 @@ local Keys = {
 ESX = nil
 
 local InAction = false
+local playerPos = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -35,6 +36,11 @@ Citizen.CreateThread(function()
                 ESX.Game.Utils.DrawText3D({ x = bedID.objCoords.x, y = bedID.objCoords.y, z = bedID.objCoords.z + 1 }, bedID.text, 0.6)
 
                 if IsControlJustReleased(0, Keys['E']) then
+                    playerPos = GetEntityCoords(playerPed, true)
+                    print('player position', playerPos)
+                    for k,v in pairs(playerPos) do
+                        print(k,v)
+                    end
                     bedActive(bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, bedID.heading, bedID)
                 end
             end
