@@ -217,9 +217,9 @@ Config.CarGarages = {
 		DeletePoint = {x=-453.62088, y=-801.42236, z=29.54}
 	},
 	Garage_MC = {
-		GaragePoint = {x=959.35, y=-121.30, z=73.96},
+		GaragePoint = {x=959.16, y=-121.16, z=73.96},
 		SpawnPoint = {x=967.17, y=-121.14, z=73.44, h = 223.04},
-		DeletePoint = {x=971.85, y=-115.63, z=74.35}
+		DeletePoint = {x=971.85, y=-115.63, z=73.35}
 	},
 }
 
