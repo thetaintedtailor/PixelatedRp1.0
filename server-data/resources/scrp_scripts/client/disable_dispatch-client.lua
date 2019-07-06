@@ -13,4 +13,5 @@ Citizen.CreateThread(function()
 	ClearAreaOfCops(playerLocalisation.x, playerLocalisation.y, playerLocalisation.z, 400.0)
 	end
 	ClearAreaOfPeds(983.51, -110.81, 74.24, 800.0)
+	ClearAreaOfPeds(471.69, -990.60, 24.91, 800.0)
 end)
