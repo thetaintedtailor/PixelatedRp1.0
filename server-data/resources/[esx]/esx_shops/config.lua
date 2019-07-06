@@ -72,10 +72,10 @@ Config.Zones = {
 		Color = 25,
 		Items = {},
 		Pos = {
-			{x = 433.79,  y = -2037.61, z = 21.40}, -- south city
-			{x = -1548.82,  y = -218.97, z = 52.57}, -- north city
-			{x = -1122.84,  y = 2681.97, z = 16.70}, -- route 68 west of sandy shores
-			{x = -11.48,  y = 6499.76, z = 29.50} -- paleto bay 
+			{x = 433.79,  y = -2037.61, z = 22.40}, -- south city
+			{x = -1548.82,  y = -218.97, z = 53.57}, -- north city
+			{x = -1122.84,  y = 2681.97, z = 17.70}, -- route 68 west of sandy shores
+			{x = -11.48,  y = 6499.76, z = 30.50} -- paleto bay 
 		}
 	},
 
