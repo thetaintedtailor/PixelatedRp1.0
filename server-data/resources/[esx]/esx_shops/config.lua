@@ -66,7 +66,7 @@ Config.Zones = {
 		}
 	},
 
-	Hardware = {
+	Punkskaido = {
 		Sprite = 402,
 		Scale = 1.5,
 		Color = 25,
