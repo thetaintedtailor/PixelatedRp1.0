@@ -87,7 +87,8 @@ Config.Zones = {
 		Pos = {
 			{x = -3416.35,  y = 979.64, z = 7.35}, -- chumash dock
 			{x = 1334.98,  y = 4306.71, z = 37.09}, -- alamo sea dock
-			{x = -1600.73,  y = 5204.42, z = 3.31}, -- alamo sea dock
+			{x = -1600.73,  y = 5204.42, z = 3.31}, -- paleto cove
+			{x = -1820.33,  y = -1220.19, z = 12.02}, -- del perro pier
 		}
 	},
 
