@@ -12,5 +12,5 @@ Citizen.CreateThread(function()
 	local playerLocalisation = GetEntityCoords(playerPed)
 	ClearAreaOfCops(playerLocalisation.x, playerLocalisation.y, playerLocalisation.z, 400.0)
 	end
-	ClearAreaOfPeds(983.51, -110.81, 74.24, 400.0)
+	ClearAreaOfPeds(983.51, -110.81, 74.24, 800.0)
 end)
