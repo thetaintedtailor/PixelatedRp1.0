@@ -68,7 +68,7 @@ Config.Zones = {
 
 	Hardware = {
 		Sprite = 402,
-		Scale = 1.0,
+		Scale = 1.5,
 		Color = 25,
 		Items = {},
 		Pos = {
