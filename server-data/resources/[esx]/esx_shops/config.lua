@@ -10,6 +10,7 @@ Config.Zones = {
 	TwentyFourSeven = {
 		Sprite = 52,
 		Scale = 1.0,
+		Color = 2,
 		Items = {},
 		Pos = {
 			{x = 373.875,   y = 325.896,  z = 102.566},
@@ -26,6 +27,7 @@ Config.Zones = {
 	RobsLiquor = {
 		Sprite = 52,
 		Scale = 1.0,
+		Color = 2,
 		Items = {},
 		Pos = {
 			{x = 1135.808,  y = -982.281,  z = 45.415},
@@ -43,6 +45,7 @@ Config.Zones = {
 	LTDgasoline = {
 		Sprite = 52,
 		Scale = 1.0,
+		Color = 2,
 		Items = {},
 		Pos = {
 			{x = -48.519,   y = -1757.514, z = 28.421},
@@ -56,6 +59,7 @@ Config.Zones = {
 	BoilingbrokeGeneral = {
 		Sprite = 52,
 		Scale = 1.0,
+		Color = 2,
 		Items = {},
 		Pos = {
 			{x = 1787.07,  y = 2486.43, z = -123.70}
@@ -64,7 +68,8 @@ Config.Zones = {
 
 	Hardware = {
 		Sprite = 402,
-		Scale = 2.0,
+		Scale = 1.0,
+		Color = 25,
 		Items = {},
 		Pos = {
 			{x = 433.79,  y = -2037.61, z = 21.40}, -- south city
