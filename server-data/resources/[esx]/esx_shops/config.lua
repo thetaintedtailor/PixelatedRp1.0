@@ -11,6 +11,7 @@ Config.Zones = {
 		Sprite = 52,
 		Scale = 1.0,
 		Color = 2,
+		Name = "Twenty Four Seven",
 		Items = {},
 		Pos = {
 			{x = 373.875,   y = 325.896,  z = 102.566},
@@ -28,6 +29,7 @@ Config.Zones = {
 		Sprite = 52,
 		Scale = 1.0,
 		Color = 2,
+		Name = "Rob's Liquor",
 		Items = {},
 		Pos = {
 			{x = 1135.808,  y = -982.281,  z = 45.415},
@@ -46,6 +48,7 @@ Config.Zones = {
 		Sprite = 52,
 		Scale = 1.0,
 		Color = 2,
+		Name = "LTD Gasoline",
 		Items = {},
 		Pos = {
 			{x = -48.519,   y = -1757.514, z = 28.421},
@@ -60,6 +63,7 @@ Config.Zones = {
 		Sprite = 52,
 		Scale = 1.0,
 		Color = 2,
+		Name = "Boilingbroke General",
 		Items = {},
 		Pos = {
 			{x = 1787.07,  y = 2486.43, z = -123.70}
@@ -70,6 +74,7 @@ Config.Zones = {
 		Sprite = 402,
 		Scale = 1.5,
 		Color = 25,
+		Name = "Punkskaido Hardware",
 		Items = {},
 		Pos = {
 			{x = 433.79,  y = -2037.61, z = 22.40}, -- south city
@@ -83,6 +88,7 @@ Config.Zones = {
 		Sprite = 68,
 		Scale = 1.0,
 		Color = 15,
+		Name = "Shishishaw Fishing",
 		Items = {},
 		Pos = {
 			{x = -3416.35,  y = 979.64, z = 7.35}, -- chumash dock
