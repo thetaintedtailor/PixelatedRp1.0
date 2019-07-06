@@ -102,7 +102,7 @@ Citizen.CreateThread(function()
 	for k,v in pairs(Config.Zones) do
 		for i = 1, #v.Pos, 1 do
 			local blip = AddBlipForCoord(v.Pos[i].x, v.Pos[i].y, v.Pos[i].z)
-			SetBlipSprite (blip, 52)
+			SetBlipSprite (blip, v.Sprite)
 			SetBlipDisplay(blip, 4)
 			SetBlipScale  (blip, 1.0)
 			SetBlipColour (blip, 2)
