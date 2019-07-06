@@ -9,6 +9,7 @@ Config.Zones = {
 
 	TwentyFourSeven = {
 		Sprite = 52,
+		Scale = 1.0,
 		Items = {},
 		Pos = {
 			{x = 373.875,   y = 325.896,  z = 102.566},
@@ -24,6 +25,7 @@ Config.Zones = {
 
 	RobsLiquor = {
 		Sprite = 52,
+		Scale = 1.0,
 		Items = {},
 		Pos = {
 			{x = 1135.808,  y = -982.281,  z = 45.415},
@@ -40,6 +42,7 @@ Config.Zones = {
 
 	LTDgasoline = {
 		Sprite = 52,
+		Scale = 1.0,
 		Items = {},
 		Pos = {
 			{x = -48.519,   y = -1757.514, z = 28.421},
@@ -52,6 +55,7 @@ Config.Zones = {
 
 	BoilingbrokeGeneral = {
 		Sprite = 52,
+		Scale = 1.0,
 		Items = {},
 		Pos = {
 			{x = 1787.07,  y = 2486.43, z = -123.70}
@@ -60,10 +64,12 @@ Config.Zones = {
 
 	Hardware = {
 		Sprite = 402,
+		Scale = 2.0,
 		Items = {},
 		Pos = {
-			{x = 433.79,  y = -2037.61, z = 22.40}, -- south city
-			{x = -1122.84,  y = 2681.97, z = 17.70}, -- route 68 west of sandy shores
+			{x = 433.79,  y = -2037.61, z = 21.40}, -- south city
+			{x = -1548.82,  y = -218.97, z = 52.57}, -- north city
+			{x = -1122.84,  y = 2681.97, z = 16.70}, -- route 68 west of sandy shores
 			{x = -11.48,  y = 6499.76, z = 29.50} -- paleto bay 
 		}
 	},
