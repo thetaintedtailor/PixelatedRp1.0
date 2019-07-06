@@ -79,4 +79,16 @@ Config.Zones = {
 		}
 	},
 
+	Shishishaw = {
+		Sprite = 68,
+		Scale = 1.0,
+		Color = 15,
+		Items = {},
+		Pos = {
+			{x = -3416.35,  y = 979.64, z = 7.35}, -- chumash dock
+			
+		}
+	},
+
+
 }
