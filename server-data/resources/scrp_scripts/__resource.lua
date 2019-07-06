@@ -33,4 +33,5 @@ client_scripts {
 	'client/drift_mode-client.lua',
 	'client/friendly_npc-client.lua',
 	'client/street_display-client.lua',
+	'client/sinners-mc-marker.lua'
 }
