@@ -216,10 +216,10 @@ Config.CarGarages = {
 		SpawnPoint = {x=-460.23361, y=-797.20996, z=30.54, h = 88.67470},
 		DeletePoint = {x=-453.62088, y=-801.42236, z=29.54}
 	},
-	Garage_Racetrack = {
-		GaragePoint = {x=1124.26, y=77.01, z=79.89},
-		SpawnPoint = {x=1128.24, y=79.65, z=79.76, h = 121.94},
-		DeletePoint = {x=1142.27, y=71.04, z=79.76}
+	Garage_MC = {
+		GaragePoint = {x=959.35, y=-121.30, z=73.96},
+		SpawnPoint = {x=967.17, y=-121.14, z=73.44, h = 223.04},
+		DeletePoint = {x=971.85, y=-115.63, z=74.35}
 	},
 }
 
