@@ -357,9 +357,25 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 		['@identifier'] = xPlayer.identifier,
 		['@inventory_name'] = 'property',
 	}, function(results)
-		for k,v in pairs(results) do
-			print('this is property item cb', k, v)
-		end
+		--for _,v in ipairs(results) do
+			for j=1, #results, 1 do
+				local itemName  = results[j].name
+				local itemCount = results[j].count
+				local itemOwner = results[j].owner
+
+				print(itemName, itemCount)
+--[[
+				if items[itemOwner] == nil then
+					items[itemOwner] = {}
+				end
+
+				table.insert(items[itemOwner], {
+					name  = itemName,
+					count = itemCount,
+					label = Items[itemName]
+				})]]
+			end
+		--end
 
 		cb()
 	end)
