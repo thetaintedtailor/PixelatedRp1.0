@@ -642,6 +642,7 @@ function OpenPlayerInventoryMenu(property, owner)
 
 		local elements = {}
 
+		--[[
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
 
@@ -652,7 +653,8 @@ function OpenPlayerInventoryMenu(property, owner)
 					value = item.name
 				})
 			end
-		end
+		end]]
+		print('client side', #inventory.items)
 
 		for i=1, #inventory.weapons, 1 do
 			local weapon = inventory.weapons[i]
