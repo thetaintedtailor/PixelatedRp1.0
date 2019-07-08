@@ -576,7 +576,7 @@ function OpenRoomInventoryMenu(property, owner)
 					value = item.name
 				})
 			end
-		end]]
+		end
 
 		for i=1, #inventory.weapons, 1 do
 			local weapon = inventory.weapons[i]
@@ -632,7 +632,7 @@ function OpenRoomInventoryMenu(property, owner)
 		end, function(data, menu)
 			menu.close()
 		end)
-
+]]
 	end, owner)
 
 end
