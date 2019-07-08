@@ -371,20 +371,19 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				table.insert(items, {
 					name  = itemName,
 					count = itemCount,
-					--label = Items[itemName]
 				})
 			end
 
 		cb()
 	end)
-
+	Wait(5000)
 	--[[
 	TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayer.identifier, function(inventory)
 		items = inventory.items
 	end)]]
-	print("hey", items[1])
-	print('hey3', items[1].name)
 	print('hey2', items)
+	print("hey", items[1])
+	--print('hey3', items[1].name)
 
 	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
 		weapons = store.get('weapons') or {}
