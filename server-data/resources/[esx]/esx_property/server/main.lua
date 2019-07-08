@@ -357,7 +357,7 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 		['@identifier'] = xPlayer.identifier,
 		['@inventory_name'] = 'property',
 	}, function(results)
-		--for _,v in ipairs(results) do
+
 			for j=1, #results, 1 do
 				local itemName  = results[j].name
 				local itemCount = results[j].count
@@ -368,14 +368,13 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				if items[itemOwner] == nil then
 					items[itemOwner] = {}
 				end
-
+]]
 				table.insert(items[itemOwner], {
 					name  = itemName,
 					count = itemCount,
-					label = Items[itemName]
-				})]]
+					--label = Items[itemName]
+				})
 			end
-		--end
 
 		cb()
 	end)
