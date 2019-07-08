@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/STORMZY.mp3',
+    'music/RKelly_Ignition.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
