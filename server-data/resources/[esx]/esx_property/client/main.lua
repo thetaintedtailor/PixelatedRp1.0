@@ -564,14 +564,14 @@ function OpenRoomInventoryMenu(property, owner)
 	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 
 		local elements = {}
-
-		--[[
+		print('client side', inventory[1].items[1])
+		
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
 
 			if item.count > 0 then
 				table.insert(elements, {
-					label = item.label .. ' x' .. item.count,
+					label = item.name .. ' x' .. item.count,
 					type = 'item_standard',
 					value = item.name
 				})
@@ -632,7 +632,6 @@ function OpenRoomInventoryMenu(property, owner)
 		end, function(data, menu)
 			menu.close()
 		end)
-]]
 	end, owner)
 
 end
@@ -643,7 +642,7 @@ function OpenPlayerInventoryMenu(property, owner)
 
 		local elements = {}
 
-		--[[
+
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
 
@@ -654,8 +653,7 @@ function OpenPlayerInventoryMenu(property, owner)
 					value = item.name
 				})
 			end
-		end]]
-		print('client side', #inventory.items)
+		end
 
 		for i=1, #inventory.weapons, 1 do
 			local weapon = inventory.weapons[i]
