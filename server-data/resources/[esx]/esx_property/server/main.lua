@@ -383,7 +383,7 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 	TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayer.identifier, function(inventory)
 		items = inventory.items
 	end)]]
-	
+	print(items[1])
 
 	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
 		weapons = store.get('weapons') or {}
