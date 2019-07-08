@@ -369,7 +369,7 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 					items[itemOwner] = {}
 				end
 ]]
-				table.insert(items[itemOwner], {
+				table.insert(items, {
 					name  = itemName,
 					count = itemCount,
 					--label = Items[itemName]
