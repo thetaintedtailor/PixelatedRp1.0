@@ -353,7 +353,7 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 	local items      = {}
 	local weapons    = {}
 
-	MySQL.Sync.fetchAll('SELECT * FROM addon_inventory_items WHERE owner = @identifier AND inventory_name = @inventory_name', {
+	MySQL.Async.fetchAll('SELECT * FROM addon_inventory_items WHERE owner = @identifier AND inventory_name = @inventory_name', {
 		['@identifier'] = xPlayer.identifier,
 		['@inventory_name'] = 'property',
 	}, function(results)
@@ -373,25 +373,22 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 					count = itemCount,
 				})
 			end
+			
+			print('print items', items[1].name)
 
-		cb()
+			TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
+				weapons = store.get('weapons') or {}
+			end)
+		
+			cb({
+				items      = items,
+				weapons    = weapons
+			})
+
+
+
 	end)
-	--Wait(5000)
-	--[[
-	TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayer.identifier, function(inventory)
-		items = inventory.items
-	end)]]
 
-	print('print items', items[1].name)
-	
-	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
-		weapons = store.get('weapons') or {}
-	end)
-
-	cb({
-		items      = items,
-		weapons    = weapons
-	})
 end)
 
 ESX.RegisterServerCallback('esx_property:getPlayerInventory', function(source, cb)
