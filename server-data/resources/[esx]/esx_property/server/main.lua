@@ -363,13 +363,12 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				local itemCount = results[j].count
 				local itemOwner = results[j].owner
 
-				print(itemName, itemCount)
 --[[
 				if items[itemOwner] == nil then
 					items[itemOwner] = {}
 				end
 ]]
-				table.insert(items, {
+				table.insert(items[itemOwner], {
 					name  = itemName,
 					count = itemCount,
 					--label = Items[itemName]
@@ -383,7 +382,7 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 	TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayer.identifier, function(inventory)
 		items = inventory.items
 	end)]]
-	print(items[1])
+	print(items)
 
 	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
 		weapons = store.get('weapons') or {}
