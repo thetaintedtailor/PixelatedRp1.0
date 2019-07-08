@@ -564,8 +564,8 @@ function OpenRoomInventoryMenu(property, owner)
 	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 
 		local elements = {}
-		print('client side', inventory[1].items[1])
-		
+		--print('client side', inventory[1].items[1])
+
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
 
