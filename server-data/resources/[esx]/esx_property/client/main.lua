@@ -565,14 +565,6 @@ function OpenRoomInventoryMenu(property, owner)
 
 		local elements = {}
 
-		if inventory.blackMoney > 0 then
-			table.insert(elements, {
-				label = _U('dirty_money', ESX.Math.GroupDigits(inventory.blackMoney)),
-				type = 'item_account',
-				value = 'black_money'
-			})
-		end
-
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
 
@@ -649,14 +641,6 @@ function OpenPlayerInventoryMenu(property, owner)
 	ESX.TriggerServerCallback('esx_property:getPlayerInventory', function(inventory)
 
 		local elements = {}
-
-		if inventory.blackMoney > 0 then
-			table.insert(elements, {
-				label = _U('dirty_money', ESX.Math.GroupDigits(inventory.blackMoney)),
-				type  = 'item_account',
-				value = 'black_money'
-			})
-		end
 
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
