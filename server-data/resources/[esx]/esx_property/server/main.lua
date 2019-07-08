@@ -350,24 +350,30 @@ end)
 
 ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source, cb, owner)
 	local xPlayer    = ESX.GetPlayerFromIdentifier(owner)
-	local blackMoney = 0
 	local items      = {}
 	local weapons    = {}
 
-	TriggerEvent('esx_addonaccount:getAccount', 'property_black_money', xPlayer.identifier, function(account)
-		blackMoney = account.money
+	MySQL.Async.fetchAll('SELECT * FROM addon_inventory_items WHERE owner = @identifier AND inventory_name = @inventory_name', {
+		['@identifier'] = xPlayer.identifier,
+		['@inventory_name'] = 'property',
+	}, function(results)
+		for k,v in pairs(results) do
+			print('this is property item cb', k, v)
+		end
+
+		cb()
 	end)
 
+	--[[
 	TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayer.identifier, function(inventory)
 		items = inventory.items
-	end)
+	end)]]
 
 	TriggerEvent('esx_datastore:getDataStore', 'property', xPlayer.identifier, function(store)
 		weapons = store.get('weapons') or {}
 	end)
 
 	cb({
-		blackMoney = blackMoney,
 		items      = items,
 		weapons    = weapons
 	})
@@ -375,11 +381,9 @@ end)
 
 ESX.RegisterServerCallback('esx_property:getPlayerInventory', function(source, cb)
 	local xPlayer    = ESX.GetPlayerFromId(source)
-	local blackMoney = xPlayer.getAccount('black_money').money
 	local items      = xPlayer.inventory
 
 	cb({
-		blackMoney = blackMoney,
 		items      = items,
 		weapons    = xPlayer.getLoadout()
 	})
@@ -439,12 +443,8 @@ function PayRent(d, h, m)
 					['@identifier'] = result[i].owner
 				})
 			end
-
-			TriggerEvent('esx_addonaccount:getSharedAccount', 'society_realestateagent', function(account)
-				account.addMoney(result[i].price)
-			end)
 		end
 	end)
 end
 
-TriggerEvent('cron:runAt', 22, 0, PayRent)
+TriggerEvent('cron:runAt', 23, 0, PayRent)
