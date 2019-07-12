@@ -8,8 +8,8 @@ Config.ResellPercentage           = 90
 
 local HOUR = 60 * 60
 local DAY = HOUR * 24
-Config.FinanceChargeFrequency = DAY
-Config.FinancePeriodLength = DAY * 14
+Config.FinanceChargeFrequency = 20
+Config.FinancePeriodLength = HOUR
 
 Config.Locale = 'en'
 
