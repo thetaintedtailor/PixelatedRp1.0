@@ -2,6 +2,8 @@ ESX              = nil
 local Categories = {}
 local Vehicles   = {}
 
+local FinanceChargeParts = math.floor(Config.FinancePeriodLength / Config.FinanceChargeFrequency)
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('esx_phone:registerNumber', 'cardealer', _U('dealer_customers'), false, false)
@@ -43,20 +45,32 @@ MySQL.ready(function()
 	-- send information after db has loaded, making sure everyone gets vehicle information
 	TriggerClientEvent('esx_vehicleshop:sendCategories', -1, Categories)
 	TriggerClientEvent('esx_vehicleshop:sendVehicles', -1, Vehicles)
+	ChargeFinance()
 end)
 
 RegisterServerEvent('esx_vehicleshop:setVehicleOwned')
-AddEventHandler('esx_vehicleshop:setVehicleOwned', function (vehicleProps)
+AddEventHandler('esx_vehicleshop:setVehicleOwned', function (vehicleProps, amountOwing)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle) VALUES (@owner, @plate, @vehicle)',
+	MySQL.Async.fetchScalar('INSERT INTO owned_vehicles (owner, plate, vehicle) VALUES (@owner, @plate, @vehicle); SELECT LAST_INSERT_ID();',
 	{
 		['@owner']   = xPlayer.identifier,
 		['@plate']   = vehicleProps.plate,
 		['@vehicle'] = json.encode(vehicleProps)
-	}, function (rowsChanged)
+	}, function (vehicleId)
 		TriggerClientEvent('esx:showNotification', _source, _U('vehicle_belongs', vehicleProps.plate))
+		
+		if amountOwing then
+			local dateNow = os.date('%Y-%m-%d %X')
+
+			MySQL.Async.execute('INSERT INTO vehicle_financing (vehicleId, totalAmount, createdOn) VALUES (@vehicleId, @totalAmount, @dateNow)',
+			{
+				['@vehicleId'] = vehicleId,
+				['@totalAmount'] = amountOwing,
+				['@dateNow'] = dateNow
+			}, function (rowsChanged) end)
+		end
 	end)
 end)
 
@@ -207,19 +221,27 @@ ESX.RegisterServerCallback('esx_vehicleshop:getVehicles', function (source, cb)
 	cb(Vehicles)
 end)
 
-ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, vehicleModel)
-	local xPlayer     = ESX.GetPlayerFromId(source)
-	local vehicleData = nil
-
+function GetVehicleData(vehicleModel)
 	for i=1, #Vehicles, 1 do
-		if Vehicles[i].model == vehicleModel then
-			vehicleData = Vehicles[i]
-			break
+		local vehicle = Vehicles[i]
+		if vehicle.model == vehicleModel then
+			return vehicle
 		end
 	end
 
-	if xPlayer.getMoney() >= vehicleData.price then
-		xPlayer.removeMoney(vehicleData.price)
+	return nil
+end
+
+ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, vehicleModel, firstPaymentAmount)
+	local xPlayer     = ESX.GetPlayerFromId(source)
+	local vehicleData = GetVehicleData(vehicleModel)
+
+	if not firstPaymentAmount then
+		firstPaymentAmount = vehicleData.price
+	end
+
+	if xPlayer.getMoney() >= firstPaymentAmount then
+		xPlayer.removeMoney(firstPaymentAmount)
 		cb(true)
 	else
 		cb(false)
@@ -502,6 +524,55 @@ function PayRent(d, h, m)
 			end)
 		end
 	end)
+end
+
+function ChargeFinance()
+	local now = os.time()
+
+	local chargeFrequency = 1000 * Config.FinanceChargeFrequency
+	local previousChargeDate = os.date('%Y-%m-%d %X', now - chargeFrequency)
+
+	MySQL.Async.fetchAll('SELECT vf.*, ov.owner FROM vehicle_financing vf JOIN owned_vehicles ov ON vf.vehicleId = ov.id WHERE totalAmount > amountPaid AND createdOn < @date', {
+		['@date'] = previousChargeDate
+	}, function (result)
+      	if result ~= nil and #result > 0 then
+			  for _, v in pairs(result) do
+
+				local periodEnd = v.createdOn + Config.FinancePeriodLength
+
+				-- Charge the full remaining amount assuming it is the final payment
+				local paymentAmount = v.totalAmount - v.amountPaid
+
+				if now < periodEnd then
+					-- Calculate a single payment amount, since it isn't the final payment
+					paymentAmount = math.min(paymentAmount, math.floor(v.totalAmount / FinanceChargeParts))
+				end
+				
+				local player = ESX.GetPlayerFromIdentifier(v.owner)
+
+				-- message player if connected
+				if player ~= nil then
+					player.removeAccountMoney('bank', paymentAmount)
+					local remainingAmount = v.totalAmount - v.amountPaid - paymentAmount
+					TriggerClientEvent('esx:showNotification', player.source, _U('paid_finance', ESX.Math.GroupDigits(paymentAmount), ESX.Math.GroupDigits(remainingAmount)))
+				else -- pay rent either way
+					MySQL.Sync.execute('UPDATE users SET bank = bank - @bank WHERE identifier = @identifier',
+					{
+						['@bank'] = paymentAmount,
+						['@identifier'] = v.owner
+					})
+				end
+
+				MySQL.Sync.execute('UPDATE vehicle_financing SET amountPaid = @amountPaid WHERE id = @id',
+				{
+					['@id'] = v.id,
+					['@amountPaid'] = v.amountPaid + paymentAmount
+				});
+			end
+		end
+	end)
+
+	SetTimeout(chargeFrequency, ChargeFinance)
 end
 
 TriggerEvent('cron:runAt', 22, 00, PayRent)

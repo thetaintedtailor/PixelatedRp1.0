@@ -331,3 +331,13 @@ INSERT INTO `vehicles` (name, model, price, category) VALUES
 	('Sentinel3', 'sentinel3', 650000, 'sports'),
 	('Hustler', 'hustler', 625000, 'muscle')
 ;
+
+CREATE TABLE `vehicle_financing` (
+    id int(11) NOT NULL AUTO_INCREMENT,
+	vehicleId INT NOT NULL,
+	totalAmount INT NOT NULL DEFAULT 0,
+	amountPaid INT NOT NULL DEFAULT 0,
+	createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+    FOREIGN KEY (vehicleId) REFERENCES owned_vehicles(id)
+);

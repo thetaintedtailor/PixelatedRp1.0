@@ -6,6 +6,11 @@ Config.EnableOwnedVehicles        = true
 Config.EnableSocietyOwnedVehicles = false -- use with EnablePlayerManagement disabled, or else it wont have any effects
 Config.ResellPercentage           = 90
 
+local HOUR = 60 * 60
+local DAY = HOUR * 24
+Config.FinanceChargeFrequency = DAY
+Config.FinancePeriodLength = DAY * 14
+
 Config.Locale = 'en'
 
 Config.LicenseEnable = true -- require people to own drivers license when buying vehicles? Only applies if EnablePlayerManagement is disabled. Requires esx_license

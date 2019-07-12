@@ -27,6 +27,7 @@ Locales['en'] = {
   ['not_rental']              = 'this is not a ~r~rental vehicle~s~',
   ['not_yours']               = 'this vehicle does not belong to you',
   ['paid_rental']             = 'you have ~g~payed~s~ for your vehicle rental: ~g~$%s~s~',
+  ['paid_finance']             = 'you have ~g~paid~s~ for your vehicle repayment: ~g~$%s~s~ (~g~$%s~s~ remaining)',
   ['pop_vehicle']             = 'put out vehicle for sale',
   ['rent_vehicle']            = 'car Dealer - Vehicles for rent',
   ['return_provider_menu']    = 'car Dealer - Return vehicle to provider',

@@ -23,6 +23,8 @@ local CurrentVehicleData      = nil
 
 ESX                           = nil
 
+local FinanceChargeParts = math.floor(Config.FinancePeriodLength / Config.FinanceChargeFrequency)
+
 Citizen.CreateThread(function ()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -204,11 +206,10 @@ function OpenShopMenu()
 			title = _U('buy_vehicle_shop', vehicleData.name, ESX.Math.GroupDigits(vehicleData.price)),
 			align = 'left',
 			elements = {
-				{label = _U('no'),  value = 'no'},
-				{label = _U('yes'), value = 'yes'}
+				{label = 'Yes, in one payment', value = 'yes'},
+				{label = 'Yes, split over 14 daily payments',  value = 'finance'}
 			}
 		}, function(data2, menu2)
-			if data2.current.value == 'yes' then
 				if Config.EnablePlayerManagement then
 					ESX.TriggerServerCallback('esx_vehicleshop:buyVehicleSociety', function(hasEnoughMoney)
 
@@ -325,6 +326,12 @@ function OpenShopMenu()
 							menu3.close()
 						end)
 					else
+						local firstPaymentAmount = vehicleData.price
+						
+						if data2.current.value == 'finance' then
+							firstPaymentAmount =  math.floor(vehicleData.price / FinanceChargeParts)
+						end
+
 						ESX.TriggerServerCallback('esx_vehicleshop:buyVehicle', function (hasEnoughMoney)
 
 							if hasEnoughMoney then
@@ -344,7 +351,8 @@ function OpenShopMenu()
 									SetVehicleNumberPlateText(vehicle, newPlate)
 
 									if Config.EnableOwnedVehicles then
-										TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps)
+										local amountOwing = vehicleData.price - firstPaymentAmount
+										TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps, amountOwing)
 									end
 
 									ESX.ShowNotification(_U('vehicle_purchased'))
@@ -356,13 +364,9 @@ function OpenShopMenu()
 								ESX.ShowNotification(_U('not_enough_money'))
 							end
 
-						end, vehicleData.model)
+						end, vehicleData.model, firstPaymentAmount)
 					end
 				end
-			elseif data2.current.value == 'no' then
-
-			end
-
 		end, function (data2, menu2)
 			menu2.close()
 		end)
