@@ -332,12 +332,16 @@ INSERT INTO `vehicles` (name, model, price, category) VALUES
 	('Hustler', 'hustler', 625000, 'muscle')
 ;
 
+-- ----------------------------
+-- Table structure for vehicle_financing
+-- ----------------------------
+DROP TABLE IF EXISTS `vehicle_financing`;
 CREATE TABLE `vehicle_financing` (
-    id int(11) NOT NULL AUTO_INCREMENT,
-	vehicleId INT NOT NULL,
-	totalAmount INT NOT NULL DEFAULT 0,
-	amountPaid INT NOT NULL DEFAULT 0,
-	createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (id),
-    FOREIGN KEY (vehicleId) REFERENCES owned_vehicles(id)
+	plate varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+	totalAmount int(11) NOT NULL DEFAULT 0,
+	amountPaid int(11) NOT NULL DEFAULT 0,
+	createdOn timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+	PRIMARY KEY (plate) USING BTREE,
+  	INDEX `FK_vehicle_financing_owned_vehicles`(`plate`) USING BTREE,
+  	CONSTRAINT `FK_vehicle_financing_owned_vehicles` FOREIGN KEY (`plate`) REFERENCES `owned_vehicles` (`plate`) ON DELETE CASCADE ON UPDATE RESTRICT
 );
