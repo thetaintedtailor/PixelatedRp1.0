@@ -53,20 +53,20 @@ AddEventHandler('esx_vehicleshop:setVehicleOwned', function (vehicleProps, amoun
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	MySQL.Async.fetchScalar('INSERT INTO owned_vehicles (owner, plate, vehicle) VALUES (@owner, @plate, @vehicle); SELECT LAST_INSERT_ID();',
+	MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle) VALUES (@owner, @plate, @vehicle);',
 	{
 		['@owner']   = xPlayer.identifier,
 		['@plate']   = vehicleProps.plate,
 		['@vehicle'] = json.encode(vehicleProps)
-	}, function (vehicleId)
+	}, function (rowsChanged)
 		TriggerClientEvent('esx:showNotification', _source, _U('vehicle_belongs', vehicleProps.plate))
 		
 		if amountOwing then
 			local dateNow = os.date('%Y-%m-%d %X')
 
-			MySQL.Async.execute('INSERT INTO vehicle_financing (vehicleId, totalAmount, createdOn) VALUES (@vehicleId, @totalAmount, @dateNow)',
+			MySQL.Async.execute('INSERT INTO vehicle_financing (plate, totalAmount, createdOn) VALUES (@plate, @totalAmount, @dateNow)',
 			{
-				['@vehicleId'] = vehicleId,
+				['@plate'] = vehicleProps.plate,
 				['@totalAmount'] = amountOwing,
 				['@dateNow'] = dateNow
 			}, function (rowsChanged) end)
@@ -532,7 +532,7 @@ function ChargeFinance()
 	local chargeFrequency = 1000 * Config.FinanceChargeFrequency
 	local previousChargeDate = os.date('%Y-%m-%d %X', now - chargeFrequency)
 
-	MySQL.Async.fetchAll('SELECT vf.*, ov.owner FROM vehicle_financing vf JOIN owned_vehicles ov ON vf.vehicleId = ov.id WHERE totalAmount > amountPaid AND createdOn < @date', {
+	MySQL.Async.fetchAll('SELECT vf.*, ov.owner FROM vehicle_financing vf JOIN owned_vehicles ov ON vf.plate = ov.plate WHERE totalAmount > amountPaid AND createdOn < @date', {
 		['@date'] = previousChargeDate
 	}, function (result)
       	if result ~= nil and #result > 0 then
@@ -563,9 +563,9 @@ function ChargeFinance()
 					})
 				end
 
-				MySQL.Sync.execute('UPDATE vehicle_financing SET amountPaid = @amountPaid WHERE id = @id',
+				MySQL.Sync.execute('UPDATE vehicle_financing SET amountPaid = @amountPaid WHERE plate = @plate',
 				{
-					['@id'] = v.id,
+					['@plate'] = v.plate,
 					['@amountPaid'] = v.amountPaid + paymentAmount
 				});
 			end
