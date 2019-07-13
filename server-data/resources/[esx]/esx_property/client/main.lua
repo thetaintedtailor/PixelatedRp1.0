@@ -23,6 +23,7 @@ local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local FirstSpawn              = true
 local HasChest                = false
+local aptInventory 			  = {}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -152,6 +153,34 @@ function EnterProperty(name, owner)
 		DrawSub(property.label, 5000)
 	end)
 
+	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+
+		local elements = {}
+
+		for i=1, #inventory.items, 1 do
+			local item = inventory.items[i]
+
+			if item.count > 0 then
+				table.insert(aptInventory, {
+					label = item.name .. ' x' .. item.count,
+					type = 'item_standard',
+					value = item.name
+				})
+			end
+		end
+
+		for i=1, #inventory.weapons, 1 do
+			local weapon = inventory.weapons[i]
+
+			table.insert(aptInventory, {
+				label = ESX.GetWeaponLabel(weapon.name) .. ' [' .. weapon.ammo .. ']',
+				type  = 'item_weapon',
+				value = weapon.name,
+				ammo  = weapon.ammo
+			})
+		end
+
+	end, owner)
 end
 
 function ExitProperty(name)
@@ -561,7 +590,7 @@ end
 
 function OpenRoomInventoryMenu(property, owner)
 
-	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+	--[[ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 
 		local elements = {}
 
@@ -586,13 +615,13 @@ function OpenRoomInventoryMenu(property, owner)
 				value = weapon.name,
 				ammo  = weapon.ammo
 			})
-		end
+		end]]
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_inventory',
 		{
 			title    = property.label .. ' - ' .. _U('inventory'),
 			align    = 'left',
-			elements = elements
+			elements = aptInventory
 		}, function(data, menu)
 
 			if data.current.type == 'item_weapon' then
@@ -631,7 +660,7 @@ function OpenRoomInventoryMenu(property, owner)
 		end, function(data, menu)
 			menu.close()
 		end)
-	end, owner)
+	--end, owner)
 
 end
 
