@@ -82,7 +82,7 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 				Banks[robb].lastrobbed = os.time()
 				robbers[source] = robb
 				local savedSource = source
-				SetTimeout(600000, function()
+				SetTimeout(420000, function()
 
 					if(robbers[savedSource])then
 
