@@ -164,7 +164,8 @@ function EnterProperty(name, owner)
 				table.insert(aptInventory, {
 					label = item.name .. ' x' .. item.count,
 					type = 'item_standard',
-					value = item.name
+					value = item.name,
+					count = item.count
 				})
 			end
 		end
@@ -215,6 +216,9 @@ function ExitProperty(name)
 		end
 
 		DoScreenFadeIn(800)
+		TriggerServerEvent('esx_property:updateAptInventory', function() 
+		end, aptInventory)
+		aptInventory = {}
 	end)
 end
 
@@ -590,33 +594,6 @@ end
 
 function OpenRoomInventoryMenu(property, owner)
 
-	--[[ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
-
-		local elements = {}
-
-		for i=1, #inventory.items, 1 do
-			local item = inventory.items[i]
-
-			if item.count > 0 then
-				table.insert(elements, {
-					label = item.name .. ' x' .. item.count,
-					type = 'item_standard',
-					value = item.name
-				})
-			end
-		end
-
-		for i=1, #inventory.weapons, 1 do
-			local weapon = inventory.weapons[i]
-
-			table.insert(elements, {
-				label = ESX.GetWeaponLabel(weapon.name) .. ' [' .. weapon.ammo .. ']',
-				type  = 'item_weapon',
-				value = weapon.name,
-				ammo  = weapon.ammo
-			})
-		end]]
-
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_inventory',
 		{
 			title    = property.label .. ' - ' .. _U('inventory'),
@@ -645,7 +622,8 @@ function OpenRoomInventoryMenu(property, owner)
 					else
 						menu.close()
 
-						TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
+						--TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
+						getItem(data.current.type, data.current.value, quantity)
 						ESX.SetTimeout(300, function()
 							OpenRoomInventoryMenu(property, owner)
 						end)
@@ -660,9 +638,20 @@ function OpenRoomInventoryMenu(property, owner)
 		end, function(data, menu)
 			menu.close()
 		end)
-	--end, owner)
-
 end
+
+function getItem(type, value, quantity)
+	for i=1, #aptInventory, 1 do
+		local indexedItem = aptInventory[i].value
+		print('getItem fn: indexedItem:', aptInventory[i].value)
+		print('getItem fn: menu value:', value)
+
+		if value == indexedItem then
+			aptInventory[i].count = quantity
+		end
+	end
+end
+
 
 function OpenPlayerInventoryMenu(property, owner)
 

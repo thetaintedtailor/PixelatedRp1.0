@@ -270,6 +270,18 @@ AddEventHandler('esx_property:getItem', function(owner, type, item, count)
 
 end)
 
+RegisterServerEvent('esx_property:updateAptInventory')
+AddEventHandler('esx_property:updateAptInventory', function(owner, aptInventory)
+	local _source      = source
+	local xPlayer      = ESX.GetPlayerFromId(_source)
+
+	MySQL.Sync.execute('UPDATE addon_inventory_items SET bank = bank - @bank WHERE identifier = @identifier',
+	{
+		['@bank']       = result[i].price,
+		['@identifier'] = result[i].owner
+	})
+end)
+
 RegisterServerEvent('esx_property:putItem')
 AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 	local _source      = source
@@ -363,11 +375,6 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				local itemCount = results[j].count
 				local itemOwner = results[j].owner
 
---[[
-				if items[itemOwner] == nil then
-					items[itemOwner] = {}
-				end
-]]
 				table.insert(items, {
 					name  = itemName,
 					count = itemCount,
