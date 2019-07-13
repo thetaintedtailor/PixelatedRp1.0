@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/RKelly_Ignition.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Ignition (remix) - R. Kelly"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by SneakyRy (IGN: Yung Chong)"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/blackskinhead_kanye.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Black Skinhead - Kanye West"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by mahhh (ign: Frank Jango)"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
