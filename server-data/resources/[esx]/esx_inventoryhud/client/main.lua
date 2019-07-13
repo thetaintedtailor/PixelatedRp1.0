@@ -10,9 +10,11 @@ local Keys = {
     ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
   }
 
+local anotherPlayer          = 0
 local anotherPlayerInventory = false
-local anotherPlayer = 0
-local isInInventory = false
+local connectedPlayers       = {}
+local isInInventory          = false
+
 ESX = nil
 
 Citizen.CreateThread(function()
@@ -29,6 +31,11 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if IsControlJustReleased(0, Config.OpenControl) and IsInputDisabled(0) then
             anotherPlayerInventory = false
+
+            ESX.TriggerServerCallback('esx_scoreboard:getConnectedPlayers', function(updatedPlayers)
+                connectedPlayers = updatedPlayers
+            end)
+
             openInventory()
         end
     end
@@ -61,9 +68,18 @@ RegisterNUICallback('GetNearPlayers', function(data, cb)
         if players[i] ~= PlayerId() then
             foundPlayers = true
 
+            local serverId = GetPlayerServerId(players[i])
+            local name     = ""
+
+            if connectedPlayers[serverId] ~= nil and string.len(connectedPlayers[serverId].name) > 0 then
+                name = connectedPlayers[serverId].name
+            else
+                name = GetPlayerName(players[i])
+            end
+
             table.insert(elements, {
-                label = GetPlayerName(players[i]),
-                player = GetPlayerServerId(players[i])
+                label = name,
+                player = serverId
             })
         end
     end
