@@ -147,7 +147,7 @@ function OpenMecanoActionsMenu()
 
 				local elements = {
 					{label = _U('flat_bed'),  value = 'flatbed'},
-					{label = _U('tow_truck'), value = 'towtruck2'}
+					{label = _U('tow_truck'), value = 'towtruck'}
 				}
 
 				if Config.EnablePlayerManagement and PlayerData.job ~= nil and (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'chef' or PlayerData.job.grade_name == 'experimente') then
@@ -1017,7 +1017,7 @@ Citizen.CreateThread(function()
 
 						if
 							GetEntityModel(vehicle) == GetHashKey('flatbed')   or
-							GetEntityModel(vehicle) == GetHashKey('towtruck2') or
+							GetEntityModel(vehicle) == GetHashKey('towtruck') or
 							GetEntityModel(vehicle) == GetHashKey('slamvan3')
 						then
               TriggerServerEvent('esx_service:disableService', 'mechanic')
