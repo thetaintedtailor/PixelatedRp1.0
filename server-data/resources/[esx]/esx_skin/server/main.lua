@@ -54,8 +54,6 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 
 			cb(skin, jobSkin)
 		end)
-	else 
-		print('xPlayer object is nil')
 	end
 end)
 
