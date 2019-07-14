@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/RKelly_Ignition.mp3',
+    'music/blackskinhead_kanye.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
