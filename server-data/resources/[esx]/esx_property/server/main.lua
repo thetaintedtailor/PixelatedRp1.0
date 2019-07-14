@@ -275,11 +275,17 @@ AddEventHandler('esx_property:updateAptInventory', function(owner, aptInventory)
 	local _source      = source
 	local xPlayer      = ESX.GetPlayerFromId(_source)
 
-	MySQL.Sync.execute('UPDATE addon_inventory_items SET bank = bank - @bank WHERE identifier = @identifier',
-	{
-		['@bank']       = result[i].price,
-		['@identifier'] = result[i].owner
-	})
+	for i=1, #aptInventory, 1 do
+		--local indexedItem = aptInventory[i].value
+		if aptInventory[i].type == 'item_standard' then
+			MySQL.Sync.execute('UPDATE addon_inventory_items SET count = @count WHERE name = @name AND owner = @identifier',
+			{
+				['@count'] = aptInventory[i].count,
+				['@name'] = aptInventory[i].value,
+				['@identifier'] = xPlayer.identifier,
+			})
+		end
+	end
 end)
 
 RegisterServerEvent('esx_property:putItem')

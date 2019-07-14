@@ -217,7 +217,7 @@ function ExitProperty(name)
 
 		DoScreenFadeIn(800)
 		TriggerServerEvent('esx_property:updateAptInventory', function() 
-		end, aptInventory)
+		end, CurrentPropertyOwner, aptInventory)
 		aptInventory = {}
 	end)
 end
