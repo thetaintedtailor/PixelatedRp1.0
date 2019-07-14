@@ -647,7 +647,7 @@ function getItem(type, value, quantity)
 		print('getItem fn: menu value:', value)
 
 		if value == indexedItem then
-			aptInventory[i].count = quantity
+			aptInventory[i].count = (aptInventory[i].count - quantity)
 		end
 	end
 end
