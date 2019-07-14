@@ -93,7 +93,6 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = "Toggle ID column on the scoreboard!"})
 
-
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
 		['@identifier'] = GetPlayerIdentifiers(source)[1]
@@ -107,5 +106,13 @@ function GetCharacterName(source)
 		end
 	else
 		return GetPlayerName(source)
+	end
+end
+
+function GetCharacterNameCached(playerId)
+	if connectedPlayers[playerId] ~= nil then
+		return connectedPlayers[playerId].name
+	else
+		return ESX.GetPlayerFromId(playerId).name
 	end
 end
