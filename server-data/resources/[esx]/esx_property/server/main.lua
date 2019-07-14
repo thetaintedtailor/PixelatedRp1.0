@@ -278,7 +278,7 @@ AddEventHandler('esx_property:updateAptInventory', function(owner, aptInventory)
 	for i=1, #aptInventory, 1 do
 		--local indexedItem = aptInventory[i].value
 		if aptInventory[i].type == 'item_standard' then
-			MySQL.Sync.execute('UPDATE addon_inventory_items SET count = @count WHERE name = @name AND owner = @identifier',
+			MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE name = @name AND owner = @identifier',
 			{
 				['@count'] = aptInventory[i].count,
 				['@name'] = aptInventory[i].value,
