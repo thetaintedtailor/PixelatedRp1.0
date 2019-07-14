@@ -272,8 +272,8 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(10)
     if handcuffed then
-        DisableControlAction(0, 1, true) -- Disable pan
-        DisableControlAction(0, 2, true) -- Disable tilt
+        --DisableControlAction(0, 1, true) -- Disable pan
+        --DisableControlAction(0, 2, true) -- Disable tilt
         DisableControlAction(0, 24, true) -- Attack
         DisableControlAction(0, 257, true) -- Attack 2
         DisableControlAction(0, 25, true) -- Aim
