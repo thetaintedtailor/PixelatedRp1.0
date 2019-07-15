@@ -403,7 +403,7 @@ end
 function SetFuel(vehicle, fuel)
 	if type(fuel) == 'number' and fuel >= 0 and fuel <= 100 then
 		SetVehicleFuelLevel(vehicle, fuel + 0.0)
-		DecorSetInt(vehicle, "_FUEL_LEVEL", fuel)
+		--DecorSetInt(vehicle, "_FUEL_LEVEL", fuel)
 	end
 end
 
