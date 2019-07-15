@@ -505,7 +505,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 						else
 							label = label .. ('<span style="color:darkred;">%s</span>'):format(_U('garage_notstored'))
 						end
-
+						print('inside retrieve veh loop', v.fuel_level)
 						table.insert(garage, {
 							label = label,
 							stored = v.stored,
@@ -528,6 +528,9 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 								menu2.close()
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
+									if (exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)) == 0 then
+										Wait(2000)
+									end
 									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
@@ -567,8 +570,9 @@ function StoreNearbyVehicle(playerCoords)
 
 			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				Wait(2000)
+				print('fuel after wait', exports["esx_legacyfuel"]:GetFuel(v))
 			end
-			print('fuel after wait', exports["esx_legacyfuel"]:GetFuel(v))
+
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
