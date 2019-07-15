@@ -505,7 +505,6 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 						else
 							label = label .. ('<span style="color:darkred;">%s</span>'):format(_U('garage_notstored'))
 						end
-						print('inside retrieve veh loop', v.fuel_level)
 						table.insert(garage, {
 							label = label,
 							stored = v.stored,
