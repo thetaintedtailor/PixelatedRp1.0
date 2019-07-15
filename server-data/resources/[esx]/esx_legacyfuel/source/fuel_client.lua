@@ -397,7 +397,11 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
+<<<<<<< HEAD
 	return math.floor(GetVehicleFuelLevel(vehicle))
+=======
+	return DecorGetFloat(vehicle, Config.FuelDecor)
+>>>>>>> parent of 869f1e86... print fuel level, change float to int
 end
 
 function SetFuel(vehicle, fuel)

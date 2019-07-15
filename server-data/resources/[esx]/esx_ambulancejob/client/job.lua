@@ -558,13 +558,11 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 end
 
-
 function StoreNearbyVehicle(playerCoords)
 	local vehicles, vehiclePlates = ESX.Game.GetVehiclesInArea(playerCoords, 30.0), {}
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-
 			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				Wait(2000)
 			end
