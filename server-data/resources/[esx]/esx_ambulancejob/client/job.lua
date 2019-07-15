@@ -564,9 +564,9 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-			--print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
+			print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
 
-			if exports["esx_legacyfuel"]:GetFuel(v) == 0 then
+			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				Wait(2000)
 				print('fuel after wait', exports["esx_legacyfuel"]:GetFuel(v))
 			end
@@ -575,7 +575,7 @@ function StoreNearbyVehicle(playerCoords)
 				table.insert(vehiclePlates, {
 					vehicle = v,
 					plate = ESX.Math.Trim(GetVehicleNumberPlateText(v)),
-					fuel = exports["esx_legacyfuel"]:GetFuel(v)
+					fuel = math.floor(exports["esx_legacyfuel"]:GetFuel(v))
 				})
 			end
 		end
