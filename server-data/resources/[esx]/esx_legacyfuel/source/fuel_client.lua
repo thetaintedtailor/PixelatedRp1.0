@@ -397,7 +397,7 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
-	return DecorGetInt(vehicle, Config.FuelDecor)
+	return DecorGetInt(vehicle, "_FUEL_LEVEL")
 end
 
 function SetFuel(vehicle, fuel)

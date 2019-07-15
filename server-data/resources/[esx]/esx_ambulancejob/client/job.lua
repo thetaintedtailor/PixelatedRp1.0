@@ -564,10 +564,11 @@ function StoreNearbyVehicle(playerCoords)
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
 			print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
-			
+
 			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				Wait(2000)
 			end
+			print('fuel after wait', exports["esx_legacyfuel"]:GetFuel(v))
 			if GetVehicleNumberOfPassengers(v) == 0 and IsVehicleSeatFree(v, -1) then
 				table.insert(vehiclePlates, {
 					vehicle = v,
