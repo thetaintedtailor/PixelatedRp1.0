@@ -529,8 +529,9 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
 									if (exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)) == 0 then
-										Wait(2000)
+										Citizen.Wait(5000)
 									end
+									print('what is happening', exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel))
 									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
