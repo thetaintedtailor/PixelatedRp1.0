@@ -22,3 +22,7 @@ files {
 	'html/style.css',
 	'html/listener.js'
 }
+
+server_exports {
+	'GetCharacterNameCached'
+}
