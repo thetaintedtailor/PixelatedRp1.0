@@ -405,6 +405,7 @@ function SetFuel(vehicle, fuel)
 		SetVehicleFuelLevel(vehicle, fuel + 0.0)
 		DecorSetInt(vehicle, "_FUEL_LEVEL", fuel)
 	end
+	print('inside setFuel', SetVehicleFuelLevel(vehicle, fuel + 0.0))
 end
 
 if Config.EnableHUD then
