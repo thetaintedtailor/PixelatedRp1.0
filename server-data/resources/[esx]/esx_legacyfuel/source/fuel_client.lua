@@ -463,7 +463,7 @@ if Config.EnableHUD then
 			if displayHud then
 				DrawAdvancedText(0.130 - x, 0.77 - y, 0.156, 0.0408, 0.6, mph, 255, 255, 255, 255, 6, 1)
 				DrawAdvancedText(0.174 - x, 0.77 - y, 0.156, 0.0408, 0.6, kmh, 255, 255, 255, 255, 6, 1)
-				DrawAdvancedText(0.2200 - x, 0.77 - y, 0.156, 0.0408, 0.6, fuel, 255, 255, 255, 255, 6, 1)
+				DrawAdvancedText(0.2250 - x, 0.77 - y, 0.156, 0.0408, 0.6, fuel, 255, 255, 255, 255, 6, 1)
 				DrawAdvancedText(0.148 - x, 0.7765 - y, 0.156, 0.0408, 0.4, "mp/h              km/h            Fuel", 240, 200, 80, 255, 6, 1)
 			else
 				Citizen.Wait(750)
