@@ -397,15 +397,13 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
-	--return DecorGetFloat(vehicle, "_FUEL_LEVEL")
-	print('inside getfuel', math.floor(GetVehicleFuelLevel(vehicle)))
 	return math.floor(GetVehicleFuelLevel(vehicle))
 end
 
 function SetFuel(vehicle, fuel)
 	if type(fuel) == 'number' and fuel >= 0 and fuel <= 100 then
 		SetVehicleFuelLevel(vehicle, fuel + 0.0)
-		DecorSetFloat(vehicle, "_FUEL_LEVEL", fuel)
+		DecorSetInt(vehicle, "_FUEL_LEVEL", fuel)
 	end
 end
 
