@@ -59,11 +59,10 @@ function ToggleVehicleLock()
 	end)
 
 	if IsPedInAnyVehicle(playerPed, false) then
-		Citizen.Trace("Ped is in a vehicle!\n")
 		vehicle = GetVehiclePedIsIn(playerPed, false)
 		isInVehicle = true
 	else
-		vehicle = GetClosestVehicle(coords, 8.0, 0, 70)
+		vehicle = GetClosestVehicle(coords, 8.0, 0, 7)
 		isInvehicle = false
 	end
 
@@ -75,7 +74,6 @@ function ToggleVehicleLock()
 	local lockStatus = GetVehicleDoorLockStatus(vehicle)
 
 	if isInVehicle then -- You can lock/unlock any vehicle you're already in
-		Citizen.Trace("In a vehicle!\n")
 		if lockStatus == 1 then -- unlocked
 			Lock(vehicle)
 		elseif lockStatus == 4 then -- locked
