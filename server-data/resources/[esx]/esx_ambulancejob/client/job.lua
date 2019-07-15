@@ -564,9 +564,9 @@ function StoreNearbyVehicle(playerCoords)
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-			print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
+			--print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
 
-			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
+			if exports["esx_legacyfuel"]:GetFuel(v) == 0 then
 				Wait(2000)
 				print('fuel after wait', exports["esx_legacyfuel"]:GetFuel(v))
 			end
