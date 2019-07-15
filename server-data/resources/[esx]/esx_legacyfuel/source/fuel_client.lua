@@ -397,13 +397,15 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
-	return DecorGetFloat(vehicle, "_FUEL_LEVEL")
+	--return DecorGetFloat(vehicle, "_FUEL_LEVEL")
+	print('inside getfuel', GetVehicleFuelLevel(vehicle))
+	GetVehicleFuelLevel(vehicle)
 end
 
 function SetFuel(vehicle, fuel)
 	if type(fuel) == 'number' and fuel >= 0 and fuel <= 100 then
 		SetVehicleFuelLevel(vehicle, fuel + 0.0)
-		DecorSetFloat(vehicle, "_FUEL_LEVEL", fuel)
+		--DecorSetFloat(vehicle, "_FUEL_LEVEL", fuel)
 	end
 end
 
@@ -462,7 +464,7 @@ if Config.EnableHUD then
 				DrawAdvancedText(0.130 - x, 0.77 - y, 0.156, 0.0408, 0.6, mph, 255, 255, 255, 255, 6, 1)
 				DrawAdvancedText(0.174 - x, 0.77 - y, 0.156, 0.0408, 0.6, kmh, 255, 255, 255, 255, 6, 1)
 				DrawAdvancedText(0.2195 - x, 0.77 - y, 0.156, 0.0408, 0.6, fuel, 255, 255, 255, 255, 6, 1)
-				DrawAdvancedText(0.148 - x, 0.7765 - y, 0.156, 0.0408, 0.4, "mp/h              km/h                Fuel", 240, 200, 80, 255, 6, 1)
+				DrawAdvancedText(0.148 - x, 0.7765 - y, 0.156, 0.0408, 0.4, "mp/h              km/h            Fuel", 240, 200, 80, 255, 6, 1)
 			else
 				Citizen.Wait(750)
 			end
