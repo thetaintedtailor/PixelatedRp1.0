@@ -399,7 +399,7 @@ end
 function GetFuel(vehicle)
 	--return DecorGetFloat(vehicle, "_FUEL_LEVEL")
 	print('inside getfuel', math.floor(GetVehicleFuelLevel(vehicle)))
-	math.floor(GetVehicleFuelLevel(vehicle))
+	return math.floor(GetVehicleFuelLevel(vehicle))
 end
 
 function SetFuel(vehicle, fuel)
