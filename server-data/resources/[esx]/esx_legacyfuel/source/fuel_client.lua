@@ -397,7 +397,7 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
-	return math.floor(GetVehicleFuelLevel(vehicle))
+	return DecorGetFloat(vehicle, Config.FuelDecor)
 end
 
 function SetFuel(vehicle, fuel)
