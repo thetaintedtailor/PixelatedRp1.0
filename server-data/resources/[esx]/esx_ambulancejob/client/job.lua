@@ -557,12 +557,14 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 
 end
 
+
 function StoreNearbyVehicle(playerCoords)
 	local vehicles, vehiclePlates = ESX.Game.GetVehiclesInArea(playerCoords, 30.0), {}
 
 	if #vehicles > 0 then
 		for k,v in ipairs(vehicles) do
-			-- Make sure the vehicle we're saving is empty, or else it wont be deleted
+			print('this is int fuel', exports["esx_legacyfuel"]:GetFuel(v))
+			
 			if math.floor(exports["esx_legacyfuel"]:GetFuel(v)) == 0 then
 				Wait(2000)
 			end

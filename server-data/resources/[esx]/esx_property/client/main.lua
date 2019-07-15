@@ -650,6 +650,20 @@ function getItem(type, value, quantity)
 			aptInventory[i].count = (aptInventory[i].count - quantity)
 		end
 	end
+
+	if count > 0 and inventoryItem.count >= count then
+			
+		-- can the player carry the said amount of x item?
+		if sourceItem.limit ~= -1 and (sourceItem.count + count) > sourceItem.limit then
+			TriggerClientEvent('esx:showNotification', _source, _U('player_cannot_hold'))
+		else
+			inventory.removeItem(item, count)
+			xPlayer.addInventoryItem(item, count)
+			TriggerClientEvent('esx:showNotification', _source, _U('have_withdrawn', count, inventoryItem.label))
+		end
+	else
+		TriggerClientEvent('esx:showNotification', _source, _U('not_enough_in_property'))
+	end
 end
 
 
