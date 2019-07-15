@@ -397,13 +397,13 @@ elseif Config.ShowAllGasStations then
 end
 
 function GetFuel(vehicle)
-	return DecorGetInt(vehicle, "_FUEL_LEVEL")
+	return DecorGetFloat(vehicle, "_FUEL_LEVEL")
 end
 
 function SetFuel(vehicle, fuel)
 	if type(fuel) == 'number' and fuel >= 0 and fuel <= 100 then
 		SetVehicleFuelLevel(vehicle, fuel + 0.0)
-		DecorSetInt(vehicle, "_FUEL_LEVEL", fuel)
+		DecorSetFloat(vehicle, "_FUEL_LEVEL", fuel)
 	end
 end
 
