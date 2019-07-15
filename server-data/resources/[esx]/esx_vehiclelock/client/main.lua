@@ -52,15 +52,19 @@ function ToggleVehicleLock()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	local vehicle
+	local isInVehicle
 
 	Citizen.CreateThread(function()
 		StartWorkaroundTask()
 	end)
 
 	if IsPedInAnyVehicle(playerPed, false) then
+		Citizen.Trace("Ped is in a vehicle!\n")
 		vehicle = GetVehiclePedIsIn(playerPed, false)
+		isInVehicle = true
 	else
 		vehicle = GetClosestVehicle(coords, 8.0, 0, 70)
+		isInvehicle = false
 	end
 
 	if not DoesEntityExist(vehicle) then
@@ -68,27 +72,44 @@ function ToggleVehicleLock()
 		return
 	end
 
-	ESX.TriggerServerCallback('esx_vehiclelock:requestPlayerCars', function(isOwnedVehicle)
+	local lockStatus = GetVehicleDoorLockStatus(vehicle)
 
-		if isOwnedVehicle then
-			local lockStatus = GetVehicleDoorLockStatus(vehicle)
-
-			if lockStatus == 1 then -- unlocked
-				SetVehicleDoorsLocked(vehicle, 4)
-				PlayVehicleDoorCloseSound(vehicle, 1)
-
-				TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_locked') } })
-			elseif lockStatus == 4 then -- locked
-				SetVehicleDoorsLocked(vehicle, 1)
-				PlayVehicleDoorOpenSound(vehicle, 0)
-
-				TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_unlocked') } })
-			end
-		else 
-			ESX.ShowNotification("You do not own this vehicle.")
+	if isInVehicle then -- You can lock/unlock any vehicle you're already in
+		Citizen.Trace("In a vehicle!\n")
+		if lockStatus == 1 then -- unlocked
+			Lock(vehicle)
+		elseif lockStatus == 4 then -- locked
+			Unlock(vehicle)
 		end
+	else
+		ESX.TriggerServerCallback('esx_vehiclelock:requestPlayerCars', function(isOwnedVehicle)
 
-	end, ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)))
+			if isOwnedVehicle then
+				if lockStatus == 1 then -- unlocked
+					Lock(vehicle)
+				elseif lockStatus == 4 then -- locked
+					Unlock(vehicle)
+				end
+			else 
+				ESX.ShowNotification("You do not own this vehicle.")
+			end
+
+		end, ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)))
+	end
+end
+
+function Lock(vehicle)
+	SetVehicleDoorsLocked(vehicle, 4)
+	PlayVehicleDoorCloseSound(vehicle, 1)
+
+	TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_locked') } })
+end
+
+function Unlock(vehicle)
+	SetVehicleDoorsLocked(vehicle, 1)
+	PlayVehicleDoorOpenSound(vehicle, 0)
+
+	TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_unlocked') } })
 end
 
 Citizen.CreateThread(function()
