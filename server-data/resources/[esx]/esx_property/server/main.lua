@@ -270,6 +270,24 @@ AddEventHandler('esx_property:getItem', function(owner, type, item, count)
 
 end)
 
+RegisterServerEvent('esx_property:updateAptInventory')
+AddEventHandler('esx_property:updateAptInventory', function(owner, aptInventory)
+	local _source      = source
+	local xPlayer      = ESX.GetPlayerFromId(_source)
+
+	for i=1, #aptInventory, 1 do
+		--local indexedItem = aptInventory[i].value
+		if aptInventory[i].type == 'item_standard' then
+			MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE name = @name AND owner = @identifier',
+			{
+				['@count'] = aptInventory[i].count,
+				['@name'] = aptInventory[i].value,
+				['@identifier'] = xPlayer.identifier,
+			})
+		end
+	end
+end)
+
 RegisterServerEvent('esx_property:putItem')
 AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 	local _source      = source
@@ -363,11 +381,6 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				local itemCount = results[j].count
 				local itemOwner = results[j].owner
 
---[[
-				if items[itemOwner] == nil then
-					items[itemOwner] = {}
-				end
-]]
 				table.insert(items, {
 					name  = itemName,
 					count = itemCount,

@@ -37,7 +37,5 @@ dependencies {
 	'es_extended',
 	'instance',
 	'cron',
-	'esx_addonaccount',
-	'esx_addoninventory',
 	'esx_datastore'
 }
