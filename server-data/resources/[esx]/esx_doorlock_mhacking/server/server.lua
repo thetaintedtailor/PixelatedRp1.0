@@ -57,7 +57,7 @@ AddEventHandler('esx_doorlock:hack', function(mycb)
 			end
 		end
 	
-		if xPlayer.getInventoryItem('keycard').count >= 1 and cops >= Config.PoliceNumberRequired --then
+		if xPlayer.getInventoryItem('keycard').count >= 1 and cops >= Config.PoliceNumberRequired then
 			--xPlayer.removeInventoryItem('keycard', 1)
 
 			TriggerClientEvent('esx_doorlock:currentlyhacking', source)
