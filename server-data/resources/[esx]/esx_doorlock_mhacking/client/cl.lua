@@ -91,7 +91,6 @@ if success then
 	TriggerEvent('mhacking:hide')	
 else
 	print('Failure')
-		xPlayer.removeInventoryItem('keycard', 1)
 		TriggerEvent('mhacking:hide')
 	end
 end	
