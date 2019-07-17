@@ -51,7 +51,7 @@ end)
 
 RegisterNetEvent('hypr9speed:activar')
 AddEventHandler('hypr9speed:activar', function()
-        TriggerServerEvent('hypr9speed:removeInventoryItem','nitro', 1)
+        --TriggerServerEvent('hypr9speed:removeInventoryItem','nitro', 1)
         if ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') then
             ESX.UI.Menu.Close('default', 'es_extended', 'inventory')
         end
