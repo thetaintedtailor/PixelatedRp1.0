@@ -1,6 +1,6 @@
 Config = {}
 Config.Locale = 'en'
-Config.PoliceNumberRequired = 2
+Config.PoliceNumberRequired = 0
 Config.DoorList = {
 
 	--
