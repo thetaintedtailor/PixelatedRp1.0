@@ -40,6 +40,25 @@ AddEventHandler("esx:playerLoaded", function(newData)
 	ESX.TriggerServerCallback("esx-qalle-jail:retrieveJailTime", function(inJail, newJailTime)
 		if inJail then
 
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
+				if skin.sex == 0 then
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 9, 4, 0)--Jean
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 61, 0, 0)--Chaussure
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
+				elseif skin.sex == 1 then
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+				else
+					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
+				end
+							
+			end)
+
 			jailTime = newJailTime
 
 			JailLogin()
@@ -69,6 +88,7 @@ AddEventHandler("esx-qalle-jail:unJailPlayer", function()
 	jailTime = 0
 
 	UnJail()
+	close.menu()
 end)
 
 function JailLogin()
@@ -104,22 +124,41 @@ function InJail()
 
 			ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
 
+			
+			local Male = GetHashKey("mp_m_freemode_01")
+
+			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
+				if skin.sex == 0 then
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 9, 4, 0)--Jean
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 61, 0, 0)--Chaussure
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
+				elseif skin.sex == 1 then
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+				else
+					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
+				end
+
+			end)
+				
 			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
 
 			if jailTime == 0 then
 				UnJail()
 
 				TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
-			elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 1664.74, 2604.82, 45.56, true) >= 1000 then
-               jailTime = 0 
-               TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
 			end
 
 			Citizen.Wait(60000)
 		end
 
 	end)
-
+	
 	--Jail Timer--
 
 	--Prison Work--
@@ -286,6 +325,13 @@ function DeliverPackage(packageId)
 
 			if DistanceCheck <= 2.0 then
 				if IsControlJustPressed(0, 38) then
+					do 
+						jailTime = jailTime -1
+				
+						ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
+				
+						TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
+					end
 					DeleteEntity(packageId)
 					ClearPedTasksImmediately(PlayerPedId())
 					Packaging = false
@@ -304,7 +350,7 @@ function OpenJailMenu()
 		'default', GetCurrentResourceName(), 'jail_prison_menu',
 		{
 			title    = "Prison Menu",
-			align    = 'center',
+			align    = 'right',
 			elements = {
 				{ label = "Jail Closest Person", value = "jail_closest_player" },
 				{ label = "Unjail Person", value = "unjail_player" }
@@ -390,7 +436,7 @@ function OpenJailMenu()
 					'default', GetCurrentResourceName(), 'jail_unjail_menu',
 					{
 						title = "Unjail Player",
-						align = "center",
+						align = "right",
 						elements = elements
 					},
 				function(data2, menu2)
