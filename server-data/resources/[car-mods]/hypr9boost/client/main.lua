@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
     while true do
 
         Citizen.Wait(0)
-		local force = 25.0
+		local force = 80.0
         	local ped = GetPlayerPed(-1)
 		local playerVeh = GetVehiclePedIsIn(ped, false)
 	
@@ -42,7 +42,7 @@ Citizen.CreateThread(function()
 			Citizen.Wait(3000)
 			SetVehicleBoostActive(playerVeh, 1, 0)
 			SetVehicleForwardSpeed(playerVeh, force)
-			--StartScreenEffect("RaceTurbo", 0, 0)
+			StartScreenEffect("RaceTurbo", 0, 0)
 			SetVehicleBoostActive(playerVeh, 0, 0)
 			nitroActivado = false
         end
@@ -51,7 +51,7 @@ end)
 
 RegisterNetEvent('hypr9speed:activar')
 AddEventHandler('hypr9speed:activar', function()
-        --TriggerServerEvent('hypr9speed:removeInventoryItem','nitro', 1)
+        TriggerServerEvent('hypr9speed:removeInventoryItem','nitro', 1)
         if ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') then
             ESX.UI.Menu.Close('default', 'es_extended', 'inventory')
         end
