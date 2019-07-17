@@ -23,7 +23,7 @@ function LoadModel(model)
 	end
 end
 
---[[function HideHUDThisFrame()
+function HideHUDThisFrame()
 	HideHelpTextThisFrame()
 	HideHudAndRadarThisFrame()
 	HideHudComponentThisFrame(1)
@@ -40,7 +40,7 @@ end
 	HideHudComponentThisFrame(15)
 	HideHudComponentThisFrame(18)
 	HideHudComponentThisFrame(19)
-end]]
+end
 
 function Cutscene()
 	DoScreenFadeOut(100)
@@ -49,23 +49,27 @@ function Cutscene()
 
 	local Male = GetHashKey("mp_m_freemode_01")
 
-	ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
-		if skin.sex == 0 then
-			SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
-			SetPedComponentVariation(GetPlayerPed(-1), 4, 9, 4, 0)--Jean
-			SetPedComponentVariation(GetPlayerPed(-1), 6, 61, 0, 0)--Chaussure
-			SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
-			SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
-		elseif skin.sex == 1 then
-            SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
-            SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
-            SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
-            SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
-            SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+	TriggerEvent('skinchanger:getSkin', function(skin)
+		if GetHashKey(GetEntityModel(PlayerPedId())) == Male then
+			local clothesSkin = {
+				['tshirt_1'] = 20, ['tshirt_2'] = 15,
+				['torso_1'] = 33, ['torso_2'] = 0,
+				['arms'] = 0,
+				['pants_1'] = 7, ['pants_2'] = 0,
+				['shoes_1'] = 34, ['shoes_2'] = 0,
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+
 		else
-			TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
+			local clothesSkin = {
+				['tshirt_1'] = 15, ['tshirt_2'] = 0,
+				['torso_1'] = 2, ['torso_2'] = 6,
+				['arms'] = 2,
+				['pants_1'] = 2, ['pants_2'] = 0,
+				['shoes_1'] = 35, ['shoes_2'] = 0,
+			}
+			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
 		end
-					
 	end)
 
 	LoadModel(-1320879687)
@@ -135,7 +139,7 @@ function TeleportPlayer(pos)
 			'default', GetCurrentResourceName(), 'teleport_jail',
 			{
 				title    = "Choose Position",
-				align    = 'right',
+				align    = 'center',
 				elements = elements
 			},
 		function(data, menu)
@@ -143,7 +147,7 @@ function TeleportPlayer(pos)
 			local action = data.current.value
 			local position = Config.Teleports[action]
 
-			if action == "Jail" or action == "Security" then
+			if action == "Boiling Broke" or action == "Security" then
 
 				if PlayerData.job.name ~= "police" then
 					ESX.ShowNotification("You don't have an key to go here!")
