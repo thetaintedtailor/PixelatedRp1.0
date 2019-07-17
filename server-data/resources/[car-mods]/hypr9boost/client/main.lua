@@ -39,7 +39,7 @@ Citizen.CreateThread(function()
 		local playerVeh = GetVehiclePedIsIn(ped, false)
 	
 		if IsControlPressed(1, 38) and nitroActivado then
-			Citizen.Wait(3000000000)
+			Citizen.Wait(30000)
 			SetVehicleBoostActive(playerVeh, 1, 0)
 			SetVehicleForwardSpeed(playerVeh, force)
 			--StartScreenEffect("RaceTurbo", 0, 0)
