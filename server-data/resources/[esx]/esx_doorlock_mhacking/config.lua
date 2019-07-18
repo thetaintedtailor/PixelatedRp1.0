@@ -234,21 +234,21 @@ Config.DoorList = {
 		size = 2
 	},
 
-	-- principal bank
 	{
-		objName = 'hei_v_ilev_bk_gate2_pris',
-		objCoords  = {x = 261.99899291992, y = 221.50576782227, z = 106.68346405029},
-		textCoords = {x = 261.99899291992, y = 221.50576782227, z = 107.68346405029}, 
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1795.94, y = 2616.55, z = 45.56},
+		textCoords = {x = 1795.998, y = 2616.55, z = 45.56},
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 12,
 		size = 2
 	},
 
+	-- principal bank
 	{
 		objName = 'hei_v_ilev_bk_gate2_pris',
-		objCoords  = {x = 256.96, y = 220.44, z = 106.29},
-		textCoords = {x = 256.96, y = 220.44, z = 106.29}, 
+		objCoords  = {x = 261.99899291992, y = 221.50576782227, z = 106.68346405029},
+		textCoords = {x = 261.99899291992, y = 221.50576782227, z = 107.68346405029}, 
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 12,
