@@ -247,8 +247,8 @@ Config.DoorList = {
 
 	{
 		objName = 'hei_v_ilev_bk_gate2_pris',
-		objCoords  = {x = 256.84, y = 219.73, z = 106.29},
-		textCoords = {x = 256.84, y = 219.73, z = 106.29}, 
+		objCoords  = {x = 256.96, y = 220.44, z = 106.29},
+		textCoords = {x = 256.96, y = 220.44, z = 106.29}, 
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 12,
