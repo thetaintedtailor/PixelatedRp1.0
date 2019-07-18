@@ -31,7 +31,7 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 	local _source  = source
 	local xPlayer  = ESX.GetPlayerFromId(_source)
 	local xPlayers = ESX.GetPlayers()
-	local luck = math.random(1, 15)
+	local luck = math.random(1, 2)
 
 	if Stores[currentStore] then
 		local store = Stores[currentStore]
@@ -80,6 +80,10 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 								xPlayer.addAccountMoney('black_money', store.reward)
 							else 
 								xPlayer.addMoney(store.reward)
+							end
+							
+							if luck == 1 then
+								xPlayer.addInventoryItem('keycard', 1)
 							end
 							
 							local xPlayers, xPlayer = ESX.GetPlayers(), nil
