@@ -7,7 +7,7 @@ Config.Marker = {
 	DrawDistance = 15.0, Type = 1    -- default circle type, low draw distance due to indoors area
 }
 
-Config.PoliceNumberRequired = 2
+Config.PoliceNumberRequired = 0
 Config.TimerBeforeNewRob    = 21600 -- The cooldown timer on a store after robbery was completed / canceled, in seconds
 
 Config.MaxDistance    = 20   -- max distance from the robbary, going any longer away from it will to cancel the robbary
