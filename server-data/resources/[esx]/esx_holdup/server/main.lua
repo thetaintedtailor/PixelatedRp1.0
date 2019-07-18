@@ -31,6 +31,7 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 	local _source  = source
 	local xPlayer  = ESX.GetPlayerFromId(_source)
 	local xPlayers = ESX.GetPlayers()
+	local luck = math.random(1, 15)
 
 	if Stores[currentStore] then
 		local store = Stores[currentStore]
