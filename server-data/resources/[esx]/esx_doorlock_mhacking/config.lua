@@ -244,6 +244,16 @@ Config.DoorList = {
 		distance = 12,
 		size = 2
 	},
+
+	{
+		objName = 'hei_v_ilev_bk_gate2_pris',
+		objCoords  = {x = 256.84, y = 219.73, z = 106.29},
+		textCoords = {x = 256.84, y = 219.73, z = 106.29}, 
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
 	
 	-- apartment
 	{
