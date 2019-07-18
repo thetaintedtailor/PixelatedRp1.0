@@ -78,9 +78,8 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 
 							if Config.GiveBlackMoney then
 								xPlayer.addAccountMoney('black_money', store.reward)
-							else
-								xPlayer.addMoney(store.reward) then
-								if luck == 1 then 
+							else 
+								luck == 1 then 
 								player.addInventoryItem(keycard, 1)
 							end
 							
