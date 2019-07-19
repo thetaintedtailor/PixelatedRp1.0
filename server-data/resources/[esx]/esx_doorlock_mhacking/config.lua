@@ -274,6 +274,16 @@ Config.DoorList = {
 		distance = 2.5,
 		size = 2
 	},
+
+	{
+		objName = 'v_ilev_bk_door',
+		objCoords  = {x = 237.7704, y = 227.87, z = 106.426},
+		textCoords = {x = 237.7704, y = 227.87, z = 106.426}, 
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 2.5,
+		size = 2
+	},
 	
 	-- apartment
 	{
