@@ -11,7 +11,7 @@ local KeyToucheCloseEvent = {
     { code = 176, event = 'Enter' },
     { code = 177, event = 'Backspace' },
 }
-local KeyOpenClose = 288 -- F2
+local KeyOpenClose = 288 -- F1
 local KeyTakeCall = 38 -- E
 local menuIsOpen = false
 local contacts = {}
@@ -133,7 +133,7 @@ Citizen.CreateThread(function()
 
         while true do
             Citizen.Wait(0)
-            if IsControlJustPressed(1, KeyOpenClose) and GetLastInputMethod( 0 ) then
+            if IsControlJustPressed(1, KeyOpenClose) and GetLastInputMethod( 0 ) and not IsControlPressed(0, 21) then
                 TooglePhone()
             end
             if menuIsOpen == true then
