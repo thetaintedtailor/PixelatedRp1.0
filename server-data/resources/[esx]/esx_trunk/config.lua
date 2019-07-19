@@ -47,12 +47,12 @@ Config.localWeight = {
 	--- MEDS ---
 	
 	--- JOBS ---
-	alive_chicken = 5000,
+	alive_chicken = 3000,
 	clothe = 2500,
 	copper = 1750,
 	diamond = 2000,
-	cutted_wood = 5000,
-	essence = 4000,
+	cutted_wood = 3000,
+	essence = 3000,
 	fabric = 1250,
 	gold = 4750,
 	iron = 2380,
@@ -63,7 +63,7 @@ Config.localWeight = {
 	slaughtered_chicken = 5000,
 	stone = 14000,
 	washed_stone = 14000,
-	wood = 5000,
+	wood = 3000,
 	wool = 2500,
 	shark = 50000,
 	turtle = 10000,
@@ -93,13 +93,13 @@ Config.localWeight = {
 	
 	--- ILEGALS ---
 	coke = 2000,
-	coke_pooch = 10000,
+	coke_pooch = 3000,
 	meth = 2000,
-	meth_pooch = 10000,
+	meth_pooch = 3000,
 	opium = 2000,
-	opium_pooch = 10000,
+	opium_pooch = 3000,
 	weed = 1250,
-	weed_pooch = 6500,
+	weed_pooch = 3000,
 	--- ILEGALS ---
 	
 	---WEAPONS----
