@@ -258,7 +258,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_bk_gate',
 		objCoords  = {x = 256.3116, y = 220.6579, z = 106.4296},
-		textCoords = {x = 261.99899291992, y = 221.50576782227, z = 107.68346405029}, 
+		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 12,
@@ -268,7 +268,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_bk_door',
 		objCoords  = {x = 266.3624, y = 217.5697, z = 110.4328},
-		textCoords = {x = 261.99899291992, y = 221.50576782227, z = 107.68346405029}, 
+		textCoords = {x = 266.3624, y = 217.5697, z = 110.4328}, 
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 12,
