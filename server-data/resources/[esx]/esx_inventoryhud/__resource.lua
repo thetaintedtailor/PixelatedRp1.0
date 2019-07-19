@@ -189,4 +189,5 @@ files {
     'html/img/items/xanax.png',
     'html/img/items/ibuprofen.png',
     'html/img/items/rope.png',
+    'html/img/items/keycard.png',
 }
