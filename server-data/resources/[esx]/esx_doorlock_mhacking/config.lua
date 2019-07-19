@@ -90,6 +90,36 @@ Config.DoorList = {
 		distance = 1
 	},
 
+		-- Interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 470.34, y = -993.66, z = 25.10},
+		textCoords = {x = 470.36, y = -994.62, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+	
+		-- Outer interrogation room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 468.73, y = -992.75, z = 25.10},
+		textCoords = {x = 467.71, y = -992.69, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = false,
+		distance = 1,
+	},
+	
+		-- Evidence room door
+	{
+		objName = 'V_ILev_PH_GenDoor006',
+		objCoords  = {x = 478.42, y = -987.25, z = 25.10},
+		textCoords = {x = 477.59, y = -987.28, z = 25.10},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2,
+	},
+
 	-- 
 	-- Mission Row Cells
 	--
@@ -485,94 +515,6 @@ Config.DoorList = {
 		distance = 2.5,
 		size = 2
 	},
-	
-	-- apartment
-	{
-		objName = 'v_ilev_trev_doorfront',
-		objCoords  = {x = -1150.3, y = -1521.41, z = 10.63},
-		textCoords = {x = -1150.3, y = -1521.41, z = 10.63},         
-		authorizedJobs = { 'police' },
-		locked = true,
-		distance = 12,
-		size = 0.0
-	},
-	
-	-- LostMC
-	{
-		objName = 'v_ilev_lostdoor',
-		objCoords  = {x = 981.65, y = -102.77, z = 74.85},
-		textCoords = {x = 981.65, y = -102.77, z = 74.85},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Boss Door to Crack location
-	{
-		objName = 'v_ilev_losttoiletdoor',
-		objCoords  = {x = 985.14, y = -94.74, z = 74.85},   
-		textCoords = {x = 985.14, y = -94.74, z = 74.85},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Door to coke seller
-	{
-		objName = 'prop_damdoor_01',
-		objCoords  = {x = 983.38, y = -143.47, z = 74.27},   
-		textCoords = {x = 983.38, y = -143.47, z = 74.27},       
-		authorizedJobs = { 'cartel' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Door to crack door 1
-	{
-		objName = 'prop_magenta_door',
-		objCoords  = {x = 92.27, y = 3744.78, z = 40.71},   
-		textCoords = {x = 92.27, y = 3744.78, z = 40.71},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Door to crack door 2
-	{
-		objName = 'prop_magenta_door',
-		objCoords  = {x = 94.26, y = 3750.31, z = 40.72},   
-		textCoords = {x = 94.26, y = 3750.31, z = 40.72},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Door to crack door 3
-	{
-		objName = 'prop_magenta_door',
-		objCoords  = {x = 29.51, y = 3662.04, z = 40.62},   
-		textCoords = {x = 29.51, y = 3662.04, z = 40.62},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
-	
-	-- LostMC Door to crack door 4
-	{
-		objName = 'prop_cs4_05_tdoor',
-		objCoords  = {x = 32.27, y = 3667.38, z = 40.55},   
-		textCoords = {x = 32.27, y = 3667.38, z = 40.55},       
-		authorizedJobs = { 'biker' },
-		locked = true,
-		distance = 2,
-		size = 0.3
-	},
 
 	--PRISON TEST CELL 1  
 	{ 
@@ -680,6 +622,26 @@ Config.DoorList = {
 		locked = true,
 		distance = 9,
 		size = 2
+	},
+
+		-- Pillbox Hospital Inner Doors
+
+	{
+		objName = 'v_ilev_cor_firedoor',
+		objCoords  = {x=328.62, y=-585.20, z=43.33},
+		textCoords = {x=329.39, y=-585.44, z=43.33},
+		authorizedJobs = {'ambulance'},
+		locked = true,
+		distance = 4
+	},
+
+	{
+		objName = 'v_ilev_cor_firedoor',
+		objCoords  = {x=330.79, y=-585.99, z=43.33},
+		textCoords = {x=330.13, y=-585.74, z=43.33},
+		authorizedJobs = {'ambulance'},
+		locked = true,
+		distance = 4
 	},
 	
 
