@@ -78,7 +78,7 @@ Config.DoorList = {
 		textCoords = {x = 444.020, y = -989.445, z = 31.739},
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 1
+		distance = 3
 	},
 
 	{
@@ -87,7 +87,7 @@ Config.DoorList = {
 		textCoords = {x = 445.350, y = -989.445, z = 31.739},
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 1
+		distance = 3
 	},
 
 		-- Interrogation room door
@@ -107,7 +107,7 @@ Config.DoorList = {
 		textCoords = {x = 467.71, y = -992.69, z = 25.10},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = false,
-		distance = 1,
+		distance = 2,
 	},
 	
 		-- Evidence room door
@@ -180,7 +180,7 @@ Config.DoorList = {
 		textCoords = {x = 468.09, y = -1014.452, z = 27.1362},
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 1
+		distance = 3
 	},
 
 	{
@@ -189,7 +189,7 @@ Config.DoorList = {
 		textCoords = {x = 469.35, y = -1014.452, z = 27.136},
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 1
+		distance = 3
 	},
 
 	-- Back Gate
