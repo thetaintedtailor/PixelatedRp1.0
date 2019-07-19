@@ -618,7 +618,7 @@ Config.DoorList = {
 		objName = 'prop_com_gar_door_01',
 		objCoords  = {x = 1204.56, y = -3110.38, z = 6.60},
 		textCoords = {x = 1204.56, y = -3110.38, z = 6.60},
-		authorizedJobs = { 'CanInc' },
+		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 9,
 		size = 2
