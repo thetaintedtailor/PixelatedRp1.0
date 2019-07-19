@@ -256,19 +256,19 @@ Config.DoorList = {
 	},
 
 	{
-		objName = 'v_ilev_bk_gate',
-		objCoords  = {x = 256.3116, y = 220.6579, z = 106.4296},
-		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
+		objName = 'v_ilev_bk_door',
+		objCoords  = {x = 266.3624, y = 217.5697, z = 110.4328},
+		textCoords = {x = 266.3624, y = 217.5697, z = 110.4328}, 
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 12,
+		distance = 2.5,
 		size = 2
 	},
 
 	{
-		objName = 'v_ilev_bk_door',
-		objCoords  = {x = 266.3624, y = 217.5697, z = 110.4328},
-		textCoords = {x = 266.3624, y = 217.5697, z = 110.4328}, 
+		objName = 'v_ilev_bk_gate',
+		objCoords  = {x = 256.3116, y = 220.6579, z = 106.4296},
+		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 2.5,
