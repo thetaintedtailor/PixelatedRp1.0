@@ -469,7 +469,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_bk_gate',
 		objCoords  = {x = 256.3116, y = 220.6579, z = 106.4296},
-		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
+		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296},
 		authorizedJobs = { 'police' },
 		locked = true,
 		distance = 2.5,
