@@ -4,10 +4,10 @@
   <residentAnims />
   <InitDatas>
     <Item>
-      <modelName>ninef</modelName>
-      <txdName>ninef</txdName>
-      <handlingId>NINEF</handlingId>
-      <gameName>NINEF</gameName>
+      <modelName>ninef3</modelName>
+      <txdName>ninef3</txdName>
+      <handlingId>NINEF3</handlingId>
+      <gameName>NINEF3</gameName>
       <vehicleMakeName>OBEY</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
