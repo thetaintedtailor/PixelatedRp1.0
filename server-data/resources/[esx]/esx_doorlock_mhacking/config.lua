@@ -261,7 +261,7 @@ Config.DoorList = {
 		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 2.5,
+		distance = 12,
 		size = 2
 	},
 
