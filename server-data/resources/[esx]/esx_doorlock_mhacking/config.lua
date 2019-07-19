@@ -254,6 +254,176 @@ Config.DoorList = {
 		size = 2
 	},
 
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1830.134, y = 2703.499, z = 44.4467},
+		textCoords = {x = 1830.134, y = 2703.499, z = 44.4467},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1776.701, y = 2747.148, z = 44.44669},
+		textCoords = {x = 1776.701, y = 2747.148, z = 44.44669},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1762.196, y = 2752.489, z = 44.44669},
+		textCoords = {x = 1762.196, y = 2752.489, z = 44.44669},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1662.011, y = 2748.703, z = 44.44669},
+		textCoords = {x = 1662.011, y = 2748.703, z = 44.44669},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1648.411, y = 2741.668, z = 44.44669},
+		textCoords = {x = 1648.411, y = 2741.668, z = 44.44669},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1584.653, y = 2679.75, z = 44.50947},
+		textCoords = {x = 1584.653, y = 2679.75, z = 44.50947},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1575.719, y = 2667.152, z = 44.50947},
+		textCoords = {x = 1575.719, y = 2667.152, z = 44.50947},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1547.706, y = 2591.282, z = 44.50947},
+		textCoords = {x = 1547.706, y = 2591.282, z = 44.50947},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1546.983, y = 2576.13, z = 44.39033},
+		textCoords = {x = 1546.983, y = 2576.13, z = 44.39033},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1550.93, y = 2482.743, z = 44.39529},
+		textCoords = {x = 1550.93, y = 2482.743, z = 44.39529},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1558.221, y = 2469.349, z = 44.39529},
+		textCoords = {x = 1558.221, y = 2469.349, z = 44.39529},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1652.984, y = 2409.571, z = 44.44308},
+		textCoords = {x = 1652.984, y = 2409.571, z = 44.44308},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1667.669, y = 2407.648, z = 44.42879},
+		textCoords = {x = 1667.669, y = 2407.648, z = 44.42879},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1749.142, y = 2419.812, z = 44.42517},
+		textCoords = {x = 1749.142, y = 2419.812, z = 44.42517},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1762.542, y = 2426.507, z = 44.43787},
+		textCoords = {x = 1762.542, y = 2426.507, z = 44.43787},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1808.992, y = 2474.545, z = 44.48077},
+		textCoords = {x = 1808.992, y = 2474.545, z = 44.48077},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
+	{
+		objName = 'prop_gate_prison_01',
+		objCoords  = {x = 1813.749, y = 2488.907, z = 44.46368},
+		textCoords = {x = 1813.749, y = 2488.907, z = 44.46368},
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 12,
+		size = 2
+	},
+
 
 	{
 		objName = 'prop_fnclink_03gate5',
