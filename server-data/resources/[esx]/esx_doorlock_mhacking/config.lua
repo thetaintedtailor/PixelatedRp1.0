@@ -236,7 +236,7 @@ Config.DoorList = {
 
 	{
 		objName = 'prop_gate_prison_01',
-		objCoords  = {x = 1795.94, y = 2616.55, z = 45.56},
+		objCoords  = {x = 1799.608, y = 2616.975, z = 44.60325},
 		textCoords = {x = 1795.998, y = 2616.55, z = 45.56},
 		authorizedJobs = { 'police' },
 		locked = true,
