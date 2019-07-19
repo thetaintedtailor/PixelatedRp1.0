@@ -68,20 +68,20 @@ Config.zones = {
 		}
 	},
 
-	CokeEnter = {
-		x = 374.94,
-		y = -576.20,
-		z = 18.48,
-		w = 2.0,
-		h = 1.0,		
-		visible = false,
-		t = 1,
-		color = {
-			r = 102,
-			g = 0,
-			b = 0
-		}
-	},
+	--CokeEnter = {
+		--x = 374.94,
+		--y = -576.20,
+		--z = 18.48,
+		--w = 2.0,
+		--h = 1.0,		
+		--visible = false,
+		--t = 1,
+		--color = {
+			--r = 102,
+			--g = 0,
+			--b = 0
+		--}
+	--},
 	
 	CokeExit = {
 		x = 1103.613,
