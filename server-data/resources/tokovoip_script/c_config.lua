@@ -5,12 +5,12 @@ TokoVoipConfig = {
 	minVersion = "1.2.4", -- Version of the TS plugin required to play on the server
 
 	distance = {
-		15, -- Normal speech distance in gta distance units
-		5, -- Whisper speech distance in gta distance units
-		40, -- Shout speech distance in gta distance units
+		20, -- Normal speech distance in gta distance units
+		7, -- Whisper speech distance in gta distance units
+		75, -- Shout speech distance in gta distance units
 	},
 	headingType = 1, -- headingType 0 uses GetGameplayCamRot, basing heading on the camera's heading, to match how other GTA sounds work. headingType 1 uses GetEntityHeading which is based on the character's direction
-	radioKey = Keys["Y"], -- Keybind used to talk on the radio
+	radioKey = Keys["N"], -- Keybind used to talk on the radio
 	keySwitchChannels = Keys["H"], -- Keybind used to switch the radio channels
 	keySwitchChannelsSecondary = Keys["LEFTSHIFT"], -- If set, both the keySwitchChannels and keySwitchChannelsSecondary keybinds must be pressed to switch the radio channels
 	keyProximity = Keys["H"], -- Keybind used to switch the proximity mode
@@ -36,10 +36,10 @@ TokoVoipConfig = {
 		},
 
 		-- The following is purely TS client settings, to match tastes
-		local_click_on = false, -- Is local click on sound active
-		local_click_off = false, -- Is local click off sound active
-		remote_click_on = false, -- Is remote click on sound active
-		remote_click_off = false, -- Is remote click off sound active
+		local_click_on = true, -- Is local click on sound active
+		local_click_off = true, -- Is local click off sound active
+		remote_click_on = true, -- Is remote click on sound active
+		remote_click_off = true, -- Is remote click off sound active
 		enableStereoAudio = true, -- If set to true, positional audio will be stereo (you can hear people more on the left or the right around you)
 
 		localName = "", -- If set, this name will be used as the user's teamspeak display name

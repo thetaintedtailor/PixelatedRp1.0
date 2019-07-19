@@ -1,8 +1,8 @@
 TokoVoipConfig = {
 	channels = {
-		{name = "Call PD Frequency 1", subscribers = {}},
-		{name = "EMS Frequency 1", subscribers = {}},
-		{name = "PD Frequency 2", subscribers = {}},
-		{name = "EMS Frequency 2", subscribers = {}},
+		{name = "Police Channel 1", subscribers = {}},
+		{name = "Police Channel 2", subscribers = {}},
+		{name = "EMS Channel 1", subscribers = {}},
+		{name = "EMS Channel 2", subscribers = {}},
 	}
 };
