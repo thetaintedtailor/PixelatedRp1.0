@@ -251,7 +251,7 @@ Config.DoorList = {
 		textCoords = {x = 261.99899291992, y = 221.50576782227, z = 107.68346405029}, 
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 12,
+		distance = 2.5,
 		size = 2
 	},
 
@@ -261,7 +261,7 @@ Config.DoorList = {
 		textCoords = {x = 256.3116, y = 220.6579, z = 106.4296}, 
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 12,
+		distance = 2.5,
 		size = 2
 	},
 
@@ -271,7 +271,7 @@ Config.DoorList = {
 		textCoords = {x = 266.3624, y = 217.5697, z = 110.4328}, 
 		authorizedJobs = { 'police' },
 		locked = true,
-		distance = 12,
+		distance = 2.5,
 		size = 2
 	},
 	
