@@ -34,7 +34,7 @@ function OpenCoffeeMenu(zone)
 	local elements = {}
 	for i=1, #Config.Zones[zone].Items, 1 do
 		local item = Config.Zones[zone].Items[i]
-		print("coffee item", item)
+		print("coffee item", item.name)
 
 		table.insert(elements, {
 			label     = item.label .. ' - $' .. item.price .. ' ',
