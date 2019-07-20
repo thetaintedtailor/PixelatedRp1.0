@@ -29,7 +29,7 @@ end
 RegisterCommand("testan",function(source, args)
 
 	local ad = "anim@amb@business@cfm@cfm_machine_oversee@" --- insert the animation dic here
-	local anim = "button_press_operator" --- insert the animation name here
+	local anim = "button_press_scrunchedmoney" --- insert the animation name here
 	local player = PlayerPedId()
 	
 
