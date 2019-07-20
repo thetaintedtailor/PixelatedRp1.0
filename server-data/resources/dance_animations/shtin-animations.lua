@@ -1,4 +1,4 @@
-RegisterCommand("dance2",function(source, args)
+RegisterCommand("dance1",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@black_madonna_entourage@"
 	local anim = "hi_dance_facedj_09_v2_male^5"
@@ -16,7 +16,7 @@ RegisterCommand("dance2",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance19",function(source, args)
+RegisterCommand("dance2",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_female^1"
@@ -34,7 +34,7 @@ RegisterCommand("dance19",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance20",function(source, args)
+RegisterCommand("dance3",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_female^2"
@@ -52,7 +52,7 @@ RegisterCommand("dance20",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance21",function(source, args)
+RegisterCommand("dance4",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_female^3"
@@ -70,7 +70,7 @@ RegisterCommand("dance21",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance23",function(source, args)
+RegisterCommand("dance5",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_female^5"
@@ -88,7 +88,7 @@ RegisterCommand("dance23",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance26",function(source, args)
+RegisterCommand("dance6",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_male^2"
@@ -106,7 +106,7 @@ RegisterCommand("dance26",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance27",function(source, args)
+RegisterCommand("dance7",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_09_v2_male^3"
@@ -124,7 +124,7 @@ RegisterCommand("dance27",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance31",function(source, args)
+RegisterCommand("dance8",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_11_v1_female^1"
@@ -142,7 +142,7 @@ RegisterCommand("dance31",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance33",function(source, args)
+RegisterCommand("dance9",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_11_v1_female^3"
@@ -160,7 +160,7 @@ RegisterCommand("dance33",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance40",function(source, args)
+RegisterCommand("dance10",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_11_v1_male^4"
@@ -178,7 +178,7 @@ RegisterCommand("dance40",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance45",function(source, args)
+RegisterCommand("dance11",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_11_v2_female^3"
@@ -196,7 +196,7 @@ RegisterCommand("dance45",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance51",function(source, args)
+RegisterCommand("dance12",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "hi_dance_facedj_11_v2_male^3"
@@ -214,7 +214,7 @@ RegisterCommand("dance51",function(source, args)
 	end
 end, false)
 
-RegisterCommand("dance55",function(source, args)
+RegisterCommand("dance13",function(source, args)
 
 	local ad = "anim@amb@nightclub@dancers@crowddance_facedj@"
 	local anim = "mi_dance_facedj_09_v1_female^1"
