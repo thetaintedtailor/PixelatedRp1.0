@@ -26,5 +26,24 @@ function Info(text, loop)
 end
 
 
+RegisterCommand("testan",function(source, args)
 
+	local ad = "missprologueig_5@press_button_duck" --- insert the animation dic here
+	local anim = "press_button_player2" --- insert the animation name here
+	local player = PlayerPedId()
+	
+
+	if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+		loadAnimDict( ad )
+		TriggerEvent('chatMessage', '^2 Testing Animation')
+		if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+			--TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+			ClearPedSecondaryTask(player)
+			ClearPedTasks(PlayerPedId())
+		else
+			TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+			ClearPedTasks(PlayerPedId())
+		end       
+	end
+end, false)
 
