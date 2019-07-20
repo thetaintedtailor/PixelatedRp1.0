@@ -41,7 +41,7 @@ ESX.RegisterServerCallback('esx_coffee:requestDBItems', function(source, cb)
 				})
 
 			end
-
+			print('what is going on', coffeeItems[1].name)
 			cb(coffeeItems)
 
 		end
