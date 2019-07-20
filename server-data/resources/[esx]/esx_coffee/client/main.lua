@@ -16,6 +16,7 @@ AddEventHandler('onClientMapStart', function()
 
 	ESX.TriggerServerCallback('esx_coffee:requestDBItems', function(CoffeeItems)
 		for k,v in pairs(CoffeeItems) do
+			print("coffe print", k, v)
 			Config.Zones[k].Items = v
 		end
 	end)
