@@ -2,7 +2,6 @@ ESX               = nil
 local ItemsLabels = {}
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
 AddEventHandler('onMySQLReady', function()
 
 	MySQL.Async.fetchAll(
@@ -12,7 +11,7 @@ AddEventHandler('onMySQLReady', function()
 
 			for i=1, #result, 1 do
 				ItemsLabels[result[i].name] = result[i].label
-			end--
+			end
 
 		end
 	)
@@ -20,33 +19,24 @@ AddEventHandler('onMySQLReady', function()
 end)
 
 ESX.RegisterServerCallback('esx_coffee:requestDBItems', function(source, cb)
+	MySQL.Async.fetchAll('SELECT * FROM coffees', {}, function(result)
 
-	MySQL.Async.fetchAll(
-		'SELECT * FROM coffees',
-		{},
-		function(result)
+		local coffeeItems  = {}
+		for i=1, #result, 1 do
 
-			local coffeeItems  = {}
-
-			for i=1, #result, 1 do
-
-				if coffeeItems[result[i].name] == nil then
-					coffeeItems[result[i].name] = {}
-				end
-
-				table.insert(coffeeItems[result[i].name], {
-					name  = result[i].item,
-					price = result[i].price,
-					label = ItemsLabels[result[i].item]
-				})
-
+			if coffeeItems[result[i].name] == nil then
+				coffeeItems[result[i].name] = {}
 			end
-			print('what is going on', coffeeItems[1].name)
-			cb(coffeeItems)
+			print(coffeeItems[result[i].name])
 
+			table.insert(coffeeItems[result[i].name], {
+				name  = result[i].item,
+				price = result[i].price,
+				label = ItemsLabels[result[i].item]
+			})
 		end
-	)
-
+			cb(coffeeItems)
+		end)
 end)
 
 RegisterServerEvent('esx_coffee:buyItem')

@@ -13,23 +13,28 @@ Citizen.CreateThread(function()
 end)
 
 AddEventHandler('onClientMapStart', function()
-
 	ESX.TriggerServerCallback('esx_coffee:requestDBItems', function(CoffeeItems)
 		for k,v in pairs(CoffeeItems) do
-			print("coffe print", k, v)
-			Config.Zones[k].Items = v
+			Config.Zones['Coffee'].Items = v
 		end
 	end)
-
 end)
 
+RegisterCommand("refreshcoffee",function()
+	ESX.TriggerServerCallback('esx_coffee:requestDBItems', function(CoffeeItems)
+		for k,v in pairs(CoffeeItems) do
+			Config.Zones['Coffee'].Items = v
+			print('hey this is working', k, v)	
+		end
+	end)
+end, false)
+
+
 function OpenCoffeeMenu(zone)
-
 	local elements = {}
-
 	for i=1, #Config.Zones[zone].Items, 1 do
-
 		local item = Config.Zones[zone].Items[i]
+		print("coffee item", item)
 
 		table.insert(elements, {
 			label     = item.label .. ' - $' .. item.price .. ' ',
