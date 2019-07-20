@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/blackskinhead_kanye.mp3',
+    'music/what_you_promised_fairlane.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
