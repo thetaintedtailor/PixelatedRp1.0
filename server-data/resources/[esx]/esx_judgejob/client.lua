@@ -29,7 +29,7 @@ end
 RegisterCommand("testan",function(source, args)
 
 	local ad = "mini@sprunk" --- insert the animation dic here
-	local anim = "plyr_buy_drink_pt2" --- insert the animation name here
+	local anim = "plyr_buy_drink_pt3" --- insert the animation name here
 	local player = PlayerPedId()
 	
 
