@@ -7,7 +7,6 @@ Config.Type         = 1
 Config.Locale = 'en'
 
 Config.Zones = {
-
     Coffee = {
         Items = {},
         Pos = {

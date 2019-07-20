@@ -24,7 +24,7 @@ RegisterCommand("refreshcoffee",function()
 	ESX.TriggerServerCallback('esx_coffee:requestDBItems', function(CoffeeItems)
 		--for k,v in pairs(CoffeeItems) do
 			Config.Zones['Coffee'].Items = CoffeeItems.Coffee
-			print('hey this is working', k, v)	
+			print('hey this is working', Config.Zones['Coffee'].Items)	
 		--end
 	end)
 end, false)
