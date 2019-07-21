@@ -23,6 +23,7 @@ local USE_RTC = false
 local PhoneInCall = {}
 local currentPlaySound = false
 local soundId = 1485
+local callInProgressId = nil
 
 --====================================================================================
 --  Active ou Deactive une application (appName => config.json)
@@ -285,9 +286,9 @@ end)
 RegisterNetEvent("gcPhone:acceptCall")
 AddEventHandler("gcPhone:acceptCall", function(infoCall, initiator)
     if inCall == false and USE_RTC == false then
-        Citizen.Trace("infoCall id = " .. infoCall.id .. "\n")
         inCall = true
-        exports.tokovoip_script:addPlayerToRadio(infoCall.id)
+        callInProgressId = 100 + infoCall.id
+        exports.tokovoip_script:addPlayerToRadio(callInProgressId)
     end
     if menuIsOpen == false then
         TooglePhone()
@@ -300,7 +301,11 @@ RegisterNetEvent("gcPhone:rejectCall")
 AddEventHandler("gcPhone:rejectCall", function(infoCall)
     if inCall == true then
         inCall = false
-        exports.tokovoip_script:removePlayerFromRadio(infoCall.id)
+
+        if (callInProgressId ~= nil) then 
+            exports.tokovoip_script:removePlayerFromRadio(callInProgressId)
+            callInProgressId = nil
+        end
     end
     PhonePlayText()
     SendNUIMessage({event = 'rejectCall', infoCall = infoCall})
