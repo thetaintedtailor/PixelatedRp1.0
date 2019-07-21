@@ -288,7 +288,6 @@ AddEventHandler("gcPhone:acceptCall", function(infoCall, initiator)
     if inCall == false and USE_RTC == false then
         inCall = true
         callInProgressId = 100 + infoCall.id
-        Citizen.Trace("Started call with " .. callInProgressId .. "\n")
         exports.tokovoip_script:addPlayerToRadio(callInProgressId)
     end
     if menuIsOpen == false then
@@ -302,10 +301,7 @@ RegisterNetEvent("gcPhone:rejectCall")
 AddEventHandler("gcPhone:rejectCall", function(infoCall)
     if inCall == true then
         inCall = false
-        Citizen.Trace("Ended call with " .. callInProgressId .. "\n")
-
         if (callInProgressId ~= nil) then 
-            Citizen.Trace("Clear call in progress\n")
             exports.tokovoip_script:removePlayerFromRadio(callInProgressId)
             callInProgressId = nil
         end
