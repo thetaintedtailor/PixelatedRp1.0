@@ -279,12 +279,15 @@ AddEventHandler("gcPhone:waitingCall", function(infoCall, initiator)
     end
 end)
 
+-- Initiate a phone call between two parties.
+-- @param infoCall
+-- @param initiator a boolean that's true if this is the caller
 RegisterNetEvent("gcPhone:acceptCall")
 AddEventHandler("gcPhone:acceptCall", function(infoCall, initiator)
     if inCall == false and USE_RTC == false then
+        Citizen.Trace("infoCall id = " .. infoCall.id .. "\n")
         inCall = true
-        NetworkSetVoiceChannel(infoCall.id + 1)
-        NetworkSetTalkerProximity(0.0)
+        exports.tokovoip_script:addPlayerToRadio(infoCall.id)
     end
     if menuIsOpen == false then
         TooglePhone()
@@ -297,8 +300,7 @@ RegisterNetEvent("gcPhone:rejectCall")
 AddEventHandler("gcPhone:rejectCall", function(infoCall)
     if inCall == true then
         inCall = false
-        Citizen.InvokeNative(0xE036A705F989E049)
-        NetworkSetTalkerProximity(2.5)
+        exports.tokovoip_script:removePlayerFromRadio(infoCall.id)
     end
     PhonePlayText()
     SendNUIMessage({event = 'rejectCall', infoCall = infoCall})
