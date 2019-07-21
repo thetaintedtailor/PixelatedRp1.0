@@ -11,9 +11,9 @@ TokoVoipConfig = {
 	},
 	headingType = 1, -- headingType 0 uses GetGameplayCamRot, basing heading on the camera's heading, to match how other GTA sounds work. headingType 1 uses GetEntityHeading which is based on the character's direction
 	radioKey = Keys["N"], -- Keybind used to talk on the radio
-	keySwitchChannels = Keys["H"], -- Keybind used to switch the radio channels
+	keySwitchChannels = Keys["F9"], -- Keybind used to switch the radio channels
 	keySwitchChannelsSecondary = Keys["LEFTSHIFT"], -- If set, both the keySwitchChannels and keySwitchChannelsSecondary keybinds must be pressed to switch the radio channels
-	keyProximity = Keys["H"], -- Keybind used to switch the proximity mode
+	keyProximity = Keys["F9"], -- Keybind used to switch the proximity mode
 
 	plugin_data = {
 		-- TeamSpeak channel name used by the voip
