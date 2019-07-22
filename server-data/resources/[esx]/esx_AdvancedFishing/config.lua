@@ -18,8 +18,8 @@ Config = {}
 	--------------------------------------------------------
 
 	Config.SellFish = {x = -3251.2, y = 991.5, z = 11.49} --Place where players can sell their fish
-	Config.SellTurtle = {x = 3804.0, y = 4443.3, z = 3.0} --Place where players can sell their turtles 
-	Config.SellShark = {x = 2517.6 , y = 4218.0, z = 38.8} --Place where players can sell their sharks
+	Config.SellTurtle = {x = -701.78, y = -882.88, z = 23.78} --Place where players can sell their turtles 
+	Config.SellShark = {x = -181.08 , y = 314.79, z = 97.80} --Place where players can sell their sharks
 
 	--------------------------------------------------------
 	--=====Locations where players can rent boats========--
