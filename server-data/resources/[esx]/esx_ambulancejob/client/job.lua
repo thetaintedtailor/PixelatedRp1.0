@@ -926,7 +926,7 @@ end
 
 function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
-	print('what the fuck', pharmacyElements)
+	print('what the fuck', pharmacyElements[1])
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy',
 	{
