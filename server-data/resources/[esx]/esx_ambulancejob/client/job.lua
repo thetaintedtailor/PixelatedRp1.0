@@ -508,6 +508,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 					})
 				end
 			else
+				print("hey")
 				ESX.ShowNotification(_U('not_authorized'))
 				return
 			end
@@ -528,7 +529,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 						else
 							label = label .. ('<span style="color:darkred;">%s</span>'):format(_U('garage_notstored'))
 						end
-						print('inside retrieve veh loop', v.fuel_level)
+
 						table.insert(garage, {
 							label = label,
 							stored = v.stored,
@@ -926,9 +927,6 @@ end
 
 function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
-
-	print('what the fuck', pharmacyElements[1].label)
-	print('what the fuck', pharmacyElements[1].value)
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy', {
 		title    = _U('pharmacy_menu_title'),
