@@ -666,7 +666,6 @@ function StoreAllVehicles()
 
 end
 
-
 function GetAvailableVehicleSpawnPoint(hospital, part, partNum)
 	local spawnPoints = Config.Hospitals[hospital][part][partNum].SpawnPoints
 	local found, foundSpawnPoint = false, nil
@@ -927,6 +926,8 @@ end
 function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
 	print('what the fuck', pharmacyElements[1])
+	print('what the fuck', pharmacyElements[1].label)
+	print('what the fuck', pharmacyElements[1].value)
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy',
 	{
