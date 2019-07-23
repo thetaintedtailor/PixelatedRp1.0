@@ -377,8 +377,7 @@ Citizen.CreateThread(function()
 					OpenAmbulanceActionsMenu()
 				elseif CurrentAction == 'Pharmacy' then
 					local authorizedPharmacyItems = Config.AuthorizedPharmacy[ESX.PlayerData.job.grade_name]
-					print('hey I hate prints', ESX.PlayerData.job.grade_name)
-					print('hey I hate prints 2', authorizedPharmacyItems)
+
 					local pharmacyElements = {}
 					if #Config.AuthorizedPharmacy['Shared'] > 0 then
 						for k,item in ipairs (Config.AuthorizedPharmacy['Shared']) do
