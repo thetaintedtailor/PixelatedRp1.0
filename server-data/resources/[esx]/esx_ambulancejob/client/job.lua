@@ -925,15 +925,14 @@ end
 
 function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
-	print('what the fuck', pharmacyElements[1])
+
 	print('what the fuck', pharmacyElements[1].label)
 	print('what the fuck', pharmacyElements[1].value)
 
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy',
-	{
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy', {
 		title    = _U('pharmacy_menu_title'),
 		align    = 'left',
-		elements = {pharmacyElements}
+		elements = pharmacyElements
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)
 	end, function(data, menu)
