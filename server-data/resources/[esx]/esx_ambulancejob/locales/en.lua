@@ -35,6 +35,7 @@ Locales['en'] = {
   ['vehicleshop_bought'] = 'you have bought ~y~%s~s~ for ~r~$%s~s~',
   ['vehicleshop_money'] = 'you cannot afford that vehicle',
   ['vehicleshop_awaiting_model'] = 'the vehicle is currently ~g~DOWNLOADING & LOADING~s~ please wait',
+  ['not_authorized'] = 'You are not authorized.',
   ['confirm_no'] = 'no',
   ['confirm_yes'] = 'yes',
   -- Action Menu

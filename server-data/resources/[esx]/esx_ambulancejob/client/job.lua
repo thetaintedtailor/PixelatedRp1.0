@@ -508,6 +508,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 					})
 				end
 			else
+				ESX.ShowNotification(_U('not_authorized'))
 				return
 			end
 
