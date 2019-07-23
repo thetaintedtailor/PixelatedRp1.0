@@ -387,7 +387,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if authorizedPharmacyItems > 0 then
+					if #authorizedPharmacyItems > 0 then
 						for k,item in ipairs(authorizedPharmacyItems) do
 							table.insert(pharmacyElements, {
 								label = _U('pharmacy_take', _U(item)),

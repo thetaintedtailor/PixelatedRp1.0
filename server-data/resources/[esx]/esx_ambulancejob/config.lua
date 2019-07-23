@@ -239,6 +239,7 @@ Config.AuthorizedPharmacy = {
 		'medicaltape',
 		'morphine',
 	},
+	trainee, psychologist, emt = {},
 	paramedic = {
 		'k3v',
 		'vicodin',
