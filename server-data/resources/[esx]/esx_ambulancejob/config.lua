@@ -231,3 +231,47 @@ Config.AuthorizedHelicopters = {
 	}
 
 }
+
+Config.AuthorizedPharmacy = {
+	Shared = {
+		'bandage',
+		'gauze',
+		'medicaltape',
+		'morphine',
+	},
+	paramedic = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	doctor = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	psychiatrist = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	surgeon = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	boss = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	}
+}
