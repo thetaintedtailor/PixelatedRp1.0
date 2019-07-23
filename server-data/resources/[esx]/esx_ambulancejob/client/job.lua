@@ -924,16 +924,15 @@ function drawLoadingText(text, red, green, blue, alpha)
 	EndTextCommandDisplayText(0.5, 0.5)
 end
 
-function OpenPharmacyMenu(elements)
-	local shopElements = {}
+function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
+	print('what the fuck', pharmacyElements)
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy',
 	{
 		title    = _U('pharmacy_menu_title'),
 		align    = 'left',
-		elements = { elements }
-			--{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
+		elements = {pharmacyElements}
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)
 	end, function(data, menu)
