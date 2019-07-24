@@ -7,36 +7,26 @@ end)
 RegisterServerEvent('esx_sopletare:getItem')
 AddEventHandler('esx_sopletare:getItem', function()
 
-    local luck = math.random(1, 15)
+    local luck = math.random(1, 10)
 
     if luck == 1 then
 
         local items = { -- add whatever items you want here
             'bionictrigger',
-            'shotgunbody',
             'clip',
             'firingpin',
-            'arbarrel',
             'bobbypen',
-            'choke',
             'gunpowder',
             'ring',
             'rubberband',
             'silverchain',
             'stud',
-            'apbody',
             'pistolbody',
-            'smgbody',
-            'upper',
-            'lower',
             'coke_pooch',
             'weed_pooch',
             'meth_pooch',
             'opium_pooch',
-            'spring',
-            'shotgunbarrel',
             'pistolbarrel',
-            'smgbarrel',
             'toolbox',
             'battery',
         }
