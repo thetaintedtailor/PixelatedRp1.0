@@ -9,6 +9,7 @@ TODO: Development environment guide coming soon.
 ## Deploying
 
 ### Staging
+First, ensure that you have an ssh user set up properly on the staging server (talk to mailbox). Next, add a git remote for pushing to staging: `git remote add staging ssh://my-user@157.230.229.172/srv/git/pixelated.git/` replacing `my-user` with your ssh user name. From there, you're prepared to do the following steps whenever you need to deploy new code to staging:
 
 1. `git checkout staging`
 2. `git pull origin staging` (make sure everything is up to date)
