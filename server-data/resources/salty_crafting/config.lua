@@ -89,6 +89,31 @@ Config.Recipes = {
 		{item = "bionictrigger", quantity = 1},
 		{item = "firingpin", quantity = 1},
 	},
+
+	['WEAPON_ASSAULTSMG'] = { 
+		{item = "upper", quantity = 1}, 
+		{item = "lower", quantity = 1},
+		{item = "smgbarrel", quantity = 1},
+		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
+	},
+
+	['WEAPON_ASSAULTRIFLE'] = { 
+		{item = "ak47frame", quantity = 1}, 
+		{item = "arbarrel", quantity = 1},
+		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
+	},
+
+	['WEAPON_PISTOL50'] = { 
+		{item = "50calframe", quantity = 1}, 
+		{item = "50calbarrel", quantity = 1},
+		{item = "bionictrigger", quantity = 1},
+		{item = "firingpin", quantity = 1},
+		{item = "spring", quantity = 1},
+	},
 }
 
 -- Enable a shop to access the crafting menu
