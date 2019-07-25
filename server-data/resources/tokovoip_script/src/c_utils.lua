@@ -42,6 +42,9 @@ AddEventHandler("onClientPlayerReady", refreshAllPlayerData);
 function doRefreshAllPlayerData(serverData)
 	for playerServerId, playerData in pairs(serverData) do
 		for key, data in pairs(playerData) do
+			if (not playersData[playerServerId]) then
+				playersData[playerServerId] = {};
+			end
 			playersData[playerServerId][key] = {data = data, shared = true};
 		end
 	end
@@ -179,20 +182,8 @@ function escape(str)
 	return str:gsub( "%W", "");
 end
 
-function getPlayers()
-	local players = {};
-
-	for i = 0, 256 do
-		if (NetworkIsPlayerActive(i)) then
-			players[#players + 1] = i;
-		end
-	end
-
-	return (players);
-end
-
 Keys = {
-	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, ["F11"] = 344, 
+	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, 
 	["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, 
 	["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18,
 	["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182,
