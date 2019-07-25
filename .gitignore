@@ -8,7 +8,7 @@
 
 # ignore large file types
 
-
+.*.swp
 
 
 
