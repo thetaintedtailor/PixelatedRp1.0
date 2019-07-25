@@ -3,7 +3,6 @@ An in-game radio selection for use with TokoVoip on the PixelatedRP FiveM server
 
 ## Dependencies
 * [TokoVoip](https://github.com/Itokoyamato/TokoVOIP_TS3)
-* [NativeUI](https://github.com/FrazzIe/NativeUILua)
 * [es_extended](https://github.com/ESX-Org/es_extended)
 * [esx_policejob](https://github.com/ESX-Org/esx_policejob) or [esx_ambulance](https://github.com/ESX-Org/esx_ambulancejob) (if you want PD/EMS radios)
 
