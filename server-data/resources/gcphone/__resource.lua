@@ -62,3 +62,7 @@ server_script {
 
 	"server/app_tchat.lua",
 }
+
+dependencies {
+	"tokovoip_script"
+}
