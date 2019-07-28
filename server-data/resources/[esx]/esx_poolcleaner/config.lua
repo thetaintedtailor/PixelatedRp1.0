@@ -548,7 +548,7 @@ Config.Uniforms = {
 			['ears_1'] = -1, ['ears_2'] = 0
 		},
 		female = {
-			['tshirt_1'] = 2, ['tshirt_2'] = 0,
+			['tshirt_1'] = 5, ['tshirt_2'] = 0,
 			['torso_1'] = 195, ['torso_2'] = 24,
 			['decals_1'] = 0, ['decals_2'] = 0,
 			['arms'] = 15,
