@@ -235,6 +235,7 @@ input[type=number] {
     line-height: 580px;
     text-align: center;
 }
+
 .hideSecondInventory {
     display: none;
 }
