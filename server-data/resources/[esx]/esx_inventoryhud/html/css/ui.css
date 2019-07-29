@@ -96,6 +96,7 @@ input[type=number] {
     filter: drop-shadow(0 0 0.45rem var(--bright-purple));
     transform: scale(1.2);
     position: absolute;
+    z-index: 10;
 }
 
 .slot-wrapper {
@@ -178,7 +179,7 @@ input[type=number] {
 }
 
 .hoverControl {
-    background-color: rgb(31, 30, 43);
+    background-color: var(--bright-purple);
 }
 
 .item-name-bg {
