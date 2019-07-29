@@ -44,7 +44,7 @@
     width: 625px;
     height: 600px;
     float: left;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
 #controls {
@@ -95,6 +95,13 @@ input[type=number] {
     background-color: var(--slot-full-opacity);
     filter: drop-shadow(0 0 0.45rem var(--bright-purple));
     transform: scale(1.2);
+    position: absolute;
+}
+
+.slot-wrapper {
+    display: inline-block;
+    width: 117px;
+    height: 117px;
 }
 
 .item,

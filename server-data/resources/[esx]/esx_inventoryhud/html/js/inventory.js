@@ -95,8 +95,8 @@ function inventorySetup(items) {
     $.each(items, function (index, item) {
         count = setCount(item);
 
-        $("#playerInventory").append('<div class="slot"><div id="item-' + index + '" class="item" style = "background-image: url(\'img/items/' + item.name + '.png\')">' +
-            '<div class="item-count">' + count + '</div> <div class="item-name">' + item.label + '</div> </div ><div class="item-name-bg"></div></div>');
+        $("#playerInventory").append('<div class="slot-wrapper"><div class="slot"><div id="item-' + index + '" class="item" style = "background-image: url(\'img/items/' + item.name + '.png\')">' +
+            '<div class="item-count">' + count + '</div> <div class="item-name">' + item.label + '</div> </div ><div class="item-name-bg"></div></div></div>');
         $('#item-' + index).data('item', item);
         $('#item-' + index).data('inventory', "main");
     });
