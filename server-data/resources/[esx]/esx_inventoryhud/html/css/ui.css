@@ -10,6 +10,11 @@
         -0.5px 0.5px 0 #000,
         0.5px 0.5px 0 #000;
 }
+:root {
+    --main-bg: rgba(31, 30, 43, 0.1);
+    --slot-bg: rgba(31, 30, 43, 0.6);
+    --item-name-bg: rgba(31, 30, 43, 0.8);
+}
 
 .ui {
     position: relative;
@@ -30,7 +35,7 @@
     width: 1550px;
     height: 600px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
-    background-color: rgba(17, 5, 17, 0.2);
+    background-color: var(--main-bg);
 }
 
 #playerInventory {
@@ -45,7 +50,7 @@
     height: 600px;
     float: left;
     position: relative;
-    background-color: rgba(17, 5, 17, 0.2);
+    background-color: var(--main-bg);
     left: 0;
     top: 0;
 }
@@ -77,7 +82,7 @@ input[type=number] {
     float: left;
     width: 117px;
     height: 117px;
-    background-color: rgba(17, 5, 17, 0.6);
+    background-color: var(--slot-bg);
     margin: 2px;
     position: relative;
 }
@@ -105,7 +110,7 @@ input[type=number] {
     min-height: 20px;
     z-index: 500;
     font-size: 12px;
-    background-color: rgba(17, 5, 17, 0.8);
+    background-color: var(--item-name-bg);
 }
 
 .ui-draggable-dragging .item-name,
@@ -130,7 +135,7 @@ input[type=number] {
 .info-div {
     text-align: center;
     padding: 5px;
-    background-color: rgba(17, 5, 17, 0.6);
+    background-color: var(--slot-bg);
     width: 80%;
     position: absolute;
     left: 50%;
@@ -148,7 +153,7 @@ input[type=number] {
 .control {
     width: 150px;
     height: 40px;
-    background-color: rgba(17, 5, 17, 0.6);
+    background-color: var(--slot-bg);
     margin: 10px;
     text-align: center;
     vertical-align: middle;
@@ -156,7 +161,7 @@ input[type=number] {
 }
 
 .control.disabled {
-    background-color: rgba(17, 5, 17, 0.1);
+    background-color: var(--main-bg);
 }
 
 .hoverControl {
@@ -173,19 +178,19 @@ input[type=number] {
 
 #playerInventory::-webkit-scrollbar-track,
 #otherInventory::-webkit-scrollbar-track {
-    background-color: none;
+    background-color: rgba(31, 30, 43, 0.4);
     border: none;
 }
 
 #playerInventory::-webkit-scrollbar,
 #otherInventory::-webkit-scrollbar {
     width: 10px;
-    background-color: rgba(17, 5, 17, 0.2);
+    background-color: rgba(31, 30, 44, 0.4);
 }
 
 #playerInventory::-webkit-scrollbar-thumb,
 #otherInventory::-webkit-scrollbar-thumb {
-    background-color: rgba(17, 5, 17, 1);
+    background-color: rgba(31, 30, 43);
     border: 2px solid rgba(17, 5, 17, 1);
 }
 
