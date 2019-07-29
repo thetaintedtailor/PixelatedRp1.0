@@ -3,7 +3,7 @@
     margin: 0;
     font-family: 'Signika', sans-serif;
     text-transform: uppercase;
-    color: white;
+    color: var(--text-color);
     text-shadow:
         -0.5px -0.5px 0 #000,
         0.5px -0.5px 0 #000,
@@ -14,6 +14,7 @@
     --main-bg: rgba(31, 30, 43, 0.1);
     --slot-bg: rgba(31, 30, 43, 0.6);
     --item-name-bg: rgba(31, 30, 43, 0.8);
+    --text-color: rgba(100,54,237, 0.9);
 }
 
 .ui {
@@ -88,7 +89,10 @@ input[type=number] {
 }
 
 .slot:hover {
-    opacity: 0.8;
+    /* opacity: 0.8; */
+    /* border: 1px solid var(--text-color); */
+    filter: drop-shadow(0 0 0.45rem var(--text-color));
+    transform: scale(1.2);
 }
 
 .item,
@@ -165,7 +169,7 @@ input[type=number] {
 }
 
 .hoverControl {
-    background-color: rgb(10, 2, 10);
+    background-color: rgb(31, 30, 43);
 }
 
 .item-name-bg {
@@ -191,7 +195,7 @@ input[type=number] {
 #playerInventory::-webkit-scrollbar-thumb,
 #otherInventory::-webkit-scrollbar-thumb {
     background-color: rgba(31, 30, 43);
-    border: 2px solid rgba(17, 5, 17, 1);
+    border: 2px solid var(--text-color);
 }
 
 .nearbyPlayerButton {
