@@ -11,7 +11,7 @@ local KeyToucheCloseEvent = {
     { code = 176, event = 'Enter' },
     { code = 177, event = 'Backspace' },
 }
-local KeyOpenClose = 288 -- F2
+local KeyOpenClose = 288 -- F1
 local KeyTakeCall = 38 -- E
 local menuIsOpen = false
 local contacts = {}
@@ -23,6 +23,7 @@ local USE_RTC = false
 local PhoneInCall = {}
 local currentPlaySound = false
 local soundId = 1485
+local callInProgressId = nil
 
 --====================================================================================
 --  Active ou Deactive une application (appName => config.json)
@@ -133,7 +134,7 @@ Citizen.CreateThread(function()
 
         while true do
             Citizen.Wait(0)
-            if IsControlJustPressed(1, KeyOpenClose) and GetLastInputMethod( 0 ) then
+            if IsControlJustPressed(1, KeyOpenClose) and GetLastInputMethod( 0 ) and not IsControlPressed(0, 21) then
                 TooglePhone()
             end
             if menuIsOpen == true then
@@ -279,12 +280,15 @@ AddEventHandler("gcPhone:waitingCall", function(infoCall, initiator)
     end
 end)
 
+-- Initiate a phone call between two parties.
+-- @param infoCall
+-- @param initiator a boolean that's true if this is the caller
 RegisterNetEvent("gcPhone:acceptCall")
 AddEventHandler("gcPhone:acceptCall", function(infoCall, initiator)
     if inCall == false and USE_RTC == false then
         inCall = true
-        NetworkSetVoiceChannel(infoCall.id + 1)
-        NetworkSetTalkerProximity(0.0)
+        callInProgressId = 100 + infoCall.id
+        exports.tokovoip_script:addPlayerToRadio(callInProgressId)
     end
     if menuIsOpen == false then
         TooglePhone()
@@ -297,8 +301,10 @@ RegisterNetEvent("gcPhone:rejectCall")
 AddEventHandler("gcPhone:rejectCall", function(infoCall)
     if inCall == true then
         inCall = false
-        Citizen.InvokeNative(0xE036A705F989E049)
-        NetworkSetTalkerProximity(2.5)
+        if (callInProgressId ~= nil) then 
+            exports.tokovoip_script:removePlayerFromRadio(callInProgressId)
+            callInProgressId = nil
+        end
     end
     PhonePlayText()
     SendNUIMessage({event = 'rejectCall', infoCall = infoCall})
@@ -364,8 +370,10 @@ RegisterNUICallback('notififyUseRTC', function (use, cb)
     if USE_RTC == true and inCall == true then
         print('USE RTC ON')
         inCall = false
-        Citizen.InvokeNative(0xE036A705F989E049)
-        NetworkSetTalkerProximity(2.5)
+        if (callInProgressId ~= nil) then 
+            exports.tokovoip_script:removePlayerFromRadio(callInProgressId)
+            callInProgressId = nil
+        end
     end
     cb()
 end)
