@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/what_you_promised_fairlane.mp3',
+    'music/pixies_hey.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
