@@ -22,7 +22,9 @@ window.addEventListener("message", function (event) {
         $("#dialog").dialog("close");
         $(".ui").fadeOut();
         $(".item").remove();
-        $("#otherInventory").addClass("hideSecondInventory")
+        $("#otherInventory").addClass("hideSecondInventory");
+        $('.inventory').removeClass('inventory-double');
+        $('.inventory').addClass('inventory-single');
     } else if (event.data.action == "setItems") {
         inventorySetup(event.data.itemList);
 
