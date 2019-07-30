@@ -105,7 +105,18 @@ Config.Hospitals = {
 
 Config.AuthorizedVehicles = {
 
-	ambulance = {
+	trainee = {},
+	psychologist = {},
+
+	emt = {
+		{
+			model = 'ambulance',
+			label = 'Ambulance Van',
+			price = 1
+		}
+	},
+
+	paramedic = {
 		{
 			model = 'ambulance',
 			label = 'Ambulance Van',
@@ -121,7 +132,15 @@ Config.AuthorizedVehicles = {
 		}
 	},
 
-	chief_doctor = {
+	psychiatrist = {
+		{
+			model = 'ambulance',
+			label = 'Ambulance Van',
+			price = 1
+		}
+	},
+
+	surgeon = {
 		{
 			model = 'ambulance',
 			label = 'Ambulance Van',
@@ -140,18 +159,50 @@ Config.AuthorizedVehicles = {
 }
 
 Config.AuthorizedHelicopters = {
-
-	ambulance = {},
+	trainee = {},
+	psychologist = {},
+	emt = {},
+	paramedic = {
+		{
+			model = 'buzzard2',
+			label = 'Nagasaki Buzzard',
+			price = 1
+		},
+		{
+			model = 'seasparrow',
+			label = 'Sea Sparrow',
+			price = 1
+		}
+	},
 
 	doctor = {
 		{
 			model = 'buzzard2',
 			label = 'Nagasaki Buzzard',
 			price = 1
+		},
+		{
+			model = 'seasparrow',
+			label = 'Sea Sparrow',
+			price = 1
 		}
 	},
 
-	chief_doctor = {
+	psychiatrist = {
+		{
+			model = 'buzzard2',
+			label = 'Nagasaki Buzzard',
+			price = 1
+		},
+
+		{
+			model = 'seasparrow',
+			label = 'Sea Sparrow',
+			price = 1
+		}
+	},
+
+	surgeon = {
 		{
 			model = 'buzzard2',
 			label = 'Nagasaki Buzzard',
@@ -179,4 +230,51 @@ Config.AuthorizedHelicopters = {
 		}
 	}
 
+}
+
+Config.AuthorizedPharmacy = {
+	Shared = {
+		'bandage',
+		'gauze',
+		'medicaltape',
+		'morphine',
+	},
+	trainee = {}, 
+	psychologist = {}, 
+	emt = {},
+	paramedic = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	doctor = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	psychiatrist = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	surgeon = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	},
+	boss = {
+		'k3v',
+		'vicodin',
+		'ibuprofen',
+		'amoxicillin',
+		'xanax'
+	}
 }
