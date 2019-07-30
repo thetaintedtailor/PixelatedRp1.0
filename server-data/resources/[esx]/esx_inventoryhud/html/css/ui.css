@@ -40,10 +40,12 @@
 }
 
 .inventory-single {
+    left: 30%;
     width: 925px;
 }
 
 .inventory-double {
+    left: 50%;
     width: 1550px;
 }
 
