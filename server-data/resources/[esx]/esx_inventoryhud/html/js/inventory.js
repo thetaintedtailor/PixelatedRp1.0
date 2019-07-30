@@ -22,8 +22,6 @@ window.addEventListener("message", function (event) {
         $("#dialog").dialog("close");
         $(".ui").fadeOut();
         $(".item").remove();
-        // $("#otherInventory").html("<div id=\"noSecondInventoryMessage\"></div>");
-        // $("#noSecondInventoryMessage").html(invLocale.secondInventoryNotAvailable);
         $("#otherInventory").addClass("hideSecondInventory")
     } else if (event.data.action == "setItems") {
         inventorySetup(event.data.itemList);
@@ -104,6 +102,8 @@ function inventorySetup(items) {
 }
 
 function secondInventorySetup(items) {
+    $('.inventory').removeClass('inventory-single');
+    $('.inventory').addClass('inventory-double');
     $("#otherInventory").removeClass("hideSecondInventory");
     $.each(items, function (index, item) {
         count = setCount(item);

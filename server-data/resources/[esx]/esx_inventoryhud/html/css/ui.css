@@ -34,10 +34,17 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 1550px;
     height: 600px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
     background-color: var(--main-bg);
+}
+
+.inventory-single {
+    width: 925px;
+}
+
+.inventory-double {
+    width: 1550px;
 }
 
 #playerInventory {
