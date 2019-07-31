@@ -1,6 +1,7 @@
 ESX 						   = nil
 local PlayersTransformingIron  = {}
 
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
@@ -60,6 +61,9 @@ RegisterServerEvent('esx_forge:GetUserInventory')
 AddEventHandler('esx_forge:GetUserInventory', function(currentZone)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
+
+	Citizen.Trace("source = " .. source .. ", total players = " .. #ESX.Players .. "\n")
+	
 	TriggerClientEvent('esx_forge:ReturnInventory', 
 		_source, 
 		xPlayer.getInventoryItem('steel').count, 
