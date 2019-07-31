@@ -1,6 +1,8 @@
 ESX 						   = nil
 local PlayersTransformingIron  = {}
 
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 
 local function TransformIron(source)
 
