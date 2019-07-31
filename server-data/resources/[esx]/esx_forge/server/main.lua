@@ -53,3 +53,17 @@ AddEventHandler('esx_forge:stopTransformIron', function()
 	PlayersTransformingIron[_source] = false
 
 end)
+
+RegisterServerEvent('esx_forge:GetUserInventory')
+AddEventHandler('esx_forge:GetUserInventory', function(currentZone)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	TriggerClientEvent('esx_forge:ReturnInventory', 
+		_source, 
+		xPlayer.getInventoryItem('steel').count, 
+		xPlayer.getInventoryItem('iron').count,
+		xPlayer.getInventoryItem('carbon').count, 
+		xPlayer.job.name, 
+		currentZone
+	)
+end)
