@@ -12,7 +12,7 @@ Config.Zones = {
 	IronProcessing =	{x=1110.10,  y=-2011.03,  z=30.90},
 }
 
-Config.DisableBlip = true -- Set to true to disable blips. False to enable them.
+Config.DisableBlip = false -- Set to true to disable blips. False to enable them.
 
 Config.Map = {
     {name="Forge",      color=6, scale=1.6, id=378, x=-472.6,     y=-714.99,     z=81.18},
