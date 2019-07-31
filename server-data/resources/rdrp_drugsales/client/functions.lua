@@ -1,9 +1,9 @@
 TryToSell = function(pedId)
-    --if not DoesEntityExist(pedId) or IsPedDeadOrDying(pedId) or IsPedAPlayer(pedId) or IsPedFalling(pedId) or GetPedType(pedId) == 28 then
-        --Citizen.Trace("rdrp_drugsales: ped: " .. pedId .. " not able to sell to.")
+    if not DoesEntityExist(pedId) or IsPedDeadOrDying(pedId) or IsPedAPlayer(pedId) then
+        Citizen.Trace("rdrp_drugsales: ped: " .. pedId .. " not able to sell to.")
 
-        --return
-    --end
+        return
+    end
 
     ESX.ShowNotification("You wan't to buy some stuff?")
 
