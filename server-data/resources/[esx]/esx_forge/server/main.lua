@@ -60,7 +60,6 @@ RegisterServerEvent('esx_forge:GetUserInventory')
 AddEventHandler('esx_forge:GetUserInventory', function(currentZone)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	if xPlayer ~= nil then 
 	TriggerClientEvent('esx_forge:ReturnInventory', 
 		_source, 
 		xPlayer.getInventoryItem('steel').count, 
@@ -69,5 +68,4 @@ AddEventHandler('esx_forge:GetUserInventory', function(currentZone)
 		xPlayer.job.name, 
 		currentZone
 	)
-	end
 end)
