@@ -9,7 +9,7 @@ Config.TimeToProcessIron  = 10  * 1000 --Amount of time to process iron
 Config.Locale = 'en'
 
 Config.Zones = {
-	IronProcessing =	{x=1110.10,  y=-2011.03,  z=30.90},
+	IronProcessing =	{x=1110.10,  y=-2011.03,  z=29.90},
 }
 
 Config.DisableBlip = false -- Set to true to disable blips. False to enable them.
