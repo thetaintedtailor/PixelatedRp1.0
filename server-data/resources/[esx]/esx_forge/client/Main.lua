@@ -78,7 +78,7 @@ end)
 
 -- Render Blips
 Citizen.CreateThread(function()
-	if Config.DisableBlip == false then
+  if Config.DisableBlip == false then
 	for i=1, #Config.Map, 1 do
 		
 		local blip = AddBlipForCoord(Config.Map[i].x, Config.Map[i].y, Config.Map[i].z)
