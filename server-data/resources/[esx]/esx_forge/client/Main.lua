@@ -46,14 +46,15 @@ AddEventHandler('esx_forge:hasEnteredMarker', function(zone)
 			CurrentActionData = {}
 		end
     end
+end)   
+AddEventHandler('esx_forge:hasExitedMarker', function(zone)
+    CurrentAction = nil
+    ESX.UI.Menu.CloseAll()
     
-    AddEventHandler('esx_forge:hasExitedMarker', function(zone)
-        CurrentAction = nil
-        ESX.UI.Menu.CloseAll()
+    TriggerServerEvent('esx_forge:stopTransformIron')
     
-        TriggerServerEvent('esx_forge:stopTransformIron')
-    
-    end)
+end)
+
 
     -- Render markers
 Citizen.CreateThread(function()
