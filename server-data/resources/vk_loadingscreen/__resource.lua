@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/pixies_hey.mp3',
+    'music/High_Hopes.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
