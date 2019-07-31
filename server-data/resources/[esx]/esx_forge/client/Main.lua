@@ -59,6 +59,7 @@ end)
 
     -- Render markers
 Citizen.CreateThread(function()
+	print(Config.MarkerColor.r)
     while true do
 
         Wait(0)
@@ -71,7 +72,8 @@ Citizen.CreateThread(function()
             end
         end
 
-    end
+	end
+
 end)
 
 -- Render Blips
