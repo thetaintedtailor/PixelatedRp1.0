@@ -47,6 +47,7 @@ AddEventHandler('esx_forge:hasEnteredMarker', function(zone)
 		end
     end
 end)   
+
 AddEventHandler('esx_forge:hasExitedMarker', function(zone)
     CurrentAction = nil
     ESX.UI.Menu.CloseAll()
