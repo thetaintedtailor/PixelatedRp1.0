@@ -234,17 +234,13 @@ end)
 RegisterNetEvent('fishing:setbait')
 AddEventHandler('fishing:setbait', function(bool)
 	bait = bool
-	print(bait)
 end)
 
 RegisterNetEvent('fishing:fishstart')
 AddEventHandler('fishing:fishstart', function()
-	
-	
-	
 	playerPed = GetPlayerPed(-1)
 	local pos = GetEntityCoords(GetPlayerPed(-1))
-	print('started fishing' .. pos)
+	
 	if IsPedInAnyVehicle(playerPed) then
 		ESX.ShowNotification("~y~You can not fish from a vehicle")
 	else

@@ -5,8 +5,8 @@ TokoVoipConfig = {
 	minVersion = "1.2.4", -- Version of the TS plugin required to play on the server
 
 	distance = {
-		30, -- Normal speech distance in gta distance units
-		10, -- Whisper speech distance in gta distance units
+		20, -- Normal speech distance in gta distance units
+		6, -- Whisper speech distance in gta distance units
 		135, -- Shout speech distance in gta distance units
 	},
 	headingType = 1, -- headingType 0 uses GetGameplayCamRot, basing heading on the camera's heading, to match how other GTA sounds work. headingType 1 uses GetEntityHeading which is based on the character's direction
@@ -19,7 +19,7 @@ TokoVoipConfig = {
 		-- TeamSpeak channel name used by the voip
 		-- If the TSChannelWait is enabled, players who are currently in TSChannelWait will be automatically moved
 		-- to the TSChannel once everything is running
-		TSChannel = "Server 1",
+		TSChannel = "Staging Server",
 		TSPassword = "pixelatedrp2486", -- TeamSpeak channel password (can be empty)
 
 		-- Optional: TeamSpeak waiting channel name, players wait in this channel and will be moved to the TSChannel automatically
@@ -47,8 +47,6 @@ TokoVoipConfig = {
 	}
 };
 
-function resourceStart(resource)
-end
 AddEventHandler("onClientResourceStart", function(resource)
 	if (resource == GetCurrentResourceName()) then	--	Initialize the script when this resource is started
 		Citizen.CreateThread(function()
