@@ -9,7 +9,7 @@ body {
 }
 
 main {
-    bottom: 7%;
+    bottom: 12%;
     display: none;
     position: absolute;
     left: 5%;
@@ -17,15 +17,14 @@ main {
 }
 
 #display {
-    bottom: 23%;
+    bottom: 22.5%;
     color: #232428;
-    font-size: 1.6em;
+    font-size: 1.4em;
     height: 2.5em;
-    left: 26%;
+    left: 23%;
     position: absolute;
 }
 
 #radio-frame {
-    width: 100%;
-    z-index: -1;
+    width: 85%;
 }
