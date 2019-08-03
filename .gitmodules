@@ -1,0 +1,3 @@
+[submodule "server-data\\resources\\pixelated_radio"]
+	path = server-data\\resources\\pixelated_radio
+	url = git@github.com:pixelated-rp/radio
