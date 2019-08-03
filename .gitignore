@@ -10,7 +10,6 @@
 
 .*.swp
 
-
-
-
-
+server-data/cache
+server-data/essentialmode.db
+server-data/run.bat
