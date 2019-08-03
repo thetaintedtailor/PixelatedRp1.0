@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/High_Hopes.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "High Hopes - Panic! At the Disco"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by E-769 EMS K.'Pokie' Bouvier"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/closer.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Closer - Lemaitre"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by Dash/Hash Noobless"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
