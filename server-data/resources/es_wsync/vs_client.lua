@@ -47,11 +47,12 @@ Citizen.CreateThread(function()
 	local hour = 0
 	local minute = 0
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(50)
+		local gameTimer = GetGameTimer()
 		local newBaseTime = baseTime
-		if GetGameTimer() - 500  > timer then
+		if gameTimer - 500  > timer then
 			newBaseTime = newBaseTime + 0.25
-			timer = GetGameTimer()
+			timer = gameTimer
 		end
 		if freezeTime then
 			timeOffset = timeOffset + baseTime - newBaseTime
