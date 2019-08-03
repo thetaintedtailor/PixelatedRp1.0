@@ -34,7 +34,6 @@ AddEventHandler('seatbelt:enableSeatbelt', function(source)
   TriggerEvent("pNotify:SendNotification", {text = "Seatbelt On", type = "success", timeout = 1400, layout = "centerLeft"})
 end)
 
-
 RegisterNetEvent('seatbelt:disableSeatbelt')
 AddEventHandler('seatbelt:disableSeatbelt', function(source)
   beltOn = false
