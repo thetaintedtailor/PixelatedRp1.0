@@ -28,7 +28,19 @@ Fwv = function (entity)
         return { x = math.cos(hr) * 2.0, y = math.sin(hr) * 2.0 }
       end
  
- 
+RegisterNetEvent('seatbelt:enableSeatbelt')
+AddEventHandler('seatbelt:enableSeatbelt', function(source)
+  beltOn = true
+  TriggerEvent("pNotify:SendNotification", {text = "Seatbelt On", type = "success", timeout = 1400, layout = "centerLeft"})
+end)
+
+
+RegisterNetEvent('seatbelt:disableSeatbelt')
+AddEventHandler('seatbelt:disableSeatbelt', function(source)
+  beltOn = false
+	TriggerEvent("pNotify:SendNotification", {text = "Seatbelt Off", type = "error", timeout = 1400, layout = "centerLeft"}) 
+end)
+
 Citizen.CreateThread(function()
   while true do
   Citizen.Wait(0)

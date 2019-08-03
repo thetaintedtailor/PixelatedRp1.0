@@ -92,6 +92,7 @@ AddEventHandler('esx_policejob:putInVehicle', function(target)
 
 	if xPlayer.job.name == 'police' then
 		TriggerClientEvent('esx_policejob:putInVehicle', target)
+		TriggerClientEvent('seatbelt:toggleSeatbelt', target)
 	else
 		print(('esx_policejob: %s attempted to put in vehicle (not cop)!'):format(xPlayer.identifier))
 	end
@@ -102,6 +103,7 @@ AddEventHandler('esx_policejob:OutVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if xPlayer.job.name == 'police' then
+		TriggerClientEvent('seatbelt:toggleSeatbelt', target)
 		TriggerClientEvent('esx_policejob:OutVehicle', target)
 	else
 		print(('esx_policejob: %s attempted to drag out from vehicle (not cop)!'):format(xPlayer.identifier))
