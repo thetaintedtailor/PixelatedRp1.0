@@ -1,5 +1,5 @@
 Locales['en'] = {
-	['not_in_whitelist'] = 'This server is using a whitelist. To talk about it, join us here : %s',
+	['not_in_whitelist'] = 'Either you are not logged in to Steam or you are not whitelisted. Join us here : %s',
 	['missing_steam_id'] = 'Unable to find your steamID',
 	['banned_from_server'] = 'You are banned from this server',
 	['waiting_queue_message'] = 'You are in the waiting queue (%i/%i)',
@@ -21,3 +21,4 @@ Locales['en'] = {
 	['reload_whitelist'] = 'Reload whitelist',
 	['whitelist_reloaded'] = 'Successfully reloaded whitelist'
 }
+
