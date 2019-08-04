@@ -50,7 +50,7 @@ function Display(mePlayer, text, offset)
     end)
     Citizen.CreateThread(function()
         nbrDisplaying = nbrDisplaying + 1
-        print(nbrDisplaying)
+
         while displaying do
             Wait(0)
             local coordsMe = GetEntityCoords(GetPlayerPed(mePlayer), false)
