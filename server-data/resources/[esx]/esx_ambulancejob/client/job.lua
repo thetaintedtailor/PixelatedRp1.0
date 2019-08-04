@@ -376,7 +376,30 @@ Citizen.CreateThread(function()
 				if CurrentAction == 'AmbulanceActions' then
 					OpenAmbulanceActionsMenu()
 				elseif CurrentAction == 'Pharmacy' then
-					OpenPharmacyMenu()
+					local authorizedPharmacyItems = Config.AuthorizedPharmacy[ESX.PlayerData.job.grade_name]
+
+					local pharmacyElements = {}
+					if #Config.AuthorizedPharmacy['Shared'] > 0 then
+						for k,item in ipairs (Config.AuthorizedPharmacy['Shared']) do
+							table.insert(pharmacyElements, {
+								label = _U('pharmacy_take', _U(item)),
+								value = item
+							})
+						end
+					end
+
+					if #authorizedPharmacyItems > 0 then
+						for k,item in ipairs(authorizedPharmacyItems) do
+							table.insert(pharmacyElements, {
+								label = _U('pharmacy_take', _U(item)),
+								value = item
+							})
+						end
+					elseif #Config.AuthorizedPharmacy['Shared'] == 0 then
+						return
+					end
+
+					OpenPharmacyMenu(pharmacyElements)
 				elseif CurrentAction == 'Vehicles' then
 					OpenVehicleSpawnerMenu(CurrentActionData.hospital, CurrentActionData.partNum)
 				elseif CurrentAction == 'Helicopters' then
@@ -486,6 +509,8 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 					})
 				end
 			else
+				print("hey")
+				ESX.ShowNotification(_U('not_authorized'))
 				return
 			end
 
@@ -505,7 +530,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 						else
 							label = label .. ('<span style="color:darkred;">%s</span>'):format(_U('garage_notstored'))
 						end
-						print('inside retrieve veh loop', v.fuel_level)
+
 						table.insert(garage, {
 							label = label,
 							stored = v.stored,
@@ -643,7 +668,6 @@ function StoreAllVehicles()
 	end, vehiclesAndFuel)
 
 end
-
 
 function GetAvailableVehicleSpawnPoint(hospital, part, partNum)
 	local spawnPoints = Config.Hospitals[hospital][part][partNum].SpawnPoints
@@ -902,25 +926,13 @@ function drawLoadingText(text, red, green, blue, alpha)
 	EndTextCommandDisplayText(0.5, 0.5)
 end
 
-function OpenPharmacyMenu()
+function OpenPharmacyMenu(pharmacyElements)
 	ESX.UI.Menu.CloseAll()
 
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy',
-	{
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy', {
 		title    = _U('pharmacy_menu_title'),
 		align    = 'left',
-		elements = {
-			--{label = _U('pharmacy_take', _U('medikit')), value = 'medikit'},
-			{label = _U('pharmacy_take', _U('bandage')), value = 'bandage'},
-			{label = _U('pharmacy_take', _U('morphine')), value = 'morphine'},
-			{label = _U('pharmacy_take', _U('gauze')), value = 'gauze'},
-			{label = _U('pharmacy_take', _U('medicaltape')), value = 'medicaltape'},
-			{label = _U('pharmacy_take', _U('k3v')), value = 'k3v'},
-			{label = _U('pharmacy_take', _U('vicodin')), value = 'vicodin'},
-			{label = _U('pharmacy_take', _U('ibuprofen')), value = 'ibuprofen'},
-			{label = _U('pharmacy_take', _U('amoxicillin')), value = 'amoxicillin'},
-			{label = _U('pharmacy_take', _U('xanax')), value = 'xanax'}
-		}
+		elements = pharmacyElements
 	}, function(data, menu)
 		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.value)
 	end, function(data, menu)
