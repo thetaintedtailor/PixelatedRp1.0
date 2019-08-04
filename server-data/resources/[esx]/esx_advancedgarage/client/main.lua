@@ -557,14 +557,30 @@ function ReturnOwnedCarsMenu()
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
-			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyCars', function(hasEnoughMoney)
-				if hasEnoughMoney then
-					TriggerServerEvent('esx_advancedgarage:payCar')
-					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
-				else
-					ESX.ShowNotification(_U('not_enough_money'))
-				end
-			end)
+			local isBike = false
+			for k,v in pairs(Config.BicycleHashes) do
+				if k == data.current.value.model or v == data.current.value.model then isBike = true end
+			end
+
+			if isBike == true then
+				ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyBike', function(hasEnoughMoney)
+					if hasEnoughMoney then
+						TriggerServerEvent('esx_advancedgarage:payBike')
+						SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+					else
+						ESX.ShowNotification(_U('not_enough_money'))
+					end
+				end)
+			else
+				ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyCars', function(hasEnoughMoney)
+					if hasEnoughMoney then
+						TriggerServerEvent('esx_advancedgarage:payCar')
+						SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+					else
+						ESX.ShowNotification(_U('not_enough_money'))
+					end
+				end)
+			end
 		end, function(data, menu)
 			menu.close()
 		end)

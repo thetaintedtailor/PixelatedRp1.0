@@ -296,6 +296,16 @@ ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyCars', function(source,
 	end
 end)
 
+-- Check Money for Pounded Bicycles
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyBike', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.getAccount('bank').money >= Config.BicyclePoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
 -- Check Money for Pounded Policing
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyPolicing', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -341,6 +351,15 @@ AddEventHandler('esx_advancedgarage:payCar', function()
 	xPlayer.removeAccountMoney('bank', Config.CarPoundPrice)
 	--xPlayer.removeMoney(Config.CarPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.CarPoundPrice)
+end)
+
+-- Pay for Pounded Bikes
+RegisterServerEvent('esx_advancedgarage:payBike')
+AddEventHandler('esx_advancedgarage:payBike', function()
+	local xPlayer = ESX.GetPlayerFromId(source) 
+	xPlayer.removeAccountMoney('bank', Config.BicyclePoundPrice)
+	--xPlayer.removeMoney(Config.CarPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.BicyclePoundPrice)
 end)
 
 -- Pay for Pounded Policing
