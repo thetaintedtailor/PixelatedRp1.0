@@ -30,12 +30,14 @@ Fwv = function (entity)
  
 RegisterNetEvent('seatbelt:enableSeatbelt')
 AddEventHandler('seatbelt:enableSeatbelt', function(source)
+  isUiOpen = true
   beltOn = true
   TriggerEvent("pNotify:SendNotification", {text = "Seatbelt On", type = "success", timeout = 1400, layout = "centerLeft"})
 end)
 
 RegisterNetEvent('seatbelt:disableSeatbelt')
 AddEventHandler('seatbelt:disableSeatbelt', function(source)
+  isUiOpen = false
   beltOn = false
 	TriggerEvent("pNotify:SendNotification", {text = "Seatbelt Off", type = "error", timeout = 1400, layout = "centerLeft"}) 
 end)
@@ -86,28 +88,27 @@ Citizen.CreateThread(function()
 			   displayWindow = 'false'
 			   })
 			isUiOpen = true 
-		else 
-		TriggerEvent("pNotify:SendNotification", {text = "Seatbelt Off", type = "error", timeout = 1400, layout = "centerLeft"}) 
+      else 
+      TriggerEvent("pNotify:SendNotification", {text = "Seatbelt Off", type = "error", timeout = 1400, layout = "centerLeft"}) 
 
-			SendNUIMessage({
-			   displayWindow = 'true'
-			   })
-			isUiOpen = true  
-		end
+        SendNUIMessage({
+          displayWindow = 'true'
+          })
+        isUiOpen = true  
       end
+    end
       
     elseif wasInCar then
       wasInCar = false
       beltOn = false
       speedBuffer[1], speedBuffer[2] = 0.0, 0.0
-             if isUiOpen == true and not IsPlayerDead(PlayerId()) then
-                SendNUIMessage({
-            	   displayWindow = 'false'
-            	   })
-                isUiOpen = false 
-            end
+        if isUiOpen == true and not IsPlayerDead(PlayerId()) then
+            SendNUIMessage({
+            	displayWindow = 'false'
+            	})
+            isUiOpen = false 
+        end
     end
-    
   end
 end)
 
