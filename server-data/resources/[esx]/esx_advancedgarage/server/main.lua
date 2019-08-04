@@ -269,7 +269,7 @@ end)
 -- Check Money for Pounded Aircrafts
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyAircrafts', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.get('money') >= Config.AircraftPoundPrice then
+	if xPlayer.getAccount('bank').money >= Config.AircraftPoundPrice then
 		cb(true)
 	else
 		cb(false)
@@ -279,7 +279,7 @@ end)
 -- Check Money for Pounded Boats
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyBoats', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.get('money') >= Config.BoatPoundPrice then
+	if xPlayer.getAccount('bank').money >= Config.BoatPoundPrice then
 		cb(true)
 	else
 		cb(false)
@@ -289,7 +289,7 @@ end)
 -- Check Money for Pounded Cars
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyCars', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.get('money') >= Config.CarPoundPrice then
+	if xPlayer.getAccount('bank').money >= Config.CarPoundPrice then
 		cb(true)
 	else
 		cb(false)
@@ -299,7 +299,7 @@ end)
 -- Check Money for Pounded Policing
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyPolicing', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.get('money') >= Config.PolicingPoundPrice then
+	if xPlayer.getAccount('bank').money >= Config.PolicingPoundPrice then
 		cb(true)
 	else
 		cb(false)
@@ -309,7 +309,7 @@ end)
 -- Check Money for Pounded Ambulance
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyAmbulance', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.get('money') >= Config.AmbulancePoundPrice then
+	if xPlayer.getAccount('bank').money >= Config.AmbulancePoundPrice then
 		cb(true)
 	else
 		cb(false)
@@ -320,7 +320,8 @@ end)
 RegisterServerEvent('esx_advancedgarage:payAircraft')
 AddEventHandler('esx_advancedgarage:payAircraft', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeMoney(Config.AircraftPoundPrice)
+	xPlayer.removeAccountMoney('bank', Config.AircraftPoundPrice)
+	--xPlayer.removeMoney(Config.AircraftPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.AircraftPoundPrice)
 end)
 
@@ -328,7 +329,8 @@ end)
 RegisterServerEvent('esx_advancedgarage:payBoat')
 AddEventHandler('esx_advancedgarage:payBoat', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeMoney(Config.BoatPoundPrice)
+	xPlayer.removeAccountMoney('bank', Config.BoatPoundPrice)
+	--xPlayer.removeMoney(Config.BoatPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.BoatPoundPrice)
 end)
 
@@ -336,7 +338,8 @@ end)
 RegisterServerEvent('esx_advancedgarage:payCar')
 AddEventHandler('esx_advancedgarage:payCar', function()
 	local xPlayer = ESX.GetPlayerFromId(source) 
-	xPlayer.removeMoney(Config.CarPoundPrice)
+	xPlayer.removeAccountMoney('bank', Config.CarPoundPrice)
+	--xPlayer.removeMoney(Config.CarPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.CarPoundPrice)
 end)
 
@@ -344,7 +347,8 @@ end)
 RegisterServerEvent('esx_advancedgarage:payPolicing')
 AddEventHandler('esx_advancedgarage:payPolicing', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeMoney(Config.PolicingPoundPrice)
+	xPlayer.removeAccountMoney('bank', Config.PolicingPoundPrice)
+	--xPlayer.removeMoney(Config.PolicingPoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.PolicingPoundPrice)
 end)
 
@@ -352,7 +356,8 @@ end)
 RegisterServerEvent('esx_advancedgarage:payAmbulance')
 AddEventHandler('esx_advancedgarage:payAmbulance', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeMoney(Config.AmbulancePoundPrice)
+	xPlayer.removeAccountMoney('bank', Config.AmbulancePoundPrice)
+	--xPlayer.removeMoney(Config.AmbulancePoundPrice)
 	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.AmbulancePoundPrice)
 end)
 
