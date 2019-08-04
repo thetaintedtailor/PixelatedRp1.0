@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/closer.mp3',
+    'music/till_i_die.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
