@@ -233,7 +233,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'SILV',label = 'SILV', price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
@@ -340,7 +340,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'SILV',label = 'SILV', price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
@@ -373,7 +373,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
-		{model = 'SILV',label = 'SILV', price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	boss = {
