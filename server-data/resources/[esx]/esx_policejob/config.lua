@@ -81,15 +81,15 @@ Config.PoliceStations = {
 
 Config.AuthorizedWeapons = {
 	cadet = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 0 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	officer = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -97,8 +97,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	deputy = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -106,8 +106,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	senior_officer = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -115,8 +115,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	corporal = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -124,8 +124,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	sergeant = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -133,8 +133,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	lieutenant = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -142,8 +142,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	captain = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -151,8 +151,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	commander = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -160,8 +160,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	deputy_sheriff = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -169,8 +169,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	deputy_chief = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -178,8 +178,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	sheriff = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -187,8 +187,8 @@ Config.AuthorizedWeapons = {
 	},
 
 	boss = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
 		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
@@ -233,6 +233,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'SILV',label = 'SILV', price = 1},
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
@@ -339,6 +340,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
 		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
+		{model = 'SILV',label = 'SILV', price = 1},
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
 	},
 
@@ -371,6 +373,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'SILV',label = 'SILV', price = 1},
 	},
 
 	boss = {
