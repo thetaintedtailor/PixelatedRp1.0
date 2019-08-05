@@ -517,18 +517,24 @@ function ReturnOwnedCarsMenu()
 				local labelvehicle
 				
 				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
-				
 				for k,v in pairs(carInWorld) do
-					if v.plate == plate then
+					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) == 1 then
 						isSpawned = 1
 					end
 				end
-				
-				if isSpawned == 0 then
-					table.insert(elements, {label = labelvehicle, value = v})
+
+				if isSpawned == 1 then
+					labelvehicle = ' '..vehicleName..' | '..plate..' | '..'Stolen?'..' '
+					table.insert(elements, {label = labelvehicle, value = 'stolen'})
 				end
 				
-				--table.insert(elements, {label = labelvehicle, value = v})
+				if isSpawned == 0 then
+					labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
+				    table.insert(elements, {label = labelvehicle, value = v})
+					--table.insert(elements, {label = labelvehicle, value = v})
+				end
+				
+				--table.insert(elements, {label = labelvehicle, value = nil})
 			else
 				local hashVehicule = v.model
 				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -539,10 +545,14 @@ function ReturnOwnedCarsMenu()
 				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
-					if v.plate == plate then
+					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) then
 						isSpawned = 1
 					end
 				end
+
+				--if isSpawned == 1 then
+				--	table.insert(elements, {label = labelvehcle, value = 'Stolen?'})
+				--end
 				
 				if isSpawned == 0 then
 					table.insert(elements, {label = labelvehicle, value = v})
@@ -557,6 +567,7 @@ function ReturnOwnedCarsMenu()
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
+			if data.current.value == 'stolen' then return end
 			local isBike = false
 			for k,v in pairs(Config.BicycleHashes) do
 				if k == data.current.value.model or v == data.current.value.model then isBike = true end
