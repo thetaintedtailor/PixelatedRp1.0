@@ -265,7 +265,7 @@ local Keys = {
 		  end
 	  else
 		  if not Config.EnablePlayerManagement then
-			  table.insert(elements, {label = "Buy ($" .. property.price .. ")", value = 'buy'})
+			  table.insert(elements, {label = "Buy ($" .. ESX.Math.GroupDigits(property.price) .. ")", value = 'buy'})
 			  table.insert(elements, {label = "Rent ($" .. rentPrice .. " per day)", value = 'rent'})
 		  end
   
