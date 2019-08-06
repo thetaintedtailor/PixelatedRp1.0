@@ -780,8 +780,11 @@ function OpenPoliceActionsMenu()
 				align    = 'right',
 				elements = elements
 			}, function(data2, menu2)
-				local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-				if closestPlayer ~= -1 and closestDistance <= 3.0 then
+				--local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+				local closestPlayer = PlayerId()
+				local closestDistance = 0.1
+				--if closestPlayer ~= -1 and closestDistance <= 3.0 then
+				if closestDistance <= 3.0 then
 					local action = data2.current.value
 
 					if action == 'identity_card' then
@@ -800,7 +803,7 @@ function OpenPoliceActionsMenu()
 					elseif action == 'fine' then
 						OpenFineMenu(closestPlayer)
 					elseif action == 'license' then
-						ShowPlayerLicense(closestPlayer)
+						OpenManageLicenseMenu(closestPlayer)
 					elseif action == 'unpaid_bills' then
 						OpenUnpaidBillsMenu(closestPlayer)
 					end
@@ -994,10 +997,8 @@ function OpenIdentityCardMenu(player)
 	
 		end
 	
-		local elements = {
-			{label = nameLabel, value = nil},
-			{label = jobLabel,  value = nil},
-		}
+		table.insert(elements, {label = nameLabel, value = nil})
+		table.insert(elements, {label = jobLabel, value = nil})
 	
 		if Config.EnableESXIdentity then
 			table.insert(elements, {label = sexLabel, value = nil})
@@ -1010,6 +1011,7 @@ function OpenIdentityCardMenu(player)
 			table.insert(elements, {label = _U('bac', data.drunk), value = nil})
 		end
 	
+		--[[ ESX menu seems to break as soon as it gets to 10 elements in a single menu
 		if data.licenses ~= nil then
 	
 			table.insert(elements, {label = _U('license_label'), value = nil})
@@ -1019,6 +1021,7 @@ function OpenIdentityCardMenu(player)
 			end
 	
 		end
+		]]
 	
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction',
 		{
@@ -1026,7 +1029,7 @@ function OpenIdentityCardMenu(player)
 			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
-	
+			Citizen.Trace(data.current.value .. "\n")
 		end, function(data, menu)
 			menu.close()
 		end)
@@ -1198,6 +1201,26 @@ function LookupVehicle()
 				end
 			end, data.value)
 			menu.close()
+		end
+	end, function(data, menu)
+		menu.close()
+	end)
+end
+
+function OpenManageLicenseMenu(closestPlayer)
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
+	{
+		title    = 'Manage Licenses',
+		align    = 'right',
+		elements = { 
+			{ label = 'Grant Licenses', value = 'grant_license' },
+			{ label = 'Revoke Licenses', value = 'revoke_license' }
+		}
+	}, function(data, menu)
+		if data.current.value == 'revoke_license' then
+			ShowPlayerLicense(closestPlayer)
+		elseif data.current.value == 'grant_license' then
+			-- Do something
 		end
 	end, function(data, menu)
 		menu.close()
