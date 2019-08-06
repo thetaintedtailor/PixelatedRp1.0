@@ -2,8 +2,13 @@ ESX 						   = nil
 local PlayersTransformingIron  = {}
 
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
+Citizen.CreateThread(function() 
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) 
+			ESX = obj 
+		end)
+	end
+end)
 
 local function TransformIron(source)
 
