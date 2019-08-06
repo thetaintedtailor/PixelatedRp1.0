@@ -13,3 +13,4 @@
 server-data/cache
 server-data/essentialmode.db
 server-data/run.bat
+server-data/resources/mysql-async

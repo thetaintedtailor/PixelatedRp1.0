@@ -33,6 +33,8 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 			else
 				targetXPlayer.removeInventoryItem(itemName, amount)
 				sourceXPlayer.addInventoryItem   (itemName, amount)
+				--print(GetCharacterName(targetXPlayer))
+				--print(GetCharacterName(sourceXPlayer))
 				TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated', amount, sourceItem.label, targetXPlayer.name))
 				TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated', amount, sourceItem.label, sourceXPlayer.name))
 			end

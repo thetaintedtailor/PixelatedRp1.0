@@ -21,7 +21,7 @@ Config.UseDamageMult = false -- If true it costs more to store a Broken Vehicle.
 Config.DamageMult = 3 -- Higher Number = Higher Repair Price.
 
 Config.CarPoundPrice      = 850 -- Car Pound Price.
-Config.BicyclePoundPrice  = 250 -- Bicycle Pound Price
+Config.BicyclePoundPrice  = 50 -- Bicycle Pound Price
 Config.BoatPoundPrice     = 1500 -- Boat Pound Price.
 Config.AircraftPoundPrice = 7500 -- Aircraft Pound Price.
 
