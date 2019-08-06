@@ -1207,6 +1207,20 @@ function LookupVehicle()
 	end)
 end
 
+function OpenGrantLicenseMenu(closestPlayer)
+	ESX.TriggerServerCallback('esx_license:getLicensesList', function(data)
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'grant_license',
+		{
+			title    = 'Grant Licenses',
+			align    = 'right',
+			elements = data
+		}, function(data, menu)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
 function OpenManageLicenseMenu(closestPlayer)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
 	{
@@ -1220,7 +1234,7 @@ function OpenManageLicenseMenu(closestPlayer)
 		if data.current.value == 'revoke_license' then
 			ShowPlayerLicense(closestPlayer)
 		elseif data.current.value == 'grant_license' then
-			-- Do something
+			OpenGrantLicenseMenu(closestPlayer)
 		end
 	end, function(data, menu)
 		menu.close()
@@ -1248,7 +1262,7 @@ function ShowPlayerLicense(player)
 			targetName = data.name
 		end
 		
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'revoke_license',
 		{
 			title    = _U('license_revoke'),
 			align    = 'right',
