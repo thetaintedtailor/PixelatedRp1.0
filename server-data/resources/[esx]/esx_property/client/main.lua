@@ -255,6 +255,7 @@ local Keys = {
   
   function OpenPropertyMenu(property)
 	  local elements = {}
+	  local rentPrice = ESX.Math.GroupDigits(ESX.Math.Round(property.price / 1600))
   
 	  if PropertyIsOwned(property) then
 		  table.insert(elements, {label = _U('enter'), value = 'enter'})
@@ -264,8 +265,8 @@ local Keys = {
 		  end
 	  else
 		  if not Config.EnablePlayerManagement then
-			  table.insert(elements, {label = _U('buy'), value = 'buy'})
-			  table.insert(elements, {label = _U('rent'), value = 'rent'})
+			  table.insert(elements, {label = "Buy ($" .. property.price .. ")", value = 'buy'})
+			  table.insert(elements, {label = "Rent ($" .. rentPrice .. " per day)", value = 'rent'})
 		  end
   
 		  table.insert(elements, {label = _U('visit'), value = 'visit'})
@@ -390,7 +391,7 @@ local Keys = {
 			  table.insert(elements, {
 				  label = gatewayProperties[i].label,
 				  value = gatewayProperties[i].name,
-				  price = "$" .. ESX.Math.GroupDigits(gatewayProperties[i].price),
+				  price = ESX.Math.GroupDigits(gatewayProperties[i].price),
 				  rent = ESX.Math.GroupDigits(ESX.Math.Round(gatewayProperties[i].price / 1600)) .. " per day"
 			  })
 		  end
@@ -410,8 +411,8 @@ local Keys = {
 			  title    = property.label .. ' - ' .. _U('available_properties'),
 			  align    = 'left',
 			  elements = {
-				  {label = "Buy " .. "(" .. data.current.price .. ")", value = 'buy'},
-				  {label = "Rent " .. "(price: $" .. data.current.rent .. ")", value = 'rent'},
+				  {label = "Buy ($" .. data.current.price .. ")", value = 'buy'},
+				  {label = "Rent ($" .. data.current.rent .. ")", value = 'rent'},
 				  {label = _U('visit'), value = 'visit'}
 			  }
 		  }, function(data2, menu2)
