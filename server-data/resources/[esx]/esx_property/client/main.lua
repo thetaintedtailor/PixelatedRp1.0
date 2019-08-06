@@ -391,7 +391,7 @@ local Keys = {
 				  label = gatewayProperties[i].label .. ' $' .. ESX.Math.GroupDigits(gatewayProperties[i].price),
 				  value = gatewayProperties[i].name,
 				  price = gatewayProperties[i].price,
-				  rent = ESX.Math.Round(gatewayProperties[i].price / 1600) .. "per day"
+				  rent = ESX.Math.Round(gatewayProperties[i].price / 1600) .. " per day"
 			  })
 		  end
 	  end
@@ -411,7 +411,7 @@ local Keys = {
 			  align    = 'left',
 			  elements = {
 				  {label = _U('buy'), value = 'buy'},
-				  {label = "rent" .. "(price: $" .. data.current.rent .. "per day)", value = 'rent'},
+				  {label = "rent " .. "(price: $" .. data.current.rent .. ")", value = 'rent'},
 				  {label = _U('visit'), value = 'visit'}
 			  }
 		  }, function(data2, menu2)
