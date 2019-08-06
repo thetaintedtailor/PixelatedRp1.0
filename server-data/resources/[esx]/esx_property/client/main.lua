@@ -388,10 +388,10 @@ local Keys = {
 	  for i=1, #gatewayProperties, 1 do
 		  if not PropertyIsOwned(gatewayProperties[i]) then
 			  table.insert(elements, {
-				  label = gatewayProperties[i].label .. ' $' .. ESX.Math.GroupDigits(gatewayProperties[i].price),
+				  label = gatewayProperties[i].label,
 				  value = gatewayProperties[i].name,
-				  price = gatewayProperties[i].price,
-				  rent = ESX.Math.Round(gatewayProperties[i].price / 1600) .. " per day"
+				  price = "$" .. ESX.Math.GroupDigits(gatewayProperties[i].price),
+				  rent = ESX.Math.GroupDigits(ESX.Math.Round(gatewayProperties[i].price / 1600)) .. " per day"
 			  })
 		  end
 	  end
@@ -410,8 +410,8 @@ local Keys = {
 			  title    = property.label .. ' - ' .. _U('available_properties'),
 			  align    = 'left',
 			  elements = {
-				  {label = _U('buy'), value = 'buy'},
-				  {label = "rent " .. "(price: $" .. data.current.rent .. ")", value = 'rent'},
+				  {label = "Buy " .. "(" .. data.current.price .. ")", value = 'buy'},
+				  {label = "Rent " .. "(price: $" .. data.current.rent .. ")", value = 'rent'},
 				  {label = _U('visit'), value = 'visit'}
 			  }
 		  }, function(data2, menu2)
