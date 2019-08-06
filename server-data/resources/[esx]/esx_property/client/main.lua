@@ -390,7 +390,8 @@ local Keys = {
 			  table.insert(elements, {
 				  label = gatewayProperties[i].label .. ' $' .. ESX.Math.GroupDigits(gatewayProperties[i].price),
 				  value = gatewayProperties[i].name,
-				  price = gatewayProperties[i].price
+				  price = gatewayProperties[i].price,
+				  rent = ESX.Math.Round(gatewayProperties[i].price / 1600)
 			  })
 		  end
 	  end
