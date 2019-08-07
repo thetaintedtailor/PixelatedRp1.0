@@ -20,33 +20,47 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Wait(0)
+        Wait(3)
         if IsPedShooting(GetPlayerPed(-1)) and not (hasShot) then
             hasShot = true
             TriggerServerEvent('addGsrRecord', timer)
+            StartTimer()
+            Wait(5000)
         elseif IsPedShooting(GetPlayerPed(-1)) and (hasShot) then
             hasShot = true
             timer = Config.GsrTime
             TriggerServerEvent('timeUpdate', timer)
+            Wait(5000)
         end
     end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Wait(0)
-        if (hasShot) and timer > 0 then
-            timer = timer - 0.1
-            timecheck(timer)
+function StartTimer()
+    Citizen.CreateThread(function()
+        local currentTime = GetGameTimer()
+        local lastTime = currentTime
+        local lastUpdate = currentTime
+
+        while hasShot do
+            Wait(5000)
+
+            currentTime = GetGameTimer()
+            timer = timer - ((currentTime - lastTime) / 1000)
+            lastTime = currentTime
+
+            if ((currentTime - lastUpdate) > 30000) then
+                TriggerServerEvent('timeUpdate', timer)
+            end
+
+            if timer <= 0 and (hasShot) then
+                hasShot = false
+            end
         end
-        
-        if timer <= 1 and (hasShot) then
-            hasShot = false
-            timer = Config.GsrTime
-            TriggerServerEvent('removeGsrRecord')
-        end
-    end
-end)
+
+        timer = Config.GsrTime
+        TriggerServerEvent('removeGsrRecord')
+    end)
+end
 
 Citizen.CreateThread(function()
     while true do
@@ -60,14 +74,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-function timecheck(time)
-    if time < 3600 and time > 3500 then
-        TriggerServerEvent('timeUpdate', time)
-    elseif time < 100 then
-        TriggerServerEvent('timeUpdate', time)
-    end
-end
 
 RegisterNetEvent('GSR:Notify')
 AddEventHandler('GSR:Notify', function(text, type)

@@ -107,7 +107,7 @@ AddEventHandler('medSystem:near', function(x,y,z, pulse, blood, nameF, nameL, ar
 		if bldn == 1 then
 		cBleeding = "SLOW"
 		elseif bldn == 2 then
-		cBleeding "MEDIUM"
+		cBleeding = "MEDIUM"
 		elseif bldn == 5 then
 		cBleeding = "FAST"
 		elseif bldn == 0 then
