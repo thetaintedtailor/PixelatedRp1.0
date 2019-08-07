@@ -8,14 +8,19 @@ function Timer()
 			Citizen.Wait(1000)
 		until timer == Config.Duration or activeRace == false
 			TriggerClientEvent('jetskirace:end', -1)
+			activeRace = false
 	end)
 end
 
 RegisterServerEvent('jetskirace:start')
 AddEventHandler('jetskirace:start', function(count)
-	activeRace = true
-	Timer()
-	TriggerClientEvent('jetskirace:start', -1, count)
+	if not activeRace then
+		activeRace = true
+		Timer()
+		TriggerClientEvent('jetskirace:start', -1, count)
+	else
+		TriggerClientEvent('jetskirace:alreadyActive', source)
+	end
 end)
 
 RegisterServerEvent('jetskirace:end')

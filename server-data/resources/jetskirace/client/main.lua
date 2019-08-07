@@ -101,7 +101,10 @@ function OpenParticipantMenu()
 	end)
 end
 
-AddEventHandler('jetskirace:hasEnteredMarker', function()
+RegisterNetEvent('jetskirace:alreadyActive')
+AddEventHandler('jetskirace:alreadyActive', function()
+    sendNotification('There is already a race active.', 'error', 3000)
+    ESX.UI.Menu.CloseAll()
 end)
 
 AddEventHandler('jetskirace:hasExitedMarker', function()
@@ -135,3 +138,13 @@ AddEventHandler('jetskirace:start', function(count)
         end)
     end
 end)
+
+sendNotification = function(message, messageType, messageTimeout)
+	TriggerEvent("pNotify:SendNotification", {
+		text = message,
+		type = messageType,
+		queue = "bazookan",
+		timeout = messageTimeout,
+		layout = "bottomCenter"
+	})
+end
