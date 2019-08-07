@@ -36,7 +36,19 @@ AddEventHandler('tp:hasEnteredMarker', function(zone)
 	
 	if zone == 'CokeExit' then
     	CurrentAction = zone
-    end
+	end
+	
+	if zone == 'ComedyClubEnter' then
+		CurrentAction = zone
+	end
+
+	if zone == 'ComedyClubExit' then
+		CurrentAction = zone
+	end
+
+	if zone == 'HumaneBasementExit' then
+		CurrentAction = zone
+	end
 
 end)
 
