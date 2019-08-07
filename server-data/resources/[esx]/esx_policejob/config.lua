@@ -219,6 +219,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	deputy = {
@@ -250,6 +251,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	corporal = {
@@ -266,6 +268,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	sergeant = {
@@ -281,6 +284,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	lieutenant = {
@@ -296,6 +300,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	captain = {
@@ -311,6 +316,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	commander = {
@@ -326,6 +332,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	deputy_sheriff = {
@@ -358,6 +365,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	},
 
 	sheriff = {
@@ -389,6 +397,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
 		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
 		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{model = 'silv',label = 'silv', price = 1},
 	}
 }
 
