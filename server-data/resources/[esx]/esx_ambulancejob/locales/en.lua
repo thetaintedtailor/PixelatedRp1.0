@@ -35,6 +35,7 @@ Locales['en'] = {
   ['vehicleshop_bought'] = 'you have bought ~y~%s~s~ for ~r~$%s~s~',
   ['vehicleshop_money'] = 'you cannot afford that vehicle',
   ['vehicleshop_awaiting_model'] = 'the vehicle is currently ~g~DOWNLOADING & LOADING~s~ please wait',
+  ['not_authorized'] = 'You are not authorized.',
   ['confirm_no'] = 'no',
   ['confirm_yes'] = 'yes',
   -- Action Menu
@@ -58,7 +59,7 @@ Locales['en'] = {
   ['fast_travel'] = 'press ~INPUT_CONTEXT~ to fast travel.',
   ['open_pharmacy'] = 'press ~INPUT_CONTEXT~ to open the pharmacy.',
   ['pharmacy_menu_title'] = 'pharmacy',
-  ['pharmacy_take'] = 'take <span style="color:blue;">%s</span>',
+  ['pharmacy_take'] = 'take <span style="color:white;">%s</span>',
   ['medikit'] = 'medikit',
   ['bandage'] = 'bandage',
   ['max_item'] = 'You are already carrying enough.',

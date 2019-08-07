@@ -33,13 +33,13 @@ VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
     "Press F1 to pull up your phone. Emergency/legal/taxi services can be found in the 'services' menu.",
     "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "Our Police Department is HIRING!",
+    "Our Police Department and EMS are hiring! Ask about the sign-on bonus.",
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/closer.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Closer - Lemaitre"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "suggested by Dash/Hash Noobless"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/till_i_die.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "'Till I Die - Machine Gun Kelly'"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "suggested by Envy"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)

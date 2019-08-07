@@ -52,7 +52,6 @@ end)
 RegisterNetEvent('esx_trunk_inventory:setOwnedVehicule')
 AddEventHandler('esx_trunk_inventory:setOwnedVehicule', function(vehicle)
 		vehiclePlate = vehicle
-		print('vehiclePlate: ',ESX.DumpTable(vehiclePlate))
 end)
 
 function getItemyWeight(item)
@@ -87,9 +86,7 @@ function openmenuvehicle()
   for i=1, #vehiclePlate do
     local vPlate = all_trim(vehiclePlate[i].plate)
     local vFront = all_trim(GetVehicleNumberPlateText(thisVeh))
-    --print('vPlate: ',vPlate)
-    --print('vFront: ',vFront)
-    --if vehiclePlate[i].plate == GetVehicleNumberPlateText(vehFront) then
+
     if  vPlate == vFront then
       myVeh = true
     elseif lastChecked < GetGameTimer() - 60000 then
