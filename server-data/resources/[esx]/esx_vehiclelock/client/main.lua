@@ -63,7 +63,7 @@ function ToggleVehicleLock()
 		isInVehicle = true
 	else
 		vehicle = GetClosestVehicle(coords, 8.0, 0, 7)
-		isInvehicle = false
+		isInVehicle = false
 	end
 
 	if not DoesEntityExist(vehicle) then
