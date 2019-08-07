@@ -8,22 +8,36 @@ Citizen.CreateThread(function()
 end)
 
 RegisterCommand('startrace', function(source, args, raw)
-    if source == 0 then
-        print('streetrace: You can\'t use this command from RCON!')
+    if source == -1 then
+        print('streetracing: You can\'t use this command from RCON!')
     end
     TriggerEvent("StartStreetRace", args[1])
 end, false)
 
 AddEventHandler("StartStreetRace", function(wager)
     local player = PlayerPedId()
-    local xPlayer = ESX.GetPlayerFromId(-1)
-    local cashBalance = xPlayer.getMoney()
+    local wage = math.tointeger(wager)
+    local cashBalance = 0
 
     if IsPedInAnyVehicle(player, false) then
-        if cashBalance >= wager then
-
+        ESX.TriggerServerCallback('streetracing:getCash', function(amount)
+          cashBalance = amount
+        end)
+        if cashBalance >= wage then
+          sendNotification('Sending race to nearby citizens.', 'success', 2000)
+        else
+          sendNotification('You don\'t have enough cash for this wager.', 'error', 2000)
         end
     else
-        
+        sendNotification('You must be in a vehicle to use this command. Duh.', 'error', 2000)
     end
 end)
+
+sendNotification = function(message, messageType, messageTimeout)
+	TriggerEvent("pNotify:SendNotification", {
+		text = message,
+		type = messageType,
+		timeout = messageTimeout,
+		layout = "bottomCenter"
+	})
+end
