@@ -97,51 +97,6 @@ Config.zones = {
 			b = 0
 		}
 	},
-
-	ComedyClubEnter = {
-		x = -430.09, 
-		y = 261.65, 
-		z = 82.090,
-		w = 2.0,
-		h = 1.0,
-		visible = true,
-		t = 25,
-		color = {
-			r = 240,
-			g = 253,
-			b = 239
-		}
-	},
-
-	ComedyClubExit = {
-		x = -458.82, 
-		y = 284.86, 
-		z = 77.62,
-		w = 2.0,
-		h = 1.0,
-		visible = true,
-		t = 25,
-		color = {
-			r = 240,
-			g = 253,
-			b = 239
-		}
-	},
-
-	HumaneBasementExit = {
-		x = 3540.63, 
-		y = 3675.49, 
-		z = 20.10,
-		w = 3.0,
-		h = 1.0,
-		visible = true,
-		t = 25,
-		color = {
-			r = 51,
-			g = 153,
-			b = 255
-		}
-	},
 }
 
 -- Landing point, keep the same name as markers
@@ -181,24 +136,6 @@ Config.point = {
 		x = 370.70,
 		y = -577.08, 
 		z = 17.76
-	},
-
-	ComedyClubEnter = {
-		x = -458.790, 
-		y = 284.750, 
-		z = 78.521
-	},
-
-	ComedyClubExit = {
-		x = -430.142, 
-		y = 261.665, 
-		z = 82.500,
-	},
-
-	HumaneBasementExit = {
-		x = 3601.17, 
-		y = 3702.59, 
-		z = 35.64,
 	}
 }
 
