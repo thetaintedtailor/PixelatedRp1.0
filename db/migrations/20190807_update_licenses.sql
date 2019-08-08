@@ -8,3 +8,5 @@ DELETE FROM licenses WHERE type = "weapon";
 DELETE FROM licenses WHERE type = "weed_processing";
 
 INSERT INTO licenses (type, label) VALUES ('weapon_1', 'Class 1 Weapons Permit'), ('weapon_2', 'Class 2 Weapons Permit');
+
+ALTER TABLE weashops ADD COLUMN license VARCHAR(255);
