@@ -128,7 +128,7 @@ AddEventHandler('jetskirace:start', function(count)
 
     for i=1,#Config.BuoyLocations do
         ESX.Game.SpawnObject('prop_dock_bouy_3', Config.BuoyLocations[i], function(buoy) 
-            table.insert( existingBuoy, buoy )
+            table.insert( existingBuoy, buoy)
         end)
     end
 

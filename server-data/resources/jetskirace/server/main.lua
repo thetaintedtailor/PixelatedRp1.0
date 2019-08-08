@@ -17,7 +17,7 @@ AddEventHandler('jetskirace:start', function(count)
 	if not activeRace then
 		activeRace = true
 		Timer()
-		TriggerClientEvent('jetskirace:start', -1, count)
+		TriggerClientEvent('jetskirace:start', source, count)
 	else
 		TriggerClientEvent('jetskirace:alreadyActive', source)
 	end
@@ -26,5 +26,5 @@ end)
 RegisterServerEvent('jetskirace:end')
 AddEventHandler('jetskirace:end', function()
 	activeRace = false
-	TriggerClientEvent('jetskirace:end', -1)
+	TriggerClientEvent('jetskirace:end', source)
 end)
