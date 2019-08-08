@@ -192,7 +192,7 @@ end)
 -- Enter / Exit marker events
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(100)
 		local coords = GetEntityCoords(PlayerPedId())
 		local isInMarker, currentZone = false, nil
 
