@@ -16,3 +16,4 @@ Citizen.CreateThread(function()
 	AddTextEntry('0xC4B53C5B', 'Police')
 	-- POLICE8
 	AddTextEntry('0xD0AF544F', 'Police8')
+)
