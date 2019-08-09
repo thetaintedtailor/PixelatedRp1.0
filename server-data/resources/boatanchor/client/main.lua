@@ -10,9 +10,9 @@ end)
 
 Citizen.CreateThread(function()
     local ped = GetPlayerPed(-1)
-    local pedLoc = GetEntityCoords(ped)
     while true do
         if IsControlJustPressed(1, 81) and not IsPedInAnyVehicle(ped) then 
+            local pedLoc = GetEntityCoords(ped)
             local ray = StartShapeTestCapsule(pedLoc.x, pedLoc.y, pedLoc.z, pedLoc.x, pedLoc.y, pedLoc.z, 5.0, 10, ped, 7)
             local handle, wasHit, endCoods, surfaceNormal, vehicle = GetShapeTestResult(ray)
             if GetVehicleClass(vehicle) == 14 then
@@ -23,11 +23,9 @@ Citizen.CreateThread(function()
                     DecorRegister('anchored', 2)
                     DecorSetBool(vehicle, 'anchored', anchored)
                 end
-                print(anchored)
                 SetBoatAnchor(vehicle, not anchored)
                 DecorSetBool(vehicle, 'anchored', not anchored)
                 anchored =  DecorGetBool(vehicle, 'anchored')
-                print(anchored)
                 TaskStartScenarioInPlace(ped, 'CODE_HUMAN_MEDIC_TEND_TO_DEAD', 0, true)
                 if anchored then
                     TriggerEvent("pNotify:SendNotification",{
