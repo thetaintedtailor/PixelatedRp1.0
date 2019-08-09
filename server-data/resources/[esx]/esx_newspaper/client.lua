@@ -52,7 +52,7 @@ AddEventHandler("esx_newspaper:displayNewspaper", function()
 
     while display do
       Citizen.Wait(1)
-      ShowInfo('~w~ Tryck ~INPUT_CONTEXT~ för att slänga tidningen', 0)
+      ShowInfo('~w~ Press ~INPUT_CONTEXT~ to throw newspaper away', 0)
       if (IsControlJustPressed(1, 51)) then
         display = false
         TriggerEvent('esx_newspaper:theNewspaper', false)
