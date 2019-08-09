@@ -1315,7 +1315,7 @@ function GrantLicenseToPlayer(license, playerData)
 end
 
 function OpenManageLicenseMenu(closestPlayer)
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_licenses',
 	{
 		title    = 'Manage Licenses',
 		align    = 'right',
