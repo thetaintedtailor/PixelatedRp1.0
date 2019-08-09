@@ -208,6 +208,23 @@ AddEventHandler('es_admin:kill', function()
 	SetEntityHealth(PlayerPedId(), 0)
 end)
 
+local isInvisible = false
+RegisterNetEvent('es_admin:invisible')
+AddEventHandler('es_admin:invisible', function()
+	isInvisible = not isInvisible
+	local player = GetPlayerPed()
+	SetPlayerInvincible(PlayerId(), isInvisible)
+	TriggerEvent('es_admin:noclip')
+	Citizen.CreateThread(function()
+		while isInvisible do
+			SetEntityVisible(player, isInvisible)
+			SetEntityLocallyInvisible(player, isInvisible)
+			Citizen.Wait(1)
+		end
+	end)
+end)
+
+
 RegisterNetEvent('es_admin:heal')
 AddEventHandler('es_admin:heal', function()
 	SetEntityHealth(PlayerPedId(), 200)
