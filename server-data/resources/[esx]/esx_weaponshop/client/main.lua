@@ -67,10 +67,21 @@ function OpenShopMenu(zone)
 	ShopOpen = true
 
 	for i=1, #Config.Zones[zone].Items, 1 do
-		local item = Config.Zones[zone].Items[i]
+        local item  = Config.Zones[zone].Items[i]
+        local label = '%s - <span style="color: green;">%s</span>'
+
+        if (item.license ~= nil and item.license == 'weapon_1') then
+            label = label + ' - %s'
+            label = label:format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price)), 'Class 1')
+        elseif (item.license ~= nil and item.license == 'weapon_2') then
+            label = label + ' - %s'
+            label = label:format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price)), 'Class 2')
+        else
+            label = label:format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price)))
+        end
 
 		table.insert(elements, {
-			label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
+            label = label
 			price = item.price,
 			weaponName = item.item
 		})
