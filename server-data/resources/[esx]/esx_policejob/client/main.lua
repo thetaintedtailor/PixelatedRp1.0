@@ -1217,7 +1217,7 @@ function ParsePlayerData(data)
 
   if data.licenses then
     for i=1, #data.licenses, 1 do
-      if data.licenses[i].label and data.licenses[i].type then
+	  if data.licenses[i].label and data.licenses[i].type then
         table.insert(licenses, {
           label = data.licenses[i].label,
           type = data.licenses[i].type
@@ -1277,15 +1277,15 @@ function OpenGrantLicenseMenu(closestPlayer)
     }
 
     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'grant_license', menuData, function(data, menu)
+      while (string.len(targetName) == 0 and not dataError) do
+        Citizen.Wait(50)
+      end
+
       local targetData = {
         id       = targetServerId,
         name     = targetName,
         licenses = ownedLicenses
       }
-
-      while (string.len(targetName) == 0 and not dataError) do
-        Citizen.Wait(50)
-      end
 
       if (dataError) then
         ESX.ShowNotification('~r~Error while fetching player license data.~s~')
@@ -1304,16 +1304,14 @@ end
 function GrantLicenseToPlayer(license, playerData)
   for i = 1, #playerData.licenses, 1 do
     if (license.type == playerData.licenses[i].type) then -- the player already has this license
-      ESX.ShowNotification(playerData.targetName .. ' already has a~g~' .. license.label)
+      ESX.ShowNotification(playerData.name .. ' already has a~g~ ' .. license.label)
       return
     end
   end
 
-  ESX.ShowNotification('You have granted a ~g~' .. data.current.label .. '~s~to~h~' .. playerData.targetName)
+  ESX.ShowNotification('You have granted a ~g~ ' .. license.label .. ' ~s~to~h~ ' .. playerData.name)
 
-  TriggerServerEvent('esx_license:addLicense', playerData.targetServerId, license.type, function()
-    TriggerServerEvent('esx_policejob:message', playerData.targetServerId, 'You have been granted a~g~' .. license.label)
-  end)
+  TriggerServerEvent('esx_policejob:addLicense', playerData.id, license.type, license.label)
 end
 
 function OpenManageLicenseMenu(closestPlayer)
