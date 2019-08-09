@@ -1376,13 +1376,6 @@ Citizen.CreateThread(function(prop_name, secondaryprop_name)
 	end
 end)	
 
-function loadAnimDict(dict)
-	while (not HasAnimDictLoaded(dict)) do
-		RequestAnimDict(dict)
-		Citizen.Wait(5)
-	end
-end
-
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
