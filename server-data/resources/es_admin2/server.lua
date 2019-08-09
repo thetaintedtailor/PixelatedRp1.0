@@ -619,7 +619,7 @@ TriggerEvent('es:addGroupCommand', 'goto', "mod", function(source, args, user)
 
 					TriggerClientEvent('es_admin:teleportUser', source, target.getCoords().x, target.getCoords().y, target.getCoords().z)
 
-					TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been teleported to by ^2" .. GetPlayerName(source)} })
+					--TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been teleported to by ^2" .. GetPlayerName(source)} })
 					TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Teleported to player ^2" .. GetPlayerName(player) .. ""} })
 				end
 			end)
@@ -638,6 +638,12 @@ TriggerEvent('es:addCommand', 'die', function(source, args, user)
 	TriggerClientEvent('es_admin:kill', source)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "You killed yourself"} })
 end, {help = "Suicide"})
+
+--Invisible
+TriggerEvent('es:addGroupCommand', 'invisible', 'admin', function(source, args, user)
+	TriggerClientEvent('es_admin:invisible', source)
+end, {help = "Suicide"})
+
 
 -- Slay a player
 TriggerEvent('es:addGroupCommand', 'slay', "admin", function(source, args, user)
