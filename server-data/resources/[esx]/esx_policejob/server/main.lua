@@ -9,6 +9,23 @@ end
 TriggerEvent('esx_phone:registerNumber', 'police', _U('alert_police'), true, true)
 TriggerEvent('esx_society:registerSociety', 'police', 'Police', 'society_police', 'society_police', 'society_police', {type = 'public'})
 
+function GetCharacterName(source, fullName)
+	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
+		['@identifier'] = GetPlayerIdentifiers(source)[1]
+	})
+
+	if result[1] and result[1].firstname and result[1].lastname then
+		if fullName == true then
+			return result[1].firstname .. ' ' .. result[1].lastname
+		else
+			return result[1].lastname
+		end
+	else
+		return GetPlayerName(source)
+	end
+end
+
+
 RegisterServerEvent('esx_policejob:confiscatePlayerItem')
 AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType, itemName, amount)
 	local _source = source
@@ -33,10 +50,12 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 			else
 				targetXPlayer.removeInventoryItem(itemName, amount)
 				sourceXPlayer.addInventoryItem   (itemName, amount)
-				--print(GetCharacterName(targetXPlayer))
-				--print(GetCharacterName(sourceXPlayer))
-				TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated', amount, sourceItem.label, targetXPlayer.name))
-				TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated', amount, sourceItem.label, sourceXPlayer.name))
+
+				local str = sourceXPlayer.job.grade_name
+				str = str:gsub("%a", string.upper, 1)
+				
+				TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated', amount, sourceItem.label, GetCharacterName(target, true)))
+				TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated', amount, sourceItem.label, str .. ' ' .. GetCharacterName(source, false)))
 			end
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('quantity_invalid'))
@@ -44,25 +63,34 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 
     elseif itemType == 'item_money' then
         targetXPlayer.removeMoney(amount)
-        sourceXPlayer.addMoney   (amount)
+		sourceXPlayer.addMoney   (amount)
 
-        TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_account', amount, itemName, targetXPlayer.name))
-        TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_account', amount, itemName, sourceXPlayer.name))
+		local str = sourceXPlayer.job.grade_name
+		str = str:gsub("%a", string.upper, 1)
+
+        TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_account', amount, itemName, GetCharacterName(target, true)))
+        TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_account', amount, itemName, str .. ' ' .. GetCharacterName(source, false)))
 
 	elseif itemType == 'item_account' then
 		targetXPlayer.removeAccountMoney(itemName, amount)
 		sourceXPlayer.addAccountMoney   (itemName, amount)
 
-		TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_account', amount, itemName, targetXPlayer.name))
-		TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_account', amount, itemName, sourceXPlayer.name))
+		local str = sourceXPlayer.job.grade_name
+		str = str:gsub("%a", string.upper, 1)
+
+		TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_account', amount, itemName, GetCharacterName(target, true)))
+		TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_account', amount, itemName, str .. ' ' .. GetCharacterName(source, false)))
 
 	elseif itemType == 'item_weapon' then
 		if amount == nil then amount = 0 end
 		targetXPlayer.removeWeapon(itemName, amount)
 		sourceXPlayer.addWeapon   (itemName, amount)
 
-		TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_weapon', ESX.GetWeaponLabel(itemName), targetXPlayer.name, amount))
-		TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_weapon', ESX.GetWeaponLabel(itemName), amount, sourceXPlayer.name))
+		local str = sourceXPlayer.job.grade_name
+		str = str:gsub("%a", string.upper, 1)
+
+		TriggerClientEvent('esx:showNotification', _source, _U('you_confiscated_weapon', ESX.GetWeaponLabel(itemName), GetCharacterName(target, true), amount))
+		TriggerClientEvent('esx:showNotification', target,  _U('got_confiscated_weapon', ESX.GetWeaponLabel(itemName), amount, str .. ' ' .. GetCharacterName(source, false)))
 	end
 end)
 
