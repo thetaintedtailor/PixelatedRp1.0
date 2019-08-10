@@ -90,115 +90,115 @@ Config.PoliceStations = {
 
 Config.AuthorizedWeapons = {
 	cadet = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 0 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	officer = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', compnents = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	deputy = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	senior_officer = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	corporal = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	sergeant = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	lieutenant = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	captain = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	commander = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	deputy_sheriff = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	deputy_chief = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	sheriff = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
 	},
 
 	boss = {
-		{ weapon = 'WEAPON_PISTOL', components = { 0, 0, 1000, 4000, nil }, price = 1 },
-		{ weapon = 'WEAPON_ADVANCEDRIFLE', components = { 0, 6000, 1000, 4000, 8000, nil }, price = 1 },
-		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, 6000, nil }, price = 1 },
+		{ weapon = 'WEAPON_COMBATPISTOL', components = { 0, 0, 1000, nil, nil }, price = 1 },
+		{ weapon = 'WEAPON_CARBINERIFLE', components = { 0, 6000, nil, 4000, 8000, 5000, 2000, nil }, price = 1 },
+		{ weapon = 'WEAPON_PUMPSHOTGUN', components = { 2000, nil, nil }, price = 1 },
 		{ weapon = 'WEAPON_NIGHTSTICK', price = 1 },
 		{ weapon = 'WEAPON_STUNGUN', price = 1 },
 		{ weapon = 'WEAPON_FLASHLIGHT', price = 1 }
