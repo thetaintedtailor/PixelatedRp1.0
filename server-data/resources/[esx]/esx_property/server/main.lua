@@ -270,6 +270,16 @@ AddEventHandler('esx_property:getItem', function(owner, type, item, count)
 
 end)
 
+RegisterServerEvent('esx_property:putItemInInventory')
+AddEventHandler('esx_property:putItemInInventory', function(item, quantity)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+
+	xPlayer.addInventoryItem(item, quantity)
+end)
+
+
+
 RegisterServerEvent('esx_property:updateAptInventory')
 AddEventHandler('esx_property:updateAptInventory', function(owner, aptInventory)
 	local _source      = source

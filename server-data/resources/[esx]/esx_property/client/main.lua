@@ -151,6 +151,7 @@ local Keys = {
 		  SetEntityCoords(playerPed, property.inside.x, property.inside.y, property.inside.z)
 		  DoScreenFadeIn(800)
 		  DrawSub(property.label, 5000)
+		  populateInventoryTable(instance.data.owner)
 	  end)
   
   end
@@ -452,8 +453,8 @@ local Keys = {
 		  table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
 	  end
   
-	  table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
-	  table.insert(elements, {label = _U('deposit_object'), value = 'player_inventory'})
+	  table.insert(elements, {label = _U('remove_object'),  value = 'remove_items'})
+	  table.insert(elements, {label = _U('deposit_object'), value = 'deposit_items'})
   
 	  ESX.UI.Menu.CloseAll()
   
@@ -547,9 +548,9 @@ local Keys = {
 				  end)
 			  end)
   
-		  elseif data.current.value == 'room_inventory' then
+		  elseif data.current.value == 'remove_items' then
 			  OpenRoomInventoryMenu(property, owner)
-		  elseif data.current.value == 'player_inventory' then
+		  elseif data.current.value == 'deposit_items' then
 			  OpenPlayerInventoryMenu(property, owner)
 		  end
   
@@ -564,88 +565,92 @@ local Keys = {
   
   function OpenRoomInventoryMenu(property, owner)
   
-	  ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+	  --ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_inventory',
+	{
+		title    = property.label .. ' - ' .. _U('inventory'),
+		align    = 'left',
+		elements = ChestContents
+	}, function(data, menu)
 
-		  --local elements = {}
-  
-		  for i=1, #inventory.items, 1 do
-			  local item = inventory.items[i]
-  
-			  if item.count > 0 then
-				  table.insert(ChestContents, {
-					  label = item.name .. ' x' .. item.count,
-					  type = 'item_standard',
-					  value = item.name,
-					  count = item.count
-				  })
-			  end
-		  end
-  
-		  for i=1, #inventory.weapons, 1 do
-			  local weapon = inventory.weapons[i]
-  
-			  table.insert(ChestContents, {
-				  label = ESX.GetWeaponLabel(weapon.name) .. ' [' .. weapon.ammo .. ']',
-				  type  = 'item_weapon',
-				  value = weapon.name,
-				  ammo  = weapon.ammo
-			  })
-		  end
-  
-		  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_inventory',
-		  {
-			  title    = property.label .. ' - ' .. _U('inventory'),
-			  align    = 'left',
-			  elements = ChestContents
-		  }, function(data, menu)
-  
-			  if data.current.type == 'item_weapon' then
-  
-				  menu.close()
-  
-				  TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, data.current.ammo)
-				  ESX.SetTimeout(300, function()
-					  OpenRoomInventoryMenu(property, owner)
-				  end)
-  
-			  else
-  
-				  ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'get_item_count', {
-					  title = _U('amount')
-				  }, function(data2, menu)
-  
-					  local quantity = tonumber(data2.value)
-					  if quantity == nil then
-						  ESX.ShowNotification(_U('amount_invalid'))
-					  else
-						  menu.close()
-  
-						  --TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
-						  removeItemFromProperty(data.current.type, data.current.value, quantity)
-						  ESX.SetTimeout(300, function()
-							  OpenRoomInventoryMenu(property, owner)
-						  end)
-					  end
-  
-				  end, function(data2,menu)
-					  menu.close()
-				  end)
-  
-			  end
-  
-		  end, function(data, menu)
-			  menu.close()
-		  end)
-	  end, owner)
-  
+		if data.current.type == 'item_weapon' then
+
+			menu.close()
+
+			TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, data.current.ammo)
+			ESX.SetTimeout(300, function()
+				OpenRoomInventoryMenu(property, owner)
+			end)
+
+		else
+
+			ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'get_item_count', {
+				title = _U('amount')
+			}, function(data2, menu)
+
+				local quantity = tonumber(data2.value)
+				if quantity == nil then
+					ESX.ShowNotification(_U('amount_invalid'))
+				else
+					menu.close()
+
+					--TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
+					removeItemFromProperty(data.current.type, data.current.value, quantity)
+					ESX.SetTimeout(300, function()
+						OpenRoomInventoryMenu(property, owner)
+					end)
+				end
+
+			end, function(data2,menu)
+				menu.close()
+			end)
+
+		end
+
+	end, function(data, menu)
+		menu.close()
+	end)
+	  --end, owner)
+  end
+
+  function populateInventoryTable(owner)
+	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+		for i=1, #inventory.items, 1 do
+			local item = inventory.items[i]
+
+			if item.count > 0 then
+				table.insert(ChestContents, {
+					label = item.name .. ' x' .. item.count,
+					type = 'item_standard',
+					value = item.name,
+					count = item.count
+				})
+			end
+		end
+
+		for i=1, #inventory.weapons, 1 do
+			local weapon = inventory.weapons[i]
+
+			table.insert(ChestContents, {
+				label = ESX.GetWeaponLabel(weapon.name) .. ' [' .. weapon.ammo .. ']',
+				type  = 'item_weapon',
+				value = weapon.name,
+				ammo  = weapon.ammo
+			})
+		end
+	end, owner)
   end
 
   function removeItemFromProperty(itemType, item, quantity)
 	for k,v in pairs(ChestContents) do
 		if v.type == itemType and v.value == item then
 			if v.count >= quantity then
-				v.count = v.count - quantity
-				xPlayer.addInventoryItem(item, quantity)
+				print('this is v.count before math', v.value, v.count)
+				v.count = (v.count - quantity)
+				print('this is v.count AFTER math', v.value, v.count)
+
+				TriggerServerEvent('esx_property:putItemInInventory', item, quantity)
+
 				ESX.ShowNotification("You have withdrawn stuff.")
 			else
 				ESX.ShowNotification("You don't have enough of that.")
@@ -969,6 +974,7 @@ local Keys = {
 					  OpenRoomMenu(CurrentActionData.property, CurrentActionData.owner)
 				  elseif CurrentAction == 'room_exit' then
 					TriggerServerEvent('esx_property:updateAptInventory', CurrentPropertyOwner, ChestContents)
+					ChestContents = {}
 					TriggerEvent('instance:leave')
 				  end
   
