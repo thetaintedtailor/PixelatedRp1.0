@@ -15,7 +15,10 @@ end)
 
 Citizen.CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/twt',  _U('twt_help'),  { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
-	TriggerEvent('chat:addSuggestion', '/atwt',  'Send an anonymous tweet',  { { name = 'Handle', help = 'Handle you want to display') } } )
+	TriggerEvent('chat:addSuggestion', '/atwt',  'Send an anonymous tweet',  { 
+		{ name = 'Handle',  help = 'Handle you want to display' },
+		{ name = 'Message', help = 'Message you want to send'   } 
+	})
 	TriggerEvent('chat:addSuggestion', '/ad',  _U('ad_help'),  { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
 	TriggerEvent('chat:addSuggestion', '/me',   _U('me_help'),   { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
 	TriggerEvent('chat:addSuggestion', '/do',   _U('do_help'),   { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
