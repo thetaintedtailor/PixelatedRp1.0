@@ -23,6 +23,7 @@ local Keys = {
   local CurrentActionData       = {}
   local FirstSpawn              = true
   local HasChest                = false
+  local ChestContents           = {}
   
   Citizen.CreateThread(function()
 	  while ESX == nil do
@@ -564,17 +565,18 @@ local Keys = {
   function OpenRoomInventoryMenu(property, owner)
   
 	  ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
-  
-		  local elements = {}
+
+		  --local elements = {}
   
 		  for i=1, #inventory.items, 1 do
 			  local item = inventory.items[i]
   
 			  if item.count > 0 then
-				  table.insert(elements, {
+				  table.insert(ChestContents, {
 					  label = item.name .. ' x' .. item.count,
 					  type = 'item_standard',
-					  value = item.name
+					  value = item.name,
+					  count = item.count
 				  })
 			  end
 		  end
@@ -582,7 +584,7 @@ local Keys = {
 		  for i=1, #inventory.weapons, 1 do
 			  local weapon = inventory.weapons[i]
   
-			  table.insert(elements, {
+			  table.insert(ChestContents, {
 				  label = ESX.GetWeaponLabel(weapon.name) .. ' [' .. weapon.ammo .. ']',
 				  type  = 'item_weapon',
 				  value = weapon.name,
@@ -594,7 +596,7 @@ local Keys = {
 		  {
 			  title    = property.label .. ' - ' .. _U('inventory'),
 			  align    = 'left',
-			  elements = elements
+			  elements = ChestContents
 		  }, function(data, menu)
   
 			  if data.current.type == 'item_weapon' then
@@ -618,7 +620,8 @@ local Keys = {
 					  else
 						  menu.close()
   
-						  TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
+						  --TriggerServerEvent('esx_property:getItem', owner, data.current.type, data.current.value, quantity)
+						  removeItemFromProperty(data.current.type, data.current.value, quantity)
 						  ESX.SetTimeout(300, function()
 							  OpenRoomInventoryMenu(property, owner)
 						  end)
@@ -635,6 +638,20 @@ local Keys = {
 		  end)
 	  end, owner)
   
+  end
+
+  function removeItemFromProperty(itemType, item, quantity)
+	for k,v in pairs(ChestContents) do
+		if v.type == itemType and v.value == item then
+			if v.count >= quantity then
+				v.count = v.count - quantity
+				xPlayer.addInventoryItem(item, quantity)
+				ESX.ShowNotification("You have withdrawn stuff.")
+			else
+				ESX.ShowNotification("You don't have enough of that.")
+			end
+		end
+	end
   end
   
   function OpenPlayerInventoryMenu(property, owner)
@@ -951,7 +968,8 @@ local Keys = {
 				  elseif CurrentAction == 'room_menu' then
 					  OpenRoomMenu(CurrentActionData.property, CurrentActionData.owner)
 				  elseif CurrentAction == 'room_exit' then
-					  TriggerEvent('instance:leave')
+					TriggerServerEvent('esx_property:updateAptInventory', CurrentPropertyOwner, ChestContents)
+					TriggerEvent('instance:leave')
 				  end
   
 				  CurrentAction = nil

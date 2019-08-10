@@ -396,8 +396,6 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 				weapons    = weapons
 			})
 
-
-
 	end)
 
 end)
