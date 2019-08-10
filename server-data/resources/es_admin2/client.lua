@@ -217,7 +217,7 @@ AddEventHandler('es_admin:invisible', function()
 	TriggerEvent('es_admin:noclip')
 	Citizen.CreateThread(function()
 		while isInvisible do
-			SetEntityVisible(player, isInvisible)
+			SetEntityVisible(player, isInvisible, false)
 			SetEntityLocallyInvisible(player, isInvisible)
 			Citizen.Wait(1)
 		end
