@@ -123,7 +123,7 @@ end)
 RegisterServerEvent("esx:jackingcar")
 AddEventHandler("esx:jackingcar", function(model)
    local xPlayer = ESX.GetPlayerFromId(source)
-   sendToDiscord(_U('server_carjacking'),xPlayer.name.." ".._('user_carjacking').." ".. model,Config.purple)
+   sendToDiscord(_U('server_carjacking'),xPlayer.name.." ".._('client_carjacking').." ".. model,Config.purple)
 
 end)
 
