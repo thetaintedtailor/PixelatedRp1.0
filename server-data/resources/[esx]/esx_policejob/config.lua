@@ -580,7 +580,7 @@ Config.AuthorizedHelicopters = {
 Config.Uniforms = {
 	cadet_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
 			['torso_1'] = 93,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
 			['arms'] = 0,
