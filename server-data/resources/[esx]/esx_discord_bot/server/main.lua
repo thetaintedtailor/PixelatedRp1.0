@@ -114,7 +114,8 @@ end)
 RegisterServerEvent("esx:jackingcar")
 AddEventHandler("esx:jackingcar", function(model)
    local xPlayer = ESX.GetPlayerFromId(source)
-   sendToDiscord(_U('server_carjacking'),xPlayer.name.." ".._('user_carjacking').." ".. model,Config.purple, Config.theftHook)
+   sendToDiscord(_U('server_carjacking'),xPlayer.name.." ".._('client_carjacking').." ".. model,Config.purple, Config.theftHook)
+
 end)
 
 -- Event when a player is killing an other one
