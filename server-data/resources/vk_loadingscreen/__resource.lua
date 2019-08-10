@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/till_i_die.mp3',
+    'music/battle_hymn.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
