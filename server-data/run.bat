@@ -1,0 +1,1 @@
+C:\Dev_Server\run.cmd +exec dev_server.cfg
