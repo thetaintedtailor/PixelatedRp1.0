@@ -350,6 +350,14 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 
 end)
 
+RegisterServerEvent('esx_property:removeFromPlayerInventory')
+AddEventHandler('esx_property:removeFromPlayerInventory', function(item, quantity)
+	local _source      = source
+	local xPlayer      = ESX.GetPlayerFromId(_source)
+
+	xPlayer.removeInventoryItem(item, quantity)
+end)
+
 ESX.RegisterServerCallback('esx_property:getOwnedProperties', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 

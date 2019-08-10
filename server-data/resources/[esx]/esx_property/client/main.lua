@@ -151,7 +151,7 @@ local Keys = {
 		  SetEntityCoords(playerPed, property.inside.x, property.inside.y, property.inside.z)
 		  DoScreenFadeIn(800)
 		  DrawSub(property.label, 5000)
-		  populateInventoryTable(instance.data.owner)
+		  populateInventoryTable(CurrentPropertyOwner)
 	  end)
   
   end
@@ -436,136 +436,136 @@ local Keys = {
 	  end)
   end
   
-  function OpenRoomMenu(property, owner)
-	  local entering = nil
-	  local elements = {}
-  
-	  if property.isSingle then
-		  entering = property.entering
-	  else
-		  entering = GetGateway(property).entering
-	  end
-  
-	  table.insert(elements, {label = _U('invite_player'),  value = 'invite_player'})
-  
-	  if CurrentPropertyOwner == owner then
-		  table.insert(elements, {label = _U('player_clothes'), value = 'player_dressing'})
-		  table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
-	  end
-  
-	  table.insert(elements, {label = _U('remove_object'),  value = 'remove_items'})
-	  table.insert(elements, {label = _U('deposit_object'), value = 'deposit_items'})
-  
-	  ESX.UI.Menu.CloseAll()
-  
-	  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room',
-	  {
-		  title    = property.label,
-		  align    = 'left',
-		  elements = elements
-	  }, function(data, menu)
-  
-		  if data.current.value == 'invite_player' then
-  
-			  local playersInArea = ESX.Game.GetPlayersInArea(entering, 10.0)
-			  local elements      = {}
-  
-			  for i=1, #playersInArea, 1 do
-				  if playersInArea[i] ~= PlayerId() then
-					  table.insert(elements, {label = GetPlayerName(playersInArea[i]), value = playersInArea[i]})
-				  end
-			  end
-  
-			  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_invite',
-			  {
-				  title    = property.label .. ' - ' .. _U('invite'),
-				  align    = 'left',
-				  elements = elements,
-			  }, function(data2, menu2)
-				  TriggerEvent('instance:invite', 'property', GetPlayerServerId(data2.current.value), {property = property.name, owner = owner})
-				  ESX.ShowNotification(_U('you_invited', GetPlayerName(data2.current.value)))
-			  end, function(data2, menu2)
-				  menu2.close()
-			  end)
-  
-		  elseif data.current.value == 'player_dressing' then
-  
-			  ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
-				  local elements = {}
-				  
-				  for i=1, #dressing, 1 do
-					  table.insert(elements, {
-						  label = dressing[i],
-						  value = i
-					  })
-				  end
-  
-				  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'player_dressing',
-				  {
-					  title    = property.label .. ' - ' .. _U('player_clothes'),
-					  align    = 'left',
-					  elements = elements
-				  }, function(data2, menu2)
-  
-					  TriggerEvent('skinchanger:getSkin', function(skin)
-						  ESX.TriggerServerCallback('esx_property:getPlayerOutfit', function(clothes)
-							  TriggerEvent('skinchanger:loadClothes', skin, clothes)
-							  TriggerEvent('esx_skin:setLastSkin', skin)
-  
-							  TriggerEvent('skinchanger:getSkin', function(skin)
-								  TriggerServerEvent('esx_skin:save', skin)
-							  end)
-						  end, data2.current.value)
-					  end)
-  
-				  end, function(data2, menu2)
-					  menu2.close()
-				  end)
-			  end)
-  
-		  elseif data.current.value == 'remove_cloth' then
-  
-			  ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
-				  local elements = {}
-  
-				  for i=1, #dressing, 1 do
-					  table.insert(elements, {
-						  label = dressing[i],
-						  value = i
-					  })
-				  end
-  
-				  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'remove_cloth', {
-					  --title    = property.label .. ' - ' .. _U('remove_cloth'),
-					  align    = 'left',
-					  elements = elements
-				  }, function(data2, menu2)
-					  menu2.close()
-					  TriggerServerEvent('esx_property:removeOutfit', data2.current.value)
-					  ESX.ShowNotification(_U('removed_cloth'))
-				  end, function(data2, menu2)
-					  menu2.close()
-				  end)
-			  end)
-  
-		  elseif data.current.value == 'remove_items' then
-			  OpenRoomInventoryMenu(property, owner)
-		  elseif data.current.value == 'deposit_items' then
-			  OpenPlayerInventoryMenu(property, owner)
-		  end
-  
-	  end, function(data, menu)
-		  menu.close()
-  
-		  CurrentAction     = 'room_menu'
-		  CurrentActionMsg  = _U('press_to_menu')
-		  CurrentActionData = {property = property, owner = owner}
-	  end)
-  end
-  
-  function OpenRoomInventoryMenu(property, owner)
-  
-	  --ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
+function OpenRoomMenu(property, owner)
+	local entering = nil
+	local elements = {}
+
+	if property.isSingle then
+		entering = property.entering
+	else
+		entering = GetGateway(property).entering
+	end
+
+	table.insert(elements, {label = _U('invite_player'),  value = 'invite_player'})
+
+	if CurrentPropertyOwner == owner then
+		table.insert(elements, {label = _U('player_clothes'), value = 'player_dressing'})
+		table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
+	end
+
+	table.insert(elements, {label = _U('remove_object'),  value = 'remove_items'})
+	table.insert(elements, {label = _U('deposit_object'), value = 'deposit_items'})
+
+	ESX.UI.Menu.CloseAll()
+
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room',
+	{
+		title    = property.label,
+		align    = 'left',
+		elements = elements
+	}, function(data, menu)
+
+		if data.current.value == 'invite_player' then
+
+			local playersInArea = ESX.Game.GetPlayersInArea(entering, 10.0)
+			local elements      = {}
+
+			for i=1, #playersInArea, 1 do
+				if playersInArea[i] ~= PlayerId() then
+					table.insert(elements, {label = GetPlayerName(playersInArea[i]), value = playersInArea[i]})
+				end
+			end
+
+			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_invite',
+			{
+				title    = property.label .. ' - ' .. _U('invite'),
+				align    = 'left',
+				elements = elements,
+			}, function(data2, menu2)
+				TriggerEvent('instance:invite', 'property', GetPlayerServerId(data2.current.value), {property = property.name, owner = owner})
+				ESX.ShowNotification(_U('you_invited', GetPlayerName(data2.current.value)))
+			end, function(data2, menu2)
+				menu2.close()
+			end)
+
+		elseif data.current.value == 'player_dressing' then
+
+			ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
+				local elements = {}
+				
+				for i=1, #dressing, 1 do
+					table.insert(elements, {
+						label = dressing[i],
+						value = i
+					})
+				end
+
+				ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'player_dressing',
+				{
+					title    = property.label .. ' - ' .. _U('player_clothes'),
+					align    = 'left',
+					elements = elements
+				}, function(data2, menu2)
+
+					TriggerEvent('skinchanger:getSkin', function(skin)
+						ESX.TriggerServerCallback('esx_property:getPlayerOutfit', function(clothes)
+							TriggerEvent('skinchanger:loadClothes', skin, clothes)
+							TriggerEvent('esx_skin:setLastSkin', skin)
+
+							TriggerEvent('skinchanger:getSkin', function(skin)
+								TriggerServerEvent('esx_skin:save', skin)
+							end)
+						end, data2.current.value)
+					end)
+
+				end, function(data2, menu2)
+					menu2.close()
+				end)
+			end)
+
+		elseif data.current.value == 'remove_cloth' then
+
+			ESX.TriggerServerCallback('esx_property:getPlayerDressing', function(dressing)
+				local elements = {}
+
+				for i=1, #dressing, 1 do
+					table.insert(elements, {
+						label = dressing[i],
+						value = i
+					})
+				end
+
+				ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'remove_cloth', {
+					--title    = property.label .. ' - ' .. _U('remove_cloth'),
+					align    = 'left',
+					elements = elements
+				}, function(data2, menu2)
+					menu2.close()
+					TriggerServerEvent('esx_property:removeOutfit', data2.current.value)
+					ESX.ShowNotification(_U('removed_cloth'))
+				end, function(data2, menu2)
+					menu2.close()
+				end)
+			end)
+
+		elseif data.current.value == 'remove_items' then
+			OpenRoomInventoryMenu(property, owner)
+		elseif data.current.value == 'deposit_items' then
+			OpenPlayerInventoryMenu(property, owner)
+		end
+
+	end, function(data, menu)
+		menu.close()
+
+		CurrentAction     = 'room_menu'
+		CurrentActionMsg  = _U('press_to_menu')
+		CurrentActionData = {property = property, owner = owner}
+	end)
+end
+
+function OpenRoomInventoryMenu(property, owner)
+
+	--ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'room_inventory',
 	{
 		title    = property.label .. ' - ' .. _U('inventory'),
@@ -610,10 +610,10 @@ local Keys = {
 	end, function(data, menu)
 		menu.close()
 	end)
-	  --end, owner)
-  end
+	--end, owner)
+end
 
-  function populateInventoryTable(owner)
+function populateInventoryTable(owner)
 	ESX.TriggerServerCallback('esx_property:getPropertyInventory', function(inventory)
 		for i=1, #inventory.items, 1 do
 			local item = inventory.items[i]
@@ -639,9 +639,9 @@ local Keys = {
 			})
 		end
 	end, owner)
-  end
+end
 
-  function removeItemFromProperty(itemType, item, quantity)
+function removeItemFromProperty(itemType, item, quantity)
 	for k,v in pairs(ChestContents) do
 		if v.type == itemType and v.value == item then
 			if v.count >= quantity then
@@ -657,332 +657,344 @@ local Keys = {
 			end
 		end
 	end
-  end
-  
-  function OpenPlayerInventoryMenu(property, owner)
-  
-	  ESX.TriggerServerCallback('esx_property:getPlayerInventory', function(inventory)
-  
-		  local elements = {}
-  
-  
-		  for i=1, #inventory.items, 1 do
-			  local item = inventory.items[i]
-  
-			  if item.count > 0 then
-				  table.insert(elements, {
-					  label = item.label .. ' x' .. item.count,
-					  type  = 'item_standard',
-					  value = item.name
-				  })
-			  end
-		  end
-  
-		  for i=1, #inventory.weapons, 1 do
-			  local weapon = inventory.weapons[i]
-  
-			  table.insert(elements, {
-				  label = weapon.label .. ' [' .. weapon.ammo .. ']',
-				  type  = 'item_weapon',
-				  value = weapon.name,
-				  ammo  = weapon.ammo
-			  })
-		  end
-  
-		  ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'player_inventory',
-		  {
-			  title    = property.label .. ' - ' .. _U('inventory'),
-			  align    = 'left',
-			  elements = elements
-		  }, function(data, menu)
-  
-			  if data.current.type == 'item_weapon' then
-  
-				  menu.close()
-				  TriggerServerEvent('esx_property:putItem', owner, data.current.type, data.current.value, data.current.ammo)
-  
-				  ESX.SetTimeout(300, function()
-					  OpenPlayerInventoryMenu(property, owner)
-				  end)
-  
-			  else
-  
-				  ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'put_item_count', {
-					  title = _U('amount')
-				  }, function(data2, menu2)
-  
-					  local quantity = tonumber(data2.value)
-  
-					  if quantity == nil then
-						  ESX.ShowNotification(_U('amount_invalid'))
-					  else
-  
-						  menu2.close()
-  
-						  TriggerServerEvent('esx_property:putItem', owner, data.current.type, data.current.value, tonumber(data2.value))
-						  ESX.SetTimeout(300, function()
-							  OpenPlayerInventoryMenu(property, owner)
-						  end)
-					  end
-  
-				  end, function(data2, menu2)
-					  menu2.close()
-				  end)
-  
-			  end
-  
-		  end, function(data, menu)
-			  menu.close()
-		  end)
-  
-	  end)
-  
-  end
-  
-  AddEventHandler('instance:loaded', function()
-	  TriggerEvent('instance:registerType', 'property', function(instance)
-		  EnterProperty(instance.data.property, instance.data.owner)
-	  end, function(instance)
-		  ExitProperty(instance.data.property)
-	  end)
-  end)
-  
-  AddEventHandler('playerSpawned', function()
-	  if FirstSpawn then
-  
-		  Citizen.CreateThread(function()
-  
-			  while not ESX.IsPlayerLoaded() do
-				  Citizen.Wait(0)
-			  end
-  
-			  ESX.TriggerServerCallback('esx_property:getLastProperty', function(propertyName)
-				  if propertyName ~= nil then
-					  if propertyName ~= '' then
-						  local property = GetProperty(propertyName)
-  
-						  for i=1, #property.ipls, 1 do
-							  RequestIpl(property.ipls[i])
-				  
-							  while not IsIplActive(property.ipls[i]) do
-								  Citizen.Wait(0)
-							  end
-						  end
-  
-						  TriggerEvent('instance:create', 'property', {property = propertyName, owner = ESX.GetPlayerData().identifier})
-					  end
-				  end
-			  end)
-		  end)
-  
-		  FirstSpawn = false
-	  end
-  end)
-  
-  AddEventHandler('esx_property:getProperties', function(cb)
-	  cb(GetProperties())
-  end)
-  
-  AddEventHandler('esx_property:getProperty', function(name, cb)
-	  cb(GetProperty(name))
-  end)
-  
-  AddEventHandler('esx_property:getGateway', function(property, cb)
-	  cb(GetGateway(property))
-  end)
-  
-  RegisterNetEvent('esx_property:setPropertyOwned')
-  AddEventHandler('esx_property:setPropertyOwned', function(name, owned)
-	  SetPropertyOwned(name, owned)
-  end)
-  
-  RegisterNetEvent('instance:onCreate')
-  AddEventHandler('instance:onCreate', function(instance)
-	  if instance.type == 'property' then
-		  TriggerEvent('instance:enter', instance)
-	  end
-  end)
-  
-  RegisterNetEvent('instance:onEnter')
-  AddEventHandler('instance:onEnter', function(instance)
-	  if instance.type == 'property' then
-		  local property = GetProperty(instance.data.property)
-		  local isHost   = GetPlayerFromServerId(instance.host) == PlayerId()
-		  local isOwned  = false
-  
-		  if PropertyIsOwned(property) == true then
-			  isOwned = true
-		  end
-  
-		  if isOwned or not isHost then
-			  HasChest = true
-		  else
-			  HasChest = false
-		  end
-	  end
-  end)
-  
-  RegisterNetEvent('instance:onPlayerLeft')
-  AddEventHandler('instance:onPlayerLeft', function(instance, player)
-	  if player == instance.host then
-		  TriggerEvent('instance:leave')
-	  end
-  end)
-  
-  AddEventHandler('esx_property:hasEnteredMarker', function(name, part)
-	  local property = GetProperty(name)
-  
-	  if part == 'entering' then
-		  if property.isSingle then
-			  CurrentAction     = 'property_menu'
-			  CurrentActionMsg  = _U('press_to_menu')
-			  CurrentActionData = {property = property}
-		  else
-			  CurrentAction     = 'gateway_menu'
-			  CurrentActionMsg  = _U('press_to_menu')
-			  CurrentActionData = {property = property}
-		  end
-	  elseif part == 'exit' then
-		  CurrentAction     = 'room_exit'
-		  CurrentActionMsg  = _U('press_to_exit')
-		  CurrentActionData = {propertyName = name}
-	  elseif part == 'roomMenu' then
-		  CurrentAction     = 'room_menu'
-		  CurrentActionMsg  = _U('press_to_menu')
-		  CurrentActionData = {property = property, owner = CurrentPropertyOwner}
-	  end
-  end)
-  
-  AddEventHandler('esx_property:hasExitedMarker', function(name, part)
-	  ESX.UI.Menu.CloseAll()
-	  CurrentAction = nil
-  end)
-  
-  -- Display markers
-  Citizen.CreateThread(function()
-	  while true do
-  
-		  Citizen.Wait(1)
-  
-		  local coords = GetEntityCoords(PlayerPedId())
-  
-		  for i=1, #Config.Properties, 1 do
-			  local property = Config.Properties[i]
-			  local isHost   = false
-  
-			  if(property.entering ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.entering.x, property.entering.y, property.entering.z, true) < Config.DrawDistance) then
-				  DrawMarker(Config.MarkerType, property.entering.x, property.entering.y, property.entering.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
-			  end
-  
-			  if(property.exit ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.exit.x, property.exit.y, property.exit.z, true) < Config.DrawDistance) then
-				  DrawMarker(Config.MarkerType, property.exit.x, property.exit.y, property.exit.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
-			  end
-  
-			  if(property.roomMenu ~= nil and HasChest and not property.disabled and GetDistanceBetweenCoords(coords, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, true) < Config.DrawDistance) then
-				  DrawMarker(Config.MarkerType, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.RoomMenuMarkerColor.r, Config.RoomMenuMarkerColor.g, Config.RoomMenuMarkerColor.b, 100, false, true, 2, false, false, false, false)
-			  end
-		  end
-  
-	  end
-  end)
-  
-  -- Enter / Exit marker events
-  Citizen.CreateThread(function()
-	  while true do
-  
-		  Citizen.Wait(1)
-  
-		  local coords          = GetEntityCoords(PlayerPedId())
-		  local isInMarker      = false
-		  local currentProperty = nil
-		  local currentPart     = nil
-  
-		  for i=1, #Config.Properties, 1 do
-			  local property = Config.Properties[i]
-  
-			  if(property.entering ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.entering.x, property.entering.y, property.entering.z, true) < Config.MarkerSize.x) then
-				  isInMarker      = true
-				  currentProperty = property.name
-				  currentPart     = 'entering'
-			  end
-  
-			  if(property.exit ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.exit.x, property.exit.y, property.exit.z, true) < Config.MarkerSize.x) then
-				  isInMarker      = true
-				  currentProperty = property.name
-				  currentPart     = 'exit'
-			  end
-  
-			  if(property.inside ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.inside.x, property.inside.y, property.inside.z, true) < Config.MarkerSize.x) then
-				  isInMarker      = true
-				  currentProperty = property.name
-				  currentPart     = 'inside'
-			  end
-  
-			  if(property.outside ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.outside.x, property.outside.y, property.outside.z, true) < Config.MarkerSize.x) then
-				  isInMarker      = true
-				  currentProperty = property.name
-				  currentPart     = 'outside'
-			  end
-  
-			  if(property.roomMenu ~= nil and HasChest and not property.disabled and GetDistanceBetweenCoords(coords, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, true) < Config.MarkerSize.x) then
-				  isInMarker      = true
-				  currentProperty = property.name
-				  currentPart     = 'roomMenu'
-			  end
-		  end
-  
-		  if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastProperty ~= currentProperty or LastPart ~= currentPart) ) then
-			  HasAlreadyEnteredMarker = true
-			  LastProperty            = currentProperty
-			  LastPart                = currentPart
-  
-			  TriggerEvent('esx_property:hasEnteredMarker', currentProperty, currentPart)
-		  end
-  
-		  if not isInMarker and HasAlreadyEnteredMarker then
-			  HasAlreadyEnteredMarker = false
-			  TriggerEvent('esx_property:hasExitedMarker', LastProperty, LastPart)
-		  end
-  
-		  if not isInMarker and not HasAlreadyEnteredMarker then
-			  Citizen.Wait(500)
-		  end
-	  end
-  end)
-  
-  -- Key controls
-  Citizen.CreateThread(function()
-	  while true do
-  
-		  Citizen.Wait(0)
-  
-		  if CurrentAction ~= nil then
-  
-			  ESX.ShowHelpNotification(CurrentActionMsg)
-  
-			  if IsControlJustReleased(0, Keys['E']) then
-  
-				  if CurrentAction == 'property_menu' then
-					  OpenPropertyMenu(CurrentActionData.property)
-				  elseif CurrentAction == 'gateway_menu' then
-					  if Config.EnablePlayerManagement then
-						  OpenGatewayOwnedPropertiesMenu(CurrentActionData.property)
-					  else
-						  OpenGatewayMenu(CurrentActionData.property)
-					  end
-				  elseif CurrentAction == 'room_menu' then
-					  OpenRoomMenu(CurrentActionData.property, CurrentActionData.owner)
-				  elseif CurrentAction == 'room_exit' then
-					TriggerServerEvent('esx_property:updateAptInventory', CurrentPropertyOwner, ChestContents)
-					ChestContents = {}
-					TriggerEvent('instance:leave')
-				  end
-  
-				  CurrentAction = nil
-			  end
-  
-		  else -- no current action, sleep mode
-			  Citizen.Wait(500)
-		  end
-	  end
-  end)
+end
+
+function OpenPlayerInventoryMenu(property, owner)
+
+	ESX.TriggerServerCallback('esx_property:getPlayerInventory', function(inventory)
+
+		local elements = {}
+
+
+		for i=1, #inventory.items, 1 do
+			local item = inventory.items[i]
+
+			if item.count > 0 then
+				table.insert(elements, {
+					label = item.label .. ' x' .. item.count,
+					type  = 'item_standard',
+					value = item.name,
+					count = item.count
+				})
+			end
+		end
+
+		for i=1, #inventory.weapons, 1 do
+			local weapon = inventory.weapons[i]
+
+			table.insert(elements, {
+				label = weapon.label .. ' [' .. weapon.ammo .. ']',
+				type  = 'item_weapon',
+				value = weapon.name,
+				ammo  = weapon.ammo
+			})
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'player_inventory',
+		{
+			title    = property.label .. ' - ' .. _U('inventory'),
+			align    = 'left',
+			elements = elements
+		}, function(data, menu)
+
+			if data.current.type == 'item_weapon' then
+
+				menu.close()
+				TriggerServerEvent('esx_property:putItem', owner, data.current.type, data.current.value, data.current.ammo)
+
+				ESX.SetTimeout(300, function()
+					OpenPlayerInventoryMenu(property, owner)
+				end)
+
+			else
+
+				ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'put_item_count', {
+					title = _U('amount')
+				}, function(data2, menu2)
+
+					local quantity = tonumber(data2.value)
+
+					if quantity == nil then
+						ESX.ShowNotification(_U('amount_invalid'))
+					else
+
+						menu2.close()
+
+						--TriggerServerEvent('esx_property:putItem', owner, data.current.type, data.current.value, tonumber(data2.value))
+						putItemInProperty(data.current, tonumber(data2.value))
+						ESX.SetTimeout(300, function()
+							OpenPlayerInventoryMenu(property, owner)
+						end)
+					end
+
+				end, function(data2, menu2)
+					menu2.close()
+				end)
+
+			end
+
+		end, function(data, menu)
+			menu.close()
+		end)
+
+	end)
+
+end
+
+function putItemInProperty(item, quantity)
+	table.insert(elements, {
+		label = item.label .. ' x' .. quantity,
+		type  = 'item_standard',
+		value = item.value,
+		count = quantity
+	})
+	TriggerServerEvent('esx_property:removeFromPlayerInventory', item.name, quantity)
+end
+
+AddEventHandler('instance:loaded', function()
+	TriggerEvent('instance:registerType', 'property', function(instance)
+		EnterProperty(instance.data.property, instance.data.owner)
+	end, function(instance)
+		ExitProperty(instance.data.property)
+	end)
+end)
+  
+AddEventHandler('playerSpawned', function()
+	if FirstSpawn then
+
+		Citizen.CreateThread(function()
+
+			while not ESX.IsPlayerLoaded() do
+				Citizen.Wait(0)
+			end
+
+			ESX.TriggerServerCallback('esx_property:getLastProperty', function(propertyName)
+				if propertyName ~= nil then
+					if propertyName ~= '' then
+						local property = GetProperty(propertyName)
+
+						for i=1, #property.ipls, 1 do
+							RequestIpl(property.ipls[i])
+				
+							while not IsIplActive(property.ipls[i]) do
+								Citizen.Wait(0)
+							end
+						end
+
+						TriggerEvent('instance:create', 'property', {property = propertyName, owner = ESX.GetPlayerData().identifier})
+					end
+				end
+			end)
+		end)
+
+		FirstSpawn = false
+	end
+end)
+  
+AddEventHandler('esx_property:getProperties', function(cb)
+	cb(GetProperties())
+end)
+
+AddEventHandler('esx_property:getProperty', function(name, cb)
+	cb(GetProperty(name))
+end)
+
+AddEventHandler('esx_property:getGateway', function(property, cb)
+	cb(GetGateway(property))
+end)
+
+RegisterNetEvent('esx_property:setPropertyOwned')
+AddEventHandler('esx_property:setPropertyOwned', function(name, owned)
+	SetPropertyOwned(name, owned)
+end)
+  
+RegisterNetEvent('instance:onCreate')
+AddEventHandler('instance:onCreate', function(instance)
+	if instance.type == 'property' then
+		TriggerEvent('instance:enter', instance)
+	end
+end)
+  
+RegisterNetEvent('instance:onEnter')
+AddEventHandler('instance:onEnter', function(instance)
+	if instance.type == 'property' then
+		local property = GetProperty(instance.data.property)
+		local isHost   = GetPlayerFromServerId(instance.host) == PlayerId()
+		local isOwned  = false
+
+		if PropertyIsOwned(property) == true then
+			isOwned = true
+		end
+
+		if isOwned or not isHost then
+			HasChest = true
+		else
+			HasChest = false
+		end
+	end
+end)
+  
+RegisterNetEvent('instance:onPlayerLeft')
+AddEventHandler('instance:onPlayerLeft', function(instance, player)
+	if player == instance.host then
+		TriggerEvent('instance:leave')
+	end
+end)
+  
+AddEventHandler('esx_property:hasEnteredMarker', function(name, part)
+	local property = GetProperty(name)
+
+	if part == 'entering' then
+		if property.isSingle then
+			CurrentAction     = 'property_menu'
+			CurrentActionMsg  = _U('press_to_menu')
+			CurrentActionData = {property = property}
+		else
+			CurrentAction     = 'gateway_menu'
+			CurrentActionMsg  = _U('press_to_menu')
+			CurrentActionData = {property = property}
+		end
+	elseif part == 'exit' then
+		CurrentAction     = 'room_exit'
+		CurrentActionMsg  = _U('press_to_exit')
+		CurrentActionData = {propertyName = name}
+	elseif part == 'roomMenu' then
+		CurrentAction     = 'room_menu'
+		CurrentActionMsg  = _U('press_to_menu')
+		CurrentActionData = {property = property, owner = CurrentPropertyOwner}
+	end
+end)
+  
+AddEventHandler('esx_property:hasExitedMarker', function(name, part)
+	ESX.UI.Menu.CloseAll()
+	CurrentAction = nil
+end)
+  
+-- Display markers
+Citizen.CreateThread(function()
+	while true do
+
+		Citizen.Wait(1)
+
+		local coords = GetEntityCoords(PlayerPedId())
+
+		for i=1, #Config.Properties, 1 do
+			local property = Config.Properties[i]
+			local isHost   = false
+
+			if(property.entering ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.entering.x, property.entering.y, property.entering.z, true) < Config.DrawDistance) then
+				DrawMarker(Config.MarkerType, property.entering.x, property.entering.y, property.entering.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+			end
+
+			if(property.exit ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.exit.x, property.exit.y, property.exit.z, true) < Config.DrawDistance) then
+				DrawMarker(Config.MarkerType, property.exit.x, property.exit.y, property.exit.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+			end
+
+			if(property.roomMenu ~= nil and HasChest and not property.disabled and GetDistanceBetweenCoords(coords, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, true) < Config.DrawDistance) then
+				DrawMarker(Config.MarkerType, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.RoomMenuMarkerColor.r, Config.RoomMenuMarkerColor.g, Config.RoomMenuMarkerColor.b, 100, false, true, 2, false, false, false, false)
+			end
+		end
+
+	end
+end)
+  
+-- Enter / Exit marker events
+Citizen.CreateThread(function()
+	while true do
+
+		Citizen.Wait(1)
+
+		local coords          = GetEntityCoords(PlayerPedId())
+		local isInMarker      = false
+		local currentProperty = nil
+		local currentPart     = nil
+
+		for i=1, #Config.Properties, 1 do
+			local property = Config.Properties[i]
+
+			if(property.entering ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.entering.x, property.entering.y, property.entering.z, true) < Config.MarkerSize.x) then
+				isInMarker      = true
+				currentProperty = property.name
+				currentPart     = 'entering'
+			end
+
+			if(property.exit ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.exit.x, property.exit.y, property.exit.z, true) < Config.MarkerSize.x) then
+				isInMarker      = true
+				currentProperty = property.name
+				currentPart     = 'exit'
+			end
+
+			if(property.inside ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.inside.x, property.inside.y, property.inside.z, true) < Config.MarkerSize.x) then
+				isInMarker      = true
+				currentProperty = property.name
+				currentPart     = 'inside'
+			end
+
+			if(property.outside ~= nil and not property.disabled and GetDistanceBetweenCoords(coords, property.outside.x, property.outside.y, property.outside.z, true) < Config.MarkerSize.x) then
+				isInMarker      = true
+				currentProperty = property.name
+				currentPart     = 'outside'
+			end
+
+			if(property.roomMenu ~= nil and HasChest and not property.disabled and GetDistanceBetweenCoords(coords, property.roomMenu.x, property.roomMenu.y, property.roomMenu.z, true) < Config.MarkerSize.x) then
+				isInMarker      = true
+				currentProperty = property.name
+				currentPart     = 'roomMenu'
+			end
+		end
+
+		if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastProperty ~= currentProperty or LastPart ~= currentPart) ) then
+			HasAlreadyEnteredMarker = true
+			LastProperty            = currentProperty
+			LastPart                = currentPart
+
+			TriggerEvent('esx_property:hasEnteredMarker', currentProperty, currentPart)
+		end
+
+		if not isInMarker and HasAlreadyEnteredMarker then
+			HasAlreadyEnteredMarker = false
+			TriggerEvent('esx_property:hasExitedMarker', LastProperty, LastPart)
+		end
+
+		if not isInMarker and not HasAlreadyEnteredMarker then
+			Citizen.Wait(500)
+		end
+	end
+end)
+  
+-- Key controls
+Citizen.CreateThread(function()
+	while true do
+
+		Citizen.Wait(0)
+
+		if CurrentAction ~= nil then
+
+			ESX.ShowHelpNotification(CurrentActionMsg)
+
+			if IsControlJustReleased(0, Keys['E']) then
+
+				if CurrentAction == 'property_menu' then
+					OpenPropertyMenu(CurrentActionData.property)
+				elseif CurrentAction == 'gateway_menu' then
+					if Config.EnablePlayerManagement then
+						OpenGatewayOwnedPropertiesMenu(CurrentActionData.property)
+					else
+						OpenGatewayMenu(CurrentActionData.property)
+					end
+				elseif CurrentAction == 'room_menu' then
+					OpenRoomMenu(CurrentActionData.property, CurrentActionData.owner)
+				elseif CurrentAction == 'room_exit' then
+				TriggerServerEvent('esx_property:updateAptInventory', CurrentPropertyOwner, ChestContents)
+				ChestContents = {}
+				TriggerEvent('instance:leave')
+				end
+
+				CurrentAction = nil
+			end
+
+		else -- no current action, sleep mode
+			Citizen.Wait(500)
+		end
+	end
+end)
