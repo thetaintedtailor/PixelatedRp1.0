@@ -1,4 +1,5 @@
 local activeRace = false
+local raceStarter = nil
 
 function Timer()
 	Citizen.CreateThread(function()
@@ -16,6 +17,7 @@ RegisterServerEvent('jetskirace:start')
 AddEventHandler('jetskirace:start', function(count)
 	if not activeRace then
 		activeRace = true
+		raceStarter = source
 		Timer()
 		TriggerClientEvent('jetskirace:start', source, count)
 	else
@@ -25,6 +27,11 @@ end)
 
 RegisterServerEvent('jetskirace:end')
 AddEventHandler('jetskirace:end', function()
-	activeRace = false
-	TriggerClientEvent('jetskirace:end', source)
+	if source == raceStarter then
+		activeRace = false
+		raceStarter = nil
+		TriggerClientEvent('jetskirace:end', source)
+	else
+		TriggerClientEvent('jetskirace:notOwner', source)
+	end
 end)

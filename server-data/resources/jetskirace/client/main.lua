@@ -101,6 +101,12 @@ function OpenParticipantMenu()
 	end)
 end
 
+RegisterNetEvent('jetskirace:notOwner')
+AddEventHandler('jetskirace:notOwner', function()
+    sendNotification('You\'re not the race owner.', 'error', 3000)
+    ESX.UI.Menu.CloseAll()
+end)
+
 RegisterNetEvent('jetskirace:alreadyActive')
 AddEventHandler('jetskirace:alreadyActive', function()
     sendNotification('There is already a race active.', 'error', 3000)
