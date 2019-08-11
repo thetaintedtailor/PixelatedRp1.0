@@ -12,6 +12,21 @@ AddEventHandler('chatMessage', function(source, name, message)
 	end
 end)
 
+RegisterCommand('atwt', function(source, args, rawCommand)
+	if source == 0 then
+		print('esx_rpchat: you can\'t use this command from rcon!')
+		return
+	end
+	local handle = tostring(args[1])
+	table.remove(args, 1)
+	args = table.concat(args, ' ')
+	local name = GetPlayerName(source)
+	--if Config.EnableESXIdentity then name = GetCharacterName(source) end
+	TriggerEvent('esx:sentanonymoustweet', name, handle, tostring(args))
+
+	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', handle), tostring(args)}, color={0,153,204} })
+end, false)
+
 
 RegisterCommand('twt', function(source, args, rawCommand)
 	if source == 0 then
