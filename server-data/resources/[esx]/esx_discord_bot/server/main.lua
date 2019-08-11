@@ -71,6 +71,16 @@ AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
   end
 end)
 
+--Add event for when an item was sold
+RegisterServerEvent("esx:itemsoldalert")
+AddEventHandler("esx:itemsoldalert", function(name, item, amount)
+  if(settings.LogItemSelling)then
+    local time = os.date("*t", os.time())
+    sendToDiscord('Item Sold', name .. " sold " .. amount .. " " .. item .. ' at ' .. time.hour .. ':' .. time.min .. ':'..time.sec, Config.orange, Config.moneyHook)
+  end
+end)
+
+
 -- Add event when a player give money
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
 RegisterServerEvent("esx:givemoneybankalert")
