@@ -517,18 +517,24 @@ function ReturnOwnedCarsMenu()
 				local labelvehicle
 				
 				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
-				
 				for k,v in pairs(carInWorld) do
-					if v.plate == plate then
+					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) == 1 then
 						isSpawned = 1
 					end
 				end
-				
-				if isSpawned == 0 then
-					table.insert(elements, {label = labelvehicle, value = v})
+
+				if isSpawned == 1 then
+					labelvehicle = ' '..vehicleName..' | '..plate..' | '..'Stolen?'..' '
+					table.insert(elements, {label = labelvehicle, value = 'stolen'})
 				end
 				
-				--table.insert(elements, {label = labelvehicle, value = v})
+				if isSpawned == 0 then
+					labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
+				    table.insert(elements, {label = labelvehicle, value = v})
+					--table.insert(elements, {label = labelvehicle, value = v})
+				end
+				
+				--table.insert(elements, {label = labelvehicle, value = nil})
 			else
 				local hashVehicule = v.model
 				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -539,10 +545,14 @@ function ReturnOwnedCarsMenu()
 				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				
 				for k,v in pairs(carInWorld) do
-					if v.plate == plate then
+					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) then
 						isSpawned = 1
 					end
 				end
+
+				--if isSpawned == 1 then
+				--	table.insert(elements, {label = labelvehcle, value = 'Stolen?'})
+				--end
 				
 				if isSpawned == 0 then
 					table.insert(elements, {label = labelvehicle, value = v})
@@ -557,14 +567,31 @@ function ReturnOwnedCarsMenu()
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
-			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyCars', function(hasEnoughMoney)
-				if hasEnoughMoney then
-					TriggerServerEvent('esx_advancedgarage:payCar')
-					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
-				else
-					ESX.ShowNotification(_U('not_enough_money'))
-				end
-			end)
+			if data.current.value == 'stolen' then return end
+			local isBike = false
+			for k,v in pairs(Config.BicycleHashes) do
+				if k == data.current.value.model or v == data.current.value.model then isBike = true end
+			end
+
+			if isBike == true then
+				ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyBike', function(hasEnoughMoney)
+					if hasEnoughMoney then
+						TriggerServerEvent('esx_advancedgarage:payBike')
+						SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+					else
+						ESX.ShowNotification(_U('not_enough_money'))
+					end
+				end)
+			else
+				ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyCars', function(hasEnoughMoney)
+					if hasEnoughMoney then
+						TriggerServerEvent('esx_advancedgarage:payCar')
+						SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+					else
+						ESX.ShowNotification(_U('not_enough_money'))
+					end
+				end)
+			end
 		end, function(data, menu)
 			menu.close()
 		end)
