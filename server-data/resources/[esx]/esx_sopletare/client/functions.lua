@@ -25,18 +25,22 @@ showPercent = function(time)
 	repeat
 	TimeLeft = TimeLeft + 1
 	Citizen.Wait(time)
-	until(TimeLeft == 100)
+	until(TimeLeft == 100 or searching == false)
 	percent = false
 end
 
 openBin = function(entity)
 	searching = true
+	--FreezeEntityPosition(GetPlayerPed(), true)
 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_SHOPPING_CART", 0, true)
 	showPercent(100)
-    cachedBins[entity] = true
-    TriggerServerEvent('esx_sopletare:getItem')
 	ClearPedTasks(PlayerPedId())
+	if searching then
+		cachedBins[entity] = true
+		TriggerServerEvent('esx_sopletare:getItem')
+	end
 	searching = false
+	--FreezeEntityPosition(GetPlayerPed(), false)
 end
 
 sendNotification = function(message, messageType, messageTimeout)
