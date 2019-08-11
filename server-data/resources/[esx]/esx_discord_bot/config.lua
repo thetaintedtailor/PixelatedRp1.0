@@ -23,7 +23,8 @@ settings = {
 	LogWeaponTransfer = true, -- Log when a player is giving a weapon.
 	LogMoneyTransfer = true, -- Log when a player is giving money
 	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
-	LogAnonymousTwitter = true -- Logs anonyous tweets
+	LogAnonymousTwitter = true, -- Logs anonyous tweets
+	LogItemSelling = true --Logs the sale of items to NPCs
 }
 
 blacklistedModels = {
