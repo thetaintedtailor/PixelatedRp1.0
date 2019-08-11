@@ -21,6 +21,7 @@ Config.UseDamageMult = false -- If true it costs more to store a Broken Vehicle.
 Config.DamageMult = 3 -- Higher Number = Higher Repair Price.
 
 Config.CarPoundPrice      = 850 -- Car Pound Price.
+Config.BicyclePoundPrice  = 50 -- Bicycle Pound Price
 Config.BoatPoundPrice     = 1500 -- Boat Pound Price.
 Config.AircraftPoundPrice = 7500 -- Aircraft Pound Price.
 
@@ -46,6 +47,16 @@ Config.ShowPoundSpacer3 = false -- If true it shows Spacer 3 in the List | Don't
 
 Config.MarkerType   = 1
 Config.DrawDistance = 100.0
+
+Config.BicycleHashes = { 
+	bmx = 1131912276,
+	cruiser = 448402357,
+	fixter = -836512833,
+	schorcher = -186537451,
+	tribike = 1127861609,
+	tribike2 = -1233807380,
+	tribike3 = -1233807380 
+}
 
 Config.BlipGarage = {
 	Sprite = 290,
