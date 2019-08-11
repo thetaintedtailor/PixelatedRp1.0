@@ -17,7 +17,7 @@ client.ChannelMessageRecieved:add(function(s : object, e : ChatSharp.Events.Priv
 end)
 
 AddEventHandler('playerActivated', function()
-	--client:SendMessage('* ' .. GetPlayerName(source) .. '(' .. GetPlayerGuid(source) .. '@' .. GetPlayerEP(source) .. ') joined the server', '#fourdeltaone')
+	client:SendMessage('* ' .. GetPlayerName(source) .. '(' .. GetPlayerGuid(source) .. '@' .. GetPlayerEP(source) .. ') joined the server', '#fourdeltaone')
 	table.insert(activatedPlayers, GetPlayerGuid(source))
 end)
 
@@ -26,7 +26,7 @@ AddEventHandler('playerDropped', function()
 	for index,guid in pairs(activatedPlayers) do
 		if guid == playerGuid then
 			-- show player dropping connection in chat
-			--client:SendMessage('* ' .. GetPlayerName(source) .. '(' .. GetPlayerGuid(source) .. '@' .. GetPlayerEP(source) .. ') left the server', '#fourdeltaone')
+			client:SendMessage('* ' .. GetPlayerName(source) .. '(' .. GetPlayerGuid(source) .. '@' .. GetPlayerEP(source) .. ') left the server', '#fourdeltaone')
 			table.remove(activatedPlayers, index)
 			return
 		end
