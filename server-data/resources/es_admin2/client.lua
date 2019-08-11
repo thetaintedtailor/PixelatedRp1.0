@@ -215,9 +215,10 @@ AddEventHandler('es_admin:invisible', function()
 	local player = GetPlayerPed()
 	SetPlayerInvincible(PlayerId(), isInvisible)
 	TriggerEvent('es_admin:noclip')
+	NetworkSetEntityVisibleToNetwork(player, isInvisible)
 	Citizen.CreateThread(function()
 		while isInvisible do
-			SetEntityVisible(player, isInvisible)
+			--SetEntityVisible(player, isInvisible, false)
 			SetEntityLocallyInvisible(player, isInvisible)
 			Citizen.Wait(1)
 		end
