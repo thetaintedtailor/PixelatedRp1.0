@@ -20,8 +20,8 @@ AddEventHandler('notes:writeNote', function()
 end)
 
 RegisterNetEvent('notes:createNotes')
-AddEventHandler('notes:createNotes', function(id, message)
-    SpawnNote(id, message)
+AddEventHandler('notes:createNotes', function(id, message, player)
+    SpawnNote(id, message, player)
 end)
 
 RegisterNetEvent('notes:deleteNote')
@@ -31,7 +31,7 @@ AddEventHandler('notes:deleteNote', function(id)
 end)
 
 
-function SpawnNote(id, message)
+function SpawnNote(id, message, player)
     local ped     = GetPlayerPed(GetPlayerFromServerId(player))
 	local coords  = GetEntityCoords(ped)
 	local forward = GetEntityForwardVector(ped)

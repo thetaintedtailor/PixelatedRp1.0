@@ -1,3 +1,3 @@
 Config = {}
 
-Config.LabelDrawDistance = 3.0
+Config.LabelDrawDistance = 20.0

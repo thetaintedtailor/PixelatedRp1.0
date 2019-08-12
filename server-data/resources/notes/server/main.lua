@@ -16,7 +16,7 @@ AddEventHandler('notes:dropNote', function(message)
 		id = pickupId,
 		message = message
 	}
-	TriggerClientEvent('notes:createNotes', -1, pickupId, message)
+	TriggerClientEvent('notes:createNotes', -1, pickupId, message, _source)
 	TriggerClientEvent('esx:showNotification', _source, "You've dropped a note.")
 	NotesID = pickupId
 end)
