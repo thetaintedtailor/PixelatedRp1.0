@@ -4,7 +4,6 @@ NotesID = 1
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-
 RegisterNetEvent('notes:writeNote')
 AddEventHandler('notes:writeNote', function()
     ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'write_note',

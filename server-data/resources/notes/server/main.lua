@@ -6,7 +6,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('es:addCommand', 'note', function(source, args, user)
 	TriggerClientEvent('notes:writeNote', source)
-end, {help = "Suicide"})
+end, {help = "Write a note and leave it on the ground"})
 
 RegisterServerEvent('notes:dropNote')
 AddEventHandler('notes:dropNote', function(message)
