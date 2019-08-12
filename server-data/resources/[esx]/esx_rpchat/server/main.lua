@@ -8,6 +8,7 @@ AddEventHandler('chatMessage', function(source, name, message)
 		CancelEvent()
 
 		if Config.EnableESXIdentity then name = GetCharacterName(source) end
+
 		TriggerClientEvent('chat:addMessage', -1, { args = { _U('ooc_prefix', name), message }, color = { 128, 128, 128 } })
 	end
 end)
@@ -36,6 +37,7 @@ RegisterCommand('twt', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:senttweet', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), tostring(args)}, color={0,153,204} })
@@ -49,6 +51,7 @@ RegisterCommand('ad', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:sentad', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('ad_prefix', name), tostring(args)}, color={163,0,0} })

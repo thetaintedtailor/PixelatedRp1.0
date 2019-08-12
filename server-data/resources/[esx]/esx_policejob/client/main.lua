@@ -1042,6 +1042,7 @@ function OpenBodySearchMenu(player)
 
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
 
+		data.money = data.money or 0
 		local elements = {}
         if data.money >= 0 then
             table.insert(elements, {

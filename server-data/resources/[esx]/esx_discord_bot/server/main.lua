@@ -53,6 +53,17 @@ AddEventHandler("esx:sentanonymoustweet", function(name,handle,msg)
   sendToDiscord('Anonymous Tweet', name .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
 end)
 
+RegisterServerEvent("esx:senttweet")
+AddEventHandler("esx:senttweet", function(name,msg)
+  sendToDiscord('Tweet', name .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
+end)
+
+RegisterServerEvent("esx:sentad")
+AddEventHandler("esx:sentad", function(name,msg)
+  sendToDiscord('Ad', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+end)
+
+
 -- Add event when a player give an item
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
 RegisterServerEvent("esx:giveitemalert")
@@ -70,6 +81,16 @@ AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
     sendToDiscord(_U('server_money_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount .." dollars",Config.orange, Config.moneyHook)
   end
 end)
+
+--Add event for when an item was sold
+RegisterServerEvent("esx:itemsoldalert")
+AddEventHandler("esx:itemsoldalert", function(name, item, amount)
+  if(settings.LogItemSelling)then
+    local time = os.date("*t", os.time())
+    sendToDiscord('Item Sold', name .. " sold " .. amount .. " " .. item .. ' at ' .. time.hour .. ':' .. time.min .. ':'..time.sec, Config.orange, Config.moneyHook)
+  end
+end)
+
 
 -- Add event when a player give money
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
