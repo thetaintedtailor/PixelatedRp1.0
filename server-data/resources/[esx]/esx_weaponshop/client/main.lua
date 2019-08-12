@@ -83,7 +83,8 @@ function OpenShopMenu(zone)
 		table.insert(elements, {
             label = label,
 			price = item.price,
-			weaponName = item.item
+			weaponName = item.item,
+			license = item.license
 		})
 	end
 
@@ -94,14 +95,30 @@ function OpenShopMenu(zone)
 		title = _U('shop_menu_title'),
 		align = 'left',
 		elements = elements
-	}, function(data, menu)
-		ESX.TriggerServerCallback('esx_weaponshop:buyWeapon', function(bought)
-			if bought then
-				DisplayBoughtScaleform(data.current.weaponName, data.current.price)
-			else
-				PlaySoundFrontend(-1, 'ERROR', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			end
-		end, data.current.weaponName, zone)
+    }, function(data, menu)
+        if (data.current.license) then
+            ESX.TriggerServerCallback('esx_license:checkLicense', function(licenseResult)
+                if (licenseResult) then
+                    ESX.TriggerServerCallback('esx_weaponshop:buyWeapon', function(bought)
+                        if bought then
+                            DisplayBoughtScaleform(data.current.weaponName, data.current.price)
+                        else
+                            PlaySoundFrontend(-1, 'ERROR', 'HUD_AMMO_SHOP_SOUNDSET', false)
+                        end
+                    end, data.current.weaponName, zone)
+                else
+                    ESX.ShowNotification('You do not have the proper license.')
+                end
+            end, GetPlayerServerId(PlayerId()), data.current.license)
+        else
+            ESX.TriggerServerCallback('esx_weaponshop:buyWeapon', function(bought)
+                if bought then
+                    DisplayBoughtScaleform(data.current.weaponName, data.current.price)
+                else
+                    PlaySoundFrontend(-1, 'ERROR', 'HUD_AMMO_SHOP_SOUNDSET', false)
+                end
+            end, data.current.weaponName, zone)
+        end
 	end, function(data, menu)
 		PlaySoundFrontend(-1, 'BACK', 'HUD_AMMO_SHOP_SOUNDSET', false)
 		ShopOpen = false
