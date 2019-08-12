@@ -60,7 +60,7 @@ end)
 
 RegisterServerEvent("esx:sentad")
 AddEventHandler("esx:sentad", function(name,msg)
-  sendToDiscord('Tweet', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+  sendToDiscord('Ad', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
 end)
 
 
