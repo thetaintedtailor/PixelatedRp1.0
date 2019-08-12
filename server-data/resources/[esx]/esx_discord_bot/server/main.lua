@@ -53,6 +53,17 @@ AddEventHandler("esx:sentanonymoustweet", function(name,handle,msg)
   sendToDiscord('Anonymous Tweet', name .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
 end)
 
+RegisterServerEvent("esx:senttweet")
+AddEventHandler("esx:senttweet", function(name,msg)
+  sendToDiscord('Tweet', name .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
+end)
+
+RegisterServerEvent("esx:sentad")
+AddEventHandler("esx:sentad", function(name,msg)
+  sendToDiscord('Tweet', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+end)
+
+
 -- Add event when a player give an item
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
 RegisterServerEvent("esx:giveitemalert")
