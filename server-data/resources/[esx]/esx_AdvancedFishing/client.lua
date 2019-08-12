@@ -282,7 +282,8 @@ function OpenBoatsMenu(x, y , z)
 	PlayerData = ESX.GetPlayerData()
 	local elements = {}
 	
-	
+    
+		table.insert(elements, {label = '<span style="color:orange;">Boating License</span> <span style="color:red;">1000$</span>', value = 'boat_license'})
 		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">250$</span>', value = 'boat'})
 		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">350$</span>', value = 'boat6'}) 
 		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">450$</span>', value = 'boat5'}) 	
@@ -305,8 +306,20 @@ function OpenBoatsMenu(x, y , z)
 		elements = elements,
     },
 	
-	
-	function(data, menu)
+    function(data, menu)
+        
+    if data.current.value == 'boat_license' then
+        ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+            if (not hasLicense) then
+                ESX.UI.Menu.CloseAll()
+                TriggerServerEvent("fishing:lowmoney", Config.LicenseCost)
+                TriggerServerEvent('fishing:addBoatLicense')
+                TriggerEvent("chatMessage", 'You purchased a boating license for', {255,0,255}, '$' .. Config.LicenseCost)
+            else
+                TriggerEvent("chatMessage", 'You already have a boating license.')
+            end
+        end, GetPlayerServerId(PlayerId()), 'boat')
+    end
 
 	if data.current.value == 'boat' then
 		ESX.UI.Menu.CloseAll()
@@ -362,16 +375,15 @@ function OpenBoatsMenu(x, y , z)
 		TriggerEvent('esx:spawnVehicle', "suntrap")
 	end
 	
-	
 	if data.current.value == 'police' then
 		ESX.UI.Menu.CloseAll()
 
 		TriggerEvent("chatMessage", 'You took out a boat')
 		SetPedCoordsKeepVehicle(ped, x, y , z)
 		TriggerEvent('esx:spawnVehicle', "predator")
-	end
+    end
+
 	ESX.UI.Menu.CloseAll()
-	
 
     end,
 	function(data, menu)

@@ -193,6 +193,12 @@ AddEventHandler("fishing:lowmoney", function(money)
 	xPlayer.removeMoney(money)
 end)
 
+RegisterServerEvent("fishing:addBoatLicense")
+AddEventHandler("fishing:addBoatLicense", function()
+	local _source = source
+	TriggerEvent('esx_license:addLicense', _source, 'boat')
+end)
+
 RegisterServerEvent('fishing:startSelling')
 AddEventHandler('fishing:startSelling', function(item)
 	local _source = source
@@ -235,4 +241,3 @@ AddEventHandler('fishing:startSelling', function(item)
 				end
 			end
 end)
-
