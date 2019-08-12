@@ -4,15 +4,15 @@ NotesID = 1
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-
 RegisterNetEvent('notes:writeNote')
 AddEventHandler('notes:writeNote', function()
     ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'write_note',
     {
         title = "Write a Note",
-    }, function(data, menu)
-        print(data)
-        TriggerServerEvent('notes:dropNote', data.value)
+	}, function(data, menu)
+		if data.value ~= nil then
+			TriggerServerEvent('notes:dropNote', data.value)
+		end
         menu.close()
     end, function(data, menu)
         menu.close()
@@ -20,8 +20,8 @@ AddEventHandler('notes:writeNote', function()
 end)
 
 RegisterNetEvent('notes:createNotes')
-AddEventHandler('notes:createNotes', function(id, message)
-    SpawnNote(id, message)
+AddEventHandler('notes:createNotes', function(id, message, player)
+    SpawnNote(id, message, player)
 end)
 
 RegisterNetEvent('notes:deleteNote')
@@ -31,7 +31,7 @@ AddEventHandler('notes:deleteNote', function(id)
 end)
 
 
-function SpawnNote(id, message)
+function SpawnNote(id, message, player)
     local ped     = GetPlayerPed(GetPlayerFromServerId(player))
 	local coords  = GetEntityCoords(ped)
 	local forward = GetEntityForwardVector(ped)
