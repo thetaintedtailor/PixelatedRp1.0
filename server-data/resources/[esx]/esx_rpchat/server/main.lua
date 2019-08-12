@@ -37,9 +37,9 @@ RegisterCommand('twt', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:senttweet', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
-	TriggerEvent('esx:senttweet', name, tostring(args))
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), tostring(args)}, color={0,153,204} })
 end, false)
 
@@ -51,9 +51,9 @@ RegisterCommand('ad', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:sentad', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
-	TriggerEvent('esx:sentad', name, tostring(args))
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('ad_prefix', name), tostring(args)}, color={163,0,0} })
 end, false)
 
