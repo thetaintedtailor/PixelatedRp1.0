@@ -8,6 +8,11 @@
   src: url('../fonts/pdown.ttf');
 }
 
+@font-face {
+  font-family: bebas;
+  src: url('../fonts/bebas.ttf');
+}
+
 #controls {
   font-family   : pcdown;
   font-size     : 3em;
@@ -29,7 +34,7 @@
 }
 
 .dialog {
-  font-family     : bankgothic;  
+  font-family     : bebas;  
   background-color: #464646;
   color           : #fff;
   box-shadow      : 0px 0px 50px 0px #000;
