@@ -10,9 +10,10 @@ AddEventHandler('notes:writeNote', function()
     ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'write_note',
     {
         title = "Write a Note",
-    }, function(data, menu)
-        print(data)
-        TriggerServerEvent('notes:dropNote', data.value)
+	}, function(data, menu)
+		if data.value ~= nil then
+			TriggerServerEvent('notes:dropNote', data.value)
+		end
         menu.close()
     end, function(data, menu)
         menu.close()
