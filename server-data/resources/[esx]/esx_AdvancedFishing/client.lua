@@ -283,7 +283,8 @@ function OpenBoatsMenu(x, y , z)
 	local elements = {}
 	
     
-		table.insert(elements, {label = '<span style="color:orange;">Boating License</span> <span style="color:red;">1000$</span>', value = 'boat_license'})
+		table.insert(elements, {label = '<span style="color:orange;">Boating License</span> <span style="color:red;">2000$</span>', value = 'boat_license'})
+		table.insert(elements, {label = '<span style="color:orange;">Fishing License</span> <span style="color:red;">1000$</span>', value = 'fish_license'})
 		table.insert(elements, {label = '<span style="color:green;">Dinghy</span> <span style="color:red;">250$</span>', value = 'boat'})
 		table.insert(elements, {label = '<span style="color:green;">Suntrap</span> <span style="color:red;">350$</span>', value = 'boat6'}) 
 		table.insert(elements, {label = '<span style="color:green;">Jetmax</span> <span style="color:red;">450$</span>', value = 'boat5'}) 	
@@ -312,13 +313,26 @@ function OpenBoatsMenu(x, y , z)
         ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
             if (not hasLicense) then
                 ESX.UI.Menu.CloseAll()
-                TriggerServerEvent("fishing:lowmoney", Config.LicenseCost)
+                TriggerServerEvent("fishing:lowmoney", Config.BoatLicenseCost)
                 TriggerServerEvent('fishing:addBoatLicense')
-                TriggerEvent("chatMessage", 'You purchased a boating license for', {255,0,255}, '$' .. Config.LicenseCost)
+                TriggerEvent("chatMessage", 'You purchased a boating license for', {255,0,255}, '$' .. Config.BoatLicenseCost)
             else
                 TriggerEvent("chatMessage", 'You already have a boating license.')
             end
         end, GetPlayerServerId(PlayerId()), 'boat')
+	end
+
+    if data.current.value == 'fish_license' then
+        ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+            if (not hasLicense) then
+                ESX.UI.Menu.CloseAll()
+                TriggerServerEvent("fishing:lowmoney", Config.FishLicenseCost)
+                TriggerServerEvent('fishing:addFishLicense')
+                TriggerEvent("chatMessage", 'You purchased a fishing license for', {255,0,255}, '$' .. Config.FishLicenseCost)
+            else
+                TriggerEvent("chatMessage", 'You already have a fishing license.')
+            end
+        end, GetPlayerServerId(PlayerId()), 'fishing')
     end
 
 	if data.current.value == 'boat' then

@@ -33,4 +33,5 @@ Config.MarkerZones = {
 	{x = 1330.8        ,y =  4226.6 ,z = 32.9, xs = 1334.2         , ys =  4192.4, zs = 30.0 },
 }
 
-Config.LicenseCost = 1000 -- How much does a fishing license cost
+Config.BoatLicenseCost = 2000 -- How much does a boating license cost
+Config.FishLicenseCost = 1000 -- How much does a fishing license cost

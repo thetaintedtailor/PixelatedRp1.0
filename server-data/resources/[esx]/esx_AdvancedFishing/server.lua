@@ -199,6 +199,12 @@ AddEventHandler("fishing:addBoatLicense", function()
 	TriggerEvent('esx_license:addLicense', _source, 'boat')
 end)
 
+RegisterServerEvent("fishing:addFishLicense")
+AddEventHandler("fishing:addFishLicense", function()
+	local _source = source
+	TriggerEvent('esx_license:addLicense', _source, 'fishing')
+end)
+
 RegisterServerEvent('fishing:startSelling')
 AddEventHandler('fishing:startSelling', function(item)
 	local _source = source

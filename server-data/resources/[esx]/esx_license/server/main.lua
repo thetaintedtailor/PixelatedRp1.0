@@ -81,7 +81,6 @@ end
 function CheckLicense(target, type, cb)
 	local identifier = GetPlayerIdentifier(target, 0)
 
-
 	MySQL.Async.fetchAll('SELECT COUNT(*) as count FROM user_licenses WHERE type = @type AND owner = @owner', {
 		['@type']  = type,
 		['@owner'] = identifier
