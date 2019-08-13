@@ -451,8 +451,8 @@ local Keys = {
 		  table.insert(elements, {label = _U('remove_cloth'), value = 'remove_cloth'})
 	  end
   
-	  table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
-	  table.insert(elements, {label = _U('deposit_object'), value = 'player_inventory'})
+	  --table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})
+	  --table.insert(elements, {label = _U('deposit_object'), value = 'player_inventory'})
   
 	  ESX.UI.Menu.CloseAll()
   
