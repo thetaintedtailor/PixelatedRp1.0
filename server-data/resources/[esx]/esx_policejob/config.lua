@@ -896,3 +896,21 @@ Config.Uniforms = {
 	}
 
 }
+
+-- The types of licenses that police can grant or revoke
+Config.Licenses = {
+  CanGrant = {
+    'weapon_1',
+    'weapon_2'
+  },
+
+  CanRevoke = {
+    'boat',
+    'drive',
+    'drive_truck'
+    'drive_bike',
+    'fishing',
+    'weapon_1',
+    'weapon_2'
+  }
+}

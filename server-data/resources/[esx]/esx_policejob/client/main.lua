@@ -1236,6 +1236,26 @@ function ParsePlayerData(data)
   return targetName, licenses
 end
 
+function CanGrant(licenseType)
+  for i = 0, #Config.Licenses.CanGrant, 1 do
+    if (Config.Licenses.CanGrant[i] == licenseType) then
+      return true
+    end
+  end
+
+  return false
+end
+
+function CanRevoke(licenseType)
+  for i = 0, #Config.Licenses.CanRevoke, 1 do
+    if (Config.Licenses.CanRevoke[i] == licenseType) then
+      return true
+    end
+  end
+
+  return false
+end
+
 -- Show the police officer a menu for granting licenses to another player
 -- @param closestPlayer The target who will be granted a license
 function OpenGrantLicenseMenu(closestPlayer)
@@ -1246,7 +1266,11 @@ function OpenGrantLicenseMenu(closestPlayer)
   local targetServerId = GetPlayerServerId(closestPlayer)
 
   ESX.TriggerServerCallback('esx_license:getLicensesList', function(data)
-    licensesList = data
+    for i = 1, #data, 1 do
+      if (CanGrant(data[i])) then
+        table.insert(licenseList, data[i])
+      end
+    end
   end)
 
   ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
@@ -1348,12 +1372,16 @@ function ShowPlayerLicense(player)
 			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
-			ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
-			TriggerServerEvent('esx_policejob:message', GetPlayerServerId(player), _U('license_revoked', data.current.label))
+      if (CanRevoke(data.current.type)) then
+        ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
 
-			TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
+        TriggerServerEvent('esx_policejob:message', GetPlayerServerId(player), _U('license_revoked', data.current.label))
+        TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
 
-      menu.close()
+        menu.close()
+      else
+        ESX.ShowNotification('You do not have authority to revoke that license.')
+      end
 		end, function(data, menu)
 			menu.close()
 		end)
