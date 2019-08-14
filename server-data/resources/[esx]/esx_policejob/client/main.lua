@@ -780,11 +780,8 @@ function OpenPoliceActionsMenu()
 				align    = 'right',
 				elements = elements
 			}, function(data2, menu2)
-				--local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-				local closestPlayer = PlayerId()
-				local closestDistance = 0.1
-				--if closestPlayer ~= -1 and closestDistance <= 3.0 then
-				if closestDistance <= 3.0 then
+				local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+				if closestPlayer ~= -1 and closestDistance <= 3.0 then
 					local action = data2.current.value
 
 					if action == 'identity_card' then
