@@ -104,7 +104,6 @@ input[type=number] {
     background-color: var(--slot-full-opacity);
     filter: drop-shadow(0 0 0.45rem var(--bright-purple));
     transform: scale(1.2);
-    position: absolute;
     z-index: 600;
 }
 
