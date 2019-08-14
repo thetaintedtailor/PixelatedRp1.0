@@ -195,27 +195,19 @@ end)
 
 RegisterServerEvent('fishing:startSelling')
 AddEventHandler('fishing:startSelling', function(item)
-
 	local _source = source
 	
 	local xPlayer  = ESX.GetPlayerFromId(_source)
 			if item == "fish" then
-					local FishQuantity = xPlayer.getInventoryItem('fish').count
-						if FishQuantity <= 4 then
-						TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
-					else   
-						xPlayer.removeInventoryItem('fish', 5)
-						local payment = Config.FishPrice.a
-						payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
-						xPlayer.addMoney(payment)
-						
-						
-			end
-				
-
-				
-
-				
+				local FishQuantity = xPlayer.getInventoryItem('fish').count
+					if FishQuantity <= 4 then
+					TriggerClientEvent('esx:showNotification', source, '~r~You dont have enough~s~ fish')			
+				else   
+					xPlayer.removeInventoryItem('fish', 5)
+					local payment = Config.FishPrice.a
+					payment = math.random(Config.FishPrice.a, Config.FishPrice.b) 
+					xPlayer.addMoney(payment)			
+				end	
 			end
 			if item == "turtle" then
 				local FishQuantity = xPlayer.getInventoryItem('turtle').count
@@ -227,8 +219,6 @@ AddEventHandler('fishing:startSelling', function(item)
 					local payment = Config.TurtlePrice.a
 					payment = math.random(Config.TurtlePrice.a, Config.TurtlePrice.b) 
 					xPlayer.addMoney(payment)
-					
-					
 				end
 			end
 			if item == "shark" then
@@ -241,11 +231,8 @@ AddEventHandler('fishing:startSelling', function(item)
 					local payment = Config.SharkPrice.a
 					payment = math.random(Config.SharkPrice.a, Config.SharkPrice.b)
 					xPlayer.addMoney(payment)
-					
-					
+					TriggerEvent('esx:itemsoldalert', xPlayer.name, 'Shark', 1)
 				end
 			end
-			
-	
 end)
 

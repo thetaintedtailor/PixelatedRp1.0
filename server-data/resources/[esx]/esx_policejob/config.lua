@@ -7,7 +7,7 @@ Config.MarkerColor                = { r = 50, g = 50, b = 204 }
 
 Config.EnablePlayerManagement     = true
 Config.EnableArmoryManagement     = true
-Config.EnableESXIdentity          = false -- enable if you're using esx_identity
+Config.EnableESXIdentity          = true -- enable if you're using esx_identity
 Config.EnableNonFreemodePeds      = false -- turn this on if you want custom peds
 Config.EnableLicenses             = false -- enable if you're using esx_license
 
@@ -57,6 +57,15 @@ Config.PoliceStations = {
 				SpawnPoints = {
 					{ coords = vector3(475.9, -1021.6, 28.0), heading = 276.1, radius = 6.0 },
 					{ coords = vector3(484.1, -1023.1, 27.5), heading = 302.5, radius = 6.0 }
+				}
+			},
+
+						{
+				Spawner = vector3(1869.502, 3691.951, 33.75057),
+				InsideShop = vector3(228.5, -993.5, -99.0),
+				SpawnPoints = {
+					{ coords = vector3(1868.855, 3695.369, 33.73057), heading = 276.1, radius = 6.0 },
+					{ coords = vector3(1865.783, 3701.289, 33.73057), heading = 302.5, radius = 6.0 }
 				}
 			}
 		},
@@ -198,194 +207,240 @@ Config.AuthorizedWeapons = {
 
 Config.AuthorizedVehicles = {
 	Shared = {
-		{model = 'police',label = 'Police Cruiser',price = 1}
 	},
 
 	cadet = {
-
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 }
 	},
 
 	officer = {
-		{model = 'police2',label = 'Charger', price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{model = 'police5',label = 'Interceptor Utility',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8',label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		-- { model = 'SFBC3', 	label = 'BCSO Explorer', price = 1 }, Old style Explorer
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	deputy = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked', price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8',label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	senior_officer = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	corporal = {
-
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	sergeant = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	lieutenant = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	captain = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	commander = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	deputy_sheriff = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'SFUM2', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	deputy_chief = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'srt8police', label = 'srt8police', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	sheriff = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	boss = {
-		{model = 'police2',label = 'Charger',price = 1},
-		{model = 'police3', label = 'Police Interceptor', price = 1},
-		{model = 'police4',label = 'Unmarked',price = 1},
-		{ model = '2015polstang', label = 'Polstang', price = 1 },
-		{ model = '1200rt', label = '1200rt', price = 1 },
-		{ model = 'SFBC1', label = 'SFBC1', price = 1 },
-		{ model = 'SFBC2', label = 'SFBC2', price = 1 },
-		{ model = 'SFBC3', 	label = 'SFBC3', price = 1 },
-		{ model = 'SFBC4', label = 'SFBC4', price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked CV', price = 1 },
-		{ model = 'SFUM1', label = 'SFUM1', price = 1 },
-		{model = 'fbi2',label = 'Granger [Unmarked]',price = 1},
+		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
+		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
+		{ model = 'police2',label = 'LSPD Charger', price = 1},
+		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
+		{ model = 'police3', label = 'LSPD Explorer', price = 1},
+		{ model = 'police8', label = 'LSPD Impala', price = 1},
+		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'policet', label = 'LSPD Van', price = 1 },
+		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
+		{ model = 'pbus', label = 'Prison Bus',price = 1 },
+		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
+		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
+		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	}
 }
 
@@ -513,87 +568,87 @@ Config.AuthorizedHelicopters = {
 Config.Uniforms = {
 	cadet_wear = {
 		male = {
-			['tshirt_1'] = 59,  ['tshirt_2'] = 1,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 93,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['arms'] = 0,
+			['pants_1'] = 52,   ['pants_2'] = 1,
+			['shoes_1'] = 24,   ['shoes_2'] = 0,
+			['helmet_1'] = 10,  ['helmet_2'] = 6,
 			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
-			['tshirt_1'] = 36,  ['tshirt_2'] = 1,
-			['torso_1'] = 48,   ['torso_2'] = 0,
+			['tshirt_1'] = 34,  ['tshirt_2'] = 0,
+			['torso_1'] = 84,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 44,
-			['pants_1'] = 34,   ['pants_2'] = 0,
-			['shoes_1'] = 27,   ['shoes_2'] = 0,
-			['helmet_1'] = 45,  ['helmet_2'] = 0,
+			['arms'] = 33,
+			['pants_1'] = 48,   ['pants_2'] = 0,
+			['shoes_1'] = 24,   ['shoes_2'] = 0,
+			['helmet_1'] = 10,  ['helmet_2'] = 0,
 			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['ears_1'] = -1,     ['ears_2'] = 0
 		}
 	},
 	officer_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 149,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 0,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
-			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
-			['torso_1'] = 48,   ['torso_2'] = 0,
+			['tshirt_1'] = 2,  ['tshirt_2'] = 0,
+			['torso_1'] = 31,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 44,
+			['arms'] = 2,
 			['pants_1'] = 34,   ['pants_2'] = 0,
-			['shoes_1'] = 27,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['shoes_1'] = 10,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
 			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['ears_1'] = -1,     ['ears_2'] = 0
 		}
 	},
 	deputy_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 122,  ['tshirt_2'] = 0,
+			['torso_1'] = 183,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
+			['arms'] = 0,
 			['pants_1'] = 25,   ['pants_2'] = 0,
 			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['helmet_1'] = 33,  ['helmet_2'] = 0,
 			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
-			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
-			['torso_1'] = 48,   ['torso_2'] = 0,
+			['tshirt_1'] = 34,  ['tshirt_2'] = 0,
+			['torso_1'] = 91,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 44,
-			['pants_1'] = 34,   ['pants_2'] = 0,
-			['shoes_1'] = 27,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
+			['arms'] = 2,
+			['pants_1'] = 31,   ['pants_2'] = 2,
+			['shoes_1'] = 9,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
 			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['ears_1'] = -1,     ['ears_2'] = 0
 		}
 	},
 	senior_officer_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 149,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 0,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -609,15 +664,15 @@ Config.Uniforms = {
 	},
 	corporal_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
-			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 149,   ['torso_2'] = 0,
+			['decals_1'] = 8,   ['decals_2'] = 0,
+			['arms'] = 0,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -633,15 +688,15 @@ Config.Uniforms = {
 	},
 	sergeant_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 149,   ['torso_2'] = 1,
 			['decals_1'] = 8,   ['decals_2'] = 1,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 0,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -657,15 +712,15 @@ Config.Uniforms = {
 	},
 	lieutenant_wear = { -- currently the same as intendent_wear
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
-			['decals_1'] = 8,   ['decals_2'] = 2,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 143,   ['torso_2'] = 2,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 4,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -681,15 +736,15 @@ Config.Uniforms = {
 	},
 	captain_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 143,   ['torso_2'] = 3,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 4,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -705,15 +760,15 @@ Config.Uniforms = {
 	},
 	commander_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 143,   ['torso_2'] = 4,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 4,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -733,7 +788,7 @@ Config.Uniforms = {
 			['torso_1'] = 55,   ['torso_2'] = 0,
 			['decals_1'] = 0,   ['decals_2'] = 0,
 			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
+			['pants_1'] = 35,   ['pants_2'] = 0,
 			['shoes_1'] = 25,   ['shoes_2'] = 0,
 			['helmet_1'] = -1,  ['helmet_2'] = 0,
 			['chain_1'] = 0,    ['chain_2'] = 0,
@@ -753,15 +808,15 @@ Config.Uniforms = {
 	},
 	deputy_chief_wear = {
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
+			['tshirt_1'] = 55,  ['tshirt_2'] = 0,
+			['torso_1'] = 143,   ['torso_2'] = 5,
 			['decals_1'] = 0,   ['decals_2'] = 0,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
-			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['arms'] = 4,
+			['pants_1'] = 35,   ['pants_2'] = 0,
+			['shoes_1'] = 51,   ['shoes_2'] = 0,
+			['helmet_1'] = 46,  ['helmet_2'] = 0,
+			['chain_1'] = 6,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -801,15 +856,15 @@ Config.Uniforms = {
 	},
 	boss_wear = { -- currently the same as chef_wear
 		male = {
-			['tshirt_1'] = 58,  ['tshirt_2'] = 0,
-			['torso_1'] = 55,   ['torso_2'] = 0,
-			['decals_1'] = 8,   ['decals_2'] = 3,
-			['arms'] = 41,
-			['pants_1'] = 25,   ['pants_2'] = 0,
+			['tshirt_1'] = 57,  ['tshirt_2'] = 0,
+			['torso_1'] = 143,   ['torso_2'] = 7,
+			['decals_1'] = 0,   ['decals_2'] = 0,
+			['arms'] = 4,
+			['pants_1'] = 35,   ['pants_2'] = 0,
 			['shoes_1'] = 25,   ['shoes_2'] = 0,
-			['helmet_1'] = -1,  ['helmet_2'] = 0,
-			['chain_1'] = 0,    ['chain_2'] = 0,
-			['ears_1'] = 2,     ['ears_2'] = 0
+			['helmet_1'] = 1,  ['helmet_2'] = 0,
+			['chain_1'] = 8,    ['chain_2'] = 0,
+			['ears_1'] = -1,     ['ears_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 35,  ['tshirt_2'] = 0,
@@ -825,15 +880,15 @@ Config.Uniforms = {
 	},
 	bullet_wear = {
 		male = {
-			['bproof_1'] = 11,  ['bproof_2'] = 1
+			['bproof_1'] = 7,  ['bproof_2'] = 0
 		},
 		female = {
-			['bproof_1'] = 13,  ['bproof_2'] = 1
+			['bproof_1'] = 7,  ['bproof_2'] = 0
 		}
 	},
 	gilet_wear = {
 		male = {
-			['tshirt_1'] = 59,  ['tshirt_2'] = 1
+			['tshirt_1'] = 59,  ['tshirt_2'] = 0
 		},
 		female = {
 			['tshirt_1'] = 36,  ['tshirt_2'] = 1

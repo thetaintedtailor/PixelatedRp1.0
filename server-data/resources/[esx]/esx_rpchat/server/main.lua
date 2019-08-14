@@ -8,9 +8,25 @@ AddEventHandler('chatMessage', function(source, name, message)
 		CancelEvent()
 
 		if Config.EnableESXIdentity then name = GetCharacterName(source) end
+
 		TriggerClientEvent('chat:addMessage', -1, { args = { _U('ooc_prefix', name), message }, color = { 128, 128, 128 } })
 	end
 end)
+
+RegisterCommand('atwt', function(source, args, rawCommand)
+	if source == 0 then
+		print('esx_rpchat: you can\'t use this command from rcon!')
+		return
+	end
+	local handle = tostring(args[1])
+	table.remove(args, 1)
+	args = table.concat(args, ' ')
+	local name = GetPlayerName(source)
+	--if Config.EnableESXIdentity then name = GetCharacterName(source) end
+	TriggerEvent('esx:sentanonymoustweet', name, handle, tostring(args))
+
+	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', handle), tostring(args)}, color={0,153,204} })
+end, false)
 
 
 RegisterCommand('twt', function(source, args, rawCommand)
@@ -21,6 +37,7 @@ RegisterCommand('twt', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:senttweet', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('twt_prefix', name), tostring(args)}, color={0,153,204} })
@@ -34,6 +51,7 @@ RegisterCommand('ad', function(source, args, rawCommand)
 
 	args = table.concat(args, ' ')
 	local name = GetPlayerName(source)
+	TriggerEvent('esx:sentad', name, tostring(args))
 	if Config.EnableESXIdentity then name = GetCharacterName(source) end
 
 	TriggerClientEvent('chat:addMessage', -1, { args = { _U('ad_prefix', name), tostring(args)}, color={163,0,0} })

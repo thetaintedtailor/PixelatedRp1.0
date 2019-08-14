@@ -111,4 +111,5 @@ Config.ATMLocations = {
 	{ ['x'] = -1140.17, ['y'] = -2006.30,  ['z'] = 13.18}, -- atm Airport LSCustoms
 	{ ['x'] = 724.60, ['y'] = -1071.64,  ['z'] = 23.13}, -- atm 'The Den' LSCustoms
 	{ ['x'] = -344.97, ['y'] = -123.05,  ['z'] = 39.01}, -- atm Central LSCustoms
+	{ ['x'] = 478.19, ['y'] = -982.63,  ['z'] = 24.91}, -- Mission Row basement
 }

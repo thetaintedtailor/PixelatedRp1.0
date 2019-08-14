@@ -649,7 +649,7 @@
     <Item>
       <modelName>SFBC5</modelName>
       <txdName>SFBC5</txdName>
-      <handlingId>lspdsuv2</handlingId>
+      <handlingId>BALLER2</handlingId>
       <gameName>SFBC5</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -763,7 +763,7 @@
     <Item>
       <modelName>SFUM1</modelName>
       <txdName>SFUM1</txdName>
-      <handlingId>lspdsuv2</handlingId>
+      <handlingId>BALLER2</handlingId>
       <gameName>SFUM1</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
