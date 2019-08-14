@@ -24,10 +24,7 @@ function setPropertyInventoryData(data)
     local propertyItems = data.items
     local propertyWeapons = data.weapons
 
-<<<<<<< HEAD
-=======
     --[[
->>>>>>> inventory_fixes
     if blackMoney > 0 then
         accountData = {
             label = _U("black_money"),
@@ -41,10 +38,7 @@ function setPropertyInventoryData(data)
         }
         table.insert(items, accountData)
     end
-<<<<<<< HEAD
-=======
     ]]
->>>>>>> inventory_fixes
 
     for i = 1, #propertyItems, 1 do
         local item = propertyItems[i]
