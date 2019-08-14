@@ -919,7 +919,7 @@ Config.Licenses = {
   CanRevoke = {
     'boat',
     'drive',
-    'drive_truck'
+    'drive_truck',
     'drive_bike',
     'fishing',
     'weapon_1',
