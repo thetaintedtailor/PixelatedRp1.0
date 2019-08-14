@@ -76,8 +76,6 @@ local Keys = {
     ["N9"] = 118
 }
 
-local connectedPlayers = {}
-
 isInInventory = false
 ESX = nil
 
