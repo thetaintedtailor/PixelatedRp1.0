@@ -93,7 +93,7 @@ Config.Limit = 100000
 -- weight == 0 : The item do not affect character inventory weight
 -- weight > 0 : The item cost place on inventory
 -- weight < 0 : The item add place on inventory. Smart people will love it.
-Config.DefaultWeight = 10
+Config.DefaultWeight = 1000
 
 Config.localWeight = {
     --- FOOD ---
@@ -106,7 +106,6 @@ Config.localWeight = {
     protein_shake = 500,
     sandwich = 250,
     sportlunch = 250,
-
     --- FOOD ---
 
     --- DRINKS ---
