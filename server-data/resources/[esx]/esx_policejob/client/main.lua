@@ -1026,7 +1026,6 @@ function OpenIdentityCardMenu(player)
 			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
-			Citizen.Trace(data.current.value .. "\n")
 		end, function(data, menu)
 			menu.close()
 		end)
