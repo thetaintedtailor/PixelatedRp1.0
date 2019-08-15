@@ -9,3 +9,4 @@
 # ignore large file types
 
 .*.swp
+server-data/resources/3dme/log.txt
