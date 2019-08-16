@@ -1212,8 +1212,6 @@ function ParsePlayerData(data)
   local licenses   = {}
   local targetName = nil
 
-  Citizen.Trace("Received player data w/ " .. #data.licenses .. " licenses\n")
-
   if data.licenses then
     for i=1, #data.licenses, 1 do
 	  if data.licenses[i].label and data.licenses[i].type then
@@ -1265,7 +1263,7 @@ function OpenGrantLicenseMenu(closestPlayer)
 
   ESX.TriggerServerCallback('esx_license:getLicensesList', function(data)
     for i = 1, #data, 1 do
-      if (CanGrant(data[i])) then
+      if (CanGrant(data[i].type)) then
         table.insert(licenseList, data[i])
       end
     end
@@ -1289,7 +1287,6 @@ function OpenGrantLicenseMenu(closestPlayer)
     end
 
     if (dataError) then
-        Citizen.Trace("license count = " .. #licensesList .. ", targetName = " .. targetName .. "\n")
       ESX.ShowNotification('~r~Error while fetching license data.~s~')
       return
     end
