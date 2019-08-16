@@ -65,8 +65,12 @@ Citizen.CreateThread(function ()
         local jobs = {
             'offambulance',
             'offpolice',
+            'offmechanic',
+            'offtaxi',
             'police',
-            'ambulance'
+            'ambulance',
+            'taxi',
+            'mechanic',
         }
 
         if CurrentAction ~= nil then
@@ -95,21 +99,29 @@ Citizen.CreateThread(function ()
     local coords = GetEntityCoords(GetPlayerPed(-1))
 
     for k,v in pairs(Config.Zones) do
+      for k,v in ipairs(v.Jobs) do
+        if string.match(v, PlayerData.job.name) then 
       if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
-        DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+            DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+          end
+        end
       end
     end
   end
 end)
 
+
 -- Enter / Exit marker events
 Citizen.CreateThread(function ()
+  local waitTime = 5000
+
   while true do
-    Wait(0)
+    Wait(waitTime)
 
     local coords      = GetEntityCoords(GetPlayerPed(-1))
     local isInMarker  = false
     local currentZone = nil
+
 
     for k,v in pairs(Config.Zones) do
       if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
