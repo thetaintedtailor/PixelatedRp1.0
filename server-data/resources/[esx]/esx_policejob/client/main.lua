@@ -1264,7 +1264,7 @@ function OpenGrantLicenseMenu(closestPlayer)
   ESX.TriggerServerCallback('esx_license:getLicensesList', function(data)
     for i = 1, #data, 1 do
       if (CanGrant(data[i].type)) then
-        table.insert(licenseList, data[i])
+        table.insert(licensesList, data[i])
       end
     end
   end)
@@ -1372,7 +1372,7 @@ function ShowPlayerLicense(player)
         ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
 
         TriggerServerEvent('esx_policejob:message', GetPlayerServerId(player), _U('license_revoked', data.current.label))
-        TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
+		TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
 
         menu.close()
       else
