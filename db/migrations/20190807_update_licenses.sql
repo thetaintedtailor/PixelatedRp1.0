@@ -66,12 +66,10 @@ INSERT INTO weashops (zone, item, price, license) VALUES
     ('GunShop', 'WEAPON_VINTAGEPISTOL', 7500, 'weapon_1'),
     ('GunShop', 'WEAPON_SNSPISTOL', 8000, 'weapon_1'),
     ('GunShop', 'WEAPON_COMBATPISTOL', 10000, 'weapon_1'),
-    --('GunShop', 'WEAPON_REVOLVER', 7000, 'weapon_1'),
     ('GunShop', 'WEAPON_HEAVYPISTOL', 15000, 'weapon_1'),
     ('GunShop', 'WEAPON_PISTOL50', 20000, 'weapon_1'),
-    ('GunShop', 'WEAPON_DBSHOTGUN', 50000, 'weapon_2');
+    ('GunShop', 'WEAPON_DBSHOTGUN', 50000, 'weapon_2'),
     ('GunShop', 'WEAPON_SAWNOFFSHOTGUN', 60000, 'weapon_2'),
     ('GunShop', 'WEAPON_PUMPSHOTGUN', 70000, 'weapon_2'),
     ('GunShop', 'WEAPON_BULLPUPSHOTGUN', 80000, 'weapon_2'),
-    ('GunShop', 'WEAPON_HEAVYSHOTGUN', 95000, 'weapon_2'),
-    --('GunShop', 'WEAPON_ASSAULTSHOTGUN', 100000, 'weapon_2');
+    ('GunShop', 'WEAPON_HEAVYSHOTGUN', 95000, 'weapon_2');
