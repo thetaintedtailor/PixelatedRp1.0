@@ -9,7 +9,7 @@ Config.EnablePlayerManagement     = true
 Config.EnableArmoryManagement     = true
 Config.EnableESXIdentity          = true -- enable if you're using esx_identity
 Config.EnableNonFreemodePeds      = false -- turn this on if you want custom peds
-Config.EnableLicenses             = false -- enable if you're using esx_license
+Config.EnableLicenses             = true -- enable if you're using esx_license
 
 Config.EnableHandcuffTimer        = true -- enable handcuff timer? will unrestrain player after the time ends
 Config.HandcuffTimer              = 25 * 60000 -- 25 mins
@@ -895,4 +895,22 @@ Config.Uniforms = {
 		}
 	}
 
+}
+
+-- The types of licenses that police can grant or revoke
+Config.Licenses = {
+  CanGrant = {
+    'weapon_1',
+    'weapon_2'
+  },
+
+  CanRevoke = {
+    'boat',
+    'drive',
+    'drive_truck',
+    'drive_bike',
+    'fishing',
+    'weapon_1',
+    'weapon_2'
+  }
 }
