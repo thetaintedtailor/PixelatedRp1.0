@@ -157,7 +157,7 @@ function OpenDMVSchoolMenu()
 			CurrentActionMsg  = _U('press_open_menu')
 			CurrentActionData = {}
 		end)
-	end
+	end)
 end
 
 RegisterNUICallback('question', function(data, cb)
