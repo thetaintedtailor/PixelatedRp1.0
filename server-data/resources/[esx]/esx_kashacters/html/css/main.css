@@ -1,6 +1,8 @@
 :root {
   --main-text: rgb(235, 80, 185); 
   --border-color: rgba(229, 138, 134, 0.8);
+  --main-bg: #2F2443;
+  --character-box-hover: #0F081A;
 }
 
 html {
@@ -20,13 +22,13 @@ p {
   height: 100%;
   overflow: hidden;
 }
+
 .oben {
   height: 10%;
   width: 100%;
   background-color: rgba(30, 31, 40, 0.8);
   left: 0%;
   top: 0%;
-  color: rgb(159, 38, 47);
   text-align: center;
   padding-top: 1.5%;
   font-size: 30px;
@@ -34,7 +36,8 @@ p {
   overflow: hidden;
   border-bottom: 3px solid;
   border-color: var(--border-color);
-  }
+}
+
 .HDL {
   float: left;
   color: var(--main-text);
@@ -47,6 +50,7 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .HDL2 {
   float: left;
   font-family: 'Gugi', cursive;
@@ -58,6 +62,7 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .HDL3 {
   float: left;
   color: var(--main-text);
@@ -65,6 +70,7 @@ p {
   font-size: 30px;
   padding-left: 1.5%;
 }
+
 .unten {
   height: 10%;
   width: 100%;
@@ -78,6 +84,7 @@ p {
   overflow: hidden;
   border-color: rgb(42, 42, 52);
 }
+
 .weiß {
   background-color: rgba(1, 9, 30, 0.0);
   font-size: 18px;
@@ -88,12 +95,14 @@ p {
   top: 10%;
 	overflow: hidden;
 }
+
 .main-container {
   display:none;
   width: 100%;
   position: relative;
   top: 0%;
 }
+
 .character-container {
   width: 80%;
   height: 54%;
@@ -101,32 +110,38 @@ p {
   display: flex;
   justify-content: space-between;
 }
+
 .character-box {
-  background: rgba(255, 255, 255, 1.0);
-  color: #2c3345;
+  background: var(--main-bg);
+  color: #fff;
   padding: 10px;
   text-align: center;
   border: 2px solid transparent;
-  border-radius: 2px;
+  border-radius: 5px;
   margin-top: 15%;
   width: 20%;
 }
+
 .character-box:hover {
-  background-color: rgb(44, 51, 69); 
+  background-color: var(--character-box-hover); 
   color: #fff;
 }
+
 .character-box:active {
-  background-color: rgb(42, 42, 52);  
+  background-color: var(--character-box-hover);
   color: #fff;
 }
+
 .character-fullname {
   border-bottom: 3px solid;
   border-color: var(--border-color);
   padding-bottom: 5px;
 }
+
 .h3 .fas fa-plus {
   color: #fff;
 }
+
 .character-info {
   text-align: left!important;
 }
@@ -204,9 +219,9 @@ p {
   text-align: center;
   width: 270px;
   font-weight: bold;
-  padding: 2    0px 10px;
+  padding: 2 0px 10px;
   border: 3px solid #4ED84C;
-  color: #2c3345;
+  color: #fff;
   border-radius: 2px;
   position: relative;
   z-index: 2;
