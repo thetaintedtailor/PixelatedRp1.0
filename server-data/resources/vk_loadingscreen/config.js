@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/start_a_riot.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Start a Riot - Duckwrth/Shaboozey"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "Suggested by QBasic (IGN: Cpt. Bishop)"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/afterlife.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Afterlife - Avenged Sevenfold"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Suggested by B-204 SGT Danks Komo"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
