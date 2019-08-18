@@ -7,56 +7,65 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Gugi&display=swap" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body style="background-color: rgba(0,0,0,0); font-family: 'Roboto', sans-serif !important;">
-        <div class="main-container">
-            <div class="character-container">
-                <div class="character-box" data-ischar="false" data-charid="1">
-                    <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
-                    <div class="character-info">
-                        <p class="character-info-new">Create new character</p>
+        <div class= "bg">
+            <div class="oben">
+                <p class="HDL">Pixelated RP</p>
+                <p class="HDL2">Character Selection</p>
+            </div>
+            <div class="weiß">
+            <div class="main-container">
+                <div class="character-container">
+                    <div class="character-box" data-ischar="false" data-charid="1">
+                        <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
+                        <div class="character-info">
+                            <p class="character-info-new">Create a new character</p>
+                        </div>
+                    </div>
+                    <div class="character-box" data-ischar="false" data-charid="2">
+                        <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
+                        <div class="character-info">
+                            <p class="character-info-new">Create a new character</p>
+                        </div>
+                    </div>
+                    <div class="character-box" data-ischar="false" data-charid="3">
+                        <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
+                        <div class="character-info">
+                            <p class="character-info-new">Create a new character</p>
+                        </div>
+                    </div>
+                    <div class="character-box" data-ischar="false" data-charid="4">
+                        <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
+                        <div class="character-info">
+                            <p class="character-info-new">Create a new character</p>
+                        </div>
                     </div>
                 </div>
-                <div class="character-box" data-ischar="false" data-charid="2">
-                    <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
-                    <div class="character-info">
-                        <p class="character-info-new">Create new character</p>
-                    </div>
-                </div>
-                <div class="character-box" data-ischar="false" data-charid="3">
-                    <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
-                    <div class="character-info">
-                        <p class="character-info-new">Create new character</p>
-                    </div>
-                </div>
-                <div class="character-box" data-ischar="false" data-charid="4">
-                    <h3 class="character-fullname"><i class="fas fa-plus"></i></h3>
-                    <div class="character-info">
-                        <p class="character-info-new">Create new character</p>
-                    </div>
+                <div class="character-buttons">
+                    <button class="btn btn-play" id="play-char">PLAY</button>
+                    <button class="btn btn-delete" id="delete" data-toggle="modal" data-target="#delete-char">DELETE</button>
                 </div>
             </div>
-            <div class="character-buttons">
-                <button class="btn btn-play" id="play-char">PLAY</button>
-                <button class="btn btn-delete" id="delete" data-toggle="modal" data-target="#delete-char">DELETE</button>
             </div>
-        </div>
 
-        <div id="delete-char" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <h5>Are You Sure?</h5>
-                        <hr>
-                        <p>By deleting your account we won't be able to recover it, all properties, cars etc. will be deleted</p>
-                        <hr>
-                        <div class="modal-footer">
-                            <button id="deletechar" class="btn btn-delete" data-toggle="modal" data-dismiss="modal">DELETE</button>
+            <div id="delete-char" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Are you sure?</h5>
+                            <hr>
+                            <p>It is not possible to restore deleted characters. If you erase this character, you will lose all progress on them.</p>
+                            <hr>
+                            <div class="modal-footer">
+                                <button id="deletechar" class="btn btn-delete" data-toggle="modal" data-dismiss="modal">CLEAR</button>
+                            </div>
                         </div>
                     </div>
                 </div>

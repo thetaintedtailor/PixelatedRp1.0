@@ -1,13 +1,13 @@
 $(".character-box").hover(
     function() {
         $(this).css({
-            "background": "rgba(42, 125, 193, 1.0)",
+            "background": "rgb(44, 51, 69)",
             "transition": "200ms",
         });
     }, function() {
         $(this).css({
-            "background": "rgba(0,0,0,0.6)",
-            "transition": "200ms",
+            "background": "rgba(255, 255, 255, 1.0)",
+            "transition": "200ms",          
         });
     }
 );
@@ -43,11 +43,12 @@ $("#deletechar").click(function () {
 
     Kashacter.ShowUI = function(data) {
         $('.main-container').css({"display":"block"});
+        $('.bg').css({"display":"block"});
         if(data.characters !== null) {
             $.each(data.characters, function (index, char) {
                 if (char.charid !== 0) {
                     var charid = char.identifier.charAt(4);
-                    $('[data-charid=' + charid + ']').html('<h3 class="character-fullname">'+ char.firstname +' '+ char.lastname +'</h3><div class="character-info"><p class="character-info-work"><strong>Work: </strong><span>'+ char.job +'</span></p><p class="character-info-money"><strong>Cash: </strong><span>'+ char.money +'</span></p><p class="character-info-bank"><strong>Bank: </strong><span>'+ char.bank +'</span></p> <p class="character-info-dateofbirth"><strong>Date of birth: </strong><span>'+ char.dateofbirth +'</span></p> <p class="character-info-gender"><strong>Gender: </strong><span>'+ char.sex +'</span></p></div>').attr("data-ischar", "true");
+                    $('[data-charid=' + charid + ']').html('<h3 class="character-fullname">'+ char.firstname +' '+ char.lastname +'</h3><div class="character-info"><p class="character-info-work"><strong>Job: </strong><span>'+ char.job +'</span></p><p class="character-info-money"><strong>Bargeld: </strong><span>'+ char.money + '$' +'</span></p><p class="character-info-bank"><strong>Bank: </strong><span>'+ char.bank + '$' +'</span></p> <p class="character-info-dateofbirth"><strong>Geburtsdatum: </strong><span>'+ char.dateofbirth +'</span></p> <p class="character-info-gender"><strong>Geschlecht: </strong><span>'+ char.sex +'</span></p> <p class="character-info-height"><strong>Größe: </strong><span>'+ char.height + 'cm' +'</span></p> <p class="character-info-phone-number"><strong>Telefonnummer: </strong><span>'+ char.phone_number   +'</span></p> <p class="character-info-notiz"><strong>Notiz: </strong><span>'+ char.Notiz   +'</span></p></div>').attr("data-ischar", "true");
                 }
             });
         }
@@ -55,9 +56,10 @@ $("#deletechar").click(function () {
 
     Kashacter.CloseUI = function() {
         $('.main-container').css({"display":"none"});
+        $('.BG').css({"display":"none"});
         $(".character-box").removeClass('active-char');
         $("#delete").css({"display":"none"});
-		$(".character-box").html('<h3 class="character-fullname"><i class="fas fa-plus"></i></h3><div class="character-info"><p class="character-info-new">Create new character</p></div>').attr("data-ischar", "false");
+		$(".character-box").html('<h3 class="character-fullname"><i class="fas fa-plus"></i></h3><div class="character-info"><p class="character-info-new">Neuen Charakter erstellen</p></div>').attr("data-ischar", "false");
     };
     window.onload = function(e) {
         window.addEventListener('message', function(event) {
