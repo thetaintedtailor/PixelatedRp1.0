@@ -1,16 +1,16 @@
-$(".character-box").hover(
-    function() {
-        $(this).css({
-            "background": "rgb(44, 51, 69)",
-            "transition": "200ms",
-        });
-    }, function() {
-        $(this).css({
-            "background": "rgba(255, 255, 255, 1.0)",
-            "transition": "200ms",          
-        });
-    }
-);
+// $(".character-box").hover(
+//     function() {
+//         $(this).css({
+//             "background": "rgb(44, 51, 69)",
+//             "transition": "200ms",
+//         });
+//     }, function() {
+//         $(this).css({
+//             "background": "rgba(255, 255, 255, 1.0)",
+//             "transition": "200ms",          
+//         });
+//     }
+// );
 
 $(".character-box").click(function () {
     $(".character-box").removeClass('active-char');
