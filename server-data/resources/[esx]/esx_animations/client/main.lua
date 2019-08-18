@@ -10,8 +10,9 @@ local Keys = {
   ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local isDead = false
-local inAnim = false
+local isDead  = false
+local inAnim  = false
+local current = {}
 ESX = nil
 
 Citizen.CreateThread(function()
@@ -29,9 +30,16 @@ AddEventHandler('playerSpawned', function(spawn)
 	isDead = false
 end)
 
+function RefreshAttitude()
+	if (current.anim ~= nil) then
+		startAttitude(current.lib, current.anim)
+	end
+end
+
 function startAttitude(lib, anim)
 	ESX.Streaming.RequestAnimSet(lib, function()
-		SetPedMovementClipset(PlayerPedId(), anim, true)
+		SetPedMovementClipset(PlayerPedId(), anim, 0.25)
+		current = {lib = lib, anim = anim}
 	end)
 end
 

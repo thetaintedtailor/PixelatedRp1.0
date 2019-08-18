@@ -80,6 +80,40 @@ Config.WeaponList = {
 Config.PedAbleToWalkWhileSwapping = true
 Config.UnarmedHash = -1569615261
 
+local ESX = nil
+local isEnabled = true
+
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+
+	while ESX.GetPlayerData().job == nil do
+		Citizen.Wait(100)
+	end
+
+	ESX.PlayerData = ESX.GetPlayerData()
+
+	if (ESX.PlayerData.job.name ~= "police" and ESX.PlayerData.job.name ~= "offpolice") then
+        isEnabled = true
+    else
+        isEnabled = false
+	end
+end)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+	ESX.PlayerData.job = job
+
+    Citizen.Trace("job is " .. job.name .. "\n")
+	if (job.name == "police" or job.name == "offpolice") then
+        isEnabled = false
+	else
+		isEnabled = true
+	end
+end)
+
 Citizen.CreateThread(function()
 	local animDict = 'reaction@intimidation@1h'
 
@@ -89,46 +123,53 @@ Citizen.CreateThread(function()
 	local animFlag = 0
 
 	RequestAnimDict(animDict)
-	  
+	
 	while not HasAnimDictLoaded(animDict) do
 		Citizen.Wait(100)
 	end
 
-	local lastWeapon = nil
+    local lastWeapon = nil
+    local currentWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 
 	while true do
-		Citizen.Wait(0)
-		local ped = PlayerPedId()
+		Citizen.Wait(1)
+        local ped = PlayerPedId()
 
-		if not IsPedInAnyVehicle(ped, true) then
-			if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
-				if Config.PedAbleToWalkWhileSwapping then
-					animFlag = 48
-				else
-					animFlag = 0
-				end
+        currentWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
 
-				for i=1, #Config.WeaponList do
-					if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.WeaponList[i] then
-						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-						TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
+        if (isEnabled) then
+            if not IsPedInAnyVehicle(ped, true) then
+                if DoesEntityExist( ped ) and not IsEntityDead( ped ) and GetVehiclePedIsTryingToEnter(ped) == 0 and not IsPedInParachuteFreeFall (ped) then
+                    if Config.PedAbleToWalkWhileSwapping then
+                        animFlag = 48
+                    else
+                        animFlag = 0
+                    end
 
-						Citizen.Wait(1000)
-						SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
-					end
+                    for i=1, #Config.WeaponList do
+                        if lastWeapon ~= nil and lastWeapon ~= Config.WeaponList[i] and currentWeapon == Config.WeaponList[i] then
+                            SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+                            TaskPlayAnim(ped, animDict, animIntroName, 8.0, -8.0, 2700, animFlag, 0.0, false, false, false)
 
-					if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and GetSelectedPedWeapon(ped) == Config.UnarmedHash then
-						TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
+                            Citizen.Wait(1000)
+                            SetCurrentPedWeapon(ped, Config.WeaponList[i], true)
+                        end
 
-						Citizen.Wait(1000)
-						SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
-					end
-				end 
-			end
-		else
-			Citizen.Wait(100)
-		end
+                        if lastWeapon ~= nil and lastWeapon == Config.WeaponList[i] and currentWeapon == Config.UnarmedHash then
+                            TaskPlayAnim(ped, animDict, animOutroName, 8.0, -8.0, 2100, animFlag, 0.0, false, false, false)
 
-		lastWeapon = GetSelectedPedWeapon(GetPlayerPed(-1))
+                            Citizen.Wait(1000)
+                            SetCurrentPedWeapon(ped, Config.UnarmedHash, true)
+                        end
+                    end 
+                end
+            else
+                Citizen.Wait(100)
+            end
+        else
+            Citizen.Wait(10000)
+        end
+
+		lastWeapon = currentWeapon
 	end
 end)
