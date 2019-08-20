@@ -7,11 +7,25 @@ AddEventHandler(
     end
 )
 
-function refreshPropertyInventory()
+RegisterNetEvent("esx_inventoryhud:refreshProperty")
+AddEventHandler(
+    "esx_inventoryhud:refreshProperty",
+    function()
+        refreshPropertyInventory(function()
+            loadPlayerInventory()
+        end)
+    end
+)
+
+function refreshPropertyInventory(cb)
     ESX.TriggerServerCallback(
         "esx_property:getPropertyInventory",
         function(inventory)
             setPropertyInventoryData(inventory)
+            
+            if cb then
+                cb()
+            end
         end,
         ESX.GetPlayerData().identifier
     )
@@ -112,11 +126,6 @@ RegisterNUICallback(
 
             TriggerServerEvent("esx_property:putItem", ESX.GetPlayerData().identifier, data.item.type, data.item.name, count)
         end
-
-        Wait(150)
-        refreshPropertyInventory()
-        Wait(300)
-        loadPlayerInventory()
 
         cb("ok")
     end
