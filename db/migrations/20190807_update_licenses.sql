@@ -46,6 +46,9 @@ DELETE FROM weashops WHERE zone = 'GunShop' AND item IN (
   'WEAPON_DBSHOTGUN',
   'WEAPON_BATTLEAXE',
   'WEAPON_POOLCUE',
+  'WEAPON_SNSPISTOL',
+  'WEAPON_COMBATPISTOL',
+  'WEAPON_HEAVYPISTOL',
   'WEAPON_WRENCH');
 
 INSERT INTO weashops (zone, item, price, license) VALUES 
