@@ -334,7 +334,8 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 				ammo = count
 			})
 
-			store.set('weapons', storeWeapons)
+            store.set('weapons', storeWeapons)
+            TriggerClientEvent('esx_inventoryhud:refreshProperty', _source)
 			xPlayer.removeWeapon(item)
 		end)
 
