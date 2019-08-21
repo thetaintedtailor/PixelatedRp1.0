@@ -74,6 +74,7 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 						rob = false
 						if xPlayer then
 							TriggerClientEvent('esx_holdup:robberyComplete', _source, store.reward)
+							TriggerEvent('esx:robbedproperty', xPlayer.name, store.nameOfStore, store.reward)
 
 							if Config.GiveBlackMoney then
 								xPlayer.addAccountMoney('black_money', store.reward)
