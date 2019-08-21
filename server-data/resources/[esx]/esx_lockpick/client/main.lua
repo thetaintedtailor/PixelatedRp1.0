@@ -284,14 +284,14 @@ GetPlayerName()
 RegisterNetEvent('esx_lockpick:outlawLockNotify')
 AddEventHandler('esx_lockpick:outlawLockNotify', function(alert)
   if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
-    TriggerEvent('esx_lockpick:notify2')
+    TriggerEvent('esx_lockpick:notify2', alert)
     PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
   end
 end)
 
 RegisterNetEvent("esx_lockpick:notify2")
-AddEventHandler("esx_lockpick:notify2", function(msg, target)
-  ESX.ShowAdvancedNotification(_U('911Call'), _U('911Lockpick'), _U('Lockcall'), 'CHAR_CALL911', 7)
+AddEventHandler("esx_lockpick:notify2", function(msg)
+  ESX.ShowAdvancedNotification(_U('911Call'), _U('911Lockpick'), msg, 'CHAR_CALL911', 7)
 end)
 --//////////////////////////////////////////////--
 --                   NETWORK                    --
