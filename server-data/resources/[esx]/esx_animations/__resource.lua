@@ -9,4 +9,6 @@ client_scripts {
 	'client/main.lua'
 }
 
+export 'RefreshAttitude'
+
 dependency 'es_extended'

@@ -185,7 +185,7 @@ local count = 0
 Citizen.CreateThread(
   function()
     while true do
-      Wait(0)
+      Wait(1)
       if IsControlJustReleased(0, Config.OpenKey) and (GetGameTimer() - GUI.Time) > 1000 then
         openmenuvehicle()
         GUI.Time = GetGameTimer()
@@ -197,10 +197,10 @@ Citizen.CreateThread(
 Citizen.CreateThread(
   function()
     while true do
-      Wait(0)
+      Wait(1500)
       local pos = GetEntityCoords(GetPlayerPed(-1))
       if CloseToVehicle then
-        local vehicle = GetClosestVehicle(pos["x"], pos["y"], pos["z"], 2.0, 0, 70)
+        local vehicle = GetClosestVehicle(pos["x"], pos["y"], pos["z"], 4.0, 0, 71)
         if DoesEntityExist(vehicle) then
           CloseToVehicle = true
         else

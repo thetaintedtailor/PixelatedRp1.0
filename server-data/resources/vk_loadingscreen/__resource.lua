@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/afterlife.mp3',
+    'music/moneyinthegrave.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',

@@ -35,11 +35,12 @@ function OpenAccessoryMenu()
 			{label = _U('ears'), value = 'Ears'},
 			{label = _U('mask'), value = 'Mask'},
 			{label = _U('glasses'), value = 'Glasses'},
+			{label = 'Bulletproof Vest', value = 'BVest'},
 			{label = _U('bag'), value = 'Bag'},
 			{label = _U('shirt'), value = 'Shirt'},
 			{label = _U('pants'), value = 'Pants'},
 			{label = _U('shoes'), value = 'Shoes'},
-			{label = _U('clothes'), value = 'Clothes'},
+			{label = _U('clothes'), value = 'Clothes'}
 		}
 	}, function(data, menu)
 		if data.current.value == 'Helmet' or data.current.value == 'Ears' or data.current.value == 'Mask' or data.current.value == 'Glasses' then
@@ -61,6 +62,10 @@ function OpenAccessoryMenu()
 		elseif data.current.value == "Bag" then
 			menu.close()
 			TriggerEvent('esx_accessories:bag')
+
+		elseif data.current.value == "BVest" then
+			menu.close()
+			TriggerEvent('esx_accessories:bproof')
 
 		elseif data.current.value == "Clothes" then
 			menu.close()
@@ -171,6 +176,15 @@ AddEventHandler('esx_accessories:bag', function()
 	end)
 end)
 
+RegisterNetEvent('esx_accessories:bproof')
+AddEventHandler('esx_accessories:bproof', function()
+	TriggerEvent('skinchanger:getSkin', function(skin)
+		local clothesSkin = {
+		['bproof_1'] = 0, ['bproof_1'] = 0
+		}
+		TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+	end)
+end)
 
 function OpenShopMenu(accessory)
 	local _accessory = string.lower(accessory)
