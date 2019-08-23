@@ -73,7 +73,7 @@ end)
 -- Add event when a player give an item
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
 RegisterServerEvent("esx:giveitemalert")
-AddEventHandler("esx:giveitemalert", function(name,msg)
+AddEventHandler("esx:giveitemalert", function(name, nametarget, itemname, amount)
   if(settings.LogItemTransfer)then
    sendToDiscord(_U('server_item_transfer'),name.._('user_gives_to')..nametarget.." "..amount .." "..itemname,Config.orange, Config.moneyHook)
   end
