@@ -485,7 +485,8 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
 		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1},
+    { model = "polschafter3", label = "Unmarked Schafter", price = 1 }
 	}
 }
 
