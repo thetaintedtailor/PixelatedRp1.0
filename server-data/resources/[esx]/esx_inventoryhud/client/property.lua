@@ -12,7 +12,6 @@ AddEventHandler(
     "esx_inventoryhud:refreshProperty",
     function()
         if (isInInventory) then
-            Citizen.Trace("refreshing inventory\n")
             refreshPropertyInventory(function()
                 loadPlayerInventory()
             end)
