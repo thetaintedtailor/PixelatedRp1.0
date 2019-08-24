@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SSetupData>
+  <deviceName>dlc_cls2015</deviceName>
+  <datFile>content.xml</datFile>
+  <timeStamp>15/11/2015 11:00:00</timeStamp>
+  <nameHash>cls2015</nameHash>
+  <contentChangeSetGroups>
+    <Item>
+      <NameHash>GROUP_STARTUP</NameHash>
+      <ContentChangeSets>
+        <Item>CLS2015_AUTOGEN</Item>
+        <Item>CLS2015_UNLOCKS_AUTOGEN</Item>
+      </ContentChangeSets>
+    </Item>
+  </contentChangeSetGroups>
+  <type>EXTRACONTENT_COMPAT_PACK</type>
+  <order value="9" />  
+</SSetupData>
