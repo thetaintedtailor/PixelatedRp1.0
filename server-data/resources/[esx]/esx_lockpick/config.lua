@@ -1,8 +1,8 @@
 Config						          = {}
 Config.InfiniteLocks		    = false  -- Should one lockpick last forever?
-Config.LockTime			        = 60     -- In seconds, how long should lockpicking take?
+Config.LockTime			        = 30     -- In seconds, how long should lockpicking take?
 Config.AlarmTime            = 60     -- Second to have the alarm activated once vehicle is lockpicked
-Config.JammedHandbrakeTime  = 10     -- Second to have the handbrake jammed
+Config.JammedHandbrakeTime  = 30     -- Second to have the handbrake jammed
 Config.IgnoreAbort			    = true   -- Remove lockpick from inventory even if user aborts lockpicking?
 Config.AllowMecano			    = false   -- Allow mechanics to use this lockpick?
 Config.NPCVehiclesLocked    = true   -- Locks all vehicles (MUST HAVE SOME SORT OF LOCKSYSTEM FOR OWNED CAR) Will be adding a check for owned vehicle in the future. 

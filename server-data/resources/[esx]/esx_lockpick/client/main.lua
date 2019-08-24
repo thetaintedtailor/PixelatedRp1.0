@@ -262,11 +262,14 @@ Citizen.CreateThread(function()
           TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
         else
           if not lucky or blacklisted then
+            SetVehicleDoorsLocked(veh, 2)
             TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 2, plate})
           else
+            SetVehicleDoorsLocked(veh, 1)
             TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
           end
         end
+        Citizen.Wait(1000)
       end
     end
     Citizen.Wait(1)
@@ -274,6 +277,7 @@ Citizen.CreateThread(function()
 end)
 RegisterNetEvent('esx_lockpick:setVehicleDoors')
 AddEventHandler('esx_lockpick:setVehicleDoors', function(veh, doors)
+  Citizen.Trace("Set doors to " .. doors .. "\n")
   SetVehicleDoorsLocked(veh, doors)
 end)
 --//////////////////////////////////////////////--
