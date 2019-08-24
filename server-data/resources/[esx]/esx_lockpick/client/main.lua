@@ -5,7 +5,7 @@ local pedIsTryingToLockpickVehicle  = false
 local timer = 1 --in minutes - Set the time during the player is outlaw
 local showOutlaw = true --Set if show outlaw act on map
 local blipTime = 35 --in second
-local showcopsmisbehave = false --show notification when cops steal too
+local showcopsmisbehave = true --show notification when cops steal too
 local timing = timer * 60000 --Don't touche it
 local cancel = false
 
@@ -259,6 +259,7 @@ Citizen.CreateThread(function()
       -- lock doors if not lucky or blacklisted
       if ((lock == 7) or (pedd ~= 0 )) then
         if has_value(Config.job_whitelist, xPlayer.job.name) then
+          SetVehicleDoorsLocked(veh, 1)
           TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
         else
           if not lucky or blacklisted then
@@ -272,12 +273,11 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
       end
     end
-    Citizen.Wait(1)
+    Citizen.Wait(5)
   end
 end)
 RegisterNetEvent('esx_lockpick:setVehicleDoors')
 AddEventHandler('esx_lockpick:setVehicleDoors', function(veh, doors)
-  Citizen.Trace("Set doors to " .. doors .. "\n")
   SetVehicleDoorsLocked(veh, doors)
 end)
 --//////////////////////////////////////////////--
@@ -335,6 +335,7 @@ Citizen.CreateThread( function()
 
           local vehName = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
           local vehName2 = GetLabelText(vehName)
+          local label = vehName2 or vehName
 
           local sex = nil
           if skin.sex == 0 then
@@ -344,9 +345,9 @@ Citizen.CreateThread( function()
           end
           TriggerServerEvent('esx_lockpick:InProgressPos', plyPos.x, plyPos.y, plyPos.z)
           if s2 == 0 then
-            TriggerServerEvent('esx_lockpick:InProgressS1', street1, sex, vehName2)
+            TriggerServerEvent('esx_lockpick:InProgressS1', street1, sex, label)
           elseif s2 ~= 0 then
-            TriggerServerEvent('esx_lockpick:InProgress', street1, street2, sex, vehName2)
+            TriggerServerEvent('esx_lockpick:InProgress', street1, street2, sex, label)
           end
         end)
         Wait(3000)
