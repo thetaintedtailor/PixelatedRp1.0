@@ -301,7 +301,9 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 		if playerItemCount >= count and count > 0 then
 			TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayerOwner.identifier, function(inventory)
 				xPlayer.removeInventoryItem(item, count)
-				inventory.addItem(item, count)
+				inventory.addItem(item, count, function()
+					TriggerClientEvent('esx_inventoryhud:refreshProperty', _source)
+				end)
 				TriggerClientEvent('esx:showNotification', _source, _U('have_deposited', count, inventory.getItem(item).label))
 			end)
 		else
@@ -332,12 +334,12 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 				ammo = count
 			})
 
-			store.set('weapons', storeWeapons)
+            store.set('weapons', storeWeapons)
+            TriggerClientEvent('esx_inventoryhud:refreshProperty', _source)
 			xPlayer.removeWeapon(item)
 		end)
 
 	end
-
 end)
 
 ESX.RegisterServerCallback('esx_property:getOwnedProperties', function(source, cb)
