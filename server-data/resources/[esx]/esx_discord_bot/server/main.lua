@@ -75,7 +75,7 @@ end)
 RegisterServerEvent("esx:giveitemalert")
 AddEventHandler("esx:giveitemalert", function(name, nametarget, itemname, amount)
   if(settings.LogItemTransfer)then
-   sendToDiscord(_U('server_item_transfer'),name.._('user_gives_to')..nametarget.." "..amount .." "..itemname,Config.orange, Config.moneyHook)
+   sendToDiscord(_U('server_item_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount .." "..itemname,Config.orange, Config.moneyHook)
   end
 end)
 
@@ -126,7 +126,7 @@ end)
 RegisterServerEvent("esx:giveweaponalert")
 AddEventHandler("esx:giveweaponalert", function(name,nametarget,weaponlabel)
   if(settings.LogWeaponTransfer)then
-    sendToDiscord(_U('server_weapon_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..weaponlabel,Config.orange, Config.moneyHook)
+    sendToDiscord(_U('server_weapon_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..weaponlabel,Config.red, Config.moneyHook)
   end
 end)
 
