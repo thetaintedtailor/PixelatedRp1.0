@@ -120,7 +120,7 @@ AddEventHandler('esx_accessories:shirt', function()
 			TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
 		else
 			local clothesSkin = {
-			['tshirt_1'] = 34, ['tshirt_2'] = 0,
+			['tshirt_1'] = 6, ['tshirt_2'] = 0,
 			['torso_1'] = 15, ['torso_2'] = 0,
 			['arms'] = 15, ['arms_2'] = 0
 			}
