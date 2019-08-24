@@ -84,7 +84,7 @@ end)
 RegisterServerEvent("esx:givemoneyalert")
 AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
   if(settings.LogMoneyTransfer)then
-    sendToDiscord(_U('server_money_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount .." dollars",Config.orange, Config.moneyHook)
+    sendToDiscord(_U('server_money_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount.." dollars",Config.orange, Config.moneyHook)
   end
 end)
 
