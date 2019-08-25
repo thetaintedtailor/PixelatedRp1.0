@@ -74,8 +74,9 @@ Config.PoliceStations = {
 		BossActions = {
 			vector3(448.4, -973.2, 30.6)
 		}
-	},
+	}
 	
+	--[[
 	BCSO = {
 
 		Blip = {
@@ -119,6 +120,7 @@ Config.PoliceStations = {
 			--vector3(1851.31, 3683.40, 34.27)
 		}
 	}
+	]]
 }
 
 Config.AuthorizedWeapons = {
