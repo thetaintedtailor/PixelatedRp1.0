@@ -123,7 +123,7 @@ Config.AuthorizedVehicles = {
 			price = 1
 		},
 		{
-			model = 'emsfpiu',
+			model = 'qrv',
 			label = 'Ford Explorer',
 			price = 1
 		}
@@ -136,7 +136,7 @@ Config.AuthorizedVehicles = {
 			price = 1
 		},
 		{
-			model = 'emsfpiu',
+			model = 'qrv',
 			label = 'Ford Explorer',
 			price = 1
 		}
@@ -149,7 +149,7 @@ Config.AuthorizedVehicles = {
 			price = 1
 		},
 		{
-			model = 'emsfpiu',
+			model = 'qrv',
 			label = 'Ford Explorer',
 			price = 1
 		}
@@ -162,7 +162,7 @@ Config.AuthorizedVehicles = {
 			price = 1,
 		},
 		{
-			model = 'emsfpiu',
+			model = 'qrv',
 			label = 'Ford Explorer',
 			price = 1
 		}
@@ -175,7 +175,7 @@ Config.AuthorizedVehicles = {
 			price = 1
 		},
 		{
-			model = 'emsfpiu',
+			model = 'qrv',
 			label = 'Ford Explorer',
 			price = 1
 		}
