@@ -1,15 +1,20 @@
 function CreateAddonInventory(name, owner, items)
 	local self = {}
 
-	self.name  = name
-	self.owner = owner
-	self.items = items
+	self.name         = name
+	self.owner        = owner
+	self.items        = items
+	self.pendingSqlOp = false
 
-	self.addItem = function(name, count)
+	self.addItem = function(name, count, cb)
 		local item = self.getItem(name)
 		item.count = item.count + count
 
-		self.saveItem(name, item.count)
+        if cb then
+            self.saveItem(name, item.count, cb)
+        else
+            self.saveItem(name, item.count)
+        end
 	end
 
 	self.removeItem = function(name, count)
@@ -41,13 +46,17 @@ function CreateAddonInventory(name, owner, items)
 
 		table.insert(self.items, item)
 
-		if self.owner == nil then
+        self.pendingSqlOp = true
+
+        if self.owner == nil then
 			MySQL.Async.execute('INSERT INTO addon_inventory_items (inventory_name, name, count) VALUES (@inventory_name, @item_name, @count)',
 			{
 				['@inventory_name'] = self.name,
 				['@item_name']      = name,
 				['@count']          = 0
-			})
+            }, function(rowsChanged)
+                self.pendingSqlOp = false
+			end)
 		else
 			MySQL.Async.execute('INSERT INTO addon_inventory_items (inventory_name, name, count, owner) VALUES (@inventory_name, @item_name, @count, @owner)',
 			{
@@ -55,31 +64,50 @@ function CreateAddonInventory(name, owner, items)
 				['@item_name']      = name,
 				['@count']          = 0,
 				['@owner']          = self.owner
-			})
+            }, function(rowsChanged)
+                self.pendingSqlOp = false
+            end)
 		end
 
 		return item
 	end
 
-	self.saveItem = function(name, count)
-		if self.owner == nil then
-			MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE inventory_name = @inventory_name AND name = @item_name',
-			{
-				['@inventory_name'] = self.name,
-				['@item_name']      = name,
-				['@count']          = count
-			})
-		else
-			MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE inventory_name = @inventory_name AND name = @item_name AND owner = @owner',
-			{
-				['@inventory_name'] = self.name,
-				['@item_name']      = name,
-				['@count']          = count,
-				['@owner']          = self.owner
-			})
-		end
+    self.saveItem = function(name, count, cb)
+        Citizen.CreateThread(function()
+            while (self.pendingSqlOp) do
+                Citizen.Wait(50)
+            end
+
+            if self.owner == nil then
+                MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE inventory_name = @inventory_name AND name = @item_name',
+                {
+                    ['@inventory_name'] = self.name,
+                    ['@item_name']      = name,
+                    ['@count']          = count
+                }, function(rowsChanged)
+                    self.pendingSqlOp = false
+
+                    if cb then
+                        cb()
+                    end
+                end)
+            else
+                MySQL.Async.execute('UPDATE addon_inventory_items SET count = @count WHERE inventory_name = @inventory_name AND name = @item_name AND owner = @owner',
+                {
+                    ['@inventory_name'] = self.name,
+                    ['@item_name']      = name,
+                    ['@count']          = count,
+                    ['@owner']          = self.owner
+                }, function(rowsChanged)
+                    self.pendingSqlOp = false
+
+                    if cb then
+                        cb()
+                    end
+                end)
+            end
+        end)
 	end
 
 	return self
 end
-
