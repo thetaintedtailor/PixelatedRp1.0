@@ -76,7 +76,7 @@ function ToggleVehicleLock()
 	if isInVehicle then -- You can lock/unlock any vehicle you're already in
 		if lockStatus == 1 then -- unlocked
 			Lock(vehicle)
-		elseif lockStatus == 4 then -- locked
+		elseif (lockStatus == 4 or lockStatus == 2 or lockStatus == 7) then -- locked
 			Unlock(vehicle)
 		end
 	else
@@ -85,7 +85,7 @@ function ToggleVehicleLock()
 			if isOwnedVehicle then
 				if lockStatus == 1 then -- unlocked
 					Lock(vehicle)
-				elseif lockStatus == 4 then -- locked
+				elseif (lockStatus == 2 or lockStatus == 4 or lockStatus == 7) then -- locked
 					Unlock(vehicle)
 				end
 			else 
@@ -97,7 +97,7 @@ function ToggleVehicleLock()
 end
 
 function Lock(vehicle)
-	SetVehicleDoorsLocked(vehicle, 4)
+	SetVehicleDoorsLocked(vehicle, 2)
 	PlayVehicleDoorCloseSound(vehicle, 1)
 
 	TriggerEvent('chat:addMessage', { args = { _U('message_title'), _U('message_locked') } })
@@ -112,7 +112,7 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Citizen.Wait(5)
 
 		if IsControlJustReleased(0, Keys['U']) and IsInputDisabled(0) then
 			ToggleVehicleLock()
