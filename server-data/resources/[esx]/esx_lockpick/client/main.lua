@@ -333,7 +333,7 @@ Citizen.CreateThread( function()
             vehicle = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 5.0, 0, 71)
           end
 
-          local vehName = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
+          local vehName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
           local vehName2 = GetLabelText(vehName)
           local label = vehName2 or vehName
 

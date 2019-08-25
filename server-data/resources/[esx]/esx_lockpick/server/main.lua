@@ -34,13 +34,13 @@ end)
 
 RegisterServerEvent('esx_lockpick:InProgress')
 AddEventHandler('esx_lockpick:InProgress', function(street1, street2, sex, vehicleName)
-    TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~was seen breaking into a ~r~" .. vehicleName .. " ~w~between ~r~" .. street1 .. " ~w~and ~r~" .. street2)
+    TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~is breaking into a ~r~" .. vehicleName .. " ~w~at ~r~" .. street1 .. " ~w~& ~r~" .. street2)
 end)
 
 
 RegisterServerEvent('esx_lockpick:InProgressS1')
 AddEventHandler('esx_lockpick:InProgressS1', function(street1, sex, vehicleName)
-    TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~was seen breaking into a ~r~" .. vehicleName .. " ~w~at ~r~" .. street1)
+    TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~is breaking into a ~r~" .. vehicleName .. " ~w~at ~r~" .. street1)
 end)
 
 RegisterServerEvent('esx_lockpick:InProgressPos')
