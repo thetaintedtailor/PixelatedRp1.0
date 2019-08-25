@@ -8,6 +8,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
 
 	if Config.EnableHud then
+		--[[ Disabled 5/6/2019 by Kat
 		for k,v in ipairs(xPlayer.accounts) do
 			local accountTpl = '<div><img src="img/accounts/' .. v.name .. '.png"/>&nbsp;{{money}}</div>'
 
@@ -19,6 +20,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 				money = ESX.Math.GroupDigits(v.money)
 			})
 		end
+		]]
 
 		local jobTpl = '<div>{{job_label}} - {{grade_label}}</div>'
 
@@ -452,6 +454,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
+--[[
 -- Menu interactions
 Citizen.CreateThread(function()
 	while true do
@@ -462,6 +465,7 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+]]
 
 -- Disable wanted level
 if Config.DisableWantedLevel then

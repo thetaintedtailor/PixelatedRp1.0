@@ -1,4 +1,4 @@
-function CreateExtendedPlayer(player, accounts, inventory, job, loadout, name, lastPosition)
+function CreateExtendedPlayer(player, accounts, inventory, job, loadout, name, lastPosition, sex)
 	local self = {}
 
 	self.player       = player
@@ -7,7 +7,8 @@ function CreateExtendedPlayer(player, accounts, inventory, job, loadout, name, l
 	self.job          = job
 	self.loadout      = loadout
 	self.name         = name
-	self.lastPosition = lastPosition
+    self.lastPosition = lastPosition
+    self.sex          = sex
 
 	self.source     = self.player.get('source')
 	self.identifier = self.player.get('identifier')
@@ -206,7 +207,11 @@ function CreateExtendedPlayer(player, accounts, inventory, job, loadout, name, l
 
 	self.setLastPosition = function(position)
 		self.lastPosition = position
-	end
+    end
+    
+    self.getSex = function()
+        return self.sex
+    end
 
 	self.getMissingAccounts = function(cb)
 		MySQL.Async.fetchAll('SELECT name FROM user_accounts WHERE identifier = @identifier', {

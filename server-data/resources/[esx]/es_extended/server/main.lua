@@ -8,7 +8,8 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 		job          = {},
 		loadout      = {},
 		playerName   = GetPlayerName(_source),
-		lastPosition = nil
+		lastPosition = nil,
+		sex 		 = 0
 	}
 
 	TriggerEvent('es:getPlayerFromId', _source, function(player)
@@ -201,9 +202,22 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 
 		end)
 
+		-- Get gender
+		table.insert(tasks, function(cb)
+			MySQL.Async.fetchAll('SELECT `sex` FROM `users` WHERE `identifier` = @identifier', {
+				['@identifier'] = player.getIdentifier()
+			}, function(result) 
+				if result[1].sex ~= nil then
+					userData.sex = result[1].sex
+				end
+
+				cb()
+			end)
+		end)
+
 		-- Run Tasks
 		Async.parallel(tasks, function(results)
-			local xPlayer = CreateExtendedPlayer(player, userData.accounts, userData.inventory, userData.job, userData.loadout, userData.playerName, userData.lastPosition)
+			local xPlayer = CreateExtendedPlayer(player, userData.accounts, userData.inventory, userData.job, userData.loadout, userData.playerName, userData.lastPosition, userData.sex)
 
 			xPlayer.getMissingAccounts(function(missingAccounts)
 				if #missingAccounts > 0 then
@@ -230,7 +244,8 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 					job          = xPlayer.getJob(),
 					loadout      = xPlayer.getLoadout(),
 					lastPosition = xPlayer.getLastPosition(),
-					money        = xPlayer.getMoney()
+					money        = xPlayer.getMoney(),
+					sex 		 = xPlayer.getSex()
 				})
 
 				xPlayer.displayMoney(xPlayer.getMoney())
@@ -271,7 +286,9 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 	local _source = source
 
 	local sourceXPlayer = ESX.GetPlayerFromId(_source)
-	local targetXPlayer = ESX.GetPlayerFromId(target)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+    local sourceName    = exports["esx_scoreboard"]:GetCharacterNameCached(_source)
+	local targetName    = exports["esx_scoreboard"]:GetCharacterNameCached(target)
 
 	if type == 'item_standard' then
 
@@ -281,13 +298,13 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 		if itemCount > 0 and sourceItem.count >= itemCount then
 
 			if targetItem.limit ~= -1 and (targetItem.count + itemCount) > targetItem.limit then
-				TriggerClientEvent('esx:showNotification', _source, _U('ex_inv_lim', targetXPlayer.name))
+				TriggerClientEvent('esx:showNotification', _source, _U('ex_inv_lim', targetName))
 			else
 				sourceXPlayer.removeInventoryItem(itemName, itemCount)
 				targetXPlayer.addInventoryItem   (itemName, itemCount)
 				
-				TriggerClientEvent('esx:showNotification', _source, _U('gave_item', itemCount, ESX.Items[itemName].label, targetXPlayer.name))
-				TriggerClientEvent('esx:showNotification', target,  _U('received_item', itemCount, ESX.Items[itemName].label, sourceXPlayer.name))
+				TriggerClientEvent('esx:showNotification', _source, _U('gave_item', itemCount, ESX.Items[itemName].label, targetName))
+				TriggerClientEvent('esx:showNotification', target,  _U('received_item', itemCount, ESX.Items[itemName].label, sourceName))
 			end
 
 		else
@@ -300,8 +317,9 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 			sourceXPlayer.removeMoney(itemCount)
 			targetXPlayer.addMoney   (itemCount)
 
-			TriggerClientEvent('esx:showNotification', _source, _U('gave_money', ESX.Math.GroupDigits(itemCount), targetXPlayer.name))
-			TriggerClientEvent('esx:showNotification', target,  _U('received_money', ESX.Math.GroupDigits(itemCount), sourceXPlayer.name))
+			TriggerClientEvent('esx:showNotification', _source, _U('gave_money', ESX.Math.GroupDigits(itemCount), targetName))
+			TriggerClientEvent('esx:showNotification', target,  _U('received_money', ESX.Math.GroupDigits(itemCount), sourceName))
+			TriggerEvent("esx:givemoneyalert",sourceName,targetName,itemCount)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
 		end
@@ -312,8 +330,8 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 			sourceXPlayer.removeAccountMoney(itemName, itemCount)
 			targetXPlayer.addAccountMoney   (itemName, itemCount)
 
-			TriggerClientEvent('esx:showNotification', _source, _U('gave_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], targetXPlayer.name))
-			TriggerClientEvent('esx:showNotification', target,  _U('received_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], sourceXPlayer.name))
+			TriggerClientEvent('esx:showNotification', _source, _U('gave_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], targetName))
+			TriggerClientEvent('esx:showNotification', target,  _U('received_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], sourceName))
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
 		end
@@ -327,15 +345,15 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 			local weaponLabel = ESX.GetWeaponLabel(itemName)
 
 			if itemCount > 0 then
-				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_ammo', weaponLabel, itemCount, targetXPlayer.name))
-				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon_ammo', weaponLabel, itemCount, sourceXPlayer.name))
+				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_ammo', weaponLabel, itemCount, targetName))
+				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon_ammo', weaponLabel, itemCount, sourceName))
 			else
-				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon', weaponLabel, targetXPlayer.name))
-				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon', weaponLabel, sourceXPlayer.name))
+				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon', weaponLabel, targetName))
+				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon', weaponLabel, sourceName))
 			end
 		else
-			TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_hasalready', targetXPlayer.name, weaponLabel))
-			TriggerClientEvent('esx:showNotification', target, _U('received_weapon_hasalready', sourceXPlayer.name, weaponLabel))
+			TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_hasalready', targetName, weaponLabel))
+			TriggerClientEvent('esx:showNotification', target, _U('received_weapon_hasalready', sourceName, weaponLabel))
 		end
 
 	end
@@ -489,7 +507,8 @@ ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
 		job          = xPlayer.getJob(),
 		loadout      = xPlayer.getLoadout(),
 		lastPosition = xPlayer.getLastPosition(),
-		money        = xPlayer.getMoney()
+		money        = xPlayer.getMoney(),
+		sex 	     = xPlayer.getSex()
 	})
 end)
 
@@ -503,7 +522,8 @@ ESX.RegisterServerCallback('esx:getOtherPlayerData', function(source, cb, target
 		job          = xPlayer.getJob(),
 		loadout      = xPlayer.getLoadout(),
 		lastPosition = xPlayer.getLastPosition(),
-		money        = xPlayer.getMoney()
+        money        = xPlayer.getMoney(),
+        sex          = xPlayer.getSex()
 	})
 end)
 
