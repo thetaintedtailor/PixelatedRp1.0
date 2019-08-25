@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/moneyinthegrave.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Money in the Grave - Drake"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "Suggested by Envy"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/dixieland_delight.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Dixieland Delight - Alabama"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Suggested by Detective S.Arceneaux"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
