@@ -50,31 +50,20 @@ Citizen.CreateThread(function()
 
 					if IsPedInAnyVehicle(playerPed) then
 						vehicle = GetVehiclePedIsIn(playerPed)
-
 					else
 						vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 7.0, 0, 70)
-
 					end
 					Wait(1000)
 					TriggerServerEvent("esx:jackingcar",GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
 
 					isJacking = false
 					vehicle = nil
-
 				end
 		else
 			isJacking = true
 		end
-
-
-
-
 	end
 end)
-
-
-
-
 
 local isIncarPolice = false
 Citizen.CreateThread(function()
@@ -86,22 +75,16 @@ Citizen.CreateThread(function()
 					TriggerServerEvent("esx:enterpolicecar",GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsIn(GetPlayerPed(-1), 0))))
 					isIncarPolice = true
 				end
-
 		else
 			isIncarPolice = false
 		end
-
 	end
 end)
-
-
-
 
 local isIncar = false
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-
 
 		if(IsPedInAnyVehicle(GetPlayerPed(-1)) and not IsPedInAnyPoliceVehicle(GetPlayerPed(-1))) then
 
@@ -118,12 +101,8 @@ Citizen.CreateThread(function()
 		else
 			isIncar = false
 		end
-
 	end
 end)
-
-
-
 
 local base = 0
 Citizen.CreateThread(function()
@@ -182,8 +161,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-
 
 function GetPlayerByEntityID(id)
 	for i=0,32 do
