@@ -104,7 +104,7 @@ Sit = function(wheelchairObject)
 			SetEntityHeading(wheelchairObject,  heading)
 		end
 
-		if IsControlJustPressed(0, 73) then
+		if IsControlJustPressed(0, 48) then
 			DetachEntity(PlayerPedId(), true, true)
 
 			local x, y, z = table.unpack(GetEntityCoords(wheelchairObject) + GetEntityForwardVector(wheelchairObject) * - 0.7)
@@ -141,7 +141,7 @@ PickUp = function(wheelchairObject)
 			DetachEntity(wheelchairObject, true, true)
 		end
 
-		if IsControlJustPressed(0, 73) then
+		if IsControlJustPressed(0, 48) then
 			DetachEntity(wheelchairObject, true, true)
 		end
 	end
