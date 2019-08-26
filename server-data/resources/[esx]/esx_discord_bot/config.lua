@@ -24,7 +24,8 @@ settings = {
 	LogMoneyTransfer = true, -- Log when a player is giving money
 	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
 	LogAnonymousTwitter = true, -- Logs anonyous tweets
-	LogItemSelling = true --Logs the sale of items to NPCs
+	LogItemSelling = true, --Logs the sale of items to NPCs
+	LogDroppedNotes = true --Logs the notes players can drop
 }
 
 blacklistedModels = {
