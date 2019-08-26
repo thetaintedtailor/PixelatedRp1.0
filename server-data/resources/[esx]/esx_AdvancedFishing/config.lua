@@ -9,9 +9,9 @@ Config = {}
 	--=====Prices of the items players can sell==========--
 	--------------------------------------------------------
 	--First amount minimum price second maximum amount (the amount player will get is random between those two numbers)
-	Config.FishPrice = {a = 100, b = 115} --Will get clean money THIS PRICE IS FOR EVERY 5 FISH ITEMS (5 kg)
-	Config.TurtlePrice = {a = 150, b = 175} 
-	Config.SharkPrice = {a = 500, b = 650} 
+	Config.FishPrice = {a = 25, b = 29} --Will get clean money THIS PRICE IS FOR EVERY 5 FISH ITEMS (5 kg)
+	Config.TurtlePrice = {a = 38, b = 44} 
+	Config.SharkPrice = {a = 125, b = 163} 
 
 	--------------------------------------------------------
 	--=====Locations where players can sell stuff========--
