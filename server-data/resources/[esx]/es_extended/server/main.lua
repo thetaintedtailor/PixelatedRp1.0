@@ -284,7 +284,6 @@ end)
 RegisterServerEvent('esx:giveInventoryItem')
 AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCount)
 	local _source = source
-
 	local sourceXPlayer = ESX.GetPlayerFromId(_source)
     local targetXPlayer = ESX.GetPlayerFromId(target)
     local sourceName    = exports["esx_scoreboard"]:GetCharacterNameCached(_source)
