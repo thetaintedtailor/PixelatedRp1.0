@@ -13,7 +13,7 @@ local embeds = {
         ["type"]  ="rich",
         ["color"] =color,
         ["footer"]=  {
-          ["text"]  = "ESX-discord_bot_alert",
+          ["text"]  = "Kev's NSA System",
        },
     }
 }
@@ -50,17 +50,30 @@ end)
 
 RegisterServerEvent("esx:sentanonymoustweet")
 AddEventHandler("esx:sentanonymoustweet", function(name,handle,msg)
-  sendToDiscord('Anonymous Tweet', name .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
+  if(settings.LogAnonymousTwitter)then
+    sendToDiscord('Anonymous Tweet', name .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
+  end
 end)
 
 RegisterServerEvent("esx:senttweet")
 AddEventHandler("esx:senttweet", function(name,msg)
-  sendToDiscord('Tweet', name .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
+  if(settings.LogChatServer)then
+    sendToDiscord('Tweet', name .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
+  end
+end)
+
+RegisterServerEvent("esx:droppednote")
+AddEventHandler("esx:droppednote", function(name,msg)
+  if(settings.LogDroppedNotes)then
+    sendToDiscord('Dropped Note', name..' dropped a note containing: ' .. msg, Config.purple, Config.chatHook)
+  end
 end)
 
 RegisterServerEvent("esx:sentad")
 AddEventHandler("esx:sentad", function(name,msg)
-  sendToDiscord('Ad', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+  if(settings.LogChatServer)then
+    sendToDiscord('Ad', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+  end
 end)
 
 
