@@ -47,4 +47,6 @@ Config.blacklist = { -- vehicles that will always be locked when spawned natural
 }
 
 Config.job_whitelist = {
+  "police",
+  "offpolice"
 }
