@@ -89,7 +89,8 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 						rob = false
 						TriggerClientEvent('esx_holdupbank:robberycomplete', savedSource, job)
 						if(xPlayer)then
-
+							print('Robbery complete!')
+							TriggerEvent('esx:robbedproperty', xPlayer.name, bank.nameofbank, bank.reward)
 							xPlayer.addMoney(bank.reward)
 							local xPlayers = ESX.GetPlayers()
 							for i=1, #xPlayers, 1 do
