@@ -30,3 +30,5 @@ UPDATE weashops SET price = 80 WHERE item = 'WEAPON_MACHETE';
 UPDATE weashops SET price = 400 WHERE item = 'WEAPON_STUNGUN';
 UPDATE weashops SET price = 150 WHERE item = 'WEAPON_BATTLEAXE';
 UPDATE weashops SET price = 450 WHERE item = 'WEAPON_PISTOL';
+
+UPDATE job_grades SET label = 'Recruit' WHERE label = 'Recrue';
