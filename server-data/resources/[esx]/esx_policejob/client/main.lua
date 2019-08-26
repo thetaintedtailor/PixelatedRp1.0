@@ -2090,7 +2090,7 @@ Citizen.CreateThread(function()
 
 			local playerPed = PlayerPedId()
 			local coords    = GetEntityCoords(playerPed)
-			local isInMarker, hasExited, letSleep = false, false, true
+			local isInMarker, hasExited, letSleep = false, false, false
 			local currentStation, currentPart, currentPartNum
 
 			for k,v in pairs(Config.PoliceStations) do
