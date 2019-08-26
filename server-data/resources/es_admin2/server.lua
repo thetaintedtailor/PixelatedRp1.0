@@ -368,6 +368,9 @@ RegisterCommand('removerole', function(source, args, raw)
 	end
 end, true)
 
+local ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 RegisterCommand('setmoney', function(source, args, raw)
 	local player = tonumber(args[1])
 	local money = tonumber(args[2])
@@ -377,7 +380,9 @@ RegisterCommand('setmoney', function(source, args, raw)
 				TriggerEvent("es:getPlayerFromId", player, function(user)
 					if(user)then
 						user.setMoney(money)
-
+						local xPlayer = ESX.GetPlayerFromId(source)
+						local targetXPlayer = ESX.GetPlayerFromId(player)
+	    				TriggerEvent("esx:givemoneyalert", xPlayer.name .. ' using Admin Command', targetXPlayer.name, money)
 						RconPrint("Money set")
 						TriggerClientEvent('chat:addMessage', player, {
 							args = {"^1SYSTEM", "Your money has been set to: ^2^*$" .. money}

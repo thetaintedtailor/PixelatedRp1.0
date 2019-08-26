@@ -69,6 +69,12 @@ AddEventHandler("esx:droppednote", function(name,msg)
   end
 end)
 
+RegisterServerEvent("esx:robbedproperty")
+AddEventHandler("esx:robbedproperty", function(name, propertyName, amount)
+  local time = os.date("*t", os.time())
+  sendToDiscord('Robbery', name .. ' has robbed '.. propertyName .. ' for '.. amount ..' dollars at ' .. time.hour .. ':' .. time.min .. ':' .. time.sec, Config.red, Config.moneyHook)
+end)
+
 RegisterServerEvent("esx:sentad")
 AddEventHandler("esx:sentad", function(name,msg)
   if(settings.LogChatServer)then
@@ -80,9 +86,9 @@ end)
 -- Add event when a player give an item
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
 RegisterServerEvent("esx:giveitemalert")
-AddEventHandler("esx:giveitemalert", function(name,msg)
+AddEventHandler("esx:giveitemalert", function(name, nametarget, itemname, amount)
   if(settings.LogItemTransfer)then
-   sendToDiscord(_U('server_item_transfer'),name.._('user_gives_to')..nametarget.." "..amount .." "..itemname,Config.orange, Config.moneyHook)
+   sendToDiscord(_U('server_item_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount .." "..itemname,Config.orange, Config.moneyHook)
   end
 end)
 
@@ -91,7 +97,7 @@ end)
 RegisterServerEvent("esx:givemoneyalert")
 AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
   if(settings.LogMoneyTransfer)then
-    sendToDiscord(_U('server_money_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount .." dollars",Config.orange, Config.moneyHook)
+    sendToDiscord(_U('server_money_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..amount.." dollars",Config.orange, Config.moneyHook)
   end
 end)
 
@@ -104,6 +110,20 @@ AddEventHandler("esx:itemsoldalert", function(name, item, amount)
   end
 end)
 
+RegisterServerEvent("esx:usedATMalert")
+AddEventHandler("esx:usedATMalert", function(name,wasDeposit,amount)
+  local s = ''
+  local time = os.date("*t", os.time())
+  if wasDeposit then
+    s = 'deposited'
+  else
+    s = 'withdrew'
+  end
+
+  if(settings.LogMoneyBankTransfert)then
+    sendToDiscord('ATM Transfer', name .. ' just ' .. s .. ' ' .. amount .. ' dollars ' .. ' at ' .. time.hour .. ':' .. time.min .. ':'..time.sec, Config.orange, Config.moneyHook)
+  end
+end)
 
 -- Add event when a player give money
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
@@ -119,7 +139,7 @@ end)
 RegisterServerEvent("esx:giveweaponalert")
 AddEventHandler("esx:giveweaponalert", function(name,nametarget,weaponlabel)
   if(settings.LogWeaponTransfer)then
-    sendToDiscord(_U('server_weapon_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..weaponlabel,Config.orange, Config.moneyHook)
+    sendToDiscord(_U('server_weapon_transfer'),name.." ".._('user_gives_to').." "..nametarget.." "..weaponlabel,Config.red, Config.moneyHook)
   end
 end)
 

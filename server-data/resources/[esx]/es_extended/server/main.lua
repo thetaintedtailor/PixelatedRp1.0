@@ -277,7 +277,6 @@ end)
 RegisterServerEvent('esx:giveInventoryItem')
 AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCount)
 	local _source = source
-
 	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local targetXPlayer = ESX.GetPlayerFromId(target)
 	local sourceName    = exports["esx_scoreboard"]:GetCharacterNameCached(_source)
@@ -298,6 +297,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 
 				TriggerClientEvent('esx:showNotification', _source, _U('gave_item', itemCount, ESX.Items[itemName].label, targetName))
 				TriggerClientEvent('esx:showNotification', target,  _U('received_item', itemCount, ESX.Items[itemName].label, sourceName))
+				TriggerEvent("esx:giveitemalert", sourceXPlayer.name, targetXPlayer.name, ESX.Items[itemName].label, itemCount)
 			end
 				
 		else
@@ -313,7 +313,6 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 
 			TriggerClientEvent('esx:showNotification', _source, _U('gave_money', ESX.Math.GroupDigits(itemCount), targetName))
 			TriggerClientEvent('esx:showNotification', target,  _U('received_money', ESX.Math.GroupDigits(itemCount), sourceName))
-
 			TriggerEvent("esx:givemoneyalert",sourceName,targetName,itemCount)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
@@ -328,7 +327,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 
 			TriggerClientEvent('esx:showNotification', _source, _U('gave_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], targetName))
 			TriggerClientEvent('esx:showNotification', target,  _U('received_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], sourceName))
-
+			TriggerEvent("esx:givemoneybankalert",sourceXPlayer.name,targetXPlayer.name,itemCount)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
 		end
@@ -349,7 +348,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon', weaponLabel, targetName))
 				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon', weaponLabel, sourceName))
 			end
-
+			TriggerEvent("esx:giveweaponalert", sourceXPlayer.name, targetXPlayer.name, weaponLabel)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_hasalready', targetName, weaponLabel))
 			TriggerClientEvent('esx:showNotification', _source, _U('received_weapon_hasalready', sourceName, weaponLabel))
