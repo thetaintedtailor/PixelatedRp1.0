@@ -17,5 +17,7 @@ Citizen.CreateThread(function()
     AddTextEntry('KART', 'Go-Kart')
     AddTextEntry('Shifter_KART', 'Shifter Go-Kart')
     AddTextEntry('MUSTANG', 'Mustang GT')
+    AddTextEntry('BMCI', 'BMW M5')
+    AddTextEntry('CLS2015', 'Mercedes CLS')
+    AddTextEntry('911r', 'Porsche 911')
 end)
-
