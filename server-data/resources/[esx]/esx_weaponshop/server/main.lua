@@ -4,7 +4,7 @@ local shopItems = {}
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 MySQL.ready(function()
-	MySQL.Async.fetchAll('SELECT * FROM weashops', {}, function(result)
+	MySQL.Async.fetchAll('SELECT * FROM weashops ORDER BY price', {}, function(result)
 		for i=1, #result, 1 do
 			if shopItems[result[i].zone] == nil then
 				shopItems[result[i].zone] = {}
