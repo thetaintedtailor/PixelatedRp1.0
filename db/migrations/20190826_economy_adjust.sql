@@ -1,4 +1,4 @@
-UPDATE items SET limit = 12 WHERE name = 'petrol_raffin';
+UPDATE items SET `limit` = 12 WHERE name = 'petrol_raffin';
 
 UPDATE shops SET price = 100 WHERE item = 'fishingrod';
 UPDATE shops SET price = 10 WHERE item = 'fishbait';
