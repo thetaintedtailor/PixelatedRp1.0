@@ -153,7 +153,7 @@ Config.Jobs.miner = {
 		},
 
 		VehicleDeletePoint = {
-			Pos = {x = 874.75, y = -2175.45, z = 30.52},
+			Pos = {x = 874.75, y = -2175.45, z = 29.52},
 			Size = {x = 5.0, y = 5.0, z = 1.0},
 			Color = {r = 255, g = 0, b = 0},
 			Marker = 1,
