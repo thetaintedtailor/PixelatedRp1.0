@@ -121,6 +121,7 @@ AddEventHandler('esx_jobs:action', function(job, zone)
 
 		if ESX.Game.IsSpawnPointClear(spawnPoint.Pos, 5.0) then
 			spawnVehicle(spawnPoint, vehicle, zone.Caution)
+			exports["esx_legacyfuel"]:SetFuel(vehicle, 100)
 		else
 			ESX.ShowNotification(_U('spawn_blocked'))
 		end
