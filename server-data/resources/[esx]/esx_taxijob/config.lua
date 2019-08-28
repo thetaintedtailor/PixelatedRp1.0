@@ -2,7 +2,7 @@ Config                            = {}
 
 Config.DrawDistance               = 100.0
 
-Config.NPCJobEarnings             = {min = 100, max = 150}
+Config.NPCJobEarnings             = {min = 165, max = 225}
 Config.MinimumDistance            = 3000 -- Minimum NPC job destination distance from the pickup in GTA units, a higher number prevents nearby destionations.
 
 Config.MaxInService               = -1

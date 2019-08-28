@@ -49,7 +49,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Wait(0)
+        Wait(50)
         if NetworkIsSessionStarted() then
             DecorRegister("IsOutlaw",  3)
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 1)
@@ -167,7 +167,7 @@ end)
 
 Citizen.CreateThread( function()
     while true do
-        Wait(0)
+        Wait(50)
         if DecorGetInt(GetPlayerPed(-1), "IsOutlaw") == 2 then
             Wait( math.ceil(timing) )
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 1)
@@ -175,6 +175,7 @@ Citizen.CreateThread( function()
     end
 end)
 
+--[[
 Citizen.CreateThread( function()
     while true do
         Wait(0)
@@ -249,8 +250,10 @@ Citizen.CreateThread( function()
         end
     end
 end)
+]]
 
 
+--[[
 Citizen.CreateThread( function()
     while true do
         Wait(0)
@@ -297,6 +300,7 @@ Citizen.CreateThread( function()
         end
     end
 end)
+]]
 
 Citizen.CreateThread( function()
     while true do

@@ -23,7 +23,7 @@ AddEventHandler("pizza:paiefinale", function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
-	local flouzefin = math.random(10, 100)
+	local flouzefin = math.random(10, 74)
 
 	xPlayer.addMoney(flouzefin)
 

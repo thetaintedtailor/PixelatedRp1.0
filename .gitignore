@@ -9,4 +9,5 @@
 # ignore large file types
 
 .*.swp
-server-data/resources/3dme/log.txt
+server-data/essentialmode.db
+server-data/run.bat
