@@ -253,11 +253,12 @@ Citizen.CreateThread(function()
         end
       end
 
+
       -- gets ped that is driving the vehicle
       local pedd = GetPedInVehicleSeat(veh, -1)
       local plate = GetVehicleNumberPlateText(veh)
       -- lock doors if not lucky or blacklisted
-      if ((lock == 7) or (pedd ~= 0 )) then
+      if ((lock == 7) or (pedd ~= 0 and NetworkGetPlayerIndexFromPed(pedd) == -1)) then
         if has_value(Config.job_whitelist, xPlayer.job.name) then
           SetVehicleDoorsLocked(veh, 1)
           TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
