@@ -1,13 +1,14 @@
-ESX						= nil
-local CurrentAction		= nil
-local PlayerData		= {}
+ESX						                      = nil
+local CurrentAction		              = nil
+local PlayerData		                = {}
 local pedIsTryingToLockpickVehicle  = false
-local timer = 1 --in minutes - Set the time during the player is outlaw
-local showOutlaw = true --Set if show outlaw act on map
-local blipTime = 35 --in second
-local showcopsmisbehave = true --show notification when cops steal too
-local timing = timer * 60000 --Don't touche it
-local cancel = false
+local timer                         = 1 --in minutes - Set the time during the player is outlaw
+local showOutlaw                    = true --Set if show outlaw act on map
+local blipTime                      = 35 --in second
+local showcopsmisbehave             = true --show notification when cops steal too
+local timing                        = timer * 60000 --Don't touche it
+local cancel                        = false
+local playerPedCache                = {}
 
 Citizen.CreateThread(function()
   while ESX == nil do
@@ -218,6 +219,7 @@ local function has_value (tab, val)
   end
   return false
 end
+
 Citizen.CreateThread(function()
   while true do
     -- gets if player is entering vehicle
@@ -258,7 +260,7 @@ Citizen.CreateThread(function()
       local pedd = GetPedInVehicleSeat(veh, -1)
       local plate = GetVehicleNumberPlateText(veh)
       -- lock doors if not lucky or blacklisted
-      if ((lock == 7) or (pedd ~= 0 and NetworkGetPlayerIndexFromPed(pedd) == -1)) then
+      if ((lock == 7) or (pedd ~= 0 and not IsPedPlayer(pedd))) then
         if has_value(Config.job_whitelist, xPlayer.job.name) then
           SetVehicleDoorsLocked(veh, 1)
           TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
@@ -277,6 +279,25 @@ Citizen.CreateThread(function()
     Citizen.Wait(5)
   end
 end)
+
+Citizen.CreateThread(function()
+  while true do
+    playerPedCache = {}
+
+    for i = 0, 255 do
+      if NetworkIsPlayerActive(i) then
+        playerPedCache[GetPlayerPed(i)] = i
+      end
+    end
+
+    Citizen.Wait(30000)
+  end
+end)
+
+function IsPedPlayer(ped)
+  return playerPedCache[ped] ~= nil
+end
+
 RegisterNetEvent('esx_lockpick:setVehicleDoors')
 AddEventHandler('esx_lockpick:setVehicleDoors', function(veh, doors)
   SetVehicleDoorsLocked(veh, doors)
