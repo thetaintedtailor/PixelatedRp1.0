@@ -132,7 +132,7 @@ Config.Jobs.tailor = {
 		},
 
 		VehicleDeletePoint = {
-			Pos = {x = 693.79, y = -963.01, z = 22.82},
+			Pos = {x = 689.10, y = -965.81, z = 22.46},
 			Size = {x = 3.0, y = 3.0, z = 1.0},
 			Color = {r = 255, g = 0, b = 0},
 			Marker = 1,
@@ -161,7 +161,7 @@ Config.Jobs.tailor = {
 					time = 500,
 					remove = 1,
 					max = 100, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 16,
+					price = 21,
 					requires = "clothe",
 					requires_name = _U("dd_clothing"),
 					drop = 100
