@@ -2,7 +2,7 @@ ESX						                      = nil
 local CurrentAction		              = nil
 local PlayerData		                = {}
 local pedIsEntering                 = false -- if the player is in the process of lockpicking/jacking
-local pedIsSeenEntering             = false -- whether a local saw and has called 911
+local pedIsSeenEntering             = false -- whether a local is calling 911
 local timer                         = 1     --in minutes - Set the time during the player is outlaw
 local showOutlaw                    = true  --Set if show outlaw act on map
 local blipTime                      = 35    --in second
@@ -57,7 +57,7 @@ AddEventHandler('esx_lockpick:onUse', function()
 
       Citizen.Wait(1000)
 
-      pedIsEntering = true
+      pedIsEntering  = true
 
       RequestAnimDict('anim@amb@clubhouse@tutorial@bkr_tut_ig3@')
       while not HasAnimDictLoaded('anim@amb@clubhouse@tutorial@bkr_tut_ig3@') do
@@ -225,6 +225,17 @@ local function has_value (tab, val)
     end
   end
   return false
+end
+
+function CheckForWitness()
+  local pedWasReported = false
+
+  Citizen.CreateThread(function()
+    while (pedIsEntering and not pedWasReported) do
+
+      Citizen.Wait(5000)
+    end
+  end)
 end
 
 Citizen.CreateThread(function()

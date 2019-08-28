@@ -9,8 +9,9 @@ Config.NPCVehiclesLocked    = true   -- Locks all vehicles (MUST HAVE SOME SORT 
 Config.Locale				        = 'en'   -- Change the language. Currently only en  but will add fr soon.
 Config.percentage           = 75	   -- Chance of lockpick success
 Config.CallCops             = true   -- Set to true if you want cops to be alerted when lockpicking a vehicle no matter what the outcome is.
-Config.CallCopsPercent      = 85      -- chance that cops are called
-Config.chance               = 15      -- chance of vehicle being unlocked in percentage
+Config.CallCopsPercent      = 90     -- When spotted by a local, the chance that cops are called
+Config.OnstarPercent        = 20     -- When not spotted by a local, the chance that cops are called
+Config.chance               = 15     -- chance of vehicle being unlocked in percentage
 
 Config.blacklist = { -- vehicles that will always be locked when spawned naturally
   "T20",
