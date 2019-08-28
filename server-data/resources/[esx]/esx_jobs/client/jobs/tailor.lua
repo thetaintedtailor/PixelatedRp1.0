@@ -132,7 +132,7 @@ Config.Jobs.tailor = {
 		},
 
 		VehicleDeletePoint = {
-			Pos = {x = 693.79, y = -963.01, z = 22.82},
+			Pos = {x = 689.10, y = -965.81, z = 22.46},
 			Size = {x = 3.0, y = 3.0, z = 1.0},
 			Color = {r = 255, g = 0, b = 0},
 			Marker = 1,
