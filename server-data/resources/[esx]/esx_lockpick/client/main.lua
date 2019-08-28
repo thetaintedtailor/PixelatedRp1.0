@@ -221,13 +221,17 @@ local function has_value (tab, val)
 end
 
 Citizen.CreateThread(function()
+  local playerPedId, veh, xPlayer, lock, lucky, blacklisted, pedd, plate
+
   while true do
+    playerPedId = PlayerPedId()
+    veh         = GetVehiclePedIsTryingToEnter(playerPedId)
+
     -- gets if player is entering vehicle
-    if DoesEntityExist(GetVehiclePedIsTryingToEnter(PlayerPedId())) then
+    if DoesEntityExist(veh) then
       -- gets vehicle player is trying to enter and its lock status
-      local xPlayer = ESX.GetPlayerData()
-      local veh = GetVehiclePedIsTryingToEnter(PlayerPedId())
-      local lock = GetVehicleDoorLockStatus(veh)
+      xPlayer = ESX.GetPlayerData()
+      lock    = GetVehicleDoorLockStatus(veh)
 
       -- Get the conductor door angle, open if value > 0.0
       --local doorAngle = GetVehicleDoorAngleRatio(veh, 0)
@@ -240,7 +244,7 @@ Citizen.CreateThread(function()
       end
 
       -- check if got lucky
-      local lucky = (math.random(100) < Config.chance)
+      lucky = (math.random(100) < Config.chance)
 
       -- Set lucky if conductor door is open
       --[[ if doorAngle > 0.5 then
@@ -248,17 +252,18 @@ Citizen.CreateThread(function()
         end ]]
 
       -- check if vehicle is in blacklist
-      local blacklisted = false
+      blacklisted = false
       for k,model in pairs(Config.blacklist) do
         if IsVehicleModel(veh, GetHashKey(model)) then
           blacklisted = true
+          break
         end
       end
 
-
       -- gets ped that is driving the vehicle
-      local pedd = GetPedInVehicleSeat(veh, -1)
-      local plate = GetVehicleNumberPlateText(veh)
+      pedd  = GetPedInVehicleSeat(veh, -1)
+      plate = GetVehicleNumberPlateText(veh)
+
       -- lock doors if not lucky or blacklisted
       if ((lock == 7) or (pedd ~= 0 and not IsPedPlayer(pedd))) then
         if has_value(Config.job_whitelist, xPlayer.job.name) then
