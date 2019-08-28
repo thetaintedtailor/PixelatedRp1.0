@@ -293,6 +293,7 @@ AddEventHandler('esx_jobs:spawnJobVehicle', function(spawnPoint, vehicle)
 		SetVehicleNumberPlateText(spawnedVehicle, plate)
 		table.insert(myPlate, plate)
 		plate = string.gsub(plate, " ", "")
+		exports["esx_legacyfuel"]:SetFuel(spawnedVehicle, 100)
 
 		TaskWarpPedIntoVehicle(playerPed, spawnedVehicle, -1)
 

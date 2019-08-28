@@ -32,11 +32,14 @@ Config.PoliceStations = {
 		},
 
 		Cloakrooms = {
-			vector3(452.6, -992.8, 30.6)
+			vector3(452.6, -992.8, 30.6),
+			vector3(1857.16, 3689.28, 34.27)
+
 		},
 
 		Armories = {
-			vector3(451.7, -980.1, 30.6)
+			vector3(451.7, -980.1, 30.6),
+			vector3(1848.79, 3689.80, 34.27)
 		},
 
 		Vehicles = {
@@ -55,12 +58,12 @@ Config.PoliceStations = {
 				Spawner = vector3(473.3, -1018.8, 28.0),
 				InsideShop = vector3(228.5, -993.5, -99.0),
 				SpawnPoints = {
-					{ coords = vector3(475.9, -1021.6, 28.0), heading = 276.1, radius = 6.0 },
-					{ coords = vector3(484.1, -1023.1, 27.5), heading = 302.5, radius = 6.0 }
+	 				{ coords = vector3(475.9, -1021.6, 28.0), heading = 276.1, radius = 6.0 },
+	 				{ coords = vector3(484.1, -1023.1, 27.5), heading = 302.5, radius = 6.0 }
 				}
 			},
 
-						{
+			{
 				Spawner = vector3(1869.502, 3691.951, 33.75057),
 				InsideShop = vector3(228.5, -993.5, -99.0),
 				SpawnPoints = {
@@ -83,9 +86,7 @@ Config.PoliceStations = {
 		BossActions = {
 			vector3(448.4, -973.2, 30.6)
 		}
-
 	}
-
 }
 
 Config.AuthorizedWeapons = {
@@ -440,7 +441,8 @@ Config.AuthorizedVehicles = {
 		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
 		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'police4', label = 'Unmarked Vapid',price = 1},
+    { model = "polschafter3", label = "Unmarked Schafter", price = 1 }
 	}
 }
 

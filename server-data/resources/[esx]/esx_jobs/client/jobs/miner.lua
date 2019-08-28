@@ -153,7 +153,7 @@ Config.Jobs.miner = {
 		},
 
 		VehicleDeletePoint = {
-			Pos = {x = 881.93, y = -2198.01, z = 29.51},
+			Pos = {x = 874.75, y = -2175.45, z = 29.52},
 			Size = {x = 5.0, y = 5.0, z = 1.0},
 			Color = {r = 255, g = 0, b = 0},
 			Marker = 1,
@@ -182,7 +182,7 @@ Config.Jobs.miner = {
 					time = 500,
 					remove = 1,
 					max = 56, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 3,
+					price = 5,
 					requires = "copper",
 					requires_name = _U("m_copper"),
 					drop = 100
@@ -208,7 +208,7 @@ Config.Jobs.miner = {
 					time = 500,
 					remove = 1,
 					max = 42, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 4,
+					price = 7,
 					requires = "iron",
 					requires_name = _U("m_iron"),
 					drop = 100
@@ -234,7 +234,7 @@ Config.Jobs.miner = {
 					time = 500,
 					remove = 1,
 					max = 21, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 13,
+					price = 22,
 					requires = "gold",
 					requires_name = _U("m_gold"),
 					drop = 100
@@ -260,7 +260,7 @@ Config.Jobs.miner = {
 					time = 500,
 					remove = 1,
 					max = 50, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 125,
+					price = 211,
 					requires = "diamond",
 					requires_name = _U("m_diamond"),
 					drop = 100
