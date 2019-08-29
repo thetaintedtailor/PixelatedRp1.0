@@ -10,6 +10,7 @@ Config.Zones = {
     Size  = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },  
     Type  = 27,
+    Jobs = {'police', 'offpolice'}
   },
 
   AmbulanceDuty = {
@@ -17,13 +18,15 @@ Config.Zones = {
     Size = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },
     Type = 27,
+    Jobs = {'police', 'offpolice', 'ambulance', 'offambulance'}
   },
 
   TaxiDuty = {
-    Pos = { x = 326.43695068359, y = -599.00659179688, z = 42.291809082031 },
+    Pos = { x = 901.25, y = -174.24, z = 73.10 },
     Size = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },
     Type = 27,
+    Jobs = {'taxi', 'offtaxi'}
   },
 
   MechanicDuty = {
@@ -31,5 +34,6 @@ Config.Zones = {
     Size = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 0, b = 255 },
     Type = 27,
+    Jobs = {'mechanic', 'offmechanic'}
   },
 }
