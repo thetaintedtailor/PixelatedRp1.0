@@ -18,7 +18,7 @@ Config.Zones = {
     Size = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },
     Type = 27,
-    Jobs = {'police', 'offpolice', 'ambulance', 'offambulance', 'taxi', 'offtaxi', 'mechanic', 'offmechanic'}
+    Jobs = {'ambulance', 'offambulance'}
   },
 
   TaxiDuty = {

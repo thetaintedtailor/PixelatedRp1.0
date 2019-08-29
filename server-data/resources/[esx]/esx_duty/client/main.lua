@@ -109,7 +109,6 @@ Citizen.CreateThread(function ()
 
 
     for k,v in pairs(Config.Zones) do
-
       if (GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
         markerWaitTime = 1
       else
