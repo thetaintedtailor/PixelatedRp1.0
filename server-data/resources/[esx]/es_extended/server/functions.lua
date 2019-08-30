@@ -37,17 +37,14 @@ ESX.TriggerServerCallback = function(name, requestId, source, cb, ...)
 end
 
 ESX.SavePlayer = function(xPlayer, cb)
-	local asyncTasks     = {}
-	xPlayer.lastPosition = xPlayer.get('coords')
+	local asyncTasks = {}
+	xPlayer.setLastPosition(xPlayer.getCoords())
 
 	-- User accounts
 	for i=1, #xPlayer.accounts, 1 do
-
 		if ESX.LastPlayerData[xPlayer.source].accounts[xPlayer.accounts[i].name] ~= xPlayer.accounts[i].money then
-
 			table.insert(asyncTasks, function(cb)
-				MySQL.Async.execute('UPDATE user_accounts SET `money` = @money WHERE identifier = @identifier AND name = @name',
-				{
+				MySQL.Async.execute('UPDATE user_accounts SET money = @money WHERE identifier = @identifier AND name = @name', {
 					['@money']      = xPlayer.accounts[i].money,
 					['@identifier'] = xPlayer.identifier,
 					['@name']       = xPlayer.accounts[i].name
@@ -57,19 +54,14 @@ ESX.SavePlayer = function(xPlayer, cb)
 			end)
 
 			ESX.LastPlayerData[xPlayer.source].accounts[xPlayer.accounts[i].name] = xPlayer.accounts[i].money
-
 		end
-
 	end
 
 	-- Inventory items
 	for i=1, #xPlayer.inventory, 1 do
-
 		if ESX.LastPlayerData[xPlayer.source].items[xPlayer.inventory[i].name] ~= xPlayer.inventory[i].count then
-
 			table.insert(asyncTasks, function(cb)
-				MySQL.Async.execute('UPDATE user_inventory SET `count` = @count WHERE identifier = @identifier AND item = @item',
-				{
+				MySQL.Async.execute('UPDATE user_inventory SET count = @count WHERE identifier = @identifier AND item = @item', {
 					['@count']      = xPlayer.inventory[i].count,
 					['@identifier'] = xPlayer.identifier,
 					['@item']       = xPlayer.inventory[i].name
@@ -79,15 +71,12 @@ ESX.SavePlayer = function(xPlayer, cb)
 			end)
 
 			ESX.LastPlayerData[xPlayer.source].items[xPlayer.inventory[i].name] = xPlayer.inventory[i].count
-
 		end
-
 	end
 
 	-- Job, loadout and position
 	table.insert(asyncTasks, function(cb)
-		MySQL.Async.execute('UPDATE users SET `job` = @job, `job_grade` = @job_grade, `loadout` = @loadout, `position` = @position WHERE identifier = @identifier',
-		{
+		MySQL.Async.execute('UPDATE users SET job = @job, job_grade = @job_grade, loadout = @loadout, position = @position WHERE identifier = @identifier', {
 			['@job']        = xPlayer.job.name,
 			['@job_grade']  = xPlayer.job.grade,
 			['@loadout']    = json.encode(xPlayer.getLoadout()),
@@ -99,14 +88,12 @@ ESX.SavePlayer = function(xPlayer, cb)
 	end)
 
 	Async.parallel(asyncTasks, function(results)
-        RconPrint('[' .. os.time() .. '] [SAVED] ' .. xPlayer.name .. "\n")
-		-- RconPrint('[SAVED] ' .. xPlayer.name .. "\n")
+		RconPrint('[SAVED] ' .. xPlayer.name .. "^7\n")
 
 		if cb ~= nil then
 			cb()
 		end
 	end)
-
 end
 
 ESX.SavePlayers = function(cb)
@@ -121,8 +108,7 @@ ESX.SavePlayers = function(cb)
 	end
 
 	Async.parallelLimit(asyncTasks, 8, function(results)
-        RconPrint('[' .. os.time() .. '] [SAVED] All players' .. "\n")
-		-- RconPrint('[SAVED] All players' .. "\n")
+		RconPrint('[SAVED] All players' .. "\n")
 
 		if cb ~= nil then
 			cb()
@@ -187,4 +173,16 @@ ESX.CreatePickup = function(type, name, count, label, player)
 
 	TriggerClientEvent('esx:pickup', -1, pickupId, label, player)
 	ESX.PickupId = pickupId
+end
+
+ESX.DoesJobExist = function(job, grade)
+	grade = tostring(grade)
+
+	if job and grade then
+		if ESX.Jobs[job] and ESX.Jobs[job].grades[grade] then
+			return true
+		end
+	end
+
+	return false
 end
