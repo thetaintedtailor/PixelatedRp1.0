@@ -121,6 +121,11 @@ Config.AuthorizedVehicles = {
 			model = 'ambulance',
 			label = 'Ambulance Van',
 			price = 1
+		},
+		{
+			model = 'qrv',
+			label = 'Ford Explorer',
+			price = 1
 		}
 	},
 
@@ -128,6 +133,11 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'ambulance',
 			label = 'Ambulance Van',
+			price = 1
+		},
+		{
+			model = 'qrv',
+			label = 'Ford Explorer',
 			price = 1
 		}
 	},
@@ -137,6 +147,11 @@ Config.AuthorizedVehicles = {
 			model = 'ambulance',
 			label = 'Ambulance Van',
 			price = 1
+		},
+		{
+			model = 'qrv',
+			label = 'Ford Explorer',
+			price = 1
 		}
 	},
 
@@ -144,6 +159,11 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'ambulance',
 			label = 'Ambulance Van',
+			price = 1,
+		},
+		{
+			model = 'qrv',
+			label = 'Ford Explorer',
 			price = 1
 		}
 	},
@@ -152,6 +172,11 @@ Config.AuthorizedVehicles = {
 		{
 			model = 'ambulance',
 			label = 'Ambulance Van',
+			price = 1
+		},
+		{
+			model = 'qrv',
+			label = 'Ford Explorer',
 			price = 1
 		}
 	}
