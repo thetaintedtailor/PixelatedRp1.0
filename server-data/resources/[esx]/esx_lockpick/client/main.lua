@@ -224,8 +224,7 @@ end
 function CheckForWitness()
   local pedWasReported = false
 
-  if false then
-  --if (math.random(100) <= Config.OnstarPercent) then
+  if (math.random(100) <= Config.OnstarPercent) then
     TriggerServerEvent('esx_lockpick:Notify')
   else
     Citizen.CreateThread(function()
