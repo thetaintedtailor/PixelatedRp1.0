@@ -30,7 +30,7 @@ Citizen.CreateThread(function()
 	SendNUIMessage({
 		action = 'updateServerInfo',
 
-		maxPlayers = GetConvarInt('sv_maxclients', 64),
+		maxPlayers = GetConvarInt('sv_maxclients', 32),
 		uptime = 'unknown',
 		playTime = '00h 00m'
 	})
