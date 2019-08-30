@@ -32,3 +32,8 @@ client_scripts {
 	'client/street_display-client.lua',
 	'client/sinners-mc-marker.lua'
 }
+
+exports {
+	'hideStreetHud',
+	'showStreetHud'
+}

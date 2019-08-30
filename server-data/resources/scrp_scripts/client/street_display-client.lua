@@ -1,3 +1,8 @@
+ESX = nil
+local loopOn = true
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 function drawTxt(x, y, width, height, scale, text, r, g, b, a)
     SetTextFont(4)
     SetTextProportional(0)
@@ -143,109 +148,116 @@ Citizen.CreateThread(function()
     end
 end)
 
-local loopOn = true
+function startStreetDisplay()
+    Citizen.CreateThread(function()
+        while loopOn do
+            Citizen.Wait(7)
 
-Citizen.CreateThread(function()
-    while loopOn do
-        Citizen.Wait(7)
+            if (streetName and currentZone) then
+                drawTxt(x - 0.325, y + 0.66, 1.0, 1.68, 0.5, '~s~ID:~y~ ' .. GetPlayerServerId(PlayerId()), 185, 185, 185, 255)
+                drawTxt(x - 0.335, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
 
-        if (streetName and currentZone) then
-            drawTxt(x - 0.325, y + 0.66, 1.0, 1.68, 0.5, '~s~ID:~y~ ' .. GetPlayerServerId(PlayerId()), 185, 185, 185, 255)
-            drawTxt(x - 0.335, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                if direction == 'N' then
+                    drawTxt(x - 0.306, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
 
-            if direction == 'N' then
-                drawTxt(x - 0.306, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0, 0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0, 0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
 
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0, 0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0, 0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    drawTxt2(x - 0.285, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'NE' then
+                    drawTxt(x - 0.298, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.277, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.277, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.277, y + 0.42, 1.0, 1.0,0.55, streetName,curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'E' then
+                    drawTxt(x - 0.309, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.288, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.288, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.288, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'SE' then
+                    drawTxt(x - 0.298, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.275, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.275, x+0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.275, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'S' then
+                    drawTxt(x - 0.307, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.285, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'SW' then
+                    drawTxt(x - 0.292, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.270, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.270, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.270, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'W' then
+                    drawTxt(x - 0.303, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.280, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.280, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.280, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
+                elseif direction == 'NW' then
+                    drawTxt(x - 0.290, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
+                    drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
+
+                    if crossStreetName == "" then
+                        drawTxt2(x - 0.266, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
+                    else
+                        drawTxt2(x - 0.266, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
+                    end
+
+                    drawTxt2(x - 0.266, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
                 end
-
-                drawTxt2(x - 0.285, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'NE' then
-                drawTxt(x - 0.298, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.277, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.277, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.277, y + 0.42, 1.0, 1.0,0.55, streetName,curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'E' then
-                drawTxt(x - 0.309, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.288, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.288, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.288, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'SE' then
-                drawTxt(x - 0.298, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.275, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.275, x+0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.275, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'S' then
-                drawTxt(x - 0.307, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.285, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.285, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'SW' then
-                drawTxt(x - 0.292, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.270, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.270, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.270, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'W' then
-                drawTxt(x - 0.303, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.280, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.280, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.280, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
-            elseif direction == 'NW' then
-                drawTxt(x - 0.290, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-                drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
-
-                if crossStreetName == "" then
-                    drawTxt2(x - 0.266, y + 0.45, 1.0, 1.0,0.45, currentZone, town_r, town_g, town_b, town_a)
-                else
-                    drawTxt2(x - 0.266, y + 0.45, 1.0, 1.0,0.45, crossStreetName .. ", " .. currentZone, str_around_r, str_around_g, str_around_b, str_around_a)
-                end
-
-                drawTxt2(x - 0.266, y + 0.42, 1.0, 1.0,0.55, streetName, curr_street_r, curr_street_g, curr_street_b, curr_street_a)
             end
         end
-    end
-end)
+    end)
+end
+startStreetDisplay()
 
-RegisterCommand('hidestreet', function(source)
-    print("is it active", IsThreadActive(threadId))
-end)
+function hideStreetHud()
+    loopOn = false
+end
+
+function showStreetHud()
+    loopOn = true
+    startStreetDisplay()
+end
+
