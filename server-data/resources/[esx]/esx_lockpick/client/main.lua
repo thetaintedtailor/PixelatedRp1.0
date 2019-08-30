@@ -230,12 +230,15 @@ end
 function CheckForWitness()
   local pedWasReported = false
 
-  Citizen.CreateThread(function()
-    while (pedIsEntering and not pedWasReported) do
-
-      Citizen.Wait(5000)
-    end
-  end)
+  if (math.random(100) <= Config.OnstarPercent) then
+    TriggerServerEvent('esx_lockpick:Notify')
+  else
+    Citizen.CreateThread(function()
+      while (pedIsEntering and not pedWasReported) do
+        Citizen.Wait(10000)
+      end
+    end)
+  end
 end
 
 Citizen.CreateThread(function()
