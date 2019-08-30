@@ -35,14 +35,13 @@ local storeBinoclarKey = Keys["BACKSPACE"]
 Citizen.CreateThread(function()
 	while true do
 
-		Citizen.Wait(10)
+		Citizen.Wait(0)
 
 		local lPed = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(lPed)
 
 		if binoculars or (keybindEnabled and IsControlJustReleased(1, binocularKey)) then
 			binoculars = true
-			print("HELLO?")
 			if not ( IsPedSittingInAnyVehicle( lPed ) ) then
 				Citizen.CreateThread(function()
 					TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_BINOCULARS", 0, 1)
@@ -59,7 +58,7 @@ Citizen.CreateThread(function()
 			local scaleform = RequestScaleformMovie("BINOCULARS")
 
 			while not HasScaleformMovieLoaded(scaleform) do
-				Citizen.Wait(10)
+				Citizen.Wait(0)
 			end
 
 			local lPed = GetPlayerPed(-1)
@@ -88,7 +87,7 @@ Citizen.CreateThread(function()
 				HideHUDThisFrame()
 				exports["scrp_scripts"]:hideStreetHud()
 				DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
-				Citizen.Wait(10)
+				Citizen.Wait(0)
 			end
 
 			binoculars = false
