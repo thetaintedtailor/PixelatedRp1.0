@@ -224,7 +224,8 @@ end
 function CheckForWitness()
   local pedWasReported = false
 
-  if (math.random(100) <= Config.OnstarPercent) then
+  if false then
+  --if (math.random(100) <= Config.OnstarPercent) then
     TriggerServerEvent('esx_lockpick:Notify')
   else
     Citizen.CreateThread(function()
@@ -248,11 +249,11 @@ function CheckForWitness()
         end
 
         if (foundPed and math.random(100) <= Config.CallCopsPercent) then
-          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
-          Citizen.Wait(2000)
-          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
-          TriggerServerEvent('esx_lockpick:Notify')
           pedWasReported = true
+          TriggerServerEvent('esx_lockpick:Notify')
+          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
+          Citizen.Wait(3000)
+          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
         end
 
         Citizen.Wait(10000)
