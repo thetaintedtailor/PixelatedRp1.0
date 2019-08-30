@@ -1,6 +1,6 @@
 Config						          = {}
 Config.InfiniteLocks		    = false  -- Should one lockpick last forever?
-Config.LockTime			        = 30     -- In seconds, how long should lockpicking take?
+Config.LockTime			        = 45     -- In seconds, how long should lockpicking take?
 Config.AlarmTime            = 60     -- Second to have the alarm activated once vehicle is lockpicked
 Config.JammedHandbrakeTime  = 30     -- Second to have the handbrake jammed
 Config.IgnoreAbort			    = true   -- Remove lockpick from inventory even if user aborts lockpicking?
@@ -9,8 +9,10 @@ Config.NPCVehiclesLocked    = true   -- Locks all vehicles (MUST HAVE SOME SORT 
 Config.Locale				        = 'en'   -- Change the language. Currently only en  but will add fr soon.
 Config.percentage           = 75	   -- Chance of lockpick success
 Config.CallCops             = true   -- Set to true if you want cops to be alerted when lockpicking a vehicle no matter what the outcome is.
-Config.CallCopsPercent      = 85      -- chance that cops are called
-Config.chance               = 15      -- chance of vehicle being unlocked in percentage
+Config.CallCopsPercent      = 85     -- When spotted by a local, the chance that cops are called
+Config.CallCopsDistance     = 20     -- How close a local must be before they "witness" a breakin and maybe call 911
+Config.OnstarPercent        = 20     -- When not spotted by a local, the chance that cops are called
+Config.chance               = 15     -- chance of vehicle being unlocked in percentage
 
 Config.blacklist = { -- vehicles that will always be locked when spawned naturally
   "T20",
