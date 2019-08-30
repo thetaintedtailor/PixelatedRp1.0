@@ -332,6 +332,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 
 			TriggerClientEvent('esx:showNotification', _source, _U('gave_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], targetName))
 			TriggerClientEvent('esx:showNotification', target,  _U('received_account_money', ESX.Math.GroupDigits(itemCount), Config.AccountLabels[itemName], sourceName))
+			TriggerEvent("esx:givemoneybankalert",sourceXPlayer.name,targetXPlayer.name,itemCount)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
 		end
@@ -351,6 +352,7 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
 				TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon', weaponLabel, targetName))
 				TriggerClientEvent('esx:showNotification', target,  _U('received_weapon', weaponLabel, sourceName))
 			end
+			TriggerEvent("esx:giveweaponalert", sourceXPlayer.name, targetXPlayer.name, weaponLabel)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon_hasalready', targetName, weaponLabel))
 			TriggerClientEvent('esx:showNotification', target, _U('received_weapon_hasalready', sourceName, weaponLabel))
