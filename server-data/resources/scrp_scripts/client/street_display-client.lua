@@ -7,9 +7,9 @@ function drawTxt(x, y, width, height, scale, text, r, g, b, a)
     SetTextEdge(1, 0, 0, 0, 255)
     SetTextDropShadow()
     SetTextOutline()
-    SetTextEntry("STRING")
+    BeginTextCommandDisplayText("STRING")
     AddTextComponentString(text)
-    DrawText(x - width/2, y - height/2 + 0.005)
+    EndTextCommandDisplayText(x - width/2, y - height/2 + 0.005)
 end
 
 function drawTxt2(x, y, width, height, scale, text, r, g, b, a)
@@ -21,9 +21,9 @@ function drawTxt2(x, y, width, height, scale, text, r, g, b, a)
     SetTextEdge(1, 0, 0, 0, 255)
     SetTextDropShadow()
     SetTextOutline()
-    SetTextEntry("STRING")
+    BeginTextCommandDisplayText("STRING")
     AddTextComponentString(text)
-    DrawText(x - width/2, y - height/2 + 0.005)
+    EndTextCommandDisplayText(x - width/2, y - height/2 + 0.005)
 end
 
 local zones = {
@@ -143,11 +143,13 @@ Citizen.CreateThread(function()
     end
 end)
 
+local loopOn = true
+
 Citizen.CreateThread(function()
-    while true do
+    while loopOn do
         Citizen.Wait(7)
 
-		if (streetName and currentZone) then
+        if (streetName and currentZone) then
             drawTxt(x - 0.325, y + 0.66, 1.0, 1.68, 0.5, '~s~ID:~y~ ' .. GetPlayerServerId(PlayerId()), 185, 185, 185, 255)
             drawTxt(x - 0.335, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
 
@@ -242,4 +244,8 @@ Citizen.CreateThread(function()
             end
         end
     end
+end)
+
+RegisterCommand('hidestreet', function(source)
+    print("is it active", IsThreadActive(threadId))
 end)

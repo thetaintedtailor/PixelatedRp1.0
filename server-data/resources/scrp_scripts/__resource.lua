@@ -14,7 +14,6 @@ server_scripts {
 	'config.lua',
 	'server/afkkick-server.lua',
 	'server/gpstools-server.lua',
-	'server/commands-server.lua',
 }
 
 client_scripts {
@@ -22,12 +21,10 @@ client_scripts {
 	'locales/en.lua',
 	'locales/sv.lua',
 	'config.lua',
-	'client/npc_drop-client.lua',
+	'client/no_drops_rewards.lua',
 	'client/speed_limit-client.lua',
 	'client/afkkick-client.lua',
 	'client/gpstools-client.lua',
-	'client/commands-client.lua',
-	'client/no_vehicle_rewards-client.lua',
 	'client/disable_dispatch-client.lua',
 	'client/no_crosshair-client.lua',
 	'client/drift_mode-client.lua',
