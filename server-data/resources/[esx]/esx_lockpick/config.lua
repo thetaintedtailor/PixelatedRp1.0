@@ -9,8 +9,8 @@ Config.NPCVehiclesLocked    = true   -- Locks all vehicles (MUST HAVE SOME SORT 
 Config.Locale				        = 'en'   -- Change the language. Currently only en  but will add fr soon.
 Config.percentage           = 75	   -- Chance of lockpick success
 Config.CallCops             = true   -- Set to true if you want cops to be alerted when lockpicking a vehicle no matter what the outcome is.
-Config.CallCopsPercent      = 90     -- When spotted by a local, the chance that cops are called
-Config.CallCopsDistance     = 20     -- How close a local must be before they "witness" a breakin and call 911
+Config.CallCopsPercent      = 85     -- When spotted by a local, the chance that cops are called
+Config.CallCopsDistance     = 20     -- How close a local must be before they "witness" a breakin and maybe call 911
 Config.OnstarPercent        = 20     -- When not spotted by a local, the chance that cops are called
 Config.chance               = 15     -- chance of vehicle being unlocked in percentage
 

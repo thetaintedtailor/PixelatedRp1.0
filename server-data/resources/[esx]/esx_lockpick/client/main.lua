@@ -229,32 +229,33 @@ function CheckForWitness()
   else
     Citizen.CreateThread(function()
       while (pedIsEntering and not pedWasReported) do
-        local pedLoc, playerPed, playerLoc, distance
-        local foundPed = nil
+        local pedLoc, distance
+
+        local playerPed = PlayerPedId()
+        local playerLoc = GetEntityCoords(playerPed, false)
+        local foundPed  = nil
 
         for ped in EnumeratePeds() do
           if DoesEntityExist(ped) then
-            pedLoc    = GetEntityCoords(ped, false)
-            playerPed = GetPlayerPed(-1)
-            playerLoc = GetEntityCoords(playerPed, false)
-            distance  = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
+            pedLoc   = GetEntityCoords(ped, false)
+            distance = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
 
             if playerPed ~= ped and distance < Config.CallCopsDistance then
-              Citizen.Trace("Found a ped " .. distance .. " away\n")
-              foundPed = true
+              foundPed = ped
               break
             end
           end
         end
 
         if (foundPed and math.random(100) <= Config.CallCopsPercent) then
-          TaskLookAtCoord(foundPed, playerLoc.x, playerLoc.y, playerLoc.z, 10000, 0, 2)
-          TaskUseMobilePhone(foundPed, 0, 0)
+          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
+          Citizen.Wait(2000)
+          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
           TriggerServerEvent('esx_lockpick:Notify')
           pedWasReported = true
         end
 
-        Citizen.Wait(5000)
+        Citizen.Wait(10000)
       end
     end)
   end
