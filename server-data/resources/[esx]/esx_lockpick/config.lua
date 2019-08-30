@@ -1,6 +1,6 @@
 Config						          = {}
 Config.InfiniteLocks		    = false  -- Should one lockpick last forever?
-Config.LockTime			        = 30     -- In seconds, how long should lockpicking take?
+Config.LockTime			        = 45     -- In seconds, how long should lockpicking take?
 Config.AlarmTime            = 60     -- Second to have the alarm activated once vehicle is lockpicked
 Config.JammedHandbrakeTime  = 30     -- Second to have the handbrake jammed
 Config.IgnoreAbort			    = true   -- Remove lockpick from inventory even if user aborts lockpicking?
