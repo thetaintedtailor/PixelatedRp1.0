@@ -84,8 +84,9 @@ Citizen.CreateThread(function()
 				CheckInputRotation(cam, zoomvalue)
 
 				HandleZoom(cam)
-				HideHUDThisFrame()
+				HideHudAndRadarThisFrame()
 				exports["scrp_scripts"]:hideStreetHud()
+				exports["fivem_TimeAndDateDisplay"]:hideTimeDate()
 				DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
 				Citizen.Wait(0)
 			end
@@ -99,6 +100,7 @@ Citizen.CreateThread(function()
 			SetNightvision(false)
 			SetSeethrough(false)
 			exports["scrp_scripts"]:showStreetHud()
+			exports["fivem_TimeAndDateDisplay"]:showTimeDate()
 		end
 	end
 end)

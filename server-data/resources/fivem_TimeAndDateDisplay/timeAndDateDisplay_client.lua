@@ -12,40 +12,44 @@ local dayOfMonth
 local year
 
 -- Display Time and Date at top right of screen -- format: | 12:13 | Wednesday | January 17, 2017 |
-Citizen.CreateThread(function()
-	while true do
-		Wait(1)
-		timeAndDateString = ""
-		
-		if displayTime == true then
-			CalculateTimeToDisplay()
-			timeAndDateString = timeAndDateString .. " " .. hour .. ":" .. minute .. " |"
+
+function DisplayTimeDate() 
+	Citizen.CreateThread(function()
+		while true do
+			Wait(1)
+			timeAndDateString = ""
+			
+			if displayTime == true then
+				CalculateTimeToDisplay()
+				timeAndDateString = timeAndDateString .. " " .. hour .. ":" .. minute .. " |"
+			end
+			if displayDayOfWeek == true then
+				CalculateDayOfWeekToDisplay()
+				timeAndDateString = timeAndDateString .. " " .. dayOfWeek .. " |"
+			end
+			if displayDate == true then
+				CalculateDateToDisplay()
+				timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " "
+			end
+			
+			SetTextFont(6)
+			SetTextProportional(0)
+			SetTextScale(0.50, 0.50)
+			SetTextColour(255, 255, 255, 255)
+			SetTextDropshadow(0, 0, 0, 0, 255)
+			SetTextEdge(1, 0, 0, 0, 255)
+			SetTextDropShadow()
+			SetTextOutline()
+			--SetTextRightJustify(true)
+			SetTextWrap(0,0.95)
+			SetTextEntry("STRING")
+			
+			AddTextComponentString(timeAndDateString)
+			DrawText(0.172, 0.89)
 		end
-		if displayDayOfWeek == true then
-			CalculateDayOfWeekToDisplay()
-			timeAndDateString = timeAndDateString .. " " .. dayOfWeek .. " |"
-		end
-		if displayDate == true then
-			CalculateDateToDisplay()
-			timeAndDateString = timeAndDateString .. " " .. month .. " " .. dayOfMonth .. ", " .. year .. " "
-		end
-		
-		SetTextFont(6)
-		SetTextProportional(0)
-		SetTextScale(0.50, 0.50)
-		SetTextColour(255, 255, 255, 255)
-		SetTextDropshadow(0, 0, 0, 0, 255)
-		SetTextEdge(1, 0, 0, 0, 255)
-		SetTextDropShadow()
-		SetTextOutline()
-		--SetTextRightJustify(true)
-		SetTextWrap(0,0.95)
-		SetTextEntry("STRING")
-		
-		AddTextComponentString(timeAndDateString)
-		DrawText(0.172, 0.89)
-	end
-end)
+	end)
+end
+DisplayTimeDate() -- display on script start
 
 function CalculateTimeToDisplay()
 	hour = GetClockHours()
@@ -118,3 +122,16 @@ function CalculateDateToDisplay()
 		month = "December"
 	end
 end
+
+function hideTimeDate()
+	displayTime = false
+	displayDayOfWeek = false
+	displayDate = false
+end
+
+function showTimeDate()
+	displayTime = true
+	displayDayOfWeek = true
+	displayDate = true
+end
+
