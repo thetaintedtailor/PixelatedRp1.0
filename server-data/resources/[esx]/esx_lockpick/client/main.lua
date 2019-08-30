@@ -106,10 +106,7 @@ AddEventHandler('esx_lockpick:onUse', function()
           local chance =	lockpickchance()
           if chance == true then
             if Config.CallCops then
-              local randomReport = (math.random(100) <= Config.CallCopsPercent)
-              if randomReport then
-                TriggerServerEvent('esx_lockpick:Notify')
-              end
+              CheckForWitness()
             end
 
             Citizen.Wait(Config.LockTime * 1000)
@@ -168,10 +165,7 @@ AddEventHandler('esx_lockpick:onUse', function()
               end
             else
               if Config.CallCops then
-                local randomReport = (math.random(100) <= Config.CallCopsPercent)
-                if randomReport then
-                  TriggerServerEvent('esx_lockpick:Notify')
-                end
+                CheckForWitness()
               end
               Citizen.Wait(Config.LockTime * 1000)
               ClearPedTasksImmediately(playerPed)
@@ -235,7 +229,32 @@ function CheckForWitness()
   else
     Citizen.CreateThread(function()
       while (pedIsEntering and not pedWasReported) do
-        Citizen.Wait(10000)
+        local pedLoc, playerPed, playerLoc, distance
+        local foundPed = nil
+
+        for ped in EnumeratePeds() do
+          if DoesEntityExist(ped) then
+            pedLoc    = GetEntityCoords(ped, false)
+            playerPed = GetPlayerPed(-1)
+            playerLoc = GetEntityCoords(playerPed, false)
+            distance  = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
+
+            if playerPed ~= ped and distance < Config.CallCopsDistance then
+              Citizen.Trace("Found a ped " .. distance .. " away\n")
+              foundPed = true
+              break
+            end
+          end
+        end
+
+        if (foundPed and math.random(100) <= Config.CallCopsPercent) then
+          TaskLookAtCoord(foundPed, playerLoc.x, playerLoc.y, playerLoc.z, 10000, 0, 2)
+          TaskUseMobilePhone(foundPed, 0, 0)
+          TriggerServerEvent('esx_lockpick:Notify')
+          pedWasReported = true
+        end
+
+        Citizen.Wait(5000)
       end
     end)
   end
