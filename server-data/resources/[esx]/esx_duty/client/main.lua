@@ -17,6 +17,7 @@ local CurrentActionData       = {}
 local HasAlreadyEnteredMarker = false
 local LastZone                = nil
 local markerWaitTime          = 1
+local currentDutyMarker       = nil
 
 
 --- esx
@@ -72,7 +73,6 @@ Citizen.CreateThread(function ()
               TriggerServerEvent('duty:onoff')
           end
         end
-
     end       
 end)
 
@@ -86,8 +86,9 @@ Citizen.CreateThread(function ()
     for k,v in pairs(Config.Zones) do
       if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
         for a,b in ipairs(v.Jobs) do
-          if PlayerData ~= nil and PlayerData.job.name == b then 
+          if PlayerData.job ~= nil and PlayerData.job.name == b then 
             DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+            currentDutyMarker = v          
           end
         end
       end
@@ -107,14 +108,18 @@ Citizen.CreateThread(function ()
     local isInMarker  = false
     local currentZone = nil
 
+    while currentDutyMarker == nil do
+      Wait(100)
+    end
+
+    if (GetDistanceBetweenCoords(coords, currentDutyMarker.Pos.x, currentDutyMarker.Pos.y, currentDutyMarker.Pos.z, true) < Config.DrawDistance) then
+      markerWaitTime = 1
+    else
+      markerWaitTime = 10000
+      break
+    end
 
     for k,v in pairs(Config.Zones) do
-      if (GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
-        markerWaitTime = 1
-      else
-        markerWaitTime = 5000
-      end
-
       if (GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
         isInMarker  = true
         currentZone = k
