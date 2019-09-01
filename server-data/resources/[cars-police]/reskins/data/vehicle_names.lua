@@ -1,5 +1,4 @@
-	Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), key, value)
-end
+Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), key, value)
 
 Citizen.CreateThread(function()
 	-- POLICE2
