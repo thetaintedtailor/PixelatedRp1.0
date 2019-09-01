@@ -7,7 +7,7 @@ CREATE TABLE `financed_vehicles` (
     `purchase_price` int(11) NOT NULL,
     `payment_cost` int(6) NOT NULL,
     `remaining_balance` int(11) NOT NULL,
-    `payments_behind` TINYINT(1) NOT NULL DEFAULT '0',
+    `payments_behind` int(2) NOT NULL DEFAULT '0',
 
     PRIMARY KEY (`plate`)
 );

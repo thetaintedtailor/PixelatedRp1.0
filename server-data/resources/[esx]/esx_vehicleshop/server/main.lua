@@ -377,6 +377,18 @@ ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb
 
 					local vehicle = json.decode(result[1].vehicle)
 
+					MySQL.Sync.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND @plate = plate', {
+						['@owner'] = xPlayer.identifier,
+						['@plate'] = plate
+					}, function (result)
+						if #result > 0 then
+							resellPrice = 0
+							MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+								['@plate'] = plate
+							})
+						end
+					end)
+					
 					if vehicle.model == model then
 						if vehicle.plate == plate then
 							xPlayer.addMoney(resellPrice)

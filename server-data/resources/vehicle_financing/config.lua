@@ -1,6 +1,7 @@
 Config = {}
 
-Config.InterestRate = 0.15
+Config.InterestRate = 0.08
+Config.PaymentBehindRepo = 3
 Config.PaymentLocations = {
     PDM = {
         Coords = vector3(-29.79, -1103.59, 26.42),

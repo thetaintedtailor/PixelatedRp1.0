@@ -10,8 +10,8 @@ end)
 
 --Detect player in marker
 Citizen.CreateThread(function()
-    local playerPed = PlayerPedId()
     while true do
+        local playerPed = PlayerPedId()
         local coords = GetEntityCoords(playerPed)
         local waitTime = 5000
         
@@ -22,9 +22,9 @@ Citizen.CreateThread(function()
 				DrawMarker(v.Sprite, v.Coords, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.0, 1.0, 1.0, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, true, false, false, false)
                 if distance < 1 then
                     if IsControlJustReleased(0, 38) then
-                        OpenFinanceMenu(vehicles)
+                        OpenFinanceMenu()
                     end
-                    ESX.ShowHelpNotification('Press ~r~E~s~ to make a payment for ~g~$' .. 1000 .. '~s~')
+                    ESX.ShowHelpNotification('Press ~r~E~s~ to make a car payment.')
                 end
             end
         end
@@ -32,7 +32,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-function OpenFinanceMenu(vehicles)
+function OpenFinanceMenu()
     ESX.UI.Menu.CloseAll()
 
     local elements = {}
@@ -55,24 +55,23 @@ function OpenFinanceMenu(vehicles)
     end)
 end
 
-function ListFinancedVehiclesMenu(vehicles)
+function ListFinancedVehiclesMenu()
+    local elements = {}
+
     ESX.TriggerServerCallback('vehicle_financing:getfinancedvehicles', function(vehicles)
         if #vehicles == 0 then
             ESX.ShowNotification('No financed vehicles')
         else
             for _,v in pairs(vehicles) do
-                local hashVehicle = v.vehicle.model
-                local vehicleName = GetDisplayNameFromVehicleModel(hashVehicle)
-                local plate = v.plate
                 local labelVehicle 
                 
                 if v.paymentsBehind ~= 0 then
-                    labelVehicle = ' ' .. vehicleName .. ' | ' .. plate .. ' | Payment Due'
+                    labelVehicle = ' ' .. v.vehicle .. ' | ' .. v.plate .. ' | Balance: $' .. v.remainingBalance .. ' | Late'
                 else
-                    labelVehicle = ' ' .. vehicleName .. ' | ' .. plate .. ' | Payment Not Due'
+                    labelVehicle = ' ' .. v.vehicle .. ' | ' .. v.plate .. ' | Balance: $' .. v.remainingBalance
                 end
 
-                table.insert(elements, {label, labelVehicle, value = v})
+                table.insert(elements, {label = labelVehicle, value = v.plate})
             end
         end
 
@@ -81,10 +80,10 @@ function ListFinancedVehiclesMenu(vehicles)
             align = 'center',
             elements = elements
         }, function(data,  menu)
-            
+            TriggerServerEvent('vehicle_financing:carpayment', data.current.value)
+            menu.close()
         end, function(data,menu)
             menu.close()
         end)
     end)
 end
-]]
