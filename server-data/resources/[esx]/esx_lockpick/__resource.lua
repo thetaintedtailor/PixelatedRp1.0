@@ -6,6 +6,7 @@ version '2.0.3'
 client_scripts {
 	'@es_extended/locale.lua',
 	'client/main.lua',
+	'client/entityiter.lua',
 	'locales/en.lua',
 	'config.lua'
 }
