@@ -1,5 +1,3 @@
-Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), key, value)
-
 Citizen.CreateThread(function()
 	-- POLICE2
 	AddTextEntry('0x9F05F101', 'Police2')
