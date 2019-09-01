@@ -76,6 +76,7 @@ AddEventHandler('es:removedBank', function(m)
 	SetPlayerCashChange(0, -math.floor(m))
 end)
 
+--[[
 RegisterNetEvent("es:setMoneyDisplay")
 AddEventHandler("es:setMoneyDisplay", function(val)
 	SendNUIMessage({
@@ -83,6 +84,7 @@ AddEventHandler("es:setMoneyDisplay", function(val)
 		display = val
 	})
 end)
+]]
 
 RegisterNetEvent("es_ui:setSeperatorType")
 AddEventHandler("es_ui:setSeperatorType", function(val)
