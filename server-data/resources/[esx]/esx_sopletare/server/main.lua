@@ -45,7 +45,6 @@ AddEventHandler('esx_sopletare:getItem', function()
             'clip',
             'firingpin',
             'bobbypen',
-            'gunpowder',
             'ring',
             'rubberband',
             'silverchain',
