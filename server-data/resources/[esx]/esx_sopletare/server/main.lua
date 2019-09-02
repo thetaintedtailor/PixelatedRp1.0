@@ -20,7 +20,13 @@ JokeFinds = {
     'turd',
     'dead gigolo',
     'torn apart sex doll',
-    'birthday cake'
+    'birthday cake',
+    'VHS of scrambled porn',
+    'rusty nails',
+    'plastic baggies filled with yellow liquid',
+    'worn out copy of the Kama Sutra',
+    'used pregnancy test(positive)',
+    'spoopy halloween decorations'
 }
 
 TriggerEvent("esx:getSharedObject", function(response)
