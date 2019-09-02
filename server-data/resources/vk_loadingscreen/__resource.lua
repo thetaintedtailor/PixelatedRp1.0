@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/hold_my_hand.mp3',
+    'music/talk_street.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
