@@ -38,7 +38,7 @@ AddEventHandler('esx_sopletare:getItem', function()
 
     local luck = math.random(1, 10)
 
-    if luck == 1 then
+    if luck <= 2 then
 
         local items = { -- add whatever items you want here
             'bionictrigger',
