@@ -30,7 +30,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(3500,6000),
+		Payment  = math.random(2500,3500),
 		Cars = {'zentorno','t20','reaper','italigtb','pfister811'},
 	},
 	--Lighthouse 9.61KM
@@ -39,7 +39,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(3500,6000),
+		Payment  = math.random(2500,3500),
 		Cars = {'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--House in Paleto 12.94KM
@@ -48,7 +48,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(4500,8000),
+		Payment  = math.random(2500,3500),
 		Cars = {'entityxf','sheava','gp1','vagner','neon'},
 	},
 	--Great Ocean Highway 10.47KM
@@ -57,7 +57,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(4000,6500),
+		Payment  = math.random(2500,3500),
 		Cars = {'nero','seven70','tempesta','xa21','raiden'},
 	},
 	--Marina Drive Desert 8.15KM
@@ -66,7 +66,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(3000,5000),
+		Payment  = math.random(2500,3500),
 		Cars = {'specter','comet5','nightshade','sc1','banshee2'},
 	},
 }
