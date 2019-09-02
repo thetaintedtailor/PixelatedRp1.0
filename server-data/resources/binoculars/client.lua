@@ -1,9 +1,3 @@
--- Source: https://github.com/ZAUB1/ESX-Binoculars author ZAUB1
--- Source script heavily based and used many elements of https://github.com/mraes/FiveM-scripts/tree/master/heli
-
--- This release: Removed unused code. Changed UI to use binocular scaleform.
---				 Fixed zoom in/out. Added keybind support
---				 twitch.tv/SerpicoTV
 --CONFIG--
 local fov_max = 70.0
 local fov_min = 5.0 -- max zoom level (smaller fov is more zoom)
@@ -14,12 +8,24 @@ local speed_ud = 8.0 -- speed by which the camera pans up-down
 local binoculars = false
 local fov = (fov_max+fov_min)*0.5
 
-local keybindEnabled = true -- When enabled, binocular are available by keybind
 local binocularKey = 104 -- H key
 local storeBinoclarKey = 177 --backspace
 
---THREADS--
+-- ESX INITIALIZE -- 
+local ESX = nil
 
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) 
+            ESX = obj 
+        end)
+
+        Citizen.Wait(0)
+    end
+end)
+
+
+--THREADS--
 Citizen.CreateThread(function()
 	while true do
 
@@ -28,7 +34,8 @@ Citizen.CreateThread(function()
 		local lPed = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(lPed)
 
-		if binoculars or (keybindEnabled and IsControlJustReleased(1, binocularKey)) then
+		if binoculars or (IsControlJustReleased(1, binocularKey)) then
+			TriggerServerEvent('binoculars:checkQuantity')
 			binoculars = true
 			if not ( IsPedSittingInAnyVehicle( lPed ) ) then
 				Citizen.CreateThread(function()
@@ -102,6 +109,7 @@ AddEventHandler('binoculars:Activate', function()
 end)
 
 --FUNCTIONS--
+
 function HideHUDThisFrame()
 	HideHelpTextThisFrame()
 	HideHudAndRadarThisFrame()
@@ -120,6 +128,7 @@ function HideHUDThisFrame()
 	HideHudComponentThisFrame(18) -- Game Stream
 	HideHudComponentThisFrame(19) -- weapon wheel
 end
+
 
 function CheckInputRotation(cam, zoomvalue)
 	local rightAxisX = GetDisabledControlNormal(0, 220)
