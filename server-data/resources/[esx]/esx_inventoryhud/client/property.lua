@@ -60,6 +60,8 @@ function setPropertyInventoryData(data)
         local item = propertyItems[i]
 
         if item.count > 0 then
+            item.name = propertyItems[i].name
+            item.label = propertyItems[i].label
             item.type = "item_standard"
             item.usable = false
             item.rare = false
