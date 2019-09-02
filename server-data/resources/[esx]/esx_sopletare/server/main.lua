@@ -87,10 +87,10 @@ AddEventHandler('esx_sopletare:getItem', function()
         sendNotification(source, 'You found a ' .. weaponfound, 'success', 2500)
     else
         local rand = math.random(1, 10)
-        if rand <= 3 then
+        if rand <= 5 then
             sendNotification(source, 'You found a(n) ' .. JokeFinds[math.random(1, #JokeFinds)] .. '. Gross!', 'error', 2000)
         else
-            sendNotification(source, 'You found nothing, get a job you bum', 'error', 2000)
+            sendNotification(source, 'You found nothing, get a job you bum.', 'error', 2000)
         end
     end
 end)
