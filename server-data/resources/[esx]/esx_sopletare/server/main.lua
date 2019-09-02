@@ -1,5 +1,28 @@
 ESX = nil
 
+JokeFinds = {
+    'used condom',
+    'dirty diaper',
+    'junkie needle',
+    'nude polaroid of Barlow\'s mom',
+    'empty lube bottle',
+    'used buttwipes',
+    'half-eaten turkey sandwich',
+    'dead hooker',
+    'Grinkle\'s eye',
+    'Punk\'s left testicle',
+    'apple pie with a single hole in it',
+    'dead opossum full of maggots',
+    'rotten pickle',
+    'bloody, autographed dildo signed \"Berries\"',
+    'bloody, broken bat engraved with \"Sadia\"',
+    'turned on, battery powered vibrator covered in ketchup',
+    'turd',
+    'dead gigolo',
+    'torn apart sex doll',
+    'birthday cake'
+}
+
 TriggerEvent("esx:getSharedObject", function(response)
     ESX = response
 end)
@@ -39,7 +62,7 @@ AddEventHandler('esx_sopletare:getItem', function()
         player.addInventoryItem(randomItems, quantity)
         sendNotification(source, 'You found ' .. quantity .. ' ' .. itemfound, 'success', 2500)
 
-    elseif luck == 15 then
+    elseif luck == 10 then
 
         local weapons = { -- add whatever weapons you want here
             'WEAPON_KNIFE',
@@ -48,7 +71,6 @@ AddEventHandler('esx_sopletare:getItem', function()
             'WEAPON_HATCHET',
             'WEAPON_GOLFCLUB',
             'WEAPON_HAMMER',
-
         }
 
         local player = ESX.GetPlayerFromId(source)
@@ -59,6 +81,11 @@ AddEventHandler('esx_sopletare:getItem', function()
         player.addWeapon(randomWeapons, quantity)
         sendNotification(source, 'You found a ' .. weaponfound, 'success', 2500)
     else
-        sendNotification(source, 'You found nothing, get a job you fucking bum', 'error', 2000)
+        local rand = math.random(1, 10)
+        if rand <= 3 then
+            sendNotification(source, 'You found a(n) ' .. JokeFinds[math.random(1, #JokeFinds)] .. '. Gross!', 'error', 2000)
+        else
+            sendNotification(source, 'You found nothing, get a job you bum', 'error', 2000)
+        end
     end
 end)
