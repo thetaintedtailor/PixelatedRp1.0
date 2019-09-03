@@ -118,6 +118,12 @@ end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
 end, {help = "Set weather type", params = {{name = "weatherType", help = "Available types: extrasunny, clear, neutral, smog, foggy, overcast, clouds, clearing, rain, thunder, snow, blizzard, snowlight, xmas & halloween"}}})
 
+TriggerEvent('es:addGroupCommand', 'blackout', 'admin', function(source, args, user)
+	TriggerEvent('es_wsync:blackout', source)
+end, function(source, args, user)
+	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
+end, {help = "Toggle off all ambient city lighting"})
+
 RegisterServerEvent('es_wsync:blackout')
 AddEventHandler('es_wsync:blackout', function(source)
 	if source == 0 then
@@ -134,8 +140,8 @@ AddEventHandler('es_wsync:blackout', function(source)
 		else
 			TriggerClientEvent('esx:showNotification', source, 'Blackout is now ~r~disabled~s~.')
 		end
-		TriggerEvent('es_wsync:requestSync')
 	end
+	TriggerEvent('es_wsync:requestSync')
 end)
 
 RegisterServerEvent('es_wsync:morning')
