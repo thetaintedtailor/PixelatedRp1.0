@@ -84,7 +84,7 @@ function AutoCarPayments(d, h, m)
                             ['@remaining_balance'] = result[i].remaining_balance - result[i].payment_cost,
                             ['@owner'] = result[i].owner
                         })
-                        if result[i].remaining_balance < (result[i].payment_cost * 2) then
+                        if result[i].remaining_balance < 100 then
                             TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve ~g~paid off~s~ one of your vehicles!')
                             MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
                                 ['@plate'] = result[i].plate
