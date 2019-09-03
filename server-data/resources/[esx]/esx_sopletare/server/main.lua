@@ -20,7 +20,13 @@ JokeFinds = {
     'turd',
     'dead gigolo',
     'torn apart sex doll',
-    'birthday cake'
+    'birthday cake',
+    'VHS of scrambled porn',
+    'rusty nails',
+    'plastic baggies filled with yellow liquid',
+    'worn out copy of the Kama Sutra',
+    'used pregnancy test(positive)',
+    'spoopy halloween decorations'
 }
 
 TriggerEvent("esx:getSharedObject", function(response)
@@ -32,14 +38,13 @@ AddEventHandler('esx_sopletare:getItem', function()
 
     local luck = math.random(1, 10)
 
-    if luck == 1 then
+    if luck <= 2 then
 
         local items = { -- add whatever items you want here
             'bionictrigger',
             'clip',
             'firingpin',
             'bobbypen',
-            'gunpowder',
             'ring',
             'rubberband',
             'silverchain',
@@ -82,10 +87,10 @@ AddEventHandler('esx_sopletare:getItem', function()
         sendNotification(source, 'You found a ' .. weaponfound, 'success', 2500)
     else
         local rand = math.random(1, 10)
-        if rand <= 3 then
+        if rand <= 5 then
             sendNotification(source, 'You found a(n) ' .. JokeFinds[math.random(1, #JokeFinds)] .. '. Gross!', 'error', 2000)
         else
-            sendNotification(source, 'You found nothing, get a job you bum', 'error', 2000)
+            sendNotification(source, 'You found nothing, get a job you bum.', 'error', 2000)
         end
     end
 end)
