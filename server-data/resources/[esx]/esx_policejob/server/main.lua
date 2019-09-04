@@ -105,6 +105,14 @@ AddEventHandler('esx_policejob:handcuff', function(target)
 	end
 end)
 
+RegisterServerEvent('esx_police:startArrest')
+AddEventHandler('esx_police:startArrest', function(target)
+	local targetPlayer = ESX.GetPlayerFromId(target)
+
+	TriggerClientEvent('esx_police:arresteeAnim', targetPlayer.source, source)
+	TriggerClientEvent('esx_police:arresterAnim', source)
+end)
+
 RegisterServerEvent('esx_policejob:drag')
 AddEventHandler('esx_policejob:drag', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)

@@ -26,6 +26,13 @@ local isDead = false
 local CurrentTask = {}
 local playerInService = false
 local spawnedVehicles, isInShopMenu = {}, false
+local Arrester					= false		
+local Arrested				= false		
+ 
+local AnimDict			= 'mp_arrest_paired'	
+local AnimArrester 		= 'cop_p2_back_left'
+local AnimArrestee		= 'crook_p2_back_left'	
+local ArrestTimer		= 0
 
 ESX                           = nil
 
@@ -1832,12 +1839,12 @@ AddEventHandler('esx_policejob:handcuff', function()
 	Citizen.CreateThread(function()
 		if IsHandcuffed then
 
-			RequestAnimDict('mp_arresting')
+			--[[RequestAnimDict('mp_arresting')
 			while not HasAnimDictLoaded('mp_arresting') do
 				Citizen.Wait(100)
 			end
 
-			TaskPlayAnim(playerPed, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0, 0, 0, 0)
+			TaskPlayAnim(playerPed, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0, 0, 0, 0)]]
 
 			SetEnableHandcuffs(playerPed, true)
 			DisablePlayerFiring(playerPed, true)
@@ -1869,6 +1876,46 @@ AddEventHandler('esx_policejob:handcuff', function()
 			DisplayRadar(true)
 		end
 	end)
+
+end)
+
+RegisterNetEvent('esx_ruski_arrest:arresteeAnim')
+AddEventHandler('esx_ruski_arrest:arresteeAnim', function(target)
+	Arrested = true
+
+	local playerPed = GetPlayerPed(-1)
+	local targetPed = GetPlayerPed(GetPlayerFromServerId(target))
+
+	RequestAnimDict(AnimDict)
+
+	while not HasAnimDictLoaded(AnimDict) do
+		Citizen.Wait(10)
+	end
+
+	AttachEntityToEntity(GetPlayerPed(-1), targetPed, 11816, -0.1, 0.45, 0.0, 0.0, 0.0, 20.0, false, false, false, false, 20, false)
+	TaskPlayAnim(playerPed, AnimDict, AnimArrestee, 8.0, -8.0, 5500, 33, 0, false, false, false)
+
+	Citizen.Wait(950)
+	DetachEntity(GetPlayerPed(-1), true, false)
+
+	Arrested = false
+end)
+
+RegisterNetEvent('esx_ruski_arrest:arresterAnim')
+AddEventHandler('esx_ruski_arrest:arresterAnim', function()
+	local playerPed = GetPlayerPed(-1)
+
+	RequestAnimDict(AnimDict)
+
+	while not HasAnimDictLoaded(AnimDict) do
+		Citizen.Wait(10)
+	end
+
+	TaskPlayAnim(playerPed, AnimDict, AnimArrester, 8.0, -8.0, 5500, 33, 0, false, false, false)
+
+	Citizen.Wait(3000)
+
+	Arrester = false
 
 end)
 
@@ -2299,6 +2346,24 @@ Citizen.CreateThread(function()
 			ClearPedTasks(PlayerPedId())
 
 			CurrentTask.Busy = false
+		end
+
+		if IsControlPressed(0, 21) and IsControlPressed(0, 79) and not Arrester and GetGameTimer() - ArrestTimer > 10 * 1000 and PlayerData.job.name == 'police' then	
+			Citizen.Wait(10)
+			local closestPlayer, distance = ESX.Game.GetClosestPlayer()
+
+			if distance ~= -1 and distance <= Config.ArrestDistance and not Arrester and not Arrested and not IsPedInAnyVehicle(GetPlayerPed(-1)) and not IsPedInAnyVehicle(GetPlayerPed(closestPlayer)) then
+				Arrester = true
+				ArrestTimer = GetGameTimer()
+
+				TriggerServerEvent('esx_police:startArrest', GetPlayerServerId(closestPlayer))								
+
+				Citizen.Wait(2100)																									
+				--TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 2.0, 'cuffseffect', 0.7)
+
+				Citizen.Wait(3100)																												
+				TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(closestPlayer))									
+			end
 		end
 	end
 end)
