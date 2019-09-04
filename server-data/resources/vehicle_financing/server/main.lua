@@ -12,8 +12,9 @@ MySQL.ready(function()
 end)
 
 RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-    print(xPlayer)
+AddEventHandler('esx:playerLoaded', function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    print(xPlayer.identifier[1])
 end)
 
 
