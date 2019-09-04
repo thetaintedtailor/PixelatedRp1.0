@@ -7,7 +7,7 @@ local speed_ud = 8.0 -- speed by which the camera pans up-down
 
 local binoculars = false
 local fov = (fov_max+fov_min)*0.5
-
+local binocularsInInventory = false
 local binocularKey = 104 -- H key
 local storeBinoclarKey = 177 --backspace
 
@@ -35,67 +35,74 @@ Citizen.CreateThread(function()
 		local vehicle = GetVehiclePedIsIn(lPed)
 
 		if binoculars or (IsControlJustReleased(1, binocularKey)) then
-			TriggerServerEvent('binoculars:checkQuantity')
-			binoculars = true
-			if not ( IsPedSittingInAnyVehicle( lPed ) ) then
-				Citizen.CreateThread(function()
-					TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_BINOCULARS", 0, 1)
-					PlayAmbientSpeech1(GetPlayerPed(-1), "GENERIC_CURSE_MED", "SPEECH_PARAMS_FORCE")
-				end)
-			end
 
-			Wait(2000)
+			ESX.TriggerServerCallback('binoculars:checkQuantity', function(valid)
+				print('what the fuck', valid)
+				if valid then
+					binoculars = true
+					if not ( IsPedSittingInAnyVehicle( lPed ) ) then
+						Citizen.CreateThread(function()
+							TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_BINOCULARS", 0, 1)
+							PlayAmbientSpeech1(GetPlayerPed(-1), "GENERIC_CURSE_MED", "SPEECH_PARAMS_FORCE")
+						end)
+					end
 
-			SetTimecycleModifier("default")
+					Wait(2000)
 
-			SetTimecycleModifierStrength(0.3)
+					SetTimecycleModifier("default")
 
-			local scaleform = RequestScaleformMovie("BINOCULARS")
+					SetTimecycleModifierStrength(0.3)
 
-			while not HasScaleformMovieLoaded(scaleform) do
-				Citizen.Wait(0)
-			end
+					local scaleform = RequestScaleformMovie("BINOCULARS")
 
-			local lPed = GetPlayerPed(-1)
-			local vehicle = GetVehiclePedIsIn(lPed)
-			local cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA", true)
+					while not HasScaleformMovieLoaded(scaleform) do
+						Citizen.Wait(0)
+					end
 
-			AttachCamToEntity(cam, lPed, 0.0,0.0,1.0, true)
-			SetCamRot(cam, 0.0,0.0,GetEntityHeading(lPed))
-			SetCamFov(cam, fov)
-			RenderScriptCams(true, false, 0, 1, 0)
-			PushScaleformMovieFunction(scaleform, "SET_CAM_LOGO")
-			PushScaleformMovieFunctionParameterInt(0) -- 0 for nothing, 1 for LSPD logo
-			PopScaleformMovieFunctionVoid()
+					local lPed = GetPlayerPed(-1)
+					local vehicle = GetVehiclePedIsIn(lPed)
+					local cam = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA", true)
 
-			while binoculars and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == vehicle) and true do
-				if IsControlJustPressed(0, storeBinoclarKey) then -- Toggle binoculars
-					PlaySoundFrontend(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", false)
-					ClearPedTasks(GetPlayerPed(-1))
+					AttachCamToEntity(cam, lPed, 0.0,0.0,1.0, true)
+					SetCamRot(cam, 0.0,0.0,GetEntityHeading(lPed))
+					SetCamFov(cam, fov)
+					RenderScriptCams(true, false, 0, 1, 0)
+					PushScaleformMovieFunction(scaleform, "SET_CAM_LOGO")
+					PushScaleformMovieFunctionParameterInt(0) -- 0 for nothing, 1 for LSPD logo
+					PopScaleformMovieFunctionVoid()
+
+					while binoculars and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == vehicle) and true do
+						if IsControlJustPressed(0, storeBinoclarKey) then -- Toggle binoculars
+							PlaySoundFrontend(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", false)
+							ClearPedTasks(GetPlayerPed(-1))
+							binoculars = false
+						end
+
+						local zoomvalue = (1.0/(fov_max-fov_min))*(fov-fov_min)
+						CheckInputRotation(cam, zoomvalue)
+
+						HandleZoom(cam)
+						HideHudAndRadarThisFrame()
+						exports["scrp_scripts"]:hideStreetHud()
+						exports["fivem_TimeAndDateDisplay"]:hideTimeDate()
+						DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
+						Citizen.Wait(0)
+					end
+
 					binoculars = false
-				end
-
-				local zoomvalue = (1.0/(fov_max-fov_min))*(fov-fov_min)
-				CheckInputRotation(cam, zoomvalue)
-
-				HandleZoom(cam)
-				HideHudAndRadarThisFrame()
-				exports["scrp_scripts"]:hideStreetHud()
-				exports["fivem_TimeAndDateDisplay"]:hideTimeDate()
-				DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
-				Citizen.Wait(0)
-			end
-
-			binoculars = false
-			ClearTimecycleModifier()
-			fov = (fov_max+fov_min)*0.5
-			RenderScriptCams(false, false, 0, 1, 0)
-			SetScaleformMovieAsNoLongerNeeded(scaleform)
-			DestroyCam(cam, false)
-			SetNightvision(false)
-			SetSeethrough(false)
-			exports["scrp_scripts"]:showStreetHud()
-			exports["fivem_TimeAndDateDisplay"]:showTimeDate()
+					ClearTimecycleModifier()
+					fov = (fov_max+fov_min)*0.5
+					RenderScriptCams(false, false, 0, 1, 0)
+					SetScaleformMovieAsNoLongerNeeded(scaleform)
+					DestroyCam(cam, false)
+					SetNightvision(false)
+					SetSeethrough(false)
+					exports["scrp_scripts"]:showStreetHud()
+					exports["fivem_TimeAndDateDisplay"]:showTimeDate()
+				else			
+					ESX.ShowNotification("you do not have binoculars in your inventory")
+				end --remove this if need
+			end) --remove this if need
 		end
 	end
 end)
