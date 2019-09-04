@@ -1,7 +1,25 @@
-RegisterCommand('wheelchair', function()
-	LoadModel('prop_wheelchair_01')
+ESX = nil
 
-	local wheelchair = CreateObject(GetHashKey('prop_wheelchair_01'), GetEntityCoords(PlayerPedId()), true)
+Citizen.CreateThread(function()
+    while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+
+	while ESX.GetPlayerData().job == nil do
+		Citizen.Wait(10)
+	end
+
+	ESX.PlayerData = ESX.GetPlayerData()
+end)
+
+RegisterCommand('wheelchair', function()
+	if ESX.PlayerData.job == 'ambulance' then
+		LoadModel('prop_wheelchair_01')
+		local wheelchair = CreateObject(GetHashKey('prop_wheelchair_01'), GetEntityCoords(PlayerPedId()), true)
+	else
+		ESX.ShowNotification(_U('Please contact EMS if you are in need of a wheelchair.'))
+	end
 end, false)
 
 RegisterCommand('removewheelchair', function()
