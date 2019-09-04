@@ -2352,7 +2352,7 @@ Citizen.CreateThread(function()
 		if IsControlPressed(0, 21) and IsControlPressed(0, 79) and not Arrester and GetGameTimer() - ArrestTimer > 10 * 1000 and PlayerData.job.name == 'police' then	
 			
 			Citizen.Wait(10)
-			local closestPlayer, distance = ESX.Game.GetClosestPlayer()
+			local closestPlayer, distance = ESX.Game.GetClosestPed()
 
 			if distance ~= -1 and distance <= Config.ArrestDistance and not Arrester and not Arrested and not IsPedInAnyVehicle(GetPlayerPed(-1)) and not IsPedInAnyVehicle(GetPlayerPed(closestPlayer)) then
 				Arrester = true
