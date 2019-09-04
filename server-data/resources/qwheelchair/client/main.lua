@@ -13,12 +13,17 @@ Citizen.CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+	ESX.PlayerData.job = job
+end)
+
 RegisterCommand('wheelchair', function()
-	if ESX.PlayerData.job == 'ambulance' then
+	if ESX.PlayerData.job.name == 'ambulance' then
 		LoadModel('prop_wheelchair_01')
 		local wheelchair = CreateObject(GetHashKey('prop_wheelchair_01'), GetEntityCoords(PlayerPedId()), true)
 	else
-		ESX.ShowNotification(_U('Please contact EMS if you are in need of a wheelchair.'))
+		ESX.ShowNotification('Please contact EMS if you are in need of a wheelchair.')
 	end
 end, false)
 
