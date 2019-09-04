@@ -1123,9 +1123,9 @@ function OpenFineMenu(player)
 		title    = _U('fine'),
 		align    = 'right',
 		elements = {
-			{label = _U('traffic_offense'), value = 0},
+			--{label = _U('traffic_offense'), value = 0},
 			{label = _U('minor_offense'),   value = 1},
-			{label = _U('average_offense'), value = 2},
+			--{label = _U('average_offense'), value = 2},
 			{label = _U('major_offense'),   value = 3}
 		}
 	}, function(data, menu)

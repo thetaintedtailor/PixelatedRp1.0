@@ -136,9 +136,9 @@ Locales['en'] = {
   ['you_confiscated_weapon'] = 'you confiscated ~b~%s~s~ from ~b~%s~s~ with ~o~%s~s~ bullets',
   ['got_confiscated_weapon'] = 'your ~b~%s~s~ with ~o~%s~s~ bullets was confiscated by ~y~%s~s~',
   ['traffic_offense'] = 'traffic Offense',
-  ['minor_offense'] = 'minor Offense',
+  ['minor_offense'] = 'misdemeanor',
   ['average_offense'] = 'average Offense',
-  ['major_offense'] = 'major Offense',
+  ['major_offense'] = 'felony',
   ['fine_total'] = 'fine: %s',
   -- Vehicle Info Menu
   ['plate'] = 'plate: %s',

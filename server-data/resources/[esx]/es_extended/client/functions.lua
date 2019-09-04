@@ -46,23 +46,23 @@ end
 
 ESX.ShowNotification = function(msg)
 	SetNotificationTextEntry('STRING')
-	AddTextComponentSubstringWebsite(msg)
+	AddTextComponentSubstringPlayerName(msg)
 	DrawNotification(false, true)
 end
 
 ESX.ShowAdvancedNotification = function(title, subject, msg, icon, iconType)
 	SetNotificationTextEntry('STRING')
-	AddTextComponentSubstringWebsite(msg)
+	AddTextComponentSubstringPlayerName(msg)
 	SetNotificationMessage(icon, icon, false, iconType, title, subject)
 	DrawNotification(false, false)
 end
 
 ESX.ShowHelpNotification = function(msg)
-	if not IsHelpMessageOnScreen() then
+	--if not IsHelpMessageBeingDisplayed() then
 		BeginTextCommandDisplayHelp('STRING')
-		AddTextComponentSubstringWebsite(msg)
+		AddTextComponentSubstringPlayerName(msg)
 		EndTextCommandDisplayHelp(0, false, true, -1)
-	end
+	--end
 end
 
 ESX.TriggerServerCallback = function(name, cb, ...)
@@ -130,14 +130,14 @@ ESX.UI.HUD.UpdateElement = function(name, data)
 	SendNUIMessage({
 		action = 'updateHUDElement',
 		name   = name,
-		data   = data,
+		data   = data
 	})
 end
 
 ESX.UI.Menu.RegisterType = function(type, open, close)
 	ESX.UI.Menu.RegisteredTypes[type] = {
 		open   = open,
-		close  = close,
+		close  = close
 	}
 end
 
@@ -198,12 +198,20 @@ ESX.UI.Menu.Open = function(type, namespace, name, data, submit, cancel, change,
 		menu.data.elements[i][key] = val
 	end
 
+	menu.setTitle = function(val)
+		menu.data.title = val
+	end
+
 	menu.removeElement = function(query)
 		for i=1, #menu.data.elements, 1 do
 			for k,v in pairs(query) do
-				if menu.data.elements[i][k] == v then
-					menu.data.elements[i] = nil
+				if menu.data.elements[i] then
+					if menu.data.elements[i][k] == v then
+						table.remove(menu.data.elements, i)
+						break
+					end
 				end
+
 			end
 		end
 	end
@@ -290,11 +298,7 @@ ESX.Game.SpawnObject = function(model, coords, cb)
 	local model = (type(model) == 'number' and model or GetHashKey(model))
 
 	Citizen.CreateThread(function()
-		RequestModel(model)
-
-		while not HasModelLoaded(model) do
-			Citizen.Wait(0)
-		end
+		ESX.Streaming.RequestModel(model)
 
 		local obj = CreateObject(model, coords.x, coords.y, coords.z, true, false, true)
 
@@ -308,11 +312,7 @@ ESX.Game.SpawnLocalObject = function(model, coords, cb)
 	local model = (type(model) == 'number' and model or GetHashKey(model))
 
 	Citizen.CreateThread(function()
-		RequestModel(model)
-
-		while not HasModelLoaded(model) do
-			Citizen.Wait(0)
-		end
+		ESX.Streaming.RequestModel(model)
 
 		local obj = CreateObject(model, coords.x, coords.y, coords.z, false, false, true)
 
@@ -336,11 +336,7 @@ ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
 	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
 
 	Citizen.CreateThread(function()
-		RequestModel(model)
-
-		while not HasModelLoaded(model) do
-			Citizen.Wait(0)
-		end
+		ESX.Streaming.RequestModel(model)
 
 		local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
 		local id      = NetworkGetNetworkIdFromEntity(vehicle)
@@ -370,11 +366,7 @@ ESX.Game.SpawnLocalVehicle = function(modelName, coords, heading, cb)
 	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
 
 	Citizen.CreateThread(function()
-		RequestModel(model)
-
-		while not HasModelLoaded(model) do
-			Citizen.Wait(0)
-		end
+		ESX.Streaming.RequestModel(model)
 
 		local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, false, false)
 
@@ -382,7 +374,6 @@ ESX.Game.SpawnLocalVehicle = function(modelName, coords, heading, cb)
 		SetVehicleHasBeenOwnedByPlayer(vehicle, true)
 		SetVehicleNeedsToBeHotwired(vehicle, false)
 		SetModelAsNoLongerNeeded(model)
-
 		RequestCollisionAtCoord(coords.x, coords.y, coords.z)
 
 		while not HasCollisionLoadedAroundEntity(vehicle) do
@@ -396,6 +387,13 @@ ESX.Game.SpawnLocalVehicle = function(modelName, coords, heading, cb)
 			cb(vehicle)
 		end
 	end)
+end
+
+ESX.Game.IsVehicleEmpty = function(vehicle)
+	local passengers = GetVehicleNumberOfPassengers(vehicle)
+	local driverSeatFree = IsVehicleSeatFree(vehicle, -1)
+
+	return passengers == 0 and driverSeatFree
 end
 
 ESX.Game.GetObjects = function()
@@ -427,13 +425,11 @@ ESX.Game.GetClosestObject = function(filter, coords)
 	end
 
 	for i=1, #objects, 1 do
-
 		local foundObject = false
 
 		if filter == nil or (type(filter) == 'table' and #filter == 0) then
 			foundObject = true
 		else
-
 			local objectModel = GetEntityModel(objects[i])
 
 			for j=1, #filter, 1 do
@@ -441,7 +437,6 @@ ESX.Game.GetClosestObject = function(filter, coords)
 					foundObject = true
 				end
 			end
-
 		end
 
 		if foundObject then
@@ -453,22 +448,19 @@ ESX.Game.GetClosestObject = function(filter, coords)
 				closestDistance = distance
 			end
 		end
-
 	end
 
 	return closestObject, closestDistance
 end
 
 ESX.Game.GetPlayers = function()
-	local maxPlayers = Config.MaxPlayers
-	local players    = {}
+	local players = {}
 
-	for i=0, maxPlayers, 1 do
-
-		local ped = GetPlayerPed(i)
+	for _,player in ipairs(GetActivePlayers()) do
+		local ped = GetPlayerPed(player)
 
 		if DoesEntityExist(ped) then
-			table.insert(players, i)
+			table.insert(players, player)
 		end
 	end
 
@@ -634,19 +626,28 @@ ESX.Game.GetClosestPed = function(coords, ignoreList)
 end
 
 ESX.Game.GetVehicleProperties = function(vehicle)
-	local color1, color2               = GetVehicleColours(vehicle)
+	local color1, color2 = GetVehicleColours(vehicle)
 	local pearlescentColor, wheelColor = GetVehicleExtraColours(vehicle)
+	local extras = {}
+
+	for id=0, 12 do
+		if DoesExtraExist(vehicle, id) then
+			local state = IsVehicleExtraTurnedOn(vehicle, id) == 1
+			extras[tostring(id)] = state
+		end
+	end
 
 	return {
-
 		model             = GetEntityModel(vehicle),
 
 		plate             = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)),
 		plateIndex        = GetVehicleNumberPlateTextIndex(vehicle),
 
-		health            = GetEntityHealth(vehicle),
-		dirtLevel         = GetVehicleDirtLevel(vehicle),
+		bodyHealth        = ESX.Math.Round(GetVehicleBodyHealth(vehicle), 1),
+		engineHealth      = ESX.Math.Round(GetVehicleEngineHealth(vehicle), 1),
 
+		fuelLevel         = ESX.Math.Round(GetVehicleFuelLevel(vehicle), 1),
+		dirtLevel         = ESX.Math.Round(GetVehicleDirtLevel(vehicle), 1),
 		color1            = color1,
 		color2            = color2,
 
@@ -662,6 +663,8 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 			IsVehicleNeonLightEnabled(vehicle, 2),
 			IsVehicleNeonLightEnabled(vehicle, 3)
 		},
+
+		extras            = extras,
 
 		neonColor         = table.pack(GetVehicleNeonLightsColour(vehicle)),
 		tyreSmokeColor    = table.pack(GetVehicleTyreSmokeColor(vehicle)),
@@ -729,12 +732,20 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		SetVehicleNumberPlateTextIndex(vehicle, props.plateIndex)
 	end
 
-	if props.health ~= nil then
-		SetEntityHealth(vehicle, props.health)
+	if props.bodyHealth ~= nil then
+		SetVehicleBodyHealth(vehicle, props.bodyHealth + 0.0)
+	end
+
+	if props.engineHealth ~= nil then
+		SetVehicleEngineHealth(vehicle, props.engineHealth + 0.0)
+	end
+
+	if props.fuelLevel ~= nil then
+		SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0)
 	end
 
 	if props.dirtLevel ~= nil then
-		SetVehicleDirtLevel(vehicle, props.dirtLevel)
+		SetVehicleDirtLevel(vehicle, props.dirtLevel + 0.0)
 	end
 
 	if props.color1 ~= nil then
@@ -770,6 +781,16 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		SetVehicleNeonLightEnabled(vehicle, 1, props.neonEnabled[2])
 		SetVehicleNeonLightEnabled(vehicle, 2, props.neonEnabled[3])
 		SetVehicleNeonLightEnabled(vehicle, 3, props.neonEnabled[4])
+	end
+
+	if props.extras ~= nil then
+		for id,enabled in pairs(props.extras) do
+			if enabled then
+				SetVehicleExtra(vehicle, tonumber(id), 0)
+			else
+				SetVehicleExtra(vehicle, tonumber(id), 1)
+			end
+		end
 	end
 
 	if props.neonColor ~= nil then
@@ -979,10 +1000,8 @@ ESX.Game.Utils.DrawText3D = function(coords, text, size)
 	if onScreen then
 		SetTextScale(0.0 * scale, 0.55 * scale)
 		SetTextFont(0)
-		SetTextProportional(1)
 		SetTextColour(255, 255, 255, 255)
 		SetTextDropshadow(0, 0, 0, 0, 255)
-		SetTextEdge(2, 0, 0, 0, 150)
 		SetTextDropShadow()
 		SetTextOutline()
 		SetTextEntry('STRING')
@@ -1107,7 +1126,7 @@ ESX.ShowInventory = function()
 				local players      = ESX.Game.GetPlayersInArea(GetEntityCoords(playerPed), 3.0)
 				local foundPlayers = false
 				local elements     = {}
-			
+
 				for i=1, #players, 1 do
 					if players[i] ~= PlayerId() then
 						foundPlayers = true
@@ -1137,7 +1156,7 @@ ESX.ShowInventory = function()
 
 					for i=1, #players, 1 do
 						if players[i] ~= PlayerId() then
-							
+
 							if players[i] == data2.current.player then
 								foundPlayers = true
 								nearbyPlayer = players[i]
@@ -1316,20 +1335,16 @@ end)
 -- SetTimeout
 Citizen.CreateThread(function()
 	while true do
-
 		Citizen.Wait(0)
 		local currTime = GetGameTimer()
 
 		for i=1, #ESX.TimeoutCallbacks, 1 do
-
-			if ESX.TimeoutCallbacks[i] ~= nil then
+			if ESX.TimeoutCallbacks[i] then
 				if currTime >= ESX.TimeoutCallbacks[i].time then
 					ESX.TimeoutCallbacks[i].cb()
 					ESX.TimeoutCallbacks[i] = nil
 				end
 			end
-
 		end
-
 	end
 end)

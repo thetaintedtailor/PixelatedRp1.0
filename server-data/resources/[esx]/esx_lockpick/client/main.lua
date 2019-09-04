@@ -1,13 +1,15 @@
-ESX						= nil
-local CurrentAction		= nil
-local PlayerData		= {}
-local pedIsTryingToLockpickVehicle  = false
-local timer = 1 --in minutes - Set the time during the player is outlaw
-local showOutlaw = true --Set if show outlaw act on map
-local blipTime = 35 --in second
-local showcopsmisbehave = true --show notification when cops steal too
-local timing = timer * 60000 --Don't touche it
-local cancel = false
+ESX						                      = nil
+local CurrentAction		              = nil
+local PlayerData		                = {}
+local pedIsEntering                 = false -- if the player is in the process of lockpicking/jacking
+local pedIsSeenEntering             = false -- whether a local is calling 911
+local timer                         = 1     --in minutes - Set the time during the player is outlaw
+local showOutlaw                    = true  --Set if show outlaw act on map
+local blipTime                      = 35    --in second
+local showcopsmisbehave             = true  --show notification when cops steal too
+local timing                        = timer * 60000 --Don't touche it
+local cancel                        = false
+local playerPedCache                = {}
 
 Citizen.CreateThread(function()
   while ESX == nil do
@@ -36,9 +38,8 @@ end)
 --//////////////////////////////////////////////--
 RegisterNetEvent('esx_lockpick:onUse')
 AddEventHandler('esx_lockpick:onUse', function()
-  local playerPed		= GetPlayerPed(-1)
+  local playerPed	= GetPlayerPed(-1)
   local coords		= GetEntityCoords(playerPed)
-
 
   if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
     local vehicle = nil
@@ -55,6 +56,8 @@ AddEventHandler('esx_lockpick:onUse', function()
       end
 
       Citizen.Wait(1000)
+
+      pedIsEntering  = true
 
       RequestAnimDict('anim@amb@clubhouse@tutorial@bkr_tut_ig3@')
       while not HasAnimDictLoaded('anim@amb@clubhouse@tutorial@bkr_tut_ig3@') do
@@ -103,10 +106,7 @@ AddEventHandler('esx_lockpick:onUse', function()
           local chance =	lockpickchance()
           if chance == true then
             if Config.CallCops then
-              local randomReport = (math.random(100) <= Config.CallCopsPercent)
-              if randomReport then
-                TriggerServerEvent('esx_lockpick:Notify')
-              end
+              CheckForWitness()
             end
 
             Citizen.Wait(Config.LockTime * 1000)
@@ -149,6 +149,7 @@ AddEventHandler('esx_lockpick:onUse', function()
                     },
                   }, function(status)
                     if not status then
+                      pedIsEntering = false
                       exports.pNotify:SendNotification({
                           text = (_U('unjammed_handbrake')), 
                           type = "success", 
@@ -164,10 +165,7 @@ AddEventHandler('esx_lockpick:onUse', function()
               end
             else
               if Config.CallCops then
-                local randomReport = (math.random(100) <= Config.CallCopsPercent)
-                if randomReport then
-                  TriggerServerEvent('esx_lockpick:Notify')
-                end
+                CheckForWitness()
               end
               Citizen.Wait(Config.LockTime * 1000)
               ClearPedTasksImmediately(playerPed)
@@ -176,7 +174,10 @@ AddEventHandler('esx_lockpick:onUse', function()
               if not Config.IgnoreAbort then
                 TriggerServerEvent('esx_lockpick:removeKit')
               end
+              
               CurrentAction = nil
+              pedIsEntering = false
+
               TerminateThisThread()
             end
           end)
@@ -194,6 +195,7 @@ AddEventHandler('esx_lockpick:onUse', function()
               TerminateThread(ThreadID)
               ESX.ShowNotification(_U('aborted_lockpicking'))
               CurrentAction = nil
+              pedIsEntering = false
             end
           end
         end)
@@ -218,14 +220,59 @@ local function has_value (tab, val)
   end
   return false
 end
+
+function CheckForWitness()
+  local pedWasReported = false
+
+  if (math.random(100) <= Config.OnstarPercent) then
+    TriggerServerEvent('esx_lockpick:Notify')
+  else
+    Citizen.CreateThread(function()
+      while (pedIsEntering and not pedWasReported) do
+        local pedLoc, distance
+
+        local playerPed = PlayerPedId()
+        local playerLoc = GetEntityCoords(playerPed, false)
+        local foundPed  = nil
+
+        for ped in EnumeratePeds() do
+          if DoesEntityExist(ped) then
+            pedLoc   = GetEntityCoords(ped, false)
+            distance = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
+
+            if playerPed ~= ped and distance < Config.CallCopsDistance then
+              foundPed = ped
+              break
+            end
+          end
+        end
+
+        if (foundPed and math.random(100) <= Config.CallCopsPercent) then
+          pedWasReported = true
+          TriggerServerEvent('esx_lockpick:Notify')
+          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
+          Citizen.Wait(3000)
+          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
+        end
+
+        Citizen.Wait(10000)
+      end
+    end)
+  end
+end
+
 Citizen.CreateThread(function()
+  local playerPedId, veh, xPlayer, lock, lucky, blacklisted, pedd, plate
+
   while true do
+    playerPedId = PlayerPedId()
+    veh         = GetVehiclePedIsTryingToEnter(playerPedId)
+
     -- gets if player is entering vehicle
-    if DoesEntityExist(GetVehiclePedIsTryingToEnter(PlayerPedId())) then
+    if DoesEntityExist(veh) then
       -- gets vehicle player is trying to enter and its lock status
-      local xPlayer = ESX.GetPlayerData()
-      local veh = GetVehiclePedIsTryingToEnter(PlayerPedId())
-      local lock = GetVehicleDoorLockStatus(veh)
+      xPlayer = ESX.GetPlayerData()
+      lock    = GetVehicleDoorLockStatus(veh)
 
       -- Get the conductor door angle, open if value > 0.0
       --local doorAngle = GetVehicleDoorAngleRatio(veh, 0)
@@ -238,7 +285,7 @@ Citizen.CreateThread(function()
       end
 
       -- check if got lucky
-      local lucky = (math.random(100) < Config.chance)
+      lucky = (math.random(100) < Config.chance)
 
       -- Set lucky if conductor door is open
       --[[ if doorAngle > 0.5 then
@@ -246,18 +293,20 @@ Citizen.CreateThread(function()
         end ]]
 
       -- check if vehicle is in blacklist
-      local blacklisted = false
+      blacklisted = false
       for k,model in pairs(Config.blacklist) do
         if IsVehicleModel(veh, GetHashKey(model)) then
           blacklisted = true
+          break
         end
       end
 
       -- gets ped that is driving the vehicle
-      local pedd = GetPedInVehicleSeat(veh, -1)
-      local plate = GetVehicleNumberPlateText(veh)
+      pedd  = GetPedInVehicleSeat(veh, -1)
+      plate = GetVehicleNumberPlateText(veh)
+
       -- lock doors if not lucky or blacklisted
-      if ((lock == 7) or (pedd ~= 0 )) then
+      if ((lock == 7) or (pedd ~= 0 and not IsPedPlayer(pedd))) then
         if has_value(Config.job_whitelist, xPlayer.job.name) then
           SetVehicleDoorsLocked(veh, 1)
           TriggerServerEvent('esx_lockpick:setVehicleDoorsForEveryone', {veh, 1, plate})
@@ -276,6 +325,25 @@ Citizen.CreateThread(function()
     Citizen.Wait(5)
   end
 end)
+
+Citizen.CreateThread(function()
+  while true do
+    playerPedCache = {}
+
+    for i = 0, 255 do
+      if NetworkIsPlayerActive(i) then
+        playerPedCache[GetPlayerPed(i)] = i
+      end
+    end
+
+    Citizen.Wait(30000)
+  end
+end)
+
+function IsPedPlayer(ped)
+  return playerPedCache[ped] ~= nil
+end
+
 RegisterNetEvent('esx_lockpick:setVehicleDoors')
 AddEventHandler('esx_lockpick:setVehicleDoors', function(veh, doors)
   SetVehicleDoorsLocked(veh, doors)
@@ -315,75 +383,60 @@ end)
 --//////////////////////////////////////////////--
 Citizen.CreateThread( function()
   while true do
-    Wait(500)
-    local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
-    local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
-    local street1 = GetStreetNameFromHashKey(s1)
-    local street2 = GetStreetNameFromHashKey(s2)
-    if pedIsTryingToLockpickVehicle then
+    Wait(1000)
+
+    if pedIsSeenEntering then
       DecorSetInt(GetPlayerPed(-1), "IsLockOutlaw", 2)
+
       if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+        -- Do nothing
       elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-          local vehicle
-
-          if IsPedInAnyVehicle(playerPed, false) then
-            vehicle = GetVehiclePedIsIn(playerPed, false)
-          else
-            vehicle = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 5.0, 0, 71)
-          end
-
-          local vehName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-          local vehName2 = GetLabelText(vehName)
-          local label = vehName2 or vehName
-
-          local sex = nil
-          if skin.sex == 0 then
-            sex = "male" --male/change it to your language
-          else
-            sex = "female" --female/change it to your language
-          end
-          TriggerServerEvent('esx_lockpick:InProgressPos', plyPos.x, plyPos.y, plyPos.z)
-          if s2 == 0 then
-            TriggerServerEvent('esx_lockpick:InProgressS1', street1, sex, label)
-          elseif s2 ~= 0 then
-            TriggerServerEvent('esx_lockpick:InProgress', street1, street2, sex, label)
-          end
-        end)
-        Wait(3000)
-        pedIsTryingToLockpickVehicle = false
+        Call911()
       else
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-          local vehicle
-
-          if IsPedInAnyVehicle(playerPed, false) then
-            vehicle = GetVehiclePedIsIn(playerPed, false)
-          else
-            vehicle = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 5.0, 0, 71)
-          end
-
-          local vehName = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
-          local vehName2 = GetLabelText(vehName)
-
-          local sex = nil
-          if skin.sex == 0 then
-            sex = "male"
-          else
-            sex = "female"
-          end
-          TriggerServerEvent('esx_lockpick:InProgressPos', plyPos.x, plyPos.y, plyPos.z)
-          if s2 == 0 then
-            TriggerServerEvent('esx_lockpick:InProgressS1', street1, sex, vehName2)
-          elseif s2 ~= 0 then
-            TriggerServerEvent('esx_lockpick:InProgress', street1, street2, sex, vehName2)
-          end
-        end)
-        Wait(3000)
-        pedIsTryingToLockpickVehicle = false
+        Call911()
       end
     end
   end
 end)
+
+function Call911()
+  local plyPos  = GetEntityCoords(GetPlayerPed(-1),  true)
+  local s1, s2  = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
+  local street1 = GetStreetNameFromHashKey(s1)
+  local street2 = GetStreetNameFromHashKey(s2)
+
+  ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+    local vehicle
+
+    if IsPedInAnyVehicle(playerPed, false) then
+      vehicle = GetVehiclePedIsIn(playerPed, false)
+    else
+      vehicle = GetClosestVehicle(plyPos.x, plyPos.y, plyPos.z, 5.0, 0, 71)
+    end
+
+    local vehName  = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
+    local vehName2 = GetLabelText(vehName)
+    local label    = vehName2 or vehName
+
+    local sex = nil
+    if skin.sex == 0 then
+      sex = "male" --male/change it to your language
+    else
+      sex = "female" --female/change it to your language
+    end
+    TriggerServerEvent('esx_lockpick:InProgressPos', plyPos.x, plyPos.y, plyPos.z)
+    if s2 == 0 then
+      TriggerServerEvent('esx_lockpick:InProgressS1', street1, sex, label)
+    elseif s2 ~= 0 then
+      TriggerServerEvent('esx_lockpick:InProgress', street1, street2, sex, label)
+    end
+  end)
+
+  Wait(3000)
+
+  pedIsSeenEntering = false
+end
+
 --//////////////////////////////////////////////--
 --              SUSPECT LOCATION                --
 --//////////////////////////////////////////////--
@@ -412,5 +465,5 @@ end)
 --//////////////////////////////////////////////--
 RegisterNetEvent('esx_lockpick:Enable')
 AddEventHandler('esx_lockpick:Enable', function()
-  pedIsTryingToLockpickVehicle = true
+  pedIsSeenEntering = true
 end)
