@@ -2468,9 +2468,6 @@ function StartHandcuffTimer()
 end
 
 function ImpoundVehicle(vehicle, vehiclePlate)
-	--[[if GetVehicleClass(vehicle) == 18 then
-		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', vehiclePlate, true)
-	end]]
 	ESX.Game.DeleteVehicle(vehicle)
 	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false
