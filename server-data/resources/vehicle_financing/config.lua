@@ -3,6 +3,7 @@ Config = {}
 Config.InterestRate = 0.08
 Config.PaymentBehindRepo = 3
 Config.MarkerDrawDistance = 20
+Config.PaymentErrorThreshold = 100
 Config.PaymentLocations = {
     PDM = {
         Coords = vector3(-29.79, -1103.59, 26.42),
