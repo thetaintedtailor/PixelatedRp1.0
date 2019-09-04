@@ -10,17 +10,17 @@ end)
 
 --Detect player in marker
 Citizen.CreateThread(function()
+    local playerPed = PlayerPedId()
     while true do
-        local playerPed = PlayerPedId()
         local coords = GetEntityCoords(playerPed)
         local waitTime = 5000
         
         for k,v in pairs(Config.PaymentLocations) do 
             local distance = GetDistanceBetweenCoords(coords, v.Coords, true)
-            if distance < 20 then
+            if distance <= Config.MarkerDrawDistance then
                 waitTime = 1
 				DrawMarker(v.Sprite, v.Coords, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.0, 1.0, 1.0, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, true, false, false, false)
-                if distance < 1 then
+                if distance <= 1 then
                     if IsControlJustReleased(0, 38) then
                         OpenFinanceMenu()
                     end
