@@ -2065,6 +2065,7 @@ end)
 Citizen.CreateThread(function()
 
 	for k,v in pairs(Config.PoliceStations) do
+		
 		local blip = AddBlipForCoord(v.Blip.Coords)
 
 		SetBlipSprite (blip, v.Blip.Sprite)
