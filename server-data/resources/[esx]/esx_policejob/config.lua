@@ -34,7 +34,6 @@ Config.PoliceStations = {
 		Cloakrooms = {
 			vector3(452.6, -992.8, 30.6),
 			vector3(1840.79, 3690.09, 34.29)
-
 		},
 
 		Armories = {
@@ -86,6 +85,15 @@ Config.PoliceStations = {
 		BossActions = {
 			vector3(448.4, -973.2, 30.6)
 		}
+	},
+	BCSO = {
+		Blip = {
+			Coords  = vector3(1856.28, 3681.80, 34.27),
+			Sprite  = 60,
+			Display = 4,
+			Scale   = 1.2,
+			Colour  = 29
+		},
 	}
 }
 
