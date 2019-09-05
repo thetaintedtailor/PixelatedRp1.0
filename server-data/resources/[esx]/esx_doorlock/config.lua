@@ -74,7 +74,7 @@ Config.DoorList = {
 
 	-- Captain Office
 	{
-		objName = 'v_ilev_ph_gendoor003',
+		objName = 'v_ilev_ph_gendoor002',
 		objCoords  = {x = 447.238, y = -980.630, z = 30.689},
 		textCoords = {x = 447.200, y = -980.010, z = 31.739},
 		authorizedJobs = { 'police', 'offpolice' },
@@ -85,7 +85,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_ph_gendoor005',
 		objCoords  = {x = 443.97, y = -989.033, z = 30.6896},
-		textCoords = {x = 444.69, y = -989.31, z = 31.00},
+		textCoords = {x = 444.25, y = -989.31, z = 31.00},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 3
@@ -94,7 +94,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_ph_gendoor005',
 		objCoords  = {x = 445.37, y = -988.705, z = 30.6896},
-		textCoords = {x = 444.69, y = -989.31, z = 31.00},
+		textCoords = {x = 445.17, y = -989.31, z = 31.00},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 3
@@ -104,15 +104,15 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_ph_gendoor006',
 		objCoords  = {x = 443.03, y = -994.54, z = 30.84},
-		textCoords = {x = 442.92, y = -993.28, z = 30.84},
+		textCoords = {x = 443.03, y = -993.52, z = 30.84},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
-		distance = 2
+		distance = 3	
 	},
 	{
 		objName = 'v_ilev_ph_gendoor006',
 		objCoords  = {x = 443.03, y = -991.94, z = 30.84},
-		textCoords = {x = 442.92, y = -993.28, z = 30.84},
+		textCoords = {x = 443.03, y = -992.99, z = 30.84},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2
@@ -131,21 +131,47 @@ Config.DoorList = {
 	{
 		objName = 'slb2k11_glassdoor',
 		objCoords  = {x = 429.17, y = -996.23, z = 36.17},
-		textCoords = {x = 429.25, y = -995.14, z = 36.17},
+		textCoords = {x = 429.25, y = -995.54, z = 36.17},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
-		distance = 4
+		distance = 5
 	},
 	{
 		objName = 'slb2k11_glassdoor',
 		objCoords  = {x = 429.20, y = -994.05, z = 36.17},
-		textCoords = {x = 429.25, y = -995.14, z = 36.17},
+		textCoords = {x = 429.25, y = -994.64, z = 36.17},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
-		distance = 4
+		distance = 5
+	},
+	-- Chief's office
+	{
+		objName = 'v_ilev_ph_gendoor002',
+		objCoords  = {x = 463.42, y = -1001.01, z = 36.05},
+		textCoords = {x = 463.42, y = -1001.01, z = 36.05},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 5
 	},
 
 	-- DOWNSTAIRS --
+	-- Double Doors to lineup/intel
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 446.13, y = -987.79, z = 26.84},
+		textCoords = {x = 446.13, y = -986.79, z = 26.84},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 4
+	},
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 446.12, y = -985.20, z = 26.84},
+		textCoords = {x = 446.12, y = -986.20, z = 26.84},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 4
+	},
 	-- Lineup inner door
 	{
 		objName = 'v_ilev_ph_gendoor006',
@@ -155,6 +181,25 @@ Config.DoorList = {
 		locked = true,
 		distance = 3
 	},
+
+	-- Double Doors to medic/asst chief room
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 450.79, y = -983.89, z = 26.84},
+		textCoords = {x = 451.79, y = -983.89, z = 26.84},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 4
+	},
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 453.39, y = -983.89, z = 26.84},
+		textCoords = {x = 452.49, y = -983.89, z = 26.84},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 4
+	},
+
 	-- Medic room
 	{
 		objName = 'v_ilev_ph_gendoor003',
@@ -163,6 +208,24 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
 		locked = true,
 		distance = 3
+	},
+
+	-- Double Doors to storage/server
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 465.57, y = -987.70, z = 25.07},
+		textCoords = {x = 465.57, y = -989.70, z = 25.07},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 3
+	},
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 465.57, y = -991.30, z = 25.07},
+		textCoords = {x = 465.57, y = -990.30, z = 25.07},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 2
 	},
 	-- Storage room
 	{
@@ -364,7 +427,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_gtdoor',
 		objCoords  = {x = 444.62, y = -999.00, z = 30.79},
-		textCoords = {x = 444.62, y = -999.00, z = 30.79},
+		textCoords = {x = 445.58, y = -999.00, z = 30.79},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 4
@@ -372,7 +435,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_gtdoor',
 		objCoords  = {x = 447.22, y = -999.00, z = 30.79},
-		textCoords = {x = 447.22, y = -999.00, z = 30.79},
+		textCoords = {x = 446.31, y = -999.00, z = 30.79},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 4
