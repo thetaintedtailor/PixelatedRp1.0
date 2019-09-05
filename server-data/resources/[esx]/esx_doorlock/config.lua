@@ -35,6 +35,16 @@ Config.DoorList = {
 		locked = true
 	},
 
+	-- Locker room patio door
+	{
+		objName = 'slb2k11_SECDOOR',
+		objCoords  = {x = 464.16, y = -1011.26, z = 33.01},
+		textCoords = {x = 463.02, y = -1011.29, z = 33.01},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 7
+	},
+
 	-- Rooftop
 	{
 		objName = 'v_ilev_gtdoor02',
@@ -89,6 +99,7 @@ Config.DoorList = {
 		locked = true,
 		distance = 3
 	},
+	-- SECOND FLOOR --
 	-- To second floor (blue double doors)
 	{
 		objName = 'v_ilev_ph_gendoor006',
@@ -116,8 +127,43 @@ Config.DoorList = {
 		locked = true,
 		distance = 4
 	},
+	-- Second floor front patio 
+	{
+		objName = 'slb2k11_glassdoor',
+		objCoords  = {x = 429.17, y = -996.23, z = 36.17},
+		textCoords = {x = 429.25, y = -995.14, z = 36.17},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 4
+	},
+	{
+		objName = 'slb2k11_glassdoor',
+		objCoords  = {x = 429.20, y = -994.05, z = 36.17},
+		textCoords = {x = 429.25, y = -995.14, z = 36.17},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 4
+	},
 
 	-- DOWNSTAIRS --
+	-- Lineup inner door
+	{
+		objName = 'v_ilev_ph_gendoor006',
+		objCoords  = {x = 442.66, y = -988.24, z = 26.82},
+		textCoords = {x = 443.71, y = -988.26, z = 26.82},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 3
+	},
+	-- Medic room
+	{
+		objName = 'v_ilev_ph_gendoor003',
+		objCoords  = {x = 438.47, y = -979.55, z = 26.82},
+		textCoords = {x = 439.41, y = -979.57, z = 26.82},
+		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
+		locked = true,
+		distance = 3
+	},
 	-- Storage room
 	{
 		objName = 'v_ilev_ph_gendoor006',
