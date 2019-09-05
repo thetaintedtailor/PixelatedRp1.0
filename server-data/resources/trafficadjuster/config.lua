@@ -1,6 +1,6 @@
-TrafficAmount = 60 
-PedestrianAmount = 75
-ParkedAmount = 75
+TrafficAmount = 45 
+PedestrianAmount = 60
+ParkedAmount = 65
 EnableDispatch = false
 
 
