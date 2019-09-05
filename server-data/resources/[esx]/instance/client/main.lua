@@ -223,7 +223,7 @@ Citizen.CreateThread(function()
 				if not found then
 					local otherPlayerPed = GetPlayerPed(i)
 
-					SetEntityLocallyInvisible(otherPlayerPed)
+          SetEntityVisible(otherPlayerPed, false, false)
 					SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
 				end
 
@@ -247,7 +247,7 @@ Citizen.CreateThread(function()
 				if found then
 					local otherPlayerPed = GetPlayerPed(i)
 
-					SetEntityLocallyInvisible(otherPlayerPed)
+          SetEntityVisible(otherPlayerPed, false, false)
 					SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
 				end
 
