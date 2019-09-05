@@ -74,7 +74,7 @@ Config.DoorList = {
 
 	-- Captain Office
 	{
-		objName = 'v_ilev_ph_gendoor002',
+		objName = 'v_ilev_ph_gendoor003',
 		objCoords  = {x = 447.238, y = -980.630, z = 30.689},
 		textCoords = {x = 447.200, y = -980.010, z = 31.739},
 		authorizedJobs = { 'police', 'offpolice' },
