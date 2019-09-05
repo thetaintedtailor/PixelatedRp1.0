@@ -215,6 +215,75 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = false
 	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1850.38, y = 3683.45, z = 34.41},
+		textCoords = {x = 1850.87, y = 3682.60, z = 34.41},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 3
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1846.12, y = 3689.27, z = 34.42},
+		textCoords = {x = 1845.25, y = 3688.73, z = 34.42},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1849.33, y = 3691.13, z = 34.41},
+		textCoords = {x = 1848.41, y = 3690.67, z = 34.41},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 3
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1843.26, y = 3690.31, z = 34.43},
+		textCoords = {x = 1842.84, y = 3691.12, z = 34.43},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = false
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1850.84, y = 3694.54, z = 34.41},
+		textCoords = {x = 1851.31, y = 3693.68, z = 34.41},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = false
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1854.93, y = 3694.34, z = 34.42},
+		textCoords = {x = 1854.08, y = 3693.88, z = 34.42},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = false
+	},
+	{
+		objName = 'V_ILev_PH_GenDoor004',
+		objCoords  = {x = 1857.27, y = 3690.28, z = 34.42},
+		textCoords = {x = 1856.44, y = 3689.78, z = 34.42},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2
+	},
+	{
+		objName = 'v_ilev_ph_cellgate',
+		objCoords  = {x = 1847.99, y = 3681.69, z = 34.40},
+		textCoords = {x = 1848.56, y = 3680.81, z = 34.40},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2
+	},
+	{
+		objName = 'v_ilev_ph_cellgate',
+		objCoords  = {x = 1846.39, y = 3684.45, z = 34.40},
+		textCoords = {x = 1845.85, y = 3685.34, z = 34.40},
+		authorizedJobs = { 'police', 'offpolice' },
+		locked = true,
+		distance = 2
+	},
 
 	--
 	-- Paleto Bay
