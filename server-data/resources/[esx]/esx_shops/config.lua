@@ -98,5 +98,16 @@ Config.Zones = {
 		}
 	},
 
+	MissionKitchen = {
+		Sprite = 52,
+		Scale = 0.0,
+		Color = 79,
+		Name = "Mission Row Kitchen",
+		Items = {},
+		Pos = {
+			{x = 467.78,  y = -990.49, z = 29.50}, -- mission row pd breakroom kitchenette
+		}
+	},
+
 
 }
