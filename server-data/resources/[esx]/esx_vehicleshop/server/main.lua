@@ -40,6 +40,12 @@ MySQL.ready(function()
 		table.insert(Vehicles, vehicle)
 	end
 
+	for i=1, #Vehicles, 1 do
+		if Vehicles[i].visible == 0 then
+			table.remove(Vehicles, i)
+		end
+	end
+
 	-- send information after db has loaded, making sure everyone gets vehicle information
 	TriggerClientEvent('esx_vehicleshop:sendCategories', -1, Categories)
 	TriggerClientEvent('esx_vehicleshop:sendVehicles', -1, Vehicles)
