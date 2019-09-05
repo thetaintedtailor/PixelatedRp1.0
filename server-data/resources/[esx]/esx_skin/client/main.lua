@@ -89,7 +89,7 @@ function OpenMenu(submitCb, cancelCb, restrict)
 			table.insert(elements, data)
 		end
 
-		CreateSkinCam()
+		--CreateSkinCam()
 		zoomOffset = _components[1].zoomOffset
 		camOffset = _components[1].camOffset
 
@@ -103,10 +103,10 @@ function OpenMenu(submitCb, cancelCb, restrict)
 			end)
 
 			submitCb(data, menu)
-			DeleteSkinCam()
+			--DeleteSkinCam()
 		end, function(data, menu)
 			menu.close()
-			DeleteSkinCam()
+			--DeleteSkinCam()
 			TriggerEvent('skinchanger:loadSkin', LastSkin)
 
 			if cancelCb ~= nil then
@@ -140,7 +140,7 @@ function OpenMenu(submitCb, cancelCb, restrict)
 				end
 			end)
 		end, function(data, menu)
-			DeleteSkinCam()
+			--DeleteSkinCam()
 		end)
 	end)
 end
