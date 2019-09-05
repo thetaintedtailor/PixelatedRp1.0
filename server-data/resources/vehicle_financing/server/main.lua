@@ -14,7 +14,24 @@ end)
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    print(xPlayer.identifier[1])
+    print('Loaded player, check for financing.')
+
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
+        ['@owner'] = xPlayer.identifier,
+    }, function(financedCars)
+        print('Cars found, checking for overdue payments.')
+        for i=1, #financedCars, 1 do
+            print('Behind: ' .. financedCars[i].payments_behind)
+            if financedCars[i].payments_behind >= Config.PaymentBehindRepo then
+                local vehicleName = financedCars[i].vehicle
+                local playerName = GetCharacterName(xPlayer.source)
+                local color1 = Config.GetColor(vehicle.color1)
+                local color2 = Config.GetColor(vehicle.color2)
+                local description = playerName .. ' is behind on their payments. The bank would like their ' .. vehicleName ..' reposessed. Description - Primary Color: ' .. color1 .. ' - Secondary Color: ' .. color2 .. ' - Plate: ' .. vehicle.plate
+                TriggerServerEvent('esx_addons_gcphone:startCall', 'mechanic', description)
+            end
+        end
+    end)
 end)
 
 
@@ -158,3 +175,15 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
 end)
 
 TriggerEvent('cron:runAt', 22, 0, AutoCarPayments)
+
+function GetCharacterName(source)
+	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
+		['@identifier'] = GetPlayerIdentifiers(source)[1]
+	})
+
+	if result[1] and result[1].firstname and result[1].lastname then
+		return ('%s %s'):format(result[1].firstname, result[1].lastname)
+	else
+		return GetPlayerName(source)
+	end
+end
