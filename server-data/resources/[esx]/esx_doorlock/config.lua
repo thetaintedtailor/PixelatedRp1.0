@@ -148,7 +148,7 @@ Config.DoorList = {
 	{
 		objName = 'v_ilev_ph_gendoor002',
 		objCoords  = {x = 463.42, y = -1001.01, z = 36.05},
-		textCoords = {x = 463.42, y = -1001.01, z = 36.05},
+		textCoords = {x = 462.35, y = -1001.01, z = 36.05},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 5
