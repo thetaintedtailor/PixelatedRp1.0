@@ -37,12 +37,8 @@ MySQL.ready(function()
 			end
 		end
 
-		table.insert(Vehicles, vehicle)
-	end
-
-	for i=1, #Vehicles, 1 do
-		if Vehicles[i].visible == 0 then
-			table.remove(Vehicles, i)
+		if vehicles[i].visible == true then
+			table.insert(Vehicles, vehicle)
 		end
 	end
 
