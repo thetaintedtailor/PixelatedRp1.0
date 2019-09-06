@@ -153,7 +153,7 @@ function FinishDelivery()
     --Pay the poor fella
 		local finalpayment = alldeliveries[randomdelivery].payment
 		TriggerServerEvent('esx_carthief:pay', finalpayment)
-		ESX.ShowNotification('Thanks for making the delivery. Your payment is ~g~$' .. finalpayment .. ' delivered to your bank account.')
+		ESX.ShowNotification('Thanks for making the delivery. Your payment is ~g~$' .. finalpayment .. '~s~ delivered to your bank account.')
 
 		--Register Activity
 		TriggerServerEvent('esx_carthief:registerActivity', 0)
@@ -227,17 +227,17 @@ end)
 
 RegisterNetEvent('esx_carthief:removecopblip')
 AddEventHandler('esx_carthief:removecopblip', function()
-		RemoveBlip(copblip)
+	RemoveBlip(copblip)
 end)
 
 RegisterNetEvent('esx_carthief:setcopblip')
 AddEventHandler('esx_carthief:setcopblip', function(cx,cy,cz)
-		RemoveBlip(copblip)
+	RemoveBlip(copblip)
     copblip = AddBlipForCoord(cx,cy,cz)
     SetBlipSprite(copblip , 161)
-    SetBlipScale(copblipy , 2.0)
-		SetBlipColour(copblip, 8)
-		PulseBlip(copblip)
+    SetBlipScale(copblip , 2.0)
+	SetBlipColour(copblip, Config.PoliceBlipColor)
+	PulseBlip(copblip)
 end)
 
 RegisterNetEvent('esx_carthief:setcopnotification')
@@ -305,11 +305,11 @@ Citizen.CreateThread(function()
       DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 	  if IsControlJustReleased(0, 38) then
 		if CurrentAction == 'carthief_menu' then
-			if PlayerData.job.name ~= 'police' then
+			--if PlayerData.job.name ~= 'police' then
 				SpawnCar()
-			else
-				ESX.ShowNotification('You can\'t be stealing cars as an officer of the law!')
-			end
+			--else
+			--	ESX.ShowNotification('You can\'t be stealing cars as an officer of the law!')
+			--end
         elseif CurrentAction == 'cardelivered_menu' then
           FinishDelivery()
         end
