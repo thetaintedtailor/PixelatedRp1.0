@@ -17,8 +17,6 @@ Citizen.CreateThread(function()
     --Here you will have to put the image name for the "large" icon.
     SetDiscordRichPresenceAsset(LARGE_ICON)
 
-    --(11-11-2018) New Natives:
-
     --Here you can add hover text for the "large" icon.
     SetDiscordRichPresenceAssetText(HELP_TEXT)
 
