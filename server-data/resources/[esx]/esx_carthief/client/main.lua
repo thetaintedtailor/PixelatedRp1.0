@@ -29,7 +29,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
+    PlayerData.job = job
 end)
 
 --Add all deliveries to the table
@@ -59,8 +59,9 @@ function SpawnCar()
 						randomdelivery = math.random(1,#alldeliveries)
 						
 						--Delete vehicles around the area (not sure if it works)
-						ClearAreaOfVehicles(Config.VehicleSpawnPoint.Pos.x, Config.VehicleSpawnPoint.Pos.y, Config.VehicleSpawnPoint.Pos.z, 10.0, false, false, false, false, false)
-						
+						--ClearAreaOfVehicles(Config.VehicleSpawnPoint.Pos.x, Config.VehicleSpawnPoint.Pos.y, Config.VehicleSpawnPoint.Pos.z, 10.0, false, false, false, false, false)
+						local v = ESX.Game.GetClosestVehicle(Config.VehicleSpawnPoint.Pos)
+						DeleteVehicle(v)
 						--Delete old vehicle and remove the old blip (or nothing if there's no old delivery)
 						SetEntityAsNoLongerNeeded(car)
 						DeleteVehicle(car)
@@ -77,11 +78,32 @@ function SpawnCar()
 							RequestModel(vehiclehash)
 							Citizen.Wait(1)
 						end
-						car = CreateVehicle(vehiclehash, Config.VehicleSpawnPoint.Pos.x, Config.VehicleSpawnPoint.Pos.y, Config.VehicleSpawnPoint.Pos.z, 0.0, true, false)
-						SetEntityAsMissionEntity(car, true, true)
+
 						
-						--Teleport player in car
-						TaskWarpPedIntoVehicle(GetPlayerPed(-1), car, -1)
+						--car = CreateVehicle(vehiclehash, Config.VehicleSpawnPoint.Pos.x, Config.VehicleSpawnPoint.Pos.y, Config.VehicleSpawnPoint.Pos.z, 0.0, true, false)
+						--SetEntityAsMissionEntity(car, true, true)
+						
+						ESX.Game.SpawnVehicle(vehiclehash, Config.VehicleSpawnPoint.Pos, 0.0, function(vehicle)
+							--Teleport player in car
+							TaskWarpPedIntoVehicle(GetPlayerPed(-1), vehicle, -1)
+							exports["esx_legacyfuel"]:SetFuel(vehicle, 100)
+							local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+							SetVehicleModKit(vehicle, 0)
+							local maxEngine = GetNumVehicleMods(vehicle, 11)
+							local maxBrakes = GetNumVehicleMods(vehicle, 12)
+							local maxTrans  = GetNumVehicleMods(vehicle, 13)
+							local maxSusp  	= GetNumVehicleMods(vehicle, 15)
+							local maxArmor 	= GetNumVehicleMods(vehicle, 16)
+							SetVehicleMod(vehicle, 11, maxEngine - 1, false)
+							SetVehicleMod(vehicle, 12, maxBrakes - 1, false)
+							SetVehicleMod(vehicle, 13, maxTrans - 1, false)
+							SetVehicleMod(vehicle, 15, maxSusp - 1, false)
+							SetVehicleMod(vehicle, 16, maxArmor - 1, false)
+							ToggleVehicleMod(vehicle, 18)
+							ToggleVehicleMod(vehicle, 22)
+							SetVehicleTyresCanBurst(vehicle, false)
+							car = vehicle
+						end)
 						
 						--Set delivery blip
 						deliveryblip = AddBlipForCoord(alldeliveries[randomdelivery].posx, alldeliveries[randomdelivery].posy, alldeliveries[randomdelivery].posz)
@@ -104,6 +126,7 @@ function SpawnCar()
 						
 						--For delivery blip
 						isDelivered = 0
+
 					else
 						ESX.ShowNotification(_U('not_enough_cops'))
 					end
@@ -112,7 +135,7 @@ function SpawnCar()
 				ESX.ShowNotification(_U('already_robbery'))
 			end
 		else
-			ESX.ShowNotification(_U('cooldown', math.ceil(cooldown/1000)))
+			ESX.ShowNotification(_U('cooldown', math.ceil((cooldown/1000)/60)))
 		end
 	end)
 end
@@ -130,6 +153,7 @@ function FinishDelivery()
     --Pay the poor fella
 		local finalpayment = alldeliveries[randomdelivery].payment
 		TriggerServerEvent('esx_carthief:pay', finalpayment)
+		ESX.ShowNotification('Thanks for making the delivery. Your payment is ~g~$' .. finalpayment .. ' delivered to your bank account.')
 
 		--Register Activity
 		TriggerServerEvent('esx_carthief:registerActivity', 0)
@@ -172,15 +196,17 @@ end
 --Check if player left car
 Citizen.CreateThread(function()
   while true do
-    Wait(1000)
+	Wait(1000)
 		if isTaken == 1 and isDelivered == 0 and not (GetVehiclePedIsIn(GetPlayerPed(-1), false) == car) then
 			TriggerEvent('esx:showNotification', _U('get_back_car_1m'))
 			Wait(50000)
 			if isTaken == 1 and isDelivered == 0 and not (GetVehiclePedIsIn(GetPlayerPed(-1), false) == car) then
 				TriggerEvent('esx:showNotification', _U('get_back_car_10s'))
 				Wait(10000)
-				TriggerEvent('esx:showNotification', _U('mission_failed'))
-				AbortDelivery()
+				if isTaken == 1 and isDelivered == 0 and not (GetVehiclePedIsIn(GetPlayerPed(-1), false) == car) then
+					TriggerEvent('esx:showNotification', _U('mission_failed'))
+					AbortDelivery()
+				end
 			end
 		end
 	end
@@ -191,10 +217,10 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(Config.BlipUpdateTime)
     if isTaken == 1 and IsPedInAnyVehicle(GetPlayerPed(-1)) then
-			local coords = GetEntityCoords(GetPlayerPed(-1))
-      TriggerServerEvent('esx_carthief:alertcops', coords.x, coords.y, coords.z)
-		elseif isTaken == 1 and not IsPedInAnyVehicle(GetPlayerPed(-1)) then
-			TriggerServerEvent('esx_carthief:stopalertcops')
+		local coords = GetEntityCoords(GetPlayerPed(-1))
+      	TriggerServerEvent('esx_carthief:alertcops', coords.x, coords.y, coords.z)
+	elseif isTaken == 1 and not IsPedInAnyVehicle(GetPlayerPed(-1)) then
+		TriggerServerEvent('esx_carthief:stopalertcops')
     end
   end
 end)
@@ -277,9 +303,13 @@ Citizen.CreateThread(function()
       SetTextComponentFormat('STRING')
       AddTextComponentString(CurrentActionMsg)
       DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-      if IsControlJustReleased(0, 38) then
-        if CurrentAction == 'carthief_menu' then
-          SpawnCar()
+	  if IsControlJustReleased(0, 38) then
+		if CurrentAction == 'carthief_menu' then
+			if PlayerData.job.name ~= 'police' then
+				SpawnCar()
+			else
+				ESX.ShowNotification('You can\'t be stealing cars as an officer of the law!')
+			end
         elseif CurrentAction == 'cardelivered_menu' then
           FinishDelivery()
         end

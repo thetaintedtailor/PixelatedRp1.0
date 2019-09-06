@@ -1,14 +1,14 @@
 Config              = {}
-Config.DrawDistance = 100.0
+Config.DrawDistance = 20.0
 Config.CopsRequired = 0
-Config.BlipUpdateTime = 1000 --In milliseconds. I used it on 3000. If you want instant update, 50 is more than enough. Even 100 is good. I hope it doesn't kill FPS and the server.
-Config.CooldownMinutes = 0
+Config.BlipUpdateTime = 10000 --In milliseconds. I used it on 3000. If you want instant update, 50 is more than enough. Even 100 is good. I hope it doesn't kill FPS and the server.
+Config.CooldownMinutes = 60
 Config.Locale = 'en'
 
 Config.Zones = {
 	VehicleSpawner = {
 		Pos   = {x = 759.01, y = -3195.18, z = 4.97},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
+		Size  = {x = 2.0, y = 2.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Colour    = 6, --BLIP
@@ -30,8 +30,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(2500,3500),
-		Cars = {'zentorno','t20','reaper','italigtb','pfister811'},
+		Payment  = math.random(3500,6000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--Lighthouse 9.61KM
 	Delivery4 = {
@@ -39,8 +39,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(2500,3500),
-		Cars = {'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(3500,6000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--House in Paleto 12.94KM
 	Delivery7 = {
@@ -48,8 +48,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(2500,3500),
-		Cars = {'entityxf','sheava','gp1','vagner','neon'},
+		Payment  = math.random(4500,8000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--Great Ocean Highway 10.47KM
 	Delivery10 = {
@@ -57,8 +57,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(2500,3500),
-		Cars = {'nero','seven70','tempesta','xa21','raiden'},
+		Payment  = math.random(4000,6500),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--Marina Drive Desert 8.15KM
 	Delivery13 = {
@@ -66,7 +66,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = math.random(2500,3500),
-		Cars = {'specter','comet5','nightshade','sc1','banshee2'},
+		Payment  = math.random(3000,5000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 }
