@@ -33,7 +33,7 @@ function refresh()
     message = "Players Online: "
   end
 
-  message = message .. #players .. "/" .. GetConvarInt("sv_maxclients", 32)
+  message = message .. #players .. "/" .. GetConvarInt("sv_maxclients", 40)
 
   SetRichPresence(message)
 end
