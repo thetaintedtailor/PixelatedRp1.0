@@ -101,7 +101,7 @@ function SpawnCar()
 							SetVehicleMod(vehicle, 16, maxArmor - 1, false)
 							ToggleVehicleMod(vehicle, 18)
 							ToggleVehicleMod(vehicle, 22)
-							SetVehicleTyresCanBurst(vehicle, false)
+							--SetVehicleTyresCanBurst(vehicle, false)
 							car = vehicle
 						end)
 						
