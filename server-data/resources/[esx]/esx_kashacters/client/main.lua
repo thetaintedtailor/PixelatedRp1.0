@@ -97,6 +97,7 @@ RegisterNUICallback("CharacterChosen", function(data, cb)
     while not IsScreenFadedOut() do
         Citizen.Wait(10)
     end
+    TriggerEvent("pixelated_utils:refreshCharacter")
     cb("ok")
 end)
 
