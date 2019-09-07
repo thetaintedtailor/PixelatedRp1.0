@@ -230,9 +230,9 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
 
         if Instance.host ~= nil then
-            DisableInteractions(#Instance.players)
-        elseif #InstancedPlayers > 0
-            DisableInteractions(#InstancedPlayers)
+            DisableInteractions(Instance.players)
+        elseif #InstancedPlayers > 0 then
+            DisableInteractions(InstancedPlayers)
         else
             Citizen.Wait(2000)
         end
