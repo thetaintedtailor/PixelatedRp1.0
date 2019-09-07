@@ -75,6 +75,31 @@ function RegisterInstanceType(type, enter, exit)
     }
 end
 
+function DisableInteractions(players)
+    local playerPed = PlayerPedId()
+
+    for _, player in ipairs(GetActivePlayers()) do
+        local found = false
+
+        for j=1, #players, 1 do
+            instancePlayer = GetPlayerFromServerId(players[j])
+
+            if player == instancePlayer then
+                found = true
+                break
+            end
+        end
+
+        if not found then
+            local otherPlayerPed = GetPlayerPed(player)
+
+            SetEntityVisible(otherPlayerPed, false, false)
+            SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
+        end
+
+    end
+end
+
 AddEventHandler('instance:get', function(cb)
     cb(GetInstance())
 end)
@@ -202,61 +227,15 @@ end)
 -- Instance players
 Citizen.CreateThread(function()
     while true do
-
         Citizen.Wait(0)
 
         if Instance.host ~= nil then
-
-            local playerPed = PlayerPedId()
-
-            for i=0, Config.MaxPlayers, 1 do
-
-                local found = false
-                for j=1, #Instance.players, 1 do
-                    instancePlayer = GetPlayerFromServerId(Instance.players[j])
-
-                    if i == instancePlayer then
-                        found = true
-                    end
-                end
-
-                if not found then
-                    local otherPlayerPed = GetPlayerPed(i)
-
-                    SetEntityVisible(otherPlayerPed, false, false)
-                    SetEntityLocallyInvisible(otherPlayerPed)
-                    SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
-                end
-
-            end
-
+            DisableInteractions(#Instance.players)
+        elseif #InstancedPlayers > 0
+            DisableInteractions(#InstancedPlayers)
         else
-
-            local playerPed = PlayerPedId()
-
-            for i=0, Config.MaxPlayers, 1 do
-
-                local found = false
-                for j=1, #InstancedPlayers, 1 do
-                    instancePlayer = GetPlayerFromServerId(InstancedPlayers[j])
-
-                    if i == instancePlayer then
-                        found = true
-                    end
-                end
-
-                if found then
-                    local otherPlayerPed = GetPlayerPed(i)
-
-                    SetEntityVisible(otherPlayerPed, false, false)
-                    SetEntityLocallyInvisible(otherPlayerPed)
-                    SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
-                end
-
-            end
-
+            Citizen.Wait(2000)
         end
-
     end
 end)
 
