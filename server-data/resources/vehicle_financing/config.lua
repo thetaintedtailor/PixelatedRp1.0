@@ -184,14 +184,13 @@ function GetColor(colorID)
 			{ index = 119, label =  ('Brushed Aluminum')},
 			{ index = 120, label =  ('Chrome')},
 			{ index = 37,  label =  ('Gold')},
-			{ index = 158, label =  ('Puregold')},
+			{ index = 158, label =  ('Pure Gold')},
 			{ index = 159, label =  ('Brushed Gold')},
 			{ index = 160, label =  ('Light Gold')}
     }
-    local color
     for i=1,#colors,1 do
         if colors[i].index == colorID then
-            return color[i].label
+            return colors[i].label
         end
     end
 end

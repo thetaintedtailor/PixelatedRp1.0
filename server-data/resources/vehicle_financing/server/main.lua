@@ -122,6 +122,12 @@ function AutoCarPayments(d, h, m)
                         })
                     end
                 else
+                    MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
+                        ['@identifier'] = result[i].owner
+                    }, function(results)
+                        
+                    end)
+
                     MySQL.Sync.execute('UPDATE users SET bank = bank - @bank WHERE owner = @owner',
                     {
                         ['@bank'] = result[i].payment_cost,

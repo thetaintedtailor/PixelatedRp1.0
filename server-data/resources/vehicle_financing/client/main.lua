@@ -81,7 +81,7 @@ function ListFinancedVehiclesMenu()
             elements = elements
         }, function(data,  menu)
             TriggerServerEvent('vehicle_financing:carpayment', data.current.value)
-            menu.close()
+            OpenFinanceMenu()
         end, function(data,menu)
             menu.close()
         end)
