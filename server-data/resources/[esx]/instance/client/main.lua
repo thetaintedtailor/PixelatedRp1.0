@@ -93,7 +93,7 @@ function DisableInteractions(players)
         if not found then
             local otherPlayerPed = GetPlayerPed(player)
 
-            SetEntityVisible(otherPlayerPed, false, false)
+            SetEntityVisible(otherPlayerPed, false, true)
             SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
         end
 
