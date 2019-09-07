@@ -86,15 +86,6 @@ Config.PoliceStations = {
 			vector3(448.4, -973.2, 30.6)
 		}
 	},
-	BCSO = {
-		Blip = {
-			Coords  = vector3(1856.28, 3681.80, 34.27),
-			Sprite  = 60,
-			Display = 4,
-			Scale   = 1.2,
-			Colour  = 29
-		},
-	}
 }
 
 Config.AuthorizedWeapons = {

@@ -42,7 +42,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = 3000, --math.random(3500,6000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','visione','ruston','turismor'},
 	},
 	--House in Paleto 12.94KM
 	Delivery7 = {
@@ -60,7 +60,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = 3000, --math.random(4000,6500),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--Marina Drive Desert 8.15KM
 	Delivery13 = {
@@ -87,7 +87,7 @@ Config.Delivery = {
 		Color = {r = 0, g = 255, b = 0},
 		Type  = 1,
 		Payment  = 3000, --math.random(3000,5000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
 	--The Lost MC mobilehome park
 	Delivery16 = {
