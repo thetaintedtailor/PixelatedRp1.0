@@ -157,33 +157,31 @@ local function SellWeed(source)
 				TriggerClientEvent('esx:showNotification', source, _U('no_pouches_weed_sale'))
 			else
 				xPlayer.removeInventoryItem('weed_pooch', 1)
-				if CopsConnected == 0 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 1 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 2 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 3 then
-					xPlayer.addMoney(33)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected >= 4 then
-					xPlayer.addMoney(35)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected >= 5 then
-					xPlayer.addMoney(35)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-                elseif CopsConnected >= 6 then
-					xPlayer.addMoney(40)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-
+				-- if CopsConnected == 0 then
+				-- 	xPlayer.addMoney(10)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+				-- else
+				local copBonus = Config.WeedBonusPerCop * CopsConnected
+				xPlayer.addMoney(Config.BaseWeedPrice + copBonus)
+				TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+				-- elseif CopsConnected == 2 then
+				-- 	xPlayer.addMoney(30)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+				-- elseif CopsConnected == 3 then
+				-- 	xPlayer.addMoney(33)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+				-- elseif CopsConnected >= 4 then
+				-- 	xPlayer.addMoney(35)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+				-- elseif CopsConnected >= 5 then
+				-- 	xPlayer.addMoney(35)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
+                -- elseif CopsConnected >= 6 then
+				-- 	xPlayer.addMoney(40)
+				-- 	TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
 				end
-				
 				SellWeed(source)
 			end
-
 		end
 	end)
 end
