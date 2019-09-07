@@ -350,6 +350,9 @@ end)
 
 -- Create Blips for Car Spawner
 Citizen.CreateThread(function()
+	if Config.ShowBlip == false then
+		return
+	end
     info = Config.Zones.VehicleSpawner
     info.blip = AddBlipForCoord(info.Pos.x, info.Pos.y, info.Pos.z)
     SetBlipSprite(info.blip, info.Id)

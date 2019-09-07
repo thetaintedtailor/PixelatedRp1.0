@@ -1,16 +1,17 @@
 Config              = {}
 Config.DrawDistance = 75.0
-Config.CopsRequired = 2
+Config.CopsRequired = 0
 Config.BlipUpdateTime = 10000 --In milliseconds. I used it on 3000. If you want instant update, 50 is more than enough. Even 100 is good. I hope it doesn't kill FPS and the server.
 Config.CooldownMinutes = 60
 Config.Locale = 'en'
 Config.PoliceBlipColor = 1
+Config.ShowBlip = false
 
 Config.Zones = {
 	VehicleSpawner = {
-		Pos   = {x = 759.01, y = -3195.18, z = 4.97},
+		Pos   = {x = -525.17, y = -2902.26, z = 5.00},
 		Size  = {x = 2.0, y = 2.0, z = 1.0},
-		Color = {r = 204, g = 204, b = 0},
+		Color = {r = 255, g = 0, b = 0},
 		Type  = 1,
 		Colour    = 6, --BLIP
 		Id        = 229, --BLIP
@@ -18,9 +19,9 @@ Config.Zones = {
 }
 
 Config.VehicleSpawnPoint = {
-      Pos   = {x = 767.71, y = -3195.20, z = 5.50},
-      Size  = {x = 3.0, y = 3.0, z = 1.0},
-      Type  = -1,
+	Pos   = {x = -525.17, y = -2902.26, z = 6},
+    Size  = {x = 3.0, y = 3.0, z = 1.0},
+    Type  = -1,
 }
 
 Config.Delivery = {
@@ -97,5 +98,4 @@ Config.Delivery = {
 		Payment  = 3000, --math.random(3000,5000),
 		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
 	},
-
 }
