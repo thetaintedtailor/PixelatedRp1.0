@@ -115,30 +115,37 @@ function AutoCarPayments(d, h, m)
                             })
                         end
                     else
-                        MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = payments_behind - @payments_behind WHERE owner = @owner',
+                        MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
                         {
                             ['@payments_behind'] = result[i].payments_behind + 1,
                             ['@owner'] = result[i].owner
                         })
                     end
                 else
-                    MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
+                    MySQL.Async.fetchAll('SELECT bank FROM users WHERE identifier = @identifier', {
                         ['@identifier'] = result[i].owner
-                    }, function(results)
-                        
+                    }, function(bank)
+                        if bank >= results[i].payment_cost then
+                            MySQL.Sync.execute('UPDATE users SET bank = bank - @payment WHERE owner = @owner',
+                            {
+                                ['@payment'] = result[i].payment_cost,
+                                ['@owner'] = result[i].owner
+                            })
+        
+                            MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = remaining_balance - @payment_cost WHERE owner = @owner',
+                            {
+                                ['@payment_cost'] = result[i].payment_cost,
+                                ['@owner'] = result[i].owner
+                            })
+                        else
+                            MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
+                            {
+                                ['@payments_behind'] = result[i].payments_behind + 1,
+                                ['@owner'] = result[i].owner
+                            })
+                        end
                     end)
 
-                    MySQL.Sync.execute('UPDATE users SET bank = bank - @bank WHERE owner = @owner',
-                    {
-                        ['@bank'] = result[i].payment_cost,
-                        ['@owner'] = result[i].owner
-                    })
-
-                    MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = remaining_balance - @payment_cost WHERE owner = @owner',
-                    {
-                        ['@payment_cost'] = result[i].payment_cost,
-                        ['@owner'] = result[i].owner
-                    })
                 end
             else
                 MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
