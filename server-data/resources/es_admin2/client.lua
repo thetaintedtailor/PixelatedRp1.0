@@ -209,22 +209,40 @@ AddEventHandler('es_admin:kill', function()
 end)
 
 local isInvisible = false
+local invisiblePlayers = {}
 RegisterNetEvent('es_admin:invisible')
-AddEventHandler('es_admin:invisible', function()
+AddEventHandler('es_admin:invisible', function(player)
 	isInvisible = not isInvisible
+	local s = ""
+	if isInvisible == true then
+		table.insert(invisiblePlayers, player)
+		s = "invisible"
+	else
+		for i=1, #invisiblePlayers, 1 do
+			if invisiblePlayers == player then
+				table.remove(invisiblePlayers, i)
+			end
+		end
+		s = "visible"
+	end
 	local player = GetPlayerPed()
 	SetPlayerInvincible(PlayerId(), isInvisible)
 	TriggerEvent('es_admin:noclip')
-	NetworkSetEntityVisibleToNetwork(player, isInvisible)
-	Citizen.CreateThread(function()
-		while isInvisible do
-			--SetEntityVisible(player, isInvisible, false)
-			SetEntityLocallyInvisible(player, isInvisible)
-			Citizen.Wait(1)
-		end
-	end)
+	TriggerEvent('chat:addMessage', { args = {"^1SYSTEM", 'You\'ve gone ' .. s} })
 end)
 
+Citizen.CreateThread(function()
+	while true do
+		if #invisiblePlayers > 0 then
+			for i=1, #invisiblePlayers, 1 do
+				local player = GetPlayerPed(invisiblePlayers[i])
+				--SetEntityLocallyInvisible(player)
+				SetEntityVisible(player, false, false)
+			end
+		end
+		Citizen.Wait(10)
+	end
+end)
 
 RegisterNetEvent('es_admin:heal')
 AddEventHandler('es_admin:heal', function()

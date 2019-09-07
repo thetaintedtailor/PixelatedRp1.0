@@ -641,8 +641,8 @@ end, {help = "Suicide"})
 
 --Invisible
 TriggerEvent('es:addGroupCommand', 'invisible', 'admin', function(source, args, user)
-	TriggerClientEvent('es_admin:invisible', source)
-end, {help = "Suicide"})
+	TriggerClientEvent('es_admin:invisible', -1, source)
+end, {help = "Go invisible"})
 
 
 -- Slay a player
@@ -656,7 +656,7 @@ TriggerEvent('es:addGroupCommand', 'slay', "admin", function(source, args, user)
 
 				TriggerClientEvent('es_admin:kill', player)
 
-				TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been killed by ^2" .. GetPlayerName(source)} })
+				--TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been killed by ^2" .. GetPlayerName(source)} })
 				TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Player ^2" .. GetPlayerName(player) .. "^0 has been killed."} })
 			end)
 		else
