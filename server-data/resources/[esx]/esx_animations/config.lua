@@ -6,11 +6,11 @@ Config.Animations = {
 		label = 'Walking Styles',
 		items = {
 			{label = "Injured", type = "attitude", data = {lib = "move_m@injured", anim = "move_m@injured"}},
+			{label = "Business", type = "attitude", data = {lib = "move_m@business@a", anim = "move_m@business@a"}},
 	    	{label = "Normal M", type = "attitude", data = {lib = "move_m@confident", anim = "move_m@confident"}},
 	    	{label = "Normal F", type = "attitude", data = {lib = "move_f@heels@c", anim = "move_f@heels@c"}},
 	    	{label = "Depressed male", type = "attitude", data = {lib = "move_m@depressed@a", anim = "move_m@depressed@a"}},
 	    	{label = "Depressed female", type = "attitude", data = {lib = "move_f@depressed@a", anim = "move_f@depressed@a"}},
-	    	{label = "Business", type = "attitude", data = {lib = "move_m@business@a", anim = "move_m@business@a"}},
 	    	{label = "Determined", type = "attitude", data = {lib = "move_m@brave@a", anim = "move_m@brave@a"}},
 	    	{label = "Casual", type = "attitude", data = {lib = "move_m@casual@a", anim = "move_m@casual@a"}},
 	    	{label = "Ate too much", type = "attitude", data = {lib = "move_m@fat@a", anim = "move_m@fat@a"}},
