@@ -13,30 +13,30 @@ AddEventHandler('esx_carthief:pay', function(payment)
 	xPlayer.addAccountMoney('bank', tonumber(payment))
 	--TriggerClientEvent('esx:showNotification', _source, '~g~$' .. payment .. ' has been deposted into your bank account. Thank you for the delivery.')
 	--Add cooldown
-	cooldown = Config.CooldownMinutes * 60000
 end)
 
 ESX.RegisterServerCallback('esx_carthief:anycops',function(source, cb)
-  local anycops = 0
-  local playerList = ESX.GetPlayers()
-  for i=1, #playerList, 1 do
-    local _source = playerList[i]
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local playerjob = xPlayer.job.name
-    if playerjob == 'police' then
-    	anycops = anycops + 1
-    end
-  end
-  cb(anycops)
+	local anycops = 0
+	local playerList = ESX.GetPlayers()
+	for i=1, #playerList, 1 do
+		local _source = playerList[i]
+		local xPlayer = ESX.GetPlayerFromId(_source)
+		local playerjob = xPlayer.job.name
+		if playerjob == 'police' then
+			anycops = anycops + 1
+		end
+	end
+	cb(anycops)
 end)
 
 ESX.RegisterServerCallback('esx_carthief:isActive',function(source, cb)
-  cb(activity, cooldown)
+	cb(activity, cooldown)
 end)
 
 RegisterServerEvent('esx_carthief:registerActivity')
 AddEventHandler('esx_carthief:registerActivity', function(value)
 	activity = value
+	cooldown = Config.CooldownMinutes * 60000
 	if value == 1 then
 		activitySource = source
 		--Send notification to cops
