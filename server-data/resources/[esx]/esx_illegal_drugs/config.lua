@@ -4,34 +4,34 @@ Config.DrawDistance = 100.0 --Distance where the marker be visible from
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0} -- Size of the marker
 Config.MarkerColor  = {r = 0, g = 255, b = 0} --Color of the marker
 
-Config.RequiredCopsCoke  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell coke
-Config.RequiredCopsMeth  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell meth
-Config.RequiredCopsWeed  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell weed
-Config.RequiredCopsOpium = 0 --Ammount of cop that need to be online to be able to harvest/process/sell opium
+Config.RequiredCopsCoke   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell coke
+Config.RequiredCopsMeth   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell meth
+Config.RequiredCopsWeed   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell weed
+Config.RequiredCopsOpium  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell opium
 
-Config.TimeToFarmWeed     = 4  * 1000 -- Ammount of time to harvest weed
+Config.TimeToFarmWeed     = 4   * 1000 -- Ammount of time to harvest weed
 Config.TimeToProcessWeed  = 10  * 1000 -- Ammount of time to process weed
 Config.TimeToSellWeed     = 10  * 1000 -- Ammount of time to sell weed
-Config.BaseWeedPrice = 15
-Config.WeedBonusPerCop = 5
-
-Config.TimeToFarmOpium    = 5  * 1000 -- Ammount of time to harvest coke
-Config.TimeToProcessOpium = 11  * 1000 -- Ammount of time to process coke
-Config.TimeToSellOpium    = 11  * 1000 -- Ammount of time to sell coke
-Config.BaseOpiumPrice = 15
-Config.OpiumBonusPerCop = 5
+Config.BaseWeedPrice      = 60
+Config.WeedBonusPerCop    = 5
 
 Config.TimeToFarmCoke     = 5  * 1000 -- Ammount of time to harvest coke
 Config.TimeToProcessCoke  = 11 * 1000 -- Ammount of time to process coke
-Config.TimeToSellCoke     = 11  * 1000 -- Ammount of time to sell coke
-Config.BaseCokePrice = 15
-Config.CokeBonusPerCop = 5
+Config.TimeToSellCoke     = 11 * 1000 -- Ammount of time to sell coke
+Config.BaseCokePrice      = 75
+Config.CokeBonusPerCop    = 5
 
-Config.TimeToFarmMeth     = 5  * 1000 -- Ammount of time to harvest meth
+Config.TimeToFarmMeth     = 5   * 1000 -- Ammount of time to harvest meth
 Config.TimeToProcessMeth  = 11  * 1000 -- Ammount of time to process meth
 Config.TimeToSellMeth     = 11  * 1000 -- Ammount of time to sell meth
-Config.BaseMethPrice = 15
-Config.MethBonusPerCop = 5
+Config.BaseMethPrice      = 90
+Config.MethBonusPerCop    = 5
+
+Config.TimeToFarmOpium    = 5   * 1000 -- Ammount of time to harvest coke
+Config.TimeToProcessOpium = 11  * 1000 -- Ammount of time to process coke
+Config.TimeToSellOpium    = 11  * 1000 -- Ammount of time to sell coke
+Config.BaseOpiumPrice     = 105
+Config.OpiumBonusPerCop   = 5
 
 Config.Locale = 'en'
 
