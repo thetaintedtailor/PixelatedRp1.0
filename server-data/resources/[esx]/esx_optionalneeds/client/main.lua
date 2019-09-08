@@ -137,7 +137,9 @@ AddEventHandler('esx_optionalneeds:onDrink', function()
   
   local playerPed = GetPlayerPed(-1)
   
-  if not IsPedInAnyVehicle(playerPed, true) then
+  if IsPedInAnyVehicle(playerPed, true) then
+    TriggerEvent("esx_basicneeds:onDrink", "prop_amb_beer_bottle")
+  else
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_DRINKING", 0, 1)
   end
 end)
