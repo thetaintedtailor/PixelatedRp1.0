@@ -10,7 +10,6 @@ Citizen.CreateThread(function()
 end)
 
 function Drunk(level, start)
-  
   Citizen.CreateThread(function()
 
     local playerPed = GetPlayerPed(-1)
@@ -21,7 +20,6 @@ function Drunk(level, start)
     end
 
     if level == 0 then
-
       RequestAnimSet("move_m@drunk@slightlydrunk")
       
       while not HasAnimSetLoaded("move_m@drunk@slightlydrunk") do
@@ -29,9 +27,7 @@ function Drunk(level, start)
       end
 
       SetPedMovementClipset(playerPed, "move_m@drunk@slightlydrunk", true)
-
     elseif level == 1 then
-
       RequestAnimSet("move_m@drunk@moderatedrunk")
       
       while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
@@ -39,9 +35,7 @@ function Drunk(level, start)
       end
 
       SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-
     elseif level == 2 then
-
       RequestAnimSet("move_m@drunk@verydrunk")
       
       while not HasAnimSetLoaded("move_m@drunk@verydrunk") do
@@ -49,7 +43,6 @@ function Drunk(level, start)
       end
 
       SetPedMovementClipset(playerPed, "move_m@drunk@verydrunk", true)
-
     end
 
     SetTimecycleModifier("spectator5")
@@ -59,13 +52,10 @@ function Drunk(level, start)
     if start then
       DoScreenFadeIn(800)
     end
-
   end)
-
 end
 
 function Reality()
-
   Citizen.CreateThread(function()
 
     local playerPed = GetPlayerPed(-1)
@@ -80,13 +70,10 @@ function Reality()
     SetPedMotionBlur(playerPed, false)
 
     DoScreenFadeIn(800)
-
   end)
-
 end
 
 AddEventHandler('esx_status:loaded', function(status)
-
   TriggerEvent('esx_status:registerStatus', 'drunk', 0, '#8F15A5', 
     function(status)
       if status.val > 0 then
@@ -100,16 +87,13 @@ AddEventHandler('esx_status:loaded', function(status)
     end
   )
 
-	Citizen.CreateThread(function()
+  Citizen.CreateThread(function()
+    while true do
+      Wait(2500)
 
-		while true do
-
-			Wait(1000)
-
-			TriggerEvent('esx_status:getStatus', 'drunk', function(status)
-				
-				if status.val > 0 then
-					
+      TriggerEvent('esx_status:getStatus', 'drunk', function(status)
+        if status.val > 0 then
+          
           local start = true
 
           if IsAlreadyDrunk then
@@ -132,9 +116,9 @@ AddEventHandler('esx_status:loaded', function(status)
 
           IsAlreadyDrunk = true
           DrunkLevel     = level
-				end
+        end
 
-				if status.val == 0 then
+        if status.val == 0 then
           
           if IsAlreadyDrunk then
             Reality()
@@ -142,15 +126,10 @@ AddEventHandler('esx_status:loaded', function(status)
 
           IsAlreadyDrunk = false
           DrunkLevel     = -1
-
-				end
-
-			end)
-
-		end
-
-	end)
-
+        end
+      end)
+    end
+  end)
 end)
 
 RegisterNetEvent('esx_optionalneeds:onDrink')
@@ -158,8 +137,7 @@ AddEventHandler('esx_optionalneeds:onDrink', function()
   
   local playerPed = GetPlayerPed(-1)
   
-  TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_DRINKING", 0, 1)
-  Citizen.Wait(1000)
-  ClearPedTasksImmediately(playerPed)
-
+  if not IsPedInAnyVehicle(playerPed, true) then
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_DRINKING", 0, 1)
+  end
 end)
