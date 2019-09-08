@@ -1,8 +1,8 @@
 ESX                  = nil
 local IsAlreadyDrunk = false
 local DrunkLevel     = -1
-local ArmorStarting  = 0
 local ArmorAdded     = 0
+local Drinking       = false
 
 Citizen.CreateThread(function()
   while ESX == nil do
@@ -59,19 +59,21 @@ end
 
 function Reality()
   Citizen.CreateThread(function()
+    TriggerEvent("esx_status:getStatus", "drug", function(status)
+      local playerPed = GetPlayerPed(-1)
 
-    local playerPed = GetPlayerPed(-1)
+      ResetPedMovementClipset(playerPed, 0)
+      SetPedIsDrunk(playerPed, false)
 
-    DoScreenFadeOut(800)
-    Wait(1000)
-
-    ClearTimecycleModifier()
-    ResetScenarioTypesEnabled()
-    ResetPedMovementClipset(playerPed, 0)
-    SetPedIsDrunk(playerPed, false)
-    SetPedMotionBlur(playerPed, false)
-
-    DoScreenFadeIn(800)
+      if status.val <= 0 then
+        DoScreenFadeOut(800)
+        Wait(1000)
+        ClearTimecycleModifier()
+        ResetScenarioTypesEnabled()
+        SetPedMotionBlur(playerPed, false)
+        DoScreenFadeIn(800)
+      end
+    end)
   end)
 end
 
@@ -95,14 +97,13 @@ AddEventHandler('esx_status:loaded', function(status)
 
       TriggerEvent('esx_status:getStatus', 'drunk', function(status)
         if status.val > 0 then
-          
-          local start = true
+          local level     = 0
+          local start     = true
+          local playerPed = GetPlayerPed(-1)
 
           if IsAlreadyDrunk then
             start = false
           end
-
-          local level = 0
 
           if status.val <= 250000 then
             level = 0
@@ -113,22 +114,10 @@ AddEventHandler('esx_status:loaded', function(status)
           end
 
           if level ~= DrunkLevel then
-            local playerPed = GetPlayerPed(-1)
-
             Drunk(level, start)
 
-            if start then
-              ArmorStarting = GetPedArmour(playerPed)
-            end
-
-            if level > DrunkLevel then
-              local armorAmount = math.random(Config.MinArmor, Config.MaxArmor)
-
-              ArmorAdded = ArmorAdded + armorAmount
-
-              AddArmourToPed(playerPed, armorAmount)
-            elseif level < DrunkLevel then
-              local armorAmount = math.max(ArmorAdded, math.random(Config.MinArmor, Config.MaxArmor))
+            if level < DrunkLevel then
+              local armorAmount = math.floor(math.max(ArmorAdded, ArmorAdded / (level + 1)))
 
               ArmorAdded = ArmorAdded - armorAmount
 
@@ -136,19 +125,31 @@ AddEventHandler('esx_status:loaded', function(status)
             end
           end
 
+          if Drinking then
+            local armorAmount = math.random(Config.MinArmor, Config.MaxArmor)
+
+            ArmorAdded = ArmorAdded + armorAmount
+            AddArmourToPed(playerPed, armorAmount)
+            Drinking = false
+          end
+
           IsAlreadyDrunk = true
           DrunkLevel     = level
         end
 
         if status.val == 0 then
-          
           if IsAlreadyDrunk then
             Reality()
 
             if ArmorAdded > 0 then
-              local playerPed = GetPlayerPed(-1)
+              local playerPed   = GetPlayerPed(-1)
+              local armorAmount = GetPedArmour(playerPed) - ArmorAdded
 
-              SetPedArmour(playerPed, math.max(0, GetPedArmour(playerPed) - (-1 * ArmorAdded)))
+              if armorAmount < 0 then
+                armorAmount = 0
+              end
+
+              SetPedArmour(playerPed, armorAmount)
 
               ArmorAdded = 0
             end
@@ -165,6 +166,8 @@ end)
 RegisterNetEvent('esx_optionalneeds:onDrink')
 AddEventHandler('esx_optionalneeds:onDrink', function()
   local playerPed = GetPlayerPed(-1)
+
+  Drinking = true
   
   if IsPedInAnyVehicle(playerPed, true) then
     TriggerEvent("esx_basicneeds:onDrink", "prop_amb_beer_bottle")

@@ -15,5 +15,5 @@ Config.MinDrunk = 75000
 Config.MaxDrunk = 125000
 
 -- Armor added per drink is a random amount between these two values
-Config.MinArmor = 5
-Config.MaxArmor = 15
+Config.MinArmor = 4
+Config.MaxArmor = 12

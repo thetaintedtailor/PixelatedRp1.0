@@ -76,17 +76,18 @@ end)
 
 --When effects ends go back to normal
 function Normal()
-
   Citizen.CreateThread(function()
-    
-    local playerPed = GetPlayerPed(-1)
-			
-    ClearTimecycleModifier()
-    ResetScenarioTypesEnabled()
-    --ResetPedMovementClipset(playerPed, 0) <- it might cause the push of the vehicles
-    SetPedMotionBlur(playerPed, false)
+    TriggerEvent("esx_status:getStatus", "drunk", function(status)
+      if status.val <= 0 then
+        DoScreenFadeOut(800)
+        Wait(1000)
+        ClearTimecycleModifier()
+        ResetScenarioTypesEnabled()
+        SetPedMotionBlur(GetPlayerPed(-1), false)
+        DoScreenFadeIn(800)
+      end
+    end)
   end)
-
 end
 
 --In case too much drugs dies of overdose set everything back
