@@ -157,33 +157,11 @@ local function SellWeed(source)
 				TriggerClientEvent('esx:showNotification', source, _U('no_pouches_weed_sale'))
 			else
 				xPlayer.removeInventoryItem('weed_pooch', 1)
-				if CopsConnected == 0 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 1 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 2 then
-					xPlayer.addMoney(30)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected == 3 then
-					xPlayer.addMoney(33)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected >= 4 then
-					xPlayer.addMoney(35)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-				elseif CopsConnected >= 5 then
-					xPlayer.addMoney(35)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-                elseif CopsConnected >= 6 then
-					xPlayer.addMoney(40)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
-
-				end
-				
+				local copBonus = Config.WeedBonusPerCop * CopsConnected
+				xPlayer.addMoney(Config.BaseWeedPrice + copBonus)
+				TriggerClientEvent('esx:showNotification', source, _U('sold_one_weed'))
 				SellWeed(source)
 			end
-
 		end
 	end)
 end
@@ -469,7 +447,6 @@ local function TransformCoke(source)
 	end
 
 	SetTimeout(Config.TimeToProcessCoke, function()
-
 		if PlayersTransformingCoke[source] == true then
 
 			local _source = source
@@ -495,7 +472,6 @@ end
 
 RegisterServerEvent('esx_illegal_drugs:startTransformCoke')
 AddEventHandler('esx_illegal_drugs:startTransformCoke', function()
-
 	local _source = source
 
 	PlayersTransformingCoke[_source] = true
@@ -508,7 +484,6 @@ end)
 
 RegisterServerEvent('esx_illegal_drugs:stopTransformCoke')
 AddEventHandler('esx_illegal_drugs:stopTransformCoke', function()
-
 	local _source = source
 
 	PlayersTransformingCoke[_source] = false
@@ -516,14 +491,12 @@ AddEventHandler('esx_illegal_drugs:stopTransformCoke', function()
 end)
 
 local function SellCoke(source)
-
 	if CopsConnected < Config.RequiredCopsCoke then
 		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsCoke))
 		return
 	end
 
 	SetTimeout(Config.TimeToSellCoke, function()
-
 		if PlayersSellingCoke[source] == true then
 
 			local _source = source
@@ -535,40 +508,17 @@ local function SellCoke(source)
 				TriggerClientEvent('esx:showNotification', source, _U('no_pouches_coke_sale'))
 			else
 				xPlayer.removeInventoryItem('coke_pooch', 1)
-				if CopsConnected == 0 then
-					xPlayer.addMoney(50)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-				elseif CopsConnected == 1 then
-					xPlayer.addMoney(50)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-				elseif CopsConnected == 2 then
-					xPlayer.addMoney(50)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-				elseif CopsConnected == 3 then
-					xPlayer.addMoney(53)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-				elseif CopsConnected == 4 then
-					xPlayer.addMoney(55)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-				elseif CopsConnected >= 5 then
-					xPlayer.addMoney(55)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-                elseif CopsConnected >= 6 then
-					xPlayer.addMoney(60)
-					TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
-                	
-				end
-				
+				local copBonus = Config.CokeBonusPerCop * CopsConnected
+				xPlayer.addMoney(Config.BaseCokePrice + copBonus)
+				TriggerClientEvent('esx:showNotification', source, _U('sold_one_coke'))
 				SellCoke(source)
 			end
-
 		end
 	end)
 end
 
 RegisterServerEvent('esx_illegal_drugs:startSellCoke')
 AddEventHandler('esx_illegal_drugs:startSellCoke', function()
-
 	local _source = source
 
 	PlayersSellingCoke[_source] = true
@@ -581,7 +531,6 @@ end)
 
 RegisterServerEvent('esx_illegal_drugs:stopSellCoke')
 AddEventHandler('esx_illegal_drugs:stopSellCoke', function()
-
 	local _source = source
 
 	PlayersSellingCoke[_source] = false
@@ -601,7 +550,6 @@ end)
 ----------------------METH-----------------------------
 -------------------------------------------------------
 local function HarvestMeth(source)
-
 	if CopsConnected < Config.RequiredCopsMeth then
 		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsMeth))
 		return
