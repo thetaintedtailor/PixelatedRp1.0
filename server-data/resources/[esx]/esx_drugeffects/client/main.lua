@@ -2,6 +2,31 @@ ESX                  = nil
 local IsAlreadyDrug = false
 local DrugLevel     = -1
 
+function GetStoned(level, start)
+  Citizen.CreateThread(function()
+    if start then
+      DoScreenFadeOut(800)
+      Wait(1000)
+    end
+
+    if level == 1 then -- overdose
+      SetEntityHealth(playerPed, 0)
+      ClearTimecycleModifier()
+      ResetScenarioTypesEnabled()
+      ResetPedMovementClipset(playerPed, 0)
+      SetPedMotionBlur(playerPed, false)
+    else
+      SetTimecycleModifier("spectator5")
+      SetPedMotionBlur(playerPed, true)
+      SetPedIsDrunk(playerPed, true)
+    end
+
+    if start then
+      DoScreenFadeIn(800)
+    end
+  end)
+end
+
 Citizen.CreateThread(function()
   while ESX == nil do
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -24,54 +49,44 @@ AddEventHandler('esx_status:loaded', function(status)
     end
   )
 
-	Citizen.CreateThread(function()
+  Citizen.CreateThread(function()
+    while true do
+      Wait(2500)
 
-		while true do
-
-			Wait(1000)
-
-			TriggerEvent('esx_status:getStatus', 'drug', function(status)
-				
-				if status.val > 0 then
-					
+      TriggerEvent('esx_status:getStatus', 'drug', function(status)
+        if status.val > 0 then
           local start = true
+          local level = 0
 
           if IsAlreadyDrug then
             start = false
           end
 
-          local level = 0
-
           if status.val <= 999999 then
             level = 0
           else
-            overdose()
+            level = 1
           end
 
           if level ~= DrugLevel then
+            GetStoned(level, start)
           end
 
           IsAlreadyDrug = true
           DrugLevel     = level
-				end
+        end
 
-				if status.val == 0 then
-          
+        if status.val == 0 then
           if IsAlreadyDrug then
             Normal()
           end
 
           IsAlreadyDrug = false
           DrugLevel     = -1
-
-				end
-
-			end)
-
-		end
-
-	end)
-
+        end
+      end)
+    end
+  end)
 end)
 
 --When effects ends go back to normal
@@ -84,27 +99,11 @@ function Normal()
         ClearTimecycleModifier()
         ResetScenarioTypesEnabled()
         SetPedMotionBlur(GetPlayerPed(-1), false)
+        SetPedIsDrunk(playerPed, false)
         DoScreenFadeIn(800)
       end
     end)
   end)
-end
-
---In case too much drugs dies of overdose set everything back
-function overdose()
-
-  Citizen.CreateThread(function()
-
-    local playerPed = GetPlayerPed(-1)
-	
-    SetEntityHealth(playerPed, 0)
-    ClearTimecycleModifier()
-    ResetScenarioTypesEnabled()
-    ResetPedMovementClipset(playerPed, 0)
-    SetPedMotionBlur(playerPed, false)
-
-  end)
-
 end
 
 --Drugs Effects
@@ -232,8 +231,8 @@ AddEventHandler('esx_drugeffects:onK3v', function()
   loadAnimDict(ad)
 
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-	  Wait(2750)
-		ClearPedTasks(player)
+    Wait(2750)
+    ClearPedTasks(player)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
 
@@ -266,8 +265,8 @@ AddEventHandler('esx_drugeffects:onVicodin', function()
   loadAnimDict(ad)
 
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-	  Wait(2750)
-		ClearPedTasks(player)
+    Wait(2750)
+    ClearPedTasks(player)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true) 
     
@@ -284,8 +283,8 @@ AddEventHandler('esx_drugeffects:onAmoxicillin', function()
   loadAnimDict(ad)
 
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-	  Wait(2750)
-		ClearPedTasks(player)
+    Wait(2750)
+    ClearPedTasks(player)
     --SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, false) 
     
@@ -302,8 +301,8 @@ AddEventHandler('esx_drugeffects:onIbuprofen', function()
   loadAnimDict(ad)
 
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-	  Wait(2750)
-		ClearPedTasks(player)
+    Wait(2750)
+    ClearPedTasks(player)
     --SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, false) 
     
@@ -320,8 +319,8 @@ AddEventHandler('esx_drugeffects:onXanax', function()
   loadAnimDict(ad)
 
     TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-	  Wait(2750)
-		ClearPedTasks(player)
+    Wait(2750)
+    ClearPedTasks(player)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true) 
     
@@ -329,8 +328,8 @@ end)
 
 
 function loadAnimDict(dict)
-	while (not HasAnimDictLoaded(dict)) do
-		RequestAnimDict(dict)
-		Citizen.Wait(5)
-	end
+  while (not HasAnimDictLoaded(dict)) do
+    RequestAnimDict(dict)
+    Citizen.Wait(5)
+  end
 end
