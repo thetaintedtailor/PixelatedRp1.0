@@ -303,18 +303,22 @@ end)
 ]]
 
 Citizen.CreateThread( function()
+	local playerPed = GetPlayerPed(-1)
     while true do
-        Wait(0)
-        local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
-        local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
-        local street1 = GetStreetNameFromHashKey(s1)
-		local street2 = GetStreetNameFromHashKey(s2)
-		local playerPed = GetPlayerPed(-1)
+		Wait(0)
+		if playerPed == nil then
+			playerPed = GetPlayerPed(-1)
+		end
 		if IsPedShooting(playerPed) then
-			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") and GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_PETROLCAN")  then
+			local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
+			local s1, s2 =	GetStreetNameAtCoord(plyPos.x, plyPos.y, plyPos.z)
+			local street1 = GetStreetNameFromHashKey(s1)
+			local street2 = GetStreetNameFromHashKey(s2)
+			local weapon = GetSelectedPedWeapon(playerPed)
+			if weapon ~= GetHashKey("WEAPON_STUNGUN") and weapon ~= GetHashKey("WEAPON_PETROLCAN")  then
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
-				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
+				if PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+				elseif PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave then
 					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 						local sex = nil
 						if skin.sex == 0 then

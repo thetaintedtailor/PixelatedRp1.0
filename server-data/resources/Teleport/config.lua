@@ -68,20 +68,20 @@ Config.zones = {
 		}
 	},
 
-	--CokeEnter = {
-		--x = 374.94,
-		--y = -576.20,
-		--z = 18.48,
-		--w = 2.0,
-		--h = 1.0,		
-		--visible = false,
-		--t = 1,
-		--color = {
-			--r = 102,
-			--g = 0,
-			--b = 0
-		--}
-	--},
+	CokeEnter = {
+		x = 13.37,
+		y = 3732.18,
+		z = 39.68,
+		w = 2.0,
+		h = 1.0,		
+		visible = false,
+		t = 1,
+		color = {
+			r = 102,
+			g = 0,
+			b = 0
+		}
+	},
 	
 	CokeExit = {
 		x = 1103.613,
@@ -178,9 +178,9 @@ Config.point = {
 	},
 	
 	CokeExit = {
-		x = 370.70,
-		y = -577.08, 
-		z = 17.76
+		x = 16.42,
+		y = 3729.99, 
+		z = 39.69
 	},
 
 	ComedyClubEnter = {
