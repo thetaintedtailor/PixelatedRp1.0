@@ -127,6 +127,10 @@ function DrugFromItem(item)
     return Meth:new()
   elseif item == "coke_pooch" then
     return Coke:new()
+  elseif item == "crack" then
+    return Crack:new()
+  elseif item == "k3v" then
+    return K3v:new()
   end
 end
 
@@ -138,76 +142,7 @@ AddEventHandler('esx_drugeffects:onDrugs', function(drug)
   ActiveDrugs[drug] = ActiveDrugs[drug] or DrugFromItem(drug)
   CurrentDrug       = ActiveDrugs[drug]
 
-  if IsPedInAnyVehicle(playerPed, true) then
-    -- Do something in a vehicle
-  else
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-  end
-end)
-
---crack
-RegisterNetEvent('esx_drugeffects:onCrack')
-AddEventHandler('esx_drugeffects:onCrack', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-
-    --Efects
-    local player = PlayerId()
-    local timer = 0
-    while timer < 30 do
-      print()
-      SetRunSprintMultiplierForPlayer(player, 1.3)
-      ResetPlayerStamina(player)
-      Citizen.Wait(2000)
-      timer = timer + 2  
-    end
-    Wait(5000)
-
-    SetRunSprintMultiplierForPlayer(player, 1.0)
-    ESX.ShowNotification('You feel slower')
-      
-end)
-
---k3v
-RegisterNetEvent('esx_drugeffects:onK3v')
-AddEventHandler('esx_drugeffects:onK3v', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  local player = PlayerPedId()
-  local ad = "mp_suicide"
-  local anim = "pill"
-  loadAnimDict(ad)
-
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-    Wait(2750)
-    ClearPedTasks(player)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-
-    --Effects
-    local playerId = PlayerId()
-    local timer = 0
-    while timer < 30 do
-      print()
-      SetRunSprintMultiplierForPlayer(playerId, 1.3)
-      ResetPlayerStamina(playerId)
-      Citizen.Wait(2000)
-      timer = timer + 2  
-    end
-    Wait(5000)
-
-    SetRunSprintMultiplierForPlayer(playerId, 1.0)
-    ESX.ShowNotification('You feel slower')
-    
-    
+  CurrentDrug:animate()
 end)
 
 RegisterNetEvent('esx_drugeffects:onVicodin')

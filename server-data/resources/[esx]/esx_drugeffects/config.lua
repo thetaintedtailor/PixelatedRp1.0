@@ -24,9 +24,25 @@ Config.MaxMethSpeedDuration = 30
 Config.MinCokeSpeedPct = 10
 Config.MaxCokeSpeedPct = 30
 
--- Meth speed boost lasts for a random amount of seconds between these numbers
+-- Coke speed boost lasts for a random amount of seconds between these numbers
 Config.MinCokeSpeedDuration = 20
 Config.MaxCokeSpeedDuration = 50
+
+-- Crack gives a random temporary speed boost between these numbers (in percentages)
+Config.MinCrackSpeedPct = 15
+Config.MaxCrackSpeedPct = 40
+
+-- Crack speed boost lasts for a random amount of seconds between these numbers
+Config.MinCrackSpeedDuration = 10
+Config.MaxCrackSpeedDuration = 30
+
+-- K3v gives a random temporary speed boost between these numbers (in percentages)
+Config.MinK3vSpeedPct = 25
+Config.MaxK3vSpeedPct = 33
+
+-- K3v speed boost lasts for a random amount of seconds between these numbers
+Config.MinK3vSpeedDuration = 25
+Config.MaxK3vSpeedDuration = 35
 
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
@@ -46,7 +62,17 @@ Config.HighAmounts = {
     },
 
     coke_pooch = {
+        min = 40000,
+        max = 60000
+    },
+
+    crack = {
         min = 30000,
+        max = 70000
+    },
+
+    k3v = {
+        min = 40000,
         max = 60000
     }
 }

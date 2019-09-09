@@ -40,23 +40,11 @@ ESX.RegisterUsableItem('xanax', function(source)
 end)
 
 ESX.RegisterUsableItem('crack', function(source)
-        
-        local _source = source
-    local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeInventoryItem('crack', 1)
-
-    TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
-    TriggerClientEvent('esx_drugeffects:onCrack', source)
+    UseItem(source, 'crack')
 end)
 
 ESX.RegisterUsableItem('k3v', function(source)
-        
-        local _source = source
-    local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeInventoryItem('k3v', 1)
-
-    TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
-    TriggerClientEvent('esx_drugeffects:onK3v', source)
+    UseItem(source 'k3v')
 end)
 
 ESX.RegisterUsableItem('vicodin', function(source)

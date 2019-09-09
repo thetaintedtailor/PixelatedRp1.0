@@ -13,9 +13,12 @@ server_scripts {
 client_scripts {
 	'config.lua',
 	'client/drugs/narcotic.lua',
-	'client/drugs/weed.lua',
-	'client/drugs/opium.lua',
-	'client/drugs/meth.lua',
-	'client/drugs/coke.lua',
+	'client/drugs/prescription.lua',
+	'client/narcotics/drugs/weed.lua',
+	'client/narcotics/drugs/opium.lua',
+	'client/narcotics/drugs/meth.lua',
+	'client/narcotics/drugs/coke.lua',
+	'client/narcotics/drugs/crack.lua',
+	'client/drugs/prescriptions/k3v.lua',
 	'client/main.lua'
 }
