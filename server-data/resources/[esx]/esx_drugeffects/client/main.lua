@@ -1,6 +1,7 @@
-ESX                  = nil
+ESX                 = nil
 local IsAlreadyDrug = false
 local DrugLevel     = -1
+local CurrentDrug   = nil
 
 function GetStoned(level, start)
   Citizen.CreateThread(function()
@@ -35,7 +36,6 @@ Citizen.CreateThread(function()
 end)
 
 AddEventHandler('esx_status:loaded', function(status)
-
   TriggerEvent('esx_status:registerStatus', 'drug', 0, '#9ec617', 
     function(status)
       if status.val > 0 then
@@ -70,6 +70,11 @@ AddEventHandler('esx_status:loaded', function(status)
 
           if level ~= DrugLevel then
             GetStoned(level, start)
+          end
+
+          if CurrentDrug ~= nil then
+            CurrentDrug.use()
+            CurrentDrug = nil
           end
 
           IsAlreadyDrug = true
@@ -107,6 +112,21 @@ function Normal()
 end
 
 --Drugs Effects
+
+RegisterNetEvent('esx_drugeffects:onDrugs')
+AddEventHandler('esx_drugeffects:onDrugs', function(drug)
+  local playerPed = GetPlayerPed(-1)
+
+  if drug == "weed_pooch" then
+    CurrentDrug = Weed:new()
+  end
+
+  if IsPedInAnyVehicle(playerPed, true) then
+    -- Do something in a vehicle
+  else
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+  end
+end)
 
 --Weed
 RegisterNetEvent('esx_drugeffects:onWeed')
