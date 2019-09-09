@@ -11,7 +11,7 @@ function UseItem(source, name)
     xPlayer.removeInventoryItem(name, 1)
 
     TriggerClientEvent('esx_status:add', source, 'drug', math.random(highAmount.min, highAmount.max))
-    TriggerClientEvent('esx_drugeffects:onDrugs', source, 'weed_pooch')
+    TriggerClientEvent('esx_drugeffects:onDrugs', source, name)
 end
 
 ESX.RegisterUsableItem('weed_pooch', function(source)
@@ -19,13 +19,7 @@ ESX.RegisterUsableItem('weed_pooch', function(source)
 end)
 
 ESX.RegisterUsableItem('opium_pooch', function(source)
-       
-        local _source = source
-    local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeInventoryItem('opium_pooch', 1)
-
-    TriggerClientEvent('esx_status:add', _source, 'drug', 249000)
-    TriggerClientEvent('esx_drugeffects:onOpium', source)
+    UseItem(source, 'opium_pooch')
 end)
 
 ESX.RegisterUsableItem('meth_pooch', function(source)

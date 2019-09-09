@@ -2,6 +2,7 @@ ESX                 = nil
 local IsAlreadyDrug = false
 local DrugLevel     = -1
 local CurrentDrug   = nil
+local ActiveDrugs   = {}
 
 function GetStoned(level, start)
   Citizen.CreateThread(function()
@@ -73,7 +74,7 @@ AddEventHandler('esx_status:loaded', function(status)
           end
 
           if CurrentDrug ~= nil then
-            CurrentDrug.use()
+            CurrentDrug:use()
             CurrentDrug = nil
           end
 
@@ -84,6 +85,12 @@ AddEventHandler('esx_status:loaded', function(status)
         if status.val == 0 then
           if IsAlreadyDrug then
             Normal()
+
+            for item, drug in pairs(ActiveDrugs) do
+              drug:wearOff()
+            end
+
+            ActiveDrugs = {}
           end
 
           IsAlreadyDrug = false
@@ -111,15 +118,21 @@ function Normal()
   end)
 end
 
---Drugs Effects
+function DrugFromItem(item)
+  if item == "weed_pooch" then
+    return Weed:new()
+  elseif item == "opium_pooch" then
+    return Opium:new()
+  end
+end
 
+-- Triggered by server-side when a drug item is used
 RegisterNetEvent('esx_drugeffects:onDrugs')
 AddEventHandler('esx_drugeffects:onDrugs', function(drug)
   local playerPed = GetPlayerPed(-1)
 
-  if drug == "weed_pooch" then
-    CurrentDrug = Weed:new()
-  end
+  ActiveDrugs[drug] = ActiveDrugs[drug] or DrugFromItem(drug)
+  CurrentDrug       = ActiveDrugs[drug]
 
   if IsPedInAnyVehicle(playerPed, true) then
     -- Do something in a vehicle
@@ -127,40 +140,6 @@ AddEventHandler('esx_drugeffects:onDrugs', function(drug)
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
   end
 end)
-
---Weed
-RegisterNetEvent('esx_drugeffects:onWeed')
-AddEventHandler('esx_drugeffects:onWeed', function()
-  
-  local playerPed = GetPlayerPed(-1)
-
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    
-    --Efects
-    local player = PlayerId()
-    SetEntityHealth(GetPlayerPed(-1),200)
-end)
-
---Opium
-RegisterNetEvent('esx_drugeffects:onOpium')
-AddEventHandler('esx_drugeffects:onOpium', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    
-    --Efects
-    local player = PlayerId()
-    AddArmourToPed(playerPed, 100)
- end)
 
 --Meth
 RegisterNetEvent('esx_drugeffects:onMeth')
@@ -345,7 +324,6 @@ AddEventHandler('esx_drugeffects:onXanax', function()
     SetPedMotionBlur(playerPed, true) 
     
 end)
-
 
 function loadAnimDict(dict)
   while (not HasAnimDictLoaded(dict)) do

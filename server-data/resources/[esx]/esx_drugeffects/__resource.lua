@@ -12,6 +12,8 @@ server_scripts {
 
 client_scripts {
 	'config.lua',
-	'client/main.lua',
-	'client/narcotic.lua'
+	'client/drugs/narcotic.lua',
+	'client/drugs/weed.lua',
+	'client/drugs/opium.lua',
+	'client/main.lua'
 }
