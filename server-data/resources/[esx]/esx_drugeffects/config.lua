@@ -16,9 +16,17 @@ Config.MaxMethArmor = 20
 Config.MinMethSpeedPct = 5
 Config.MaxMethSpeedPct = 20
 
--- Meth speed boost lasts for a random amount of secondss between these numbers
+-- Meth speed boost lasts for a random amount of seconds between these numbers
 Config.MinMethSpeedDuration = 10
 Config.MaxMethSpeedDuration = 30
+
+-- Coke gives a random temporary speed boost between these numbers (in percentages)
+Config.MinCokeSpeedPct = 10
+Config.MaxCokeSpeedPct = 30
+
+-- Meth speed boost lasts for a random amount of seconds between these numbers
+Config.MinCokeSpeedDuration = 20
+Config.MaxCokeSpeedDuration = 50
 
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
@@ -35,5 +43,10 @@ Config.HighAmounts = {
     meth_pooch = {
         min = 15000,
         max = 50000
+    },
+
+    coke_pooch = {
+        min = 30000,
+        max = 60000
     }
 }

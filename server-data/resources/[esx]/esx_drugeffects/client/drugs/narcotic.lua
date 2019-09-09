@@ -1,3 +1,4 @@
+-- Narcotic is the abstract base class for all the real drugs and should never be used directly.
 Narcotic = {}
 
 function Narcotic:new(object)

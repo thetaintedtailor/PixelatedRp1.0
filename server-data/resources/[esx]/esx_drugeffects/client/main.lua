@@ -125,6 +125,8 @@ function DrugFromItem(item)
     return Opium:new()
   elseif item == "meth_pooch" then
     return Meth:new()
+  elseif item == "coke_pooch" then
+    return Coke:new()
   end
 end
 
@@ -141,30 +143,6 @@ AddEventHandler('esx_drugeffects:onDrugs', function(drug)
   else
     TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
   end
-end)
-
---Coke
-RegisterNetEvent('esx_drugeffects:onCoke')
-AddEventHandler('esx_drugeffects:onCoke', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    
-    --Efects
-    local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.3)
-      
-    Wait(30000)
-
-    SetRunSprintMultiplierForPlayer(player, 1.0)
-    ESX.ShowNotification('You feel slower') 
-    
 end)
 
 --crack

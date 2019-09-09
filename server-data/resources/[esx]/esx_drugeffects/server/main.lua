@@ -27,13 +27,7 @@ ESX.RegisterUsableItem('meth_pooch', function(source)
 end)
 
 ESX.RegisterUsableItem('coke_pooch', function(source)
-        
-        local _source = source
-    local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeInventoryItem('coke_pooch', 1)
-
-    TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
-    TriggerClientEvent('esx_drugeffects:onCoke', source)
+    UseItem(source, 'coke_pooch')
 end)
 
 ESX.RegisterUsableItem('xanax', function(source)

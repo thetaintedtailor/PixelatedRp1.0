@@ -15,5 +15,7 @@ client_scripts {
 	'client/drugs/narcotic.lua',
 	'client/drugs/weed.lua',
 	'client/drugs/opium.lua',
+	'client/drugs/meth.lua',
+	'client/drugs/coke.lua',
 	'client/main.lua'
 }
