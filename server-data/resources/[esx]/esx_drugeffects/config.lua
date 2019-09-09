@@ -8,6 +8,18 @@ Config.MaxWeedHealth = 40
 Config.MinOpiumArmor = 25
 Config.MaxOpiumArmor = 75
 
+ -- Meth gives a random temporary amount of armor between these numbers
+Config.MinMethArmor = 5
+Config.MaxMethArmor = 20
+
+-- Meth gives a random temporary speed boost between these numbers (in percentages)
+Config.MinMethSpeedPct = 5
+Config.MaxMethSpeedPct = 20
+
+-- Meth speed boost lasts for a random amount of secondss between these numbers
+Config.MinMethSpeedDuration = 10
+Config.MaxMethSpeedDuration = 30
+
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
     weed_pooch = {
@@ -18,5 +30,10 @@ Config.HighAmounts = {
     opium_pooch = {
         min = 20000,
         max = 30000
+    },
+
+    meth_pooch = {
+        min = 15000,
+        max = 50000
     }
 }

@@ -23,13 +23,7 @@ ESX.RegisterUsableItem('opium_pooch', function(source)
 end)
 
 ESX.RegisterUsableItem('meth_pooch', function(source)
-        
-        local _source = source
-    local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeInventoryItem('meth_pooch', 1)
-
-    TriggerClientEvent('esx_status:add', _source, 'drug', 333000)
-    TriggerClientEvent('esx_drugeffects:onMeth', source)
+    UseItem(source, 'opium_pooch')
 end)
 
 ESX.RegisterUsableItem('coke_pooch', function(source)
