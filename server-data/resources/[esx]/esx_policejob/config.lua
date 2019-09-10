@@ -210,45 +210,37 @@ Config.AuthorizedVehicles = {
 	},
 
 	cadet = {
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 }
 	},
 
 	officer = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
 		{ model = 'police8',label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
-		-- { model = 'SFBC3', 	label = 'BCSO Explorer', price = 1 }, Old style Explorer
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	deputy = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
-		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
-		{ model = 'police2',label = 'LSPD Charger', price = 1},
-		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
-		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8',label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
 	},
 
 	senior_officer = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -265,9 +257,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	corporal = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -284,9 +278,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	sergeant = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -304,9 +300,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	lieutenant = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -324,9 +322,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	captain = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -344,9 +344,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	commander = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -364,9 +366,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	deputy_sheriff = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -384,9 +388,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	deputy_chief = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -404,9 +410,12 @@ Config.AuthorizedVehicles = {
 	},
 
 	sheriff = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO6', label = 'BCSO Hellcat', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
@@ -424,9 +433,11 @@ Config.AuthorizedVehicles = {
 	},
 
 	boss = {
-		{ model = 'SFBC2', label = 'BCSO Charger', price = 1 },
-		{ model = 'SFBC4', label = 'BCSO Crown Vic', price = 1 },
-		{ model = 'SFBC5', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO2', label = 'BCSO Charger', price = 1 },
+		{ model = 'BCSO5', label = 'BCSO Corvette', price = 1 },
+		{ model = 'BCSO1', label = 'BCSO Crown Vic', price = 1 },
+		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
+		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = '1200rt', label = 'LSPD 1200RT Motorcycle', price = 1 },
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
