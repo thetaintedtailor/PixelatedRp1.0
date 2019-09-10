@@ -133,6 +133,8 @@ function DrugFromItem(item)
     return K3v:new()
   elseif item == "xanax" then
     return Xanax:new()
+  elseif item == "vicodin" then
+    return Vicodin:new()
   end
 end
 
@@ -145,24 +147,6 @@ AddEventHandler('esx_drugeffects:onDrugs', function(drug)
   CurrentDrug       = ActiveDrugs[drug]
 
   CurrentDrug:animate()
-end)
-
-RegisterNetEvent('esx_drugeffects:onVicodin')
-AddEventHandler('esx_drugeffects:onVicodin', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  local player = PlayerPedId()
-  local ad = "mp_suicide"
-  local anim = "pill"
-  loadAnimDict(ad)
-
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-    Wait(2750)
-    ClearPedTasks(player)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true) 
-    
 end)
 
 RegisterNetEvent('esx_drugeffects:onAmoxicillin')

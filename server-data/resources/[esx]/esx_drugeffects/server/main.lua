@@ -43,13 +43,7 @@ ESX.RegisterUsableItem('k3v', function(source)
 end)
 
 ESX.RegisterUsableItem('vicodin', function(source)
-        
-    local _source = source
-local xPlayer = ESX.GetPlayerFromId(source)
-xPlayer.removeInventoryItem('vicodin', 1)
-
-TriggerClientEvent('esx_status:add', _source, 'drug', 499000)
-TriggerClientEvent('esx_drugeffects:onVicodin', source)
+    UseItem(source 'vicodin')
 end)
 
 ESX.RegisterUsableItem('amoxicillin', function(source)

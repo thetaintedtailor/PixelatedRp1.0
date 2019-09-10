@@ -20,5 +20,7 @@ client_scripts {
 	'client/narcotics/drugs/coke.lua',
 	'client/narcotics/drugs/crack.lua',
 	'client/drugs/prescriptions/k3v.lua',
+	'client/drugs/prescriptions/xanax.lua',
+	'client/drugs/prescriptions/vicodin.lua',
 	'client/main.lua'
 }
