@@ -15,7 +15,6 @@ end)
 
 TriggerEvent('es:addCommand', 'lrv', function(source, args, user)
     TriggerClientEvent('pillbox_reception:treat', source)
-    print('attempting a revive')
 end, {help = "Can be used to revive and pay the fee a local doctor."})
 
 

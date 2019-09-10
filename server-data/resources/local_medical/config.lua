@@ -13,7 +13,8 @@ Config.Locations = {
         MarkerType = 25,
         MarkerSize = vector3(1.0,1.0,1.0),
         CostPerHPPoint = 10,
-        LocationName = 'Pillbox Medical'
+        LocationName = 'Pillbox Medical',
+        IgnoreEMSRequirement = false
     },
     Grandmas = {
         Coords = vector3(2436.10, 4966.39, 45.91),
@@ -21,6 +22,7 @@ Config.Locations = {
         MarkerType = 25,
         MarkerSize = vector3(1.0,1.0,1.0),
         CostPerHPPoint = 20,
-        LocationName = 'Grandma\'s House'
+        LocationName = 'Grandma\'s House',
+        IgnoreEMSRequirement = true
     }
 }
