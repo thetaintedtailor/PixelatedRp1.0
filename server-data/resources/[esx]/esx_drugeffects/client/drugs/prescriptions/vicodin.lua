@@ -1,0 +1,1 @@
+Vicodin = Prescription:new()

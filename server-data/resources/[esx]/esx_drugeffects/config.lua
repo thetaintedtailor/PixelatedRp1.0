@@ -84,5 +84,15 @@ Config.HighAmounts = {
     vicodin = {
         min = 40000,
         max = 60000
+    },
+
+    amoxicillin = {
+        min = 0,
+        max = 0
+    },
+
+    ibuprofen = {
+        min = 0,
+        max = 0
     }
 }

@@ -135,6 +135,10 @@ function DrugFromItem(item)
     return Xanax:new()
   elseif item == "vicodin" then
     return Vicodin:new()
+  elseif item == "amoxicillin" then
+    return Amoxicillin:new()
+  elseif item == "ibuprofen" then
+    return Ibuprofen:new()
   end
 end
 
@@ -147,42 +151,6 @@ AddEventHandler('esx_drugeffects:onDrugs', function(drug)
   CurrentDrug       = ActiveDrugs[drug]
 
   CurrentDrug:animate()
-end)
-
-RegisterNetEvent('esx_drugeffects:onAmoxicillin')
-AddEventHandler('esx_drugeffects:onAmoxicillin', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  local player = PlayerPedId()
-  local ad = "mp_suicide"
-  local anim = "pill"
-  loadAnimDict(ad)
-
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-    Wait(2750)
-    ClearPedTasks(player)
-    --SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, false) 
-    
-end)
-
-RegisterNetEvent('esx_drugeffects:onIbuprofen')
-AddEventHandler('esx_drugeffects:onIbuprofen', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  local player = PlayerPedId()
-  local ad = "mp_suicide"
-  local anim = "pill"
-  loadAnimDict(ad)
-
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-    Wait(2750)
-    ClearPedTasks(player)
-    --SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, false) 
-    
 end)
 
 function loadAnimDict(dict)

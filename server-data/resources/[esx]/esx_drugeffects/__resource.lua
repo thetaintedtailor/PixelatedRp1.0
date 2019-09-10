@@ -22,5 +22,7 @@ client_scripts {
 	'client/drugs/prescriptions/k3v.lua',
 	'client/drugs/prescriptions/xanax.lua',
 	'client/drugs/prescriptions/vicodin.lua',
+	'client/drugs/prescriptions/amoxicillin.lua',
+	'client/drugs/prescriptions/ibuprofen.lua',
 	'client/main.lua'
 }
