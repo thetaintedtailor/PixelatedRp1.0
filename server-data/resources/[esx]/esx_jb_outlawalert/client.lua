@@ -303,12 +303,9 @@ end)
 ]]
 
 Citizen.CreateThread( function()
-	local playerPed = GetPlayerPed(-1)
     while true do
 		Wait(0)
-		if playerPed == nil then
-			playerPed = GetPlayerPed(-1)
-		end
+		local playerPed = GetPlayerPed(-1)
 		if IsPedShooting(playerPed) then
 			local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
 			local s1, s2 =	GetStreetNameAtCoord(plyPos.x, plyPos.y, plyPos.z)
