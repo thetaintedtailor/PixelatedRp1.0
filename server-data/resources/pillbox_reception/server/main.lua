@@ -13,6 +13,12 @@ AddEventHandler('esx:playerLoaded', function(player)
     end
 end)
 
+TriggerEvent('es:addCommand', 'lrv', function(source, args, user)
+    TriggerClientEvent('pillbox_reception:treat', source)
+    print('attempting a revive')
+end, {help = "Can be used to revive and pay the fee a local doctor."})
+
+
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(30000)
@@ -29,7 +35,7 @@ Citizen.CreateThread(function()
 end)
 
 ESX.RegisterServerCallback('pillbox_reception:checkEMS', function(source, cb)
-    if emsOnDuty >= Config.MinEMSToShow then
+    if emsOnDuty >= Config.MinEMSToHide then
         cb(false)
     else
         cb(true)
@@ -48,5 +54,9 @@ end)
 RegisterNetEvent('pillbox_reception:pay')
 AddEventHandler('pillbox_reception:pay', function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.removeAccountMoney('bank', amount)
+    if xPlayer.getMoney() >= amount then
+        xPlayer.removeMoney(amount)
+    else
+        xPlayer.removeAccountMoney('bank', amount)
+    end
 end)
