@@ -1,4 +1,5 @@
 ESX                 = nil
+DrugEffects         = {}
 local IsAlreadyDrug = false
 local DrugLevel     = -1
 local CurrentDrug   = nil
@@ -51,6 +52,8 @@ AddEventHandler('esx_status:loaded', function(status)
   )
 
   Citizen.CreateThread(function()
+    TriggerEvent("esx_status:set", "drug", 0)
+
     while true do
       Wait(2500)
 

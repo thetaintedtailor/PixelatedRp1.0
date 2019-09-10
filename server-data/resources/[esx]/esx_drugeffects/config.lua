@@ -1,5 +1,11 @@
 Config = {}
 
+-- Global maximum for speed. Drugs can never make you go faster than 100 + this value (percentage)
+Config.GlobalMaxSpeed = 40
+
+-- Global maximum for speed duration. Drugs will never add additional speed longer than this number of seconds.
+Config.GlobalMaxSpeedDuration = 45
+
 -- Weed restores a random amount of health between these numbers
 Config.MinWeedHealth = 15
 Config.MaxWeedHealth = 40
@@ -32,7 +38,7 @@ Config.MaxCokeSpeedDuration = 50
 Config.MinCrackSpeedPct = 15
 Config.MaxCrackSpeedPct = 40
 
--- Crack speed boost lasts for a random amount of seconds between these numbers
+-- Crack speed and stamina boosts lasts for a random amount of seconds between these numbers
 Config.MinCrackSpeedDuration = 10
 Config.MaxCrackSpeedDuration = 30
 

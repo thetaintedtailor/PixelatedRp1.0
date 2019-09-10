@@ -4,25 +4,27 @@ function Meth:use()
     local playerPed   = GetPlayerPed(-1)
     local armorAmount = math.random(Config.MinMethArmor, Config.MaxMethArmor)
 
-    self.speedAdded    = math.max(Config.MaxMethSpeedPct, (self.speedAdded or 0) + math.random(Config.MinMethSpeedPct, Config.MaxMethSpeedPct))
-    self.speedDuration = (self.speedDuration or 0) + math.random(Config.MinMethSpeedDuration, Config.MaxMethSpeedDuration)
-    self.armorAdded    = (self.armorAdded or 0) + armorAmount
+    DrugEffects.speedAdded    = math.min(Config.GlobalMaxSpeed, (DrugEffects.speedAdded or 0) + math.random(Config.MinMethSpeedPct, Config.MaxMethSpeedPct))
+    DrugEffects.speedDuration = math.min(Config.GlobalMaxSpeedDuration, (DrugEffects.speedDuration or 0) + math.random(Config.MinMethSpeedDuration, Config.MaxMethSpeedDuration))
+    self.armorAdded           = (self.armorAdded or 0) + armorAmount
 
     AddArmourToPed(playerPed, armorAmount)
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1 + (self.speedAdded / 100))
+    SetRunSprintMultiplierForPlayer(PlayerId(), 1 + (DrugEffects.speedAdded / 100))
 
-    if (not self.isSprinting) then
-        self.isSprinting = true
+    if (not DrugEffects.isSprinting) then
+        DrugEffects.isSprinting = true
 
         Citizen.CreateThread(function()
-            while self.speedDuration > 0 do
+            local playerId = PlayerId()
+
+            while DrugEffects.speedDuration > 0 do
                 Citizen.Wait(1000)
-                self.speedDuration = self.speedDuration - 1
+                DrugEffects.speedDuration = DrugEffects.speedDuration - 1
             end
 
-            self.isSprinting = false
-            SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
-            ESX.ShowNotification("You feel slower as the meth wears off") 
+            DrugEffects.isSprinting = false
+            SetRunSprintMultiplierForPlayer(playerId, 1.0)
+            ESX.ShowNotification("You feel slower as the drugs wear off") 
         end)
     end
 end

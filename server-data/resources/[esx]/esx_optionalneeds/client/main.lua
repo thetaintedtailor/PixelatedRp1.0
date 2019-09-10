@@ -92,6 +92,8 @@ AddEventHandler('esx_status:loaded', function(status)
   )
 
   Citizen.CreateThread(function()
+    TriggerEvent("esx_status:set", "drunk", 0)
+
     while true do
       Wait(3000)
 
