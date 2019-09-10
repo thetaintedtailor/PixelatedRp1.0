@@ -36,8 +36,8 @@ end)
 RegisterServerEvent('esx_carthief:registerActivity')
 AddEventHandler('esx_carthief:registerActivity', function(value)
 	activity = value
-	cooldown = Config.CooldownMinutes * 60000
 	if value == 1 then
+		cooldown = Config.CooldownMinutes * 60000
 		activitySource = source
 		--Send notification to cops
 		local xPlayers = ESX.GetPlayers()
@@ -97,10 +97,9 @@ AddEventHandler('playerDropped', function ()
 	end
 end)
 
---Cooldown manager
-AddEventHandler('onResourceStart', function(resource)
+Citizen.CreateThread(function()
 	while true do
-		Wait(5000)
+		Citizen.Wait(5000)
 		if cooldown > 0 then
 			cooldown = cooldown - 5000
 		end

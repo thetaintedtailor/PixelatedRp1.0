@@ -317,8 +317,8 @@ Citizen.CreateThread( function()
 			local weapon = GetSelectedPedWeapon(playerPed)
 			if weapon ~= GetHashKey("WEAPON_STUNGUN") and weapon ~= GetHashKey("WEAPON_PETROLCAN")  then
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-				if PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave == false then
-				elseif PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave then
+				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
 					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 						local sex = nil
 						if skin.sex == 0 then
