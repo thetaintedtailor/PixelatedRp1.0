@@ -219,10 +219,9 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8',label = 'LSPD Impala', price = 1},
+		{ model = 'police4',label = 'LSPD Impala', price = 1},
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 }
 	},
 
 	deputy = {
@@ -231,8 +230,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'BCSO3', label = 'BCSO Explorer', price = 1 },
 		{ model = 'BCSO4', label = 'BCSO Silverado', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 }
 	},
 
 	senior_officer = {
@@ -245,15 +243,14 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	corporal = {
@@ -266,15 +263,14 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	sergeant = {
@@ -287,16 +283,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	lieutenant = {
@@ -309,16 +304,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	captain = {
@@ -331,16 +325,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	commander = {
@@ -353,16 +346,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	deputy_sheriff = {
@@ -375,16 +367,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	deputy_chief = {
@@ -397,16 +388,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	sheriff = {
@@ -420,16 +410,15 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1}
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 }
 	},
 
 	boss = {
@@ -442,17 +431,16 @@ Config.AuthorizedVehicles = {
 		{ model = 'police2',label = 'LSPD Charger', price = 1},
 		{ model = 'police', label = 'LSPD Crown Vic', price = 1 },
 		{ model = 'police3', label = 'LSPD Explorer', price = 1},
-		{ model = 'police8', label = 'LSPD Impala', price = 1},
-		{ model = '2015polstang', label = 'LSPD Mustang', price = 1 },
+		{ model = 'police4', label = 'LSPD Impala', price = 1},
+		{ model = 'police5', label = 'LSPD Mustang', price = 1 },
 		{ model = 'policet', label = 'LSPD Van', price = 1 },
 		{ model = 'pranger', label = 'Park Ranger SUV',price = 1 },
 		{ model = 'pbus', label = 'Prison Bus',price = 1 },
 		{ model = 'fbi', label = 'Unmarked Buffalo', price = 1},
-		{ model = 'SFUM2', label = 'Unmarked Crown Vic', price = 1 },
+		{ model = 'unmarked1', label = 'Unmarked Crown Vic', price = 1 },
 		{ model = 'fbi2', label = 'Unmarked Granger',price = 1},
-		{ model = 'SFUM1', label = 'Unmarked Tahoe', price = 1 },
-		{ model = 'police4', label = 'Unmarked Vapid',price = 1},
-    { model = "polschafter3", label = "Unmarked Schafter", price = 1 }
+		{ model = 'unmarked2', label = 'Unmarked Tahoe', price = 1 },
+		{ model = "police6", label = "Unmarked Schafter", price = 1 }
 	}
 }
 
