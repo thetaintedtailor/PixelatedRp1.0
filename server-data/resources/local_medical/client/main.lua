@@ -18,12 +18,7 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)
-        if showMarker == true then
-            if playerPed == nil then
-                playerPed = PlayerPedId()
-            end
-            CheckForPatient(false)
-        end
+        CheckForPatient(false)
     end
 end)
 
@@ -44,33 +39,35 @@ end)
 
 function CheckForPatient(fromCommand)
     for k, v in pairs(Config.Locations) do
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        local distance = GetDistanceBetweenCoords(coords, v.Coords, true)
-        if distance <= Config.MarkerDrawDistance then
-            DrawMarker(v.MarkerType, v.Coords, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.MarkerSize, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 20, false, true, 2, false, false, false, false)
-            if distance <= Config.InteractionDistance then
-                local health = GetEntityMaxHealth(playerPed) - GetEntityHealth(playerPed)
-                local cost = health * v.CostPerHPPoint
-                hasAlreadyEnteredMarker = true
-                if health >= Config.TreatmentThreshold then
-                    if IsControlJustReleased(0, 38) then
-                        if treated == false then
-                            treated = true
-                            TreatPatient(v, health, cost)
+        if showMarker == true or v.IgnoreEMSRequirement == true then
+            local playerPed = PlayerPedId()
+            local coords = GetEntityCoords(playerPed)
+            local distance = GetDistanceBetweenCoords(coords, v.Coords, true)
+            if distance <= Config.MarkerDrawDistance then
+                DrawMarker(v.MarkerType, v.Coords, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.MarkerSize, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 20, false, true, 2, false, false, false, false)
+                if distance <= Config.InteractionDistance then
+                    local health = GetEntityMaxHealth(playerPed) - GetEntityHealth(playerPed)
+                    local cost = health * v.CostPerHPPoint
+                    hasAlreadyEnteredMarker = true
+                    if health >= Config.TreatmentThreshold then
+                        if IsControlJustReleased(0, 38) then
+                            if treated == false then
+                                treated = true
+                                TreatPatient(v, health, cost)
+                            end
+                        elseif health >= 200 and fromCommand then
+                            if treated == false then
+                                treated = true
+                                TreatPatient(v, health, cost)
+                            end
                         end
-                    elseif health >= 200 and fromCommand then
-                        if treated == false then
-                            treated = true
-                            TreatPatient(v, health, cost)
-                        end
+                        ESX.ShowHelpNotification('Press ~r~E~s~ to see a local Doctor for ~g~$' .. cost .. '~s~')
+                    else
+                        ESX.ShowHelpNotification('You do not need medical attention.')
                     end
-                    ESX.ShowHelpNotification('Press ~r~E~s~ to see a local Doctor for ~g~$' .. cost .. '~s~')
                 else
-                    ESX.ShowHelpNotification('You do not need medical attention.')
+                    hasAlreadyEnteredMarker = false
                 end
-            else
-                hasAlreadyEnteredMarker = false
             end
         end
     end
