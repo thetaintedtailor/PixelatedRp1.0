@@ -326,7 +326,6 @@ function OpenShopMenu()
 						end)
 					else
 						ESX.TriggerServerCallback('esx_vehicleshop:buyVehicle', function (hasEnoughMoney)
-
 							if hasEnoughMoney then
 								IsInShopMenu = false
 

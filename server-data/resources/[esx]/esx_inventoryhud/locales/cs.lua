@@ -1,11 +1,11 @@
-Locales['cs'] = {
-	['cash'] = 'Hotovost',
-	['player_nearby'] = 'Zvolený hrác jiz není u tebe!',
-	['players_nearby'] = 'Poblíz tebe není zádný hrác!',
-	['no_permission'] = 'Na toto nemás práva!',
-	['generic_argument_name'] = 'ID hráce',
-	['generic_argument_help'] = 'ID hráce',
-	['openinventory_help'] = 'Otevrít inventár hráce',
-	['player_not_online'] = 'Hrác s tímto ID není online',
-	['id_not_number'] = 'Spatne zadané ID hrace'
+Locales["cs"] = {
+	["cash"] = "Hotovost",
+	["black_money"] = "Špinavé peníze",
+	["player_nearby"] = "Zvolený hráč již není u tebe!",
+	["players_nearby"] = "Poblíž tebe není žádný hrác!",
+	["openinv_help"] = "Otevře inventář jiného hráče",
+	["openinv_id"] = "ID hráče",
+	["no_permissions"] = "Na toto nemáš práva!",
+	["no_player"] = "Hráč se zadaným ID nebyl nalezen!",
+	["player_inventory"] = "Inventář hráče"
 }

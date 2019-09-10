@@ -138,7 +138,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             py = livpt[livr].y
             pz = livpt[livr].z
             distance = round(GetDistanceBetweenCoords(pizzeria.x, pizzeria.y, pizzeria.z, px,py,pz))
-            paie = distance * coefflouze
+            paie = (distance * coefflouze) * 0.76
 
             spawn_futo()
             goliv(livpt,livr)
@@ -184,7 +184,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
           if (posibilidad > 70) and (posibilidad < 90) then
 
-            pourboire = math.random(100, 200)
+            pourboire = math.random(64, 164)
 
             TriggerEvent("pNotify:SendNotification", {
               text = "$" .. pourboire .. " : You received a tip! ",

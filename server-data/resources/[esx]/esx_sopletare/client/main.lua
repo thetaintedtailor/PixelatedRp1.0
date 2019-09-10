@@ -44,7 +44,9 @@ Citizen.CreateThread(function()
                 bin    = GetEntityCoords(entity)
                 drawText3D(bin.x, bin.y, bin.z + 1.5, 'Press [~g~E~s~] to search ~b~dumpster~s~')  
                 if IsControlJustReleased(0, 38) then
-                    if not cachedBins[entity] then
+                    if IsPedInAnyVehicle(playerPed) then
+                        sendNotification('Exit the vehicle to dumpster dive.', 'error', 2000)
+                    elseif not cachedBins[entity] then
                         openBin(entity)
                     else
                         sendNotification('You have already searched this dumpster', 'error', 2000)
@@ -93,7 +95,12 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
 
         if searching then
-            DisableControlAction(0, 73) 
-        end
+            DisableControlAction(0, 73)
+            if IsControlJustPressed(0, 20) then
+                --percent = false
+                searching = false
+            end
+            --DisableControlAction(0, 20) 
+        end 
     end
 end)

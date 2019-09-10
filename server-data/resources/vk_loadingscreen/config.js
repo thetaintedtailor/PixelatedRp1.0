@@ -33,7 +33,7 @@ VK.tips.enable = true; //Enable tips (true : enable, false : prevent)
 VK.tips.list = [ // Tips list
     "Press F1 to pull up your phone. Emergency/legal/taxi services can be found in the 'services' menu.",
     "The yellow/blue bars above the minimap represent your hunger and thirst.",
-    "Our Police Department and EMS are hiring! Ask about the sign-on bonus.",
+    "Our EMS team is hiring! Ask about the sign-on bonus.",
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)

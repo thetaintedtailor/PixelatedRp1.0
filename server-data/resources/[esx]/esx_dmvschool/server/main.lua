@@ -8,6 +8,12 @@ AddEventHandler('esx:playerLoaded', function(source)
 	end)
 end)
 
+ESX.RegisterServerCallback('esx_dmvschool:reloadLicenses', function(source, cb)
+    TriggerEvent('esx_license:getLicenses', source, function(licenses)
+        cb(licenses)
+	end)
+end)
+
 RegisterNetEvent('esx_dmvschool:addLicense')
 AddEventHandler('esx_dmvschool:addLicense', function(type)
 	local _source = source

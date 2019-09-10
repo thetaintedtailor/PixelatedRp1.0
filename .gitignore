@@ -9,10 +9,6 @@
 # ignore large file types
 
 .*.swp
-
-
-
-
-
 server-data/cache
 server-data/essentialmode.db
+server-data/run.bat
