@@ -303,12 +303,9 @@ end)
 ]]
 
 Citizen.CreateThread( function()
-	local playerPed = GetPlayerPed(-1)
     while true do
 		Wait(0)
-		if playerPed == nil then
-			playerPed = GetPlayerPed(-1)
-		end
+		local playerPed = GetPlayerPed(-1)
 		if IsPedShooting(playerPed) then
 			local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
 			local s1, s2 =	GetStreetNameAtCoord(plyPos.x, plyPos.y, plyPos.z)
@@ -317,8 +314,8 @@ Citizen.CreateThread( function()
 			local weapon = GetSelectedPedWeapon(playerPed)
 			if weapon ~= GetHashKey("WEAPON_STUNGUN") and weapon ~= GetHashKey("WEAPON_PETROLCAN")  then
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
-				if PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave == false then
-				elseif PlayerData.job ~= nil then and PlayerData.job.name == 'police' and showcopsmisbehave then
+				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
+				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
 					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 						local sex = nil
 						if skin.sex == 0 then
