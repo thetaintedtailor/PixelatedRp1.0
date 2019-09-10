@@ -11,28 +11,28 @@ MySQL.ready(function()
     end
 end)
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(source)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    print('Loaded player, check for financing.')
+-- RegisterNetEvent('esx:playerLoaded')
+-- AddEventHandler('esx:playerLoaded', function(source)
+--     local xPlayer = ESX.GetPlayerFromId(source)
+--     print('Loaded player, check for financing.')
 
-    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
-        ['@owner'] = xPlayer.identifier,
-    }, function(financedCars)
-        print('Cars found, checking for overdue payments.')
-        for i=1, #financedCars, 1 do
-            print('Behind: ' .. financedCars[i].payments_behind)
-            if financedCars[i].payments_behind >= Config.PaymentBehindRepo then
-                local vehicleName = financedCars[i].vehicle
-                local playerName = GetCharacterName(xPlayer.source)
-                local color1 = Config.GetColor(vehicle.color1)
-                local color2 = Config.GetColor(vehicle.color2)
-                local description = playerName .. ' is behind on their payments. The bank would like their ' .. vehicleName ..' reposessed. Description - Primary Color: ' .. color1 .. ' - Secondary Color: ' .. color2 .. ' - Plate: ' .. vehicle.plate
-                TriggerServerEvent('esx_addons_gcphone:startCall', 'mechanic', description)
-            end
-        end
-    end)
-end)
+--     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
+--         ['@owner'] = xPlayer.identifier,
+--     }, function(financedCars)
+--         print('Cars found, checking for overdue payments.')
+--         for i=1, #financedCars, 1 do
+--             print('Behind: ' .. financedCars[i].payments_behind)
+--             if financedCars[i].payments_behind >= Config.PaymentBehindRepo then
+--                 local vehicleName = financedCars[i].vehicle
+--                 local playerName = GetCharacterName(xPlayer.source)
+--                 local color1 = Config.GetColor(vehicle.color1)
+--                 local color2 = Config.GetColor(vehicle.color2)
+--                 local description = playerName .. ' is behind on their payments. The bank would like their ' .. vehicleName ..' reposessed. Description - Primary Color: ' .. color1 .. ' - Secondary Color: ' .. color2 .. ' - Plate: ' .. vehicle.plate
+--                 TriggerServerEvent('esx_addons_gcphone:startCall', 'mechanic', description)
+--             end
+--         end
+--     end)
+-- end)
 
 
 RegisterServerEvent('finance_vehicle:addNewVehicle')
@@ -92,6 +92,31 @@ ESX.RegisterServerCallback('vehicle_financing:getfinancedvehicles', function(sou
         cb(financedCars)
     end)
 end)
+
+ESX.RegisterServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(source, cb, plate)
+    local financedCar = {}
+    local player = GetPlayerIdentifiers(source)[1]
+    print(plate)
+
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', {
+        ['@owner'] = player,
+        ['@plate'] = plate
+    }, function(data)
+        print(data.plate)
+        table.insert(financedCar, 
+        { 
+            plate = data.plate,
+            purchasePrice = data.purchase_price,
+            paymentCost = data.payment_cost,
+            remainingBalance = data.remaining_balance,
+            paymentsBehind = data.payments_behind,
+            vehicle = data.vehicle 
+        })
+        print("FINANCED CARS: " .. financedCar.paymentsBehind)
+        cb(financedCar, Config.PaymentBehindRepo)
+    end)
+end)
+
 
 function AutoCarPayments(d, h, m)
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles', {}, function(result)

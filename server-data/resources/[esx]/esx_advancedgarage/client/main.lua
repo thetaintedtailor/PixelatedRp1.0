@@ -176,8 +176,19 @@ function ListOwnedCarsMenu()
 							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
-					
-					table.insert(elements, {label = labelvehicle, value = v})
+
+					ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+						print(car.paymentsBehind)
+						print(paymentsBehindRepo)
+						if car.paymentsBehind >= paymentsBehindRepo then
+							print("Behind on payments!")
+							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+							table.insert(elements, {label = labelvehicle, value = 'repo'})
+						else
+							table.insert(elements, {label = labelvehicle, value = v})
+						end
+					end, plate)
+						
 				else
 					local hashVehicule = v.vehicle.model
 					local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -197,17 +208,25 @@ function ListOwnedCarsMenu()
 							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
-					
-					table.insert(elements, {label = labelvehicle, value = v})
+
+					ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+						if car.paymentsBehind >= paymentsBehindRepo then
+							print("Behind on payments!")
+							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+							table.insert(elements, {label = labelvehicle, value = 'repo'})
+						else
+							table.insert(elements, {label = labelvehicle, value = v})
+						end
+					end, plate)
 				end
 			end
 		end
-		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_car', {
 			title    = _U('garage_cars'),
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
+			if data.current.value == "repo" then return end
 			if data.current.value.stored then
 				menu.close()
 				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel)
@@ -516,7 +535,6 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				for k,v in pairs(carInWorld) do
 					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) == 1 then
 						isSpawned = 1
@@ -526,15 +544,18 @@ function ReturnOwnedCarsMenu()
 				if isSpawned == 1 then
 					labelvehicle = ' '..vehicleName..' | '..plate..' | '..'Stolen?'..' '
 					table.insert(elements, {label = labelvehicle, value = 'stolen'})
-				end
-				
-				if isSpawned == 0 then
+				else
 					labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
-				    table.insert(elements, {label = labelvehicle, value = v})
-					--table.insert(elements, {label = labelvehicle, value = v})
+					table.insert(elements, {label = labelvehicle, value = v})
 				end
-				
-				--table.insert(elements, {label = labelvehicle, value = nil})
+
+				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+					if car.paymentsBehind >= paymentsBehindRepo then
+						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+						table.insert(elements, {label = labelvehicle, value = 'stolen'})
+					end
+				end, plate)
+
 			else
 				local hashVehicule = v.model
 				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -550,15 +571,16 @@ function ReturnOwnedCarsMenu()
 					end
 				end
 
-				--if isSpawned == 1 then
-				--	table.insert(elements, {label = labelvehcle, value = 'Stolen?'})
-				--end
-				
 				if isSpawned == 0 then
 					table.insert(elements, {label = labelvehicle, value = v})
 				end
-				
-				--table.insert(elements, {label = labelvehicle, value = v})
+
+				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+					if car.paymentsBehind >= paymentsBehindRepo then
+						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+						table.insert(elements, {label = labelvehicle, value = 'stolen'})
+					end
+				end, plate)
 			end
 		end
 		
