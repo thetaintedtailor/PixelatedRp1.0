@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
             if playerPed == nil then
                 playerPed = PlayerPedId()
             end
-            CheckForPatient()
+            CheckForPatient(false)
         end
     end
 end)
@@ -39,10 +39,10 @@ end)
 
 RegisterNetEvent('pillbox_reception:treat')
 AddEventHandler('pillbox_reception:treat', function()
-    CheckForPatient()
+    CheckForPatient(true)
 end)
 
-function CheckForPatient()
+function CheckForPatient(fromCommand)
     for k, v in pairs(Config.Locations) do
         local playerPed = PlayerPedId()
         local coords = GetEntityCoords(playerPed)
@@ -59,7 +59,7 @@ function CheckForPatient()
                             treated = true
                             TreatPatient(v, health, cost)
                         end
-                    elseif health >= 200 then
+                    elseif health >= 200 and fromCommand then
                         if treated == false then
                             treated = true
                             TreatPatient(v, health, cost)
