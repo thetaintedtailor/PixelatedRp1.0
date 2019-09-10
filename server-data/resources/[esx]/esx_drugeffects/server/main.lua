@@ -23,7 +23,7 @@ ESX.RegisterUsableItem('opium_pooch', function(source)
 end)
 
 ESX.RegisterUsableItem('meth_pooch', function(source)
-    UseItem(source, 'opium_pooch')
+    UseItem(source, 'meth_pooch')
 end)
 
 ESX.RegisterUsableItem('coke_pooch', function(source)
@@ -31,7 +31,7 @@ ESX.RegisterUsableItem('coke_pooch', function(source)
 end)
 
 ESX.RegisterUsableItem('xanax', function(source)
-    UseItem(source, 'coke_pooch')
+    UseItem(source, 'xanax')
 end)
 
 ESX.RegisterUsableItem('crack', function(source)
