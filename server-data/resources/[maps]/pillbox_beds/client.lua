@@ -24,7 +24,6 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-
         Citizen.Wait(5)
 
         for i=1, #Config.BedList do
@@ -32,12 +31,9 @@ Citizen.CreateThread(function()
             local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, true)
 
             if distance < Config.MaxDistance and InAction == false then
-
                 ESX.Game.Utils.DrawText3D({ x = bedID.objCoords.x, y = bedID.objCoords.y, z = bedID.objCoords.z + 1 }, bedID.text, 0.6)
-
                 if IsControlJustReleased(0, Keys['E']) then
                     playerPos = GetEntityCoords(PlayerPedId(), true)
-
                     bedActive(bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, bedID.heading, bedID)
                 end
             end
@@ -46,7 +42,6 @@ Citizen.CreateThread(function()
 end)
 
 function bedActive(x, y, z, heading)
-
     SetEntityCoords(GetPlayerPed(-1), x, y, z + 0.3)
     RequestAnimDict('misslamar1dead_body')
     while not HasAnimDictLoaded('misslamar1dead_body') do
@@ -56,19 +51,15 @@ function bedActive(x, y, z, heading)
     SetEntityHeading(GetPlayerPed(-1), heading + 180.0)
     InAction = true
 
-
     Citizen.CreateThread(function()
-        while true do
+        while InAction do
             Citizen.Wait(0)
-
-            if InAction == true then
-                headsUp('Press Z to get back up')
-                if IsControlJustReleased(0, Keys['Z']) then
-                    ClearPedTasks(GetPlayerPed(-1))
-                    FreezeEntityPosition(GetPlayerPed(-1), false)
-                    SetEntityCoords(GetPlayerPed(-1), playerPos.x, playerPos.y, playerPos.z)
-                    InAction = false
-                end
+            headsUp('Press Z to get back up')
+             if IsControlJustReleased(0, Keys['Z']) then
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+                SetEntityCoords(GetPlayerPed(-1), playerPos.x, playerPos.y, playerPos.z)
+                 InAction = false
             end
         end
     end)
