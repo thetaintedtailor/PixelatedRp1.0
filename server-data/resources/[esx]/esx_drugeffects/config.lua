@@ -74,5 +74,10 @@ Config.HighAmounts = {
     k3v = {
         min = 40000,
         max = 60000
+    },
+
+    xanax = {
+        min = 10000,
+        max = 30000
     }
 }

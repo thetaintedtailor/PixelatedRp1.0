@@ -131,6 +131,8 @@ function DrugFromItem(item)
     return Crack:new()
   elseif item == "k3v" then
     return K3v:new()
+  elseif item == "xanax" then
+    return Xanax:new()
   end
 end
 
@@ -196,24 +198,6 @@ AddEventHandler('esx_drugeffects:onIbuprofen', function()
     ClearPedTasks(player)
     --SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, false) 
-    
-end)
-
-RegisterNetEvent('esx_drugeffects:onXanax')
-AddEventHandler('esx_drugeffects:onXanax', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  local maxHealth = GetEntityMaxHealth(playerPed)
-  local player = PlayerPedId()
-  local ad = "mp_suicide"
-  local anim = "pill"
-  loadAnimDict(ad)
-
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
-    Wait(2750)
-    ClearPedTasks(player)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true) 
     
 end)
 
