@@ -94,26 +94,17 @@ ESX.RegisterServerCallback('vehicle_financing:getfinancedvehicles', function(sou
 end)
 
 ESX.RegisterServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(source, cb, plate)
-    local financedCar = {}
-    local player = GetPlayerIdentifiers(source)[1]
-    print(plate)
+    local financedCars = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', {
-        ['@owner'] = player,
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE plate = @plate', {
         ['@plate'] = plate
     }, function(data)
-        print(data.plate)
-        table.insert(financedCar, 
-        { 
-            plate = data.plate,
-            purchasePrice = data.purchase_price,
-            paymentCost = data.payment_cost,
-            remainingBalance = data.remaining_balance,
-            paymentsBehind = data.payments_behind,
-            vehicle = data.vehicle 
-        })
-        print("FINANCED CARS: " .. financedCar.paymentsBehind)
-        cb(financedCar, Config.PaymentBehindRepo)
+        print(data[1].payments_behind)
+        for _,v in pairs(data) do 
+            table.insert(financedCars, { plate = v.plate, purchasePrice = v.purchase_price, paymentCost = v.payment_cost, remainingBalance = v.remaining_balance, paymentsBehind = v.payments_behind, vehicle = v.vehicle })
+        end
+        print("FINANCED CARS: " .. financedCars[1].paymentsBehind)
+        cb(financedCars[1], Config.PaymentBehindRepo)
     end)
 end)
 
