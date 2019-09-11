@@ -147,11 +147,11 @@ Config.zones = {
 -- Landing point, keep the same name as markers
 Config.point = {
 
-	WeedEnter = {           --This is where you land when you use the entrance teleport.
-		x = 1066.009,
-		y = -3183.386,
-		z = -39.164
-	},
+	-- WeedEnter = {           --This is where you land when you use the entrance teleport.
+	-- 	x = 1066.009,
+	-- 	y = -3183.386,
+	-- 	z = -39.164
+	-- },
 	
 	WeedExit = {             --This is where you land when you use the exit teleport.
 		x = -902.48,
