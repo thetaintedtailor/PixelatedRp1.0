@@ -1,5 +1,4 @@
 ESX = nil
-
 ActiveBomb = nil
 
 Citizen.CreateThread(function()
@@ -47,5 +46,14 @@ AddEventHandler('explosives:bombtick', function()
     local playerPed = GetPlayerPed(-1)
     if GetDistanceBetweenCoords(GetEntityCoords(playerPed), x, y, z, true) <= Config.BeepDistance then
         PlaySoundFrontend(-1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
+    end
+end)
+
+RegisterNetEvent('explosives:carbombexploded')
+AddEventHandler('explosives:carbombexploded', function()
+    local ped = GetPlayerPed(-1)
+    if IsPedInAnyVehicle(ped) then
+        local location = GetEntityCoords(ped)
+        AddExplosion(location.x, location.y, location.z, 32, 2.0, true, false, 5.0)
     end
 end)

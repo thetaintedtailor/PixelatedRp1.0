@@ -48,3 +48,13 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
     end
 end)
+
+TriggerEvent('es:addGroupCommand', 'carbomb', "admin", function(source, args)
+    local target = -1
+
+    if args[1] ~= nil then
+        target = tonumber(args[1])
+    end
+
+    TriggerClientEvent('explosives:carbombexploded', target)
+end)
