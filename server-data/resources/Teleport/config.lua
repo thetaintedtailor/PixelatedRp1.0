@@ -6,21 +6,21 @@ Config.actionKey = 51
 -- markers AKA Teleporters
 Config.zones = {
 	
-	WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
-		x = -899.22,
-		y = -2309.39,
-		z = -3.51,
-		w = 2.0,
-		h = 1.0,
-		visible = false, -- Set this to true to make the marker visible. False to disable it.
-		t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
-		color = {
-			r = 0,
-			g = 102,
-			b = 0
-		}
+	-- WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
+	-- 	x = -899.22,
+	-- 	y = -2309.39,
+	-- 	z = -3.51,
+	-- 	w = 2.0,
+	-- 	h = 1.0,
+	-- 	visible = false, -- Set this to true to make the marker visible. False to disable it.
+	-- 	t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
+	-- 	color = {
+	-- 		r = 0,
+	-- 		g = 102,
+	-- 		b = 0
+	-- 	}
 		
-	},
+	-- },
 	
 	WeedExit = {          --This is the exit where you go to exit the weed warehouse
 		x = 1038.863,
