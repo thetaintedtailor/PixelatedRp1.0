@@ -16,7 +16,7 @@ function Crack:use()
         Citizen.CreateThread(function()
             local playerId = PlayerId()
 
-            while DrugEffects.speedDuration > 0 do
+            while DrugEffects.staminaDuration > 0 do
                 Citizen.Wait(1000)
                 DrugEffects.staminaDuration = DrugEffects.staminaDuration - 1
 
