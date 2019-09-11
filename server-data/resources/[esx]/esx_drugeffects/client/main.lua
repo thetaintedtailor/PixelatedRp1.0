@@ -8,24 +8,19 @@ local ActiveDrugs   = {}
 function GetStoned(level, start)
   Citizen.CreateThread(function()
     if start then
-      DoScreenFadeOut(800)
-      Wait(1000)
+      StartScreenEffect("DrugsTrevorClownsFightIn", 0, true)
     end
+
+    local playerPed = GetPlayerPed(-1)
 
     if level == 1 then -- overdose
       SetEntityHealth(playerPed, 0)
-      ClearTimecycleModifier()
       ResetScenarioTypesEnabled()
       ResetPedMovementClipset(playerPed, 0)
-      SetPedMotionBlur(playerPed, false)
-    else
-      SetTimecycleModifier("spectator5")
-      SetPedMotionBlur(playerPed, true)
-      SetPedIsDrunk(playerPed, true)
-    end
-
-    if start then
-      DoScreenFadeIn(800)
+      StopScreenEffect("DrugsTrevorClownsFightIn")
+      StopScreenEffect("DrugsTrevorClownsFightOut")
+    elseif level > -1 and not GetScreenEffectIsActive("DrugsTrevorClownsFightIn") then
+      StartScreenEffect("DrugsTrevorClownsFightIn")
     end
   end)
 end
@@ -107,15 +102,13 @@ end)
 --When effects ends go back to normal
 function Normal()
   Citizen.CreateThread(function()
+    local playerPed = GetPlayerPed(-1)
+
     TriggerEvent("esx_status:getStatus", "drunk", function(status)
       if status.val <= 0 then
-        DoScreenFadeOut(800)
-        Wait(1000)
-        ClearTimecycleModifier()
         ResetScenarioTypesEnabled()
-        SetPedMotionBlur(GetPlayerPed(-1), false)
-        SetPedIsDrunk(playerPed, false)
-        DoScreenFadeIn(800)
+        StartScreenEffect("DrugsTrevorClownsFightOut", 0, false)
+        StopScreenEffect("DrugsTrevorClownsFightIn")
       end
     end)
   end)
