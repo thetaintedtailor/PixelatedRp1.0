@@ -1348,24 +1348,18 @@ RegisterCommand("testanim",function(source, args)
 	end
 end, false)
 
-RegisterCommand("startfx",function(source, args)
-	StartScreenEffect("DrugsTrevorClownsFight", 0, true)
-	--SetTimecycleModifier("spectator5")
-	--SetPedMotionBlur(playerPed, true)
-	--SetPedIsDrunk(playerPed, true)
-end, false)
-
-RegisterCommand("stopfx",function(source, args)
-	local playerPed = GetPlayerPed(-1)
-	StartScreenEffect("DrugsTrevorClownsFightOut", 0, false)
-	StopScreenEffect("DrugsTrevorClownsFight")
-	--StopScreenEffect("PeyoteIn")
-	--StartScreenEffect("RampageOut", 0, true)
-	--StopAllScreenEffects()
-	--SetPedMotionBlur(playerPed, false)
-	--SetPedIsDrunk(playerPed, false)
-	--ClearTimecycleModifier()
-end, false)
+---- For testing screen fx
+--RegisterCommand("startfx",function(source, args)
+--	SetTimecycleModifier("stoned")
+--	SetPedMotionBlur(playerPed, true)
+--	SetPedIsDrunk(playerPed, true)
+--end, false)
+--
+--RegisterCommand("stopfx",function(source, args)
+--	SetPedMotionBlur(playerPed, false)
+--	SetPedIsDrunk(playerPed, false)
+--	ClearTimecycleModifier()
+--end, false)
 
 ----------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ functions -----------------------------------------------------------------
