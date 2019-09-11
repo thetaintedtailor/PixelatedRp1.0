@@ -26,7 +26,7 @@ TriggerEvent('es:addGroupCommand', 'spectate', "admin", function(source, args, u
 		TriggerClientEvent('es_camera:spectate', source, target)
 
 	elseif target == source then
-		TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Vous ne pouvez pas vous spec vous-même !")
+		TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "You cannot spectate yourself!")
 	else
 
 		local found = false
