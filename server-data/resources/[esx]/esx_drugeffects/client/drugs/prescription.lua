@@ -18,7 +18,7 @@ function Prescription:animate()
         Citizen.Wait(5)
     end
 
-    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+    TaskPlayAnim(player, ad, anim, 3.0, 1.0, -1, 48, 0, 0, 0, 0)
     Citizen.Wait(2750)
     ClearPedTasks(player)
 end
