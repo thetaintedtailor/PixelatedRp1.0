@@ -260,6 +260,7 @@ Config.AuthorizedHelicopters = {
 Config.AuthorizedPharmacy = {
 	Shared = {
 		'bandage',
+		'medikit',
 		'gauze',
 		'medicaltape',
 		'morphine',
