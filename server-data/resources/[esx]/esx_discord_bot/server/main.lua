@@ -70,9 +70,9 @@ AddEventHandler("esx:droppednote", function(name,msg)
 end)
 
 RegisterServerEvent("esx:localdoctor")
-AddEventHandler("esx:localdoctor", function(name, location, health)
+AddEventHandler("esx:localdoctor", function(source, location, amount)
   if(settings.LogLocalDoctors)then
-    sendToDiscord('Local Doctor Use', name..' used the local doctor at '..location .. ' to heal for ' .. health, Config.purple, Config.deathHook)
+    sendToDiscord('Local Doctor Use', GetCharacterName(source)..' used the local doctor at '..location .. ' to heal for ' .. amount, Config.blue, Config.deathHook)
   end
 end)
 
@@ -199,3 +199,11 @@ AddEventHandler('esx:killerlog', function(t,killer, kilerT) -- t : 0 = NPC, 1 = 
      sendToDiscord(_U('server_kill'), xPlayer.name .." ".. _('user_kill_environnement'),Config.red, Config.deathHook)
   end
 end)
+
+function GetCharacterName(source)
+  local id = GetPlayerIdentifiers(source)[1]
+	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
+		['@identifier'] = id
+	})
+  return result[1].firstname .. ' ' .. result[1].lastname .. ' (' .. id ..')'
+end
