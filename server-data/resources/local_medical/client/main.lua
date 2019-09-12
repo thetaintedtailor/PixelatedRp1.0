@@ -23,14 +23,14 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function()
-	for k, v in pairs(Config.Locations) do
-        ESX.Game.SpawnObject('v_med_emptybed', v.BedLocation, function(object)
-            SetEntityAsMissionEntity(object, false, true)
-        end)
-    end
-end)
+-- RegisterNetEvent('esx:playerLoaded')
+-- AddEventHandler('esx:playerLoaded', function()
+-- 	for k, v in pairs(Config.Locations) do
+--         ESX.Game.SpawnObject('v_med_emptybed', v.BedLocation, function(object)
+--             SetEntityAsMissionEntity(object, false, true)
+--         end)
+--     end
+-- end)
 
 RegisterNetEvent('pillbox_reception:treat')
 AddEventHandler('pillbox_reception:treat', function()

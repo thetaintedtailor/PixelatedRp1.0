@@ -4,19 +4,17 @@ local bedSpawned = false
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+-- RegisterServerEvent('esx:playerLoaded')
+-- AddEventHandler('esx:playerLoaded', function(player)
+--     if bedSpawned == false then
+--         TriggerClientEvent('pillbox_reception:spawnbed', source)
+--         bedSpawned = true
+--     end
+-- end)
 
-RegisterServerEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(player)
-    if bedSpawned == false then
-        TriggerClientEvent('pillbox_reception:spawnbed', source)
-        bedSpawned = true
-    end
-end)
-
-TriggerEvent('es:addCommand', 'lrv', function(source, args, user)
-    TriggerClientEvent('pillbox_reception:treat', source)
-end, {help = "Can be used to revive and pay the fee a local doctor."})
-
+-- TriggerEvent('es:addCommand', 'lrv', function(source, args, user)
+--     TriggerClientEvent('pillbox_reception:treat', source)
+-- end, {help = "Can be used to revive and pay the fee a local doctor."})
 
 Citizen.CreateThread(function()
     while true do
