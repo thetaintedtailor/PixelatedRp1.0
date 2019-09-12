@@ -69,6 +69,14 @@ AddEventHandler("esx:droppednote", function(name,msg)
   end
 end)
 
+RegisterServerEvent("esx:localdoctor")
+AddEventHandler("esx:localdoctor", function(name, location, health)
+  if(settings.LogLocalDoctors)then
+    sendToDiscord('Local Doctor Use', name..' used the local doctor at '..location .. ' to heal for ' .. health, Config.purple, Config.deathHook)
+  end
+end)
+
+
 RegisterServerEvent("esx:robbedproperty")
 AddEventHandler("esx:robbedproperty", function(name, propertyName, amount)
   local time = os.date("*t", os.time())

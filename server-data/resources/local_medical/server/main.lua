@@ -41,7 +41,7 @@ end)
 
 ESX.RegisterServerCallback('pillbox_reception:checkmoney', function(source, cb, amount)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.getBank() >= amount then
+    if xPlayer.getMoney() >= amount or xPlayer.getBank() >= amount then
         cb(true)
     else
         cb(false)
@@ -49,11 +49,12 @@ ESX.RegisterServerCallback('pillbox_reception:checkmoney', function(source, cb, 
 end)
 
 RegisterNetEvent('pillbox_reception:pay')
-AddEventHandler('pillbox_reception:pay', function(amount)
+AddEventHandler('pillbox_reception:pay', function(amount, locationName)
     local xPlayer = ESX.GetPlayerFromId(source)
     if xPlayer.getMoney() >= amount then
         xPlayer.removeMoney(amount)
     else
         xPlayer.removeAccountMoney('bank', amount)
     end
+    TriggerEvent('esx:localdoctor', xPlayer.name, locationName, amount)
 end)
