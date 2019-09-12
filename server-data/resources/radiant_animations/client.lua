@@ -225,8 +225,9 @@ RegisterCommand("e",function(source, args)
 		return
 	else
 		if tostring(args[1]) ~= nil then
-            local argh = tostring(args[1])
-
+            local argString = tostring(args[1])
+			local argh = string.lower(argString)
+			
 			if argh == 'surrender' then
 				local surrendered = false
 				if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
