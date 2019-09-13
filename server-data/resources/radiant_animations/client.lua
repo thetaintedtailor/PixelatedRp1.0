@@ -1327,7 +1327,6 @@ end, false)
 
 
 ----Use /testanimation command, you can use this to easily test new animations---
-
 RegisterCommand("testanim",function(source, args)
 
 	local ad = "mp_suicide" --- insert the animation dic here
@@ -1350,6 +1349,18 @@ RegisterCommand("testanim",function(source, args)
 	end
 end, false)
 
+---- For testing screen fx
+--RegisterCommand("startfx",function(source, args)
+--	SetTimecycleModifier("stoned")
+--	SetPedMotionBlur(playerPed, true)
+--	SetPedIsDrunk(playerPed, true)
+--end, false)
+--
+--RegisterCommand("stopfx",function(source, args)
+--	SetPedMotionBlur(playerPed, false)
+--	SetPedIsDrunk(playerPed, false)
+--	ClearTimecycleModifier()
+--end, false)
 
 ----------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ functions -----------------------------------------------------------------

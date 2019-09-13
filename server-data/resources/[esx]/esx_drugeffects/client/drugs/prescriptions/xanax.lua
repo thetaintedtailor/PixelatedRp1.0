@@ -1,0 +1,1 @@
+Xanax = Prescription:new()
