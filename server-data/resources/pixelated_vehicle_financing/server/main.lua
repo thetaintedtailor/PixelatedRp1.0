@@ -40,7 +40,7 @@ AddEventHandler('finance_vehicle:addNewVehicle', function(vehicleProps, vehicle,
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
 
-    local payments = math.ceil(price / 14)
+    local payments = math.ceil(price / Config.PaymentDays)
 
     MySQL.Async.execute('INSERT INTO financed_vehicles (owner, plate, purchase_price, payment_cost, remaining_balance, vehicle) VALUES (@owner, @plate, @purchase_price, @payment_cost, @remaining_balance, @vehicle)',
     {
@@ -66,7 +66,7 @@ ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, 
     end
     local price = tonumber(vehicleData.price)
     local totalCost = price + (price * Config.InterestRate)
-    local payment = math.ceil(totalCost / 14)
+    local payment = math.ceil(totalCost / Config.PaymentDays)
 
     if xPlayer.getBank() >= payment then
         xPlayer.removeBank(payment)
@@ -89,70 +89,32 @@ ESX.RegisterServerCallback('vehicle_financing:getfinancedvehicles', function(sou
         for _,v in pairs(data) do 
             table.insert(financedCars, { plate = v.plate, purchasePrice = v.purchase_price, paymentCost = v.payment_cost, remainingBalance = v.remaining_balance, paymentsBehind = v.payments_behind, vehicle = v.vehicle })
         end
-        cb(financedCars)
+        cb(financedCars, Config.PaymentBehindRepo)
     end)
 end)
-
-ESX.RegisterServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(source, cb, plate)
-    local financedCars = {}
-
-    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE plate = @plate', {
-        ['@plate'] = plate
-    }, function(data)
-        print(data[1].payments_behind)
-        for _,v in pairs(data) do 
-            table.insert(financedCars, { plate = v.plate, purchasePrice = v.purchase_price, paymentCost = v.payment_cost, remainingBalance = v.remaining_balance, paymentsBehind = v.payments_behind, vehicle = v.vehicle })
-        end
-        print("FINANCED CARS: " .. financedCars[1].paymentsBehind)
-        cb(financedCars[1], Config.PaymentBehindRepo)
-    end)
-end)
-
 
 function AutoCarPayments(d, h, m)
+    print('making automatic payment')
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles', {}, function(result)
         for i=1, #result, 1 do
             local xPlayer = ESX.GetPlayerFromIdentifier(result[i].owner)
-
-            if result[i].remaining_balance >= result[i].payment_cost then
-                if xPlayer then
-                    if xPlayer.getAccount('bank').money >= result[i].payment_cost then
-                        xPlayer.removeAccountMoney('bank', result[i].payment_cost)
-                        TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve paid your car payment of ~g~$' .. tostring(result[i].payment_cost))
-                        MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = @remaining_balance WHERE owner = @owner',
-                        {
-                            ['@remaining_balance'] = result[i].remaining_balance - result[i].payment_cost,
-                            ['@owner'] = result[i].owner
-                        })
-                        if result[i].remaining_balance < Config.PaymentErrorThreshold then
-                            TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve ~g~paid off~s~ one of your vehicles!')
-                            MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
-                                ['@plate'] = result[i].plate
-                            })
-                        end
-                    else
-                        MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
-                        {
-                            ['@payments_behind'] = result[i].payments_behind + 1,
-                            ['@owner'] = result[i].owner
-                        })
-                    end
-                else
-                    MySQL.Async.fetchAll('SELECT bank FROM users WHERE identifier = @identifier', {
-                        ['@identifier'] = result[i].owner
-                    }, function(bank)
-                        if bank >= results[i].payment_cost then
-                            MySQL.Sync.execute('UPDATE users SET bank = bank - @payment WHERE owner = @owner',
+            if Config.AutomaticPayments == true then
+                if result[i].remaining_balance >= result[i].payment_cost then
+                    if xPlayer then
+                        if xPlayer.getAccount('bank').money >= result[i].payment_cost then
+                            xPlayer.removeAccountMoney('bank', result[i].payment_cost)
+                            TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve paid your car payment of ~g~$' .. tostring(result[i].payment_cost))
+                            MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = @remaining_balance WHERE owner = @owner',
                             {
-                                ['@payment'] = result[i].payment_cost,
+                                ['@remaining_balance'] = result[i].remaining_balance - result[i].payment_cost,
                                 ['@owner'] = result[i].owner
                             })
-        
-                            MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = remaining_balance - @payment_cost WHERE owner = @owner',
-                            {
-                                ['@payment_cost'] = result[i].payment_cost,
-                                ['@owner'] = result[i].owner
-                            })
+                            if result[i].remaining_balance < Config.PaymentErrorThreshold then
+                                TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve ~g~paid off~s~ one of your vehicles!')
+                                MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+                                    ['@plate'] = result[i].plate
+                                })
+                            end
                         else
                             MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
                             {
@@ -160,12 +122,42 @@ function AutoCarPayments(d, h, m)
                                 ['@owner'] = result[i].owner
                             })
                         end
-                    end)
+                    else
+                        MySQL.Async.fetchAll('SELECT bank FROM users WHERE identifier = @identifier', {
+                            ['@identifier'] = result[i].owner
+                        }, function(bank)
+                            if bank >= results[i].payment_cost then
+                                MySQL.Sync.execute('UPDATE users SET bank = bank - @payment WHERE owner = @owner',
+                                {
+                                    ['@payment'] = result[i].payment_cost,
+                                    ['@owner'] = result[i].owner
+                                })
+            
+                                MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = remaining_balance - @payment_cost WHERE owner = @owner',
+                                {
+                                    ['@payment_cost'] = result[i].payment_cost,
+                                    ['@owner'] = result[i].owner
+                                })
+                            else
+                                MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
+                                {
+                                    ['@payments_behind'] = result[i].payments_behind + 1,
+                                    ['@owner'] = result[i].owner
+                                })
+                            end
+                        end)
 
+                    end
+                else
+                    MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+                        ['@plate'] = result[i].plate
+                    })
                 end
             else
-                MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
-                    ['@plate'] = result[i].plate
+                MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
+                {
+                    ['@owner'] = xPlayer.identifier,
+                    ['@payments_behind'] = result[i].payments_behind + 1
                 })
             end
         end
@@ -181,12 +173,12 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
         ['@plate'] = plate
     }, function(result)
         for i=1, #result, 1 do
-
             if xPlayer.getBank() >= result[i].payment_cost then
                 xPlayer.removeBank(result[i].payment_cost)
-                MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = @remaining_balance WHERE plate = @plate',
+                MySQL.Sync.execute('UPDATE financed_vehicles SET remaining_balance = @remaining_balance, payments_behind = @payments_behind WHERE plate = @plate',
                 {
                     ['@remaining_balance'] = result[i].remaining_balance - result[i].payment_cost,
+                    ['@payments_behind'] = result[i].payments_behind - 1,
                     ['@plate'] = plate
                 })
                 TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve paid your car payment of ~g~$' .. tostring(result[i].payment_cost))
@@ -203,7 +195,7 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
     end)
 end)
 
-TriggerEvent('cron:runAt', 22, 0, AutoCarPayments)
+TriggerEvent('cron:runAt', 2, 17, AutoCarPayments)
 
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {

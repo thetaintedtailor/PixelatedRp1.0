@@ -10,9 +10,8 @@ end)
 
 --Detect player in marker
 Citizen.CreateThread(function()
-    local playerPed = PlayerPedId()
     while true do
-        local coords = GetEntityCoords(playerPed)
+        local coords = GetEntityCoords(PlayerPedId())
         local waitTime = 5000
         
         for k,v in pairs(Config.PaymentLocations) do 

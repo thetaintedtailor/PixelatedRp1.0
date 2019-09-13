@@ -1,7 +1,9 @@
 Config = {}
 
+Config.AutomaticPayments = false
 Config.InterestRate = 0.08
 Config.PaymentBehindRepo = 3
+Config.PaymentDays = 14
 Config.MarkerDrawDistance = 20
 Config.PaymentErrorThreshold = 100
 Config.PaymentLocations = {

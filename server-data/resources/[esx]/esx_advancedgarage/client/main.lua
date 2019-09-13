@@ -67,9 +67,16 @@ local function has_value (tab, val)
 	return false
 end
 
+local repoCars = {}
+local repoLimit = 0
 -- Open Main Menu
 function OpenMenuGarage(PointType)
 	ESX.UI.Menu.CloseAll()
+
+	ESX.TriggerServerCallback('vehicle_financing:getfinancedvehicles', function(cars, repo)
+		repoCars = cars
+		repoLimit = repo
+	end)
 	
 	local elements = {}
 	
@@ -148,21 +155,20 @@ function ListOwnedCarsMenu()
 	if Config.ShowGarageSpacer3 then
 		table.insert(elements, {label = _U('spacer3')})
 	end
-	
+
 	ESX.TriggerServerCallback('esx_advancedgarage:getOwnedCars', function(ownedCars)
 		if #ownedCars == 0 then
 			ESX.ShowNotification(_U('garage_nocars'))
 		else
 			for _,v in pairs(ownedCars) do
-
 				if Config.UseVehicleNamesLua then
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
 					local plate        = v.plate
-
-					local labelvehicle
+					local labelvehicle = ''
 					
+					local text = {label = '', value = {}}
 					if Config.ShowVehicleLocation then
 						if v.stored then
 							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_garage')..' '
@@ -176,24 +182,21 @@ function ListOwnedCarsMenu()
 							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
-
-					ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
-						print(car.paymentsBehind)
-						print(paymentsBehindRepo)
-						if car.paymentsBehind >= paymentsBehindRepo then
-							print("Behind on payments!")
-							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
-							table.insert(elements, {label = labelvehicle, value = 'repo'})
-						else
-							table.insert(elements, {label = labelvehicle, value = v})
+					text =  {label = labelvehicle, value = v}
+					for _,v in pairs(repoCars) do
+						print('financed car ' .. v.paymentsBehind .. ' | ' .. repoLimit)
+						if v.plate == plate  and v.paymentsBehind >= repoLimit then
+							print('adding repo')
+							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind Payments '
+							text =  {label = labelvehicle, value = 'repo'}
 						end
-					end, plate)
-						
+					end
+					table.insert(elements, text)
 				else
 					local hashVehicule = v.vehicle.model
 					local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
 					local plate        = v.plate
-					local labelvehicle
+					local labelvehicle = ''
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
@@ -209,15 +212,6 @@ function ListOwnedCarsMenu()
 						end
 					end
 
-					ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
-						if car.paymentsBehind >= paymentsBehindRepo then
-							print("Behind on payments!")
-							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
-							table.insert(elements, {label = labelvehicle, value = 'repo'})
-						else
-							table.insert(elements, {label = labelvehicle, value = v})
-						end
-					end, plate)
 				end
 			end
 		end
@@ -226,7 +220,7 @@ function ListOwnedCarsMenu()
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
-			if data.current.value == "repo" then return end
+			if data.current.value == "repo" then print('boop') return end
 			if data.current.value.stored then
 				menu.close()
 				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel)
@@ -550,7 +544,7 @@ function ReturnOwnedCarsMenu()
 				end
 
 				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
-					if car.paymentsBehind >= paymentsBehindRepo then
+					if car[1].paymentsBehind >= paymentsBehindRepo then
 						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
 						table.insert(elements, {label = labelvehicle, value = 'stolen'})
 					end
@@ -576,7 +570,7 @@ function ReturnOwnedCarsMenu()
 				end
 
 				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
-					if car.paymentsBehind >= paymentsBehindRepo then
+					if car[1].paymentsBehind >= paymentsBehindRepo then
 						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
 						table.insert(elements, {label = labelvehicle, value = 'stolen'})
 					end
