@@ -77,16 +77,13 @@ function Reality()
     local playerPed = GetPlayerPed(-1)
 
     ResetPedMovementClipset(playerPed, 0)
-
-    if status.val <= 0 then
-      DoScreenFadeOut(800)
-      Wait(1000)
-      SetPedIsDrunk(playerPed, false)
-      ClearTimecycleModifier()
-      ResetScenarioTypesEnabled()
-      SetPedMotionBlur(playerPed, false)
-      DoScreenFadeIn(800)
-    end
+    DoScreenFadeOut(800)
+    Wait(1000)
+    SetPedIsDrunk(playerPed, false)
+    ClearTimecycleModifier()
+    ResetScenarioTypesEnabled()
+    SetPedMotionBlur(playerPed, false)
+    DoScreenFadeIn(800)
   end)
 end
 

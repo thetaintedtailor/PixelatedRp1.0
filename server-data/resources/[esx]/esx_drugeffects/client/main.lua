@@ -49,6 +49,11 @@ AddEventHandler('esx_status:loaded', function(status)
       Wait(2500)
 
       TriggerEvent('esx_status:getStatus', 'drug', function(status)
+        if CurrentDrug ~= nil then
+          CurrentDrug:use()
+          CurrentDrug = nil
+        end
+
         if status.val > 0 then
           local start = true
 
@@ -58,11 +63,6 @@ AddEventHandler('esx_status:loaded', function(status)
 
           if start or not GetScreenEffectIsActive("DrugsTrevorClownsFightIn") then
             StartScreenEffect("DrugsTrevorClownsFightIn", 0, true)
-          end
-
-          if CurrentDrug ~= nil then
-            CurrentDrug:use()
-            CurrentDrug = nil
           end
 
           if status.val > lastValue then -- we just used
@@ -132,7 +132,6 @@ end
 -- Triggered by server-side when a drug item is used
 RegisterNetEvent('esx_drugeffects:onDrugs')
 AddEventHandler('esx_drugeffects:onDrugs', function(drug)
-  Citizen.Trace("Using " .. drug .. "\n")
   local playerPed = GetPlayerPed(-1)
 
   ActiveDrugs[drug] = ActiveDrugs[drug] or DrugFromItem(drug)
