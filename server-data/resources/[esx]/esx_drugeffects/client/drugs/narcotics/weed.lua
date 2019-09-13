@@ -1,8 +1,12 @@
 Weed = Narcotic:new()
 
 function Weed:use()
-    local playerPed = GetPlayerPed(-1)
-    local newHealth = math.min(GetEntityMaxHealth(playerPed), GetEntityHealth(playerPed) + math.random(Config.MinWeedHealth, Config.MaxWeedHealth))
+    local playerPed     = GetPlayerPed(-1)
+    local currentHealth = GetEntityHealth(playerPed)
+    local maxHealth     = GetEntityMaxHealth(playerPed)
 
-    SetEntityHealth(playerPed, newHealth)
+    if (currentHealth / maxHealth) >= 0.6 then
+        local newHealth = math.min(maxHealth, currentHealth + math.random(Config.MinWeedHealth, Config.MaxWeedHealth))
+        SetEntityHealth(playerPed, newHealth)
+    end
 end
