@@ -57,23 +57,36 @@ function Drunk(level, start)
   end)
 end
 
+function CheckOverdose(value)
+  local playerPed = GetPlayerPed(-1)
+  local chance    = math.max(0.00, (value / 1000000) - 0.25) -- assumed esx_status max of 1 million
+
+  if math.random() < chance then
+    ESX.ShowNotification("You have ~r~overdosed~s~!")
+    SetEntityHealth(playerPed, 0)
+    ResetPedMovementClipset(playerPed, 0)
+    SetPedIsDrunk(playerPed, false)
+    ClearTimecycleModifier()
+    ResetScenarioTypesEnabled()
+    SetPedMotionBlur(playerPed, false)
+  end
+end
+
 function Reality()
   Citizen.CreateThread(function()
-    TriggerEvent("esx_status:getStatus", "drug", function(status)
-      local playerPed = GetPlayerPed(-1)
+    local playerPed = GetPlayerPed(-1)
 
-      ResetPedMovementClipset(playerPed, 0)
+    ResetPedMovementClipset(playerPed, 0)
 
-      if status.val <= 0 then
-        DoScreenFadeOut(800)
-        Wait(1000)
-        SetPedIsDrunk(playerPed, false)
-        ClearTimecycleModifier()
-        ResetScenarioTypesEnabled()
-        SetPedMotionBlur(playerPed, false)
-        DoScreenFadeIn(800)
-      end
-    end)
+    if status.val <= 0 then
+      DoScreenFadeOut(800)
+      Wait(1000)
+      SetPedIsDrunk(playerPed, false)
+      ClearTimecycleModifier()
+      ResetScenarioTypesEnabled()
+      SetPedMotionBlur(playerPed, false)
+      DoScreenFadeIn(800)
+    end
   end)
 end
 
@@ -133,6 +146,7 @@ AddEventHandler('esx_status:loaded', function(status)
             ArmorAdded = ArmorAdded + armorAmount
             AddArmourToPed(playerPed, armorAmount)
             Drinking = false
+            CheckOverdose(status.val)
           end
 
           IsAlreadyDrunk = true

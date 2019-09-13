@@ -132,6 +132,7 @@ end
 -- Triggered by server-side when a drug item is used
 RegisterNetEvent('esx_drugeffects:onDrugs')
 AddEventHandler('esx_drugeffects:onDrugs', function(drug)
+  Citizen.Trace("Using " .. drug .. "\n")
   local playerPed = GetPlayerPed(-1)
 
   ActiveDrugs[drug] = ActiveDrugs[drug] or DrugFromItem(drug)

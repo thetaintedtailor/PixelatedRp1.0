@@ -53,6 +53,10 @@ Config.MaxK3vSpeedPct = 33
 Config.MinK3vSpeedDuration = 25
 Config.MaxK3vSpeedDuration = 35
 
+-- Ibuprofen reduces the character's "drunk" meter by an amount between these numbers
+Config.IbuprofenMinHeal = 30000
+Config.IbuprofenMaxHeal = 75000
+
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
     weed_pooch = {

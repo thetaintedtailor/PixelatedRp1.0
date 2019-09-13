@@ -39,17 +39,17 @@ ESX.RegisterUsableItem('crack', function(source)
 end)
 
 ESX.RegisterUsableItem('k3v', function(source)
-    UseItem(source 'k3v')
+    UseItem(source, 'k3v')
 end)
 
 ESX.RegisterUsableItem('vicodin', function(source)
-    UseItem(source 'vicodin')
+    UseItem(source, 'vicodin')
 end)
 
 ESX.RegisterUsableItem('amoxicillin', function(source)
-    UseItem(source 'amoxicillin')
+    UseItem(source, 'amoxicillin')
 end)
 
 ESX.RegisterUsableItem('ibuprofen', function(source)
-    UseItem(source 'ibuprofen')
+    UseItem(source, 'ibuprofen')
 end)
