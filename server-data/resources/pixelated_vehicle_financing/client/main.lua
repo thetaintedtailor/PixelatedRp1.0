@@ -64,7 +64,7 @@ function ListFinancedVehiclesMenu()
             for _,v in pairs(vehicles) do
                 local labelVehicle 
                 
-                if v.paymentsBehind ~= 0 then
+                if v.paymentsBehind > 0 then
                     labelVehicle = ' ' .. v.vehicle .. ' | ' .. v.plate .. ' | Balance: $' .. v.remainingBalance .. ' | Late'
                 else
                     labelVehicle = ' ' .. v.vehicle .. ' | ' .. v.plate .. ' | Balance: $' .. v.remainingBalance
