@@ -5,24 +5,17 @@ local DrugLevel     = -1
 local CurrentDrug   = nil
 local ActiveDrugs   = {}
 
-function GetStoned(level, start)
-  Citizen.CreateThread(function()
-    if start then
-      StartScreenEffect("DrugsTrevorClownsFightIn", 0, true)
-    end
+function CheckOverdose(value)
+  local playerPed = GetPlayerPed(-1)
+  local chance    = math.max(0.05, (value / 1000000) - 0.05)
 
-    local playerPed = GetPlayerPed(-1)
-
-    if level == 1 then -- overdose
-      SetEntityHealth(playerPed, 0)
-      ResetScenarioTypesEnabled()
-      ResetPedMovementClipset(playerPed, 0)
-      StopScreenEffect("DrugsTrevorClownsFightIn")
-      StopScreenEffect("DrugsTrevorClownsFightOut")
-    elseif level > -1 and not GetScreenEffectIsActive("DrugsTrevorClownsFightIn") then
-      StartScreenEffect("DrugsTrevorClownsFightIn")
-    end
-  end)
+  if math.random() < chance then
+    SetEntityHealth(playerPed, 0)
+    ResetScenarioTypesEnabled()
+    ResetPedMovementClipset(playerPed, 0)
+    StopScreenEffect("DrugsTrevorClownsFightIn")
+    StopScreenEffect("DrugsTrevorClownsFightOut")
+  end
 end
 
 Citizen.CreateThread(function()
@@ -49,26 +42,21 @@ AddEventHandler('esx_status:loaded', function(status)
   Citizen.CreateThread(function()
     TriggerEvent("esx_status:set", "drug", 0)
 
+    local lastValue = 0
+
     while true do
       Wait(2500)
 
       TriggerEvent('esx_status:getStatus', 'drug', function(status)
         if status.val > 0 then
           local start = true
-          local level = 0
 
           if IsAlreadyDrug then
             start = false
           end
 
-          if status.val <= 999999 then
-            level = 0
-          else
-            level = 1
-          end
-
-          if level ~= DrugLevel then
-            GetStoned(level, start)
+          if start or not GetScreenEffectIsActive("DrugsTrevorClownsFightIn") then
+            StartScreenEffect("DrugsTrevorClownsFightIn", 0, true)
           end
 
           if CurrentDrug ~= nil then
@@ -76,11 +64,12 @@ AddEventHandler('esx_status:loaded', function(status)
             CurrentDrug = nil
           end
 
-          IsAlreadyDrug = true
-          DrugLevel     = level
-        end
+          if status.val > lastValue then -- we just used
+            CheckOverdose(status.val)
+          end
 
-        if status.val == 0 then
+          IsAlreadyDrug = true
+        elseif status.val == 0 then
           if IsAlreadyDrug then
             Normal()
 
@@ -92,8 +81,9 @@ AddEventHandler('esx_status:loaded', function(status)
           end
 
           IsAlreadyDrug = false
-          DrugLevel     = -1
         end
+
+        lastValue = status.val
       end)
     end
   end)

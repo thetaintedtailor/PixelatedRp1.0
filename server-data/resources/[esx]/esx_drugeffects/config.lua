@@ -10,6 +10,9 @@ Config.GlobalMaxSpeedDuration = 45
 Config.MinWeedHealth = 15
 Config.MaxWeedHealth = 40
 
+-- Weed will not heal someone who's health is below this amount
+Config.WeedHealthThreshold = 160
+
  -- Opium gives a random temporary amount of armor between these numbers
 Config.MinOpiumArmor = 25
 Config.MaxOpiumArmor = 75
