@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/wasnt_looking.mp3',
+    'music/red_lips.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
