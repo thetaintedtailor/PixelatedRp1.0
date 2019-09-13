@@ -27,6 +27,10 @@ Config.PaymentLocations = {
     }
 }
 
+exports('GetPaymentDays', function()
+	return Config.PaymentDays
+end)
+
 function GetColor(colorID)
 	local colors = {
 			{ index = 0, label =  ('Black')},
