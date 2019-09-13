@@ -56,43 +56,43 @@ Config.MaxK3vSpeedDuration = 35
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
     weed_pooch = {
-        min = 10000,
-        max = 20000
+        min = 100000,
+        max = 200000
     },
 
     opium_pooch = {
-        min = 20000,
-        max = 30000
+        min = 200000,
+        max = 300000
     },
 
     meth_pooch = {
-        min = 15000,
-        max = 50000
+        min = 150000,
+        max = 500000
     },
 
     coke_pooch = {
-        min = 40000,
-        max = 60000
+        min = 400000,
+        max = 600000
     },
 
     crack = {
-        min = 30000,
-        max = 70000
+        min = 300000,
+        max = 700000
     },
 
     k3v = {
-        min = 40000,
-        max = 60000
+        min = 50000,
+        max = 100000
     },
 
     xanax = {
-        min = 10000,
-        max = 30000
+        min = 100000,
+        max = 300000
     },
     
     vicodin = {
-        min = 40000,
-        max = 60000
+        min = 400000,
+        max = 600000
     },
 
     amoxicillin = {

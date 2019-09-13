@@ -7,9 +7,10 @@ local ActiveDrugs   = {}
 
 function CheckOverdose(value)
   local playerPed = GetPlayerPed(-1)
-  local chance    = math.max(0.05, (value / 1000000) - 0.05)
+  local chance    = math.max(0.05, (value / 1000000) - 0.2) -- assumed esx_status max of 1 million
 
   if math.random() < chance then
+    ESX.ShowNotification("You have ~r~overdosed~s~!")
     SetEntityHealth(playerPed, 0)
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
