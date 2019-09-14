@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('explosives:plantbomb')
-AddEventHandler('explosives:plantbomb', function(timer)
+AddEventHandler('explosives:plantbomb', function(timer, wire)
     local playerPed = PlayerPedId()
 	local coords    = GetEntityCoords(playerPed)
 	local forward   = GetEntityForwardVector(playerPed)
@@ -24,17 +24,13 @@ AddEventHandler('explosives:plantbomb', function(timer)
         PlaceObjectOnGroundProperly(obj)
         ActiveBomb = obj
     end)
-    coords = table.pack(x, y, z)
-    TriggerServerEvent('explosives:bombplanted', coords, timer)
+    coords = {x = x, y = y, z = z}
+    TriggerServerEvent('explosives:bombplanted', coords, timer, wire)
 end)
 
 RegisterNetEvent('explosives:bombexploded')
 AddEventHandler('explosives:bombexploded', function(coords)
-    local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer(coords)
-    local x, y, z = table.unpack(coords)
-    if closestPlayer ~= -1 then
-        AddExplosion(x, y, z, 32, 2.0, true, false, 5.0)
-    end
+    AddExplosion(coords.x, coords.y, coords.z, 32, 2.0, true, false, 5.0)
     if ActiveBomb ~= nil then
         ESX.Game.DeleteObject(ActiveBomb)
         ActiveBomb = nil
@@ -42,9 +38,10 @@ AddEventHandler('explosives:bombexploded', function(coords)
 end)
 
 RegisterNetEvent('explosives:bombtick')
-AddEventHandler('explosives:bombtick', function()
+AddEventHandler('explosives:bombtick', function(coords)
     local playerPed = GetPlayerPed(-1)
-    if GetDistanceBetweenCoords(GetEntityCoords(playerPed), x, y, z, true) <= Config.BeepDistance then
+    local distance = GetDistanceBetweenCoords(GetEntityCoords(playerPed), coords.x, coords.y, coords.z, true)
+    if distance <= Config.BeepDistance then
         PlaySoundFrontend(-1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
     end
 end)
@@ -56,4 +53,29 @@ AddEventHandler('explosives:carbombexploded', function()
         local location = GetEntityCoords(ped)
         AddExplosion(location.x, location.y, location.z, 32, 2.0, true, false, 5.0)
     end
+end)
+
+RegisterNetEvent('explosives:disarmattempt')
+AddEventHandler('explosives:disarmattempt', function(loc, wire)
+    if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), loc.x, loc.y, loc.z, true) <= Config.DisarmDistance then
+        TriggerServerEvent('explosives:disarmlocation', wire)
+    else
+        ESX.ShowNotification('No bombs nearby.')
+    end
+end)
+
+RegisterNetEvent('explosives:bombdisarmed')
+AddEventHandler('explosives:bombdisarmed', function(wire)
+    if ActiveBomb ~= nil then
+        ESX.Game.DeleteObject(ActiveBomb)
+        ActiveBomb = nil
+        ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')
+    end
+end)
+
+
+
+RegisterNetEvent('explosives:faileddisarm')
+AddEventHandler('explosives:faileddisarm', function(wire)
+    ESX.ShowNotification('~r~You cut the wrong wire, obviously.')
 end)
