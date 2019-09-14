@@ -11,6 +11,38 @@ Citizen.CreateThread(function()
   end
 end)
 
+function UpdateClipset(level)
+  level = level or DrunkLevel
+
+  local playerPed = GetPlayerPed(-1)
+
+  if level == 0 then
+    RequestAnimSet("move_m@drunk@slightlydrunk")
+    
+    while not HasAnimSetLoaded("move_m@drunk@slightlydrunk") do
+      Citizen.Wait(0)
+    end
+
+    SetPedMovementClipset(playerPed, "move_m@drunk@slightlydrunk", true)
+  elseif level == 1 then
+    RequestAnimSet("move_m@drunk@moderatedrunk")
+    
+    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+      Citizen.Wait(0)
+    end
+
+    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+  elseif level == 2 then
+    RequestAnimSet("move_m@drunk@verydrunk")
+    
+    while not HasAnimSetLoaded("move_m@drunk@verydrunk") do
+      Citizen.Wait(0)
+    end
+
+    SetPedMovementClipset(playerPed, "move_m@drunk@verydrunk", true)
+  end
+end
+
 function Drunk(level, start)
   Citizen.CreateThread(function()
 
@@ -21,32 +53,7 @@ function Drunk(level, start)
       Wait(1000)
     end
 
-    if level == 0 then
-      RequestAnimSet("move_m@drunk@slightlydrunk")
-      
-      while not HasAnimSetLoaded("move_m@drunk@slightlydrunk") do
-        Citizen.Wait(0)
-      end
-
-      SetPedMovementClipset(playerPed, "move_m@drunk@slightlydrunk", true)
-    elseif level == 1 then
-      RequestAnimSet("move_m@drunk@moderatedrunk")
-      
-      while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-        Citizen.Wait(0)
-      end
-
-      SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-    elseif level == 2 then
-      RequestAnimSet("move_m@drunk@verydrunk")
-      
-      while not HasAnimSetLoaded("move_m@drunk@verydrunk") do
-        Citizen.Wait(0)
-      end
-
-      SetPedMovementClipset(playerPed, "move_m@drunk@verydrunk", true)
-    end
-
+    UpdateClipset(level)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
     SetPedIsDrunk(playerPed, true)
@@ -69,6 +76,7 @@ function CheckOverdose(value)
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     SetPedMotionBlur(playerPed, false)
+    exports['esx_animations']:RefreshAttitude()
   end
 end
 
@@ -83,6 +91,7 @@ function Reality()
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     SetPedMotionBlur(playerPed, false)
+    exports['esx_animations']:RefreshAttitude()
     DoScreenFadeIn(800)
   end)
 end
@@ -150,7 +159,7 @@ AddEventHandler('esx_status:loaded', function(status)
           DrunkLevel     = level
         end
 
-        if status.val == 0 then
+        if status.val <= 0 then
           if IsAlreadyDrunk then
             Reality()
 
