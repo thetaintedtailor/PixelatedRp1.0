@@ -70,7 +70,7 @@ AddEventHandler('esx_status:loaded', function(status)
           end
 
           IsAlreadyDrug = true
-        elseif status.val == 0 then
+        elseif status.val <= 0 then
           if IsAlreadyDrug then
             Normal()
 

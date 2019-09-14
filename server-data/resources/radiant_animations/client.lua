@@ -130,17 +130,18 @@ Citizen.CreateThread( function()
 
             if ( not IsPauseMenuActive() and not IsPedInAnyVehicle(ped, true)) then 
                 if ( IsDisabledControlJustPressed( 0, 36 ) ) then 
-                    RequestAnimSet( "move_ped_crouched" )
-
-                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
-                        Citizen.Wait( 100 )
-                    end 
-
                     if ( crouched == true ) then 
                         ResetPedMovementClipset( ped, 0 )
                         crouched = false 
                         exports['esx_animations']:RefreshAttitude()
+                        exports['esx_optionalneeds']:UpdateClipset()
                     elseif ( crouched == false ) then
+                        RequestAnimSet( "move_ped_crouched" )
+
+                        while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
+                            Citizen.Wait( 100 )
+                        end 
+
                         SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
                         crouched = true 
                     end 

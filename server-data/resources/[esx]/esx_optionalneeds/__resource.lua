@@ -13,6 +13,8 @@ server_scripts {
 	'server/main.lua'
 }
 
+export 'UpdateClipset'
+
 client_scripts {
 	'client/main.lua',
 	'config.lua'
