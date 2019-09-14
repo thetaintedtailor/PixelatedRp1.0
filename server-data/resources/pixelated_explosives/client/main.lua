@@ -22,6 +22,7 @@ AddEventHandler('explosives:plantbomb', function(timer, wire)
 	}, function(obj)
 		SetEntityHeading(obj, GetEntityHeading(playerPed))
         PlaceObjectOnGroundProperly(obj)
+        FreezeEntityPosition(obj, true)
         ActiveBomb = obj
     end)
     coords = {x = x, y = y, z = z}
@@ -65,7 +66,7 @@ AddEventHandler('explosives:disarmattempt', function(loc, wire)
 end)
 
 RegisterNetEvent('explosives:bombdisarmed')
-AddEventHandler('explosives:bombdisarmed', function(wire)
+AddEventHandler('explosives:bombdisarmed', function()
     if ActiveBomb ~= nil then
         ESX.Game.DeleteObject(ActiveBomb)
         ActiveBomb = nil
@@ -73,9 +74,7 @@ AddEventHandler('explosives:bombdisarmed', function(wire)
     end
 end)
 
-
-
 RegisterNetEvent('explosives:faileddisarm')
-AddEventHandler('explosives:faileddisarm', function(wire)
+AddEventHandler('explosives:faileddisarm', function()
     ESX.ShowNotification('~r~You cut the wrong wire, obviously.')
 end)
