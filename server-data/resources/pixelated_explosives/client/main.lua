@@ -13,15 +13,16 @@ Citizen.CreateThread(function()
             if IsControlJustPressed(0, 38) then
                 ESX.TriggerServerCallback('explosives:hasdefuse', function(hasDefuse, wireOptions)
                     if hasDefuse == true then
+                        TaskStartScenarioInPlace(GetPlayerPed(-1), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
                         ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'wire_to_cut',{
                             title = "Pick your Wire" .. wireOptions
                         }, function(data, menu)
-                            local wire = tostring(data.value)
+                            local wire = string.lower(tostring(data.value))
                             if wire == nil then
                                 ESX.ShowNotification('Please supply a wire color to cut.')
                             else
                                 menu.close()
-                                TriggerServerEvent('explosives:disarmlocation', wire)
+                                TriggerServerEvent('explosives:disarmbomb', wire)
                             end
                         end)
                     else
@@ -97,6 +98,7 @@ end)
 RegisterNetEvent('explosives:bombdisarmed')
 AddEventHandler('explosives:bombdisarmed', function()
     if ActiveBomb ~= nil then
+		ClearPedTasksImmediately(GetPlayerPed(-1))
         ESX.Game.DeleteObject(ActiveBomb)
         ActiveBomb = nil
         ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')

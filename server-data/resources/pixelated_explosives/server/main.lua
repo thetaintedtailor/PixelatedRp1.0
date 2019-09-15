@@ -90,21 +90,23 @@ for i = 1, #Config.WireColors, 1 do
     wireColors = wireColors .. ', ' .. Config.WireColors[i]
 end
 
-TriggerEvent('es:addCommand', 'cutwire', function(source, args, user)
-    local wire = string.lower(args[1])
-    if wire ~= nil then
-        TriggerClientEvent('explosives:disarmattempt', source, Bomb.coords, wire)
-    end
-end, {help = "Possible colors are: " .. wireColors})
+-- TriggerEvent('es:addCommand', 'cutwire', function(source, args, user)
+--     local wire = string.lower(args[1])
+--     if wire ~= nil then
+--         TriggerClientEvent('explosives:disarmattempt', source, Bomb.coords, wire)
+--     end
+-- end, {help = "Possible colors are: " .. wireColors})
 
-RegisterServerEvent('explosives:disarmlocation')
-AddEventHandler('explosives:disarmlocation', function(wire)
+RegisterServerEvent('explosives:disarmbomb')
+AddEventHandler('explosives:disarmbomb', function(wire)
     if Bomb.valid == true then
         if wire == Bomb.wire then
             TriggerClientEvent('explosives:bombdisarmed', source)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
+            local xPlayer = ESX.GetPlayerFromId(source)
+            xPlayer.removeInventoryItem('bomb_defuse_kit', 1)
         end
         TriggerClientEvent('explosives:setbombinactive', -1)
         Bomb = {
