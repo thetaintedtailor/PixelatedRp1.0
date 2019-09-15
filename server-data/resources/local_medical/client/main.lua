@@ -78,7 +78,7 @@ function TreatPatient(locationInfo, health, cost)
         if health >= Config.TreatmentThreshold then
             ESX.TriggerServerCallback('pillbox_reception:checkmoney', function(hasMoney)
             if hasMoney == true then
-                TriggerServerEvent('pillbox_reception:pay', cost)
+                TriggerServerEvent('pillbox_reception:pay', cost, locationInfo.LocationName, health)
                 LayInBed(locationInfo.BedLocation.x, locationInfo.BedLocation.y, locationInfo.BedLocation.z, 160.0)
                 ESX.ShowNotification('Thank you for coming to '..locationInfo.LocationName..', hope we don\'t see you again. Your bill was ~g~$' .. cost )
             else

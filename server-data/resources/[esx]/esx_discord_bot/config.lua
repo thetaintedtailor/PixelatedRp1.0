@@ -25,7 +25,8 @@ settings = {
 	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
 	LogAnonymousTwitter = true, -- Logs anonyous tweets
 	LogItemSelling = true, --Logs the sale of items to NPCs
-	LogDroppedNotes = true --Logs the notes players can drop
+	LogDroppedNotes = true, --Logs the notes players can drop
+	LogLocalDoctors = true --Logs when a player uses the local doctos to heal or revive
 }
 
 blacklistedModels = {

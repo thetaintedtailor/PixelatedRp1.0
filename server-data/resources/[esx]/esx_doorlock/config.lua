@@ -63,14 +63,14 @@ Config.DoorList = {
 		locked = true
 	},
 
-	-- Armory
+	--[[ Armory
 	{
 		objName = 'v_ilev_arm_secdoor',
 		objCoords  = {x = 452.618, y = -982.702, z = 30.689},
 		textCoords = {x = 453.079, y = -982.600, z = 31.739},
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true
-	},
+	},]]
 
 	-- Captain Office
 	{
@@ -90,7 +90,6 @@ Config.DoorList = {
 		locked = true,
 		distance = 3
 	},
-
 	{
 		objName = 'v_ilev_ph_gendoor005',
 		objCoords  = {x = 445.37, y = -988.705, z = 30.6896},
@@ -99,8 +98,10 @@ Config.DoorList = {
 		locked = true,
 		distance = 3
 	},
+
 	-- SECOND FLOOR --
-	-- To second floor (blue double doors)
+
+	--[[ To second floor (blue double doors)
 	{
 		objName = 'v_ilev_ph_gendoor006',
 		objCoords  = {x = 443.03, y = -994.54, z = 30.84},
@@ -116,7 +117,7 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2
-	},
+	},]]
 
 	-- Second floor stairwell (leading to roof and locker room hallway)
 	{
@@ -144,6 +145,7 @@ Config.DoorList = {
 		locked = true,
 		distance = 5
 	},
+
 	-- Chief's office
 	{
 		objName = 'v_ilev_ph_gendoor002',
@@ -155,7 +157,8 @@ Config.DoorList = {
 	},
 
 	-- DOWNSTAIRS --
-	-- Double Doors to lineup/intel
+
+	--[[ Double Doors to lineup/intel
 	{
 		objName = 'v_ilev_ph_gendoor003',
 		objCoords  = {x = 446.13, y = -987.79, z = 26.84},
@@ -172,6 +175,7 @@ Config.DoorList = {
 		locked = true,
 		distance = 4
 	},
+
 	-- Lineup inner door
 	{
 		objName = 'v_ilev_ph_gendoor006',
@@ -180,9 +184,9 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
 		locked = true,
 		distance = 3
-	},
+	},]]
 
-	-- Double Doors to medic/asst chief room
+	--[[ Double Doors to medic/asst chief room
 	{
 		objName = 'v_ilev_ph_gendoor003',
 		objCoords  = {x = 450.79, y = -983.89, z = 26.84},
@@ -198,7 +202,7 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
 		locked = true,
 		distance = 4
-	},
+	},]]
 
 	-- Medic room
 	{
@@ -206,11 +210,10 @@ Config.DoorList = {
 		objCoords  = {x = 438.47, y = -979.55, z = 26.82},
 		textCoords = {x = 439.41, y = -979.57, z = 26.82},
 		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
-		locked = true,
-		distance = 3
+		locked = true
 	},
 
-	-- Double Doors to storage/server
+	--[[ Double Doors to storage/server
 	{
 		objName = 'v_ilev_ph_gendoor003',
 		objCoords  = {x = 465.57, y = -987.70, z = 25.07},
@@ -226,7 +229,8 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice', 'ambulance'},
 		locked = true,
 		distance = 2
-	},
+	},]]
+
 	-- Storage room
 	{
 		objName = 'v_ilev_ph_gendoor006',
@@ -242,8 +246,7 @@ Config.DoorList = {
 		objCoords  = {x = 467.59, y = -977.99, z = 25.06},
 		textCoords = {x = 468.61, y = -977.95, z = 25.06},
 		authorizedJobs = { 'police', 'offpolice' },
-		locked = true,
-		distance = 4
+		locked = true
 	},
 	-- Laboratory Room
 	{
@@ -251,8 +254,7 @@ Config.DoorList = {
 		objCoords  = {x = 463.61, y = -980.58, z = 25.06},
 		textCoords = {x = 463.56, y = -981.60, z = 25.06},
 		authorizedJobs = { 'police', 'offpolice' },
-		locked = true,
-		distance = 4
+		locked = true
 	},
 
 	-- Main Cells
@@ -335,7 +337,7 @@ Config.DoorList = {
 		locked = true,
 		distance = 2
 	},
-	-- Interviewer Room 1
+	--[[ Interviewer Room 1
 	{
 		objName = 'v_ilev_gtdoor',
 		objCoords  = {x = 471.47, y = -1003.54, z = 25.01},
@@ -343,7 +345,7 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2
-	},
+	},]]
 	-- Interviewee Room 2
 	{
 		objName = 'v_ilev_gtdoor',
@@ -353,7 +355,7 @@ Config.DoorList = {
 		locked = true,
 		distance = 2
 	},
-	-- Interviewer Room 2
+	--[[ Interviewer Room 2
 	{
 		objName = 'v_ilev_gtdoor',
 		objCoords  = {x = 480.03, y = -1003.54, z = 25.01},
@@ -361,7 +363,7 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2
-	},
+	},]]
 		
 
 	-- To Back
@@ -372,7 +374,8 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true
 	},
-	-- Meeting double doors room near back doors
+
+	--[[ Meeting double doors room near back doors
 	{
 		objName = 'v_ilev_ph_gendoor003',
 		objCoords  = {x = 470.02, y = -1009.15, z = 26.54},
@@ -388,7 +391,7 @@ Config.DoorList = {
 		authorizedJobs = { 'police', 'offpolice' },
 		locked = true,
 		distance = 2
-	},
+	},]]
 
 	--
 	-- Mission Row Back
