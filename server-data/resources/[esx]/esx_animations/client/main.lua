@@ -42,7 +42,7 @@ function startAttitude(lib, anim)
 
         TriggerEvent('esx_status:getStatus', 'drunk', function(status)
             if status.val <= 0 then
-                SetPedMovementClipset(PlayerPedId(), curent.anim, 0.25)
+                SetPedMovementClipset(PlayerPedId(), anim, 0.25)
             end
         end)
     end)
