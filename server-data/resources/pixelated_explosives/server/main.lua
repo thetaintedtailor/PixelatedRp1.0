@@ -1,8 +1,8 @@
---ESX = nil
+ESX = nil
 
---TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-Bomb = {
+local Bomb = {
     valid = false,
     coords = nil,
     timer = 0,
@@ -58,11 +58,13 @@ AddEventHandler('explosives:bombplanted', function(c, t, w)
         timer = t,
         wire = w
     }
+    TriggerClientEvent('explosives:setbombactive', -1, c)
     Citizen.CreateThread(function()
         while Bomb.valid do
             Bomb.timer = Bomb.timer - 1
             TriggerClientEvent('explosives:bombtick', -1, Bomb.coords)
             if Bomb.timer <= 0 then
+                TriggerClientEvent('explosives:setbombinactive', -1)
                 TriggerClientEvent('explosives:bombexploded', -1, Bomb.coords)
                 Bomb.valid = false
             end
@@ -79,29 +81,48 @@ TriggerEvent('es:addGroupCommand', 'carbomb', "admin", function(source, args)
     end
 
     TriggerClientEvent('explosives:carbombexploded', target)
-end)
+end, function(source, args, user)
+	TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Insufficient permissions!"}})
+end, {help = "Detonate the vehicle someone is in."})
+
+local wireColors = ""
+for i = 1, #Config.WireColors, 1 do
+    wireColors = wireColors .. ', ' .. Config.WireColors[i]
+end
 
 TriggerEvent('es:addCommand', 'cutwire', function(source, args, user)
     local wire = string.lower(args[1])
     if wire ~= nil then
         TriggerClientEvent('explosives:disarmattempt', source, Bomb.coords, wire)
     end
-end)
+end, {help = "Possible colors are: " .. wireColors})
 
 RegisterServerEvent('explosives:disarmlocation')
 AddEventHandler('explosives:disarmlocation', function(wire)
     if Bomb.valid == true then
         if wire == Bomb.wire then
-            Bomb = {
-                valid = false,
-                coords = nil,
-                timer = 0,
-                wire = ""
-            }
             TriggerClientEvent('explosives:bombdisarmed', source)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
         end
+        TriggerClientEvent('explosives:setbombinactive', -1)
+        Bomb = {
+            valid = false,
+            coords = nil,
+            timer = 0,
+            wire = ""
+        }
+    end
+end)
+
+ESX.RegisterServerCallback('explosives:hasdefuse', function(source, cb)
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+    if xPlayer.getInventoryItem('bomb_defuse_kit').count >= 1 then
+        cb(true, wireColors)
+    else
+        cb(false, wireColors)
     end
 end)
