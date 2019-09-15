@@ -148,9 +148,9 @@ Citizen.CreateThread(function()
         Citizen.Wait(7)
 
 		if (streetName and currentZone) then
-            drawTxt(x - 0.325, y + 0.66, 1.0, 1.68, 0.5, '~s~ID:~y~ ' .. GetPlayerServerId(PlayerId()), 185, 185, 185, 255)
+            drawTxt(x - 0.325, y + 0.66, 1.0, 1.69, 0.5, '~s~ID:~y~ ' .. GetPlayerServerId(PlayerId()), 185, 185, 185, 255)
+            
             drawTxt(x - 0.335, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
-
             if direction == 'N' then
                 drawTxt(x - 0.306, y + 0.66, 1.0, 1.5, 1.4, " | ", border_r, border_g, border_b, border_a)
                 drawTxt(x - 0.315, y + 0.42, 1.0, 1.0, 1.0, direction, dir_r, dir_g, dir_b, dir_a)
