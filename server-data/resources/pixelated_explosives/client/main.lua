@@ -5,18 +5,24 @@ BombLocation = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
+    local elements = {}
+    for _,v in pairs(Config.WireColors) do
+        table.insert(elements, {label = v, value = v})
+    end
     while true do
         if IsBombActive == true and GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), BombLocation.x, BombLocation.y, BombLocation.z) <= Config.BeepDistance then
             local textLoc = vector3(BombLocation.x, BombLocation.y, BombLocation.z + 0.2)
             ESX.Game.Utils.DrawText3D(textLoc, '~r~[E]~s~ Attempt Bomb Defuse', 1)
             if IsControlJustPressed(0, 38) then
-                ESX.TriggerServerCallback('explosives:hasdefuse', function(hasDefuse, wireOptions)
+                ESX.TriggerServerCallback('explosives:hasdefuse', function(hasDefuse)
                     if hasDefuse == true then
                         TaskStartScenarioInPlace(GetPlayerPed(-1), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
-                        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'wire_to_cut',{
-                            title = "Pick your Wire" .. wireOptions
+                        ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'wire_to_cut',{
+                            title = "Pick your Wire",
+                            align = 'center',
+                            elements = elements
                         }, function(data, menu)
-                            local wire = string.lower(tostring(data.value))
+                            local wire = string.lower(tostring(data.current.value))
                             if wire == nil then
                                 ESX.ShowNotification('Please supply a wire color to cut.')
                             else

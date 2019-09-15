@@ -14,7 +14,7 @@ TriggerEvent('es:addGroupCommand', 'plantbomb', 'admin', function(source, args, 
     local cutWire = ""
 
     timer = tonumber(args[1])
-    cutWire = tostring(args[2])
+    cutWire = string.lower(tostring(args[2]))
 
     if timer == nil then
         TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Requires the timer parameter."} })
@@ -28,7 +28,7 @@ TriggerEvent('es:addGroupCommand', 'plantbomb', 'admin', function(source, args, 
 
     local colorApproved = false
     for _,k in pairs(Config.WireColors) do
-        if cutWire == k then
+        if cutWire == string.lower(k) then
             colorApproved = true
         end
     end
@@ -85,22 +85,12 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Insufficient permissions!"}})
 end, {help = "Detonate the vehicle someone is in."})
 
-local wireColors = ""
-for i = 1, #Config.WireColors, 1 do
-    wireColors = wireColors .. ', ' .. Config.WireColors[i]
-end
-
--- TriggerEvent('es:addCommand', 'cutwire', function(source, args, user)
---     local wire = string.lower(args[1])
---     if wire ~= nil then
---         TriggerClientEvent('explosives:disarmattempt', source, Bomb.coords, wire)
---     end
--- end, {help = "Possible colors are: " .. wireColors})
-
 RegisterServerEvent('explosives:disarmbomb')
 AddEventHandler('explosives:disarmbomb', function(wire)
     if Bomb.valid == true then
-        if wire == Bomb.wire then
+        print(wire)
+        print(string.lower(Bomb.wire))
+        if wire == string.lower(Bomb.wire) then
             TriggerClientEvent('explosives:bombdisarmed', source, Bomb.coords)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
@@ -123,8 +113,8 @@ ESX.RegisterServerCallback('explosives:hasdefuse', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(_source)
 
     if xPlayer.getInventoryItem('bomb_defuse_kit').count >= 1 then
-        cb(true, wireColors)
+        cb(true)
     else
-        cb(false, wireColors)
+        cb(false)
     end
 end)
