@@ -101,7 +101,7 @@ RegisterServerEvent('explosives:disarmbomb')
 AddEventHandler('explosives:disarmbomb', function(wire)
     if Bomb.valid == true then
         if wire == Bomb.wire then
-            TriggerClientEvent('explosives:bombdisarmed', source)
+            TriggerClientEvent('explosives:bombdisarmed', source, Bomb.coords)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
