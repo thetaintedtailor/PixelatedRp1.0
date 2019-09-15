@@ -4,10 +4,10 @@ Config.DrawDistance = 100.0 --Distance where the marker be visible from
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0} -- Size of the marker
 Config.MarkerColor  = {r = 0, g = 255, b = 0} --Color of the marker
 
-Config.RequiredCopsCoke   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell coke
-Config.RequiredCopsMeth   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell meth
-Config.RequiredCopsWeed   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell weed
-Config.RequiredCopsOpium  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell opium
+Config.RequiredCopsCoke   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell coke
+Config.RequiredCopsMeth   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell meth
+Config.RequiredCopsWeed   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell weed
+Config.RequiredCopsOpium  = 1 --Ammount of cop that need to be online to be able to harvest/process/sell opium
 
 Config.TimeToFarmWeed     = 4   * 1000 -- Ammount of time to harvest weed
 Config.TimeToProcessWeed  = 10  * 1000 -- Ammount of time to process weed
@@ -45,7 +45,7 @@ Config.Zones = {
 	WeedField =			{x=1057.448,  y=-3197.646,  z=-39.138},
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
 	WeedDealer =		{x = 1845.92,   y= 3914.55,  z= 33.46},
-	OpiumField =		{x=-2163.93,  y=5192.19,   z=15.01},
+	--OpiumField =		{x=-2163.93,  y=5192.19,   z=15.01},
 	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=5.79},
 	OpiumDealer =		{x=452.44, y=-841.48,   z=27.84}
 }
