@@ -52,7 +52,7 @@ function TokoVoip.sendDataToTS3(self) -- Send usersdata to the Javascript Websoc
 	self:updatePlugin("updateTokoVoip", self.plugin_data);
 end
 
-function TokoVoip.updateTokoVoipInfo(self, forceUpdate) -- Update the top-left info
+function TokoVoip.updateTokoVoipInfo(self, forceUpdate) -- Update the ui voice info
 	local info = "";
 	if (self.mode == 1) then
 		info = "Normal";
