@@ -1,6 +1,6 @@
---ESX = nil
+ESX = nil
 
---TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 local Bomb = {
     valid = false,
@@ -58,12 +58,13 @@ AddEventHandler('explosives:bombplanted', function(c, t, w)
         timer = t,
         wire = w
     }
+    TriggerClientEvent('explosives:setbombactive', -1, c)
     Citizen.CreateThread(function()
         while Bomb.valid do
-            print(Bomb.timer)
             Bomb.timer = Bomb.timer - 1
             TriggerClientEvent('explosives:bombtick', -1, Bomb.coords)
             if Bomb.timer <= 0 then
+                TriggerClientEvent('explosives:setbombinactive', -1)
                 TriggerClientEvent('explosives:bombexploded', -1, Bomb.coords)
                 Bomb.valid = false
             end
@@ -105,11 +106,23 @@ AddEventHandler('explosives:disarmlocation', function(wire)
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
         end
+        TriggerClientEvent('explosives:setbombinactive', -1)
         Bomb = {
             valid = false,
             coords = nil,
             timer = 0,
             wire = ""
         }
+    end
+end)
+
+ESX.RegisterServerCallback('explosives:hasdefuse', function(source, cb)
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+    if xPlayer.getInventoryItem('bomb_defuse_kit').count >= 1 then
+        cb(true, wireColors)
+    else
+        cb(false, wireColors)
     end
 end)
