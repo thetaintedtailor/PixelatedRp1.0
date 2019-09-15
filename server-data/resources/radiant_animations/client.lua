@@ -130,17 +130,18 @@ Citizen.CreateThread( function()
 
             if ( not IsPauseMenuActive() and not IsPedInAnyVehicle(ped, true)) then 
                 if ( IsDisabledControlJustPressed( 0, 36 ) ) then 
-                    RequestAnimSet( "move_ped_crouched" )
-
-                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
-                        Citizen.Wait( 100 )
-                    end 
-
                     if ( crouched == true ) then 
                         ResetPedMovementClipset( ped, 0 )
                         crouched = false 
                         exports['esx_animations']:RefreshAttitude()
+                        exports['esx_optionalneeds']:UpdateClipset()
                     elseif ( crouched == false ) then
+                        RequestAnimSet( "move_ped_crouched" )
+
+                        while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
+                            Citizen.Wait( 100 )
+                        end 
+
                         SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
                         crouched = true 
                     end 
@@ -1327,7 +1328,6 @@ end, false)
 
 
 ----Use /testanimation command, you can use this to easily test new animations---
-
 RegisterCommand("testanim",function(source, args)
 
 	local ad = "mp_suicide" --- insert the animation dic here
@@ -1350,6 +1350,18 @@ RegisterCommand("testanim",function(source, args)
 	end
 end, false)
 
+---- For testing screen fx
+--RegisterCommand("startfx",function(source, args)
+--	SetTimecycleModifier("stoned")
+--	SetPedMotionBlur(playerPed, true)
+--	SetPedIsDrunk(playerPed, true)
+--end, false)
+--
+--RegisterCommand("stopfx",function(source, args)
+--	SetPedMotionBlur(playerPed, false)
+--	SetPedIsDrunk(playerPed, false)
+--	ClearTimecycleModifier()
+--end, false)
 
 ----------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ functions -----------------------------------------------------------------
