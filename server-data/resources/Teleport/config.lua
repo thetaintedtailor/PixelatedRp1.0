@@ -38,6 +38,7 @@ Config.zones = {
 		
 	},
 	
+	--[[
 	MethEnter = {
 		x = 500.04,
 		y = -522.06,
@@ -52,6 +53,7 @@ Config.zones = {
 			b = 0
 		}
 	},
+	]]
 	
 	MethExit = {
 		x = 1011.70,
