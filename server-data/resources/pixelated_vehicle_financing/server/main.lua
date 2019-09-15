@@ -154,6 +154,7 @@ function AutoCarPayments(d, h, m)
                     })
                 end
             else
+                print('Doing an automatic car payment on the server.')
                 MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
                 {
                     ['@owner'] = xPlayer.identifier,
