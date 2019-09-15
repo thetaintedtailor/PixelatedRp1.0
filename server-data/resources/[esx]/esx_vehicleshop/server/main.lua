@@ -372,39 +372,34 @@ ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb
 				['@owner'] = xPlayer.identifier,
 				['@plate'] = plate
 			}, function (result)
-
 				if result[1] then -- does the owner match?
-
 					local vehicle = json.decode(result[1].vehicle)
 
-					MySQL.Sync.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND @plate = plate', {
+					MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND @plate = plate', {
 						['@owner'] = xPlayer.identifier,
 						['@plate'] = plate
-					}, function (result)
-						if #result > 0 then
-							print('Selling a financed vehicle')
+					}, function (financed)
+						if #financed > 0 then
 							resellPrice = 0
-							MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
-								['@plate'] = plate
-							})
 						end
-					end)
-
-					if vehicle.model == model then
-						if vehicle.plate == plate then
-							xPlayer.addMoney(resellPrice)
-							RemoveOwnedVehicle(plate)
-
-							cb(true)
+						
+						if vehicle.model == model then
+							if vehicle.plate == plate then
+								xPlayer.addMoney(resellPrice)
+								RemoveOwnedVehicle(plate)
+								MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+									['@plate'] = plate
+								})
+								cb(true)
+							else
+								print(('esx_vehicleshop: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
+								cb(false)
+							end
 						else
-							print(('esx_vehicleshop: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
+							print(('esx_vehicleshop: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
 							cb(false)
 						end
-					else
-						print(('esx_vehicleshop: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
-						cb(false)
-					end
-
+					end)
 				else
 
 					if xPlayer.job.grade_name == 'boss' then
