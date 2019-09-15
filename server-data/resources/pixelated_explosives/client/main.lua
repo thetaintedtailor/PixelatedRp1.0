@@ -1,5 +1,4 @@
 ESX = nil
-ActiveBomb = nil
 IsBombActive = nil
 BombLocation = nil
 
@@ -50,7 +49,6 @@ AddEventHandler('explosives:plantbomb', function(timer, wire)
 		SetEntityHeading(obj, GetEntityHeading(playerPed))
         PlaceObjectOnGroundProperly(obj)
         FreezeEntityPosition(obj, true)
-        ActiveBomb = obj
     end)
     coords = {x = x, y = y, z = z}
     TriggerServerEvent('explosives:bombplanted', coords, timer, wire)
@@ -72,10 +70,8 @@ end)
 RegisterNetEvent('explosives:bombexploded')
 AddEventHandler('explosives:bombexploded', function(coords)
     AddExplosion(coords.x, coords.y, coords.z, 32, 2.0, true, false, 5.0)
-    if ActiveBomb ~= nil then
-        ESX.Game.DeleteObject(ActiveBomb)
-        ActiveBomb = nil
-    end
+    local bomb = ESX.Game.GetClosestObject('prop_ld_bomb', coords)
+    ESX.Game.DeleteObject(bomb)
 end)
 
 RegisterNetEvent('explosives:bombtick')
@@ -96,13 +92,11 @@ AddEventHandler('explosives:disarmattempt', function(loc, wire)
 end)
 
 RegisterNetEvent('explosives:bombdisarmed')
-AddEventHandler('explosives:bombdisarmed', function()
-    if ActiveBomb ~= nil then
-		ClearPedTasksImmediately(GetPlayerPed(-1))
-        ESX.Game.DeleteObject(ActiveBomb)
-        ActiveBomb = nil
-        ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')
-    end
+AddEventHandler('explosives:bombdisarmed', function(coords)
+    ClearPedTasksImmediately(GetPlayerPed(-1))
+    local bomb = ESX.Game.GetClosestObject('prop_ld_bomb', coords)
+    ESX.Game.DeleteObject(bomb)
+    ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')
 end)
 
 RegisterNetEvent('explosives:faileddisarm')
