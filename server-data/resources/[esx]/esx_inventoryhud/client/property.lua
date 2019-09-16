@@ -7,11 +7,27 @@ AddEventHandler(
     end
 )
 
-function refreshPropertyInventory()
+RegisterNetEvent("esx_inventoryhud:refreshProperty")
+AddEventHandler(
+    "esx_inventoryhud:refreshProperty",
+    function()
+        if (isInInventory) then
+            refreshPropertyInventory(function()
+                loadPlayerInventory()
+            end)
+        end
+    end
+)
+
+function refreshPropertyInventory(cb)
     ESX.TriggerServerCallback(
         "esx_property:getPropertyInventory",
         function(inventory)
             setPropertyInventoryData(inventory)
+            
+            if cb then
+                cb()
+            end
         end,
         ESX.GetPlayerData().identifier
     )
@@ -44,6 +60,8 @@ function setPropertyInventoryData(data)
         local item = propertyItems[i]
 
         if item.count > 0 then
+            item.name = propertyItems[i].name
+            item.label = propertyItems[i].label
             item.type = "item_standard"
             item.usable = false
             item.rare = false
@@ -113,10 +131,13 @@ RegisterNUICallback(
             TriggerServerEvent("esx_property:putItem", ESX.GetPlayerData().identifier, data.item.type, data.item.name, count)
         end
 
-        Wait(150)
-        refreshPropertyInventory()
-        Wait(300)
-        loadPlayerInventory()
+        -- TODO: Would need to make esx_addonaccount take optional callbacks like esx_addoninventory and esx_datastore
+        if (data.item.type == 'item_account') then
+            Wait(150)
+            refreshPropertyInventory()
+            Wait(300)
+            loadPlayerInventory()
+        end
 
         cb("ok")
     end

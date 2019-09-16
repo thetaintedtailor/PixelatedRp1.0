@@ -16,7 +16,6 @@ Config.zones = {
 			g = 0,
 			b = 102
 		}
-		
 	},
 	
 	Carwash2 = {         
@@ -32,7 +31,6 @@ Config.zones = {
 			g = 0,
 			b = 102
 		}
-		
 	},
 	
 	Carwash3 = {
@@ -78,5 +76,80 @@ Config.zones = {
 			g = 0,
 			b = 102
 		}
-	}
+	},
+
+	Carwash6 = {           
+		x = 215.9,
+		y = -939.05,
+		z = 24.14,
+		w = 1.0,
+		h = 1.0,
+		visible = true,
+		t = 36,          
+		color = {
+			r = 0,
+			g = 0,
+			b = 102
+		}
+	},
+
+	Carwash7 = {           
+		x = -144.13,
+		y = -576.64,
+		z = 32.42,
+		w = 1.0,
+		h = 1.0,
+		visible = true,
+		t = 36,          
+		color = {
+			r = 0,
+			g = 0,
+			b = 102
+		}
+	},
+	
+	Carwash8 = {           
+		x = -758.58,
+		y = -422.06,
+		z = 35.68,
+		w = 1.0,
+		h = 1.0,
+		visible = true,
+		t = 36,          
+		color = {
+			r = 0,
+			g = 0,
+			b = 102
+		}		
+	},
+	
+	Carwash9 = {           
+		x = -1537.77,
+		y = -576.91,
+		z = 25.71,
+		w = 1.0,
+		h = 1.0,
+		visible = true,
+		t = 36,          
+		color = {
+			r = 0,
+			g = 0,
+			b = 102
+		}		
+	},
+	
+	Carwash10 = {           
+		x = -144.13,
+		y = -576.64,
+		z = 32.42,
+		w = 1.0,
+		h = 1.0,
+		visible = true,
+		t = 36,          
+		color = {
+			r = 0,
+			g = 0,
+			b = 102
+		}		
+	},
 } 

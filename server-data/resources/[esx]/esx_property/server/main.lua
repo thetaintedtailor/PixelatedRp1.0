@@ -301,7 +301,9 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 		if playerItemCount >= count and count > 0 then
 			TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayerOwner.identifier, function(inventory)
 				xPlayer.removeInventoryItem(item, count)
-				inventory.addItem(item, count)
+				inventory.addItem(item, count, function()
+					TriggerClientEvent('esx_inventoryhud:refreshProperty', _source)
+				end)
 				TriggerClientEvent('esx:showNotification', _source, _U('have_deposited', count, inventory.getItem(item).label))
 			end)
 		else
@@ -332,12 +334,12 @@ AddEventHandler('esx_property:putItem', function(owner, type, item, count)
 				ammo = count
 			})
 
-			store.set('weapons', storeWeapons)
+            store.set('weapons', storeWeapons)
+            TriggerClientEvent('esx_inventoryhud:refreshProperty', _source)
 			xPlayer.removeWeapon(item)
 		end)
 
 	end
-
 end)
 
 ESX.RegisterServerCallback('esx_property:getOwnedProperties', function(source, cb)
@@ -371,7 +373,9 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 	local items      = {}
 	local weapons    = {}
 
-	MySQL.Async.fetchAll('SELECT * FROM addon_inventory_items WHERE owner = @identifier AND inventory_name = @inventory_name', {
+    MySQL.Async.fetchAll([[SELECT addon_inventory_items.name, count, owner, label FROM addon_inventory_items 
+    INNER JOIN items ON items.name = addon_inventory_items.name
+    WHERE owner = @identifier AND inventory_name = @inventory_name]], {
 		['@identifier'] = xPlayer.identifier,
 		['@inventory_name'] = 'property',
 	}, function(results)
@@ -379,11 +383,13 @@ ESX.RegisterServerCallback('esx_property:getPropertyInventory', function(source,
 			for j=1, #results, 1 do
 				local itemName  = results[j].name
 				local itemCount = results[j].count
-				local itemOwner = results[j].owner
+                local itemOwner = results[j].owner
+                local itemLabel = results[j].label
 
 				table.insert(items, {
 					name  = itemName,
-					count = itemCount,
+                    count = itemCount,
+                    label =  itemLabel
 				})
 			end
 

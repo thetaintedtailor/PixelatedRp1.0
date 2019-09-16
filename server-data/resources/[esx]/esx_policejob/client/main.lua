@@ -422,6 +422,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
+									SetVehicleTyresCanBurst(vehicle, false)
 									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
@@ -1123,9 +1124,9 @@ function OpenFineMenu(player)
 		title    = _U('fine'),
 		align    = 'right',
 		elements = {
-			{label = _U('traffic_offense'), value = 0},
+			--{label = _U('traffic_offense'), value = 0},
 			{label = _U('minor_offense'),   value = 1},
-			{label = _U('average_offense'), value = 2},
+			--{label = _U('average_offense'), value = 2},
 			{label = _U('major_offense'),   value = 3}
 		}
 	}, function(data, menu)
@@ -2065,6 +2066,7 @@ end)
 Citizen.CreateThread(function()
 
 	for k,v in pairs(Config.PoliceStations) do
+		
 		local blip = AddBlipForCoord(v.Blip.Coords)
 
 		SetBlipSprite (blip, v.Blip.Sprite)

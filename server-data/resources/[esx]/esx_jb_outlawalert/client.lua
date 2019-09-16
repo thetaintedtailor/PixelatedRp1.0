@@ -49,7 +49,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Wait(0)
+        Wait(50)
         if NetworkIsSessionStarted() then
             DecorRegister("IsOutlaw",  3)
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 1)
@@ -167,7 +167,7 @@ end)
 
 Citizen.CreateThread( function()
     while true do
-        Wait(0)
+        Wait(50)
         if DecorGetInt(GetPlayerPed(-1), "IsOutlaw") == 2 then
             Wait( math.ceil(timing) )
             DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 1)
@@ -175,6 +175,7 @@ Citizen.CreateThread( function()
     end
 end)
 
+--[[
 Citizen.CreateThread( function()
     while true do
         Wait(0)
@@ -249,8 +250,10 @@ Citizen.CreateThread( function()
         end
     end
 end)
+]]
 
 
+--[[
 Citizen.CreateThread( function()
     while true do
         Wait(0)
@@ -297,17 +300,19 @@ Citizen.CreateThread( function()
         end
     end
 end)
+]]
 
 Citizen.CreateThread( function()
     while true do
-        Wait(0)
-        local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
-        local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, plyPos.x, plyPos.y, plyPos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt() )
-        local street1 = GetStreetNameFromHashKey(s1)
-		local street2 = GetStreetNameFromHashKey(s2)
+		Wait(0)
 		local playerPed = GetPlayerPed(-1)
 		if IsPedShooting(playerPed) then
-			if GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_STUNGUN") and GetSelectedPedWeapon(playerPed) ~= GetHashKey("WEAPON_PETROLCAN")  then
+			local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
+			local s1, s2 =	GetStreetNameAtCoord(plyPos.x, plyPos.y, plyPos.z)
+			local street1 = GetStreetNameFromHashKey(s1)
+			local street2 = GetStreetNameFromHashKey(s2)
+			local weapon = GetSelectedPedWeapon(playerPed)
+			if weapon ~= GetHashKey("WEAPON_STUNGUN") and weapon ~= GetHashKey("WEAPON_PETROLCAN")  then
 				DecorSetInt(GetPlayerPed(-1), "IsOutlaw", 2)
 				if PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave == false then
 				elseif PlayerData.job ~= nil and PlayerData.job.name == 'police' and showcopsmisbehave then
