@@ -154,6 +154,7 @@ function AutoCarPayments(d, h, m)
                     })
                 end
             else
+                print('Doing an automatic car payment on the server.')
                 MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
                 {
                     ['@owner'] = xPlayer.identifier,
@@ -163,6 +164,16 @@ function AutoCarPayments(d, h, m)
         end
     end)
 end
+
+RegisterServerEvent('vehicle_financing:sellcar')
+AddEventHandler('vehicle_financing:sellcar', function(plate)
+    MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+        ['@plate'] = plate
+    })
+    MySQL.Sync.execute('DELETE FROM owned_vehicles WHERE plate = @plate', {
+        ['@plate'] = plate
+    })
+end)
 
 RegisterServerEvent('vehicle_financing:carpayment')
 AddEventHandler('vehicle_financing:carpayment', function(plate)
