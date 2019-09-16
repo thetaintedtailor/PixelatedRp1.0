@@ -55,7 +55,7 @@ AddEventHandler('finance_vehicle:addNewVehicle', function(vehicleProps, vehicle,
     end)
 end)
 
-ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, cb, vehicleModel)
+ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, cb, vehicleModel, downPayment)
     local xPlayer = ESX.GetPlayerFromId(source)
     local vehicleData = nil
     for i=1, #Vehicles, 1 do
@@ -64,15 +64,13 @@ ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, 
 			break
 		end
     end
-    local price = tonumber(vehicleData.price)
-    local totalCost = price + (price * Config.InterestRate)
+
+    local price = tonumber(vehicleData.price) - downPayment
+    local totalCost = price + (price * Config.InterestRate) 
     local payment = math.ceil(totalCost / Config.PaymentDays)
 
-    if xPlayer.getBank() >= payment then
-        xPlayer.removeBank(payment)
-        cb(true)
-    elseif xPlayer.getAccount('bank').money >= payment then
-        xPlayer.removeAccountMoney('bank', payment)
+    if xPlayer.getBank() >= downPayment and xPlayer.getBank() >= payment then
+        xPlayer.removeBank(payment + downPayment)
         cb(true)
     else
         cb(false)
@@ -206,7 +204,7 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
     end)
 end)
 
-TriggerEvent('cron:runAt', 2, 17, AutoCarPayments)
+TriggerEvent('cron:runAt', 23, 0, AutoCarPayments)
 
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
