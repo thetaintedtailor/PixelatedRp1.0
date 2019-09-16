@@ -121,8 +121,9 @@ function OpenVehicleActionChoice(plate)
                 end
             end, function(data2, menu2)
                 menu2.close()
-                OpenFinanceMenu()
             end)
         end
+    end, function(data, menu)
+        menu.close()
     end)
 end
