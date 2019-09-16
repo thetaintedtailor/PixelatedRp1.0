@@ -178,7 +178,8 @@ function OpenShopMenu()
 			if i == 1 and j == 1 then
 				firstVehicleData = vehicle
 			end
-			local payments = math.ceil(vehicle.price / exports.pixelated_vehicle_financing:GetPaymentDays())
+			local priceWithInterest = math.ceil((vehicle.price * exports.pixelated_vehicle_financing:GetInterestRate()) + vehicle.price)
+			local payments = math.ceil(priceWithInterest / exports.pixelated_vehicle_financing:GetPaymentDays())
 			table.insert(options, ('%s <span style="color:green;">%s</span> | <span style="color:red;">$%s</span>'):format(vehicle.name, _U('generic_shopitem', ESX.Math.GroupDigits(vehicle.price)), ESX.Math.GroupDigits(payments)))
 		end
 
@@ -360,41 +361,55 @@ function OpenShopMenu()
 					end
 				end
 			elseif data2.current.value == 'finance' then
-				ESX.TriggerServerCallback('vehicle_financing:financeVehicle', function (hasEnoughMoney)
-					if hasEnoughMoney then
-						IsInShopMenu = false
-
-						menu2.close()
-						menu.close()
-
-						DeleteShopInsideVehicles()
-
-						ESX.Game.SpawnVehicle(vehicleData.model, Config.Zones.ShopOutside.Pos, Config.Zones.ShopOutside.Heading, function (vehicle)
-							TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-
-							local newPlate  = GeneratePlate()
-							local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
-							local vehicleName = GetDisplayNameFromVehicleModel(vehicleProps.model)
-							vehicleProps.plate = newPlate
-							SetVehicleNumberPlateText(vehicle, newPlate)
-
-							if Config.EnableOwnedVehicles then
-								TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps)
-								local price = tonumber(vehicleData.price)
-								local interest = math.ceil(price * Config.InterestRate)
-								local totalCost = price + interest
-								TriggerServerEvent('finance_vehicle:addNewVehicle', vehicleProps, vehicleName, totalCost)
-							end
-						end)
-
-						FreezeEntityPosition(playerPed, false)
-						SetEntityVisible(playerPed, true)
+				ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'down_payment', {
+					title = 'Down Payment',
+					align = 'center',
+				}, function(data3, menu3)
+					local downPayment = tonumber(data3.value)
+					if downPayment == nil then
+						ESX.ShowNotification('Invalid Number.')
 					else
-						ESX.ShowNotification(_U('not_enough_money'))
+						ESX.TriggerServerCallback('vehicle_financing:financeVehicle', function (hasEnoughMoney)
+							if hasEnoughMoney then
+								IsInShopMenu = false
+		
+								menu2.close()
+								menu.close()
+		
+								DeleteShopInsideVehicles()
+		
+								ESX.Game.SpawnVehicle(vehicleData.model, Config.Zones.ShopOutside.Pos, Config.Zones.ShopOutside.Heading, function (vehicle)
+									TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+		
+									local newPlate  = GeneratePlate()
+									local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+									local vehicleName = GetDisplayNameFromVehicleModel(vehicleProps.model)
+									vehicleProps.plate = newPlate
+									SetVehicleNumberPlateText(vehicle, newPlate)
+		
+									if Config.EnableOwnedVehicles then
+										TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps)
+										local price = tonumber(vehicleData.price) - downPayment
+										local interest = math.ceil(price * Config.InterestRate)
+										local totalCost = price + interest
+										TriggerServerEvent('finance_vehicle:addNewVehicle', vehicleProps, vehicleName, totalCost)
+									end
+								end)
+		
+								FreezeEntityPosition(playerPed, false)
+								SetEntityVisible(playerPed, true)
+							else
+								ESX.ShowNotification(_U('not_enough_money'))
+							end
+						end, vehicleData.model, downPayment)
 					end
-				end, vehicleData.model)
-			elseif data2.current.value == 'no' then
+					menu3.close()
+				end, function(data3, menu3)
+					menu3.close()
+				end)
 
+			elseif data2.current.value == 'no' then
+				menu2.close()
 			end
 		end, function (data2, menu2)
 			menu2.close()
