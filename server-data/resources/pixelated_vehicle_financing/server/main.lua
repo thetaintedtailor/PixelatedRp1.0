@@ -204,7 +204,7 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
     end)
 end)
 
-TriggerEvent('cron:runAt', 23, 0, AutoCarPayments)
+TriggerEvent('cron:runAt', 21, 50, AutoCarPayments)
 
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
