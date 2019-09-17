@@ -60,17 +60,18 @@ AddEventHandler(
 )
 
 TriggerEvent('es:addGroupCommand', 'openinventory', "superadmin", function(source, args, user)
-    local target        = tonumber(args[1])
-    local targetXPlayer = ESX.GetPlayerFromId(target)
+    local _source       = source
+    local player        = tonumber(args[1])
+    local targetXPlayer = ESX.GetPlayerFromId(player)
 
-    if targetXPlayer ~= nil then
-        TriggerClientEvent("esx_inventoryhud:openPlayerInventory", source, target, targetXPlayer.name)
-    else
-        TriggerClientEvent("chatMessage", source, "^1" .. _U("no_player"))
+    if user.getGroup() == "superadmin" then
+        if targetXPlayer ~= nil then
+            TriggerClientEvent("esx_inventoryhud:openPlayerInventory", source, player, targetXPlayer.name)
+        else
+            TriggerClientEvent("chatMessage", source, "^1" .. _U("no_player"))
+        end
     end
-end, function(source, args, user)
-    TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
-end, {help = "Open a user's inventory", params = {{name = "userid", help = "The ID of the player"}}})
+end)
 
 --[[
 RegisterCommand(
