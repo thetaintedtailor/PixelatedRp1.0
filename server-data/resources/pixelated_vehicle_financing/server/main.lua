@@ -221,3 +221,14 @@ function GetCharacterName(source)
 		return GetPlayerName(source)
 	end
 end
+
+TriggerEvent('es:addCommand', 'carpayments', function(source, args, user)
+    local identifier = GetPlayerIdentifiers(source)[1]
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
+        ['@owner'] = identifier
+    }, function(result)
+        for _,v in pairs(result) do
+	        TriggerClientEvent('chat:addMessage', source, { args = {"^1MAZE Loans", ('Vehicle: %s | Remaining Balance: $%s | Payments Behind: %s'):format(v.vehicle, v.remaining_balance, v.payments_behind)} })
+        end
+    end)
+end, {help = "Check your current balance and payments behind."})
