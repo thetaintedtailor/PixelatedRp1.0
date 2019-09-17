@@ -367,8 +367,9 @@ function OpenShopMenu()
 				}, function(data3, menu3)
 					local downPayment = tonumber(data3.value)
 					if downPayment == nil then
-						ESX.ShowNotification('Invalid Number.')
-					else
+						downPayment = 0
+						--ESX.ShowNotification('Invalid Number.')
+					end
 						ESX.TriggerServerCallback('vehicle_financing:financeVehicle', function (hasEnoughMoney)
 							if hasEnoughMoney then
 								IsInShopMenu = false
@@ -402,7 +403,6 @@ function OpenShopMenu()
 								ESX.ShowNotification(_U('not_enough_money'))
 							end
 						end, vehicleData.model, downPayment)
-					end
 					menu3.close()
 				end, function(data3, menu3)
 					menu3.close()
