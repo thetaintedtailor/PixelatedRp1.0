@@ -117,7 +117,7 @@ function OpenVehicleActionChoice(plate)
                 else
                     menu2.close()
                     TriggerServerEvent('vehicle_financing:sellcar', plate)
-                    ESX.ShowNotification('You\'ve ended the lease on vehicle with plate ~g~' .. plate)
+                    ESX.ShowNotification('You\'ve ended the lease on vehicle with plate: ~g~' .. plate)
                 end
             end, function(data2, menu2)
                 menu2.close()
