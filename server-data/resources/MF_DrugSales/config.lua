@@ -16,7 +16,7 @@ end)
 MFS.ShowBlip = true
 MFS.DrawTextDist = 10.0
 MFS.NotificationTime = 5.0
-MFS.RefreshPosTimer = 60.0 -- minutes
+MFS.RefreshPosTimer = 10.0 -- minutes
 
 MFS.PoliceNotifyCountdown = 0.5 -- minutes from reaching dealer until police are notified.
 MFS.NotifyPoliceTimer = 10
