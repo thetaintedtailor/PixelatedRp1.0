@@ -37,7 +37,9 @@ MySQL.ready(function()
 			end
 		end
 
-		table.insert(Vehicles, vehicle)
+		if vehicles[i].visible == true then
+			table.insert(Vehicles, vehicle)
+		end
 	end
 
 	-- send information after db has loaded, making sure everyone gets vehicle information
