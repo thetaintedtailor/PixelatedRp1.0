@@ -14,7 +14,7 @@ Config.serverHook             = "https://discordapp.com/api/webhooks/60957747555
 
 settings = {
 	LogKills = true, -- Log when a player kill an other player.
-	LogEnterPoliceVehicle = false, -- Log when an player enter in a police vehicle.
+	LogEnterPoliceVehicle = true, -- Log when an player enter in a police vehicle.
 	LogEnterBlackListedVehicle = false, -- Log when a player enter in a blacklisted vehicle.
 	LogPedJacking = false, -- Log when a player is jacking a car
 	LogChatServer = true, -- Log when a player is talking in the chat , /command works too.
@@ -24,7 +24,9 @@ settings = {
 	LogMoneyTransfer = true, -- Log when a player is giving money
 	LogMoneyBankTransfert = true, -- Log when a player is giving money from bankaccount
 	LogAnonymousTwitter = true, -- Logs anonyous tweets
-	LogItemSelling = true --Logs the sale of items to NPCs
+	LogItemSelling = true, --Logs the sale of items to NPCs
+	LogDroppedNotes = true, --Logs the notes players can drop
+	LogLocalDoctors = true --Logs when a player uses the local doctos to heal or revive
 }
 
 blacklistedModels = {
@@ -36,6 +38,5 @@ blacklistedModels = {
 	"CARGOBOB",
 	"SAVAGE",
 	"TITAN",
-	"LAZER",
 	"LAZER",
 }

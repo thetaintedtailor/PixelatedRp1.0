@@ -43,6 +43,7 @@ files {
   'html/img/items/bandage.png',
   'html/img/items/beer.png',
   'html/img/items/binoculars.png',
+  'html/img/items/bomb_defuse_kit.png',
   'html/img/items/bread.png',
   'html/img/items/cannabis.png',
   'html/img/items/cigarette.png',

@@ -956,8 +956,9 @@ function putaway(vehicle, vehicleProps)
 			table.remove(carInWorld, k)
 		end
 	end
-	
+
 	ESX.Game.DeleteVehicle(vehicle)
+
 	TriggerServerEvent('esx_advancedgarage:setVehicleState', vehicleProps.plate, true)
 	ESX.ShowNotification(_U('vehicle_in_garage'))
 end
@@ -969,6 +970,8 @@ function SpawnVehicle(vehicle, plate, fuel)
 		y = this_Garage.SpawnPoint.y,
 		z = this_Garage.SpawnPoint.z + 1
 	}, this_Garage.SpawnPoint.h, function(callback_vehicle)
+		vehicle.engineHealth = 1000
+		vehicle.bodyHealth = 1000
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
 		exports["esx_legacyfuel"]:SetFuel(callback_vehicle, fuel)
 		--print('inside spawnVehicle', GetVehicleFuelLevel(callback_vehicle))
@@ -989,6 +992,8 @@ function SpawnPoundedVehicle(vehicle, plate)
 		y = this_Garage.SpawnPoint.y,
 		z = this_Garage.SpawnPoint.z + 1
 	}, this_Garage.SpawnPoint.h, function(callback_vehicle)
+		vehicle.engineHealth = 1000
+		vehicle.bodyHealth = 1000
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
 		SetVehRadioStation(callback_vehicle, "OFF")
 		TaskWarpPedIntoVehicle(GetPlayerPed(-1), callback_vehicle, -1)

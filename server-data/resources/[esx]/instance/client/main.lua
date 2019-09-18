@@ -18,263 +18,246 @@ local InsideInstance          = false
 ESX                           = nil
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
 end)
 
 function GetInstance()
-	return Instance
+    return Instance
 end
 
 function CreateInstance(type, data)
-	TriggerServerEvent('instance:create', type, data)
+    TriggerServerEvent('instance:create', type, data)
 end
 
 function CloseInstance()
-	Instance = {}
-	TriggerServerEvent('instance:close')
-	InsideInstance = false
+    Instance = {}
+    TriggerServerEvent('instance:close')
+    InsideInstance = false
 end
 
 function EnterInstance(instance)
-	InsideInstance = true
-	TriggerServerEvent('instance:enter', instance.host)
+    InsideInstance = true
+    TriggerServerEvent('instance:enter', instance.host)
 
-	if RegisteredInstanceTypes[instance.type].enter ~= nil then
-		RegisteredInstanceTypes[instance.type].enter(instance)
-	end
+    if RegisteredInstanceTypes[instance.type].enter ~= nil then
+        RegisteredInstanceTypes[instance.type].enter(instance)
+    end
 end
 
 function LeaveInstance()
-	if Instance.host ~= nil then
+    if Instance.host ~= nil then
 
-		if #Instance.players > 1 then
-			ESX.ShowNotification(_U('left_instance'))
-		end
+        if #Instance.players > 1 then
+            ESX.ShowNotification(_U('left_instance'))
+        end
 
-		if RegisteredInstanceTypes[Instance.type].exit ~= nil then
-			RegisteredInstanceTypes[Instance.type].exit(Instance)
-		end
+        if RegisteredInstanceTypes[Instance.type].exit ~= nil then
+            RegisteredInstanceTypes[Instance.type].exit(Instance)
+        end
 
-		TriggerServerEvent('instance:leave', Instance.host)
-	end
+        TriggerServerEvent('instance:leave', Instance.host)
+    end
 
-	InsideInstance = false
+    InsideInstance = false
 end
 
 function InviteToInstance(type, player, data)
-	TriggerServerEvent('instance:invite', Instance.host, type, player, data)
+    TriggerServerEvent('instance:invite', Instance.host, type, player, data)
 end
 
 function RegisterInstanceType(type, enter, exit)
-	RegisteredInstanceTypes[type] = {
-		enter = enter,
-		exit  = exit
-	}
+    RegisteredInstanceTypes[type] = {
+        enter = enter,
+        exit  = exit
+    }
+end
+
+function DisableInteractions(players)
+    local playerPed = PlayerPedId()
+
+    for _, player in ipairs(GetActivePlayers()) do
+        local found = false
+
+        for j=1, #players, 1 do
+            instancePlayer = GetPlayerFromServerId(players[j])
+
+            if player == instancePlayer then
+                found = true
+                break
+            end
+        end
+
+        if not found then
+            local otherPlayerPed = GetPlayerPed(player)
+
+            SetPlayerVisibleLocally(player, false)
+            SetPlayerInvisibleLocally(player, true)
+            SetEntityLocallyInvisible(otherPlayerPed)
+            SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
+        end
+
+    end
 end
 
 AddEventHandler('instance:get', function(cb)
-	cb(GetInstance())
+    cb(GetInstance())
 end)
 
 AddEventHandler('instance:create', function(type, data)
-	CreateInstance(type, data)
+    CreateInstance(type, data)
 end)
 
 AddEventHandler('instance:close', function()
-	CloseInstance()
+    CloseInstance()
 end)
 
 AddEventHandler('instance:enter', function(instance)
-	EnterInstance(instance)
+    EnterInstance(instance)
 end)
 
 AddEventHandler('instance:leave', function()
-	LeaveInstance()
+    LeaveInstance()
 end)
 
 AddEventHandler('instance:invite', function(type, player, data)
-	InviteToInstance(type, player, data)
+    InviteToInstance(type, player, data)
 end)
 
 AddEventHandler('instance:registerType', function(name, enter, exit)
-	RegisterInstanceType(name, enter, exit)
+    RegisterInstanceType(name, enter, exit)
 end)
 
 RegisterNetEvent('instance:onInstancedPlayersData')
 AddEventHandler('instance:onInstancedPlayersData', function(instancedPlayers)
-	InstancedPlayers = instancedPlayers
+    InstancedPlayers = instancedPlayers
 end)
 
 RegisterNetEvent('instance:onCreate')
 AddEventHandler('instance:onCreate', function(instance)
-	Instance = {}
+    Instance = {}
 end)
 
 RegisterNetEvent('instance:onEnter')
 AddEventHandler('instance:onEnter', function(instance)
-	Instance = instance
+    Instance = instance
 end)
 
 RegisterNetEvent('instance:onLeave')
 AddEventHandler('instance:onClose', function(instance)
-	Instance = {}
+    Instance = {}
 end)
 
 RegisterNetEvent('instance:onClose')
 AddEventHandler('instance:onClose', function(instance)
-	Instance = {}
+    Instance = {}
 end)
 
 RegisterNetEvent('instance:onPlayerEntered')
 AddEventHandler('instance:onPlayerEntered', function(instance, player)
-	Instance = instance
-	local playerName = GetPlayerName(GetPlayerFromServerId(player))
+    Instance = instance
+    local playerName = GetPlayerName(GetPlayerFromServerId(player))
 
-	ESX.ShowNotification(_('entered_into', playerName))
+    ESX.ShowNotification(_('entered_into', playerName))
 end)
 
 RegisterNetEvent('instance:onPlayerLeft')
 AddEventHandler('instance:onPlayerLeft', function(instance, player)
-	Instance = instance
-	local playerName = GetPlayerName(GetPlayerFromServerId(player))
+    Instance = instance
+    local playerName = GetPlayerName(GetPlayerFromServerId(player))
 
-	ESX.ShowNotification(_('left_out', playerName))
+    ESX.ShowNotification(_('left_out', playerName))
 end)
 
 RegisterNetEvent('instance:onInvite')
 AddEventHandler('instance:onInvite', function(instance, type, data)
-	InstanceInvite = {
-		type = type,
-		host = instance,
-		data = data
-	}
+    InstanceInvite = {
+        type = type,
+        host = instance,
+        data = data
+    }
 
-	Citizen.CreateThread(function()
-		Citizen.Wait(10000)
+    Citizen.CreateThread(function()
+        Citizen.Wait(10000)
 
-		if InstanceInvite ~= nil then
-			ESX.ShowNotification(_U('invite_expired'))
-			InstanceInvite = nil
-		end
-	end)
+        if InstanceInvite ~= nil then
+            ESX.ShowNotification(_U('invite_expired'))
+            InstanceInvite = nil
+        end
+    end)
 end)
 
 RegisterInstanceType('default')
 
 -- Input invites
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
+    while true do
+        Citizen.Wait(0)
 
-		if InstanceInvite ~= nil then
-			ESX.ShowHelpNotification(_U('press_to_enter'))
-		else
-			Citizen.Wait(500)
-		end
+        if InstanceInvite ~= nil then
+            ESX.ShowHelpNotification(_U('press_to_enter'))
+        else
+            Citizen.Wait(500)
+        end
 
-	end
+    end
 end)
 
 -- Controls
 Citizen.CreateThread(function()
-	while true do
+    while true do
 
-		Citizen.Wait(0)
+        Citizen.Wait(0)
 
-		if InstanceInvite ~= nil and IsControlJustReleased(0, Keys['E']) then
-			local playerPed = PlayerPedId()
+        if InstanceInvite ~= nil and IsControlJustReleased(0, Keys['E']) then
+            local playerPed = PlayerPedId()
 
-			EnterInstance(InstanceInvite)
-			ESX.ShowNotification(_U('entered_instance'))
-			InstanceInvite = nil
+            EnterInstance(InstanceInvite)
+            ESX.ShowNotification(_U('entered_instance'))
+            InstanceInvite = nil
 
-		elseif InstanceInvite == nil then
-			Citizen.Wait(500)
-		end
+        elseif InstanceInvite == nil then
+            Citizen.Wait(500)
+        end
 
-	end
+    end
 
 end)
 
 -- Instance players
 Citizen.CreateThread(function()
-	while true do
+    while true do
+        Citizen.Wait(0)
 
-		Citizen.Wait(0)
-
-		if Instance.host ~= nil then
-
-			local playerPed = PlayerPedId()
-
-			for i=0, Config.MaxPlayers, 1 do
-
-				local found = false
-				for j=1, #Instance.players, 1 do
-					instancePlayer = GetPlayerFromServerId(Instance.players[j])
-
-					if i == instancePlayer then
-						found = true
-					end
-				end
-
-				if not found then
-					local otherPlayerPed = GetPlayerPed(i)
-
-					SetEntityLocallyInvisible(otherPlayerPed)
-					SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
-				end
-
-			end
-
-		else
-
-			local playerPed = PlayerPedId()
-
-			for i=0, Config.MaxPlayers, 1 do
-
-				local found = false
-				for j=1, #InstancedPlayers, 1 do
-					instancePlayer = GetPlayerFromServerId(InstancedPlayers[j])
-
-					if i == instancePlayer then
-						found = true
-					end
-				end
-
-				if found then
-					local otherPlayerPed = GetPlayerPed(i)
-
-					SetEntityLocallyInvisible(otherPlayerPed)
-					SetEntityNoCollisionEntity(playerPed, otherPlayerPed, true)
-				end
-
-			end
-
-		end
-
-	end
+        if Instance.host ~= nil then
+            DisableInteractions(Instance.players)
+        elseif #InstancedPlayers > 0 then
+            DisableInteractions(InstancedPlayers)
+        else
+            Citizen.Wait(2000)
+        end
+    end
 end)
 
 Citizen.CreateThread(function()
-	TriggerEvent('instance:loaded')
+    TriggerEvent('instance:loaded')
 end)
 
 -- Fix vehicles randomly spawning nearby the player inside an instance
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0) -- must be run every frame
-		
-		if InsideInstance then
-			SetVehicleDensityMultiplierThisFrame(0.0)
-			SetParkedVehicleDensityMultiplierThisFrame(0.0)
+    while true do
+        Citizen.Wait(0) -- must be run every frame
+        
+        if InsideInstance then
+            SetVehicleDensityMultiplierThisFrame(0.0)
+            SetParkedVehicleDensityMultiplierThisFrame(0.0)
 
-			local pos = GetEntityCoords(PlayerPedId())
-			RemoveVehiclesFromGeneratorsInArea(pos.x - 900.0, pos.y - 900.0, pos.z - 900.0, pos.x + 900.0, pos.y + 900.0, pos.z + 900.0)
-		else
-			Citizen.Wait(500)
-		end
-	end
+            local pos = GetEntityCoords(PlayerPedId())
+            RemoveVehiclesFromGeneratorsInArea(pos.x - 900.0, pos.y - 900.0, pos.z - 900.0, pos.x + 900.0, pos.y + 900.0, pos.z + 900.0)
+        else
+            Citizen.Wait(500)
+        end
+    end
 end)

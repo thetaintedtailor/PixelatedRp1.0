@@ -2,8 +2,7 @@ ESX                = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-
-
+--[[ Disabled in favor of alerts in esx_lockpick
 RegisterServerEvent('thiefInProgress')
 AddEventHandler('thiefInProgress', function(street1, street2, veh, sex)
 	if veh == "NULL" then
@@ -12,6 +11,7 @@ AddEventHandler('thiefInProgress', function(street1, street2, veh, sex)
 		TriggerClientEvent("outlawNotify", -1, "~r~Vehicle stolen ~w~"..veh.." ~r~ by a ~w~"..sex.." ~r~between ~w~"..street1.."~r~ and ~w~"..street2)
 	end
 end)
+]]
 
 --RegisterServerEvent('thiefInProgressS1')
 --AddEventHandler('thiefInProgressS1', function(street1, veh, sex)
@@ -61,10 +61,12 @@ AddEventHandler('gunshotInProgressS1', function(street1, sex)
 	TriggerClientEvent("outlawNotify", -1, "~r~Shots fired ~w~"..sex.." ~r~suspect was last seen at ~w~"..street1)
 end)
 
+--[[
 RegisterServerEvent('thiefInProgressPos')
 AddEventHandler('thiefInProgressPos', function(tx, ty, tz)
 	TriggerClientEvent('thiefPlace', -1, tx, ty, tz)
 end)
+]]
 
 RegisterServerEvent('gunshotInProgressPos')
 AddEventHandler('gunshotInProgressPos', function(gx, gy, gz)
