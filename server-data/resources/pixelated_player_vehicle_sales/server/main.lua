@@ -16,6 +16,11 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
         TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Missing or invalid parameter in vehicle sale attempt.")
         return
     end
+
+    if id == source then
+        TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Can't sell to yourself. Duh.")
+        return
+    end
     
     MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', 
     {
@@ -80,4 +85,10 @@ AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price
         TriggerClientEvent('esx:showNotification', source, 'You don\'t have the cash on you to complete this sale.')
         TriggerClientEvent('esx:showNotification', seller, 'The buyer does not have the cash on them to complete this sale.')
     end
+end)
+
+RegisterServerEvent('pixelatedPlayerVehicleSales:failDistance')
+AddEventHandler('pixelatedPlayerVehicleSales:failDistance', function(seller)
+    TriggerClientEvent('esx:showNotification', source, 'You and the seller are too far apart.')
+    TriggerClientEvent('esx:showNotification', seller, 'You and the buyer are too far apart.')
 end)
