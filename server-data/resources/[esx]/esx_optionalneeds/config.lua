@@ -11,8 +11,8 @@ Config.MinHunger = 10000
 Config.MaxHunger = 50000
 
 -- Drunk level added is a random amount between these two values
-Config.MinDrunk = 75000
-Config.MaxDrunk = 125000
+Config.MinDrunk = 50000
+Config.MaxDrunk = 110000
 
 -- Armor added per drink is a random amount between these two values
 Config.MinArmor = 4
