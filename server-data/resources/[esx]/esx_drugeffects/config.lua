@@ -18,7 +18,7 @@ Config.MinOpiumArmor = 25
 Config.MaxOpiumArmor = 75
 
  -- Meth gives a random temporary amount of armor between these numbers
-Config.MinMethArmor = 5
+Config.MinMethArmor = 6
 Config.MaxMethArmor = 20
 
 -- Meth gives a random temporary speed boost between these numbers (in percentages)
@@ -60,43 +60,43 @@ Config.IbuprofenMaxHeal = 75000
 -- The amount of "drug" status added by various items is a random amount between min and max
 Config.HighAmounts = {
     weed_pooch = {
-        min = 100000,
-        max = 200000
+        min = 50000,
+        max = 125000
     },
 
     opium_pooch = {
         min = 200000,
-        max = 300000
+        max = 400000
     },
 
     meth_pooch = {
-        min = 150000,
-        max = 500000
+        min = 100000,
+        max = 300000
     },
 
     coke_pooch = {
-        min = 400000,
-        max = 600000
+        min = 150000,
+        max = 250000
     },
 
     crack = {
-        min = 300000,
-        max = 700000
+        min = 100000,
+        max = 200000
     },
 
     k3v = {
-        min = 50000,
+        min = 35000,
         max = 100000
     },
 
     xanax = {
-        min = 100000,
-        max = 300000
+        min = 25000,
+        max = 75000
     },
     
     vicodin = {
-        min = 400000,
-        max = 600000
+        min = 50000,
+        max = 100000
     },
 
     amoxicillin = {
