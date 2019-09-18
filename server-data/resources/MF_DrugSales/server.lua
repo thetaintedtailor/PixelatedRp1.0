@@ -70,7 +70,8 @@ function MFS:SellDrugs(source,item,price,count)
   local iCount = iItem.count
   if iCount and iCount >= count then
     xPlayer.removeInventoryItem(item,count)
-    xPlayer.addAccountMoney('black_money',count*price)
+    xPlayer.addMoney(count*price)
+    --xPlayer.addAccountMoney('black_money',count*price)
   end
 end
 
