@@ -42,15 +42,17 @@ MFS.TargetAverageSpeed = 60.0
 MFS.DealerPed = 's_m_y_dealer_01'
 
 MFS.DrugItems = {
-  ['Meth'] = 'meth',
-  ['Cocaine'] = 'cocaine',
-  ['Weed'] = 'weed',  
+  ['Meth'] = 'meth_pooch',
+  ['Cocaine'] = 'coke_pooch',
+  ['Weed'] = 'weed_pooch',
+  ['Opium'] = 'opium_pooch'
 }
 
 MFS.DrugPrices = {
-  ['meth'] = 100,
-  ['cocaine'] = 250,
-  ['weed'] = 50,
+  ['meth_pooch'] = 100,
+  ['coke_pooch'] = 150,
+  ['weed_pooch'] = 50,
+  ['opium_pooch'] = 250
 }
 
 MFS.MaxPriceVariance = 10.0 --%
