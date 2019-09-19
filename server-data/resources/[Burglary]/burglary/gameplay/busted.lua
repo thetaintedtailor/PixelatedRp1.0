@@ -7,19 +7,19 @@ CreateThread(function()
 		local door = doors[lastDoor].coords
 		
 		-- if time is up
-		if TimeToSeconds(GetClockTime()) > TimeToSeconds(5, 30, 0) and onMission then
-			-- if still in the house
-			if GetCurrentHouse() then
-				-- mission failed we'll get em next time
-				ShowMPMessage("~r~Burglary failed", "You didn't leave the house before daylight.", 3500)
-				TriggerServerEvent("burglary:ended", true, true, lastDoor, GetStreet(door.x, door.y, door.z))
-			else
-				-- player made it before time
-				TriggerServerEvent("burglary:ended", false)
-			end
+		-- if TimeToSeconds(GetClockTime()) > TimeToSeconds(5, 30, 0) and onMission then
+		-- 	-- if still in the house
+		-- 	if GetCurrentHouse() then
+		-- 		-- mission failed we'll get em next time
+		-- 		ShowMPMessage("~r~Burglary failed", "You didn't leave the house before daylight.", 3500)
+		-- 		TriggerServerEvent("burglary:ended", true, true, lastDoor, GetStreet(door.x, door.y, door.z))
+		-- 	else
+		-- 		-- player made it before time
+		-- 		TriggerServerEvent("burglary:ended", false)
+		-- 	end
 			
-			ForceEndMission()
-		end
+		-- 	ForceEndMission()
+		-- end
 
 		if onMission then		
 			if CanPedHearPlayer(PlayerId(), peds[1]) then
@@ -41,7 +41,7 @@ CreateThread(function()
 		end
 		
 		if IsPedCuffed(PlayerPedId()) and onMission then
-			ShowMPMessage("~r~Burglary failed", "You got arrested.", 3500)
+			--ShowMPMessage("~r~Burglary failed", "You got arrested.", 3500)
 			TriggerServerEvent("burglary:ended", true, false)
 			
 			ForceEndMission()

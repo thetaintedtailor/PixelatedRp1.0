@@ -13,8 +13,62 @@ missionVehicles = {
 	"boxville",
 	"boxville2",
 	"boxville3",
-	"boxville4"
+	"boxville4",
+	'boxville5',
+	'burrito',
+	'burrito2',
+	'burrito3',
+	'burrito4',
+	'burrito5',
+	'gburrito',
+	'gburrito2',
+	'paradise',
+	'pony',
+	'pony2',
+	'rumpo',
+	'rumpo2',
+	'rumpo3',
+	'speedo',
+	'speedo2',
+	'surfer',
+	'surfer2',
+	'youga',
+	'youga2'
 }
+
+RegisterNetEvent('esx_burglary:startburglary')
+AddEventHandler('esx_burglary:startburglary', function()
+	if --[[IsControlJustPressed(0, 249) and]] not onMission and IsPedInAnyVehicle(PlayerPedId()) then
+		local veh = GetVehiclePedIsIn(PlayerPedId(), false)
+			
+		if IsMissionVehicle(GetEntityModel(veh)) then
+			onMission = true
+					
+			-- spawn blips
+			for _,door in pairs(doors) do
+				local blip = AddBlipForCoord(door.coords.x, door.coords.y, door.coords.z)
+				SetBlipSprite(blip, 40)
+				SetBlipColour(blip, 1)
+				SetBlipAsShortRange(blip, true)
+				
+				BeginTextCommandSetBlipName("STRING")
+				AddTextComponentString("House")
+				EndTextCommandSetBlipName(blip)
+				
+				table.insert(blips, blip)
+			end
+			
+			currentVan = VehToNet(veh)
+			SetEntityAsMissionEntity(veh, false, false)
+			
+			ShowMPMessage("Burglary", "Find a ~r~house ~s~to rob.", 3500)
+		else
+			ShowSubtitle("You must be in a van or box truck to rob houses.")
+		end
+	else
+		ShowSubtitle("You must be in a van or box truck to rob houses.")
+	end
+end)
 
 CreateThread(function()
 	if not HasStreamedTextureDictLoaded('timerbars') then
@@ -27,47 +81,6 @@ CreateThread(function()
 	-- load ipls
 	RequestIpl("hei_hw1_blimp_interior_v_studio_lo_milo_")
 	RequestIpl("hei_hw1_blimp_interior_v_apart_midspaz_milo_")
-
-	while true do
-		Wait(0)
-		
-		-- if pressed E in a vehicle and not onMission
-		if IsControlJustPressed(0, 51) and not onMission and IsPedInAnyVehicle(PlayerPedId()) then
-			local veh = GetVehiclePedIsIn(PlayerPedId(), false)
-			
-			if IsMissionVehicle(GetEntityModel(veh)) then
-				local time = TimeToSeconds(GetClockTime())
-				
-				-- check time
-				if time >= 0 and time <= TimeToSeconds(5, 30, 0) then
-					onMission = true
-					
-					-- spawn blips
-					for _,door in pairs(doors) do
-						local blip = AddBlipForCoord(door.coords.x, door.coords.y, door.coords.z)
-						SetBlipSprite(blip, 40)
-						SetBlipColour(blip, 1)
-						SetBlipAsShortRange(blip, true)
-						
-						BeginTextCommandSetBlipName("STRING")
-						AddTextComponentString("House")
-						EndTextCommandSetBlipName(blip)
-						
-						table.insert(blips, blip)
-					end
-					
-					currentVan = VehToNet(veh)
-					SetEntityAsMissionEntity(veh, false, false)
-					
-					ShowMPMessage("Burglary", "Find a ~r~house ~s~to rob.", 3500)
-					--ShowSubtitle("Find a ~r~house ~s~ to rob")
-				else
-					DisplayHelpText("Burglary missions can only be started from 0:00 - 5:30 AM.")
-				end
-			end
-		end
-		
-	end
 end)
 
 CreateThread(function()
@@ -76,13 +89,13 @@ CreateThread(function()
 		
 		if onMission then
 			-- maths to calculate time until daylight
-			local hours, minutes, seconds = GetClockTime()
-			local left = TimeToSeconds(5, 30, 0) - TimeToSeconds(hours, minutes, seconds)
-			local time = SecondsToTime(left)
+			--local hours, minutes, seconds = GetClockTime()
+			--local left = TimeToSeconds(5, 30, 0) - TimeToSeconds(hours, minutes, seconds)
+			--local time = SecondsToTime(left)
 			
 			-- draw info
 			DrawTimerBar("ITEMS", #stolenItems, 2)
-			DrawTimerBar("DAYLIGHT", AddLeadingZero(time.hours) .. ":" .. AddLeadingZero(time.minutes), 1)
+			--DrawTimerBar("DAYLIGHT", AddLeadingZero(time.hours) .. ":" .. AddLeadingZero(time.minutes), 1)
 		end
 	end
 end)
