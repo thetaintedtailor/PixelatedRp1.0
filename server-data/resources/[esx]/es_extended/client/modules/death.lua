@@ -12,11 +12,20 @@ Citizen.CreateThread(function()
 			if IsPedFatallyInjured(playerPed) and not isDead then
 				isDead = true
 
-				local killer, killerWeapon = NetworkGetEntityKillerOfPlayer(player)
+				--local killer, killerWeapon = NetworkGetEntityKillerOfPlayer(player)
+				--local killerServerId = NetworkGetPlayerIndexFromPed(killer)
+				
+				local killer = GetPedSourceOfDeath(playerPed)
+				local killerWeapon = GetPedCauseOfDeath(playerPed)
+				
+				if IsEntityAVehicle(killer) then
+					killer = GetPedInVehicleSeat(killer, -1)
+				end
+				
 				local killerServerId = NetworkGetPlayerIndexFromPed(killer)
 				print('Player killer: ' .. GetPlayerServerId(killerServerId))
 				print('Player killer weapon: ' .. killerWeapon)
-
+				
 				if killer ~= playerPed and killerServerId ~= nil and NetworkIsPlayerActive(killerServerId) then
 					PlayerKilledByPlayer(GetPlayerServerId(killerServerId), killerServerId, killerWeapon)
 				else
