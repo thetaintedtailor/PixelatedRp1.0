@@ -84,6 +84,7 @@ function PhonePlayAnim (status, freeze)
 	local anim = ANIMS[dict][currentStatus][status]
 	if currentStatus ~= 'out' then
 		StopAnimTask(myPedId, lastDict, lastAnim, 1.0)
+		ClearPedTasks(myPedId)
 	end
 	local flag = 50
 	if freeze == true then
@@ -105,6 +106,7 @@ function PhonePlayAnim (status, freeze)
 		Citizen.Wait(180)
 		deletePhone()
 		StopAnimTask(myPedId, lastDict, lastAnim, 1.0)
+		ClearPedTasks(myPedId)
 	end
 
 end
