@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/red_lips.mp3',
+    'music/look_back_at_it_boogie.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',

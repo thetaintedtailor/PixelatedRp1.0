@@ -1,23 +1,28 @@
 ESX = nil
-ActiveBomb = nil
 IsBombActive = nil
 BombLocation = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
+    local elements = {}
+    for _,v in pairs(Config.WireColors) do
+        table.insert(elements, {label = v, value = v})
+    end
     while true do
         if IsBombActive == true and GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), BombLocation.x, BombLocation.y, BombLocation.z) <= Config.BeepDistance then
             local textLoc = vector3(BombLocation.x, BombLocation.y, BombLocation.z + 0.2)
             ESX.Game.Utils.DrawText3D(textLoc, '~r~[E]~s~ Attempt Bomb Defuse', 1)
             if IsControlJustPressed(0, 38) then
-                ESX.TriggerServerCallback('explosives:hasdefuse', function(hasDefuse, wireOptions)
+                ESX.TriggerServerCallback('explosives:hasdefuse', function(hasDefuse)
                     if hasDefuse == true then
                         TaskStartScenarioInPlace(GetPlayerPed(-1), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
-                        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'wire_to_cut',{
-                            title = "Pick your Wire" .. wireOptions
+                        ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'wire_to_cut',{
+                            title = "Pick your Wire",
+                            align = 'center',
+                            elements = elements
                         }, function(data, menu)
-                            local wire = string.lower(tostring(data.value))
+                            local wire = string.lower(tostring(data.current.value))
                             if wire == nil then
                                 ESX.ShowNotification('Please supply a wire color to cut.')
                             else
@@ -50,7 +55,6 @@ AddEventHandler('explosives:plantbomb', function(timer, wire)
 		SetEntityHeading(obj, GetEntityHeading(playerPed))
         PlaceObjectOnGroundProperly(obj)
         FreezeEntityPosition(obj, true)
-        ActiveBomb = obj
     end)
     coords = {x = x, y = y, z = z}
     TriggerServerEvent('explosives:bombplanted', coords, timer, wire)
@@ -72,10 +76,6 @@ end)
 RegisterNetEvent('explosives:bombexploded')
 AddEventHandler('explosives:bombexploded', function(coords)
     AddExplosion(coords.x, coords.y, coords.z, 32, 2.0, true, false, 5.0)
-    if ActiveBomb ~= nil then
-        ESX.Game.DeleteObject(ActiveBomb)
-        ActiveBomb = nil
-    end
 end)
 
 RegisterNetEvent('explosives:bombtick')
@@ -96,13 +96,15 @@ AddEventHandler('explosives:disarmattempt', function(loc, wire)
 end)
 
 RegisterNetEvent('explosives:bombdisarmed')
-AddEventHandler('explosives:bombdisarmed', function()
-    if ActiveBomb ~= nil then
-		ClearPedTasksImmediately(GetPlayerPed(-1))
-        ESX.Game.DeleteObject(ActiveBomb)
-        ActiveBomb = nil
-        ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')
-    end
+AddEventHandler('explosives:bombdisarmed', function(coords)
+    ClearPedTasksImmediately(GetPlayerPed(-1))
+    ESX.ShowNotification('~g~You\'ve disarmed the bomb. Whew!')
+end)
+
+RegisterNetEvent('explosives:bombcleanup')
+AddEventHandler('explosives:bombcleanup', function(coords)
+    local bomb = GetClosestObjectOfType(coords.x, coords.y, coords.z, 3.0, GetHashKey('prop_ld_bomb'), false, false, false)
+    ESX.Game.DeleteObject(bomb)
 end)
 
 RegisterNetEvent('explosives:faileddisarm')

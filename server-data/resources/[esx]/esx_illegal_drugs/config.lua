@@ -4,10 +4,10 @@ Config.DrawDistance = 100.0 --Distance where the marker be visible from
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0} -- Size of the marker
 Config.MarkerColor  = {r = 0, g = 255, b = 0} --Color of the marker
 
-Config.RequiredCopsCoke   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell coke
-Config.RequiredCopsMeth   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell meth
-Config.RequiredCopsWeed   = 0 --Ammount of cop that need to be online to be able to harvest/process/sell weed
-Config.RequiredCopsOpium  = 0 --Ammount of cop that need to be online to be able to harvest/process/sell opium
+Config.RequiredCopsCoke   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell coke
+Config.RequiredCopsMeth   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell meth
+Config.RequiredCopsWeed   = 1 --Ammount of cop that need to be online to be able to harvest/process/sell weed
+Config.RequiredCopsOpium  = 1 --Ammount of cop that need to be online to be able to harvest/process/sell opium
 
 Config.TimeToFarmWeed     = 4   * 1000 -- Ammount of time to harvest weed
 Config.TimeToProcessWeed  = 10  * 1000 -- Ammount of time to process weed

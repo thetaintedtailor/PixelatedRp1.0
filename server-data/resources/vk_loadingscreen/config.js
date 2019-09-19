@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/red_lips.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "GTA - Red Lips (NGHTMRE & SLANDER Remix)"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "NONE"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/look_back_at_it_boogie.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "A Boogie Wit Da Hoodie - Look Back At It"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Song requested by Mightfull (IGN: Stefan Nobel)"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)

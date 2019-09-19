@@ -55,7 +55,7 @@ AddEventHandler('finance_vehicle:addNewVehicle', function(vehicleProps, vehicle,
     end)
 end)
 
-ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, cb, vehicleModel)
+ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, cb, vehicleModel, downPayment)
     local xPlayer = ESX.GetPlayerFromId(source)
     local vehicleData = nil
     for i=1, #Vehicles, 1 do
@@ -64,15 +64,13 @@ ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, 
 			break
 		end
     end
-    local price = tonumber(vehicleData.price)
-    local totalCost = price + (price * Config.InterestRate)
+
+    local price = tonumber(vehicleData.price) - downPayment
+    local totalCost = price + (price * Config.InterestRate) 
     local payment = math.ceil(totalCost / Config.PaymentDays)
 
-    if xPlayer.getBank() >= payment then
-        xPlayer.removeBank(payment)
-        cb(true)
-    elseif xPlayer.getAccount('bank').money >= payment then
-        xPlayer.removeAccountMoney('bank', payment)
+    if xPlayer.getBank() >= downPayment and xPlayer.getBank() >= payment then
+        xPlayer.removeBank(payment + downPayment)
         cb(true)
     else
         cb(false)
@@ -94,8 +92,8 @@ ESX.RegisterServerCallback('vehicle_financing:getfinancedvehicles', function(sou
 end)
 
 function AutoCarPayments(d, h, m)
-    print('making automatic payment')
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles', {}, function(result)
+        print('Doing an automatic car payment on the server.')
         for i=1, #result, 1 do
             local xPlayer = ESX.GetPlayerFromIdentifier(result[i].owner)
             if Config.AutomaticPayments == true then
@@ -116,10 +114,11 @@ function AutoCarPayments(d, h, m)
                                 })
                             end
                         else
-                            MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
+                            MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner AND plate = @plate',
                             {
                                 ['@payments_behind'] = result[i].payments_behind + 1,
-                                ['@owner'] = result[i].owner
+                                ['@owner'] = result[i].owner,
+                                ['@plate'] = result[i].plate
                             })
                         end
                     else
@@ -154,15 +153,29 @@ function AutoCarPayments(d, h, m)
                     })
                 end
             else
-                MySQL.Sync.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE owner = @owner',
+                MySQL.Async.execute('UPDATE financed_vehicles SET payments_behind = @payments_behind WHERE plate = @plate',
                 {
-                    ['@owner'] = xPlayer.identifier,
+                    ['@plate'] = result[i].plate,
                     ['@payments_behind'] = result[i].payments_behind + 1
                 })
+
+                if xPlayer then
+                    TriggerClientEvent('esx:showNotification', xPlayer.source, 'A new ~r~car payment~s~ is due. Please pay at a financing location.')
+                end
             end
         end
     end)
 end
+
+RegisterServerEvent('vehicle_financing:sellcar')
+AddEventHandler('vehicle_financing:sellcar', function(plate)
+    MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
+        ['@plate'] = plate
+    })
+    MySQL.Sync.execute('DELETE FROM owned_vehicles WHERE plate = @plate', {
+        ['@plate'] = plate
+    })
+end)
 
 RegisterServerEvent('vehicle_financing:carpayment')
 AddEventHandler('vehicle_financing:carpayment', function(plate)
@@ -195,7 +208,7 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
     end)
 end)
 
-TriggerEvent('cron:runAt', 2, 17, AutoCarPayments)
+TriggerEvent('cron:runAt', 23, 1, AutoCarPayments)
 
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
@@ -208,3 +221,14 @@ function GetCharacterName(source)
 		return GetPlayerName(source)
 	end
 end
+
+TriggerEvent('es:addCommand', 'carpayments', function(source, args, user)
+    local identifier = GetPlayerIdentifiers(source)[1]
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
+        ['@owner'] = identifier
+    }, function(result)
+        for _,v in pairs(result) do
+	        TriggerClientEvent('chat:addMessage', source, { args = {"^1MAZE Loans", ('Vehicle: %s | Remaining Balance: $%s | Payments Behind: %s'):format(v.vehicle, v.remaining_balance, v.payments_behind)} })
+        end
+    end)
+end, {help = "Check your current balance and payments behind."})

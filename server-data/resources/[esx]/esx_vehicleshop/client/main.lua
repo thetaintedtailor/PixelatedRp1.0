@@ -178,8 +178,9 @@ function OpenShopMenu()
 			if i == 1 and j == 1 then
 				firstVehicleData = vehicle
 			end
-
-			table.insert(options, ('%s <span style="color:green;">%s</span>'):format(vehicle.name, _U('generic_shopitem', ESX.Math.GroupDigits(vehicle.price))))
+			local priceWithInterest = math.ceil((vehicle.price * exports.pixelated_vehicle_financing:GetInterestRate()) + vehicle.price)
+			local payments = math.ceil(priceWithInterest / exports.pixelated_vehicle_financing:GetPaymentDays())
+			table.insert(options, ('%s <span style="color:green;">%s</span> | <span style="color:red;">$%s</span>'):format(vehicle.name, _U('generic_shopitem', ESX.Math.GroupDigits(vehicle.price)), ESX.Math.GroupDigits(payments)))
 		end
 
 		table.insert(elements, {
@@ -360,41 +361,55 @@ function OpenShopMenu()
 					end
 				end
 			elseif data2.current.value == 'finance' then
-				ESX.TriggerServerCallback('vehicle_financing:financeVehicle', function (hasEnoughMoney)
-					if hasEnoughMoney then
-						IsInShopMenu = false
-
-						menu2.close()
-						menu.close()
-
-						DeleteShopInsideVehicles()
-
-						ESX.Game.SpawnVehicle(vehicleData.model, Config.Zones.ShopOutside.Pos, Config.Zones.ShopOutside.Heading, function (vehicle)
-							TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-
-							local newPlate  = GeneratePlate()
-							local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
-							local vehicleName = GetDisplayNameFromVehicleModel(vehicleProps.model)
-							vehicleProps.plate = newPlate
-							SetVehicleNumberPlateText(vehicle, newPlate)
-
-							if Config.EnableOwnedVehicles then
-								TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps)
-								local price = tonumber(vehicleData.price)
-								local interest = math.ceil(price * Config.InterestRate)
-								local totalCost = price + interest
-								TriggerServerEvent('finance_vehicle:addNewVehicle', vehicleProps, vehicleName, totalCost)
-							end
-						end)
-
-						FreezeEntityPosition(playerPed, false)
-						SetEntityVisible(playerPed, true)
-					else
-						ESX.ShowNotification(_U('not_enough_money'))
+				ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'down_payment', {
+					title = 'Down Payment',
+					align = 'center',
+				}, function(data3, menu3)
+					local downPayment = tonumber(data3.value)
+					if downPayment == nil then
+						downPayment = 0
+						--ESX.ShowNotification('Invalid Number.')
 					end
-				end, vehicleData.model)
-			elseif data2.current.value == 'no' then
+						ESX.TriggerServerCallback('vehicle_financing:financeVehicle', function (hasEnoughMoney)
+							if hasEnoughMoney then
+								IsInShopMenu = false
+		
+								menu2.close()
+								menu.close()
+		
+								DeleteShopInsideVehicles()
+		
+								ESX.Game.SpawnVehicle(vehicleData.model, Config.Zones.ShopOutside.Pos, Config.Zones.ShopOutside.Heading, function (vehicle)
+									TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+		
+									local newPlate  = GeneratePlate()
+									local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+									local vehicleName = GetDisplayNameFromVehicleModel(vehicleProps.model)
+									vehicleProps.plate = newPlate
+									SetVehicleNumberPlateText(vehicle, newPlate)
+		
+									if Config.EnableOwnedVehicles then
+										TriggerServerEvent('esx_vehicleshop:setVehicleOwned', vehicleProps)
+										local price = tonumber(vehicleData.price) - downPayment
+										local interest = math.ceil(price * Config.InterestRate)
+										local totalCost = price + interest
+										TriggerServerEvent('finance_vehicle:addNewVehicle', vehicleProps, vehicleName, totalCost)
+									end
+								end)
+		
+								FreezeEntityPosition(playerPed, false)
+								SetEntityVisible(playerPed, true)
+							else
+								ESX.ShowNotification(_U('not_enough_money'))
+							end
+						end, vehicleData.model, downPayment)
+					menu3.close()
+				end, function(data3, menu3)
+					menu3.close()
+				end)
 
+			elseif data2.current.value == 'no' then
+				menu2.close()
 			end
 		end, function (data2, menu2)
 			menu2.close()
@@ -891,43 +906,48 @@ AddEventHandler('esx_vehicleshop:hasEnteredMarker', function (zone)
 		local playerPed = PlayerPedId()
 
 		if IsPedSittingInAnyVehicle(playerPed) then
+			ESX.TriggerServerCallback('vehicle_financing:getfinancedvehicles', function(vehicles)
 
-			local vehicle     = GetVehiclePedIsIn(playerPed, false)
-			local vehicleData, model, resellPrice, plate
+				local vehicle     = GetVehiclePedIsIn(playerPed, false)
+				local vehicleData, model, resellPrice, plate
 
-			if GetPedInVehicleSeat(vehicle, -1) == playerPed then
-				for i=1, #Vehicles, 1 do
-					if GetHashKey(Vehicles[i].model) == GetEntityModel(vehicle) then
-						vehicleData = Vehicles[i]
-						break
+				if GetPedInVehicleSeat(vehicle, -1) == playerPed then
+					for i=1, #Vehicles, 1 do
+						if GetHashKey(Vehicles[i].model) == GetEntityModel(vehicle) then
+							vehicleData = Vehicles[i]
+							break
+						end
 					end
-				end
-				
-				resellPrice = ESX.Math.Round(vehicleData.price / 100 * Config.ResellPercentage)
-				model = GetEntityModel(vehicle)
-				plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
-				CurrentAction     = 'resell_vehicle'
-				
-				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehicles', function(vehicles)
-					if #vehicles > 0 then
+					
+					resellPrice = ESX.Math.Round(vehicleData.price / 100 * Config.ResellPercentage)
+					model = GetEntityModel(vehicle)
+					plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
+					CurrentAction     = 'resell_vehicle'
+					
+					local isRepo = false
+					for _,v in pairs(vehicles) do
+						if v.plate == plate then
+							isRepo = true
+						end
+					end
+
+					if isRepo then
 						resellPrice = 0
 						CurrentActionMsg = 'You will receive no money for selling a financed vehicle.'
 					else
 						CurrentActionMsg  = _U('sell_menu', vehicleData.name, ESX.Math.GroupDigits(resellPrice))
 					end
-				end)
-
-				CurrentActionData = {
-					vehicle = vehicle,
-					label = vehicleData.name,
-					price = resellPrice,
-					model = model,
-					plate = plate
-				}
-			end
-
+						
+					CurrentActionData = {
+						vehicle = vehicle,
+						label = vehicleData.name,
+						price = resellPrice,
+						model = model,
+						plate = plate
+					}
+				end
+			end)
 		end
-
 	elseif zone == 'BossActions' and Config.EnablePlayerManagement and ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'cardealer' and ESX.PlayerData.job.grade_name == 'boss' then
 
 		CurrentAction     = 'boss_actions_menu'

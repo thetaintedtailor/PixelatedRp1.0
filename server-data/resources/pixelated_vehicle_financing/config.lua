@@ -3,7 +3,7 @@ Config = {}
 Config.AutomaticPayments = false
 Config.InterestRate = 0.08
 Config.PaymentBehindRepo = 3
-Config.PaymentDays = 14
+Config.PaymentDays = 21
 Config.MarkerDrawDistance = 20
 Config.PaymentErrorThreshold = 100
 Config.PaymentLocations = {
@@ -26,6 +26,14 @@ Config.PaymentLocations = {
         Color = { r = 0, g = 255, b = 0 },
     }
 }
+
+exports('GetPaymentDays', function()
+	return Config.PaymentDays
+end)
+
+exports('GetInterestRate', function()
+	return Config.InterestRate
+end)
 
 function GetColor(colorID)
 	local colors = {

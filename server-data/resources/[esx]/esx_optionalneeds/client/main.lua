@@ -66,10 +66,10 @@ end
 
 function CheckOverdose(value)
   local playerPed = GetPlayerPed(-1)
-  local chance    = math.max(0.00, (value / 1000000) - 0.25) -- assumed esx_status max of 1 million
+  local chance    = math.max(0.00, (value / 1000000) - 0.3) -- assumed esx_status max of 1 million
 
   if math.random() < chance then
-    ESX.ShowNotification("You have ~r~overdosed~s~!")
+    ESX.ShowNotification("You have ~r~passed out~s~!")
     SetEntityHealth(playerPed, 0)
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrunk(playerPed, false)
