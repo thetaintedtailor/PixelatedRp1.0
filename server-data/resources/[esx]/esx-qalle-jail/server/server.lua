@@ -169,10 +169,8 @@ ESX.RegisterServerCallback("esx-qalle-jail:retrieveJailedPlayers", function(sour
 end)
 
 ESX.RegisterServerCallback("esx-qalle-jail:retrieveJailTime", function(source, cb)
-    Citizen.Trace("retrieving jail time\n")
-    local src = source
-
-    local xPlayer = ESX.GetPlayerFromId(src)
+    local src        = source
+    local xPlayer    = ESX.GetPlayerFromId(src)
     local Identifier = xPlayer.identifier
 
 
@@ -182,15 +180,10 @@ ESX.RegisterServerCallback("esx-qalle-jail:retrieveJailTime", function(source, c
         local jailTime = tonumber(result[1].jail)
         local offTime  = tonumber(result[1].offlinetime)
 
-        for k, v in pairs(result[1]) do
-            Citizen.Trace("k = " .. k .. ", v = " .. v .. "\n")
-        end
-
         if jailTime > 0 then
             local newjailTime = offTime and math.max(0, jailTime - math.floor(offTime * Config.OfflineMultiplier / 60))
 
             if newjailTime then
-                Citizen.Trace("Setting new time to " .. newjailTime .. "\n")
                 MySQL.Async.execute("UPDATE users SET jail = @time WHERE identifier = @identifier", {["@time"] = newjailTime, ["@identifier"] = Identifier })
             end
 
