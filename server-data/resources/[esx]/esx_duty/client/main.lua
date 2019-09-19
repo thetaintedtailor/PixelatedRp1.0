@@ -84,11 +84,11 @@ Citizen.CreateThread(function ()
     local coords = GetEntityCoords(GetPlayerPed(-1))
 
     for k,v in pairs(Config.Zones) do
-      if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
+      if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) <= Config.DrawDistance) then
         for a,b in ipairs(v.Jobs) do
           if PlayerData.job ~= nil and PlayerData.job.name == b then 
-            DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
-            currentDutyMarker = v          
+            DrawMarker(27, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+            currentDutyMarker = v      
           end
         end
       end
@@ -100,7 +100,6 @@ end)
 -- Enter / Exit marker events
 
 Citizen.CreateThread(function ()
-
   while true do
     Wait(markerWaitTime)
 
@@ -115,8 +114,8 @@ Citizen.CreateThread(function ()
     if (GetDistanceBetweenCoords(coords, currentDutyMarker.Pos.x, currentDutyMarker.Pos.y, currentDutyMarker.Pos.z, true) < Config.DrawDistance) then
       markerWaitTime = 1
     else
-      markerWaitTime = 10000
-      break
+      markerWaitTime = 5000
+      --break
     end
 
     for k,v in pairs(Config.Zones) do
