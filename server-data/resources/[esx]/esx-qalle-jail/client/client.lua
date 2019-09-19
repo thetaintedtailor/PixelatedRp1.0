@@ -35,11 +35,10 @@ RegisterNetEvent("esx:playerLoaded")
 AddEventHandler("esx:playerLoaded", function(newData)
 	PlayerData = newData
 
-	Citizen.Wait(25000)
+	Citizen.Wait(10000)
 
 	ESX.TriggerServerCallback("esx-qalle-jail:retrieveJailTime", function(inJail, newJailTime)
-		if inJail then
-
+		if inJail and newJailTime > 0 then
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
 				if skin.sex == 0 then
 					SetPedComponentVariation(GetPlayerPed(-1), 3, 5, 0, 0)--Gants
@@ -61,7 +60,9 @@ AddEventHandler("esx:playerLoaded", function(newData)
 
 			jailTime = newJailTime
 
-			JailLogin()
+            JailLogin()
+        elseif inJail and newJailTime <= 0 then
+            UnJail()
 		end
 	end)
 end)
@@ -124,7 +125,6 @@ function InJail()
 
 			ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
 
-			
 			local Male = GetHashKey("mp_m_freemode_01")
 
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jailSkin)
@@ -141,16 +141,14 @@ function InJail()
 					SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
 					SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
 				else
-					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
-				end
+                    TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
+                end
+            end)
 
-			end)
+            TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
 				
-			TriggerServerEvent("esx-qalle-jail:updateJailTime", jailTime)
-
-			if jailTime == 0 then
+			if jailTime <= 0 then
 				UnJail()
-
 				TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
 			end
 
@@ -458,4 +456,3 @@ function OpenJailMenu()
 		menu.close()
 	end)	
 end
-
