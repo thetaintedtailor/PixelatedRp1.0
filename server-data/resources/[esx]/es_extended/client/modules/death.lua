@@ -14,7 +14,9 @@ Citizen.CreateThread(function()
 
 				local killer, killerWeapon = NetworkGetEntityKillerOfPlayer(player)
 				local killerServerId = NetworkGetPlayerIndexFromPed(killer)
-		
+				print('Player killer: ' .. GetPlayerServerId(killerServerId))
+				print('Player killer weapon: ' .. killerWeapon)
+
 				if killer ~= playerPed and killerServerId ~= nil and NetworkIsPlayerActive(killerServerId) then
 					PlayerKilledByPlayer(GetPlayerServerId(killerServerId), killerServerId, killerWeapon)
 				else
