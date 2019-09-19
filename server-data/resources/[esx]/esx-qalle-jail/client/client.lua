@@ -47,11 +47,11 @@ AddEventHandler("esx:playerLoaded", function(newData)
 					SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
 					SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
 				elseif skin.sex == 1 then
-					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
-					SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
-					SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
-					SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
-					SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gloves/Arms
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 100, 16, 0)--Pants
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 24, 0, 0)--Shoes
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 49, 1, 0)--Torso 
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 6, 0, 0)--Shirt
 				else
 					TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
 				end
@@ -135,11 +135,11 @@ function InJail()
 					SetPedComponentVariation(GetPlayerPed(-1), 11, 5, 0, 0)--Veste
 					SetPedComponentVariation(GetPlayerPed(-1), 8, 15, 0, 0)--GiletJaune
 				elseif skin.sex == 1 then
-					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gants
-					SetPedComponentVariation(GetPlayerPed(-1), 4, 3, 15, 0)--Jean
-					SetPedComponentVariation(GetPlayerPed(-1), 6, 52, 0, 0)--Chaussure
-					SetPedComponentVariation(GetPlayerPed(-1), 11, 73, 0, 0)--Veste
-					SetPedComponentVariation(GetPlayerPed(-1), 8, 14, 0, 0)--GiletJaune
+					SetPedComponentVariation(GetPlayerPed(-1), 3, 14, 0, 0)--Gloves/Arms
+					SetPedComponentVariation(GetPlayerPed(-1), 4, 100, 16, 0)--Pants
+					SetPedComponentVariation(GetPlayerPed(-1), 6, 24, 0, 0)--Shoes
+					SetPedComponentVariation(GetPlayerPed(-1), 11, 49, 1, 0)--Torso 
+					SetPedComponentVariation(GetPlayerPed(-1), 8, 6, 0, 0)--Shirt
 				else
                     TriggerEvent('skinchanger:loadClothes', skin, jailSkin.skin_female)
                 end
