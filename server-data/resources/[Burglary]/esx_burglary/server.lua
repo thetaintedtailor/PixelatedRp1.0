@@ -14,6 +14,10 @@ AddEventHandler("burglary:money", function(sum, player)
 	end
 end)
 
+TriggerEvent('es:addCommand', 'burglary', function(source, args, user)
+	TriggerClientEvent('esx_burglary:startburglary', source)
+end, {help = "Start a home burglary if using a van."})
+
 AddEventHandler("burglary:failed", function(house, coords, player, street)
 	local xPlayers = ESX.GetPlayers()
 
