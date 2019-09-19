@@ -2041,7 +2041,7 @@ Citizen.CreateThread(function()
 
 			DisableControlAction(2, Keys['LEFTCTRL'], true) -- Disable going stealth
 
-			DisableControlAction(0, 47, true)  -- Disable weapon
+			-- DisableControlAction(0, 47, true)  -- Disable weapon
 			DisableControlAction(0, 264, true) -- Disable melee
 			DisableControlAction(0, 257, true) -- Disable melee
 			DisableControlAction(0, 140, true) -- Disable melee
