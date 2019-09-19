@@ -10,76 +10,89 @@ local Keys = {
   ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local isDead = false
-local inAnim = false
+local isDead  = false
+local inAnim  = false
+local current = {}
 ESX = nil
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
 end)
 
 AddEventHandler('esx:onPlayerDeath', function(data)
-	isDead = true
+    isDead = true
 end)
 
 AddEventHandler('playerSpawned', function(spawn)
-	isDead = false
+    isDead = false
 end)
 
+function RefreshAttitude()
+    if (current.anim ~= nil) then
+        startAttitude(current.lib, current.anim)
+    end
+end
+
 function startAttitude(lib, anim)
-	ESX.Streaming.RequestAnimSet(lib, function()
-		SetPedMovementClipset(PlayerPedId(), anim, true)
-	end)
+    ESX.Streaming.RequestAnimSet(lib, function()
+        current = {lib = lib, anim = anim}
+
+        TriggerEvent('esx_status:getStatus', 'drunk', function(status)
+            if status.val <= 0 then
+                SetPedMovementClipset(PlayerPedId(), anim, 0.25)
+            end
+        end)
+    end)
 end
 
 function OpenAnimationsMenu()
-	local elements = {}
+    local elements = {}
 
-	for i=1, #Config.Animations, 1 do
+    for i=1, #Config.Animations, 1 do
 
-			for j=1, #Config.Animations[i].items, 1 do
-				table.insert(elements, {
-					label = Config.Animations[i].items[j].label,
-					type  = Config.Animations[i].items[j].type,
-					value = Config.Animations[i].items[j].data
-				})
-			end
+            for j=1, #Config.Animations[i].items, 1 do
+                table.insert(elements, {
+                    label = Config.Animations[i].items[j].label,
+                    type  = Config.Animations[i].items[j].type,
+                    value = Config.Animations[i].items[j].data
+                })
+            end
 
-			break
+            break
 
-	end
+    end
 
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'animations_sub',
-	{
-		title    = "walking styles",
-		align    = 'left',
-		elements = elements
-	}, function(data, menu)
-		local type = data.current.type
-		local lib  = data.current.value.lib
-		local anim = data.current.value.anim
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'animations_sub',
+    {
+        title    = "walking styles",
+        align    = 'left',
+        elements = elements
+    }, function(data, menu)
+        local type = data.current.type
+        local lib  = data.current.value.lib
+        local anim = data.current.value.anim
 
-		if type == 'attitude' then
-			startAttitude(lib, anim)
-		end
-		ESX.UI.Menu.CloseAll()
-	end, function()
-		ESX.UI.Menu.CloseAll()
-	end)
+        if type == 'attitude' then
+            startAttitude(lib, anim)
+        end
+        ESX.UI.Menu.CloseAll()
+    end, function()
+        ESX.UI.Menu.CloseAll()
+    end)
 end
 
 -- Key Controls
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
+    while true do
+        Citizen.Wait(0)
 
-		if IsControlJustReleased(0, Keys['F3']) and IsInputDisabled(0) and not isDead then
-			ESX.UI.Menu.CloseAll()
-			OpenAnimationsMenu(menu)
-		end
+        if IsControlJustReleased(0, Keys['F3']) and IsInputDisabled(0) and not isDead then
+            ESX.UI.Menu.CloseAll()
+            OpenAnimationsMenu(menu)
+        end
 
-	end
+    end
 end)

@@ -128,18 +128,20 @@ Citizen.CreateThread( function()
         if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
             DisableControlAction( 0, 36, true ) -- INPUT_DUCK  
 
-            if ( not IsPauseMenuActive() ) then 
+            if ( not IsPauseMenuActive() and not IsPedInAnyVehicle(ped, true)) then 
                 if ( IsDisabledControlJustPressed( 0, 36 ) ) then 
-                    RequestAnimSet( "move_ped_crouched" )
-
-                    while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
-                        Citizen.Wait( 100 )
-                    end 
-
                     if ( crouched == true ) then 
                         ResetPedMovementClipset( ped, 0 )
                         crouched = false 
+                        exports['esx_animations']:RefreshAttitude()
+                        exports['esx_optionalneeds']:UpdateClipset()
                     elseif ( crouched == false ) then
+                        RequestAnimSet( "move_ped_crouched" )
+
+                        while ( not HasAnimSetLoaded( "move_ped_crouched" ) ) do 
+                            Citizen.Wait( 100 )
+                        end 
+
                         SetPedMovementClipset( ped, "move_ped_crouched", 0.25 )
                         crouched = true 
                     end 
@@ -224,8 +226,9 @@ RegisterCommand("e",function(source, args)
 		return
 	else
 		if tostring(args[1]) ~= nil then
-            local argh = tostring(args[1])
-
+            local argString = tostring(args[1])
+			local argh = string.lower(argString)
+			
 			if argh == 'surrender' then
 				local surrendered = false
 				if ( DoesEntityExist( player ) and not IsEntityDead( player )) then 
@@ -1325,7 +1328,6 @@ end, false)
 
 
 ----Use /testanimation command, you can use this to easily test new animations---
-
 RegisterCommand("testanim",function(source, args)
 
 	local ad = "mp_suicide" --- insert the animation dic here
@@ -1348,6 +1350,18 @@ RegisterCommand("testanim",function(source, args)
 	end
 end, false)
 
+---- For testing screen fx
+--RegisterCommand("startfx",function(source, args)
+--	SetTimecycleModifier("stoned")
+--	SetPedMotionBlur(playerPed, true)
+--	SetPedIsDrunk(playerPed, true)
+--end, false)
+--
+--RegisterCommand("stopfx",function(source, args)
+--	SetPedMotionBlur(playerPed, false)
+--	SetPedIsDrunk(playerPed, false)
+--	ClearTimecycleModifier()
+--end, false)
 
 ----------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ functions -----------------------------------------------------------------

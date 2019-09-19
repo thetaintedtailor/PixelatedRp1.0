@@ -40,7 +40,8 @@ Config.Zones = {
 			{x = 1392.562,  y = 3604.684,  z = 33.980},
 			{x = 127.830,   y = -1284.796, z = 28.280}, --StripClub
 			{x = -1393.409, y = -606.624,  z = 29.319}, --Tequila la
-			{x = -559.906,  y = 287.093,   z = 81.176}  --Bahamamas
+			{x = -559.906,  y = 287.093,   z = 81.176},  --Bahamamas
+			{x = 1981.45,  y = 3051.26,   z = 46.00}  --Yellow Jack
 		}
 	},
 
@@ -80,7 +81,7 @@ Config.Zones = {
 			{x = 433.79,  y = -2037.61, z = 22.40}, -- south city
 			{x = -1548.82,  y = -218.97, z = 53.57}, -- north city
 			{x = -1122.84,  y = 2681.97, z = 17.70}, -- route 68 west of sandy shores
-			{x = -11.48,  y = 6499.76, z = 30.50} -- paleto bay 
+			{x = -11.48,  y = 6499.76, z = 30.50} -- paleto bay
 		}
 	},
 
@@ -95,6 +96,17 @@ Config.Zones = {
 			{x = 1334.98,  y = 4306.71, z = 37.09}, -- alamo sea dock
 			{x = -1600.73,  y = 5204.42, z = 3.31}, -- paleto cove
 			{x = -1820.33,  y = -1220.19, z = 12.02}, -- del perro pier
+		}
+	},
+
+	MissionKitchen = {
+		Sprite = 52,
+		Scale = 0.0,
+		Color = 79,
+		Name = "Mission Row Kitchen",
+		Items = {},
+		Pos = {
+			{x = 467.78,  y = -990.49, z = 29.50}, -- mission row pd breakroom kitchenette
 		}
 	},
 

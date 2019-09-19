@@ -11,5 +11,18 @@ server_scripts {
 }
 
 client_scripts {
+	'config.lua',
+	'client/drugs/narcotic.lua',
+	'client/drugs/prescription.lua',
+	'client/drugs/narcotics/weed.lua',
+	'client/drugs/narcotics/opium.lua',
+	'client/drugs/narcotics/meth.lua',
+	'client/drugs/narcotics/coke.lua',
+	'client/drugs/narcotics/crack.lua',
+	'client/drugs/prescriptions/k3v.lua',
+	'client/drugs/prescriptions/xanax.lua',
+	'client/drugs/prescriptions/vicodin.lua',
+	'client/drugs/prescriptions/amoxicillin.lua',
+	'client/drugs/prescriptions/ibuprofen.lua',
 	'client/main.lua'
 }

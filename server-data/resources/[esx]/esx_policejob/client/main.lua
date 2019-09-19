@@ -133,7 +133,7 @@ function OpenCloakroomMenu()
 		cleanPlayer(playerPed)
 
 		if data.current.value == 'citizen_wear' then
-			
+
 			if Config.EnableNonFreemodePeds then
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 					local isMale = skin.sex == 0
@@ -197,7 +197,7 @@ function OpenCloakroomMenu()
 								msg      = _U('service_in_announce', GetPlayerName(PlayerId())),
 								iconType = 1
 							}
-	
+
 							TriggerServerEvent('esx_service:notifyAllInService', notification, 'police')
 							TriggerEvent('esx_policejob:updateBlip')
 							ESX.ShowNotification(_U('service_in'))
@@ -422,6 +422,7 @@ function OpenVehicleSpawnerMenu(type, station, part, partNum)
 
 								ESX.Game.SpawnVehicle(data2.current.model, spawnPoint.coords, spawnPoint.heading, function(vehicle)
 									ESX.Game.SetVehicleProperties(vehicle, data2.current.vehicleProps)
+									SetVehicleTyresCanBurst(vehicle, false)
 									exports["esx_legacyfuel"]:SetFuel(vehicle, data2.current.fuel)
 									TriggerServerEvent('esx_vehicleshop:setJobVehicleState', data2.current.vehicleProps.plate, false)
 									ESX.ShowNotification(_U('garage_released'))
@@ -604,11 +605,11 @@ function OpenShopMenu(elements, restoreCoords, shopCoords)
 
 						isInShopMenu = false
 						ESX.UI.Menu.CloseAll()
-				
+
 						DeleteSpawnedVehicles()
 						FreezeEntityPosition(playerPed, false)
 						SetEntityVisible(playerPed, true)
-				
+
 						ESX.Game.Teleport(playerPed, restoreCoords)
 					else
 						ESX.ShowNotification(_U('vehicleshop_money'))
@@ -749,13 +750,13 @@ function OpenPoliceActionsMenu()
 			{label = "Jail Menu",               value = 'jail_menu'}
 		}
 	}, function(data, menu)
-		
+
 		if data.current.value == 'jail_menu' then
 			TriggerEvent("esx-qalle-jail:openJailMenu")
 		end
 		menu.close()
-		
-		
+
+
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
 				{label = _U('id_card'),			value = 'identity_card'},
@@ -768,11 +769,11 @@ function OpenPoliceActionsMenu()
 				{label = _U('unpaid_bills'),	value = 'unpaid_bills'}
                 --{label = _U('jail'),            value = 'jail'}
 			}
-		
+
 			if Config.EnableLicenses then
 				table.insert(elements, { label = _U('license_check'), value = 'license' })
 			end
-		
+
 			ESX.UI.Menu.Open(
 			'default', GetCurrentResourceName(), 'citizen_interaction',
 			{
@@ -800,7 +801,7 @@ function OpenPoliceActionsMenu()
 					elseif action == 'fine' then
 						OpenFineMenu(closestPlayer)
 					elseif action == 'license' then
-						ShowPlayerLicense(closestPlayer)
+						OpenManageLicenseMenu(closestPlayer)
 					elseif action == 'unpaid_bills' then
 						OpenUnpaidBillsMenu(closestPlayer)
 					end
@@ -820,13 +821,13 @@ function OpenPoliceActionsMenu()
 			local playerPed = PlayerPedId()
 			local coords    = GetEntityCoords(playerPed)
 			local vehicle   = ESX.Game.GetVehicleInDirection()
-			
+
 			if DoesEntityExist(vehicle) then
 				table.insert(elements, {label = _U('vehicle_info'),	value = 'vehicle_infos'})
 				table.insert(elements, {label = _U('pick_lock'),	value = 'hijack_vehicle'})
 				table.insert(elements, {label = _U('impound'),		value = 'impound'})
 			end
-			
+
 			table.insert(elements, {label = _U('search_database'), value = 'search_database'})
 
 			ESX.UI.Menu.Open(
@@ -840,14 +841,14 @@ function OpenPoliceActionsMenu()
 				vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
 				vehiclePlate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 				action  = data2.current.value
-				
+
 				if action == 'search_database' then
 					LookupVehicle()
 				elseif DoesEntityExist(vehicle) then
 					local vehicleData = ESX.Game.GetVehicleProperties(vehicle)
 					if action == 'vehicle_infos' then
 						OpenVehicleInfosMenu(vehicleData)
-						
+
 					elseif action == 'hijack_vehicle' then
 						if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 3.0) then
 							TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_WELDING", 0, true)
@@ -859,28 +860,28 @@ function OpenPoliceActionsMenu()
 							ESX.ShowNotification(_U('vehicle_unlocked'))
 						end
 					elseif action == 'impound' then
-						
+
 						-- is the script busy?
 						if CurrentTask.Busy then
 							return
 						end
 
 						ESX.ShowHelpNotification(_U('impound_prompt'))
-						
+
 						TaskStartScenarioInPlace(playerPed, 'CODE_HUMAN_MEDIC_TEND_TO_DEAD', 0, true)
-						
+
 						CurrentTask.Busy = true
 						CurrentTask.Task = ESX.SetTimeout(10000, function()
 							ClearPedTasks(playerPed)
 							ImpoundVehicle(vehicle, vehiclePlate)
 							Citizen.Wait(100) -- sleep the entire script to let stuff sink back to reality
 						end)
-						
+
 						-- keep track of that vehicle!
 						Citizen.CreateThread(function()
 							while CurrentTask.Busy do
 								Citizen.Wait(1000)
-							
+
 								vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
 								if not DoesEntityExist(vehicle) and CurrentTask.Busy then
 									ESX.ShowNotification(_U('impound_canceled_moved'))
@@ -953,17 +954,17 @@ function OpenIdentityCardMenu(player)
 		local dobLabel    = nil
 		local heightLabel = nil
 		local idLabel     = nil
-	
+
 		if data.job.grade_label ~= nil and  data.job.grade_label ~= '' then
 			jobLabel = _U('job', data.job.label .. ' - ' .. data.job.grade_label)
 		else
 			jobLabel = _U('job', data.job.label)
 		end
-	
+
 		if Config.EnableESXIdentity then
-	
+
 			nameLabel = _U('name', data.firstname .. ' ' .. data.lastname)
-	
+
 			if data.sex ~= nil then
 				if string.lower(data.sex) == 'm' then
 					sexLabel = _U('sex', _U('male'))
@@ -973,64 +974,63 @@ function OpenIdentityCardMenu(player)
 			else
 				sexLabel = _U('sex', _U('unknown'))
 			end
-	
+
 			if data.dob ~= nil then
 				dobLabel = _U('dob', data.dob)
 			else
 				dobLabel = _U('dob', _U('unknown'))
 			end
-	
+
 			if data.height ~= nil then
 				heightLabel = _U('height', data.height)
 			else
 				heightLabel = _U('height', _U('unknown'))
 			end
-	
+
 			if data.name ~= nil then
 				idLabel = _U('id', data.name)
 			else
 				idLabel = _U('id', _U('unknown'))
 			end
-	
+
 		end
-	
-		local elements = {
-			{label = nameLabel, value = nil},
-			{label = jobLabel,  value = nil},
-		}
-	
+
+		table.insert(elements, {label = nameLabel, value = nil})
+		table.insert(elements, {label = jobLabel, value = nil})
+
 		if Config.EnableESXIdentity then
 			table.insert(elements, {label = sexLabel, value = nil})
 			table.insert(elements, {label = dobLabel, value = nil})
 			table.insert(elements, {label = heightLabel, value = nil})
 			table.insert(elements, {label = idLabel, value = nil})
 		end
-	
+
 		if data.drunk ~= nil then
 			table.insert(elements, {label = _U('bac', data.drunk), value = nil})
 		end
-	
+
+		--[[ ESX menu seems to break as soon as it gets to 10 elements in a single menu
 		if data.licenses ~= nil then
-	
+
 			table.insert(elements, {label = _U('license_label'), value = nil})
-	
+
 			for i=1, #data.licenses, 1 do
 				table.insert(elements, {label = data.licenses[i].label, value = nil})
 			end
-	
+
 		end
-	
+		]]
+
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction',
 		{
 			title    = _U('citizen_interaction'),
 			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
-	
 		end, function(data, menu)
 			menu.close()
 		end)
-	
+
 	end, GetPlayerServerId(player))
 
 end
@@ -1124,9 +1124,9 @@ function OpenFineMenu(player)
 		title    = _U('fine'),
 		align    = 'right',
 		elements = {
-			{label = _U('traffic_offense'), value = 0},
+			--{label = _U('traffic_offense'), value = 0},
 			{label = _U('minor_offense'),   value = 1},
-			{label = _U('average_offense'), value = 2},
+			--{label = _U('average_offense'), value = 2},
 			{label = _U('major_offense'),   value = 3}
 		}
 	}, function(data, menu)
@@ -1205,41 +1205,180 @@ function LookupVehicle()
 	end)
 end
 
+-- Takes in player data and parses it into usable name + licenses
+-- @param data Player data returned from esx_policejob:getOtherPlayerData
+-- @return name of the player
+-- @return table of player licenses
+function ParsePlayerData(data)
+  local licenses   = {}
+  local targetName = nil
+
+  if data.licenses then
+    for i=1, #data.licenses, 1 do
+	  if data.licenses[i].label and data.licenses[i].type then
+        table.insert(licenses, {
+          label = data.licenses[i].label,
+          type = data.licenses[i].type
+        })
+      end
+    end
+  end
+
+  if Config.EnableESXIdentity then
+    targetName = data.firstname .. ' ' .. data.lastname
+  else
+    targetName = data.name
+  end
+
+  return targetName, licenses
+end
+
+function CanGrant(licenseType)
+  for i = 0, #Config.Licenses.CanGrant, 1 do
+    if (Config.Licenses.CanGrant[i] == licenseType) then
+      return true
+    end
+  end
+
+  return false
+end
+
+function CanRevoke(licenseType)
+  for i = 0, #Config.Licenses.CanRevoke, 1 do
+    if (Config.Licenses.CanRevoke[i] == licenseType) then
+      return true
+    end
+  end
+
+  return false
+end
+
+-- Show the police officer a menu for granting licenses to another player
+-- @param closestPlayer The target who will be granted a license
+function OpenGrantLicenseMenu(closestPlayer)
+  local dataError      = false
+  local licensesList   = {}
+  local ownedLicenses  = {}
+  local targetName     = ''
+  local targetServerId = GetPlayerServerId(closestPlayer)
+
+  ESX.TriggerServerCallback('esx_license:getLicensesList', function(data)
+    for i = 1, #data, 1 do
+      if (CanGrant(data[i].type)) then
+        table.insert(licensesList, data[i])
+      end
+    end
+  end)
+
+  ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
+    targetName, ownedLicenses = ParsePlayerData(data)
+  end, targetServerId)
+
+  Citizen.CreateThread(function()
+    ESX.SetTimeout(3000, function()
+      if (#licensesList == 0 or string.len(targetName) == 0) then
+        dataError = true
+      end
+    end)
+  end)
+
+  Citizen.CreateThread(function() -- don't block the UI thread while loading data
+    while (#licensesList == 0 and not dataError) do
+      Citizen.Wait(50)
+    end
+
+    if (dataError) then
+      ESX.ShowNotification('~r~Error while fetching license data.~s~')
+      return
+    end
+
+    local menuData = {
+      title    = 'Grant Licenses',
+      align    = 'right',
+      elements = licensesList
+    }
+
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'grant_license', menuData, function(data, menu)
+      while (string.len(targetName) == 0 and not dataError) do
+        Citizen.Wait(50)
+      end
+
+      local targetData = {
+        id       = targetServerId,
+        name     = targetName,
+        licenses = ownedLicenses
+      }
+
+      if (dataError) then
+        ESX.ShowNotification('~r~Error while fetching player license data.~s~')
+        menu.close()
+      end
+
+      GrantLicenseToPlayer(data.current, targetData)
+
+      menu.close()
+    end, function(data, menu)
+      menu.close()
+    end)
+  end)
+end
+
+function GrantLicenseToPlayer(license, playerData)
+  for i = 1, #playerData.licenses, 1 do
+    if (license.type == playerData.licenses[i].type) then -- the player already has this license
+      ESX.ShowNotification(playerData.name .. ' already has a~g~ ' .. license.label)
+      return
+    end
+  end
+
+  ESX.ShowNotification('You have granted a ~g~ ' .. license.label .. ' ~s~to~h~ ' .. playerData.name)
+
+  TriggerServerEvent('esx_policejob:addLicense', playerData.id, license.type, license.label)
+end
+
+function OpenManageLicenseMenu(closestPlayer)
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_licenses',
+	{
+		title    = 'Manage Licenses',
+		align    = 'right',
+		elements = {
+			{ label = 'Grant Licenses', value = 'grant_license' },
+			{ label = 'Revoke Licenses', value = 'revoke_license' }
+		}
+	}, function(data, menu)
+		if data.current.value == 'revoke_license' then
+			ShowPlayerLicense(closestPlayer)
+		elseif data.current.value == 'grant_license' then
+			OpenGrantLicenseMenu(closestPlayer)
+		end
+	end, function(data, menu)
+		menu.close()
+	end)
+end
+
 function ShowPlayerLicense(player)
-	local elements = {}
-	local targetName
+	local elements   = {}
+	local targetName = nil
+
 	ESX.TriggerServerCallback('esx_policejob:getOtherPlayerData', function(data)
-		if data.licenses then
-			for i=1, #data.licenses, 1 do
-				if data.licenses[i].label and data.licenses[i].type then
-					table.insert(elements, {
-						label = data.licenses[i].label,
-						type = data.licenses[i].type
-					})
-				end
-			end
-		end
-		
-		if Config.EnableESXIdentity then
-			targetName = data.firstname .. ' ' .. data.lastname
-		else
-			targetName = data.name
-		end
-		
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'manage_license',
+    targetName, elements = ParsePlayerData(data)
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'revoke_license',
 		{
 			title    = _U('license_revoke'),
 			align    = 'right',
 			elements = elements,
 		}, function(data, menu)
-			ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
-			TriggerServerEvent('esx_policejob:message', GetPlayerServerId(player), _U('license_revoked', data.current.label))
-			
-			TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
-			
-			ESX.SetTimeout(300, function()
-				ShowPlayerLicense(player)
-			end)
+      if (CanRevoke(data.current.type)) then
+        ESX.ShowNotification(_U('licence_you_revoked', data.current.label, targetName))
+
+        TriggerServerEvent('esx_policejob:message', GetPlayerServerId(player), _U('license_revoked', data.current.label))
+		TriggerServerEvent('esx_license:removeLicense', GetPlayerServerId(player), data.current.type)
+
+        menu.close()
+      else
+        ESX.ShowNotification('You do not have authority to revoke that license.')
+      end
 		end, function(data, menu)
 			menu.close()
 		end)
@@ -1264,7 +1403,7 @@ function OpenUnpaidBillsMenu(player)
 			align    = 'right',
 			elements = elements
 		}, function(data, menu)
-	
+
 		end, function(data, menu)
 			menu.close()
 		end)
@@ -1602,7 +1741,7 @@ end
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
-	
+
 	Citizen.Wait(5000)
 	TriggerServerEvent('esx_policejob:forceBlip')
 end)
@@ -1927,6 +2066,7 @@ end)
 Citizen.CreateThread(function()
 
 	for k,v in pairs(Config.PoliceStations) do
+		
 		local blip = AddBlipForCoord(v.Blip.Coords)
 
 		SetBlipSprite (blip, v.Blip.Sprite)
@@ -2025,7 +2165,7 @@ Citizen.CreateThread(function()
 				end
 
 				if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)) then
-	
+
 					if
 						(LastStation ~= nil and LastPart ~= nil and LastPartNum ~= nil) and
 						(LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)
@@ -2033,15 +2173,15 @@ Citizen.CreateThread(function()
 						TriggerEvent('esx_policejob:hasExitedMarker', LastStation, LastPart, LastPartNum)
 						hasExited = true
 					end
-	
+
 					HasAlreadyEnteredMarker = true
 					LastStation             = currentStation
 					LastPart                = currentPart
 					LastPartNum             = currentPartNum
-	
+
 					TriggerEvent('esx_policejob:hasEnteredMarker', currentStation, currentPart, currentPartNum)
 				end
-	
+
 				if not hasExited and not isInMarker and HasAlreadyEnteredMarker then
 					HasAlreadyEnteredMarker = false
 					TriggerEvent('esx_policejob:hasExitedMarker', LastStation, LastPart, LastPartNum)
@@ -2158,11 +2298,11 @@ Citizen.CreateThread(function()
 				elseif CurrentAction == 'remove_entity' then
 					DeleteEntity(CurrentActionData.entity)
 				end
-				
+
 				CurrentAction = nil
 			end
 		end -- CurrentAction end
-		
+
 		if IsControlJustReleased(0, Keys['F6']) and not isDead and PlayerData.job ~= nil and PlayerData.job.name == 'police' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'police_actions') then
 			if Config.MaxInService == -1 then
 				OpenPoliceActionsMenu()
@@ -2172,12 +2312,12 @@ Citizen.CreateThread(function()
 				ESX.ShowNotification(_U('service_not'))
 			end
 		end
-		
+
 		if IsControlJustReleased(0, Keys['E']) and CurrentTask.Busy then
 			ESX.ShowNotification(_U('impound_canceled'))
 			ESX.ClearTimeout(CurrentTask.Task)
 			ClearPedTasks(PlayerPedId())
-			
+
 			CurrentTask.Busy = false
 		end
 	end
@@ -2196,19 +2336,19 @@ function createBlip(id)
 		SetBlipNameToPlayerName(blip, id) -- update blip name
 		SetBlipScale(blip, 0.85) -- set scale
 		SetBlipAsShortRange(blip, true)
-		
+
 		table.insert(blipsCops, blip) -- add blip to array so we can remove it later
 	end
 end
 
 RegisterNetEvent('esx_policejob:updateBlip')
 AddEventHandler('esx_policejob:updateBlip', function()
-	
+
 	-- Refresh all blips
 	for k, existingBlip in pairs(blipsCops) do
 		RemoveBlip(existingBlip)
 	end
-	
+
 	-- Clean the blip table
 	blipsCops = {}
 
@@ -2220,7 +2360,7 @@ AddEventHandler('esx_policejob:updateBlip', function()
 	if not Config.EnableJobBlip then
 		return
 	end
-	
+
 	-- Is the player a cop? In that case show all the blips for other cops
 	if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
 		ESX.TriggerServerCallback('esx_society:getOnlinePlayers', function(players)
@@ -2241,7 +2381,7 @@ end)
 AddEventHandler('playerSpawned', function(spawn)
 	isDead = false
 	TriggerEvent('esx_policejob:unrestrain')
-	
+
 	if not hasAlreadyJoined then
 		TriggerServerEvent('esx_policejob:spawned')
 	end
@@ -2286,7 +2426,7 @@ function ImpoundVehicle(vehicle, vehiclePlate)
 	--[[if GetVehicleClass(vehicle) == 18 then
 		TriggerServerEvent('esx_vehicleshop:setJobVehicleState', vehiclePlate, true)
 	end]]
-	ESX.Game.DeleteVehicle(vehicle) 
+	ESX.Game.DeleteVehicle(vehicle)
 	ESX.ShowNotification(_U('impound_successful'))
 	CurrentTask.Busy = false
 end

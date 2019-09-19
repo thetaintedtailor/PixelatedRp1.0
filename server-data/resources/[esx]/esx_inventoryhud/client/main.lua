@@ -141,42 +141,53 @@ RegisterNUICallback(
         local foundPlayers = false
         local elements = {}
 
-        for i = 1, #players, 1 do
-            if players[i] ~= PlayerId() then
-                foundPlayers = true
+        ESX.TriggerServerCallback('esx_scoreboard:getConnectedPlayers', function(connectedPlayers)
+          for i = 1, #players, 1 do
+              if players[i] ~= PlayerId() then
+                  foundPlayers = true
 
-                table.insert(
-                    elements,
-                    {
-                        label = GetPlayerName(players[i]),
-                        player = GetPlayerServerId(players[i])
-                    }
-                )
-            end
-        end
+                  local serverId = GetPlayerServerId(players[i])
+                  local playerName
 
-        if not foundPlayers then
-            exports.pNotify:SendNotification(
-                {
-                    text = _U("players_nearby"),
-                    type = "error",
-                    timeout = 3000,
-                    layout = "bottomCenter",
-                    queue = "inventoryhud"
-                }
-            )
-        else
-            SendNUIMessage(
-                {
-                    action = "nearPlayers",
-                    foundAny = foundPlayers,
-                    players = elements,
-                    item = data.item
-                }
-            )
-        end
+                  if (connectedPlayers[serverId] ~= nil and string.len(connectedPlayers[serverId].name) > 0) then
+                    playerName = connectedPlayers[serverId].name
+                  else
+                    playerName = GetPlayerName(players[i])
+                  end
 
-        cb("ok")
+                  table.insert(
+                      elements,
+                      {
+                          label = playerName,
+                          player = GetPlayerServerId(players[i])
+                      }
+                  )
+              end
+          end
+
+          if not foundPlayers then
+              exports.pNotify:SendNotification(
+                  {
+                      text = _U("players_nearby"),
+                      type = "error",
+                      timeout = 3000,
+                      layout = "bottomCenter",
+                      queue = "inventoryhud"
+                  }
+              )
+          else
+              SendNUIMessage(
+                  {
+                      action = "nearPlayers",
+                      foundAny = foundPlayers,
+                      players = elements,
+                      item = data.item
+                  }
+              )
+          end
+
+          cb("ok")
+        end)
     end
 )
 

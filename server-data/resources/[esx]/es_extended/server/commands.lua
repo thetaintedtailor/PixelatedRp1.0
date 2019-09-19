@@ -21,7 +21,12 @@ TriggerEvent('es:addGroupCommand', 'setjob', 'jobmaster', function(source, args,
 		local xPlayer = ESX.GetPlayerFromId(args[1])
 
 		if xPlayer then
-			xPlayer.setJob(args[2], tonumber(args[3]))
+			if ESX.DoesJobExist(args[2], args[3]) then
+				xPlayer.setJob(args[2], args[3])
+			else
+				TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'That job does not exist.' } })
+			end
+
 		else
 			TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Player not online.' } })
 		end
@@ -88,8 +93,9 @@ end, {help = _U('spawn_object'), params = {{name = "name"}}})
 
 TriggerEvent('es:addGroupCommand', 'setmoney', 'admin', function(source, args, user)
 	local _source = source
+	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local target = tonumber(args[1])
-	local money_type = args[2]
+	local money_type = tostring(args[2])
 	local money_amount = tonumber(args[3])
 	
 	local xPlayer = ESX.GetPlayerFromId(target)
@@ -97,10 +103,13 @@ TriggerEvent('es:addGroupCommand', 'setmoney', 'admin', function(source, args, u
 	if target and money_type and money_amount and xPlayer ~= nil then
 		if money_type == 'cash' then
 			xPlayer.setMoney(money_amount)
+	    	TriggerEvent("esx:givemoneyalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, money_amount)
 		elseif money_type == 'bank' then
 			xPlayer.setAccountMoney('bank', money_amount)
+	    	TriggerEvent("esx:givemoneybankalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, money_amount)
 		elseif money_type == 'black' then
 			xPlayer.setAccountMoney('black_money', money_amount)
+	    	TriggerEvent("esx:givemoneybankalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, money_amount)
 		else
 			TriggerClientEvent('chatMessage', _source, "SYSTEM", {255, 0, 0}, "^2" .. money_type .. " ^0 is not a valid money type!")
 			return
@@ -121,6 +130,7 @@ end, {help = _U('setmoney'), params = {{name = "id", help = _U('id_param')}, {na
 
 TriggerEvent('es:addGroupCommand', 'giveaccountmoney', 'admin', function(source, args, user)
 	local _source = source
+	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local xPlayer = ESX.GetPlayerFromId(args[1])
 	local account = args[2]
 	local amount  = tonumber(args[3])
@@ -128,6 +138,7 @@ TriggerEvent('es:addGroupCommand', 'giveaccountmoney', 'admin', function(source,
 	if amount ~= nil then
 		if xPlayer.getAccount(account) ~= nil then
 			xPlayer.addAccountMoney(account, amount)
+			TriggerEvent("esx:givemoneybankalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, amount)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('invalid_account'))
 		end
@@ -140,6 +151,7 @@ end, {help = _U('giveaccountmoney'), params = {{name = "id", help = _U('id_param
 
 TriggerEvent('es:addGroupCommand', 'giveitem', 'admin', function(source, args, user)
 	local _source = source
+	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local xPlayer = ESX.GetPlayerFromId(args[1])
 	local item    = args[2]
 	local count   = (args[3] == nil and 1 or tonumber(args[3]))
@@ -147,6 +159,7 @@ TriggerEvent('es:addGroupCommand', 'giveitem', 'admin', function(source, args, u
 	if count ~= nil then
 		if xPlayer.getInventoryItem(item) ~= nil then
 			xPlayer.addInventoryItem(item, count)
+			TriggerEvent("esx:giveitemalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, item, count)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('invalid_item'))
 		end
@@ -158,10 +171,14 @@ end, function(source, args, user)
 end, {help = _U('giveitem'), params = {{name = "id", help = _U('id_param')}, {name = "item", help = _U('item')}, {name = "amount", help = _U('amount')}}})
 
 TriggerEvent('es:addGroupCommand', 'giveweapon', 'admin', function(source, args, user)
+	local _source = source
+	local sourceXPlayer = ESX.GetPlayerFromId(_source)
 	local xPlayer    = ESX.GetPlayerFromId(args[1])
 	local weaponName = string.upper(args[2])
+	local ammo = tonumber(args[3])
 
-	xPlayer.addWeapon(weaponName, tonumber(args[3]))
+	xPlayer.addWeapon(weaponName, ammo)
+	TriggerEvent("esx:giveweaponalert", sourceXPlayer.name .. ' using Admin Command', xPlayer.name, weaponName)
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = _U('giveweapon'), params = {{name = "id", help = _U('id_param')}, {name = "weapon", help = _U('weapon')}, {name = "ammo", help = _U('amountammo')}}})

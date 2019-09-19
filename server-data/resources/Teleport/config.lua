@@ -6,21 +6,21 @@ Config.actionKey = 51
 -- markers AKA Teleporters
 Config.zones = {
 	
-	WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
-		x = -899.22,
-		y = -2309.39,
-		z = -3.51,
-		w = 2.0,
-		h = 1.0,
-		visible = false, -- Set this to true to make the marker visible. False to disable it.
-		t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
-		color = {
-			r = 0,
-			g = 102,
-			b = 0
-		}
+	-- WeedEnter = {           --This is the entrance where you go to enter the weed warehouse
+	-- 	x = -899.22,
+	-- 	y = -2309.39,
+	-- 	z = -3.51,
+	-- 	w = 2.0,
+	-- 	h = 1.0,
+	-- 	visible = false, -- Set this to true to make the marker visible. False to disable it.
+	-- 	t = 29,          -- This is the marker. You can change it https://docs.fivem.net/game-references/markers
+	-- 	color = {
+	-- 		r = 0,
+	-- 		g = 102,
+	-- 		b = 0
+	-- 	}
 		
-	},
+	-- },
 	
 	WeedExit = {          --This is the exit where you go to exit the weed warehouse
 		x = 1038.863,
@@ -38,6 +38,7 @@ Config.zones = {
 		
 	},
 	
+	--[[
 	MethEnter = {
 		x = 500.04,
 		y = -522.06,
@@ -52,6 +53,7 @@ Config.zones = {
 			b = 0
 		}
 	},
+	]]
 	
 	MethExit = {
 		x = 1011.70,
@@ -68,20 +70,20 @@ Config.zones = {
 		}
 	},
 
-	--CokeEnter = {
-		--x = 374.94,
-		--y = -576.20,
-		--z = 18.48,
-		--w = 2.0,
-		--h = 1.0,		
-		--visible = false,
-		--t = 1,
-		--color = {
-			--r = 102,
-			--g = 0,
-			--b = 0
-		--}
-	--},
+	CokeEnter = {
+		x = 13.37,
+		y = 3732.18,
+		z = 39.68,
+		w = 2.0,
+		h = 1.0,		
+		visible = false,
+		t = 1,
+		color = {
+			r = 102,
+			g = 0,
+			b = 0
+		}
+	},
 	
 	CokeExit = {
 		x = 1103.613,
@@ -178,9 +180,9 @@ Config.point = {
 	},
 	
 	CokeExit = {
-		x = 370.70,
-		y = -577.08, 
-		z = 17.76
+		x = 16.42,
+		y = 3729.99, 
+		z = 39.69
 	},
 
 	ComedyClubEnter = {

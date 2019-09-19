@@ -41,7 +41,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0) -- Wait 0 seconds to prevent crashing.
         if not god and NetworkGetNumConnectedPlayers() >= min_players_online then
-            for x=0,32 do
+            for x=0,256 do
                 local entityblip = GetBlipFromEntity(GetPlayerPed(x))
                 if DoesBlipExist(entityblip) then
                     SetBlipShowCone(blip, false)
@@ -71,7 +71,7 @@ Citizen.CreateThread(function()
                 end
             end
         else
-            for x=0,32 do
+            for x=0,256 do
                 local entityblip = GetBlipFromEntity(GetPlayerPed(x))
                 if DoesBlipExist(entityblip) then
                     SetBlipDisplay(entityblip, alternative_blip_display_type)
