@@ -1,5 +1,8 @@
 Config = {}
 
+-- Offline time is worth this multiplied by remaining jail time
+Config.OfflineMultiplier = 0.5
+
 Config.JailPositions = {
 	["Cell"] = { ["x"] = 1799.8345947266, ["y"] = 2489.1350097656, ["z"] = -119.02998352051, ["h"] = 179.03021240234 }
 }

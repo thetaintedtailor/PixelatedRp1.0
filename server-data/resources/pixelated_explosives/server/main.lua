@@ -88,13 +88,13 @@ end, {help = "Detonate the vehicle someone is in."})
 RegisterServerEvent('explosives:disarmbomb')
 AddEventHandler('explosives:disarmbomb', function(wire)
     if Bomb.valid == true then
-        print(wire)
-        print(string.lower(Bomb.wire))
         if wire == string.lower(Bomb.wire) then
             TriggerClientEvent('explosives:bombdisarmed', source, Bomb.coords)
+            TriggerClientEvent('explosives:bombcleanup', source, Bomb.coords)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
+            TriggerClientEvent('explosives:bombcleanup', -1, Bomb.coords)
             local xPlayer = ESX.GetPlayerFromId(source)
             xPlayer.removeInventoryItem('bomb_defuse_kit', 1)
         end
