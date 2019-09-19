@@ -6,8 +6,10 @@ RegisterNetEvent('pixelatedPlayerVehicleSales:promptBuyer')
 AddEventHandler('pixelatedPlayerVehicleSales:promptBuyer', function(vehModel, plate, price, seller)
     local buyerPedLoc = GetEntityCoords(GetPlayerPed(-1))
     local sellerPedLoc = GetEntityCoords(GetPlayerPed(seller))
+    local distance = GetDistanceBetweenCoords(buyerPedLoc, sellerPedLoc.x, sellerPedLoc.y, sellerPedLoc.z, true)
+    print('Distance is: ' .. distance)
 
-    if GetDistanceBetweenCoords(buyerPedLoc, sellerPedLoc, true) <= Config.TransactionDistance then
+    if distance <= Config.TransactionDistance then
         ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'buy_vehicle_prompt', {
             title = 'Buy ' .. GetDisplayNameFromVehicleModel(vehModel) .. ' for $' .. price .. '?'
         }, function(data, menu)
