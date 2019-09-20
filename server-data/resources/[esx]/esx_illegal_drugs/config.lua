@@ -45,9 +45,9 @@ Config.Zones = {
 	WeedField =			{x=1057.448,  y=-3197.646,  z=-39.138},
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
 	WeedDealer =		{x = 1845.92,   y= 3914.55,  z= 33.46},
-	OpiumField =		{x=-35.05,  y=1950.65,   z=190.55},
-	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=5.79},
-	OpiumDealer =		{x=452.44, y=-841.48,   z=27.84}
+	OpiumField =		{x=-1694.99,  y=-3166.71,   z=13.95},
+	OpiumProcessing =	{x=1701.27,   y=3291.08,    z=48.92},
+	OpiumDealer =		{x=1701.94, y=4858.00,   z=42.03}
 }
 
 Config.DisableBlip = true -- Set to true to disable blips. False to enable them.
