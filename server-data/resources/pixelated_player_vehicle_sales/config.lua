@@ -1,3 +1,3 @@
 Config = {}
 
-Config.TransactionDistance = 3
+Config.TransactionDistance = 3.0
