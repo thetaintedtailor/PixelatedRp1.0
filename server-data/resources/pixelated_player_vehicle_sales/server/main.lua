@@ -3,6 +3,21 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args, user)
+    local vehicles = {}
+
+    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner', 
+    {
+        ['@owner'] = GetPlayerIdentifiers(source)[1]
+    }, function(results)
+        for _,v in pairs(results) do
+            local vehicle = json.decode(v.vehicle)
+            table.insert(vehicles, {vehicle = vehicle, plate = v.plate})
+        end
+    end)
+    TriggerClientEvent('pixelatedPlayerVehicleSales:displayVehicles', source, vehicles)
+end)
+
+TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args, user)
     if #args == 4 and args[1] == nil or args[2] == nil or args[3] == nil or args[4] == nil then
 	    TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Missing or invalid parameter in vehicle sale attempt.")
         return
@@ -36,15 +51,16 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
             TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Two vehicles with the same owner and plate found. Open a support ticket and report it, please.")
             return
         end
-            
+        local isFinanced = false    
         MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
         {
             ['@owner'] = GetPlayerIdentifiers(source)[1],
             ['@plate'] = plate
         }, function(results2)
             if #results2 > 0 then
-                TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "You cannot sell a financed vehicle to another player.")
-                return
+                isFinanced = true
+                --TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "You cannot sell a financed vehicle to another player.")
+                --return
             end
         end)
 
@@ -52,7 +68,7 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
         for _,v in pairs(results) do
             vehicle = json.decode(v.vehicle)
         end
-        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', id, vehicle.model, plate, price, source)
+        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', id, vehicle.model, plate, price, source, isFinanced)
     end)
 end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
@@ -64,7 +80,7 @@ end, {help = "Starts the vehicle selling process.", params =
 })
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:attemptSale')
-AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price, seller)
+AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price, seller, isFinanced)
     local xBuyer = ESX.GetPlayerFromId(source)
     local xSeller = ESX.GetPlayerFromId(seller)
 
@@ -78,6 +94,15 @@ AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price
             ['@owner']      = GetPlayerIdentifiers(seller)[1],
             ['@plate']      = plate
         })
+
+        if isFinanced == true then
+            MySQL.Async.execute('UPDATE financed_vehicles SET owner = @newOwner WHERE owner = @owner AND plate = @plate',
+            {
+                ['@newOwner']   = GetPlayerIdentifiers(source)[1],
+                ['@owner']      = GetPlayerIdentifiers(seller)[1],
+                ['@plate']      = plate
+            })
+        end
 
         TriggerClientEvent('esx:showNotification', source, 'You have purchased the vehicle successfully. Congrats on the new ride!')
         TriggerClientEvent('esx:showNotification', seller, 'You have sold the vehicle successfully. Better find a bank quick!')
