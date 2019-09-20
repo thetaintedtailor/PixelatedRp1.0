@@ -37,14 +37,14 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/otherside.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Red Hot Chili Peppers - Otherside (A Liga, Kellow & Gobbi Remix)"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "Song requested by Dash"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/cleopatra.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "CLEOPATRA - GEOTHEORY"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Song requested by Judge Bishop Hawke"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
-VK.info.website = false; // Website url ("NONE" to desactive)
-VK.info.ip = "185.249.196.40:32070"; // Your server ip and port ("ip:port")
+VK.info.website = false; // Website url (FALSE to show none)
+VK.info.ip = "134.209.162.104:30120"; // Your server ip and port ("ip:port")
 
 VK.social.discord = "https://discord.gg/X2xq3w3"; // Discord url ("NONE" to desactive)
 VK.social.twitter = false; // Twitter url ("NONE" to desactive)
