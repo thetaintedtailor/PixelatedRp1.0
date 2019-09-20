@@ -4,8 +4,8 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterNetEvent('pixelatedPlayerVehicleSales:displayVehicles')
 AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles)
-    local closestPlayer, distance = ESX.Game.GetClosestPlayer(GetEntityCoords(PlayerPedId()))
-
+    local closestPlayer, distance = ESX.Game.GetClosestPlayer()
+    print('Distance: ' .. distance)
     if closestPlayer ~= -1 or distance > Config.TransactionDistance then
         ESX.ShowNotification('No person close enough to sell a vehicle to.')
         return
