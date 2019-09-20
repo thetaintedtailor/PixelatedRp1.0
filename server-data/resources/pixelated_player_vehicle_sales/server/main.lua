@@ -18,23 +18,18 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
 end, {help = "Starts the vehicle selling process."})
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt')
-AddEventHandler('es:pixelatedPlayerVehicleSales:sendBuyerPrompt', function(plate, price, buyer)
-    local isFinanced = false    
+AddEventHandler('es:pixelatedPlayerVehicleSales:sendBuyerPrompt', function(vehicle, plate, price, buyer)
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
     {
         ['@owner'] = GetPlayerIdentifiers(source)[1],
         ['@plate'] = plate
-    }, function(results2)
-        if #results2 > 0 then
+    }, function(results)
+        local isFinanced = false    
+        if #results > 0 then
             isFinanced = true
         end
+        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', buyer, vehicle, plate, price, source, isFinanced)
     end)
-
-    local vehicle
-    for _,v in pairs(results) do
-        vehicle = json.decode(v.vehicle)
-    end
-    TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', buyer, vehicle.model, plate, price, source, isFinanced)
 end)
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:attemptSale')

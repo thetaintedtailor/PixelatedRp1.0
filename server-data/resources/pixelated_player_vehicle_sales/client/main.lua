@@ -58,7 +58,7 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                         elements = elements
                     }, function(data3, menu3)
                         menu3.close()
-                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.value, data2.value, data3.current.value)
+                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.value, data3.current.value)
                     end, function(data3, menu3)
                         menu3.close()
                     end)
@@ -76,12 +76,13 @@ RegisterNetEvent('pixelatedPlayerVehicleSales:promptBuyer')
 AddEventHandler('pixelatedPlayerVehicleSales:promptBuyer', function(vehModel, plate, price, seller, isFinanced)
     local titleString = ""
     if isFinanced == true then
-        titleString = 'Buy Financed ' .. GetDisplayNameFromVehicleModel(vehModel) .. ' for $' .. price .. '?'
+        titleString = 'Buy Financed ' .. vehModel .. ' for $' .. price .. '?'
     else
-        titleString = 'Buy ' .. GetDisplayNameFromVehicleModel(vehModel) .. ' for $' .. price .. '?'
+        titleString = 'Buy ' .. vehModel .. ' for $' .. price .. '?'
     end
     ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'buy_vehicle_prompt', {
-        title = titleString
+        title = titleString,
+        align = 'center'
     }, function(data, menu)
         menu.close()
         TriggerServerEvent('pixelatedPlayerVehicleSales:attemptSale', plate, price, seller, isFinanced)
