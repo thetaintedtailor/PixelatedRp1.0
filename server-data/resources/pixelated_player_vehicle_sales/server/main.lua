@@ -10,74 +10,32 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
         ['@owner'] = GetPlayerIdentifiers(source)[1]
     }, function(results)
         for _,v in pairs(results) do
-            local vehicle = json.decode(v.vehicle)
-            table.insert(vehicles, {vehicle = vehicle, plate = v.plate})
+            --local vehicle = json.decode(v.vehicle)
+            table.insert(vehicles, {vehicle = v.vehicle, plate = v.plate})
         end
+        TriggerClientEvent('pixelatedPlayerVehicleSales:displayVehicles', source, vehicles)
     end)
-    TriggerClientEvent('pixelatedPlayerVehicleSales:displayVehicles', source, vehicles)
-end)
+end, {help = "Starts the vehicle selling process."})
 
-TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args, user)
-    if #args == 4 and args[1] == nil or args[2] == nil or args[3] == nil or args[4] == nil then
-	    TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Missing or invalid parameter in vehicle sale attempt.")
-        return
-    end
-
-    local plate = tostring(args[1]) .. ' ' .. tostring(args[2])
-    local price = tonumber(args[3])
-    local id = tonumber(args[4])
-
-    if plate == nil or price == nil or id == nil then
-        TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Missing or invalid parameter in vehicle sale attempt.")
-        return
-    end
-
-    if id == source then
-        TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Can't sell to yourself. Duh.")
-        return
-    end
-    
-    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', 
+RegisterServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt')
+AddEventHandler('es:pixelatedPlayerVehicleSales:sendBuyerPrompt', function(plate, price, buyer)
+    local isFinanced = false    
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
     {
         ['@owner'] = GetPlayerIdentifiers(source)[1],
         ['@plate'] = plate
-    }, function(results)
-        if #results == 0 then
-            TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "You do not own the vehicle you're trying to sell.")
-            return
+    }, function(results2)
+        if #results2 > 0 then
+            isFinanced = true
         end
-
-        if #results > 1 then
-            TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Two vehicles with the same owner and plate found. Open a support ticket and report it, please.")
-            return
-        end
-        local isFinanced = false    
-        MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
-        {
-            ['@owner'] = GetPlayerIdentifiers(source)[1],
-            ['@plate'] = plate
-        }, function(results2)
-            if #results2 > 0 then
-                isFinanced = true
-                --TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "You cannot sell a financed vehicle to another player.")
-                --return
-            end
-        end)
-
-        local vehicle
-        for _,v in pairs(results) do
-            vehicle = json.decode(v.vehicle)
-        end
-        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', id, vehicle.model, plate, price, source, isFinanced)
     end)
-end, function(source, args, user)
-	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
-end, {help = "Starts the vehicle selling process.", params = 
-     {name = 'Plate1',  help = 'First three characters of your plate.'},
-     {name = 'Plate2', help = 'Second three characters of your plate.'},
-     {name = 'Price',        help = 'How much to sell the vehicle for.'},
-     {name = 'ID',  help = 'The ID of the player buying the vehicle.'}
-})
+
+    local vehicle
+    for _,v in pairs(results) do
+        vehicle = json.decode(v.vehicle)
+    end
+    TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', buyer, vehicle.model, plate, price, source, isFinanced)
+end)
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:attemptSale')
 AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price, seller, isFinanced)
@@ -112,8 +70,7 @@ AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price
     end
 end)
 
-RegisterServerEvent('pixelatedPlayerVehicleSales:failDistance')
-AddEventHandler('pixelatedPlayerVehicleSales:failDistance', function(seller)
-    TriggerClientEvent('esx:showNotification', source, 'You and the seller are too far apart.')
-    TriggerClientEvent('esx:showNotification', seller, 'You and the buyer are too far apart.')
+RegisterServerEvent('pixelatedPlayerVehicleSales:declinedSale')
+AddEventHandler('pixelatedPlayerVehicleSales:declinedSale', function(seller)
+    TriggerClientEvent('esx:showNotification', seller, 'The buyer has declined the sale.')
 end)
