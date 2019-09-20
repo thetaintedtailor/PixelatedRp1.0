@@ -18,7 +18,7 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
 end, {help = "Starts the vehicle selling process."})
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt')
-AddEventHandler('es:pixelatedPlayerVehicleSales:sendBuyerPrompt', function(vehicle, plate, price, buyer)
+AddEventHandler('pixelatedPlayerVehicleSales:sendBuyerPrompt', function(vehicle, plate, price, buyer)
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
     {
         ['@owner'] = GetPlayerIdentifiers(source)[1],
