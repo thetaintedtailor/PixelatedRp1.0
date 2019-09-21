@@ -9,7 +9,7 @@ config_cl = {
     checkpointHeight = 10.0,            -- Height of 3D checkpoints in meters
     checkpointBlipColor = 5,            -- Color of checkpoint map blips and navigation (see SetBlipColour native reference)
     hudEnabled = true,                  -- Enable racing HUD with time and checkpoints
-    hudPosition = vec(0.015, 0.725)     -- Screen position to draw racing HUD
+    hudPosition = vec(0.015, 0.625)     -- Screen position to draw racing HUD
 }
 
 -- SERVER CONFIGURATION

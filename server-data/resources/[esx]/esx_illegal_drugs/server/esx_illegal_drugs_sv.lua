@@ -37,10 +37,10 @@ CountCops()
 -------------------------------------------------------
 local function HarvestWeed(source)
 
-	if CopsConnected < Config.RequiredCopsWeed then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsWeed))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsWeed then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsWeed))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToFarmWeed, function()
 
@@ -86,10 +86,10 @@ end)
 
 local function TransformWeed(source)
 
-	if CopsConnected < Config.RequiredCopsWeed then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsWeed))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsWeed then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsWeed))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToProcessWeed, function()
 
@@ -202,10 +202,10 @@ end)
 -------------------------------------------------------
 local function HarvestOpium(source)
 
-	if CopsConnected < Config.RequiredCopsOpium then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsOpium))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsOpium then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsOpium))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToFarmOpium, function()
 
@@ -251,10 +251,10 @@ end)
 
 local function TransformOpium(source)
 
-	if CopsConnected < Config.RequiredCopsOpium then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsOpium))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsOpium then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsOpium))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToProcessOpium, function()
 
@@ -393,10 +393,10 @@ end)
 -------------------------------------------------------
 local function HarvestCoke(source)
 
-	if CopsConnected < Config.RequiredCopsCoke then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsCoke))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsCoke then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsCoke))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToFarmCoke, function()
 
@@ -441,10 +441,10 @@ end)
 
 local function TransformCoke(source)
 
-	if CopsConnected < Config.RequiredCopsCoke then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsCoke))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsCoke then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsCoke))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToProcessCoke, function()
 		if PlayersTransformingCoke[source] == true then
@@ -550,10 +550,10 @@ end)
 ----------------------METH-----------------------------
 -------------------------------------------------------
 local function HarvestMeth(source)
-	if CopsConnected < Config.RequiredCopsMeth then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsMeth))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsMeth then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsMeth))
+	-- 	return
+	-- end
 	
 	SetTimeout(Config.TimeToFarmMeth, function()
 
@@ -599,10 +599,10 @@ end)
 
 local function TransformMeth(source)
 
-	if CopsConnected < Config.RequiredCopsMeth then
-		TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsMeth))
-		return
-	end
+	-- if CopsConnected < Config.RequiredCopsMeth then
+	-- 	TriggerClientEvent('esx:showNotification', source, _U('act_imp_police', CopsConnected, Config.RequiredCopsMeth))
+	-- 	return
+	-- end
 
 	SetTimeout(Config.TimeToProcessMeth, function()
 
