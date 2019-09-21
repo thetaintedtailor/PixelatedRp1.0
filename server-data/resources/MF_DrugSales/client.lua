@@ -186,19 +186,18 @@ function MFS:MissionStart()
                   TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                   menu.close()
                   Citizen.Wait(1500)
-                  break
+                  goto continue
                 end
               end,
               function(data,menu)
                 menu.close()
-              end
-            )
+              end)
           end)
         end
       end
     end
   end
-
+  ::continue::
   if not self.MissionCompleted then
     ESX.ShowNotification("You ran out of time and the buyer left.")
     if self.PedSpawned then 
