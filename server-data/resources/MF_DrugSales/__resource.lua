@@ -4,7 +4,8 @@ client_scripts {
   'incl.lua',
   'utils.lua',
   'config.lua',
-	'client.lua',
+  'client.lua',
+  'entityiter.lua'
 }
 
 server_scripts {	
@@ -12,5 +13,5 @@ server_scripts {
   'incl.lua',
   'utils.lua',
 	'config.lua',
-	'server.lua',
+	'server.lua'
 }

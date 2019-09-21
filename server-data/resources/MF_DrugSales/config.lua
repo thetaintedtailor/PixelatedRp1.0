@@ -22,6 +22,8 @@ MFS.PoliceNotifyCountdown = 0.5 -- minutes from reaching dealer until police are
 MFS.NotifyPoliceTimer = 10
 MFS.PoliceJobName = "police"
 MFS.MinPoliceOnline = 1
+MFS.CallCopsDistance = 30
+MFS.CallCopsPercent = 80
 
 MFS.MaxSellPerDealer = 50
 
@@ -33,10 +35,11 @@ MFS.HintLocations     =   {
 }
 
 MFS.SalesLocations    =   {
-  [1] = vector4(1372.69,3617.62,34.89,198.17),
-  [2] = vector4(2318.79,2553.66,47.69,221.28),
-  [3] = vector4(1510.11,6326.52,24.60,040.02),
-  [4] = vector4(0033.86,3666.52,39.72,227.70),
+  --[1] = vector4(1372.69,3617.62,34.89,198.17),
+  --[2] = vector4(2318.79,2553.66,47.69,221.28),
+  --[3] = vector4(1510.11,6326.52,24.60,040.02),
+  --[4] = vector4(0033.86,3666.52,39.72,227.70),
+  [1] = vector4(386.07, -1029.89, 29.43, 248.99)
 }
 
 MFS.TargetAverageSpeed = 60.0
