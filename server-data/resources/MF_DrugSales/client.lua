@@ -189,7 +189,6 @@ function MFS:MissionStart()
                   end, function(data2, menu2)
                     menu2.close()
                 end)
-              end
             end, function(data,menu)
               menu.close()
             end)
