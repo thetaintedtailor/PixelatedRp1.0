@@ -144,7 +144,7 @@ function MFS:MissionStart()
         Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
         if IsControlJustPressed(0,38) then
           --self:PoliceNotifyTimer(tPos)
-          self:CheckForWitness()
+          self.CheckForWitness()
           ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
             ESX.UI.Menu.CloseAll()
             local elements = {}
