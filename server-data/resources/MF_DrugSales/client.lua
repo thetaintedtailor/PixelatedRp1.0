@@ -192,6 +192,7 @@ function MFS:MissionStart()
                         Citizen.Wait(3000)
                         TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
                         TaskTurnPedToFaceEntity(plyPed, self.PedSpawned, -1)
+                        Citizen.Wait(1000)
                         local strArray = {'a', 'b', 'c'}
                         TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
                         TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
