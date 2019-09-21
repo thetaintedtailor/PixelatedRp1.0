@@ -241,7 +241,7 @@ function MFS:CheckForWitness()
             pedLoc   = GetEntityCoords(ped, false)
             distance = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
 
-            if playerPed ~= ped and distance < Config.CallCopsDistance then
+            if playerPed ~= ped and distance < self.CallCopsDistance then
               foundPed = ped
               break
             end
