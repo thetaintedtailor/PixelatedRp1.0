@@ -235,6 +235,7 @@ function MFS:CheckForWitness()
         local playerPed = PlayerPedId()
         local foundPed  = nil
         local closestPed, distance = ESX.Game.GetClosestPed(GetEntityCoords(playerPed), {'s_m_y_dealer_01'})
+        print(distance)
 
         if playerPed ~= closestPed and distance < self.CallCopsDistance then
           foundPed = closestPed
@@ -274,7 +275,7 @@ function MFS:DoNotifyPolice(pos)
       msg = "Somebody reported suspicious activity. [~g~LEFTALT~s~]"
     end
     PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
-    ESX.ShowAdvancedNotification(_U('911Call'), _U('911Lockpick'), msg, 'CHAR_CALL911', 7)
+    ESX.ShowAdvancedNotification('911 Call.', 'Drugs', msg, 'CHAR_CALL911', 7)
 
     local blip = AddBlipForRadius(pos.x,pos.y,pos.z, 100.0)
     SetBlipHighDetail(blip, true)

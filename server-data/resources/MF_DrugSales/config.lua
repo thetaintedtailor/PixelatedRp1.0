@@ -22,8 +22,8 @@ MFS.PoliceNotifyCountdown = 0.5 -- minutes from reaching dealer until police are
 MFS.NotifyPoliceTimer = 10
 MFS.PoliceJobName = "police"
 MFS.MinPoliceOnline = 1
-MFS.CallCopsDistance = 20
-MFS.CallCopsPercent = 60
+MFS.CallCopsDistance = 30
+MFS.CallCopsPercent = 80
 
 MFS.MaxSellPerDealer = 50
 
