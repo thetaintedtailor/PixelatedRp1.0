@@ -187,9 +187,9 @@ function MFS:MissionStart()
                         menu2.close()
                         TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
                         Citizen.Wait(1500)
-                        local forwardVector = GetEntityForwardVector(self.PedSpawned) * 1.25
+                        local moveToLocation = GetEntityCoords(self.PedSpawned) + (GetEntityForwardVector(self.PedSpawned) * 1.25)
                         local pedHeading = GetEntityHeading(self.PedSpawned) - 180
-                        TaskGoStraightToCoord(plyPed, forwardVector.x, forwardVector.y, forwardVector.z, 8.0, 10, pedHeading, 0.5)
+                        TaskGoStraightToCoord(plyPed, moveToLocation.x, moveToLocation.y, moveToLocation.z, 8.0, 10, pedHeading, 0.5)
                         Citizen.Wait(3000)
                         local strArray = {'a', 'b', 'c'}
                         TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 3.0, 1.0, -1, 01, 0, 0, 0, 0)
