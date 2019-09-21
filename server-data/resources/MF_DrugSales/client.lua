@@ -185,13 +185,14 @@ function MFS:MissionStart()
                         ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
                         TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                       end
-                    end, function(data2, menu2)
-                      menu2.close()
-                  end)
-                end
-              end, function(data,menu)
-                menu.close()
-              end)
+                    end
+                  end, function(data2, menu2)
+                    menu2.close()
+                end)
+              end
+            end, function(data,menu)
+              menu.close()
+            end)
           end)
         end
       end
