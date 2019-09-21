@@ -23,6 +23,8 @@ MFS.NotifyPoliceTimer = 10
 MFS.PoliceJobName = "police"
 MFS.MinPoliceOnline = 1
 
+MFS.MaxSellPerDealer = 50
+
 -- The door.
 MFS.HintLocations     =   {
   [1] = vector4(-1152.0,-1447.54,4.71, 36.74),
