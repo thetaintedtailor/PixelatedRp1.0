@@ -117,7 +117,8 @@ function MFS:MissionStart()
   local startTime = GetGameTimer()
   local startDist = distToDropoff
   local timer = ((startDist / 1000) * 60) * 1000
-  while ((GetGameTimer() - startTime) < math.floor(timer) and not self.MissionCompleted) or (self.MissionCompleted and distToDropoff < (self.DrawTextDist*2.0)) do
+  local saleAvailable = true
+  while ((GetGameTimer() - startTime) < math.floor(timer) and not self.MissionCompleted) or (self.MissionCompleted and distToDropoff < (self.DrawTextDist*2.0) and saleAvailable == true)  do
     Citizen.Wait(0)   
     plyPed = GetPlayerPed(-1)
     pPos = GetEntityCoords(plyPed)
@@ -152,8 +153,11 @@ function MFS:MissionStart()
                 table.insert(elements, {label = k..' : $'..drugPrice, val = v, price = drugPrice})
               end
             end
-            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',{ title = "Drug Buyer", align = 'left', elements = elements },
-              function(data,menu) 
+            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',
+            { 
+              title = "Drug Buyer", align = 'left', elements = elements 
+            }, function(data,menu) 
+                menu.close()
                 local count = false
                 local sellAmount = 0 
                 if counts[data.current.val] > self.MaxSellPerDealer then
@@ -180,8 +184,7 @@ function MFS:MissionStart()
                         ESX.ShowNotification("You don't have that much "..data.current.label..".")
                       else 
                         menu2.close()
-                        self.MissionCompleted = true
-                        distToDropoff = 1000
+                        saleAvailable = false
                         ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
                         TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                       end
