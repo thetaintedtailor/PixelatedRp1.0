@@ -144,7 +144,7 @@ function MFS:MissionStart()
         Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
         if IsControlJustPressed(0,38) then
           --self:PoliceNotifyTimer(tPos)
-          self.CheckForWitness()
+          MFS:CheckForWitness()
           ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
             ESX.UI.Menu.CloseAll()
             local elements = {}
@@ -226,6 +226,7 @@ function MFS:MissionStart()
 end
 
 function MFS:CheckForWitness()
+  print("CHECKING FOR A WITNESS!")
   local pedWasReported = false
 
     Citizen.CreateThread(function()
