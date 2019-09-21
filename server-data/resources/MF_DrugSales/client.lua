@@ -140,11 +140,11 @@ function MFS:MissionStart()
           startTime = 0
           self.MissionCompleted = true
           ESX.ShowNotification("You found the buyer!")
+          MFS:CheckForWitness()
         end
         Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
         if IsControlJustPressed(0,38) then
           --self:PoliceNotifyTimer(tPos)
-          MFS:CheckForWitness()
           ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
             ESX.UI.Menu.CloseAll()
             local elements = {}
@@ -252,13 +252,14 @@ function MFS:CheckForWitness()
         if foundPed then
           print("PED FOUND! REPORTING TO POLICE!")
           pedWasReported = true
-          TriggerServerEvent('MF_DrugSales:NotifyPolice')
+          TriggerServerEvent('MF_DrugSales:NotifyPolice', playerLoc)
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
           Citizen.Wait(3000)
           TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
+          Citizen.Wait(10000)
+          ClearPedTasks(foundPed)
         end
 
-        Citizen.Wait(10000)
       end
     end)
 end
@@ -274,6 +275,7 @@ end
 
 function MFS:DoNotifyPolice(pos)
   Citizen.CreateThread(function(...)
+    print('NOTIFYING THE POLICE!')
     local timer = GetGameTimer()
     local street = GetStreetNameAtCoord(pos.x,pos.y,pos.z)
     local msg = ""
