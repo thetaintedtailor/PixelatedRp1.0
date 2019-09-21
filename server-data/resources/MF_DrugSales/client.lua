@@ -234,7 +234,7 @@ function MFS:CheckForWitness()
 
         local playerPed = PlayerPedId()
         local foundPed  = nil
-        local closestPed, distance = ESX.Game.GetClosestPed()
+        local closestPed, distance = ESX.Game.GetClosestPed(GetEntityCoords(playerPed), {'s_m_y_dealer_01'})
 
         if playerPed ~= closestPed and distance < self.CallCopsDistance then
           foundPed = closestPed
