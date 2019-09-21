@@ -185,6 +185,26 @@ function MFS:MissionStart()
                         ESX.ShowNotification("You don't have that much "..data.current.label..".")
                       else 
                         menu2.close()
+                        TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
+                        Citizen.Wait(1500)
+                        local forwardVector = GetEntityForwardVector(self.PedSpawned) * 1.25
+                        local pedHeading = GetEntityHeading(self.PedSpawned) - 180
+                        TaskGoStraightToCoord(plyPed, forwardVector.x, forwardVector.y, forwardVector.z, 8.0, 10, pedHeading, 0.5)
+                        Citizen.Wait(3000)
+                        local strArray = {'a', 'b', 'c'}
+                        TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        Citizen.Wait(2500)
+                        TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        Citizen.Wait(2500)
+                        PlayAmbientSpeech1(self.PedSpawned, 'GENERIC_THANKS', 'GENERIC_CHEER')
+                        TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 3.0, 1.0, -1, 01, 0, 0, 0, 0)
+                        Citizen.Wait(5000)
+                        ClearPedTasksImmediately(plyPed)
+                        
+                        --TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_ATM', 0, 1)
                         saleAvailable = false
                         ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
                         TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
