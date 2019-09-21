@@ -205,7 +205,6 @@ function MFS:MissionStart()
   if not self.MissionCompleted then
     ESX.ShowNotification("You ran out of time and the buyer left.")
     if self.PedSpawned then 
-      --DeletePed(self.PedSpawned)
       TaskWanderStandard(self.PedSpawned, 10.0, 10)
       SetEntityAsMissionEntity(self.PedSpawned,false,false)
     end
@@ -215,7 +214,6 @@ function MFS:MissionStart()
   else
     ESX.ShowNotification("The dealer has left the spot.")
     if self.PedSpawned then 
-      --DeletePed(self.PedSpawned)
       TaskWanderStandard(self.PedSpawned, 10.0, 10)
       SetEntityAsMissionEntity(self.PedSpawned,false,false)
     end
@@ -226,7 +224,6 @@ function MFS:MissionStart()
 end
 
 function MFS:CheckForWitness()
-  print("CHECKING FOR A WITNESS!")
   local pedWasReported = false
 
     Citizen.CreateThread(function()
@@ -242,7 +239,7 @@ function MFS:CheckForWitness()
             pedLoc   = GetEntityCoords(ped, false)
             distance = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
 
-            if playerPed ~= ped and distance < self.CallCopsDistance then
+            if playerPed ~= ped and distance <= self.CallCopsDistance then
               foundPed = ped
               break
             end
@@ -250,7 +247,6 @@ function MFS:CheckForWitness()
         end
 
         if foundPed then
-          print("PED FOUND! REPORTING TO POLICE!")
           pedWasReported = true
           TriggerServerEvent('MF_DrugSales:NotifyPolice', playerLoc)
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
@@ -259,7 +255,7 @@ function MFS:CheckForWitness()
           Citizen.Wait(10000)
           ClearPedTasks(foundPed)
         end
-
+          Citizen.Wait(5000)
       end
     end)
 end
@@ -286,7 +282,7 @@ function MFS:DoNotifyPolice(pos)
       msg = "Somebody reported suspicious activity. [~g~LEFTALT~s~]"
     end
     PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
-    ESX.ShowAdvancedNotification('911 Call.', 'Drugs', msg, 'CHAR_CALL911', 7)
+    ESX.ShowAdvancedNotification('911 Call', 'Possible Drugs', msg, 'CHAR_CALL911', 7)
 
     local blip = AddBlipForRadius(pos.x,pos.y,pos.z, 100.0)
     SetBlipHighDetail(blip, true)
