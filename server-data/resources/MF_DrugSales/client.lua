@@ -87,7 +87,7 @@ function MFS:Update(...)
                   Utils.DrawText(noteTemplate)
                 end
                 self:MissionStart()
-
+                menu.close()
               end, function(data, menu)
                 menu.close()
               end)
