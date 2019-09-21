@@ -234,14 +234,14 @@ function MFS:CheckForWitness()
 
         local playerPed = PlayerPedId()
         local foundPed  = nil
-        local closestPed, distance = ESX.Game.GetClosestPed(GetEntityCoords(playerPed), {'s_m_y_dealer_01'})
-        print(distance)
+        local closestPed, distance = ESX.Game.GetClosestPed(GetEntityCoords(playerPed), {self.DealerPed})
 
         if playerPed ~= closestPed and distance < self.CallCopsDistance then
           foundPed = closestPed
         end
 
-        if (foundPed and math.random(100) <= self.CallCopsPercent) then
+        if foundPed then
+          print("PED FOUND! REPORTING TO POLICE!")
           pedWasReported = true
           TriggerServerEvent('MF_DrugSales:NotifyPolice')
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
