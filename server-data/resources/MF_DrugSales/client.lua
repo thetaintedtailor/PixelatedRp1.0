@@ -1,5 +1,5 @@
 local MFS = MF_DrugSales
-
+local currentDrug = ""
 function MFS:Awake(...)
     while not ESX do Citizen.Wait(0); end
     while not ESX.IsPlayerLoaded() do Citizen.Wait(0); end
@@ -59,22 +59,38 @@ function MFS:Update(...)
               TriggerEvent('chat:addMessage', {color = { 255, 0, 0}, multiline = true, args = {"Me", "You notice a small piece of paper slide under the door."}})
               ClearPedTasksImmediately(plyPed)
 
-              local randNum = math.random(1,#self.SalesLocations)
-              local spawnLoc = self.SalesLocations[randNum]
-              local nearStreet = GetStreetNameFromHashKey(GetStreetNameAtCoord(spawnLoc.x,spawnLoc.y,spawnLoc.z))
-              noteTemplate.text = "Find the buyer near "..nearStreet..".\nDon't be late."
+              local elements = {}
 
-              self.MissionStarted = spawnLoc
-
-              SetNewWaypoint(spawnLoc.x,spawnLoc.y)
-
-              local timer = GetGameTimer()
-              while (GetGameTimer() - timer) < (self.NotificationTime * 1000) do
-                Citizen.Wait(0)
-                DrawSprite("commonmenu","", 0.5,0.53, 0.2,0.1,0.0, 125,125,125,200)
-                Utils.DrawText(noteTemplate)
+              for k,v in pairs(self.DrugItems) do
+                table.insert(elements, {label = k, value = v})
               end
-              self:MissionStart()
+
+              ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'drug_selection', {
+                title = 'Select your Dealer',
+                align = 'center',
+                elements = elements
+              }, function(data, menu)
+                currentDrug = data.current.value
+                local randNum = math.random(1,#self.SalesLocations)
+                local spawnLoc = self.SalesLocations[randNum]
+                local nearStreet = GetStreetNameFromHashKey(GetStreetNameAtCoord(spawnLoc.x,spawnLoc.y,spawnLoc.z))
+                noteTemplate.text = "Find the buyer near "..nearStreet..".\nDon't be late."
+
+                self.MissionStarted = spawnLoc
+
+                SetNewWaypoint(spawnLoc.x,spawnLoc.y)
+
+                local timer = GetGameTimer()
+                while (GetGameTimer() - timer) < (self.NotificationTime * 1000) do
+                  Citizen.Wait(0)
+                  DrawSprite("commonmenu","", 0.5,0.53, 0.2,0.1,0.0, 125,125,125,200)
+                  Utils.DrawText(noteTemplate)
+                end
+                self:MissionStart()
+
+              end, function(data, menu)
+                menu.close()
+              end)
             else
               ESX.ShowNotification("There aren't enough police online.")
             end
@@ -131,32 +147,42 @@ function MFS:MissionStart()
             ESX.UI.Menu.CloseAll()
             local elements = {}
             for k,v in pairs(self.DrugItems) do 
-              drugPrice = prices[v]
-              table.insert(elements, {label = k..' : $'..drugPrice, val = v, price = drugPrice})
+              if v == currentDrug then
+                drugPrice = prices[v]
+                table.insert(elements, {label = k..' : $'..drugPrice, val = v, price = drugPrice})
+              end
             end
             ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',{ title = "Drug Buyer", align = 'left', elements = elements },
               function(data,menu) 
-                local count = false 
-                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', {title = "How much do you want to sell? [Max : "..counts[data.current.val].."]"}, 
+                local count = false
+                local sellAmount = 0 
+                if counts[data.current.val] > self.MaxSellPerDealer then
+                  sellAmount = self.MaxSellPerDealer
+                else
+                  sellAmount = counts[data.current.val]
+                end
+                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', {title = "How much do you want to sell? [Max : "..sellAmount.."]"}, 
                   function(data2, menu2)
                     local quantity = tonumber(data2.value)
 
                     if quantity == nil then
                       ESX.ShowNotification("Invalid amount.")
                     else
-                      count = quantity
+                      if quantity > self.MaxSellPerDealer then
+                        count = self.MaxSellPerDealer
+                      else
+                        count = quantity
+                      end
                       menu2.close()
                     end
-                  end, 
-                  function(data2, menu2)
+                  end, function(data2, menu2)
                     menu2.close()
-                  end
-                )
+                  end)
                 while not count do Citizen.Wait(0); end
                 if tonumber(count) > tonumber(counts[data.current.val]) then 
                   ESX.ShowNotification("You don't have that much "..data.current.val..".")
                 else 
-                  ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.val.." for $"..tonumber(count)*tonumber(data.current.price)..".")
+                  ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
                   TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                   menu.close()
                   Citizen.Wait(1500)
