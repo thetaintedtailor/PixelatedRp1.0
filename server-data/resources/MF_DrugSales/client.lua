@@ -143,7 +143,8 @@ function MFS:MissionStart()
         end
         Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
         if IsControlJustPressed(0,38) then
-          self:PoliceNotifyTimer(tPos)
+          --self:PoliceNotifyTimer(tPos)
+          self:CheckForWitness()
           ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
             ESX.UI.Menu.CloseAll()
             local elements = {}
@@ -224,6 +225,34 @@ function MFS:MissionStart()
   end
 end
 
+function MFS:CheckForWitness()
+  local pedWasReported = false
+
+    Citizen.CreateThread(function()
+      while not pedWasReported do
+        local pedLoc, distance
+
+        local playerPed = PlayerPedId()
+        local foundPed  = nil
+        local closestPed, distance = ESX.Game.GetClosestPed()
+
+        if playerPed ~= closestPed and distance < self.CallCopsDistance then
+          foundPed = closestPed
+        end
+
+        if (foundPed and math.random(100) <= self.CallCopsPercent) then
+          pedWasReported = true
+          TriggerServerEvent('MF_DrugSales:NotifyPolice')
+          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
+          Citizen.Wait(3000)
+          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
+        end
+
+        Citizen.Wait(10000)
+      end
+    end)
+end
+
 function MFS:PoliceNotifyTimer(pos)
   Citizen.CreateThread(function(...)
     Citizen.Wait(self.PoliceNotifyCountdown * 60 * 1000)
@@ -237,12 +266,16 @@ function MFS:DoNotifyPolice(pos)
   Citizen.CreateThread(function(...)
     local timer = GetGameTimer()
     local street = GetStreetNameAtCoord(pos.x,pos.y,pos.z)
+    local msg = ""
     if street then
       local nearStreet = GetStreetNameFromHashKey(street)
-      ESX.ShowNotification("Somebody reported suspicious activity at "..nearStreet..". [~g~LEFTALT~s~]")
+      msg = "Somebody reported suspicious activity at "..nearStreet..". [~g~LEFTALT~s~]"
     else
-      ESX.ShowNotification("Somebody reported suspicious activity. [~g~LEFTALT~s~]")
+      msg = "Somebody reported suspicious activity. [~g~LEFTALT~s~]"
     end
+    PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
+    ESX.ShowAdvancedNotification(_U('911Call'), _U('911Lockpick'), msg, 'CHAR_CALL911', 7)
+
     local blip = AddBlipForRadius(pos.x,pos.y,pos.z, 100.0)
     SetBlipHighDetail(blip, true)
     SetBlipColour(blip, 1)
