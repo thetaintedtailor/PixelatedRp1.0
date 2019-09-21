@@ -46,6 +46,7 @@ Config.ShowPoundSpacer2 = true -- If true it shows Spacer 2 in the List | Don't 
 Config.ShowPoundSpacer3 = false -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
 
 Config.MarkerType   = 1
+Config.DeleteMarkerType = 30
 Config.DrawDistance = 100.0
 
 Config.BicycleHashes = { 
@@ -93,7 +94,7 @@ Config.PointMarker = {
 
 Config.DeleteMarker = {
 	r = 255, g = 0, b = 0,     -- Red Color
-	x = 5.0, y = 5.0, z = 1.0  -- Big Size Circle
+	x = 3.0, y = 1.0, z = 4.0  -- Big Size Circle
 }
 
 Config.PoundMarker = {
@@ -145,7 +146,7 @@ Config.CarGarages = {
 	Garage_CentralLS = {
 		GaragePoint = { x = 215.800, y = -810.057, z = 29.727 },
 		SpawnPoint = { x = 229.700, y = -800.1149, z = 29.5722, h = 157.84 },
-		DeletePoint = {x=215.124, y=-791.377, z=29.646}
+		DeletePoint = {x=215.124, y=-791.377, z=30.646}
 	},
 	Garage_Sandy = {
 		GaragePoint = {x=1695.16, y=3611.10, z=34.32},
