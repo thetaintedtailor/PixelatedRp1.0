@@ -194,12 +194,15 @@ function MFS:MissionStart()
                         TaskTurnPedToFaceEntity(plyPed, self.PedSpawned, -1)
                         Citizen.Wait(1000)
                         local strArray = {'a', 'b', 'c'}
+                        MFS:LoadAnimDict("amb@world_human_guard_patrol@male@idle_a")
                         TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
                         TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
                         Citizen.Wait(2500)
+                        MFS:LoadAnimDict("mp_common")
                         TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
                         TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 8.0, 8.0, 2500, 2, 1.0, 0, 0, 0)
                         Citizen.Wait(2500)
+                        MFS:LoadAnimDict("mp_ped_interaction")
                         PlayAmbientSpeech1(self.PedSpawned, 'GENERIC_THANKS', 'GENERIC_CHEER')
                         TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 8.0, 8.0, 5000, 2, 1.0, 0, 0, 0)
                         TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 8.0, 8.0, 5000, 2, 1.0, 0, 0, 0)
@@ -281,6 +284,14 @@ function MFS:CheckForWitness()
       end
     end)
 end
+
+function MFS:LoadAnimDict(dict)
+	while (not HasAnimDictLoaded(dict)) do
+		RequestAnimDict(dict)
+		Citizen.Wait(5)
+	end
+end
+
 
 function MFS:PoliceNotifyTimer(pos)
   Citizen.CreateThread(function(...)
