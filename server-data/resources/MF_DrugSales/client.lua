@@ -70,6 +70,7 @@ function MFS:Update(...)
                 align = 'center',
                 elements = elements
               }, function(data, menu)
+                menu.close()
                 currentDrug = data.current.value
                 local randNum = math.random(1,#self.SalesLocations)
                 local spawnLoc = self.SalesLocations[randNum]
@@ -87,7 +88,6 @@ function MFS:Update(...)
                   Utils.DrawText(noteTemplate)
                 end
                 self:MissionStart()
-                menu.close()
               end, function(data, menu)
                 menu.close()
               end)
@@ -161,8 +161,10 @@ function MFS:MissionStart()
                 else
                   sellAmount = counts[data.current.val]
                 end
-                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', {title = "How much do you want to sell? [Max : "..sellAmount.."]"}, 
-                  function(data2, menu2)
+                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', 
+                {
+                  title = "How much do you want to sell? [Max : "..sellAmount.."]"
+                }, function(data2, menu2)
                     local quantity = tonumber(data2.value)
 
                     if quantity == nil then
@@ -173,20 +175,19 @@ function MFS:MissionStart()
                       else
                         count = quantity
                       end
+
+                      if tonumber(count) > tonumber(counts[data.current.val]) then 
+                        ESX.ShowNotification("You don't have that much "..data.current.label..".")
+                      else 
+                        menu2.close()
+                        self.MissionCompleted = true
+                        distToDropoff = 1000
+                        ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
+                        TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
+                      end
+                    end, function(data2, menu2)
                       menu2.close()
-                    end
-                  end, function(data2, menu2)
-                    menu2.close()
                   end)
-                while not count do Citizen.Wait(0); end
-                if tonumber(count) > tonumber(counts[data.current.val]) then 
-                  ESX.ShowNotification("You don't have that much "..data.current.val..".")
-                else 
-                  ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
-                  TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
-                  menu.close()
-                  Citizen.Wait(1500)
-                  self.MissionCompleted = true
                 end
               end, function(data,menu)
                 menu.close()
