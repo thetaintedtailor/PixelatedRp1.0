@@ -233,11 +233,19 @@ function MFS:CheckForWitness()
         local pedLoc, distance
 
         local playerPed = PlayerPedId()
+        local playerLoc = GetEntityCoords(playerPed, false)
         local foundPed  = nil
-        local closestPed, distance = ESX.Game.GetClosestPed(GetEntityCoords(playerPed), {self.DealerPed})
 
-        if playerPed ~= closestPed and distance < self.CallCopsDistance then
-          foundPed = closestPed
+        for ped in EnumeratePeds() do
+          if DoesEntityExist(ped) then
+            pedLoc   = GetEntityCoords(ped, false)
+            distance = GetDistanceBetweenCoords(playerLoc.x, playerLoc.y, playerLoc.z, pedLoc.x, pedLoc.y, pedLoc.z)
+
+            if playerPed ~= ped and distance < Config.CallCopsDistance then
+              foundPed = ped
+              break
+            end
+          end
         end
 
         if foundPed then
