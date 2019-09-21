@@ -93,7 +93,7 @@ Config.PointMarker = {
 }
 
 Config.DeleteMarker = {
-	r = 255, g = 0, b = 0,     -- Red Color
+	r = 255, g = 120, b = 61,     -- Yellowish Color
 	x = 3.0, y = 1.0, z = 4.0  -- Big Size Circle
 }
 
@@ -146,42 +146,50 @@ Config.CarGarages = {
 	Garage_CentralLS = {
 		GaragePoint = { x = 215.800, y = -810.057, z = 29.727 },
 		SpawnPoint = { x = 229.700, y = -800.1149, z = 29.5722, h = 157.84 },
-		DeletePoint = {x=215.124, y=-791.377, z=30.646}
+		DeletePoint = {x=210.66, y=-788.46, z=29.99},
+		DelMarkerRot = vector3(20.2, 91.0, 90.0)
 	},
 	Garage_Sandy = {
 		GaragePoint = {x=1695.16, y=3611.10, z=34.32},
 		SpawnPoint = {x=1701.83, y=3599.49, z=34.44, h = 220.295 },
-		DeletePoint = {x=1714.26, y=3597.23, z=34.31}
+		DeletePoint = {x=1715.26, y=3597.45, z=34.35},
+		DelMarkerRot = vector3(150.0, 92.0, 92.0)
 	},
 	Garage_Paleto = {
 		GaragePoint = {x=107.95393371582, y=6611.0668945313, z=30.970394134521},
 		SpawnPoint = {x=121.06878662109, y= 6608.837890625, z= 30.914228439331, h = 241.045 },
-		DeletePoint = {x=126.3996887207, y=6620.0795898438, z=30.809488296509}
+		DeletePoint = {x=140.88, y=6606.44, z=30.90},
+		DelMarkerRot = vector3(90.0, 90.0, 90.0)
 	},
 	Garage_Prison = {
 		GaragePoint = { x = 1846.56, y = 2585.86, z = 44.67 },
 		SpawnPoint = { x = 1855.11, y = 2592.72, z = 44.67, h = 274.8 },
-		DeletePoint = { x = 1855.21, y = 2615.3, z = 34.67 } -- z = 44.67
+		DeletePoint = { x = 1855.21, y = 2615.3, z = 34.67 }, -- z = 44.67
+		DelMarkerRot = vector3(90.0, 90.0, 90.0)
 	},
 	Garage_Morningwood = {
 		GaragePoint = {x=-1283.06, y=-214.37, z=41.45},
 		SpawnPoint = {x=-1274.77, y=-227.42, z=41.45, h = 215.0844 },
-		DeletePoint = {x=-1277.15,y=-203.39,z=41.45}
+		DeletePoint = {x=-1277.15,y=-202.82,z=41.50},
+		DelMarkerRot = vector3(145.0, 90.0, 90.0)
 	},
 	Garage_Chumash = {
 		GaragePoint = {x = -3140.323,y = 1124.463,z = 19.70},
 		SpawnPoint = {x = -3132.638, y = 1126.662, z = 19.66, h = 144.86 },
-		DeletePoint = {x = -3136.902,y = 1102.685,z = 19.65}
+		DeletePoint = {x = -3136.36,y = 1102.53,z = 19.71},
+		DelMarkerRot = vector3(189.0, 91.0, 90.0)
 	},
 	Garage_Banham = {
 		GaragePoint = {x = -2982.561,y = 327.506,z = 13.935},
 		SpawnPoint = {x = -2977.238, y = 337.777, z = 13.768, h = 144.86 },
-		DeletePoint = {x = -2971.814,y = 355.331,z = 13.771}
+		DeletePoint = {x = -2978.75, y = 348.15, z = 13.85},
+		DelMarkerRot = vector3(-32.0, 90.0, 90.0)
 	},
 	Garage_Tattoo = {
 		GaragePoint = {x = 1319.09, y = -1663.01, z = 50.24},
 		SpawnPoint = {x = 1305.54, y = -1650.08, z = 50.58, h = 35.175 },
-		DeletePoint = {x = 1311.54, y = -1663.77, z = 50.24}
+		DeletePoint = {x = 1311.42, y = -1663.97, z = 50.30},
+		DelMarkerRot = vector3(-72.5, 90.0, 90.0)
 	},
 	Garage_Lake = {
 		GaragePoint = {x=-73.165504455566, y=908.08734130859, z=234.62},
