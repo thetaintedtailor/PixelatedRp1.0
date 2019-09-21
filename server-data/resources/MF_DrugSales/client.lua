@@ -186,6 +186,7 @@ function MFS:MissionStart()
                   TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                   menu.close()
                   Citizen.Wait(1500)
+                  break
                 end
               end,
               function(data,menu)
@@ -201,7 +202,8 @@ function MFS:MissionStart()
   if not self.MissionCompleted then
     ESX.ShowNotification("You ran out of time and the buyer left.")
     if self.PedSpawned then 
-      DeletePed(self.PedSpawned)
+      --DeletePed(self.PedSpawned)
+      TaskWanderStandard(self.PedSpawned, 10.0, 10)
     end
     self.MissionCompleted = false 
     self.MissionStarted = false
@@ -209,7 +211,8 @@ function MFS:MissionStart()
   else
     ESX.ShowNotification("The dealer has left the spot.")
     if self.PedSpawned then 
-      DeletePed(self.PedSpawned)
+      --DeletePed(self.PedSpawned)
+      TaskWanderStandard(self.PedSpawned, 10.0, 10)
     end
     self.MissionCompleted = false 
     self.MissionStarted = false
