@@ -67,9 +67,16 @@ local function has_value (tab, val)
 	return false
 end
 
+local repoCars = {}
+local repoLimit = 0
 -- Open Main Menu
 function OpenMenuGarage(PointType)
 	ESX.UI.Menu.CloseAll()
+
+	ESX.TriggerServerCallback('vehicle_financing:getfinancedvehicles', function(cars, repo)
+		repoCars = cars
+		repoLimit = repo
+	end)
 	
 	local elements = {}
 	
@@ -148,21 +155,20 @@ function ListOwnedCarsMenu()
 	if Config.ShowGarageSpacer3 then
 		table.insert(elements, {label = _U('spacer3')})
 	end
-	
+
 	ESX.TriggerServerCallback('esx_advancedgarage:getOwnedCars', function(ownedCars)
 		if #ownedCars == 0 then
 			ESX.ShowNotification(_U('garage_nocars'))
 		else
 			for _,v in pairs(ownedCars) do
-
 				if Config.UseVehicleNamesLua then
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
 					local plate        = v.plate
-
-					local labelvehicle
+					local labelvehicle = ''
 					
+					local text = {label = '', value = {}}
 					if Config.ShowVehicleLocation then
 						if v.stored then
 							labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('loc_garage')..' '
@@ -176,13 +182,21 @@ function ListOwnedCarsMenu()
 							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
-					
-					table.insert(elements, {label = labelvehicle, value = v})
+					text =  {label = labelvehicle, value = v}
+					for _,v in pairs(repoCars) do
+						print('financed car ' .. v.paymentsBehind .. ' | ' .. repoLimit)
+						if v.plate == plate  and v.paymentsBehind >= repoLimit then
+							print('adding repo')
+							labelvehicle = ' '..vehicleName..' | '..plate..' | Behind Payments '
+							text =  {label = labelvehicle, value = 'repo'}
+						end
+					end
+					table.insert(elements, text)
 				else
 					local hashVehicule = v.vehicle.model
 					local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
 					local plate        = v.plate
-					local labelvehicle
+					local labelvehicle = ''
 					
 					if Config.ShowVehicleLocation then
 						if v.stored then
@@ -197,17 +211,16 @@ function ListOwnedCarsMenu()
 							labelvehicle = ' '..vehicleName..' | '..plate..' '
 						end
 					end
-					
-					table.insert(elements, {label = labelvehicle, value = v})
+
 				end
 			end
 		end
-		
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_car', {
 			title    = _U('garage_cars'),
 			align    = 'left',
 			elements = elements
 		}, function(data, menu)
+			if data.current.value == "repo" then print('boop') return end
 			if data.current.value.stored then
 				menu.close()
 				SpawnVehicle(data.current.value.vehicle, data.current.value.plate, data.current.value.fuel)
@@ -516,7 +529,6 @@ function ReturnOwnedCarsMenu()
 				local isSpawned = 0
 				local labelvehicle
 				
-				labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
 				for k,v in pairs(carInWorld) do
 					if ESX.Math.Trim(v.plate) == plate and DoesEntityExist(v.vehicleentity) == 1 then
 						isSpawned = 1
@@ -526,15 +538,18 @@ function ReturnOwnedCarsMenu()
 				if isSpawned == 1 then
 					labelvehicle = ' '..vehicleName..' | '..plate..' | '..'Stolen?'..' '
 					table.insert(elements, {label = labelvehicle, value = 'stolen'})
-				end
-				
-				if isSpawned == 0 then
+				else
 					labelvehicle = ' '..vehicleName..' | '..plate..' | '.._U('return')..' '
-				    table.insert(elements, {label = labelvehicle, value = v})
-					--table.insert(elements, {label = labelvehicle, value = v})
+					table.insert(elements, {label = labelvehicle, value = v})
 				end
-				
-				--table.insert(elements, {label = labelvehicle, value = nil})
+
+				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+					if car[1].paymentsBehind >= paymentsBehindRepo then
+						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+						table.insert(elements, {label = labelvehicle, value = 'stolen'})
+					end
+				end, plate)
+
 			else
 				local hashVehicule = v.model
 				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
@@ -550,15 +565,16 @@ function ReturnOwnedCarsMenu()
 					end
 				end
 
-				--if isSpawned == 1 then
-				--	table.insert(elements, {label = labelvehcle, value = 'Stolen?'})
-				--end
-				
 				if isSpawned == 0 then
 					table.insert(elements, {label = labelvehicle, value = v})
 				end
-				
-				--table.insert(elements, {label = labelvehicle, value = v})
+
+				ESX.TriggerServerCallback('vehicle_financing:getfinancedvehiclefromplate', function(car, paymentsBehindRepo)
+					if car[1].paymentsBehind >= paymentsBehindRepo then
+						labelvehicle = ' '..vehicleName..' | '..plate..' | Behind On Payments'
+						table.insert(elements, {label = labelvehicle, value = 'stolen'})
+					end
+				end, plate)
 			end
 		end
 		
