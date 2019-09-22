@@ -5,12 +5,14 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 AddEventHandler("playerDropped", function(reason)
     local src        = source
     local xPlayer    = ESX.GetPlayerFromId(src)
-    local identifier = xPlayer.identifier
+    local identifier = xPlayer and xPlayer.identifier
 
-    MySQL.Async.execute("UPDATE users SET disconnected_at = CURRENT_TIMESTAMP WHERE identifier = @identifier",
-    {
-        ["@identifier"] = identifier
-    })
+    if identifier then 
+        MySQL.Async.execute("UPDATE users SET disconnected_at = CURRENT_TIMESTAMP WHERE identifier = @identifier",
+        {
+            ["@identifier"] = identifier
+        })
+    end
 end)
 
 RegisterCommand("jail", function(src, args, raw)
@@ -173,7 +175,6 @@ ESX.RegisterServerCallback("esx-qalle-jail:retrieveJailTime", function(source, c
     local xPlayer    = ESX.GetPlayerFromId(src)
     local Identifier = xPlayer.identifier
 
-
     MySQL.Async.fetchAll("SELECT jail, (CURRENT_TIMESTAMP - disconnected_at) as offlinetime FROM users WHERE identifier = @identifier", 
     { ["@identifier"] = Identifier }, 
     function(result)
@@ -181,13 +182,13 @@ ESX.RegisterServerCallback("esx-qalle-jail:retrieveJailTime", function(source, c
         local offTime  = tonumber(result[1].offlinetime)
 
         if jailTime > 0 then
-            local newjailTime = offTime and math.max(0, jailTime - math.floor(offTime * Config.OfflineMultiplier / 60))
+            local newJailTime = offTime and math.max(0, jailTime - math.ceil(offTime * Config.OfflineMultiplier / 60))
 
-            if newjailTime then
-                MySQL.Async.execute("UPDATE users SET jail = @time WHERE identifier = @identifier", {["@time"] = newjailTime, ["@identifier"] = Identifier })
+            if newJailTime then
+                MySQL.Async.execute("UPDATE users SET jail = @time WHERE identifier = @identifier", {["@time"] = newJailTime, ["@identifier"] = Identifier })
             end
 
-            cb(true, newjailTime or jailTime)
+            cb(true, newJailTime or jailTime)
         else
             cb(false, 0)
         end
