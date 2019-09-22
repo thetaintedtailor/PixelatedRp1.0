@@ -118,6 +118,7 @@ function MFS:MissionStart()
   local startDist = distToDropoff
   local timer = ((startDist / 1000) * 60) * 1000
   local saleAvailable = true
+  local drawInteractText = true
   while ((GetGameTimer() - startTime) < math.floor(timer) and not self.MissionCompleted) or (self.MissionCompleted and distToDropoff < (self.DrawTextDist*2.0) and saleAvailable == true)  do
     Citizen.Wait(0)   
     plyPed = GetPlayerPed(-1)
@@ -142,93 +143,96 @@ function MFS:MissionStart()
           ESX.ShowNotification("You found the buyer!")
           MFS:CheckForWitness()
         end
-        Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
-        if IsControlJustPressed(0,38) then
-          --self:PoliceNotifyTimer(tPos)
-          ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
-            ESX.UI.Menu.CloseAll()
-            local elements = {}
-            for k,v in pairs(self.DrugItems) do 
-              if v == currentDrug then
-                drugPrice = prices[v]
-                table.insert(elements, {label = k..' : $'..drugPrice, val = v, price = drugPrice})
-              end
-            end
-            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',
-            { 
-              title = "Drug Buyer", align = 'left', elements = elements 
-            }, function(data,menu) 
-                menu.close()
-                local count = false
-                local sellAmount = 0 
-                if counts[data.current.val] > self.MaxSellPerDealer then
-                  sellAmount = self.MaxSellPerDealer
-                else
-                  sellAmount = counts[data.current.val]
+        if drawInteractText == true then
+          Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
+          if IsControlJustPressed(0,38) then
+            --self:PoliceNotifyTimer(tPos)
+            ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
+              ESX.UI.Menu.CloseAll()
+              local elements = {}
+              for k,v in pairs(self.DrugItems) do 
+                if v == currentDrug then
+                  drugPrice = prices[v]
+                  table.insert(elements, {label = k..' : $'..drugPrice, val = v, price = drugPrice})
                 end
-                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', 
-                {
-                  title = "How much do you want to sell? [Max : "..sellAmount.."]"
-                }, function(data2, menu2)
-                    local quantity = tonumber(data2.value)
+              end
+              ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',
+              { 
+                title = "Drug Buyer", align = 'left', elements = elements 
+              }, function(data,menu) 
+                  menu.close()
+                  local count = false
+                  local sellAmount = 0 
+                  if counts[data.current.val] > self.MaxSellPerDealer then
+                    sellAmount = self.MaxSellPerDealer
+                  else
+                    sellAmount = counts[data.current.val]
+                  end
+                  ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', 
+                  {
+                    title = "How much do you want to sell? [Max : "..sellAmount.."]"
+                  }, function(data2, menu2)
+                      local quantity = tonumber(data2.value)
 
-                    if quantity == nil then
-                      ESX.ShowNotification("Invalid amount.")
-                    else
-                      if quantity > self.MaxSellPerDealer then
-                        count = self.MaxSellPerDealer
+                      if quantity == nil then
+                        ESX.ShowNotification("Invalid amount.")
                       else
-                        count = quantity
+                        if quantity > self.MaxSellPerDealer then
+                          count = self.MaxSellPerDealer
+                        else
+                          count = quantity
+                        end
+
+                        if tonumber(count) > tonumber(counts[data.current.val]) then 
+                          ESX.ShowNotification("You don't have that much "..data.current.label..".")
+                        else 
+                          drawInteractText = false
+                          menu2.close()
+                          Citizen.Wait(1500)
+                          local moveToLocation = GetEntityCoords(self.PedSpawned) + (GetEntityForwardVector(self.PedSpawned) * 1.25)
+                          local pedHeading = GetEntityHeading(self.PedSpawned) - 180
+                          TaskGoStraightToCoord(plyPed, moveToLocation.x, moveToLocation.y, moveToLocation.z, 8.0, 10, pedHeading, 0.5)
+                          Citizen.Wait(2000)
+
+                          TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
+                          TaskTurnPedToFaceEntity(plyPed, self.PedSpawned, -1)
+                          Citizen.Wait(1000)
+
+                          local strArray = {'a', 'b', 'c'}
+                          MFS:LoadAnimDict("amb@world_human_guard_patrol@male@idle_a")
+                          TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
+                          TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
+                          Citizen.Wait(3000)
+
+                          MFS:LoadAnimDict("mp_common")
+                          TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 8.0, -8, -1, 1, 0, 0, 0, 0)
+                          TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 8.0, -8, -1, 1, 0, 0, 0, 0)
+                          Citizen.Wait(2500)
+
+                          MFS:LoadAnimDict("mp_ped_interaction")
+                          PlayAmbientSpeech1(self.PedSpawned, 'GENERIC_THANKS', 'GENERIC_CHEER')
+                          TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 8.0, -8, 3500, 1, 0, 0, 0, 0)
+                          TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 8.0, -8, 3500, 1, 0, 0, 0, 0)
+                          Citizen.Wait(4000)
+
+                          ClearPedTasksImmediately(plyPed)
+                          ClearPedTasksImmediately(self.PedSpawned)
+
+                          
+                          --TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_ATM', 0, 1)
+                          saleAvailable = false
+                          ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
+                          TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
+                        end
                       end
-
-                      if tonumber(count) > tonumber(counts[data.current.val]) then 
-                        ESX.ShowNotification("You don't have that much "..data.current.label..".")
-                      else 
-                        menu2.close()
-                        Citizen.Wait(1500)
-                        local moveToLocation = GetEntityCoords(self.PedSpawned) + (GetEntityForwardVector(self.PedSpawned) * 1.25)
-                        local pedHeading = GetEntityHeading(self.PedSpawned) - 180
-                        TaskGoStraightToCoord(plyPed, moveToLocation.x, moveToLocation.y, moveToLocation.z, 8.0, 10, pedHeading, 0.5)
-                        Citizen.Wait(3000)
-
-                        TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
-                        TaskTurnPedToFaceEntity(plyPed, self.PedSpawned, -1)
-                        Citizen.Wait(1000)
-
-                        local strArray = {'a', 'b', 'c'}
-                        MFS:LoadAnimDict("amb@world_human_guard_patrol@male@idle_a")
-                        TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
-                        Citizen.Wait(2500)
-
-                        MFS:LoadAnimDict("mp_common")
-                        TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 8.0, -8, -1, 1, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 8.0, -8, -1, 1, 0, 0, 0, 0)
-                        Citizen.Wait(2500)
-
-                        MFS:LoadAnimDict("mp_ped_interaction")
-                        PlayAmbientSpeech1(self.PedSpawned, 'GENERIC_THANKS', 'GENERIC_CHEER')
-                        TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 8.0, -8, 3000, 1, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 8.0, -8, 3000, 1, 0, 0, 0, 0)
-                        Citizen.Wait(5000)
-
-                        ClearPedTasksImmediately(plyPed)
-                        ClearPedTasksImmediately(self.PedSpawned)
-
-                        
-                        --TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_ATM', 0, 1)
-                        saleAvailable = false
-                        ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
-                        TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
-                      end
-                    end
-                  end, function(data2, menu2)
-                    menu2.close()
-                end)
-            end, function(data,menu)
-              menu.close()
+                    end, function(data2, menu2)
+                      menu2.close()
+                  end)
+              end, function(data,menu)
+                menu.close()
+              end)
             end)
-          end)
+          end
         end
       end
     end
