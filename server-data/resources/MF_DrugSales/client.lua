@@ -190,24 +190,31 @@ function MFS:MissionStart()
                         local pedHeading = GetEntityHeading(self.PedSpawned) - 180
                         TaskGoStraightToCoord(plyPed, moveToLocation.x, moveToLocation.y, moveToLocation.z, 8.0, 10, pedHeading, 0.5)
                         Citizen.Wait(3000)
+
                         TaskTurnPedToFaceEntity(self.PedSpawned, plyPed, -1)
                         TaskTurnPedToFaceEntity(plyPed, self.PedSpawned, -1)
                         Citizen.Wait(1000)
+
                         local strArray = {'a', 'b', 'c'}
                         MFS:LoadAnimDict("amb@world_human_guard_patrol@male@idle_a")
-                        TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 49, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 49, 0, 0, 0, 0)
+                        TaskPlayAnim(self.PedSpawned, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "amb@world_human_guard_patrol@male@idle_a", 'idle_' .. strArray[math.random(1, #strArray)], 8.0, -8, -1, 1, 0, 0, 0, 0)
                         Citizen.Wait(2500)
+
                         MFS:LoadAnimDict("mp_common")
-                        TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 8.0, -8, -1, 49, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 8.0, -8, -1, 49, 0, 0, 0, 0)
+                        TaskPlayAnim(self.PedSpawned, "mp_common", 'givetake1_b', 8.0, -8, -1, 1, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "mp_common", 'givetake1_a', 8.0, -8, -1, 1, 0, 0, 0, 0)
                         Citizen.Wait(2500)
+
                         MFS:LoadAnimDict("mp_ped_interaction")
                         PlayAmbientSpeech1(self.PedSpawned, 'GENERIC_THANKS', 'GENERIC_CHEER')
-                        TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 8.0, -8, -1, 49, 0, 0, 0, 0)
-                        TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 8.0, -8, -1, 49, 0, 0, 0, 0)
+                        TaskPlayAnim(self.PedSpawned, "mp_ped_interaction", 'hugs_guy_a', 8.0, -8, 3000, 1, 0, 0, 0, 0)
+                        TaskPlayAnim(plyPed, "mp_ped_interaction", 'hugs_guy_b', 8.0, -8, 3000, 1, 0, 0, 0, 0)
                         Citizen.Wait(5000)
+
                         ClearPedTasksImmediately(plyPed)
+                        ClearPedTasksImmediately(self.PedSpawned)
+
                         
                         --TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_ATM', 0, 1)
                         saleAvailable = false
