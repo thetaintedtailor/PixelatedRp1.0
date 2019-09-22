@@ -13,10 +13,10 @@ Citizen.CreateThread(function(...)
 end)
 
 -- For the door.
-MFS.ShowBlip = true
-MFS.DrawTextDist = 10.0
+MFS.ShowBlip = false
+MFS.DrawTextDist = 1.5
 MFS.NotificationTime = 5.0
-MFS.RefreshPosTimer = 10.0 -- minutes
+MFS.RefreshPosTimer = 120.0 -- minutes
 
 MFS.PoliceNotifyCountdown = 0.5 -- minutes from reaching dealer until police are notified.
 MFS.NotifyPoliceTimer = 60
@@ -31,7 +31,7 @@ MFS.MaxSellPerDealer = 50
 MFS.HintLocations     =   {
   --[1] = vector4(-1152.0,-1447.54,4.71, 36.74),
   --[2] = vector4(85.83,-1959.58,21.12,224.34),
-  [1] = vector4(1269.05, -1711.31, 54.77, 20.36),
+  [1] = vector4(1269.05, -1711.31, 54.77, 212.02),
 }
 
 MFS.SalesLocations    =   {

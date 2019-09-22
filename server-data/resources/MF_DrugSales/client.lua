@@ -1,5 +1,6 @@
 local MFS = MF_DrugSales
 local currentDrug = ""
+local saleComplete = false
 function MFS:Awake(...)
     while not ESX do Citizen.Wait(0); end
     while not ESX.IsPlayerLoaded() do Citizen.Wait(0); end
@@ -141,6 +142,7 @@ function MFS:MissionStart()
           startTime = 0
           self.MissionCompleted = true
           ESX.ShowNotification("You found the buyer!")
+          saleComplete = false
           MFS:CheckForWitness()
         end
         if drawInteractText == true then
@@ -224,6 +226,7 @@ function MFS:MissionStart()
                           
                           --TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_ATM', 0, 1)
                           saleAvailable = false
+                          saleComplete = true
                           ESX.ShowNotification("You sold "..tonumber(count).." "..data.current.label.." for $"..tonumber(count)*tonumber(data.current.price)..".")
                           TriggerServerEvent('MF_DrugSales:Sold',data.current.val,data.current.price,count)
                         end
@@ -266,8 +269,7 @@ function MFS:CheckForWitness()
   local pedWasReported = false
   
   Citizen.CreateThread(function()
-    while not pedWasReported do
-      print("SEARCHING FOR WITNESSES!")
+    while not pedWasReported and saleComplete == false do
         local pedLoc, distance
 
         local playerPed = PlayerPedId()
@@ -319,7 +321,6 @@ end
 
 function MFS:DoNotifyPolice(pos)
   Citizen.CreateThread(function(...)
-    print('NOTIFYING THE POLICE!')
     local timer = GetGameTimer()
     local street = GetStreetNameAtCoord(pos.x,pos.y,pos.z)
     local msg = ""
