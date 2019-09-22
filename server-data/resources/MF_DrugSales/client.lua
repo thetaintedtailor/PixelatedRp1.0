@@ -253,6 +253,8 @@ function MFS:MissionStart()
     self.MissionCompleted = false 
     self.MissionStarted = false
     self.PedSpawned = false
+    saleComplete = false
+    saleAvailable = true
   else
     ESX.ShowNotification("The dealer has left the spot.")
     if self.PedSpawned then 
@@ -262,6 +264,8 @@ function MFS:MissionStart()
     self.MissionCompleted = false 
     self.MissionStarted = false
     self.PedSpawned = false
+    saleComplete = false
+    saleAvailable = true
   end
 end
 
