@@ -118,11 +118,7 @@ function InJail()
 	--Jail Timer--
 
 	Citizen.CreateThread(function()
-
 		while jailTime > 0 do
-
-			jailTime = jailTime - 1
-
 			ESX.ShowNotification("You have " .. jailTime .. " minutes left in jail!")
 
 			local Male = GetHashKey("mp_m_freemode_01")
@@ -151,6 +147,8 @@ function InJail()
 				UnJail()
 				TriggerServerEvent("esx-qalle-jail:updateJailTime", 0)
 			end
+
+            jailTime = jailTime - 1
 
 			Citizen.Wait(60000)
 		end
