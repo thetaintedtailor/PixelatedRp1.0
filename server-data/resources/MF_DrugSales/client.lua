@@ -158,7 +158,9 @@ function MFS:MissionStart()
               end
               ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Drug_Dealer',
               { 
-                title = "Drug Buyer", align = 'left', elements = elements 
+                title = "Drug Buyer", 
+                align = 'center', 
+                elements = elements 
               }, function(data,menu) 
                   menu.close()
                   local count = false
@@ -170,7 +172,8 @@ function MFS:MissionStart()
                   end
                   ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'How_Much', 
                   {
-                    title = "How much do you want to sell? [Max : "..sellAmount.."]"
+                      title = "How much do you want to sell? [Max : "..sellAmount.."]",
+                      align = 'center'
                   }, function(data2, menu2)
                       local quantity = tonumber(data2.value)
 
@@ -261,9 +264,10 @@ end
 
 function MFS:CheckForWitness()
   local pedWasReported = false
-
-    Citizen.CreateThread(function()
-      while not pedWasReported do
+  
+  Citizen.CreateThread(function()
+    while not pedWasReported do
+      print("SEARCHING FOR WITNESSES!")
         local pedLoc, distance
 
         local playerPed = PlayerPedId()
