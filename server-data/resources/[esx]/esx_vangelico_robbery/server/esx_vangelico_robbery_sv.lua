@@ -88,7 +88,7 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 							TriggerClientEvent('esx_vangelico_robbery:setblip', xPlayers[i], Stores[robb].position)
 					end
 				end
-
+				TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..store.nameofstore..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
 				TriggerClientEvent('esx:showNotification', source, _U('started_to_rob') .. store.nameofstore .. _U('do_not_move'))
 				TriggerClientEvent('esx:showNotification', source, _U('alarm_triggered'))
 				TriggerClientEvent('esx:showNotification', source, _U('hold_pos'))
