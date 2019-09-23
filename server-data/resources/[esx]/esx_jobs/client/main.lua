@@ -231,6 +231,18 @@ AddEventHandler('esx:setJob', function(job)
 	refreshBlips()
 end)
 
+RegisterCommand('job', function()
+	PlayerData.job = job
+	local info = job
+
+
+	TriggerClientEvent('chat:addMessage', {
+		color = {255, 0, 0},
+		multiline = true,
+		args = info
+	})
+end)
+
 function deleteBlips()
 	if JobBlips[1] ~= nil then
 		for i=1, #JobBlips, 1 do
