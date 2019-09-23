@@ -1,35 +1,56 @@
-RegisterNetEvent('esx_rpchat:sendProximityMessage')
-AddEventHandler('esx_rpchat:sendProximityMessage', function(playerId, title, message, color)
-	local source = PlayerId()
-	local target = GetPlayerFromServerId(playerId)
+--[[
 
-	local sourcePed, targetPed = PlayerPedId(), GetPlayerPed(target)
-	local sourceCoords, targetCoords = GetEntityCoords(sourcePed), GetEntityCoords(targetPed)
+  ESX RP Chat
 
-	if target == source then
-		TriggerEvent('chat:addMessage', { args = { title, message }, color = color })
-	elseif GetDistanceBetweenCoords(sourceCoords, targetCoords, true) < 20 then
-		TriggerEvent('chat:addMessage', { args = { title, message }, color = color })
-	end
+--]]
+
+RegisterNetEvent('sendProximityMessage')
+AddEventHandler('sendProximityMessage', function(id, name, message)
+  local myId = PlayerId()
+  local pid = GetPlayerFromServerId(id)
+  if pid == myId then
+    TriggerEvent('chatMessage', "^4" .. name .. "", {0, 153, 204}, "^7 " .. message)
+  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
+    TriggerEvent('chatMessage', "^4" .. name .. "", {0, 153, 204}, "^7 " .. message)
+  end
 end)
 
-Citizen.CreateThread(function()
-	TriggerEvent('chat:addSuggestion', '/twt',  _U('twt_help'),  { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
-	TriggerEvent('chat:addSuggestion', '/atwt',  'Send an anonymous tweet',  { 
-		{ name = 'Handle',  help = 'Handle you want to display' },
-		{ name = 'Message', help = 'Message you want to send'   } 
-	})
-	TriggerEvent('chat:addSuggestion', '/ad',  _U('ad_help'),  { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
-	TriggerEvent('chat:addSuggestion', '/me',   _U('me_help'),   { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
-	TriggerEvent('chat:addSuggestion', '/do',   _U('do_help'),   { { name = _U('generic_argument_name'), help = _U('generic_argument_help') } } )
+RegisterNetEvent('sendProximityMessageMe')
+AddEventHandler('sendProximityMessageMe', function(id, name, message)
+  local myId = PlayerId()
+  local pid = GetPlayerFromServerId(id)
+  if pid == myId then
+    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^6 " .. name .." ".."^6 " .. message)
+  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
+    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^6 " .. name .." ".."^6 " .. message)
+  end
 end)
 
-AddEventHandler('onResourceStop', function(resource)
-	if resource == GetCurrentResourceName() then
-		TriggerEvent('chat:removeSuggestion', '/twt')
-		TriggerEvent('chat:removeSuggestion', '/atwt')
-		TriggerEvent('chat:removeSuggestion', '/ad')
-		TriggerEvent('chat:removeSuggestion', '/me')
-		TriggerEvent('chat:removeSuggestion', '/do')
-	end
+RegisterNetEvent('sendProximityMessageDo')
+AddEventHandler('sendProximityMessageDo', function(id, name, message)
+  local myId = PlayerId()
+  local pid = GetPlayerFromServerId(id)
+  if pid == myId then
+    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^0* " .. name .."  ".."^0  " .. message)
+  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
+    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^0* " .. name .."  ".."^0  " .. message)
+  end
 end)
+
+--[[
+AddEventHandler('esx-qalle-chat:me', function(id, name, message)
+    local myId = PlayerId()
+    local pid = GetPlayerFromServerId(id)
+
+    if pid == myId then
+        TriggerEvent('chat:addMessage', {
+            template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(86, 125, 188, 0.6); border-radius: 3px;"><i class="fas fa-user-circle"></i> {0}:<br> {1}</div>',
+            args = { name, message }
+        })
+    elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 15.4 then
+        TriggerEvent('chat:addMessage', {
+            template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(86, 125, 188, 0.6); border-radius: 3px;"><i class="fas fa-user-circle"></i> {0}:<br> {1}</div>',
+            args = { name, message }
+        })
+    end
+end)--]]
