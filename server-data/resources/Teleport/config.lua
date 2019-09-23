@@ -144,6 +144,69 @@ Config.zones = {
 			b = 255
 		}
 	},
+
+	--this is clubhouse 1 in fivem ipl
+	DocksHangoutEnter = {
+		x = 1240.48, 
+		y = -3257.25, 
+		z = 5.95,
+		w = 1.5,
+		h = 5.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 240,
+			g = 253,
+			b = 239
+		}
+	},
+
+	DocksHangoutExit = {
+		x = 1120.96, 
+		y = -3152.41, 
+		z = -38.05,
+		w = 1.5,
+		h = 1.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 100,
+			g = 100,
+			b = 100
+		},
+	},
+
+	Club2Enter = {
+		x = 797.70, 
+		y = -1627.66, 
+		z = 30.17,
+		w = 1.5,
+		h = 5.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 240,
+			g = 240,
+			b = 240
+		}
+	},
+
+	Club2Exit = {
+		x = 997.41, 
+		y = -3158.17,
+		z = -39.90,
+		w = 1.5,
+		h = 1.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 100,
+			g = 100,
+			b = 100
+		},
+	}
+	--this is clubhouse 2 in the fivem-ipl
+
 }
 
 -- Landing point, keep the same name as markers
@@ -201,11 +264,36 @@ Config.point = {
 		x = 3601.17, 
 		y = 3702.59, 
 		z = 35.64,
-	}
+	},
+
+	DocksHangoutEnter = {
+		x = 1120.96, 
+		y = -3152.41, 
+		z = -38.00,
+	},
+
+	DocksHangoutExit = {
+		x = 1240.48, 
+		y = -3257.25, 
+		z = 6.92,
+	},
+
+	Club2Enter = {
+		x = 997.41, 
+		y = -3158.17,
+		z = -38.91,
+	},
+
+	Club2Exit = {
+		x = 797.70, 
+		y = -1627.66, 
+		z = 31.17,
+	},
+
 }
 
 
--- Automatic teleport list (no need to puseh E key in the marker)
+-- Automatic teleport list (no need to push E key in the marker)
 Config.auto = {
 	'WeedEnter',
 	'WeedExit',

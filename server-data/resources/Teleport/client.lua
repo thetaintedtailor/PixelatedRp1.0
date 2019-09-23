@@ -50,6 +50,22 @@ AddEventHandler('tp:hasEnteredMarker', function(zone)
 		CurrentAction = zone
 	end
 
+	if zone == 'DocksHangoutEnter' then
+		CurrentAction = zone
+	end
+
+	if zone == 'DocksHangoutExit' then
+		CurrentAction = zone
+	end
+
+	if zone == 'Club2Enter' then
+		CurrentAction = zone
+	end
+
+	if zone == 'Club2Exit' then
+		CurrentAction = zone
+	end
+
 end)
 
 AddEventHandler('tp:hasExitedMarker', function(zone)
@@ -113,7 +129,7 @@ Citizen.CreateThread(function()
 		local currentZone = nil
 
 		for zone, data in pairs(Config.zones) do
-			if GetDistanceBetweenCoords(coords, data.x, data.y, data.z, true) < (data.w / 2) then
+			if GetDistanceBetweenCoords(coords, data.x, data.y, data.z, true) < (data.w ) then
 				isInMarker  = true
 				currentZone = zone
 				break
