@@ -42,6 +42,7 @@ Citizen.CreateThread(function()
 	end
 
 	PlayerData = ESX.GetPlayerData()
+
 	refreshBlips()
 end)
 
@@ -232,16 +233,16 @@ AddEventHandler('esx:setJob', function(job)
 end)
 
 RegisterCommand('job', function()
-	PlayerData.job = job
-	local info = job
+	local playerJob = PlayerData.job
 
+	local message = "JOB: " .. PlayerData.job.label .. " | RANK: " .. PlayerData.job.grade_label .. " | SALARY: $" .. PlayerData.job.grade_salary
 
-	TriggerClientEvent('chat:addMessage', {
+	TriggerEvent('chat:addMessage', {
 		color = {255, 0, 0},
 		multiline = true,
-		args = info
+		args = {"INFO", message}
 	})
-end)
+end, false)
 
 function deleteBlips()
 	if JobBlips[1] ~= nil then
