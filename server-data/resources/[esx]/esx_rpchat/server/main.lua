@@ -25,50 +25,35 @@ function getIdentity(source)
 end
 
  AddEventHandler('chatMessage', function(source, name, message)
-      if string.sub(message, 1, string.len("/")) ~= "/" then
-          --local name = getIdentity(source)
-		--TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, message)
-      end
       CancelEvent()
   end)
   
-  -- TriggerEvent('es:addCommand', 'me', function(source, args, user)
-  --    local name = getIdentity(source)
-  --    TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, table.concat(args, " "))
-  -- end) 
-
-
-
-  --- TriggerEvent('es:addCommand', 'me', function(source, args, user)
-  ---    local name = getIdentity(source)
-  ---    TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, table.concat(args, " "))
-  -- end) 
---   TriggerEvent('es:addCommand', 'me', function(source, args, user)
---     local name = getIdentity(source)
---     table.remove(args, 2)
---     TriggerClientEvent('esx-qalle-chat:me', -1, source, name.firstname, table.concat(args, " "))
--- end)
-
-
- RegisterCommand('tweet', function(source, args, rawCommand)
+ RegisterCommand('twt', function(source, args, rawCommand)
     local playerName = GetPlayerName(source)
-    local msg = rawCommand:sub(6)
+    local msg = rawCommand:sub(5)
     local name = getIdentity(source)
-    fal = name.firstname .. " " .. name.lastname
+    fal = name.firstname .. name.lastname
+	args = table.concat(args, ' ')
+	TriggerEvent('esx:senttweet', fal, tostring(args))
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.5); border-radius: 3px;"><i class="fab fa-twitter"></i> @{0}:<br> {1}</div>',
         args = { fal, msg }
     })
 end, false)
 
- RegisterCommand('anontweet', function(source, args, rawCommand)
+ RegisterCommand('atwt', function(source, args, rawCommand)
     local playerName = GetPlayerName(source)
-    local msg = rawCommand:sub(11)
+    --local msg = rawCommand:sub(11)
     local name = getIdentity(source)
     fal = name.firstname .. " " .. name.lastname
+    local handle = tostring(args[1])
+	table.remove(args, 1)
+	args = table.concat(args, ' ')
+
+	TriggerEvent('esx:sentanonymoustweet', fal, handle, tostring(args))
     TriggerClientEvent('chat:addMessage', -1, {
-        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.5); border-radius: 3px;"><i class="fab fa-twitter"></i> @Anonymous:<br> {1}</div>',
-        args = { fal, msg }
+        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.5); border-radius: 3px;"><i class="fab fa-twitter"></i> @{0}:<br> {1}</div>',
+        args = { handle, args }
     })
 end, false)
 
@@ -87,12 +72,28 @@ RegisterCommand('ooc', function(source, args, rawCommand)
     local playerName = GetPlayerName(source)
     local msg = rawCommand:sub(5)
     local name = getIdentity(source)
+    fal = name.firstname .. " " .. name.lastname
 
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(41, 41, 41, 0.5); border-radius: 3px;"><i class="fas fa-globe"></i> {0}:<br> {1}</div>',
-        args = { playerName, msg }
+        args = { fal, msg }
     })
 end, false)
+
+RegisterCommand('do', function(source, args, rawCommand)
+	if source == 0 then
+		print('esx_rpchat: you can\'t use this command from rcon!')
+		return
+	end
+
+	args = table.concat(args, ' ')
+    local name = getIdentity(source)
+    fal = name.firstname .. " " .. name.lastname
+
+	TriggerClientEvent('esx_rpchat:sendProximityMessage', -1, source, fal, args)
+	--print(('%s: %s'):format(name, args))
+end, false)
+
 
 
 function stringsplit(inputstr, sep)

@@ -1,56 +1,41 @@
---[[
+RegisterNetEvent('esx_rpchat:sendProximityMessage')
+AddEventHandler('esx_rpchat:sendProximityMessage', function(playerId, title, message)
+	local source = PlayerId()
+	local target = GetPlayerFromServerId(playerId)
 
-  ESX RP Chat
+	local sourcePed, targetPed = PlayerPedId(), GetPlayerPed(target)
+	local sourceCoords, targetCoords = GetEntityCoords(sourcePed), GetEntityCoords(targetPed)
 
---]]
-
-RegisterNetEvent('sendProximityMessage')
-AddEventHandler('sendProximityMessage', function(id, name, message)
-  local myId = PlayerId()
-  local pid = GetPlayerFromServerId(id)
-  if pid == myId then
-    TriggerEvent('chatMessage', "^4" .. name .. "", {0, 153, 204}, "^7 " .. message)
-  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
-    TriggerEvent('chatMessage', "^4" .. name .. "", {0, 153, 204}, "^7 " .. message)
-  end
+	if target == source then
+    TriggerEvent('chat:addMessage', {
+        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(58, 10, 97, 0.5); border-radius: 3px;"><i class="fas fa-comment"></i> {0} {1}</div>',
+        args = { title, message }
+    })
+	elseif GetDistanceBetweenCoords(sourceCoords, targetCoords, true) < 20 then
+    TriggerEvent('chat:addMessage', {
+        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(58, 10, 97, 0.5); border-radius: 3px;"><i class="fas fa-comment"></i> {0} {1}</div>',
+        args = { title, message }
+    })
+	end
 end)
 
-RegisterNetEvent('sendProximityMessageMe')
-AddEventHandler('sendProximityMessageMe', function(id, name, message)
-  local myId = PlayerId()
-  local pid = GetPlayerFromServerId(id)
-  if pid == myId then
-    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^6 " .. name .." ".."^6 " .. message)
-  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
-    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^6 " .. name .." ".."^6 " .. message)
-  end
+Citizen.CreateThread(function()
+	TriggerEvent('chat:addSuggestion', '/twt',  'Send a tweet',  { { name = 'Message', help = 'The message to send' } } )
+	TriggerEvent('chat:addSuggestion', '/atwt',  'Send an anonymous tweet',  { 
+		{ name = 'Handle',  help = 'Handle you want to display' },
+		{ name = 'Message', help = 'Message you want to send'   } 
+	})
+	TriggerEvent('chat:addSuggestion', '/ad',  'Post an ad',  { { name = 'Message', help = 'The message to send'  } } )
+	TriggerEvent('chat:addSuggestion', '/me',   'Float text above you to emote',   { { name = 'Message', help = 'The message to send'  } } )
+	TriggerEvent('chat:addSuggestion', '/do',   'Display a chat message of emotive actions to people within 20 feet',   { { name = 'Message', help = 'The message to send'  } } )
 end)
 
-RegisterNetEvent('sendProximityMessageDo')
-AddEventHandler('sendProximityMessageDo', function(id, name, message)
-  local myId = PlayerId()
-  local pid = GetPlayerFromServerId(id)
-  if pid == myId then
-    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^0* " .. name .."  ".."^0  " .. message)
-  elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 19.999 then
-    TriggerEvent('chatMessage', "", {255, 0, 0}, " ^0* " .. name .."  ".."^0  " .. message)
-  end
+AddEventHandler('onResourceStop', function(resource)
+	if resource == GetCurrentResourceName() then
+		TriggerEvent('chat:removeSuggestion', '/twt')
+		TriggerEvent('chat:removeSuggestion', '/atwt')
+		TriggerEvent('chat:removeSuggestion', '/ad')
+		TriggerEvent('chat:removeSuggestion', '/me')
+		TriggerEvent('chat:removeSuggestion', '/do')
+	end
 end)
-
---[[
-AddEventHandler('esx-qalle-chat:me', function(id, name, message)
-    local myId = PlayerId()
-    local pid = GetPlayerFromServerId(id)
-
-    if pid == myId then
-        TriggerEvent('chat:addMessage', {
-            template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(86, 125, 188, 0.6); border-radius: 3px;"><i class="fas fa-user-circle"></i> {0}:<br> {1}</div>',
-            args = { name, message }
-        })
-    elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(pid)), true) < 15.4 then
-        TriggerEvent('chat:addMessage', {
-            template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(86, 125, 188, 0.6); border-radius: 3px;"><i class="fas fa-user-circle"></i> {0}:<br> {1}</div>',
-            args = { name, message }
-        })
-    end
-end)--]]
