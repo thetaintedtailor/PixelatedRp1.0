@@ -75,7 +75,6 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 				end
 				TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..bank.nameofbank..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
 
-
 				TriggerClientEvent('esx:showNotification', source, _U('started_to_rob') .. bank.nameofbank .. _U('do_not_move'))
 				TriggerClientEvent('esx:showNotification', source, _U('alarm_triggered'))
 				TriggerClientEvent('esx:showNotification', source, _U('hold_pos'))
