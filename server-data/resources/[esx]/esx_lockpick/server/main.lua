@@ -34,12 +34,14 @@ end)
 
 RegisterServerEvent('esx_lockpick:InProgress')
 AddEventHandler('esx_lockpick:InProgress', function(street1, street2, sex, vehicleName)
+	TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'car', 'Grand Theft Auto', string.upper(sex).." suspect was last seen between "..string.upper(street1).." & "..string.upper(street2) .. ' breaking into a '..vehicleName)
     TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~is stealing a ~r~" .. vehicleName .. " ~w~at ~r~" .. street1 .. " ~w~& ~r~" .. street2)
 end)
 
 
 RegisterServerEvent('esx_lockpick:InProgressS1')
 AddEventHandler('esx_lockpick:InProgressS1', function(street1, sex, vehicleName)
+	TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'car', 'Grand Theft Auto', string.upper(sex).." suspect was last seen around "..string.upper(street1) .. ' breaking into a '..vehicleName)
     TriggerClientEvent("esx_lockpick:outlawLockNotify", -1, "A ~r~" .. sex .. " ~w~is stealing a ~r~" .. vehicleName .. " ~w~at ~r~" .. street1)
 end)
 

@@ -28,7 +28,7 @@ local meleeAlert = false --Set if show when player fight in melee
 local blipGunTime = 15 --in second
 local blipMeleeTime = 7 --in second
 local blipJackingTime = 10 -- in second
-local showcopsmisbehave = false  --show notification when cops steal too
+local showcopsmisbehave = true  --show notification when cops steal too
 --End config
 
 local timing = timer * 60000 --Don't touche it
@@ -330,7 +330,7 @@ Citizen.CreateThread( function()
 							TriggerServerEvent("gunshotInProgress", street1, street2, sex)
 						end
 					end)
-					Wait(3000)
+					Wait(30000)
 				else
 					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 						local sex = nil
@@ -344,9 +344,9 @@ Citizen.CreateThread( function()
 							TriggerServerEvent('gunshotInProgressS1', street1, sex)
 						elseif s2 ~= 0 then
 							TriggerServerEvent("gunshotInProgress", street1, street2, sex)
-						end
+						endD
 					end)
-					Wait(3000)
+					Wait(30000)
 				end
 			end
         end
