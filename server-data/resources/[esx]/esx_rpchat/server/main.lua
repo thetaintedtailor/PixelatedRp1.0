@@ -91,7 +91,6 @@ RegisterCommand('do', function(source, args, rawCommand)
     fal = name.firstname .. " " .. name.lastname
 
 	TriggerClientEvent('esx_rpchat:sendProximityMessage', -1, source, fal, args)
-	--print(('%s: %s'):format(name, args))
 end, false)
 
 

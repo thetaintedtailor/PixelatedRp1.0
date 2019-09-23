@@ -58,7 +58,7 @@ function Display(mePlayer, text, offset)
             local dist = Vdist2(coordsMe, coords)
             if dist < 2500 then
                 if HasEntityClearLosToEntity(PlayerPedId(), GetPlayerPed(mePlayer), 17 ) then
-                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z']+1, text)
+                    DrawText3D(coordsMe['x'], coordsMe['y'], coordsMe['z'], text)
                 end
             end
         end
