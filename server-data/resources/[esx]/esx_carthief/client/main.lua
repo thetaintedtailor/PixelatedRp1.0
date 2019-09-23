@@ -119,7 +119,7 @@ function SpawnCar()
 						SetBlipRoute(deliveryblip, true)
 
 						--Register acitivity for server
-						TriggerServerEvent('esx_carthief:registerActivity', 1)
+						TriggerServerEvent('esx_carthief:registerActivity', 1, GetDisplayNameFromVehicleModel(vehiclehash))
 						
 						--For delivery blip
 						isTaken = 1
