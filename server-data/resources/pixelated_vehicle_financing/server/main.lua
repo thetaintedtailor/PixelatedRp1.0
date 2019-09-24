@@ -81,7 +81,7 @@ ESX.RegisterServerCallback('vehicle_financing:getfinancedvehicles', function(sou
     local financedCars = {}
     local player = GetPlayerIdentifiers(source)[1]
 
-    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner', {
+    MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE EXISTS(SELECT * FROM owned_vehicles WHERE owned_vehicles.owner = @owner)', {
         ['@owner'] = player
     }, function(data)
         for _,v in pairs(data) do 
