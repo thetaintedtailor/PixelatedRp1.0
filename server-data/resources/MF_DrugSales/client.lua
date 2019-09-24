@@ -139,6 +139,9 @@ function MFS:MissionStart()
         SetEntityAsMissionEntity(self.PedSpawned,true,true)
         SetModelAsNoLongerNeeded(hash)
       end
+      if self.PedSpawned and IsPedDeadOrDying(self.PedSpawned) == true then
+        saleAvailable = false
+      end
       if distToDropoff < self.DrawTextDist then
         if not self.MissionCompleted then 
           startTime = 0
@@ -147,13 +150,12 @@ function MFS:MissionStart()
           saleComplete = false
           MFS:CheckForWitness()
         end
-        if self.PedSpawned and IsEntityDead(self.PedSpawned) == true then
-          saleAvailable = false
-        end
         if drawInteractText == true then
           Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
           if IsControlJustPressed(0,38) then
-            --self:PoliceNotifyTimer(tPos)
+            if self.PedSpawned and IsPedDeadOrDying(self.PedSpawned, 1) == true then
+              saleAvailable = false
+            end
             ESX.TriggerServerCallback('MF_DrugSales:GetDrugCount', function(counts)
               ESX.UI.Menu.CloseAll()
               local elements = {}
