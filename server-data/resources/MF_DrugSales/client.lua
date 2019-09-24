@@ -33,11 +33,12 @@ function MFS:Update(...)
   noteTemplate.x = 0.5
   noteTemplate.y = 0.5
   local timer = 0
+  local menuOpen = false
   while self.dS and self.cS do
     Citizen.Wait(0)
     local plyPed = GetPlayerPed(-1)
     local plyPos = GetEntityCoords(plyPed)
-    if not self.MissionStarted then
+    if not self.MissionStarted and menuOpen == false then
       local dist = Utils.GetVecDist(plyPos, self.HintLocation)
       if dist < self.DrawTextDist then
         local p = self.HintLocation
@@ -45,6 +46,7 @@ function MFS:Update(...)
         if IsControlJustPressed(0, Keys["E"]) and GetGameTimer() - timer > 150 then    
           ESX.TriggerServerCallback('MF_DrugSales:GetCops',function(count)
             if count and count >= self.MinPoliceOnline then
+              menuOpen = true
               timer = GetGameTimer()
               TaskGoStraightToCoord(plyPed, p.x, p.y, p.z, 10.0, 10, p.w, 0.5)
               Wait(3000)
@@ -65,7 +67,6 @@ function MFS:Update(...)
               for k,v in pairs(self.DrugItems) do
                 table.insert(elements, {label = k, value = v})
               end
-
               ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'drug_selection', {
                 title = 'Select your Dealer',
                 align = 'center',
@@ -89,6 +90,7 @@ function MFS:Update(...)
                   Utils.DrawText(noteTemplate)
                 end
                 self:MissionStart()
+                menuOpen = false
               end, function(data, menu)
                 menu.close()
               end)
