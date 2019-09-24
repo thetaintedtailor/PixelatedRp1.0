@@ -147,6 +147,9 @@ function MFS:MissionStart()
           saleComplete = false
           MFS:CheckForWitness()
         end
+        if self.PedSpawned and IsEntityDead(self.PedSpawned) == true then
+          saleAvailable = false
+        end
         if drawInteractText == true then
           Utils.DrawText3D(tPos.x,tPos.y,tPos.z, "Press [~r~E~s~] to speak to the dealer.")
           if IsControlJustPressed(0,38) then
@@ -294,7 +297,7 @@ function MFS:CheckForWitness()
           end
         end
 
-        if foundPed  and foundPed ~= self.PedSpawned then
+        if foundPed  and foundPed ~= self.PedSpawned and self.PedSpawned ~= false then
           pedWasReported = true
           TriggerServerEvent('MF_DrugSales:NotifyPolice', playerLoc)
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
