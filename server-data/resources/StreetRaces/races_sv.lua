@@ -242,3 +242,8 @@ AddEventHandler("StreetRaces:loadRace_sv", function(name)
         notifyPlayer(source, msg)
     end
 end)
+
+RegisterNetEvent("StreetRaces:NotifyPolice")
+AddEventHandler("StreetRaces:NotifyPolice", function(coords)
+    TriggerClientEvent('StreetRaces:OutlawNotify', -1, coords)
+end)

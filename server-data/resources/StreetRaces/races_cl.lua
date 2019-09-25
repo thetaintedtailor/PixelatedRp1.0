@@ -17,6 +17,9 @@ local raceStatus = {
 -- Recorded checkpoints
 local recordedCheckpoints = {}
 
+ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 -- Main command for races
 RegisterCommand("race", function(source, args)
     if args[1] == "clear" or args[1] == "leave" then
@@ -69,10 +72,12 @@ RegisterCommand("race", function(source, args)
             -- Create a race using checkpoints or waypoint if none set
             if #recordedCheckpoints > 0 then
                 -- Create race using custom checkpoints
+                CheckForWitness()
                 TriggerServerEvent('StreetRaces:createRace_sv', amount, startDelay, startCoords, recordedCheckpoints)
             elseif IsWaypointActive() then
                 -- Create race using waypoint as the only checkpoint
                 local waypointCoords = GetBlipInfoIdCoord(GetFirstBlipInfoId(8))
+                CheckForWitness()
                 local retval, nodeCoords = GetClosestVehicleNode(waypointCoords.x, waypointCoords.y, waypointCoords.z, 1)
                 table.insert(recordedCheckpoints, {blip = nil, coords = nodeCoords})
                 TriggerServerEvent('StreetRaces:createRace_sv', amount, startDelay, startCoords, recordedCheckpoints)
@@ -433,3 +438,65 @@ function Draw2DText(x, y, text, scale)
     AddTextComponentString(text)
     DrawText(x, y)
 end
+
+function CheckForWitness()
+  local pedWasReported = false
+  local checks = 3
+  Citizen.CreateThread(function()
+    while not pedWasReported do
+        print('CHECKING FOR WITNESSES')
+        local pedLoc, distance
+
+        local playerPed = PlayerPedId()
+        local playerLoc = GetEntityCoords(playerPed, false)
+        local foundPed, distance = ESX.Game.GetClosestPed(playerLoc, {playerPed})
+
+        if foundPed and distance <= config_cl.copCallDistance then
+          pedWasReported = true
+          print('NOTIFYING POLICE!')
+          TriggerServerEvent('StreetRaces:NotifyPolice', playerLoc)
+          TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
+          Citizen.Wait(3000)
+          TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
+          Citizen.Wait(10000)
+          ClearPedTasks(foundPed)
+        end
+        checks = checks - 1
+        Citizen.Wait(5000)
+        if checks == 0 then
+            return
+        end
+      end
+    end)
+end
+
+RegisterNetEvent("StreetRaces:OutlawNotify")
+AddEventHandler("StreetRaces:OutlawNotify", function(coords)
+    if ESX.GetPlayerData().job.name == 'police' then
+        print('POLICE NOTIFICATION')
+        local s1, s2 =	GetStreetNameAtCoord(coords.x, coords.y, coords.z)
+        local street1 = GetStreetNameFromHashKey(s1)
+        local street2 = GetStreetNameFromHashKey(s2)
+        PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
+        if s2 == 0 then
+            ESX.ShowAdvancedNotification('911 Call', 'Possible Street Racing', 'Someone reported suspicious activity of cars gathering to race around ' .. street1, 'CHAR_CALL911', 7)
+        else
+            ESX.ShowAdvancedNotification('911 Call', 'Possible Street Racing', 'Someone reported suspicious activity of cars gathering to race between ' .. street1 .. ' and ' .. street2, 'CHAR_CALL911', 7)
+        end
+        local transT = 250
+        local Blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+        SetBlipSprite(Blip,  10)
+        SetBlipColour(Blip,  1)
+        SetBlipAlpha(Blip,  transT)
+        SetBlipAsShortRange(Blip,  false)
+        while transT ~= 0 do
+            Wait(config_cl.copBlipTime * 4)
+            transT = transT - 1
+            SetBlipAlpha(Blip,  transT)
+            if transT == 0 then
+                SetBlipSprite(Blip,  2)
+                return
+            end
+        end
+    end
+end)
