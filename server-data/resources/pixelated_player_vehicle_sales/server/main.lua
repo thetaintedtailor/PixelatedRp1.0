@@ -11,7 +11,6 @@ TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args,
         ['@job'] = ""
     }, function(results)
         for _,v in pairs(results) do
-            --local vehicle = json.decode(v.vehicle)
             table.insert(vehicles, {vehicle = v.vehicle, plate = v.plate})
         end
         TriggerClientEvent('pixelatedPlayerVehicleSales:displayVehicles', source, vehicles)
@@ -20,21 +19,24 @@ end, {help = "Starts the vehicle selling process."})
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt')
 AddEventHandler('pixelatedPlayerVehicleSales:sendBuyerPrompt', function(vehicle, plate, price, buyer)
+    local _source = source
+    print('Received seller id: ' .. _source)
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
     {
-        ['@owner'] = GetPlayerIdentifiers(source)[1],
+        ['@owner'] = GetPlayerIdentifiers(_source)[1],
         ['@plate'] = plate
     }, function(results)
         local isFinanced = false    
         if #results > 0 then
             isFinanced = true
         end
-        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', buyer, vehicle, plate, price, source, isFinanced)
+        TriggerClientEvent('pixelatedPlayerVehicleSales:promptBuyer', buyer, vehicle, plate, price, _source, isFinanced)
     end)
 end)
 
 RegisterServerEvent('pixelatedPlayerVehicleSales:attemptSale')
 AddEventHandler('pixelatedPlayerVehicleSales:attemptSale', function(plate, price, seller, isFinanced)
+    print('Attempted sale seller: ' .. seller)
     local xBuyer = ESX.GetPlayerFromId(source)
     local xSeller = ESX.GetPlayerFromId(seller)
 

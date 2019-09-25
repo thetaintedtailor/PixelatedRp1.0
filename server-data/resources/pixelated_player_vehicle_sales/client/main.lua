@@ -45,7 +45,6 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                             else
                                 playerName = GetPlayerName(players[i])
                             end
-
                             table.insert(elements, { label = playerName, value = serverId })
                         end
                     end
@@ -55,7 +54,8 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                         elements = elements
                     }, function(data3, menu3)
                         menu3.close()
-                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.current.value, data3.current.value)
+                        print('SELECTED PERSON\'S ID: ' .. data3.current.value)
+                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.value, data3.current.value)
                     end, function(data3, menu3)
                         menu3.close()
                     end)
