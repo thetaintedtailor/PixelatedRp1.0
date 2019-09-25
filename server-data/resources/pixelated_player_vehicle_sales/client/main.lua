@@ -32,14 +32,11 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                 menu2.close()
                 local playerPed = PlayerPedId()
                 local players, nearbyPlayer = ESX.Game.GetPlayersInArea(GetEntityCoords(playerPed), 3.0)
-                local foundPlayers = false
                 local elements = {}
 
                 ESX.TriggerServerCallback('esx_scoreboard:getConnectedPlayers', function(connectedPlayers)
                     for i = 1, #players, 1 do
                         if players[i] ~= PlayerId() then
-                            foundPlayers = true
-
                             local serverId = GetPlayerServerId(players[i])
                             local playerName
 
@@ -49,7 +46,7 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                                 playerName = GetPlayerName(players[i])
                             end
 
-                            table.insert(elements, { label = playerName, value = GetPlayerServerId(players[i]) })
+                            table.insert(elements, { label = playerName, value = serverId })
                         end
                     end
                     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'select_buyer', {
@@ -58,7 +55,7 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                         elements = elements
                     }, function(data3, menu3)
                         menu3.close()
-                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.value, data3.current.value)
+                        TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.current.value, data3.current.value)
                     end, function(data3, menu3)
                         menu3.close()
                     end)

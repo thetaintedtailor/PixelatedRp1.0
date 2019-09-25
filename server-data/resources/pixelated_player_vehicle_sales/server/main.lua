@@ -5,9 +5,10 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 TriggerEvent('es:addGroupCommand', 'sellvehicle', 'user', function(source, args, user)
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner', 
+    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job', 
     {
-        ['@owner'] = GetPlayerIdentifiers(source)[1]
+        ['@owner'] = GetPlayerIdentifiers(source)[1],
+        ['@job'] = ""
     }, function(results)
         for _,v in pairs(results) do
             --local vehicle = json.decode(v.vehicle)
