@@ -16,14 +16,14 @@ Config.Zones = {
     Pos   = { x = 1852.74, y = 3690.26, z = 33.29 },
     Size  = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },  
-    Type  = 27,
+    Jobs = {'police', 'offpolice'}
   },
 
   AmbulanceDuty = {
     Pos = { x = 316.43695068359, y = -589.00659179688, z = 42.291809082031 },
     Size = { x = 2.5, y = 2.5, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },
-    Jobs = {'ambulance', 'offambulance', 'police', 'offpolice'}
+    Jobs = {'ambulance', 'offambulance', 'police', 'offpolice', 'taxi', 'offtaxi', 'offmechanic', 'mechanic'}
   },
 
   TaxiDuty = {
