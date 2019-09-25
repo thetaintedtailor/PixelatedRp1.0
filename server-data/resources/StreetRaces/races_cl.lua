@@ -444,16 +444,28 @@ function CheckForWitness()
   local checks = 3
   Citizen.CreateThread(function()
     while not pedWasReported do
-        print('CHECKING FOR WITNESSES')
         local pedLoc, distance
 
         local playerPed = PlayerPedId()
         local playerLoc = GetEntityCoords(playerPed, false)
-        local foundPed, distance = ESX.Game.GetClosestPed(playerLoc, {playerPed})
+        local players = ESX.Game.GetPlayers()
+        local excludedPeds = {}
+        for _,v in pairs(players) do
+            table.insert(excludedPeds, GetPlayerPed(v))
+        end
+        local foundPed, distance
+        while foundPed == nil do
+            local ped, d = ESX.Game.GetClosestPed(playerLoc, excludedPeds)
+            if GetPedType(ped) == 28 then
+                table.insert(excludedPeds, ped)
+            else
+                foundPed = ped
+                distance = d
+            end
+        end
 
         if foundPed and distance <= config_cl.copCallDistance then
           pedWasReported = true
-          print('NOTIFYING POLICE!')
           TriggerServerEvent('StreetRaces:NotifyPolice', playerLoc)
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
           Citizen.Wait(3000)
