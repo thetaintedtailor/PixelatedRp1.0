@@ -27,13 +27,13 @@
   "useFormatNumberFrance": false,
 
   "background" : {
-    "Calvin & Hobbes": "back001.jpg",
+    "Space": "back001.jpg",
     "Destiny": "back002.jpg",
     "Stormtrooper": "back003.jpg",
     "Custom URL": "URL"
   },
   "background_default": {
-    "label": "Calvin & Hobbes",
+    "label": "Space",
     "value": "back001.jpg"
   },
 
