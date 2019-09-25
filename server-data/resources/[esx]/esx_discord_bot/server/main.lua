@@ -200,6 +200,18 @@ AddEventHandler('esx:killerlog', function(t,killer, kilerT) -- t : 0 = NPC, 1 = 
   end
 end)
 
+RegisterServerEvent('esx:onPlayerDeath')
+AddEventHandler('esx:onPlayerDeath', function(data)
+    local victimName = GetCharacterName(source)
+    if data.killedByPlayer == true then
+      local killerName = GetCharacterName(data.killerServerId)
+      sendToDiscord('New Player Killed', killerName .. ' has killed ' .. victimName, Config.red, Config.deathHook)
+    else
+      sendToDiscord('New Player Suicide', victimName .. ' did something dumb and killed themself.', Config.red, Config.deathHook)
+    end
+end)
+
+
 function GetCharacterName(source)
   local id = GetPlayerIdentifiers(source)[1]
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {

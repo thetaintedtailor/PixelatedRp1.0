@@ -44,3 +44,21 @@ Config.JobLocations = {
   {x = -2119.980, y = 3137.523, z = 32.810},
   {x = -475.276, y = 5988.222, z = 31.336},
 }
+
+Config.PossibleAircraft = {
+  'nimbus',
+  'miljet',
+  'dodo',
+  'cuban800',
+  'frogger',
+  'velum2',
+  'luxor',
+  'vestra',
+  'swift',
+  'seabreeze'
+}
+
+Config.PossibleCars = {
+  'baller4',
+  'patriot2'
+}
