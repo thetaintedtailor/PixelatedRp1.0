@@ -6,8 +6,29 @@ local Bomb = {
     valid = false,
     coords = nil,
     timer = 0,
-    wire = ""
+    wire = "",
+    netID = -1
 }
+
+TriggerEvent('es:addGroupCommand', 'carbomb', "admin", function(source, args)
+    local target = -1
+
+    if args[1] ~= nil then
+        target = tonumber(args[1])
+    end
+
+    TriggerClientEvent('explosives:carbombexploded', target)
+end, function(source, args, user)
+    TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Insufficient permissions!"}})
+end, {help = "Detonate the vehicle someone is in."})
+
+local preRCCoords
+TriggerEvent('es:addGroupCommand', 'rcbomb', "admin", function(source, args)
+    TriggerClientEvent('explosives:spawnedRC', source)
+end, function(source, args, user)
+    TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Insufficient permissions!"}})
+end, {help = "Spawn an explosive RC car."})
+
 
 TriggerEvent('es:addGroupCommand', 'plantbomb', 'admin', function(source, args, user)
     local timer = -1
@@ -51,12 +72,13 @@ end, {help = "Plant a bomb, kaboom!", params = {
     }})
 
 RegisterServerEvent('explosives:bombplanted')
-AddEventHandler('explosives:bombplanted', function(c, t, w)
+AddEventHandler('explosives:bombplanted', function(c, t, w, id)
     Bomb = {
         valid = true,
         coords = c,
         timer = t,
-        wire = w
+        wire = w,
+        netID = id
     }
     TriggerClientEvent('explosives:setbombactive', -1, c)
     Citizen.CreateThread(function()
@@ -66,6 +88,7 @@ AddEventHandler('explosives:bombplanted', function(c, t, w)
             if Bomb.timer <= 0 then
                 TriggerClientEvent('explosives:setbombinactive', -1)
                 TriggerClientEvent('explosives:bombexploded', -1, Bomb.coords)
+                TriggerClientEvent('explosives:bombcleanup', -1, Bomb.coords, Bomb.netID)
                 Bomb.valid = false
             end
             Citizen.Wait(1000)
@@ -73,28 +96,17 @@ AddEventHandler('explosives:bombplanted', function(c, t, w)
     end)
 end)
 
-TriggerEvent('es:addGroupCommand', 'carbomb', "admin", function(source, args)
-    local target = -1
-
-    if args[1] ~= nil then
-        target = tonumber(args[1])
-    end
-
-    TriggerClientEvent('explosives:carbombexploded', target)
-end, function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "Insufficient permissions!"}})
-end, {help = "Detonate the vehicle someone is in."})
 
 RegisterServerEvent('explosives:disarmbomb')
 AddEventHandler('explosives:disarmbomb', function(wire)
     if Bomb.valid == true then
         if wire == string.lower(Bomb.wire) then
             TriggerClientEvent('explosives:bombdisarmed', source, Bomb.coords)
-            TriggerClientEvent('explosives:bombcleanup', source, Bomb.coords)
+            TriggerClientEvent('explosives:bombcleanup', source, Bomb.coords, Bomb.netID)
         else
             TriggerClientEvent('explosives:bombexploded', source, Bomb.coords)
             TriggerClientEvent('explosives:faileddisarm', source)
-            TriggerClientEvent('explosives:bombcleanup', -1, Bomb.coords)
+            TriggerClientEvent('explosives:bombcleanup', -1, Bomb.coords,Bomb.netID)
             local xPlayer = ESX.GetPlayerFromId(source)
             xPlayer.removeInventoryItem('bomb_defuse_kit', 1)
         end
