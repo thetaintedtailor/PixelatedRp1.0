@@ -90,11 +90,6 @@ AddEventHandler('kashactersC:ReloadCharacters', function()
     TriggerEvent("kashactersC:SetupCharacters")
 end)
 
-TriggerEvent('es:addCommand', 'cswitch', function(source, args, user)
-    TriggerEvent('kashactersC:ReloadCharacters')
-end, {help = "Switch Characters"})
-
-
 RegisterNUICallback("CharacterChosen", function(data, cb)
     SetNuiFocus(false,false)
     DoScreenFadeOut(500)
