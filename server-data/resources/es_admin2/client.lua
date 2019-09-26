@@ -253,16 +253,16 @@ AddEventHandler("es_admin:noclip", function(t)
 	TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Noclip has been ^2^*" .. msg)
 end)
 
+local invincible = false
 RegisterNetEvent("es_admin:invincible")
 AddEventHandler("es_admin:invincible", function()
 	local msg = "disabled"
-	local invincible = GetPlayerInvincible(GetPlayerId())
-	SetPlayerInvincible(GetPlayerId(), not invincible)
+	invincible = not invincible
+	SetEntityInvincible(PlayerPedId(), invincible)
 	if(invincible)then
 		msg = "enabled"
 	end
-
-	TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Noclip has been ^2^*" .. msg)
+	TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Invincibility has been ^2^*" .. msg)
 end)
 
 
