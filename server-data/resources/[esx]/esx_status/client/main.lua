@@ -1,4 +1,5 @@
 local Status = {}
+local isPaused = false
 
 function GetStatusData(minimal)
 
@@ -142,12 +143,28 @@ AddEventHandler('esx_status:setDisplay', function(val)
 		setDisplay = true,
 		display    = val
 	})
-
 end)
+
 -- Loaded event
 Citizen.CreateThread(function()
 	TriggerEvent('esx_status:loaded')
 end)
+
+-- Pause menu disable hud display
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(300)
+
+		if IsPauseMenuActive() and not isPaused then
+			isPaused = true
+			TriggerEvent('esx_status:setDisplay', 0.0)
+		elseif not IsPauseMenuActive() and isPaused then
+			isPaused = false 
+			TriggerEvent('esx_status:setDisplay', 0.5)
+		end
+	end
+end)
+
 
 -- Update server
 Citizen.CreateThread(function()
