@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/cleopatra.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "CLEOPATRA - GEOTHEORY"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "Song requested by Judge Bishop Hawke"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/aliens.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "Aliens Are Ghosts - $uicideboy$"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Song requested by Odin (IGN: Budd Dwyer)"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)
@@ -52,7 +52,7 @@ VK.social.facebook = false; // Facebook url ("NONE" to desactive)
 VK.social.youtube = false; // Youtube url ("NONE" to desactive)
 VK.social.twitch = false; // Twitch url ("NONE" to desactive)
 
-VK.players.enable = true; // Enable the players count of the server (true : enable, false : prevent)
+VK.players.enable = false; // Enable the players count of the server (true : enable, false : prevent)
 VK.players.multiplePlayersOnline = "@players online"; // @players equals the players count
 VK.players.onePlayerOnline = "1 player online"; // Text when only one player is on the server
 VK.players.noPlayerOnline = "No players online"; // Text when the server is empty
