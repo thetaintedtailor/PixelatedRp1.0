@@ -235,6 +235,19 @@ AddEventHandler("es_admin:noclip", function(t)
 	TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Noclip has been ^2^*" .. msg)
 end)
 
+RegisterNetEvent("es_admin:invincible")
+AddEventHandler("es_admin:invincible", function()
+	local msg = "disabled"
+	local invincible = GetPlayerInvincible(GetPlayerId())
+	SetPlayerInvincible(GetPlayerId(), not invincible)
+	if(invincible)then
+		msg = "enabled"
+	end
+
+	TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Noclip has been ^2^*" .. msg)
+end)
+
+
 function getPlayers()
 	local players = {}
 	for i = 0,256 do

@@ -487,6 +487,16 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
 end, {help = "Enable or disable noclip"})
 
+TriggerEvent('es:addGroupCommand', 'invincible', "admin", function(source, args, user)
+	local who = tonumber(args[1])
+	if who ~= nil then
+		TriggerClientEvent("es_admin:invincible", who)
+	end
+end, function(source, args, user)
+	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
+end, {help = "Enable or disable invincibility"})
+
+
 -- Kicking
 TriggerEvent('es:addGroupCommand', 'kick', "mod", function(source, args, user)
 	if args[1] then
