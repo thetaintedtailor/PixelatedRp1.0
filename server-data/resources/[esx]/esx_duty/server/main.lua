@@ -10,7 +10,7 @@ AddEventHandler('duty:onoff', function(job)
     local job = xPlayer.job.name
     local grade = xPlayer.job.grade
     
-    if job == 'police' or job == 'ambulance' then
+    if job == 'police' or job == 'ambulance' or job == 'mechanic' or job == 'taxi' then
         xPlayer.setJob('off' ..job, grade)
         TriggerClientEvent('esx:showNotification', _source, _U('offduty'))
     elseif job == 'offpolice' then
@@ -19,6 +19,12 @@ AddEventHandler('duty:onoff', function(job)
     elseif job == 'offambulance' then
         xPlayer.setJob('ambulance', grade)
         TriggerClientEvent('esx:showNotification', _source, _U('onduty'))
+    elseif job == 'offmechanic' then
+        xPlayer.setJob('mechanic', grade)
+        TriggerClientEvent('esx:showNotification', _source, _U('onduty')) 
+    elseif job == 'offtaxi' then
+        xPlayer.setJob('taxi', grade)
+        TriggerClientEvent('esx:showNotification', _source, _U('onduty')) 
     end
 
 end)
