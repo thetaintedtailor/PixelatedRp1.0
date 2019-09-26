@@ -160,7 +160,7 @@ Citizen.CreateThread(function()
 			TriggerEvent('esx_status:setDisplay', 0.0)
 		elseif not IsPauseMenuActive() and isPaused then
 			isPaused = false 
-			TriggerEvent('esx_status:setDisplay', 0.5)
+			TriggerEvent('esx_status:setDisplay', 0.9)
 		end
 	end
 end)
