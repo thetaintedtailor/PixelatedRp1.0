@@ -20,7 +20,6 @@ end, {help = "Starts the vehicle selling process."})
 RegisterServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt')
 AddEventHandler('pixelatedPlayerVehicleSales:sendBuyerPrompt', function(vehicle, plate, price, buyer)
     local _source = source
-    print('Received seller id: ' .. _source)
     MySQL.Async.fetchAll('SELECT * FROM financed_vehicles WHERE owner = @owner AND plate = @plate', 
     {
         ['@owner'] = GetPlayerIdentifiers(_source)[1],

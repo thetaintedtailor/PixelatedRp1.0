@@ -54,7 +54,6 @@ AddEventHandler('pixelatedPlayerVehicleSales:displayVehicles', function(vehicles
                         elements = elements
                     }, function(data3, menu3)
                         menu3.close()
-                        print('SELECTED PERSON\'S ID: ' .. data3.current.value)
                         TriggerServerEvent('pixelatedPlayerVehicleSales:sendBuyerPrompt', data.current.label, data.current.value, data2.value, data3.current.value)
                     end, function(data3, menu3)
                         menu3.close()
@@ -77,12 +76,20 @@ AddEventHandler('pixelatedPlayerVehicleSales:promptBuyer', function(vehModel, pl
     else
         titleString = 'Buy ' .. vehModel .. ' for $' .. price .. '?'
     end
-    ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'buy_vehicle_prompt', {
+    local elements = {}
+    table.insert(elements, {label = 'Yes', value = 'yes'})
+    table.insert(elements, {label = 'No', value = 'no'})
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'buy_vehicle_prompt', {
         title = titleString,
-        align = 'center'
+        align = 'center',
+        elements = elements
     }, function(data, menu)
         menu.close()
-        TriggerServerEvent('pixelatedPlayerVehicleSales:attemptSale', plate, price, seller, isFinanced)
+        if data.current.value == 'yes' then
+            TriggerServerEvent('pixelatedPlayerVehicleSales:attemptSale', plate, price, seller, isFinanced)
+        else
+            TriggerServerEvent('pixelatedPlayerVehicleSales:declinedSale', seller)
+        end
     end, function(data, menu)
         menu.close()
         TriggerServerEvent('pixelatedPlayerVehicleSales:declinedSale', seller)
