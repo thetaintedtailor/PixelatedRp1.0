@@ -30,7 +30,14 @@ end, function(source, args, user)
 end, {help = "Spawn an explosive RC car."})
 
 
-TriggerEvent('es:addGroupCommand', 'plantbomb', 'admin', function(source, args, user)
+TriggerEvent('es:addGroupCommand', 'plantbomb', 'user', function(source, args, user)
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+    local count = xPlayer.getInventoryItem('c4').count
+    if count <= 0 then
+        TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "You need C4 in your inventory to use this command."} })
+        return
+    end
     local timer = -1
     local cutWire = ""
 
@@ -61,6 +68,7 @@ TriggerEvent('es:addGroupCommand', 'plantbomb', 'admin', function(source, args, 
 
     if Bomb.valid == false then
         TriggerClientEvent('explosives:plantbomb', source, timer, cutWire)
+        xPlayer.removeInventoryItem('c4', 1)
     else
         TriggerClientEvent('chat:addMessage', source, { args = {"^1Explosives", "There is already an active bomb in the city."}})
     end
