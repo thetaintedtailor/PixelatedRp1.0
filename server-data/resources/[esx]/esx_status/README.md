@@ -1,37 +1,19 @@
 # fxserver-esx_status
-FXServer ESX Status
-[INSTALLATION]
+FXServer ESX Status Version+
+
+####INSTALATION
 
 1) CD in your resources/[esx] folder
-2) Clone the repository
-```
-git clone https://github.com/FXServer-ESX/fxserver-esx_status esx_status
-```
-3) Import esx_status.sql in your database
-4) Add this in your server.cfg :
-
+2) Import esx_status.sql in your database
+3) Add this into your server.scg
 ```
 start esx_status
 ```
+4) Delete the cache folder in your server-data
 
-[HOWTO]
+####Credits
+Original Script (https://github.com/ESX-Org/esx_status)
+Modified Script by [NyxonDev](https://github.com/NyxonDev)
 
-server.lua
-```lua
-
-local name    = 'hunger'
-local default = 1000000
-local color   = '#CFAD0F'
-
-TriggerEvent('esx_status:registerStatus', name, default, color, 
-	function(status) -- Visible calllback, if it return true the status will be visible
-		return true
-	end,
-	function(status) -- Tick callback, what to do at each tick
-		status.remove(200)
-	end,
-	{remove = 200} -- Client action (add / remove) so the client can be in sync with server
-)
-
-
-```
+###You can not sell and distribute this script without my knowledge!
+###It's forbidden!
