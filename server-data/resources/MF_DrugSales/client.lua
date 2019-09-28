@@ -302,6 +302,7 @@ function MFS:CheckForWitness()
         if foundPed  and foundPed ~= self.PedSpawned and self.PedSpawned ~= false then
           pedWasReported = true
           TriggerServerEvent('MF_DrugSales:NotifyPolice', playerLoc)
+          TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-15: Possible Drug Deal', 'Witnesses describe two individuals exchanging money for small baggies of a substance.')
           TaskTurnPedToFaceEntity(foundPed, playerPed, -1)
           Citizen.Wait(3000)
           TaskStartScenarioInPlace(foundPed, "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
