@@ -38,16 +38,16 @@ Config.Locale = 'en'
 Config.Zones = {
 	CokeField =			{x=1093.139,  y=-3195.673,  z=-39.131},
 	CokeProcessing =	{x=1101.99,  y=-3193.78,  z=-37.99},
-	CokeDealer =		{x=-595.69,   y=393.19,   z=101.88},
+	--CokeDealer =		{x=-595.69,   y=393.19,   z=101.88},
 	MethField =			{x=1005.721,  y=-3200.301,  z=-38.519},
 	MethProcessing =	{x=1010.93,  y=-3197.05,  z=-38.99},
-	MethDealer =		{x=1391.93,     y=3605.77,   z=37.94},
+	--MethDealer =		{x=1391.93,     y=3605.77,   z=37.94},
 	WeedField =			{x=1057.448,  y=-3197.646,  z=-39.138},
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
-	WeedDealer =		{x = 1845.92,   y= 3914.55,  z= 33.46},
+	--WeedDealer =		{x = 1845.92,   y= 3914.55,  z= 33.46},
 	OpiumField =		{x=-2163.93,  y=5192.19,   z=15.01},
 	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=5.79},
-	OpiumDealer =		{x=452.44, y=-841.48,   z=27.84}
+	--OpiumDealer =		{x=452.44, y=-841.48,   z=27.84}
 }
 
 Config.DisableBlip = true -- Set to true to disable blips. False to enable them.
