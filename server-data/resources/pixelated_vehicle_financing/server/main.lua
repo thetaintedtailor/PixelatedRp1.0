@@ -69,7 +69,7 @@ ESX.RegisterServerCallback('vehicle_financing:financeVehicle', function(source, 
     local totalCost = price + (price * Config.InterestRate) 
     local payment = math.ceil(totalCost / Config.PaymentDays)
 
-    if xPlayer.getBank() >= downPayment and xPlayer.getBank() >= payment then
+    if xPlayer.getBank() >= (downPayment + payment) then
         xPlayer.removeBank(payment + downPayment)
         cb(true)
     else
