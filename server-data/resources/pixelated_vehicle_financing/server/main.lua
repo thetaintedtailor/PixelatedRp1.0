@@ -195,7 +195,7 @@ AddEventHandler('vehicle_financing:carpayment', function(plate)
                     ['@plate'] = plate
                 })
                 TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve paid your car payment of ~g~$' .. tostring(result[i].payment_cost))
-                if result[i].remaining_balance <= Config.PaymentErrorThreshold then
+                if result[i].remaining_balance - result[i].payment_cost <= Config.PaymentErrorThreshold then
                     TriggerClientEvent('esx:showNotification', xPlayer.source, 'You\'ve ~g~paid off~s~ one of your vehicles!')
                     MySQL.Sync.execute('DELETE FROM financed_vehicles WHERE plate = @plate', {
                         ['@plate'] = result[i].plate
