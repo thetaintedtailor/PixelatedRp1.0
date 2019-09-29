@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/cleopatra.mp3',
+    'music/aliens.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
