@@ -18,10 +18,14 @@ Citizen.CreateThread(function()
 
         for i = 1, #Config.Locations do
             if GetDistanceBetweenCoords(coords, Config.Locations[i].x, Config.Locations[i].y, Config.Locations[i].z, true) < 1 then
+                DisableControlAction(0, 47, true)
+
                 if IsControlJustReleased(0, 38) then
                     TriggerServerEvent('coffee:buyCoffee')
+                elseif IsDisabledControlJustReleased(0, 47) then
+                    TriggerServerEvent('coffee:buyTea')
                 end
-                ESX.ShowHelpNotification('Press ~r~E~s~ to buy Coffee for ~g~$' .. Config.Price .. '~s~')
+                ESX.ShowHelpNotification('Press ~r~E~s~ for Coffee or ~r~G~s~ for tea. Price: ~g~$' .. Config.Price .. '~s~')
             end
         end
     end
