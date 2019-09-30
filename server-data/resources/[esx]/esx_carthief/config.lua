@@ -32,8 +32,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(3500,6000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(3500,6000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Lighthouse 9.61KM
 	Delivery4 = {
@@ -41,8 +41,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(3500,6000),
-		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','visione','ruston','turismor'},
+		Payment  = math.random(3500,6000),
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 	--House in Paleto 12.94KM
 	Delivery7 = {
@@ -50,8 +50,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(4500,8000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(4500,8000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'divo'},
 	},
 	--Great Ocean Highway 10.47KM
 	Delivery10 = {
@@ -59,8 +59,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(4000,6500),
-		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(4000,6500),
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 	--Marina Drive Desert 8.15KM
 	Delivery13 = {
@@ -68,8 +68,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(3000,5000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(3000,5000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Chiliad Compound
 	Delivery14 = {
@@ -77,8 +77,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 0, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 4000, --math.random(3000,5000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(4500,8000),
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Vinewood Radio Tower
 	Delivery15 = {
@@ -86,8 +86,8 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 0, g = 255, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(3000,5000),
-		Cars = {'sultanrs','osiris','visione','ruston','turismor'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(2000,4000),
+		Cars = {'monster'}
 	},
 	--The Lost MC mobilehome park
 	Delivery16 = {
@@ -95,7 +95,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 0, g = 255, b = 0},
 		Type  = 1,
-		Payment  = 3000, --math.random(3000,5000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'jester2', 'cyclone'},--'sultanrs','osiris','cyclone','ruston','turismor'},
+		Payment  = math.random(4000,6500),
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 }
