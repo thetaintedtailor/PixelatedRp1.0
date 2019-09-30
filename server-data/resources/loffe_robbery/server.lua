@@ -31,7 +31,7 @@ AddEventHandler('loffe_robbery:pickUp', function(store)
     local xPlayer = ESX.GetPlayerFromId(source)
     local randomAmount = math.random(Config.Shops[store].money[1], Config.Shops[store].money[2])
     xPlayer.addMoney(randomAmount)
-    TriggerClientEvent('esx:showNotification', source, Translation[Config.Locale]['cashrecieved'] .. ' ~g~' .. randomAmount .. ' ' .. Translation[Config.Locale]['currency'])
+    TriggerClientEvent('esx:showNotification', source, Translation[Config.Locale]['cashrecieved'] .. ' ~g~'..Translation[Config.Locale]['currency'] .. randomAmount)
     TriggerClientEvent('loffe_robbery:removePickup', -1, store) 
 end)
 
@@ -46,6 +46,14 @@ ESX.RegisterServerCallback('loffe_robbery:canRob', function(source, cb, store)
     end
     if cops >= Config.Shops[store].cops then
         if not Config.Shops[store].robbed and not deadPeds[store] then
+            local xPlayers = ESX.GetPlayers()
+            for i = 1, #xPlayers do
+                local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+                if xPlayer.job.name == 'police' then
+                    TriggerClientEvent('loffe_robbery:msgPolice', xPlayer.source, store, src)
+                end
+            end
+            TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..Config.Shops[store].name..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
             cb(true)
         else
             cb(false)
@@ -59,14 +67,7 @@ RegisterServerEvent('loffe_robbery:rob')
 AddEventHandler('loffe_robbery:rob', function(store)
     local src = source
     Config.Shops[store].robbed = true
-    local xPlayers = ESX.GetPlayers()
-    for i = 1, #xPlayers do
-        local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-        if xPlayer.job.name == 'police' then
-            TriggerClientEvent('loffe_robbery:msgPolice', xPlayer.source, store, src)
-        end
-    end
-    TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..store..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
+    
     TriggerClientEvent('loffe_robbery:rob', -1, store)
     Wait(30000)
     TriggerClientEvent('loffe_robbery:robberyOver', src)
