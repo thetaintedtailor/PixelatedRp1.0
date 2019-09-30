@@ -66,6 +66,7 @@ AddEventHandler('loffe_robbery:rob', function(store)
             TriggerClientEvent('loffe_robbery:msgPolice', xPlayer.source, store, src)
         end
     end
+    TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..store..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
     TriggerClientEvent('loffe_robbery:rob', -1, store)
     Wait(30000)
     TriggerClientEvent('loffe_robbery:robberyOver', src)
