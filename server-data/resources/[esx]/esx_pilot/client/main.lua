@@ -157,6 +157,7 @@ function OpenPilotActionsMenu()
     'default', GetCurrentResourceName(), 'pilot_actions',
     {
       title    = 'Pilot',
+      align = 'center',
       elements = elements
     },
     function(data, menu)
@@ -218,11 +219,27 @@ function OpenPilotActionsMenu()
 
             local playerPed = GetPlayerPed(-1)
             local coords    = Config.Zones.VehicleSpawnPoint.Pos
+            local availableAircraft = {}
 
-            ESX.Game.SpawnVehicle('volatus', coords, 750.0, function(vehicle)
-              TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+            for _,v in pairs(Config.PossibleAircraft) do
+              table.insert(availableAircraft, {label = v:sub(1,1):upper()..v:sub(2), value = v})
+            end
+
+            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pilot_vehicle_selection',{
+              title = 'Select Aircraft',
+              align = 'center',
+              elements = availableAircraft
+            }, function(data2, menu2)
+              ESX.Game.SpawnVehicle(data2.current.value, coords, 750.0, function(vehicle)
+                TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+              end)
+              menu2.close()
+            end, function(data2, menu2)
+              menu2.close()
+              CurrentAction     = 'pilot_actions_menu'
+              CurrentActionMsg  = _U('press_to_open')
+              CurrentActionData = {}
             end)
-
           else
 
             ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
@@ -299,11 +316,27 @@ function OpenPilotActionsMenu()
 
             local playerPed = GetPlayerPed(-1)
             local coords    = Config.Zones.VehicleSpawnPoint.Pos
+            local availableCars = {}
 
-            ESX.Game.SpawnVehicle('baller4', coords, 750.0, function(vehicle)
-              TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+            for _,v in pairs(Config.PossibleCars) do
+              table.insert(availableCars, {label = v:sub(1,1):upper()..v:sub(2), value = v})
+            end
+
+            ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pilot_car_selection',{
+              title = 'Select Vehicle',
+              align = 'center',
+              elements = availableCars
+            }, function(data2, menu2)
+              ESX.Game.SpawnVehicle(data2.current.value, coords, 750.0, function(vehicle)
+                TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+              end)
+              menu2.close()
+            end, function(data2, menu2)
+              menu2.close()
+              CurrentAction     = 'pilot_actions_menu'
+              CurrentActionMsg  = _U('press_to_open')
+              CurrentActionData = {}
             end)
-
           else
 
             ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
