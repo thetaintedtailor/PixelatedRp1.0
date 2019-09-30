@@ -1,19 +1,23 @@
-local bars = {}
+Markers = MarkerController:new()
 
-AddEventHandler("onClientResourceStart", function(resourceName)
-    if (GetCurrentResourceName() ~= resourceName) then
-        return
-    end
+Citizen.CreateThread(function()
+    local previous = GetGameTimer()
+    local lag      = 0.0
 
-    TriggerServerEvent("pixelated_bartending:loading")
-end)
+    while true do
+        Citizen.Wait(0)
 
-RegisterNetEvent("pixelated_bartending:loaded")
-AddEventHandler("pixelated_bartending:loaded", function(data)
-    bars = data
+        local current = GetGameTimer()
+        local elapsed = current - previous
 
-    Citizen.Trace("Got " .. #data .. " bars\n")
-    for k, v in pairs(data) do
-        Citizen.Trace("k = " .. k .. ", v = " .. v .. "\n")
+        previous = current
+        lag = lag + elapsed
+
+        while lag >= Markers.updateCadence do
+            Markers:update()
+            lag = lag - Markers.updateCadence
+        end
+
+        Markers:render()
     end
 end)
