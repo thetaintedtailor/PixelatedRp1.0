@@ -11,7 +11,6 @@ end
 
 function MarkerController:init(data)
     self.markers = data
-    Citizen.Trace("Found " .. #self.markers .. " bars\n")
 end
 
 function MarkerController:render()
@@ -29,7 +28,7 @@ function MarkerController:render()
                 false, -- bob up/down
                 true,  -- face camera
                 2,     -- ?
-                false,  -- rotate only on heading
+                false, -- rotate only on heading
                 false, -- textureDict
                 false, -- textureName
                 false) -- draw on intersecting entities
@@ -55,7 +54,6 @@ function MarkerController:update()
         local markerCoords = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
         local distance     = GetDistanceBetweenCoords(self.playerCoords, markerCoords, true)
 
-        Citizen.Trace("Updating for " .. self.markers[i].name .. ", distance = " .. distance .. " from " .. self.playerCoords .. " to " .. markerCoords .. "\n")
         self.markers[i].distance = distance
 
         if distance <= 100 then
