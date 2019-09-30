@@ -16,6 +16,8 @@ local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local HasAlreadyEnteredMarker = false
 local LastZone                = nil
+local markerWaitTime          = 1
+local currentDutyMarker       = nil
 
 
 --- esx
@@ -28,7 +30,7 @@ Citizen.CreateThread(function ()
   while ESX == nil do
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     Citizen.Wait(0)
-  PlayerData = ESX.GetPlayerData()
+    PlayerData = ESX.GetPlayerData()
   end
 end)
 
@@ -62,28 +64,15 @@ Citizen.CreateThread(function ()
 
         local playerPed = GetPlayerPed(-1)
         
-        local jobs = {
-            'offambulance',
-            'offpolice',
-            'police',
-            'ambulance'
-        }
-
         if CurrentAction ~= nil then
-            for k,v in pairs(jobs) do
-                if PlayerData.job.name == v then
-                    SetTextComponentFormat('STRING')
-                    AddTextComponentString(CurrentActionMsg)
-                    DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+          SetTextComponentFormat('STRING')
+          AddTextComponentString(CurrentActionMsg)
+          DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 
-                    if IsControlJustPressed(0, Keys['E']) then
-                        TriggerServerEvent('duty:onoff')
-                    end
-                end
-            end
-
+          if IsControlJustPressed(0, Keys['E']) then
+              TriggerServerEvent('duty:onoff')
+          end
         end
-
     end       
 end)
 
@@ -95,24 +84,42 @@ Citizen.CreateThread(function ()
     local coords = GetEntityCoords(GetPlayerPed(-1))
 
     for k,v in pairs(Config.Zones) do
-      if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
-        DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+      if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) <= Config.DrawDistance) then
+        for a,b in ipairs(v.Jobs) do
+          if PlayerData.job ~= nil and PlayerData.job.name == b then 
+            DrawMarker(27, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+            currentDutyMarker = v      
+          end
+        end
       end
     end
   end
 end)
 
+
 -- Enter / Exit marker events
+
 Citizen.CreateThread(function ()
   while true do
-    Wait(0)
+    Wait(markerWaitTime)
 
     local coords      = GetEntityCoords(GetPlayerPed(-1))
     local isInMarker  = false
     local currentZone = nil
 
+    while currentDutyMarker == nil do
+      Wait(100)
+    end
+
+    if (GetDistanceBetweenCoords(coords, currentDutyMarker.Pos.x, currentDutyMarker.Pos.y, currentDutyMarker.Pos.z, true) < Config.DrawDistance) then
+      markerWaitTime = 1
+    else
+      markerWaitTime = 5000
+      --break
+    end
+
     for k,v in pairs(Config.Zones) do
-      if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
+      if (GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
         isInMarker  = true
         currentZone = k
       end
