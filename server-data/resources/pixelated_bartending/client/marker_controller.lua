@@ -3,6 +3,7 @@ MarkerController = {}
 function MarkerController:new(object)
     object = object or {}
     object.updateCadence = 10000
+    object.markers = {}
     setmetatable(object, self)
     self.__index = self
     return object
@@ -10,11 +11,12 @@ end
 
 function MarkerController:init(data)
     self.markers = data
+    Citizen.Trace("Found " .. #self.markers .. " bars\n")
 end
 
 function MarkerController:render()
     for i = 1, #self.markers, 1 do
-        local markerCoords = { self.markers[i].x, self.markers[i].y, self.markers[i].z }
+        local markerCoords = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
         local distance     = self.markers[i].distance
 
         if distance and distance <= 100 then
@@ -27,13 +29,13 @@ function MarkerController:render()
                 false, -- bob up/down
                 true,  -- face camera
                 2,     -- ?
-                true,  -- rotate only on heading
+                false,  -- rotate only on heading
                 false, -- textureDict
                 false, -- textureName
                 false) -- draw on intersecting entities
         end
 
-        if distance <= 1 then
+        if distance and distance <= 1.2 then
             ESX.ShowHelpNotification("Press ~INPUT_CONTEXT~ to mix a drink.")
         end
     end
@@ -45,14 +47,15 @@ function MarkerController:update()
     end
 
     self.playerPed    = PlayerPedId()
-    self.playerCoords = GetEntityCoords(playerPed)
+    self.playerCoords = GetEntityCoords(self.playerPed)
 
     local isInRange = false
 
     for i = 1, #self.markers, 1 do
-        local markerCoords = { self.markers[i].x, self.markers[i].y, self.markers[i].z }
+        local markerCoords = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
         local distance     = GetDistanceBetweenCoords(self.playerCoords, markerCoords, true)
 
+        Citizen.Trace("Updating for " .. self.markers[i].name .. ", distance = " .. distance .. " from " .. self.playerCoords .. " to " .. markerCoords .. "\n")
         self.markers[i].distance = distance
 
         if distance <= 100 then

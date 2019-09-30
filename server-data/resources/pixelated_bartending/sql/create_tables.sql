@@ -2,9 +2,9 @@ DROP TABLE bars;
 CREATE TABLE bars (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    x INT NOT NULL,
-    y INT NOT NULL,
-    z INT NOT NULL,
+    x FLOAT NOT NULL,
+    y FLOAT NOT NULL,
+    z FLOAT NOT NULL,
     PRIMARY KEY (id)
 );
 

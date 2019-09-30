@@ -1,4 +1,7 @@
+ESX     = nil
 Markers = MarkerController:new()
+
+TriggerEvent("esx:getSharedObject", function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
     local previous = GetGameTimer()
