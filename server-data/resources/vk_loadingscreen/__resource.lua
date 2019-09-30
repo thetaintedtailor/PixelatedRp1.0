@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/aliens.mp3',
+    'music/still_not_a_player.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
