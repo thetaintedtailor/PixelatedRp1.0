@@ -5,6 +5,7 @@
 local IdentifierTables = {
     {table = "users", column = "identifier"},
     {table = "owned_vehicles", column = "owner"},
+    {table = "financed_vehicles", column = "owner"},
     {table = "user_accounts", column = "identifier"},
 	{table = "owned_properties", column = "owner"},
 	{table = "rented_vehicles", column = "owner"},
