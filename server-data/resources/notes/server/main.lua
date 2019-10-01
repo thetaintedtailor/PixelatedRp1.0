@@ -23,7 +23,7 @@ AddEventHandler('notes:dropNote', function(message)
 	}
 	TriggerClientEvent('notes:createNotes', -1, pickupId, message, _source)
 	TriggerClientEvent('esx:showNotification', _source, "You've dropped a note.")
-	TriggerEvent('esx:droppednote', ESX.GetPlayerFromId(_source).name, message)
+	TriggerEvent('esx:droppednote', _source, message)
 	NoteCount = NoteCount + 1
 	NotesID = pickupId
 end)

@@ -1,3 +1,4 @@
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
 .color-0{color: #ffffff;}
 .color-1{color: #ff4444;}
 .color-2{color: #99cc00;}
@@ -7,11 +8,13 @@
 .color-6{color: #aa66cc;}
 .color-8{color: #cc0000;}
 .color-9{color: #cc0068;}
+    src: url("../BarlowCondensed.ttf");
 
 * {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   margin: 0;
   padding: 0;
+  font-size: 0.9rem;
 }
 
 .no-grow {
@@ -23,30 +26,28 @@ em {
 }
 
 #app {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
+  background-color: transparent;
 }
 
 .chat-window {
   position: absolute;
-  top: 1.5%;
-  left: 0.8%;
+  left: 15px;
   width: 38%;
-  height: 22%;
-  max-width: 1000px;
-  background-color: rgba(52, 73, 94, 0);
+  height: 530px;
+  background-color: rgba(255, 255, 255, 0);
   -webkit-animation-duration: 2s;
-  z-index: -1;
 }
+
 
 
 .chat-messages {
   position: relative;
   height: 95%;
-  font-size: 1.8vh;
-  margin: 1%;
+  font-size: 1.0rem;
 
   overflow-x: hidden;
   overflow-y: hidden;
@@ -54,36 +55,33 @@ em {
 
 
 .chat-input {
-  font-size: 1.65vh;
+  font-size: 0.9rem;
   position: absolute;
 
-  top: 23.8%;
-  left: 0.8%;
+  top: 30%;
+  left: 19px;
   width: 38%;
-  max-width: 1000px;
+
   box-sizing: border-box;
 }
 
 .prefix {
-  font-size: 1.8vh;
   position: absolute;
-  margin-top: 0.5%;
-  left: 0.208%;
+  margin-top: 2px;
+  left: -20px;
 }
 
 textarea {
-  font-size: 1.65vh;
+  font-size: 1.0rem;
   display: block;
   box-sizing: border-box;
-  padding: 1%;
-  padding-left: 3.5%;
+  padding: 5px;
   color: white;
-  background-color: rgba(44, 62, 80, 0);
-  width: 100%;
+  background-color: rgba(0, 0, 0, 0.726);
+  width: 50%;
   border-width: 0;
-  height: 3.15%;
+  height: 30%;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 textarea:focus, input:focus {
@@ -91,23 +89,32 @@ textarea:focus, input:focus {
 }
 
 .msg {
-  margin-bottom: 0.28%;
+  margin-bottom: 5px;
+}
+
+.twitter
+{
+  height: 10%;
+  width: 90%;
+  background: #ffbb33;
+  border-radius: 5px;
+  color: #0000;
 }
 
 .multiline {
-  margin-left: 4%;
-  text-indent: -1.2rem;
+  margin-left: 1.5rem;
+  text-indent: -1.5rem;
   white-space: pre-line;
 }
 
 .suggestions {
   list-style-type: none;
-  padding: 0.5%;
-  padding-left: 1.4%;
-  font-size: 1.65vh;
+  padding: 5px;
+  padding-left: 27px;
+  font-size: 0.9rem;
   box-sizing: border-box;
   color: white;
-  background-color: rgba(44, 62, 80, 1.0);
+  background-color: rgba(207, 227, 114, 0);
   width: 100%;
 }
 
@@ -120,9 +127,5 @@ textarea:focus, input:focus {
 }
 
 .suggestion {
-  margin-bottom: 0.5%;
-}
-
-.hidden {
-  display: none;
+  margin-bottom: 5px;
 }

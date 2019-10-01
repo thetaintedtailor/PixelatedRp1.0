@@ -59,6 +59,7 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 						TriggerClientEvent('esx_holdup:setBlip', xPlayers[i], Stores[currentStore].position)
 					end
 				end
+				TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..store.nameOfStore..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
 
 				TriggerClientEvent('esx:showNotification', _source, _U('started_to_rob', store.nameOfStore))
 				TriggerClientEvent('esx:showNotification', _source, _U('alarm_triggered'))

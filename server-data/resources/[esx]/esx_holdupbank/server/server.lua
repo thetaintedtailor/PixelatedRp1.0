@@ -73,6 +73,7 @@ AddEventHandler('esx_holdupbank:rob', function(robb)
 							TriggerClientEvent('esx_holdupbank:setblip', xPlayers[i], Banks[robb].position)
 					end
 				end
+				TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'money-bill', '10-17:'..bank.nameofbank..' Robbery', 'A silent alarm was triggered at the location and it\'s currently being robbed.')
 
 				TriggerClientEvent('esx:showNotification', source, _U('started_to_rob') .. bank.nameofbank .. _U('do_not_move'))
 				TriggerClientEvent('esx:showNotification', source, _U('alarm_triggered'))

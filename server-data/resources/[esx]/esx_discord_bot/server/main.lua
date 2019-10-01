@@ -49,23 +49,23 @@ AddEventHandler('playerDropped', function(reason)
 end)
 
 RegisterServerEvent("esx:sentanonymoustweet")
-AddEventHandler("esx:sentanonymoustweet", function(name,handle,msg)
+AddEventHandler("esx:sentanonymoustweet", function(id,handle,msg)
   if(settings.LogAnonymousTwitter)then
-    sendToDiscord('Anonymous Tweet', name .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
+    sendToDiscord('Anonymous Tweet', GetCharacterName(id) .. ' used the handle ' .. handle .. ' to send an anonymous tweet containing: ' .. msg, Config.blue, Config.chatHook)
   end
 end)
 
 RegisterServerEvent("esx:senttweet")
-AddEventHandler("esx:senttweet", function(name,msg)
+AddEventHandler("esx:senttweet", function(id,msg)
   if(settings.LogChatServer)then
-    sendToDiscord('Tweet', name .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
+    sendToDiscord('Tweet', GetCharacterName(id) .. ' sent a tweet containing: ' .. msg, Config.blue, Config.chatHook)
   end
 end)
 
 RegisterServerEvent("esx:droppednote")
-AddEventHandler("esx:droppednote", function(name,msg)
+AddEventHandler("esx:droppednote", function(id,msg)
   if(settings.LogDroppedNotes)then
-    sendToDiscord('Dropped Note', name..' dropped a note containing: ' .. msg, Config.purple, Config.chatHook)
+    sendToDiscord('Dropped Note', GetCharacterName(id)..' dropped a note containing: ' .. msg, Config.purple, Config.chatHook)
   end
 end)
 
@@ -84,9 +84,22 @@ AddEventHandler("esx:robbedproperty", function(name, propertyName, amount)
 end)
 
 RegisterServerEvent("esx:sentad")
-AddEventHandler("esx:sentad", function(name,msg)
+AddEventHandler("esx:sentad", function(id,msg)
   if(settings.LogChatServer)then
-    sendToDiscord('Ad', name .. ' sent an ad containing: ' .. msg, Config.blue, Config.chatHook)
+    sendToDiscord('Ad', GetCharacterName(id) .. ' sent an ad containing: ' .. msg, Config.green, Config.chatHook)
+  end
+end)
+
+RegisterServerEvent("esx:didOOCChat")
+AddEventHandler("esx:didOOCChat", function(id,msg)
+  if(settings.LogChatServer)then
+    sendToDiscord('OOC', GetCharacterName(id) .. ' said in OOC: ' .. msg, Config.grey, Config.chatHook)
+  end
+end)
+RegisterServerEvent("esx:didDoChat")
+AddEventHandler("esx:didDoChat", function(name,msg)
+  if(settings.LogChatServer)then
+    sendToDiscord('DO', GetCharacterName(source) .. ' emoted: ' .. msg, Config.purple, Config.chatHook)
   end
 end)
 
@@ -119,7 +132,7 @@ AddEventHandler("esx:itemsoldalert", function(name, item, amount)
 end)
 
 RegisterServerEvent("esx:usedATMalert")
-AddEventHandler("esx:usedATMalert", function(name,wasDeposit,amount)
+AddEventHandler("esx:usedATMalert", function(id,wasDeposit,amount)
   local s = ''
   local time = os.date("*t", os.time())
   if wasDeposit then
@@ -128,8 +141,8 @@ AddEventHandler("esx:usedATMalert", function(name,wasDeposit,amount)
     s = 'withdrew'
   end
 
-  if(settings.LogMoneyBankTransfert)then
-    sendToDiscord('ATM Transfer', name .. ' just ' .. s .. ' ' .. amount .. ' dollars ' .. ' at ' .. time.hour .. ':' .. time.min .. ':'..time.sec, Config.orange, Config.moneyHook)
+  if(settings.LogMoneyBankTransfer)then
+    sendToDiscord('ATM Transfer', GetCharacterName(id) .. ' just ' .. s .. ' ' .. amount .. ' dollars ' .. ' at ' .. time.hour .. ':' .. time.min .. ':'..time.sec, Config.orange, Config.moneyHook)
   end
 end)
 
@@ -137,7 +150,7 @@ end)
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
 RegisterServerEvent("esx:givemoneybankalert")
 AddEventHandler("esx:givemoneybankalert", function(name,nametarget,amount)
-  if(settings.LogMoneyBankTransfert)then
+  if(settings.LogMoneyBankTransfer)then
    sendToDiscord(_U('server_moneybank_transfer'),name.." ".. _('user_gives_to') .." "..nametarget.." "..amount .." dollars", Config.orange, Config.moneyHook)
   end
 end)

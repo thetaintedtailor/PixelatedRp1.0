@@ -11,8 +11,7 @@ AddEventHandler('esx_carthief:pay', function(payment)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	xPlayer.addAccountMoney('bank', tonumber(payment))
-	--TriggerClientEvent('esx:showNotification', _source, '~g~$' .. payment .. ' has been deposted into your bank account. Thank you for the delivery.')
-	--Add cooldown
+	TriggerClientEvent('esx:showNotification', _source, '~g~$' .. payment .. ' has been deposted into your bank account. Thank you for the delivery.')
 end)
 
 ESX.RegisterServerCallback('esx_carthief:anycops',function(source, cb)
@@ -34,7 +33,7 @@ ESX.RegisterServerCallback('esx_carthief:isActive',function(source, cb)
 end)
 
 RegisterServerEvent('esx_carthief:registerActivity')
-AddEventHandler('esx_carthief:registerActivity', function(value)
+AddEventHandler('esx_carthief:registerActivity', function(value, vehicle)
 	activity = value
 	if value == 1 then
 		cooldown = Config.CooldownMinutes * 60000
@@ -47,6 +46,7 @@ AddEventHandler('esx_carthief:registerActivity', function(value)
 				TriggerClientEvent('esx_carthief:setcopnotification', xPlayers[i])
 			end
 		end
+		TriggerEvent('pixelatedPoliceAlerts:sendAlert', 'car', '10-73:High Value GTA', 'A LoJack system has started pinging in a high value '.. vehicle ..' from the import docks.')
 	else
 		activitySource = 0
 	end
