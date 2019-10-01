@@ -34,7 +34,7 @@ end
     local name = getIdentity(source)
     fal = name.firstname .. name.lastname
 	args = table.concat(args, ' ')
-	TriggerEvent('esx:senttweet', fal, tostring(args))
+	TriggerEvent('esx:senttweet', source, tostring(args))
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.5); border-radius: 3px;"><i class="fab fa-twitter"></i> @{0}:<br> {1}</div>',
         args = { fal, msg }
@@ -50,7 +50,7 @@ end, false)
 	table.remove(args, 1)
 	args = table.concat(args, ' ')
 
-	TriggerEvent('esx:sentanonymoustweet', fal, handle, tostring(args))
+	TriggerEvent('esx:sentanonymoustweet', source, handle, tostring(args))
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.5); border-radius: 3px;"><i class="fab fa-twitter"></i> @{0}:<br> {1}</div>',
         args = { handle, args }
@@ -66,6 +66,7 @@ end, false)
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(214, 168, 0, 0.5); border-radius: 3px;"><i class="fas fa-ad"></i> Advertisement:<br> {1}<br></div>',
         args = { fal, msg }
     })
+    TriggerEvent('esx:sentad', source, msg)
 end, false)
 
 RegisterCommand('ooc', function(source, args, rawCommand)
@@ -78,6 +79,7 @@ RegisterCommand('ooc', function(source, args, rawCommand)
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(41, 41, 41, 0.5); border-radius: 3px;"><i class="fas fa-globe"></i> {0}:<br> {1}</div>',
         args = { fal, msg }
     })
+    TriggerEvent('esx:didOOCChat', source, msg)
 end, false)
 
 RegisterCommand('do', function(source, args, rawCommand)
@@ -90,10 +92,9 @@ RegisterCommand('do', function(source, args, rawCommand)
     local name = getIdentity(source)
     fal = name.firstname .. " " .. name.lastname
 
-	TriggerClientEvent('esx_rpchat:sendProximityMessage', -1, source, fal, args)
+    TriggerClientEvent('esx_rpchat:sendProximityMessage', -1, source, fal, args)
+    TriggerEvent('esx:didDoChat', source, args)
 end, false)
-
-
 
 function stringsplit(inputstr, sep)
 	if sep == nil then

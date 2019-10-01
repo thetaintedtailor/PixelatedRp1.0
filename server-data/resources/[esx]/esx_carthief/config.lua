@@ -33,7 +33,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = math.random(3500,6000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'divo'},
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Lighthouse 9.61KM
 	Delivery4 = {
@@ -42,7 +42,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = math.random(3500,6000),
-		Cars = {'sultanrs','osiris','visione','cyclone','turismor'},
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 	--House in Paleto 12.94KM
 	Delivery7 = {
@@ -60,7 +60,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = math.random(4000,6500),
-		Cars = {'sultanrs','osiris','visione','cyclone','turismor'},
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 	--Marina Drive Desert 8.15KM
 	Delivery13 = {
@@ -69,7 +69,7 @@ Config.Delivery = {
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
 		Payment  = math.random(3000,5000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'divo'},
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Chiliad Compound
 	Delivery14 = {
@@ -78,7 +78,7 @@ Config.Delivery = {
 		Color = {r = 0, g = 204, b = 0},
 		Type  = 1,
 		Payment  = math.random(4500,8000),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'divo'},
+		Cars = {'gtrnismo17', '370z', '911r', 'mgt'},
 	},
 	--Vinewood Radio Tower
 	Delivery15 = {
@@ -87,7 +87,7 @@ Config.Delivery = {
 		Color = {r = 0, g = 255, b = 0},
 		Type  = 1,
 		Payment  = math.random(2000,4000),
-		Cars = {'sultanrs','osiris','visione','cyclone','turismor'},
+		Cars = {'monster'}
 	},
 	--The Lost MC mobilehome park
 	Delivery16 = {
@@ -96,6 +96,6 @@ Config.Delivery = {
 		Color = {r = 0, g = 255, b = 0},
 		Type  = 1,
 		Payment  = math.random(4000,6500),
-		Cars = {'gtrnismo17', '370z', '911r', 'mgt', 'divo'},
+		Cars = {'sultanrs','evo9','subwrx','supra2','180sx'},
 	},
 }

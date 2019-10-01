@@ -278,6 +278,32 @@ AddEventHandler('esx:playEmote', function(emote)
 	end)
 end)
 
+RegisterNetEvent('esx:upgradeVehicle')
+AddEventHandler('esx:upgradeVehicle', function()
+	local ped = GetPlayerPed(-1)
+	if IsPedInAnyVehicle(ped, true) then
+		local vehicle = GetVehiclePedIsIn(ped, false)
+		exports["esx_legacyfuel"]:SetFuel(vehicle, 100)
+		local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+		SetVehicleModKit(vehicle, 0)
+		local maxEngine = GetNumVehicleMods(vehicle, 11)
+		local maxBrakes = GetNumVehicleMods(vehicle, 12)
+		local maxTrans  = GetNumVehicleMods(vehicle, 13)
+		local maxSusp  	= GetNumVehicleMods(vehicle, 15)
+		SetVehicleMod(vehicle, 11, maxEngine - 1, false)
+		SetVehicleMod(vehicle, 12, maxBrakes - 1, false)
+		SetVehicleMod(vehicle, 13, maxTrans - 1, false)
+		SetVehicleMod(vehicle, 15, maxSusp - 1, false)
+		ToggleVehicleMod(vehicle, 18, true)
+		ToggleVehicleMod(vehicle, 22, true)
+	else
+		SetNotificationTextEntry('STRING')
+		AddTextComponentSubstringPlayerName('Not in a vehicle.')
+		DrawNotification(false, true)
+	end
+end)
+
+
 RegisterNetEvent('esx:spawnVehicle')
 AddEventHandler('esx:spawnVehicle', function(model)
 	local playerPed = PlayerPedId()
