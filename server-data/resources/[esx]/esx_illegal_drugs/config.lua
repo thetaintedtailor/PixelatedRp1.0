@@ -9,27 +9,27 @@ Config.RequiredCopsMeth   = 1 --Ammount of cop that need to be online to be able
 Config.RequiredCopsWeed   = 1 --Ammount of cop that need to be online to be able to sell weed
 Config.RequiredCopsOpium  = 1 --Ammount of cop that need to be online to be able to sell opium
 
-Config.TimeToFarmWeed     = 4   * 1000 -- Ammount of time to harvest weed
-Config.TimeToProcessWeed  = 10  * 1000 -- Ammount of time to process weed
+Config.TimeToFarmWeed     = 2   * 1000 -- Ammount of time to harvest weed
+Config.TimeToProcessWeed  = 6  * 1000 -- Ammount of time to process weed
 Config.TimeToSellWeed     = 10  * 1000 -- Ammount of time to sell weed
 Config.BaseWeedPrice      = 60
 Config.WeedBonusPerCop    = 5
 
-Config.TimeToFarmCoke     = 5  * 1000 -- Ammount of time to harvest coke
-Config.TimeToProcessCoke  = 11 * 1000 -- Ammount of time to process coke
+Config.TimeToFarmCoke     = 7  * 1000 -- Ammount of time to harvest coke
+Config.TimeToProcessCoke  = 13 * 1000 -- Ammount of time to process coke
 Config.TimeToSellCoke     = 11 * 1000 -- Ammount of time to sell coke
 Config.BaseCokePrice      = 75
 Config.CokeBonusPerCop    = 5
 
 Config.TimeToFarmMeth     = 5   * 1000 -- Ammount of time to harvest meth
-Config.TimeToProcessMeth  = 11  * 1000 -- Ammount of time to process meth
+Config.TimeToProcessMeth  = 10  * 1000 -- Ammount of time to process meth
 Config.TimeToSellMeth     = 11  * 1000 -- Ammount of time to sell meth
 Config.BaseMethPrice      = 90
 Config.MethBonusPerCop    = 5
 
-Config.TimeToFarmOpium    = 5   * 1000 -- Ammount of time to harvest coke
-Config.TimeToProcessOpium = 11  * 1000 -- Ammount of time to process coke
-Config.TimeToSellOpium    = 11  * 1000 -- Ammount of time to sell coke
+Config.TimeToFarmOpium    = 10   * 1000 -- Ammount of time to harvest opium
+Config.TimeToProcessOpium = 15  * 1000 -- Ammount of time to process opium
+Config.TimeToSellOpium    = 11  * 1000 -- Ammount of time to sell opium
 Config.BaseOpiumPrice     = 105
 Config.OpiumBonusPerCop   = 5
 
@@ -45,8 +45,8 @@ Config.Zones = {
 	WeedField =			{x=1057.448,  y=-3197.646,  z=-39.138},
 	WeedProcessing =	{x=1037.527,  y=-3205.368,  z=-38.17},
 	--WeedDealer =		{x = 1845.92,   y= 3914.55,  z= 33.46},
-	OpiumField =		{x=-2163.93,  y=5192.19,   z=15.01},
-	OpiumProcessing =	{x=-750.94,   y=-2230.20,    z=5.79},
+	OpiumField =		{x=-1694.49,  y=-3166.98,   z=13.95},
+	OpiumProcessing =	{x=1739.11,   y=3326.63,    z=41.22},
 	--OpiumDealer =		{x=452.44, y=-841.48,   z=27.84}
 }
 
