@@ -97,9 +97,9 @@ AddEventHandler("esx:didOOCChat", function(id,msg)
   end
 end)
 RegisterServerEvent("esx:didDoChat")
-AddEventHandler("esx:didDoChat", function(name,msg)
+AddEventHandler("esx:didDoChat", function(id,msg)
   if(settings.LogChatServer)then
-    sendToDiscord('DO', GetCharacterName(source) .. ' emoted: ' .. msg, Config.purple, Config.chatHook)
+    sendToDiscord('DO', GetCharacterName(id) .. ' emoted: ' .. msg, Config.purple, Config.chatHook)
   end
 end)
 
