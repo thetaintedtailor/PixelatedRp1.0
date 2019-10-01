@@ -344,7 +344,7 @@ Citizen.CreateThread( function()
 							TriggerServerEvent('gunshotInProgressS1', street1, sex)
 						elseif s2 ~= 0 then
 							TriggerServerEvent("gunshotInProgress", street1, street2, sex)
-						endD
+						end
 					end)
 					Wait(30000)
 				end
