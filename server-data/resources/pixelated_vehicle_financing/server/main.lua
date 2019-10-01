@@ -10,7 +10,7 @@ MySQL.ready(function()
         table.insert(Vehicles, vehicle)
     end
 
-    MySQL.Async.execute('DELETE * FROM financed_vehicles WHERE remaining_balance <= @payment_error', {
+    MySQL.Async.execute('DELETE FROM financed_vehicles WHERE remaining_balance <= @payment_error', {
         ['@payment_error'] = Config.PaymentErrorThreshold
     })
 end)
