@@ -195,6 +195,13 @@ end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
 end, {help = _U('disconnect')})
 
+TriggerEvent('es:addGroupCommand', 'upgrade', 'admin', function(source, args, user)
+	TriggerClientEvent('esx:upgradeVehicle', source)
+end, function(source, args, user)
+	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
+end, {help = 'Fully upgrade the vehicle you\'re in minus armor.'})
+
+
 TriggerEvent('es:addGroupCommand', 'clear', 'user', function(source, args, user)
 	TriggerClientEvent('chat:clear', source)
 end, function(source, args, user)
