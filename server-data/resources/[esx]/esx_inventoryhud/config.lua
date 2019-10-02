@@ -8,3 +8,4 @@ Config.OpenControl = 289 -- Key for opening inventory. Edit html/js/config.js to
 
 -- List of item names that will close ui when used
 Config.CloseUiItems = {"headbag", "fishingrod"}
+Config.CloseUiItems = {"headbag", "tunerchip"}
