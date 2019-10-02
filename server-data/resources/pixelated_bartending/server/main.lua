@@ -25,8 +25,10 @@ AddEventHandler("pixelated_bartending:loading", function()
     end
 end)
 
-RegisterNetEvent("esx:playerLoaded")
-AddEventHandler("esx:playerLoaded", function(xPlayer)
+AddEventHandler("esx:playerLoaded", function()
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
     if xPlayer ~= nil then
         getEmployeeBars(xPlayer.getIdentifier(), function(results)
             TriggerClientEvent("pixelated_bartending:loaded", _source, results)

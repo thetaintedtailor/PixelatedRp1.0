@@ -25,6 +25,8 @@ function MarkerController:draw()
         return
     end
 
+    self.isDrawing = true
+
     Citizen.CreateThread(function()
         while self.isDrawing do
             Citizen.Wait(0)
@@ -67,8 +69,7 @@ function MarkerController:update(lag)
     end
 
     if self.nearestMarker.distance <= 20 then
-        self.isDrawing = true
-        self.draw()
+        self:draw()
     else
         self.isDrawing = false
     end
