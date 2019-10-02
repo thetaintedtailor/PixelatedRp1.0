@@ -2,25 +2,35 @@ MarkerController = {}
 
 function MarkerController:new(object)
     object = object or {}
-    object.updateCadence = 10000
-    object.markers = {}
+    object.isDrawing     = false
+    object.markers       = {}
+    object.nearestMarker = nil
+
     setmetatable(object, self)
     self.__index = self
     return object
 end
 
 function MarkerController:init(data)
-    self.markers = data
+    self.playerPed = PlayerPedId()
+    self.markers   = data
+
+    for i = 1, #self.markers, 1 do
+        self.markers[i].position = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
+    end
 end
 
-function MarkerController:render()
-    for i = 1, #self.markers, 1 do
-        local markerCoords = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
-        local distance     = self.markers[i].distance
+function MarkerController:draw()
+    if self.isDrawing then
+        return
+    end
 
-        if distance and distance <= 100 then
+    Citizen.CreateThread(function()
+        while self.isDrawing do
+            Citizen.Wait(0)
+
             DrawMarker(Config.MarkerType,
-                markerCoords,
+                self.nearestMarker.position,
                 0.0, 0.0, 0.0, -- direction
                 0.0, 0.0, 0.0, -- rotation
                 1.0, 1.0, 1.0, -- scale
@@ -33,35 +43,33 @@ function MarkerController:render()
                 false, -- textureName
                 false) -- draw on intersecting entities
         end
-
-        if distance and distance <= 1.2 then
-            ESX.ShowHelpNotification("Press ~INPUT_CONTEXT~ to mix a drink.")
-        end
-    end
+    end)
 end
 
-function MarkerController:update()
+-- @param lag time since the last update (in ms)
+function MarkerController:update(lag)
     if #self.markers <= 0 then
         return
     end
 
-    self.playerPed    = PlayerPedId()
+    if lag >= 30000 then
+        self.playerPed = PlayerPedId()
+    end
+
     self.playerCoords = GetEntityCoords(self.playerPed)
 
-    local isInRange = false
-
     for i = 1, #self.markers, 1 do
-        local markerCoords = vector3(self.markers[i].x, self.markers[i].y, self.markers[i].z)
-        local distance     = GetDistanceBetweenCoords(self.playerCoords, markerCoords, true)
+        self.markers[i].distance = GetDistanceBetweenCoords(self.playerCoords, self.markers[i].position, true)
 
-        self.markers[i].distance = distance
-
-        if distance <= 100 then
-            isInRange = true
+        if i == 1 or self.markers[i].distance <= self.markers[i - 1].distance then
+            self.nearestMarker = self.markers[i]
         end
     end
 
-    if isInRange then
-        self.updateCadence = 2000
+    if self.nearestMarker.distance <= 20 then
+        self.isDrawing = true
+        self.draw()
+    else
+        self.isDrawing = false
     end
 end

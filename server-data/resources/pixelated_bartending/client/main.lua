@@ -4,23 +4,16 @@ Markers = MarkerController:new()
 TriggerEvent("esx:getSharedObject", function(obj) ESX = obj end)
 
 Citizen.CreateThread(function()
-    local previous = GetGameTimer()
-    local lag      = 0.0
+    local current, elapsed, previous = nil, nil, GetGameTimer()
 
     while true do
-        Citizen.Wait(0)
+        current = GetGameTimer()
+        elapsed = current - previous
 
-        local current = GetGameTimer()
-        local elapsed = current - previous
+        Markers:update(elapsed)
 
         previous = current
-        lag = lag + elapsed
 
-        while lag >= Markers.updateCadence do
-            Markers:update()
-            lag = lag - Markers.updateCadence
-        end
-
-        Markers:render()
+        Citizen.Wait(10000)
     end
 end)
