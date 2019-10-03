@@ -6,9 +6,9 @@ let ESX = null;
 
 emit("esx:getSharedObject", (obj) => ESX = obj);
 
-//RegisterCommand("tuner", () => {
-//  emit("xgc-tuner:openTuner")
-//});
+RegisterCommand("tuner", () => {
+  emit("xgc-tuner:openTuner")
+});
 
 RegisterNetEvent("xgc-tuner:openTuner")
 AddEventHandler("xgc-tuner:openTuner", () => {
