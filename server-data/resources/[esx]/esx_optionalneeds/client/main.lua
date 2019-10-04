@@ -66,7 +66,7 @@ end
 
 function CheckOverdose(value)
   local playerPed = GetPlayerPed(-1)
-  local chance    = math.max(0.00, (value / 1000000) - 0.3) -- assumed esx_status max of 1 million
+  local chance    = 0.04 * (25 ^ (value / 1000000)) - 0.12 -- y = a(b^x)+c w/ assumed status max of 1 mil
 
   if math.random() < chance then
     ESX.ShowNotification("You have ~r~passed out~s~!")

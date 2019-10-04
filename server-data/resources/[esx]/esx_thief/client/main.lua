@@ -215,15 +215,15 @@ end
 
 RegisterNetEvent('cuffClient')
 AddEventHandler('cuffClient', function()
-	local pP = GetPlayerPed(-1)
+	local playerPed = GetPlayerPed(-1)
 	RequestAnimDict('mp_arresting')
 	while not HasAnimDictLoaded('mp_arresting') do
 		Citizen.Wait(100)
 	end
-	TaskPlayAnim(pP, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0, 0, 0, 0)
-	SetEnableHandcuffs(pP, true)
-	SetCurrentPedWeapon(pP, GetHashKey('WEAPON_UNARMED'), true)
-	DisablePlayerFiring(pP, true)
+	TaskPlayAnim(playerPed, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0, 0, 0, 0)
+	SetEnableHandcuffs(playerPed, true)
+	SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), true)
+	DisablePlayerFiring(playerPed, true)
     ESX.ShowNotification(_U('cuffed'))
 	--FreezeEntityPosition(pP, true)
 	handcuffed = true
@@ -293,10 +293,16 @@ Citizen.CreateThread(function()
         DisableControlAction(0, Keys['F2'], true) -- Inventory
         DisableControlAction(0, Keys['F3'], true) -- Animations
         DisableControlAction(0, Keys['F6'], true) -- Job
+        DisableControlAction(0, Keys['F7'], true) -- Invoices
+        DisableControlAction(0, Keys['F9'], true) -- Crafting Menu
+        DisableControlAction(0, Keys['F10'], true) -- Animations
 
-        DisableControlAction(0, Keys['V'], true) -- Disable changing view
-        DisableControlAction(0, Keys['C'], true) -- Disable looking behind
-        DisableControlAction(0, Keys['X'], true) -- Disable clearing animation
+        DisableControlAction(2, Keys['Z'], true) -- Disable clearing animation
+        DisableControlAction(2, Keys['B'], true) -- Disable fingerpoint
+        DisableControlAction(2, Keys['L'], true) -- Disable Cross arms
+        --DisableControlAction(0, Keys['V'], true) -- Disable changing view
+        --DisableControlAction(0, Keys['C'], true) -- Disable looking behind
+        DisableControlAction(0, Keys['X'], true) -- Disable hands up
         DisableControlAction(2, Keys['P'], true) -- Disable pause screen
 
         DisableControlAction(0, 59, true) -- Disable steering in vehicle

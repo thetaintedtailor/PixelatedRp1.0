@@ -71,9 +71,9 @@ Config.zones = {
 	},
 
 	CokeEnter = {
-		x = 13.37,
-		y = 3732.18,
-		z = 39.68,
+		x = 2916.61,
+		y = 4643.52,
+		z = 48.54,
 		w = 2.0,
 		h = 1.0,		
 		visible = false,
@@ -86,9 +86,9 @@ Config.zones = {
 	},
 	
 	CokeExit = {
-		x = 1103.613,
-		y = -3196.25,
-		z = -38.993,
+		x = 2911.12,
+		y = 4639.86,
+		z = 48.54,
 		w = 2.0,
 		h = 1.0,		
 		visible = false,
