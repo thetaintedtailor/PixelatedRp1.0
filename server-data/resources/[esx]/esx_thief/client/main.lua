@@ -302,7 +302,7 @@ Citizen.CreateThread(function()
         DisableControlAction(2, Keys['L'], true) -- Disable Cross arms
         --DisableControlAction(0, Keys['V'], true) -- Disable changing view
         --DisableControlAction(0, Keys['C'], true) -- Disable looking behind
-        DisableControlAction(0, Keys['X'], true) -- Disable clearing animation
+        DisableControlAction(0, Keys['X'], true) -- Disable hands up
         DisableControlAction(2, Keys['P'], true) -- Disable pause screen
 
         DisableControlAction(0, 59, true) -- Disable steering in vehicle
