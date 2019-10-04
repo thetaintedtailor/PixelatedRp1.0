@@ -86,9 +86,9 @@ Config.zones = {
 	},
 	
 	CokeExit = {
-		x = 2911.12,
-		y = 4639.86,
-		z = 48.54,
+		x = 1103.613,
+		y = -3196.25,
+		z = -38.993
 		w = 2.0,
 		h = 1.0,		
 		visible = false,
@@ -180,9 +180,9 @@ Config.point = {
 	},
 	
 	CokeExit = {
-		x = 16.42,
-		y = 3729.99, 
-		z = 39.69
+		x = 2911.12,
+		y = 4639.86,
+		z = 48.54,
 	},
 
 	ComedyClubEnter = {
