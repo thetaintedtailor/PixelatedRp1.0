@@ -71,6 +71,7 @@ Locales['en'] = {
   ['ibuprofen'] = 'ibuprofen',
   ['amoxicillin'] = 'amoxicillin',
   ['xanax'] = 'xanax',
+  ['oxygen_mask'] = 'Oxygen Mask',
   -- F6 Menu
   ['ems_menu'] = 'EMS Menu',
   ['ems_menu_title'] = 'ambulance - EMS Menu',
