@@ -214,15 +214,6 @@ end)
 RegisterServerEvent('esx_ambulancejob:giveItem')
 AddEventHandler('esx_ambulancejob:giveItem', function(itemName)
 	local xPlayer = ESX.GetPlayerFromId(source)
-
-	if xPlayer.job.name ~= 'ambulance' then
-		print(('esx_ambulancejob: %s attempted to spawn in an item!'):format(xPlayer.identifier))
-		return
-	elseif (itemName ~= 'medikit' and itemName ~= 'bandage'and itemName ~= 'morphine'and itemName ~= 'gauze'and itemName ~= 'medicaltape' and itemName ~= 'k3v' and itemName ~= 'vicodin' and itemName ~= 'ibuprofen' and itemName ~= 'amoxicillin' and itemName ~= 'xanax') then
-		print(('esx_ambulancejob: %s attempted to spawn in an item!'):format(xPlayer.identifier))
-		return
-	end
-
 	local xItem = xPlayer.getInventoryItem(itemName)
 	local count = 1
 
