@@ -264,7 +264,9 @@ Config.AuthorizedPharmacy = {
 		'gauze',
 		'medicaltape',
 		'morphine',
+		'oxygen_mask'
 	},
+	
 	trainee = {}, 
 	psychologist = {}, 
 	emt = {},

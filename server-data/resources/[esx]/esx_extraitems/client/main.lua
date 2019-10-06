@@ -85,17 +85,17 @@ AddEventHandler('esx_extraitems:oxygen_mask', function()
 			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
 
 
-			while tankTimer < 3600 and tankEquipped do
+			while tankTimer < 900 and tankEquipped do
 				Citizen.Wait(1000)
 				tankTimer = tankTimer + 1
 
-				if tankTimer == 900 then
+				if tankTimer == 225 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '75') .. '%.')
-				elseif tankTimer == 1800 then
+				elseif tankTimer == 450 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
-				elseif tankTimer == 2700 then
+				elseif tankTimer == 675 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '25') .. '%.')
-				elseif tankTimer == 3540 then
+				elseif tankTimer == 891 then
 					ESX.ShowNotification(_U('oxygen_notify', '~y~', '1') .. '%.')
 				end
 			end
@@ -216,7 +216,7 @@ RegisterCommand('tank', function(source, args)
 end, false)
 
 RegisterCommand('oxy', function(source, args)
-	local timeLeft = math.floor(100 - (tankTimer * 0.027777))
+	local timeLeft = math.floor(100 - (tankTimer * 0.11112))
 
 	if tankTimer > 0 then
 		ESX.ShowNotification(_U('oxygen_notify', '~y~', timeLeft) .. '%.')

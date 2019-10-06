@@ -73,5 +73,11 @@ Config.BedList = {
 		text = '[E] Lie on the bed',
 		heading = 160.0,
 		objCoords  = {x = 346.89, y = -591.01, z = 42.58},   ---pillbox blue bed 
-	}
+	},
+
+	{
+		text = '[E] Lie on the bed',
+		heading = 62.00,
+		objCoords  = {x = 326.92, y = -569.88, z = 42.80}, ---pillbox surgery room bed
+	},
 }
