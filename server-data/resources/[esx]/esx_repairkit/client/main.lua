@@ -60,7 +60,7 @@ AddEventHandler('esx_repairkit:onUse', function()
 				if CurrentAction ~= nil then
 					--SetVehicleFixed(vehicle)
 					--SetVehicleDeformationFixed(vehicle)
-					SetVehicleEngineHealth(vehicle, 1000.0)
+					SetVehicleEngineHealth(vehicle, 650.0)
 					SetVehicleUndriveable(vehicle, false)
 					SetVehicleEngineOn(vehicle, true, true)
 					ClearPedTasksImmediately(playerPed)
