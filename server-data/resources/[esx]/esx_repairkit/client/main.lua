@@ -58,7 +58,7 @@ AddEventHandler('esx_repairkit:onUse', function()
 				Citizen.Wait(Config.RepairTime * 1000)
 
 				if CurrentAction ~= nil then
-					--SetVehicleFixed(vehicle)
+					SetVehicleFixed(vehicle)
 					SetVehicleEngineHealth(vehicle,600.0)
 					SetVehiclePetrolTankHealth(vehicle 600.0)
 					SetVehicleOilLevel(vehicle,(GetVehicleOilLevel(vehicle)/3)-0.5)
