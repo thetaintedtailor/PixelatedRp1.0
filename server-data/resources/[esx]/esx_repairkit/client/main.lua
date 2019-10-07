@@ -36,13 +36,13 @@ AddEventHandler('esx_repairkit:onUse', function()
 	local playerPed		= GetPlayerPed(-1)
 	local coords		= GetEntityCoords(playerPed)
 
-	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 3.1) then
 		local vehicle = nil
 
 		if IsPedInAnyVehicle(playerPed, false) then
 			vehicle = GetVehiclePedIsIn(playerPed, false)
 		else
-			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.1, 0, 71)
 		end
 
 		if DoesEntityExist(vehicle) then
