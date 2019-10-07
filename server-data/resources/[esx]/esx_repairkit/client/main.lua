@@ -59,8 +59,8 @@ AddEventHandler('esx_repairkit:onUse', function()
 
 				if CurrentAction ~= nil then
 					SetVehicleFixed(vehicle)
-					SetVehicleEngineHealth(vehicle,600.0)
-					SetVehiclePetrolTankHealth(vehicle 600.0)
+					SetVehicleEngineHealth(vehicle, 600.0)
+					SetVehiclePetrolTankHealth(vehicle, 600.0)
 					SetVehicleOilLevel(vehicle,(GetVehicleOilLevel(vehicle)/3)-0.5)
 					SetVehicleBodyHealth(vehicle, 600.0)
 					--SetVehicleDeformationFixed(vehicle)
