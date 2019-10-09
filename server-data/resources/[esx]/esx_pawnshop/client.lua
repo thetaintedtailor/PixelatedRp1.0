@@ -26,11 +26,6 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
 end)
 
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
-end)
-
 function hintToDisplay(text)
 	SetTextComponentFormat("STRING")
 	AddTextComponentString(text)
@@ -38,7 +33,7 @@ function hintToDisplay(text)
 end
 
 local blips = {
-      {title="Pawnshop", colour=4, id=133, x = 412.31, y = 314.11, z = 103.02}
+      {title="Pawn Shop", colour=69, id=434, x = 412.31, y = 314.11, z = 103.02}
 }
  
       
@@ -55,17 +50,12 @@ Citizen.CreateThread(function()
       EndTextCommandSetBlipName(info.blip)
     end
 end)
-  
-local pawnshop = {
-    {x = 412.31, y = 314.11, z = 103.02}
-}
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        for k in pairs(pawnshop) do
-            DrawMarker(21, pawnshop[k].x, pawnshop[k].y, pawnshop[k].z, 0, 0, 0, 0, 0, 0, 0.301, 0.301, 0.3001, 0, 153, 255, 255, 0, 0, 0, 0)
-        end
+
+        DrawMarker(Config.MarkerType, Config.Pawnshop.x, Config.Pawnshop.y, Config.Pawnshop.z, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 255, 0, 0, 0, 0)
     end
 end)
 
@@ -73,10 +63,9 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
-        for k in pairs(pawnshop) do
-		
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, pawnshop[k].x, pawnshop[k].y, pawnshop[k].z)
+
+            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.Pawnshop.x, Config.Pawnshop.y, Config.Pawnshop.z)
 
             if dist <= 0.5 then
 				hintToDisplay('Press ~INPUT_CONTEXT~ to open ~b~the store~w~')
@@ -85,7 +74,6 @@ Citizen.CreateThread(function()
 					OpenPawnMenu()
 				end			
             end
-        end
     end
 end)
 
@@ -96,6 +84,7 @@ function OpenPawnMenu()
         'default', GetCurrentResourceName(), 'pawn_menu',
         {
             title    = 'Pawnshop',
+            align = 'right',
             elements = {
 				--{label = 'Shop', value = 'shop'},
 				{label = 'Sell', value = 'sell'},
@@ -152,27 +141,45 @@ function OpenPawnShopMenu()
 end
 
 function OpenSellMenu()
-    ESX.UI.Menu.CloseAll()
+    local saleElements = {}
 
-    ESX.UI.Menu.Open(
-        'default', GetCurrentResourceName(), 'pawn_sell_menu',
-        {
+    for k,v in pairs (Config.SaleItems) do 
+        table.insert(saleElements, {
+            label = v.label,
+            item = v.item,
+            price = v.price,
+
+        -- menu properties
+			value      = 1,
+			type       = 'slider',
+			min        = 1,
+			max        = 50
+        })
+    end
+
+    ESX.UI.Menu.CloseAll()
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pawn_sell_menu', {
             title    = 'What would you like to sell?',
-            elements = {
-                {label = 'Ring (32kr)', value = 'ring'},
-                {label = 'Fishing Rod (100)', value = 'fishingrod'},
-                {label = 'Drill (5000)', value = 'drill'},
-            }
-        },
-        function(data, menu)
-            if data.current.value == 'ring' then
-				TriggerServerEvent('esx_pawnshop:sellring')
-            elseif data.current.value == 'fishingrod' then
-                TriggerServerEvent('esx_pawnshop:sellfishingrod')
-            elseif data.current.value == 'drill' then
-                TriggerServerEvent('esx_pawnshop:selldrill')
-            end
-        end,
+            align = 'right',
+            elements = saleElements
+    }, function(data, menu)
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm', {
+            title = 'shop confirmation',
+			align    = 'right',
+			elements = {
+                {label = 'yes', value = 'yes'},
+                {label = 'no',  value = 'no'}
+			}
+		}, function(data2, menu2)
+            if data2.current.value == 'yes' then
+				TriggerServerEvent('esx_pawnshop:sellItem', data.current.label, data.current.item, data.current.price, data.current.value)
+			end
+
+			menu2.close()
+		end, function(data2, menu2)
+			menu2.close()
+		end)
+    end,
         function(data, menu)
             menu.close()
         end

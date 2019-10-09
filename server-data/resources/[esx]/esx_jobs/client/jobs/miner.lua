@@ -181,7 +181,7 @@ Config.Jobs.miner = {
 					name = _U("delivery"),
 					time = 500,
 					remove = 1,
-					max = 56, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
+					max = 56,
 					price = 5,
 					requires = "copper",
 					requires_name = _U("m_copper"),
