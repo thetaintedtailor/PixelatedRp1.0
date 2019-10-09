@@ -56,15 +56,15 @@ Citizen.CreateThread(function()
     end
 end)
   
-local gym = {
+local pawnshop = {
     {x = 412.31, y = 314.11, z = 103.02}
 }
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        for k in pairs(gym) do
-            DrawMarker(21, gym[k].x, gym[k].y, gym[k].z, 0, 0, 0, 0, 0, 0, 0.301, 0.301, 0.3001, 0, 153, 255, 255, 0, 0, 0, 0)
+        for k in pairs(pawnshop) do
+            DrawMarker(21, pawnshop[k].x, pawnshop[k].y, pawnshop[k].z, 0, 0, 0, 0, 0, 0, 0.301, 0.301, 0.3001, 0, 153, 255, 255, 0, 0, 0, 0)
         end
     end
 end)
@@ -73,13 +73,13 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
-        for k in pairs(gym) do
+        for k in pairs(pawnshop) do
 		
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, gym[k].x, gym[k].y, gym[k].z)
+            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, pawnshop[k].x, pawnshop[k].y, pawnshop[k].z)
 
             if dist <= 0.5 then
-				hintToDisplay('Tryck på ~INPUT_CONTEXT~ för att öppna ~b~affären~w~')
+				hintToDisplay('Press ~INPUT_CONTEXT~ to open ~b~the store~w~')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					OpenPawnMenu()
@@ -97,11 +97,12 @@ function OpenPawnMenu()
         {
             title    = 'Pawnshop',
             elements = {
-				{label = 'Affär', value = 'shop'},
-				{label = 'Sälj', value = 'sell'},
+				--{label = 'Shop', value = 'shop'},
+				{label = 'Sell', value = 'sell'},
             }
         },
         function(data, menu)
+        
             if data.current.value == 'shop' then
 				OpenPawnShopMenu()
             elseif data.current.value == 'sell' then
@@ -120,15 +121,11 @@ function OpenPawnShopMenu()
     ESX.UI.Menu.Open(
         'default', GetCurrentResourceName(), 'pawn_shop_menu',
         {
-            title    = 'Handla',
+            title    = 'Shop',
             elements = {
 				{label = 'Reparationslåda (8006kr)', value = 'fixkit'},
 				{label = 'Skottsäker väst (35000kr)', value = 'bulletproof'},
 				{label = 'Borrmaskin (45000kr)', value = 'drill'},
-				{label = 'Ögonbindel (16214kr)', value = 'blindfold'},
-                {label = 'Fiskespö (2591kr)', value = 'fishingrod'},
-                {label = 'Antibiotika (1239kr)', value = 'antibiotika'},
-                {label = 'Samsung S8 (3400kr)', value = 'phone'},
             }
         },
         function(data, menu)
@@ -160,38 +157,20 @@ function OpenSellMenu()
     ESX.UI.Menu.Open(
         'default', GetCurrentResourceName(), 'pawn_sell_menu',
         {
-            title    = 'Har du något av följande du vill sälja?',
+            title    = 'What would you like to sell?',
             elements = {
                 {label = 'Ring (32kr)', value = 'ring'},
-                {label = 'Rolex (32kr)', value = 'rolex'},
-                {label = 'Kamera (32kr)', value = 'kamera'},
-                {label = 'Armband (32kr)', value = 'armband'},
-                {label = 'Halsband (32kr)', value = 'halsband'},
-                {label = 'Tomflaskor (1)', value = 'bottle'},
-                {label = 'Fiskespö (1000)', value = 'fishingrod'},
-                {label = 'Borrmaskin(5000)', value = 'drill'},
-                {label = 'Ögonbindel(2000)', value = 'blindfold'},
+                {label = 'Fishing Rod (100)', value = 'fishingrod'},
+                {label = 'Drill (5000)', value = 'drill'},
             }
         },
         function(data, menu)
             if data.current.value == 'ring' then
 				TriggerServerEvent('esx_pawnshop:sellring')
-            elseif data.current.value == 'rolex' then
-				TriggerServerEvent('esx_pawnshop:sellrolex')
-            elseif data.current.value == 'kamera' then
-				TriggerServerEvent('esx_pawnshop:sellkamera')
-            elseif data.current.value == 'armband' then
-				TriggerServerEvent('esx_pawnshop:sellarmband')
-            elseif data.current.value == 'halsband' then
-				TriggerServerEvent('esx_pawnshop:sellhalsband')
-            elseif data.current.value == 'bottle' then
-                TriggerServerEvent('esx_pawnshop:sellbottle')
             elseif data.current.value == 'fishingrod' then
                 TriggerServerEvent('esx_pawnshop:sellfishingrod')
             elseif data.current.value == 'drill' then
                 TriggerServerEvent('esx_pawnshop:selldrill')
-            elseif data.current.value == 'blindfold' then
-                TriggerServerEvent('esx_pawnshop:sellblindfold')
             end
         end,
         function(data, menu)
