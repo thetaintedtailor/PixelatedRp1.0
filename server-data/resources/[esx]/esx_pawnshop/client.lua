@@ -86,16 +86,15 @@ function OpenPawnMenu()
             title    = 'Pawnshop',
             align = 'right',
             elements = {
-				--{label = 'Shop', value = 'shop'},
-				{label = 'Sell', value = 'sell'},
+                {label = 'Sell Items', value = 'sellItems'},
+                {label = 'Sell Weapons', value = 'sellWeapons'}
             }
         },
         function(data, menu)
-        
-            if data.current.value == 'shop' then
-				OpenPawnShopMenu()
-            elseif data.current.value == 'sell' then
-				OpenSellMenu()
+            if data.current.value == 'sellItems' then
+                OpenItemSaleMenu()
+            elseif data.current.value == 'sellWeapons' then
+                OpenWeaponSaleMenu()
             end
         end,
         function(data, menu)
@@ -104,43 +103,7 @@ function OpenPawnMenu()
     )
 end
 
-function OpenPawnShopMenu()
-    ESX.UI.Menu.CloseAll()
-
-    ESX.UI.Menu.Open(
-        'default', GetCurrentResourceName(), 'pawn_shop_menu',
-        {
-            title    = 'Shop',
-            elements = {
-				{label = 'Reparationslåda (8006kr)', value = 'fixkit'},
-				{label = 'Skottsäker väst (35000kr)', value = 'bulletproof'},
-				{label = 'Borrmaskin (45000kr)', value = 'drill'},
-            }
-        },
-        function(data, menu)
-            if data.current.value == 'fixkit' then
-				TriggerServerEvent('esx_pawnshop:buyFixkit')
-            elseif data.current.value == 'bulletproof' then
-				TriggerServerEvent('esx_pawnshop:buyBulletproof')
-            elseif data.current.value == 'drill' then
-				TriggerServerEvent('esx_pawnshop:buyDrill')
-            elseif data.current.value == 'blindfold' then
-				TriggerServerEvent('esx_pawnshop:buyBlindfold')
-            elseif data.current.value == 'fishingrod' then
-                TriggerServerEvent('esx_pawnshop:buyFishingrod')
-            elseif data.current.value == 'antibiotika' then
-                TriggerServerEvent('esx_pawnshop:buyAntibiotika')  
-            elseif data.current.value == 'phone' then
-				TriggerServerEvent('esx_pawnshop:buyPhone')
-            end
-        end,
-        function(data, menu)
-            menu.close()
-        end
-    )
-end
-
-function OpenSellMenu()
+function OpenItemSaleMenu()
     local saleElements = {}
 
     for k,v in pairs (Config.SaleItems) do 
@@ -186,7 +149,46 @@ function OpenSellMenu()
     )
 end
 
+function OpenWeaponSaleMenu()
+    local saleElements = {}
 
+    for k,v in pairs (Config.SaleWeapons) do 
+        table.insert(saleElements, {
+            label = v.label,
+            item = v.weapon,
+            price = v.price,
+
+        })
+    end
+
+    ESX.UI.Menu.CloseAll()
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pawn_sell_menu', {
+            title    = 'What would you like to sell?',
+            align = 'right',
+            elements = saleElements
+    }, function(data, menu)
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm', {
+            title = 'shop confirmation',
+			align    = 'right',
+			elements = {
+                {label = 'yes', value = 'yes'},
+                {label = 'no',  value = 'no'}
+			}
+		}, function(data2, menu2)
+            if data2.current.value == 'yes' then
+				TriggerServerEvent('esx_pawnshop:sellWeapon', data.current.label, data.current.item, data.current.price)
+			end
+
+			menu2.close()
+		end, function(data2, menu2)
+			menu2.close()
+		end)
+    end,
+        function(data, menu)
+            menu.close()
+        end
+    )
+end
 
 
 

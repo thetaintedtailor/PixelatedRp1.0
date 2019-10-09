@@ -11,3 +11,10 @@ Config.SaleItems = {
     {label = 'gold', item = 'gold', price = 11},
     {label = 'diamond', item = 'diamond', price = 110}
 }
+
+Config.SaleWeapons = {
+    {label = 'Assault Rifle', weapon = 'WEAPON_ASSAULTRIFLE', price = 55000},
+    {label = 'Advanced Rifle', weapon = 'WEAPON_ADVANCEDRIFLE', price = 55000},
+    {label = 'Micro SMG', weapon = 'WEAPON_MICROSMG', price = 55000},
+    {label = 'Assault SMG', weapon = 'WEAPON_ASSAULTSMG', price = 55000}
+}

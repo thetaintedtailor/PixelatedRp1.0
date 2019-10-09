@@ -129,12 +129,10 @@ AddEventHandler('esx_pawnshop:sellItem', function(itemLabel, itemToSell, price, 
 	local xPlayer = ESX.GetPlayerFromId(_source)
     local itemCount = 0
 
-	for i=1, #xPlayer.inventory, 1 do
-		local currentItem = xPlayer.inventory[i]
+	local itemInInventory = xPlayer.getInventoryItem(itemToSell)
 
-		if currentItem.name == itemToSell then
-			itemCount = currentItem.count
-		end
+	if itemInInventory then
+		itemCount = itemInInventory.count
 	end
     
     if itemCount > 0 then
@@ -145,6 +143,25 @@ AddEventHandler('esx_pawnshop:sellItem', function(itemLabel, itemToSell, price, 
 		TriggerClientEvent('esx:showNotification', xPlayer.source, msg)
 	else 
 		local msg = "You don't have any " .. itemLabel .. "(s) to sell!"
+        TriggerClientEvent('esx:showNotification', xPlayer.source, msg)
+    end
+end)
+
+RegisterServerEvent('esx_pawnshop:sellWeapon')
+AddEventHandler('esx_pawnshop:sellWeapon', function(weaponLabel, weaponToSell, price)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	local weaponInInventory = xPlayer.getWeapon(weaponToSell)
+	
+	print(weaponInInventory, weaponToSell)
+    if weaponInInventory then
+        xPlayer.removeWeapon(weaponToSell)
+		xPlayer.addMoney(price)
+
+		local msg = 'You sold a(n) ' .. weaponLabel
+		TriggerClientEvent('esx:showNotification', xPlayer.source, msg)
+	else 
+		local msg = "You don't have a(n) " .. weaponLabel .. " to sell!"
         TriggerClientEvent('esx:showNotification', xPlayer.source, msg)
     end
 end)
