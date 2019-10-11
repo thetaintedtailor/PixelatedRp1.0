@@ -90,6 +90,7 @@ AddEventHandler('esx_repairkit:onUse', function()
 						cancelRepair = true
 						ESX.ShowNotification(_U('aborted_repair'))
 						CurrentAction = nil
+						ClearPedTasksImmediately()
 					end
 				end
 			  end
