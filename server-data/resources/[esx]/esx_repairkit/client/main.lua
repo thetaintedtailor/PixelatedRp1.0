@@ -90,7 +90,7 @@ AddEventHandler('esx_repairkit:onUse', function()
 						cancelRepair = true
 						ESX.ShowNotification(_U('aborted_repair'))
 						CurrentAction = nil
-						StopAnimTask(id, 'PROP_HUMAN_BUM_BIN', 'idle', 1.0)
+						ClearPedTasks(PlayerPedId())
 					end
 				end
 			  end
