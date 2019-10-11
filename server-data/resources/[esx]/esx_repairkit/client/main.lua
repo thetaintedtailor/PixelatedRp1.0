@@ -89,8 +89,9 @@ AddEventHandler('esx_repairkit:onUse', function()
 					if IsControlJustReleased(0, Keys["X"]) then
 						cancelRepair = true
 						ESX.ShowNotification(_U('aborted_repair'))
-						CurrentAction = nil
 						ClearPedTasksImmediately()
+						ClearPedTasks()
+						ClearPedSecondaryTask()
 					end
 				end
 			  end
