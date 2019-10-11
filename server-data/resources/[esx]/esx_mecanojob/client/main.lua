@@ -12,7 +12,7 @@ local Keys = {
 
 local PlayerData              = {}
 local HasAlreadyEnteredMarker = false
-local LastZone                = nil
+local LastStation, LastPart, LastPartNum, LastEntity
 local CurrentAction           = nil
 local CurrentActionMsg        = ''
 local CurrentActionData       = {}
@@ -92,8 +92,8 @@ function OpenMecanoActionsMenu()
 
 	local elements = {
 		{label = _U('vehicle_list'),   value = 'vehicle_list'},
-		{label = _U('work_wear'),      value = 'cloakroom'},
-		{label = _U('civ_wear'),       value = 'cloakroom2'},
+		--{label = _U('work_wear'),      value = 'cloakroom'},
+		--{label = _U('civ_wear'),       value = 'cloakroom2'},
 		{label = _U('deposit_stock'),  value = 'put_stock'},
 		{label = _U('withdraw_stock'), value = 'get_stock'}
 	}
@@ -226,7 +226,7 @@ end
 
 function OpenMecanoHarvestMenu()
 
-	if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.grade_name ~= 'recrue' then
+	if Config.EnablePlayerManagement and PlayerData.job ~= nil then
 
 		local elements = {
 			{label = _U('gas_can'), value = 'gaz_bottle'},
@@ -780,7 +780,7 @@ AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
 end)
 
-AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone)
+AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, part, partNum)
 	if zone == NPCJobTargetTowable then
 
 	elseif zone =='VehicleDelivery' then
@@ -843,7 +843,6 @@ AddEventHandler('esx_mecanojob:hasExitedEntityZone', function(entity)
 	end
 end)
 
-
 -- Pop NPC mission vehicle when inside area
 Citizen.CreateThread(function()
 	while true do
@@ -879,6 +878,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Create Blips
+--[[
 Citizen.CreateThread(function()
 	local blip = AddBlipForCoord(Config.Zones.MecanoActions.Pos.x, Config.Zones.MecanoActions.Pos.y, Config.Zones.MecanoActions.Pos.z)
 
@@ -892,24 +892,81 @@ Citizen.CreateThread(function()
 	AddTextComponentString(_U('mechanic'))
 	EndTextCommandSetBlipName(blip)
 end)
+]]
 
 -- Display markers
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
+
 		if PlayerData.job ~= nil and PlayerData.job.name == 'mechanic' then
 			local coords = GetEntityCoords(PlayerPedId())
+			local isInMarker, hasExited, letSleep = false, false, true
+			local currentStation, currentPart, currentPartNum
 
-			for k,v in pairs(Config.Zones) do
-				if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
-					DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+			for i=1, #Config.Zones.MecanoActions, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.Zones.MecanoActions[i], true)
+
+				if distance < Config.DrawDistance then
+					DrawMarker(1, Config.Zones.MecanoActions[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					letSleep = false
+				end
+
+				if distance <= 1.5 then
+					isInMarker, currentStation, currentPart, currentPartNum = true, 'MecanoActions', 'MecanoActions', i
 				end
 			end
-		end
+
+			for i=1, #Config.Zones.VehicleSpawnPoint, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.Zones.VehicleSpawnPoint[i], true)
+				
+				if distance < Config.DrawDistance then
+					DrawMarker(-1, Config.Zones.VehicleSpawnPoint[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, 0, 0, 0, 100, false, true, 2, false, false, false, false)
+					letSleep = false
+				end
+
+				if distance <= 1.5 then
+					isInMarker, currentStation, currentPart, currentPartNum = true, 'MecanoActions', 'MecanoActions', i
+				end
+			end
+
+
+			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)) then
+
+				if
+					(LastStation ~= nil and LastPart ~= nil and LastPartNum ~= nil) and
+					(LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)
+				then
+					TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation, LastPart, LastPartNum)
+					hasExited = true
+				end
+
+				HasAlreadyEnteredMarker = true
+				LastStation             = currentStation
+				LastPart                = currentPart
+				LastPartNum             = currentPartNum
+
+				TriggerEvent('esx_mecanojob:hasEnteredMarker', currentStation, currentPart, currentPartNum)
+				print('THIS IS STATION', currentStation)
+			end
+
+			if not hasExited and not isInMarker and HasAlreadyEnteredMarker then
+				HasAlreadyEnteredMarker = false
+				TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation, LastPart, LastPartNum)
+			end
+
+			if letSleep then
+				Citizen.Wait(500)
+			end
+
+		else
+			Citizen.Wait(500)
+		end	
 	end
 end)
 
 -- Enter / Exit marker events
+--[[
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
@@ -946,6 +1003,7 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+]]
 
 Citizen.CreateThread(function()
 	local trackedEntities = {

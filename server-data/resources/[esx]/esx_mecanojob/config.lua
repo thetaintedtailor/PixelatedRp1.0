@@ -7,6 +7,7 @@ Config.NPCSpawnDistance           = 500.0
 Config.NPCNextToDistance          = 25.0
 Config.NPCJobEarnings             = { min = 100, max = 150 }
 Config.Locale = 'en'
+Config.ActionMarkerColor = { r = 204, g = 204, b = 0 }
 
 Config.Vehicles = {
 	'adder',
@@ -19,12 +20,20 @@ Config.Vehicles = {
 Config.Zones = {
 
 	MecanoActions = {
-			Pos   = { x = -197.14999389648, y = -1318.67468261, z = 30.089344 },
-			Size  = { x = 1.5, y = 1.5, z = 1.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = 1,
-		},
+		vector3(-197.149, -1318.674, 30.089), -- bennys
+		vector3(-344.76, -130.49, 38.01), -- central
+		vector3(-1146.51, -2003.46, 12.18), -- airport
+		vector3(1177.05, 2636.54, 36.75), -- route68
+		vector3(737.32, -1078.74, 21.17) -- the den
+	},
 
+	VehicleSpawnPoint = {
+		vector3(-210.89, -1304.43, 30.29)
+		--Size  = { x = 1.5, y = 1.5, z = 1.0 },
+		--Type  = -1,
+	},
+
+--[[
 	Garage = {
 		Pos   = { x = -97.5797576904297, y = 6496.11376953125, z = 5.4909038543701 },
 		Size  = { x = 1.5, y = 1.5, z = 1.0 },
@@ -58,7 +67,7 @@ Config.Zones = {
 			Color = { r = 204, g = 204, b = 0 },
 			Type  = -1,
 		}
-
+]]
 }
 
 Config.Towables = {
