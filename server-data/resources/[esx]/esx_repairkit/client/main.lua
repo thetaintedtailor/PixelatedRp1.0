@@ -77,23 +77,24 @@ AddEventHandler('esx_repairkit:onUse', function()
 			end)
 		end
 
-		Citizen.CreateThread(function()
-			Citizen.Wait(0)
-
-			if CurrentAction ~= nil then
-				SetTextComponentFormat('STRING')
-				AddTextComponentString(_U('abort_hint'))
-				DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-
-				if IsControlJustReleased(0, Keys["X"]) then
-					TerminateThread(ThreadID)
-					ESX.ShowNotification(_U('aborted_repair'))
-					CurrentAction = nil
+        Citizen.CreateThread(function()
+			while true do
+				Citizen.Wait(0)
+	
+				if CurrentAction ~= nil then
+					SetTextComponentFormat('STRING')
+					AddTextComponentString(_U('abort_hint'))
+					DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+	
+					if IsControlJustReleased(0, Keys["X"]) then
+						cancelRepair = true
+						ESX.ShowNotification(_U('aborted_repair'))
+						CurrentAction = nil
+					end
 				end
-			end
-
-		end)
-	else
-		ESX.ShowNotification(_U('no_vehicle_nearby'))
-	end
-end)
+			  end
+			end)
+		else
+			ESX.ShowNotification(_U('no_vehicle_nearby'))
+		end
+	end)
