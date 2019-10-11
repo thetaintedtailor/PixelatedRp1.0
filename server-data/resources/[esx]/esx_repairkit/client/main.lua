@@ -89,9 +89,8 @@ AddEventHandler('esx_repairkit:onUse', function()
 					if IsControlJustReleased(0, Keys["X"]) then
 						cancelRepair = true
 						ESX.ShowNotification(_U('aborted_repair'))
-						ClearPedTasksImmediately()
-						ClearPedTasks()
-						ClearPedSecondaryTask()
+						CurrentAction = nil
+						StopAnimTask(id, 'PROP_HUMAN_BUM_BIN', 'idle', 1.0)
 					end
 				end
 			  end
