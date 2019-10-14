@@ -19,6 +19,13 @@ Config.Zones = {
     Jobs = {'police', 'offpolice'}
   },
 
+  PoliceDutyDownstairs = {
+    Pos   = { x = 470.17, y = -980.87, z = 23.92 },
+    Size  = { x = 2.0, y = 2.0, z = 1.5 },
+    Color = { r = 0, g = 255, b = 0 },  
+    Jobs = {'police', 'offpolice'}
+  },
+
   AmbulanceDuty = {
     Pos = { x = 316.43695068359, y = -589.00659179688, z = 42.291809082031 },
     Size = { x = 2.5, y = 2.5, z = 1.5 },
