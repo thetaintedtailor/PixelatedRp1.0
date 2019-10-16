@@ -88,7 +88,7 @@ function StopNPCJob(cancel)
 	end
 end
 
-function OpenMecanoActionsMenu()
+function OpenMecanoActionsMenu(garageJobSpawn)
 
 	local elements = {
 		{label = _U('vehicle_list'),   value = 'vehicle_list'},
@@ -110,7 +110,6 @@ function OpenMecanoActionsMenu()
 		elements = elements
 	}, function(data, menu)
 		if data.current.value == 'vehicle_list' then
-
 			if Config.EnableSocietyOwnedVehicles then
 
 				local elements = {}
@@ -161,12 +160,12 @@ function OpenMecanoActionsMenu()
 					align    = 'right',
 					elements = elements
 				}, function(data, menu)
-					if Config.MaxInService == -1 then
-						ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
+					--if Config.MaxInService == -1 then
+						ESX.Game.SpawnVehicle(data.current.value, garageJobSpawn, 90.0, function(vehicle)
 							local playerPed = PlayerPedId()
 							TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 						end)
-					else
+					--[[else
 						ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
 							if canTakeService then
 								ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
@@ -177,7 +176,7 @@ function OpenMecanoActionsMenu()
 								ESX.ShowNotification(_U('service_full') .. inServiceCount .. '/' .. maxInService)
 							end
 						end, 'mechanic')
-					end
+					end]]
 
 					menu.close()
 				end, function(data, menu)
@@ -220,7 +219,7 @@ function OpenMecanoActionsMenu()
 
 		CurrentAction     = 'mecano_actions_menu'
 		CurrentActionMsg  = _U('open_actions')
-		CurrentActionData = {}
+		CurrentActionData = {garageJobSpawn = garageJobSpawn}
 	end)
 end
 
@@ -780,7 +779,7 @@ AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
 end)
 
-AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, part, partNum)
+AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, currentGarage, garageJobSpawn)
 	if zone == NPCJobTargetTowable then
 
 	elseif zone =='VehicleDelivery' then
@@ -788,7 +787,7 @@ AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, part, partNum)
 	elseif zone == 'MecanoActions' then
 		CurrentAction     = 'mecano_actions_menu'
 		CurrentActionMsg  = _U('open_actions')
-		CurrentActionData = {}
+		CurrentActionData = {garageJobSpawn = garageJobSpawn}
 	elseif zone == 'Garage' then
 		CurrentAction     = 'mecano_harvest_menu'
 		CurrentActionMsg  = _U('harvest_menu')
@@ -902,57 +901,40 @@ Citizen.CreateThread(function()
 		if PlayerData.job ~= nil and PlayerData.job.name == 'mechanic' then
 			local coords = GetEntityCoords(PlayerPedId())
 			local isInMarker, hasExited, letSleep = false, false, true
-			local currentStation, currentPart, currentPartNum
+			local currentGarage, zone, garageJobSpawn
 
-			for i=1, #Config.Zones.MecanoActions, 1 do
-				local distance = GetDistanceBetweenCoords(coords, Config.Zones.MecanoActions[i], true)
+			for i=1, #Config.MecanoActions, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.MecanoActions[i].Pos, true)
 
 				if distance < Config.DrawDistance then
-					DrawMarker(1, Config.Zones.MecanoActions[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					DrawMarker(1, Config.MecanoActions[i].Pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
 					letSleep = false
 				end
 
 				if distance <= 1.5 then
-					isInMarker, currentStation, currentPart, currentPartNum = true, 'MecanoActions', 'MecanoActions', i
+					isInMarker, currentGarage, zone, garageJobSpawn = true, Config.MecanoActions[i].Zone, 'MecanoActions', Config.MecanoActions[i].JobVehSpawn
 				end
 			end
 
-			for i=1, #Config.Zones.VehicleSpawnPoint, 1 do
-				local distance = GetDistanceBetweenCoords(coords, Config.Zones.VehicleSpawnPoint[i], true)
-				
-				if distance < Config.DrawDistance then
-					DrawMarker(-1, Config.Zones.VehicleSpawnPoint[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, 0, 0, 0, 100, false, true, 2, false, false, false, false)
-					letSleep = false
-				end
-
-				if distance <= 1.5 then
-					isInMarker, currentStation, currentPart, currentPartNum = true, 'MecanoActions', 'MecanoActions', i
-				end
-			end
-
-
-			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)) then
+			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentGarage)) then
 
 				if
-					(LastStation ~= nil and LastPart ~= nil and LastPartNum ~= nil) and
-					(LastStation ~= currentStation or LastPart ~= currentPart or LastPartNum ~= currentPartNum)
+					(LastStation ~= nil) and (LastStation ~= currentGarage)
 				then
-					TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation, LastPart, LastPartNum)
+					TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation)
 					hasExited = true
 				end
 
 				HasAlreadyEnteredMarker = true
-				LastStation             = currentStation
-				LastPart                = currentPart
-				LastPartNum             = currentPartNum
+				LastStation             = currentGarage
 
-				TriggerEvent('esx_mecanojob:hasEnteredMarker', currentStation, currentPart, currentPartNum)
-				print('THIS IS STATION', currentStation)
+				TriggerEvent('esx_mecanojob:hasEnteredMarker', zone, currentGarage, garageJobSpawn)
+				print('THIS IS STATION', currentGarage)
 			end
 
 			if not hasExited and not isInMarker and HasAlreadyEnteredMarker then
 				HasAlreadyEnteredMarker = false
-				TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation, LastPart, LastPartNum)
+				TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation)
 			end
 
 			if letSleep then
@@ -1059,7 +1041,7 @@ Citizen.CreateThread(function()
 			if IsControlJustReleased(0, Keys['E']) and PlayerData.job ~= nil and PlayerData.job.name == 'mechanic' then
 
 				if CurrentAction == 'mecano_actions_menu' then
-					OpenMecanoActionsMenu()
+					OpenMecanoActionsMenu(CurrentActionData.garageJobSpawn)
 				elseif CurrentAction == 'mecano_harvest_menu' then
 					OpenMecanoHarvestMenu()
 				elseif CurrentAction == 'mecano_craft_menu' then

@@ -17,21 +17,24 @@ Config.Vehicles = {
 	'buffalo'
 }
 
+Config.MecanoActions = {
+	{Zone = 'bennys', Pos = vector3(-197.149, -1318.674, 30.089), JobVehSpawn = vector3(-210.89, -1304.43, 30.29)},
+	{Zone = 'airport', Pos = vector3(-1146.51, -2003.46, 12.18), JobVehSpawn = vector3(-1146.16, -1979.00, 13.16)},
+	{Zone = 'central', Pos = vector3(-344.76, -130.49, 38.01), JobVehSpawn = vector3(-362.79, -116.69, 38.70)},
+	{Zone = 'route68', Pos = vector3(1177.05, 2636.54, 36.75), JobVehSpawn = vector3(1166.42, 2653.24, 38.05)},
+	{Zone = 'den', Pos = vector3(737.32, -1078.74, 21.17), JobVehSpawn = vector3(708.22, -1075.60, 22.39)},
+	--[[
+	vector3(1177.05, 2636.54, 36.75), -- route68
+	vector3(737.32, -1078.74, 21.17) -- the den]]
+}
+
+Config.VehicleSpawnPoint = {
+	{Zone = 'bennys', Pos = vector3(-210.89, -1304.43, 30.29)}
+	--Pos = vector3(-210.89, -1304.43, 30.29), -- bennys
+	--Pos = vector3(-1146.16, -1979.00, 13.16) -- airport
+}
+
 Config.Zones = {
-
-	MecanoActions = {
-		vector3(-197.149, -1318.674, 30.089), -- bennys
-		vector3(-344.76, -130.49, 38.01), -- central
-		vector3(-1146.51, -2003.46, 12.18), -- airport
-		vector3(1177.05, 2636.54, 36.75), -- route68
-		vector3(737.32, -1078.74, 21.17) -- the den
-	},
-
-	VehicleSpawnPoint = {
-		vector3(-210.89, -1304.43, 30.29)
-		--Size  = { x = 1.5, y = 1.5, z = 1.0 },
-		--Type  = -1,
-	},
 
 --[[
 	Garage = {
