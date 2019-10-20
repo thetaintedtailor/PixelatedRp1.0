@@ -95,7 +95,8 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 		--{label = _U('work_wear'),      value = 'cloakroom'},
 		--{label = _U('civ_wear'),       value = 'cloakroom2'},
 		{label = _U('deposit_stock'),  value = 'put_stock'},
-		{label = _U('withdraw_stock'), value = 'get_stock'}
+		{label = _U('withdraw_stock'), value = 'get_stock'},
+		{label = _U('assemble_kit'), value = 'assemble'}
 	}
 
 	if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then
@@ -208,6 +209,8 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 			OpenPutStocksMenu()
 		elseif data.current.value == 'get_stock' then
 			OpenGetStocksMenu()
+		elseif data.current.value == 'assemble' then
+			TriggerServerEvent('esx_mecanojob:startRepairkitAssembly')
 		elseif data.current.value == 'boss_actions' then
 			TriggerEvent('esx_society:openBossMenu', 'mechanic', function(data, menu)
 				menu.close()
@@ -222,6 +225,12 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 		CurrentActionData = {garageJobSpawn = garageJobSpawn}
 	end)
 end
+
+--[[
+function OpenKitAssembly()
+	
+end
+]]
 
 function OpenMecanoHarvestMenu()
 
@@ -669,6 +678,60 @@ function OpenPutStocksMenu()
 
 	end)
 
+end
+
+function OpenGetRepairParts()
+	local elements = {}
+	for i=1, #Config.Zones[zone].Items, 1 do
+		local item = Config.Zones[zone].Items[i]
+
+		if item.limit == -1 then
+			item.limit = 100
+		end
+
+		table.insert(elements, {
+			label      = ('%s - <span style="color:green;">%s</span>'):format(item.label, _U('shop_item', ESX.Math.GroupDigits(item.price))),
+			label_real = item.label,
+			item       = item.item,
+			price      = item.price,
+
+			-- menu properties
+			value      = 1,
+			type       = 'slider',
+			min        = 1,
+			max        = item.limit
+		})
+	end
+
+	ESX.UI.Menu.CloseAll()
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop', {
+		title    = _U('shop'),
+		align    = 'bottom-right',
+		elements = elements
+	}, function(data, menu)
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm', {
+			title    = _U('shop_confirm', data.current.value, data.current.label_real, ESX.Math.GroupDigits(data.current.price * data.current.value)),
+			align    = 'bottom-right',
+			elements = {
+				{label = _U('no'),  value = 'no'},
+				{label = _U('yes'), value = 'yes'}
+			}
+		}, function(data2, menu2)
+			if data2.current.value == 'yes' then
+				TriggerServerEvent('esx_shops:buyItem', data.current.item, data.current.value, zone)
+			end
+
+			menu2.close()
+		end, function(data2, menu2)
+			menu2.close()
+		end)
+	end, function(data, menu)
+		menu.close()
+
+		CurrentAction     = 'shop_menu'
+		CurrentActionMsg  = _U('press_menu')
+		CurrentActionData = {zone = zone}
+	end)
 end
 
 

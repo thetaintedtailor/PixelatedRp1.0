@@ -33,6 +33,33 @@ local function Harvest(source)
 	end)
 end
 
+local function AssembleKit(source)
+	print('pressed')
+	SetTimeout(8000, function()
+
+		if PlayersHarvesting[source] == true then
+			local xPlayer = ESX.GetPlayerFromId(source)
+			local KitQuantity = xPlayer.getInventoryItem('repairkit').count
+
+			if KitQuantity >= 2 then
+				TriggerClientEvent('esx:showNotification', source, _U('you_do_not_room'))
+			else
+				xPlayer.addInventoryItem('repairkit', 1)
+				AssembleKit(source)
+			end
+		end
+
+	end)
+end
+
+RegisterServerEvent('esx_mecanojob:startRepairkitAssembly')
+AddEventHandler('esx_mecanojob:startRepairkitAssembly', function()
+	local _source = source
+	PlayersHarvesting[_source] = true
+	TriggerClientEvent('esx:showNotification', _source, _U('repairkit_assembling'))
+	AssembleKit(source)
+end)
+
 RegisterServerEvent('esx_mecanojob:startHarvest')
 AddEventHandler('esx_mecanojob:startHarvest', function()
 	local _source = source
