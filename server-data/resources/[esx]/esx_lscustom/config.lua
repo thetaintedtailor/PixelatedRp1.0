@@ -14,21 +14,21 @@ Config.Zones = {
 		Hint  = _U('press_custom')
 	},
 
-	ls2 = {
+	ls2 = { -- airport
 		Pos   = { x = -1155.53, y = -2007.18, z = 12.74},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {60},
 		Marker= 1,
-		Name  = _U('blip_name'),
+		Name  = 'hidden',
 		Hint  = _U('press_custom')
 	},
 
-	ls3 = {
+	ls3 = { -- den
 		Pos   = { x = 731.81, y = -1088.82, z = 21.73},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {60},
 		Marker= 1,
-		Name  = _U('blip_name'),
+		Name  = 'hidden',
 		Hint  = _U('press_custom')
 	},
 
