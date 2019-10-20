@@ -36,13 +36,13 @@ AddEventHandler('esx_repairkit:onUse', function()
 	local playerPed		= GetPlayerPed(-1)
 	local coords		= GetEntityCoords(playerPed)
 
-	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 3.1) then
 		local vehicle = nil
 
 		if IsPedInAnyVehicle(playerPed, false) then
 			vehicle = GetVehiclePedIsIn(playerPed, false)
 		else
-			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 5.0, 0, 71)
+			vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.1, 0, 71)
 		end
 
 		if DoesEntityExist(vehicle) then
@@ -58,8 +58,9 @@ AddEventHandler('esx_repairkit:onUse', function()
 				Citizen.Wait(Config.RepairTime * 1000)
 
 				if CurrentAction ~= nil then
-					SetVehicleFixed(vehicle)
-					SetVehicleDeformationFixed(vehicle)
+					--SetVehicleFixed(vehicle)
+					--SetVehicleDeformationFixed(vehicle)
+					SetVehicleEngineHealth(vehicle, 650.0)
 					SetVehicleUndriveable(vehicle, false)
 					SetVehicleEngineOn(vehicle, true, true)
 					ClearPedTasksImmediately(playerPed)
@@ -76,23 +77,25 @@ AddEventHandler('esx_repairkit:onUse', function()
 			end)
 		end
 
-		Citizen.CreateThread(function()
-			Citizen.Wait(0)
-
-			if CurrentAction ~= nil then
-				SetTextComponentFormat('STRING')
-				AddTextComponentString(_U('abort_hint'))
-				DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-
-				if IsControlJustReleased(0, Keys["X"]) then
-					TerminateThread(ThreadID)
-					ESX.ShowNotification(_U('aborted_repair'))
-					CurrentAction = nil
+        Citizen.CreateThread(function()
+			while true do
+				Citizen.Wait(0)
+	
+				if CurrentAction ~= nil then
+					SetTextComponentFormat('STRING')
+					AddTextComponentString(_U('abort_hint'))
+					DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+	
+					if IsControlJustReleased(0, Keys["X"]) then
+						cancelRepair = true
+						ESX.ShowNotification(_U('aborted_repair'))
+						CurrentAction = nil
+						ClearPedTasks(PlayerPedId())
+					end
 				end
-			end
-
-		end)
-	else
-		ESX.ShowNotification(_U('no_vehicle_nearby'))
-	end
-end)
+			  end
+			end)
+		else
+			ESX.ShowNotification(_U('no_vehicle_nearby'))
+		end
+	end)
