@@ -27,38 +27,24 @@ Config.MecanoActions = {
 
 Config.VehicleDelivery = {
 	DeliverPoint = vector3(494.40, -1332.17, 28.34),
-	--Pos   = { x = -215.33, y = -1299.75, z = 30.30},
-	Size  = { x = 20.0, y = 20.0, z = 3.0 },
-	Color = { r = 204, g = 204, b = 0 },
 	Type  = -1,
 }
 
-Config.Zones = {
 
---[[
-
-	Craft = {
-		Pos   = { x = -323.140, y = -129.882, z = 5.999 },
-		Size  = { x = 1.5, y = 1.5, z = 1.0 },
+Config.VehicleDeletionPoints = {
+	vector3(-183.03, -1313.74, 30.30), --bennys
+	vector3(-1153.86, -1986.26, 12.16), --airport
+	vector3(-370.38, -108.09, 37.68), --central
+	vector3(1166.21, 2648.39, 36.90), --route68
+	vector3(718.89, -1079.24, 21.24) --den
+	--[[
+		Pos   = { x = -199.82, y = -1306.86, z = 30.28 },
+		Size  = { x = 3.0, y = 3.0, z = 1.0 },
 		Color = { r = 204, g = 204, b = 0 },
-		Type  = 1,
-	},
-
-	VehicleDeleter = {
-			Pos   = { x = -199.82, y = -1306.86, z = 30.28 },
-			Size  = { x = 3.0, y = 3.0, z = 1.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = 1,
-		},
-
-	VehicleDelivery = {
-			Pos   = { x = -215.33, y = -1299.75, z = 30.30},
-			Size  = { x = 20.0, y = 20.0, z = 3.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = -1,
-		}
-]]
+		]]
 }
+
+Config.Zones = {}
 
 Config.Towables = {
 	{ ['x'] = -2480.8720703125, ['y'] = -211.96409606934, ['z'] = 17.397672653198 },

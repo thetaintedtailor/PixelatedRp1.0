@@ -876,23 +876,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
--- Create Blips
---[[
-Citizen.CreateThread(function()
-	local blip = AddBlipForCoord(Config.Zones.MecanoActions.Pos.x, Config.Zones.MecanoActions.Pos.y, Config.Zones.MecanoActions.Pos.z)
-
-	SetBlipSprite (blip, 446)
-	SetBlipDisplay(blip, 4)
-	SetBlipScale  (blip, 1.0)
-	SetBlipColour (blip, 5)
-	SetBlipAsShortRange(blip, true)
-
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString(_U('mechanic'))
-	EndTextCommandSetBlipName(blip)
-end)
-]]
-
 -- Display markers
 Citizen.CreateThread(function()
 	while true do
@@ -927,6 +910,19 @@ Citizen.CreateThread(function()
 
 				if distance <= 5.5 then
 					isInMarker, zone = true, 'VehicleDelivery'
+				end
+			end
+
+			for i=1, #Config.VehicleDeletionPoints, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.VehicleDeletionPoints[i], true)
+
+				if distance < Config.DrawDistance then
+					DrawMarker(1, Config.VehicleDeletionPoints[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.5, 3.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					letSleep = false
+				end
+
+				if distance <= 1.5 then
+					isInMarker, zone = true, 'VehicleDeleter'
 				end
 			end
 
