@@ -12,7 +12,7 @@ local Keys = {
 
 local PlayerData              = {}
 local HasAlreadyEnteredMarker = false
-local LastZone                = nil
+local LastStation, LastPart, LastPartNum, LastEntity
 local CurrentAction           = nil
 local CurrentActionMsg        = ''
 local CurrentActionData       = {}
@@ -73,7 +73,7 @@ function StopNPCJob(cancel)
 		Blips['NPCDelivery'] = nil
 	end
 
-	Config.Zones.VehicleDelivery.Type = -1
+	Config.VehicleDelivery.Type = -1
 
 	NPCOnJob                = false
 	NPCTargetTowable        = nil
@@ -88,14 +88,15 @@ function StopNPCJob(cancel)
 	end
 end
 
-function OpenMecanoActionsMenu()
+function OpenMecanoActionsMenu(garageJobSpawn)
 
 	local elements = {
 		{label = _U('vehicle_list'),   value = 'vehicle_list'},
-		{label = _U('work_wear'),      value = 'cloakroom'},
-		{label = _U('civ_wear'),       value = 'cloakroom2'},
+		--{label = _U('work_wear'),      value = 'cloakroom'},
+		--{label = _U('civ_wear'),       value = 'cloakroom2'},
 		{label = _U('deposit_stock'),  value = 'put_stock'},
-		{label = _U('withdraw_stock'), value = 'get_stock'}
+		{label = _U('withdraw_stock'), value = 'get_stock'},
+		{label = _U('assemble_kit'), value = 'assemble'}
 	}
 
 	if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' then
@@ -110,7 +111,6 @@ function OpenMecanoActionsMenu()
 		elements = elements
 	}, function(data, menu)
 		if data.current.value == 'vehicle_list' then
-
 			if Config.EnableSocietyOwnedVehicles then
 
 				local elements = {}
@@ -161,12 +161,12 @@ function OpenMecanoActionsMenu()
 					align    = 'right',
 					elements = elements
 				}, function(data, menu)
-					if Config.MaxInService == -1 then
-						ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
+					--if Config.MaxInService == -1 then
+						ESX.Game.SpawnVehicle(data.current.value, garageJobSpawn, 90.0, function(vehicle)
 							local playerPed = PlayerPedId()
 							TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 						end)
-					else
+					--[[else
 						ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
 							if canTakeService then
 								ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
@@ -177,7 +177,7 @@ function OpenMecanoActionsMenu()
 								ESX.ShowNotification(_U('service_full') .. inServiceCount .. '/' .. maxInService)
 							end
 						end, 'mechanic')
-					end
+					end]]
 
 					menu.close()
 				end, function(data, menu)
@@ -209,6 +209,8 @@ function OpenMecanoActionsMenu()
 			OpenPutStocksMenu()
 		elseif data.current.value == 'get_stock' then
 			OpenGetStocksMenu()
+		elseif data.current.value == 'assemble' then
+			TriggerServerEvent('esx_mecanojob:startRepairkitAssembly')
 		elseif data.current.value == 'boss_actions' then
 			TriggerEvent('esx_society:openBossMenu', 'mechanic', function(data, menu)
 				menu.close()
@@ -220,13 +222,19 @@ function OpenMecanoActionsMenu()
 
 		CurrentAction     = 'mecano_actions_menu'
 		CurrentActionMsg  = _U('open_actions')
-		CurrentActionData = {}
+		CurrentActionData = {garageJobSpawn = garageJobSpawn}
 	end)
 end
 
+--[[
+function OpenKitAssembly()
+	
+end
+]]
+
 function OpenMecanoHarvestMenu()
 
-	if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.grade_name ~= 'recrue' then
+	if Config.EnablePlayerManagement and PlayerData.job ~= nil then
 
 		local elements = {
 			{label = _U('gas_can'), value = 'gaz_bottle'},
@@ -477,14 +485,14 @@ function OpenMobileMecanoActionsMenu()
 							if NPCOnJob then
 								if NPCTargetTowable == targetVehicle then
 									ESX.ShowNotification(_U('please_drop_off'))
-									Config.Zones.VehicleDelivery.Type = 1
+									Config.VehicleDelivery.Type = 1
 
 									if Blips['NPCTargetTowableZone'] ~= nil then
 										RemoveBlip(Blips['NPCTargetTowableZone'])
 										Blips['NPCTargetTowableZone'] = nil
 									end
 
-									Blips['NPCDelivery'] = AddBlipForCoord(Config.Zones.VehicleDelivery.Pos.x, Config.Zones.VehicleDelivery.Pos.y, Config.Zones.VehicleDelivery.Pos.z)
+									Blips['NPCDelivery'] = AddBlipForCoord(Config.VehicleDelivery.DeliverPoint)
 									SetBlipRoute(Blips['NPCDelivery'], true)
 								end
 							end
@@ -502,7 +510,7 @@ function OpenMobileMecanoActionsMenu()
 
 				if NPCOnJob then
 					if NPCTargetDeleterZone then
-
+						print('we should be here now')
 						if CurrentlyTowedVehicle == NPCTargetTowable then
 							ESX.Game.DeleteVehicle(NPCTargetTowable)
 							TriggerServerEvent('esx_mecanojob:onNPCJobMissionCompleted')
@@ -672,6 +680,60 @@ function OpenPutStocksMenu()
 
 end
 
+function OpenGetRepairParts()
+	local elements = {}
+	for i=1, #Config.Zones[zone].Items, 1 do
+		local item = Config.Zones[zone].Items[i]
+
+		if item.limit == -1 then
+			item.limit = 100
+		end
+
+		table.insert(elements, {
+			label      = ('%s - <span style="color:green;">%s</span>'):format(item.label, _U('shop_item', ESX.Math.GroupDigits(item.price))),
+			label_real = item.label,
+			item       = item.item,
+			price      = item.price,
+
+			-- menu properties
+			value      = 1,
+			type       = 'slider',
+			min        = 1,
+			max        = item.limit
+		})
+	end
+
+	ESX.UI.Menu.CloseAll()
+	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop', {
+		title    = _U('shop'),
+		align    = 'bottom-right',
+		elements = elements
+	}, function(data, menu)
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_confirm', {
+			title    = _U('shop_confirm', data.current.value, data.current.label_real, ESX.Math.GroupDigits(data.current.price * data.current.value)),
+			align    = 'bottom-right',
+			elements = {
+				{label = _U('no'),  value = 'no'},
+				{label = _U('yes'), value = 'yes'}
+			}
+		}, function(data2, menu2)
+			if data2.current.value == 'yes' then
+				TriggerServerEvent('esx_shops:buyItem', data.current.item, data.current.value, zone)
+			end
+
+			menu2.close()
+		end, function(data2, menu2)
+			menu2.close()
+		end)
+	end, function(data, menu)
+		menu.close()
+
+		CurrentAction     = 'shop_menu'
+		CurrentActionMsg  = _U('press_menu')
+		CurrentActionData = {zone = zone}
+	end)
+end
+
 
 RegisterNetEvent('esx_mecanojob:onHijack')
 AddEventHandler('esx_mecanojob:onHijack', function()
@@ -780,7 +842,7 @@ AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
 end)
 
-AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone)
+AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, currentGarage, garageJobSpawn)
 	if zone == NPCJobTargetTowable then
 
 	elseif zone =='VehicleDelivery' then
@@ -788,7 +850,7 @@ AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone)
 	elseif zone == 'MecanoActions' then
 		CurrentAction     = 'mecano_actions_menu'
 		CurrentActionMsg  = _U('open_actions')
-		CurrentActionData = {}
+		CurrentActionData = {garageJobSpawn = garageJobSpawn}
 	elseif zone == 'Garage' then
 		CurrentAction     = 'mecano_harvest_menu'
 		CurrentActionMsg  = _U('harvest_menu')
@@ -843,7 +905,6 @@ AddEventHandler('esx_mecanojob:hasExitedEntityZone', function(entity)
 	end
 end)
 
-
 -- Pop NPC mission vehicle when inside area
 Citizen.CreateThread(function()
 	while true do
@@ -878,38 +939,89 @@ Citizen.CreateThread(function()
 	end
 end)
 
--- Create Blips
-Citizen.CreateThread(function()
-	local blip = AddBlipForCoord(Config.Zones.MecanoActions.Pos.x, Config.Zones.MecanoActions.Pos.y, Config.Zones.MecanoActions.Pos.z)
-
-	SetBlipSprite (blip, 446)
-	SetBlipDisplay(blip, 4)
-	SetBlipScale  (blip, 1.0)
-	SetBlipColour (blip, 5)
-	SetBlipAsShortRange(blip, true)
-
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString(_U('mechanic'))
-	EndTextCommandSetBlipName(blip)
-end)
-
 -- Display markers
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
+
 		if PlayerData.job ~= nil and PlayerData.job.name == 'mechanic' then
 			local coords = GetEntityCoords(PlayerPedId())
+			local isInMarker, hasExited, letSleep = false, false, true
+			local currentGarage, zone, garageJobSpawn
 
-			for k,v in pairs(Config.Zones) do
-				if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
-					DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+			for i=1, #Config.MecanoActions, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.MecanoActions[i].Pos, true)
+
+				if distance < Config.DrawDistance then
+					DrawMarker(1, Config.MecanoActions[i].Pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					letSleep = false
+				end
+
+				if distance <= 1.5 then
+					isInMarker, currentGarage, zone, garageJobSpawn = true, Config.MecanoActions[i].Zone, 'MecanoActions', Config.MecanoActions[i].JobVehSpawn
 				end
 			end
-		end
+
+			if Config.VehicleDelivery then
+				local distance = GetDistanceBetweenCoords(coords, Config.VehicleDelivery.DeliverPoint, true)
+
+				if Config.VehicleDelivery.Type ~= -1 then
+					DrawMarker(1, Config.VehicleDelivery.DeliverPoint, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 15.0, 15.0, 3.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+
+					letSleep = false
+				end
+
+				if distance <= 5.5 then
+					isInMarker, zone = true, 'VehicleDelivery'
+				end
+			end
+
+			for i=1, #Config.VehicleDeletionPoints, 1 do
+				local distance = GetDistanceBetweenCoords(coords, Config.VehicleDeletionPoints[i], true)
+
+				if distance < Config.DrawDistance then
+					DrawMarker(1, Config.VehicleDeletionPoints[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.5, 3.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					letSleep = false
+				end
+
+				if distance <= 1.5 then
+					isInMarker, zone = true, 'VehicleDeleter'
+				end
+			end
+
+			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentGarage)) then
+
+				if
+					(LastStation ~= nil) and (LastStation ~= currentGarage)
+				then
+					TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation)
+					hasExited = true
+				end
+
+				HasAlreadyEnteredMarker = true
+				LastStation             = currentGarage
+
+				TriggerEvent('esx_mecanojob:hasEnteredMarker', zone, currentGarage, garageJobSpawn)
+
+			end
+
+			if not hasExited and not isInMarker and HasAlreadyEnteredMarker then
+				HasAlreadyEnteredMarker = false
+				TriggerEvent('esx_mecanojob:hasExitedMarker', LastStation)
+			end
+
+			if letSleep then
+				Citizen.Wait(500)
+			end
+
+		else
+			Citizen.Wait(500)
+		end	
 	end
 end)
 
 -- Enter / Exit marker events
+--[[
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
@@ -946,6 +1058,7 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+]]
 
 Citizen.CreateThread(function()
 	local trackedEntities = {
@@ -1001,7 +1114,7 @@ Citizen.CreateThread(function()
 			if IsControlJustReleased(0, Keys['E']) and PlayerData.job ~= nil and PlayerData.job.name == 'mechanic' then
 
 				if CurrentAction == 'mecano_actions_menu' then
-					OpenMecanoActionsMenu()
+					OpenMecanoActionsMenu(CurrentActionData.garageJobSpawn)
 				elseif CurrentAction == 'mecano_harvest_menu' then
 					OpenMecanoHarvestMenu()
 				elseif CurrentAction == 'mecano_craft_menu' then
