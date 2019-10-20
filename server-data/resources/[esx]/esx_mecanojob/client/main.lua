@@ -73,7 +73,7 @@ function StopNPCJob(cancel)
 		Blips['NPCDelivery'] = nil
 	end
 
-	Config.Zones.VehicleDelivery.Type = -1
+	Config.VehicleDelivery.Type = -1
 
 	NPCOnJob                = false
 	NPCTargetTowable        = nil
@@ -476,14 +476,14 @@ function OpenMobileMecanoActionsMenu()
 							if NPCOnJob then
 								if NPCTargetTowable == targetVehicle then
 									ESX.ShowNotification(_U('please_drop_off'))
-									Config.Zones.VehicleDelivery.Type = 1
+									Config.VehicleDelivery.Type = 1
 
 									if Blips['NPCTargetTowableZone'] ~= nil then
 										RemoveBlip(Blips['NPCTargetTowableZone'])
 										Blips['NPCTargetTowableZone'] = nil
 									end
 
-									Blips['NPCDelivery'] = AddBlipForCoord(Config.Zones.VehicleDelivery.Pos.x, Config.Zones.VehicleDelivery.Pos.y, Config.Zones.VehicleDelivery.Pos.z)
+									Blips['NPCDelivery'] = AddBlipForCoord(Config.VehicleDelivery.DeliverPoint)
 									SetBlipRoute(Blips['NPCDelivery'], true)
 								end
 							end
@@ -501,7 +501,7 @@ function OpenMobileMecanoActionsMenu()
 
 				if NPCOnJob then
 					if NPCTargetDeleterZone then
-
+						print('we should be here now')
 						if CurrentlyTowedVehicle == NPCTargetTowable then
 							ESX.Game.DeleteVehicle(NPCTargetTowable)
 							TriggerServerEvent('esx_mecanojob:onNPCJobMissionCompleted')
@@ -916,6 +916,20 @@ Citizen.CreateThread(function()
 				end
 			end
 
+			if Config.VehicleDelivery then
+				local distance = GetDistanceBetweenCoords(coords, Config.VehicleDelivery.DeliverPoint, true)
+
+				if Config.VehicleDelivery.Type ~= -1 then
+					DrawMarker(1, Config.VehicleDelivery.DeliverPoint, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 15.0, 15.0, 3.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+
+					letSleep = false
+				end
+
+				if distance <= 5.5 then
+					isInMarker, zone = true, 'VehicleDelivery'
+				end
+			end
+
 			if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastStation ~= currentGarage)) then
 
 				if
@@ -929,7 +943,7 @@ Citizen.CreateThread(function()
 				LastStation             = currentGarage
 
 				TriggerEvent('esx_mecanojob:hasEnteredMarker', zone, currentGarage, garageJobSpawn)
-				print('THIS IS STATION', currentGarage)
+
 			end
 
 			if not hasExited and not isInMarker and HasAlreadyEnteredMarker then
