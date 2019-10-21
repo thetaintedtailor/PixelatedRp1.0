@@ -852,11 +852,11 @@ Citizen.CreateThread(function()
 				local distance = GetDistanceBetweenCoords(coords, Config.VehicleDeletionPoints[i], true)
 
 				if distance < Config.DrawDistance then
-					DrawMarker(1, Config.VehicleDeletionPoints[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 3.5, 3.5, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
+					DrawMarker(1, Config.VehicleDeletionPoints[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, 4.0, 4.0, 1.0, Config.ActionMarkerColor.r, Config.ActionMarkerColor.g, Config.ActionMarkerColor.b, 100, false, true, 2, false, false, false, false)
 					letSleep = false
 				end
 
-				if distance <= 3 then
+				if distance <= 4.5 then
 					isInMarker, zone = true, 'VehicleDeleter'
 				end
 			end
