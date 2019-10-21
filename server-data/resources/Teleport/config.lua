@@ -37,8 +37,7 @@ Config.zones = {
 		}
 		
 	},
-	
-	
+		
 	MethEnter = {
 		x = 988.5,
 		y = -1665.36,
@@ -53,8 +52,7 @@ Config.zones = {
 			b = 0
 		}
 	},
-	
-	
+		
 	MethExit = {
 		x = 1011.70,
 		y = -3202.53,
@@ -144,6 +142,36 @@ Config.zones = {
 			b = 255
 		}
 	},
+
+	CourthouseEnter = {
+		x = 233.00, 
+		y = -410.68, 
+		z = 47.15,
+		w = 2.0,
+		h = 1.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 240,
+			g = 253,
+			b = 239
+		}
+	},
+
+	CourthouseExit = {
+		x = -1411.04,
+		y = -514.03,
+		z = -71.53,
+		w = 2.0,
+		h = 3.0,
+		visible = true,
+		t = 25,
+		color = {
+			r = 240,
+			g = 253,
+			b = 239
+		}
+	}
 }
 
 -- Landing point, keep the same name as markers
@@ -201,6 +229,18 @@ Config.point = {
 		x = 3601.17, 
 		y = 3702.59, 
 		z = 35.64,
+	},
+
+	CourthouseEnter = {
+		x = -1411.04,
+		y = -514.03,
+		z = -71.55,
+	},
+
+	CourthouseExit = {
+		x = 238.11,
+		y = -412.41,
+		z = 48.11
 	}
 }
 
