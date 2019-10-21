@@ -50,6 +50,14 @@ AddEventHandler('tp:hasEnteredMarker', function(zone)
 		CurrentAction = zone
 	end
 
+	if zone == 'CourthouseEnter' then
+		CurrentAction = zone
+	end
+
+	if zone == 'CourthouseExit' then
+		CurrentAction = zone
+	end
+
 end)
 
 AddEventHandler('tp:hasExitedMarker', function(zone)
