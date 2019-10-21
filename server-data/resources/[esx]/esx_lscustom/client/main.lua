@@ -368,14 +368,16 @@ end
 -- Blips
 Citizen.CreateThread(function()
 	for k,v in pairs(Config.Zones) do
-		local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
-		SetBlipSprite(blip, 72)
-		SetBlipScale(blip, 0.9)
-		SetBlipColour(blip, 60)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(v.Name)
-		EndTextCommandSetBlipName(blip)
+		if v.Name ~= 'hidden' then
+			local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
+			SetBlipSprite(blip, 446)
+			SetBlipScale(blip, 1.0)
+			SetBlipColour(blip, 60)
+			SetBlipAsShortRange(blip, true)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString(v.Name)
+			EndTextCommandSetBlipName(blip)
+		end
 	end
 end)
 

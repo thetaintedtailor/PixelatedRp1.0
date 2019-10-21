@@ -7,6 +7,7 @@ Config.NPCSpawnDistance           = 500.0
 Config.NPCNextToDistance          = 25.0
 Config.NPCJobEarnings             = { min = 100, max = 150 }
 Config.Locale = 'en'
+Config.ActionMarkerColor = { r = 204, g = 204, b = 0 }
 
 Config.Vehicles = {
 	'adder',
@@ -16,50 +17,34 @@ Config.Vehicles = {
 	'buffalo'
 }
 
-Config.Zones = {
-
-	MecanoActions = {
-			Pos   = { x = -197.14999389648, y = -1318.67468261, z = 30.089344 },
-			Size  = { x = 1.5, y = 1.5, z = 1.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = 1,
-		},
-
-	Garage = {
-		Pos   = { x = -97.5797576904297, y = 6496.11376953125, z = 5.4909038543701 },
-		Size  = { x = 1.5, y = 1.5, z = 1.0 },
-		Color = { r = 204, g = 204, b = 0 },
-		Type  = 1,
-	},
-
-	Craft = {
-		Pos   = { x = -323.140, y = -129.882, z = 5.999 },
-		Size  = { x = 1.5, y = 1.5, z = 1.0 },
-		Color = { r = 204, g = 204, b = 0 },
-		Type  = 1,
-	},
-
-	VehicleSpawnPoint = {
-			Pos   = {x = -210.89, y = -1304.43, z = 30.29},
-			Size  = { x = 1.5, y = 1.5, z = 1.0 },
-			Type  = -1,
-		},
-
-	VehicleDeleter = {
-			Pos   = { x = -199.82, y = -1306.86, z = 30.28 },
-			Size  = { x = 3.0, y = 3.0, z = 1.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = 1,
-		},
-
-	VehicleDelivery = {
-			Pos   = { x = -215.33, y = -1299.75, z = 30.30},
-			Size  = { x = 20.0, y = 20.0, z = 3.0 },
-			Color = { r = 204, g = 204, b = 0 },
-			Type  = -1,
-		}
-
+Config.MecanoActions = {
+	{Zone = 'bennys', Pos = vector3(-197.149, -1318.674, 30.089), JobVehSpawn = vector3(-210.89, -1304.43, 30.29)},
+	{Zone = 'airport', Pos = vector3(-1146.51, -2003.46, 12.18), JobVehSpawn = vector3(-1146.16, -1979.00, 13.16)},
+	{Zone = 'central', Pos = vector3(-344.76, -130.49, 38.01), JobVehSpawn = vector3(-362.79, -116.69, 38.70)},
+	{Zone = 'route68', Pos = vector3(1177.05, 2636.54, 36.75), JobVehSpawn = vector3(1166.42, 2653.24, 38.05)},
+	{Zone = 'den', Pos = vector3(737.32, -1078.74, 21.17), JobVehSpawn = vector3(708.22, -1075.60, 22.39)},
 }
+
+Config.VehicleDelivery = {
+	DeliverPoint = vector3(494.40, -1332.17, 28.34),
+	Type  = -1,
+}
+
+
+Config.VehicleDeletionPoints = {
+	vector3(-183.03, -1313.74, 30.30), --bennys
+	vector3(-1153.86, -1986.26, 12.16), --airport
+	vector3(-370.38, -108.09, 37.68), --central
+	vector3(1166.21, 2648.39, 36.90), --route68
+	vector3(718.89, -1079.24, 21.24) --den
+	--[[
+		Pos   = { x = -199.82, y = -1306.86, z = 30.28 },
+		Size  = { x = 3.0, y = 3.0, z = 1.0 },
+		Color = { r = 204, g = 204, b = 0 },
+		]]
+}
+
+Config.Zones = {}
 
 Config.Towables = {
 	{ ['x'] = -2480.8720703125, ['y'] = -211.96409606934, ['z'] = 17.397672653198 },
