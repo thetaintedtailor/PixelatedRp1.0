@@ -161,24 +161,10 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 					align    = 'right',
 					elements = elements
 				}, function(data, menu)
-					--if Config.MaxInService == -1 then
-						ESX.Game.SpawnVehicle(data.current.value, garageJobSpawn, 90.0, function(vehicle)
-							local playerPed = PlayerPedId()
-							TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-						end)
-					--[[else
-						ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
-							if canTakeService then
-								ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
-									local playerPed = PlayerPedId()
-									TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
-								end)
-							else
-								ESX.ShowNotification(_U('service_full') .. inServiceCount .. '/' .. maxInService)
-							end
-						end, 'mechanic')
-					end]]
-
+					ESX.Game.SpawnVehicle(data.current.value, garageJobSpawn, 90.0, function(vehicle)
+						local playerPed = PlayerPedId()
+						TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+					end)
 					menu.close()
 				end, function(data, menu)
 					menu.close()
@@ -186,25 +172,6 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 				end)
 
 			end
-
-		elseif data.current.value == 'cloakroom' then
-
-			menu.close()
-			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-				if skin.sex == 0 then
-					TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
-				else
-					TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
-				end
-			end)
-
-		elseif data.current.value == 'cloakroom2' then
-
-			menu.close()
-			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-				TriggerEvent('skinchanger:loadSkin', skin)
-			end)
-
 		elseif data.current.value == 'put_stock' then
 			OpenPutStocksMenu()
 		elseif data.current.value == 'get_stock' then
@@ -226,92 +193,9 @@ function OpenMecanoActionsMenu(garageJobSpawn)
 	end)
 end
 
---[[
-function OpenKitAssembly()
-	
-end
-]]
 
-function OpenMecanoHarvestMenu()
 
-	if Config.EnablePlayerManagement and PlayerData.job ~= nil then
 
-		local elements = {
-			{label = _U('gas_can'), value = 'gaz_bottle'},
-			{label = _U('repair_tools'), value = 'fix_tool'},
-			{label = _U('body_work_tools'), value = 'caro_tool'}
-		}
-
-		ESX.UI.Menu.CloseAll()
-
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mecano_harvest', {
-			title    = _U('harvest'),
-			align    = 'right',
-			elements = elements
-		}, function(data, menu)
-
-			if data.current.value == 'gaz_bottle' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startHarvest')
-			elseif data.current.value == 'fix_tool' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startHarvest2')
-			elseif data.current.value == 'caro_tool' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startHarvest3')
-			end
-
-		end, function(data, menu)
-			menu.close()
-			CurrentAction     = 'mecano_harvest_menu'
-			CurrentActionMsg  = _U('harvest_menu')
-			CurrentActionData = {}
-		end)
-
-	else
-		ESX.ShowNotification(_U('not_experienced_enough'))
-	end
-end
-
-function OpenMecanoCraftMenu()
-	if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.grade_name ~= 'recrue' then
-
-		local elements = {
-			{label = _U('blowtorch'),  value = 'blow_pipe'},
-			{label = _U('repair_kit'), value = 'fix_kit'},
-			{label = _U('body_kit'),   value = 'caro_kit'}
-		}
-
-		ESX.UI.Menu.CloseAll()
-
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mecano_craft', {
-			title    = _U('craft'),
-			align    = 'right',
-			elements = elements
-		}, function(data, menu)
-			if data.current.value == 'blow_pipe' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startCraft')
-			elseif data.current.value == 'fix_kit' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startCraft2')
-			elseif data.current.value == 'caro_kit' then
-				menu.close()
-				TriggerServerEvent('esx_mecanojob:startCraft3')
-			end
-
-		end, function(data, menu)
-			menu.close()
-
-			CurrentAction     = 'mecano_craft_menu'
-			CurrentActionMsg  = _U('craft_menu')
-			CurrentActionData = {}
-		end)
-
-	else
-		ESX.ShowNotification(_U('not_experienced_enough'))
-	end
-end
 
 function OpenMobileMecanoActionsMenu()
 
@@ -855,10 +739,6 @@ AddEventHandler('esx_mecanojob:hasEnteredMarker', function(zone, currentGarage, 
 		CurrentAction     = 'mecano_harvest_menu'
 		CurrentActionMsg  = _U('harvest_menu')
 		CurrentActionData = {}
-	elseif zone == 'Craft' then
-		CurrentAction     = 'mecano_craft_menu'
-		CurrentActionMsg  = _U('craft_menu')
-		CurrentActionData = {}
 	elseif zone == 'VehicleDeleter' then
 		local playerPed = PlayerPedId()
 
@@ -875,14 +755,6 @@ end)
 AddEventHandler('esx_mecanojob:hasExitedMarker', function(zone)
 	if zone =='VehicleDelivery' then
 		NPCTargetDeleterZone = false
-	elseif zone == 'Craft' then
-		TriggerServerEvent('esx_mecanojob:stopCraft')
-		TriggerServerEvent('esx_mecanojob:stopCraft2')
-		TriggerServerEvent('esx_mecanojob:stopCraft3')
-	elseif zone == 'Garage' then
-		TriggerServerEvent('esx_mecanojob:stopHarvest')
-		TriggerServerEvent('esx_mecanojob:stopHarvest2')
-		TriggerServerEvent('esx_mecanojob:stopHarvest3')
 	end
 
 	CurrentAction = nil
@@ -984,7 +856,7 @@ Citizen.CreateThread(function()
 					letSleep = false
 				end
 
-				if distance <= 1.5 then
+				if distance <= 3 then
 					isInMarker, zone = true, 'VehicleDeleter'
 				end
 			end
@@ -1115,10 +987,6 @@ Citizen.CreateThread(function()
 
 				if CurrentAction == 'mecano_actions_menu' then
 					OpenMecanoActionsMenu(CurrentActionData.garageJobSpawn)
-				elseif CurrentAction == 'mecano_harvest_menu' then
-					OpenMecanoHarvestMenu()
-				elseif CurrentAction == 'mecano_craft_menu' then
-					OpenMecanoCraftMenu()
 				elseif CurrentAction == 'delete_vehicle' then
 
 					if Config.EnableSocietyOwnedVehicles then
