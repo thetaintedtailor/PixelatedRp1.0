@@ -37,9 +37,9 @@ VK.tips.list = [ // Tips list
 ];
 
 VK.music.volume = 0.08; // Music volume (0-1)
-VK.music.url = "music/make_me_fade.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
-VK.music.title = "Vanic x K.Flay - Make Me Fade"; // Music title ("NONE" to desactive)
-VK.music.submitedBy = "Song requested by Evie Quinn"; // Music submited by... ("NONE" to desactive)
+VK.music.url = "music/dont_wanna.mp3"; // Music url, can be on local or distant (http://....) ("NONE" to desactive music)
+VK.music.title = "M-Phazes - I Don't Wanna Fall In Love"; // Music title ("NONE" to desactive)
+VK.music.submitedBy = "Song requested by Alonzo"; // Music submited by... ("NONE" to desactive)
 
 VK.info.logo = "https://i.postimg.cc/cL86JYLL/pixelatedlogo2.png"; // Logo ("NONE" to desactive)
 VK.info.text = "NONE"; // Bottom right corner text ("NONE" to desactive)

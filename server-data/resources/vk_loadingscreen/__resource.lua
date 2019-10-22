@@ -3,7 +3,7 @@ files {
     'config.js',
     'script.js',
     'style.css',
-    'music/make_me_fade.mp3',
+    'music/dont_wanna.mp3',
     'icon/crown.png',
     'icon/discord.png',
     'icon/facebook.png',
