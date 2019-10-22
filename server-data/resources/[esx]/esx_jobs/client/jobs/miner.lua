@@ -260,7 +260,7 @@ Config.Jobs.miner = {
 					time = 500,
 					remove = 1,
 					max = 50, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 211,
+					price = 350,
 					requires = "diamond",
 					requires_name = _U("m_diamond"),
 					drop = 100
