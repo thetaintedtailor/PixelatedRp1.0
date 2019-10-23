@@ -67,4 +67,11 @@ Config.Zones = {
     Color = { r = 0, g = 0, b = 100 },
     Jobs = {'mechanic', 'offmechanic'}
   },
+
+  AirportMechanicDuty = {
+    Pos = { x = -1149.05, y = -2000.37, z = 12.20 },
+    Size = { x = 2.0, y = 2.0, z = 1.5 },
+    Color = { r = 0, g = 0, b = 100 },
+    Jobs = {'mechanic', 'offmechanic'}
+  },
 }

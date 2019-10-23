@@ -67,12 +67,14 @@ Citizen.CreateThread(function()
 
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.Pawnshop.x, Config.Pawnshop.y, Config.Pawnshop.z)
 
-            if dist <= 0.5 then
+            if dist <= 1.5 then
 				hintToDisplay('Press ~INPUT_CONTEXT~ to open ~b~the store~w~')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					OpenPawnMenu()
-				end			
+                end
+            else
+                ESX.UI.Menu.CloseAll()			
             end
     end
 end)
@@ -80,27 +82,26 @@ end)
 function OpenPawnMenu()
     ESX.UI.Menu.CloseAll()
 
-    ESX.UI.Menu.Open(
-        'default', GetCurrentResourceName(), 'pawn_menu',
-        {
-            title    = 'Pawnshop',
-            align = 'right',
-            elements = {
-                {label = 'Sell Items', value = 'sellItems'},
-                {label = 'Sell Weapons', value = 'sellWeapons'}
-            }
-        },
-        function(data, menu)
-            if data.current.value == 'sellItems' then
-                OpenItemSaleMenu()
-            elseif data.current.value == 'sellWeapons' then
-                OpenWeaponSaleMenu()
-            end
-        end,
-        function(data, menu)
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pawn_menu', {
+        title = 'Pawnshop',
+        align = 'right',
+        elements = {
+            {label = 'Sell Items', value = 'sellItems'},
+            {label = 'Sell Weapons', value = 'sellWeapons'}
+        }
+    }, function(data, menu)
+        if data.current.value == 'sellItems' then
             menu.close()
+            OpenItemSaleMenu()
+        elseif data.current.value == 'sellWeapons' then
+            menu.close()
+            OpenWeaponSaleMenu()
         end
-    )
+
+        menu.close()
+    end, function(data, menu)
+        menu.close()
+    end)
 end
 
 function OpenItemSaleMenu()

@@ -26,7 +26,6 @@ local myPlate = {}
 
 local vehicleObjInCaseofDrop = nil
 local vehicleInCaseofDrop = nil
-
 local vehicleMaxHealth = nil
 
 ESX = nil
