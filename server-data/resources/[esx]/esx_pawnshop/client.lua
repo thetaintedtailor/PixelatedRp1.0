@@ -12,6 +12,8 @@ local Keys = {
    
 ESX = nil
 local PlayerData              = {}
+local HasAlreadyEnteredMarker = false
+local LastZone                = nil
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -59,24 +61,43 @@ Citizen.CreateThread(function()
     end
 end)
 
+-- Enter/Exit Marker
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+            local isInMarker, letSleep = false, true
 
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.Pawnshop.x, Config.Pawnshop.y, Config.Pawnshop.z)
 
             if dist <= 1.5 then
+                isInMarker, letSleep = true, false
 				hintToDisplay('Press ~INPUT_CONTEXT~ to open ~b~the store~w~')
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					OpenPawnMenu()
-                end
-            else
-                ESX.UI.Menu.CloseAll()			
+                end		
             end
+
+            if isInMarker and not HasAlreadyEnteredMarker then
+                HasAlreadyEnteredMarker = true
+            end
+
+            if not isInMarker and HasAlreadyEnteredMarker then
+                HasAlreadyEnteredMarker = false
+                TriggerEvent('esx_pawnshop:hasExitedMarker')
+                letSleep = true
+            end
+
+            if letSleep then
+				Citizen.Wait(500)
+			end
     end
+end)
+
+AddEventHandler('esx_shops:hasExitedMarker', function()
+	ESX.UI.Menu.CloseAll()
 end)
 
 function OpenPawnMenu()
